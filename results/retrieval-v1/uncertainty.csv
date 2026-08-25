@@ -1,0 +1,26 @@
+﻿comparison,metric,estimate_delta,ci95_lower,ci95_upper,interval_direction,paired_two_stage_bootstrap_replicates
+strict fusion minus strict BGE-M3,mrr,0.126692,0.106008,0.146863,left_higher,5000
+strict fusion minus strict BGE-M3,recall_at_1,0.136564,0.113772,0.159721,left_higher,5000
+strict fusion minus strict BGE-M3,recall_at_5,0.121379,0.097244,0.144924,left_higher,5000
+strict fusion minus strict BGE-M3,recall_at_10,0.103421,0.078619,0.127059,left_higher,5000
+strict fusion minus strict BGE-M3,ndcg_at_10,0.123653,0.102529,0.144154,left_higher,5000
+strict fusion minus strict TF-IDF,mrr,0.031312,0.020975,0.041780,left_higher,5000
+strict fusion minus strict TF-IDF,recall_at_1,0.025129,0.012573,0.037931,left_higher,5000
+strict fusion minus strict TF-IDF,recall_at_5,0.035901,0.021074,0.050738,left_higher,5000
+strict fusion minus strict TF-IDF,recall_at_10,0.049640,0.033269,0.066239,left_higher,5000
+strict fusion minus strict TF-IDF,ndcg_at_10,0.035959,0.024951,0.046982,left_higher,5000
+standardized fusion minus raw-score fusion,mrr,0.005440,0.001490,0.009489,left_higher,5000
+standardized fusion minus raw-score fusion,recall_at_1,0.004570,-0.001498,0.010644,interval_includes_zero,5000
+standardized fusion minus raw-score fusion,recall_at_5,0.003995,-0.003715,0.012087,interval_includes_zero,5000
+standardized fusion minus raw-score fusion,recall_at_10,0.008049,0.000008,0.015869,left_higher,5000
+standardized fusion minus raw-score fusion,ndcg_at_10,0.006040,0.001906,0.010200,left_higher,5000
+strict near-duplicate guard minus exact-only guard,mrr,-0.001834,-0.004174,0.000105,interval_includes_zero,5000
+strict near-duplicate guard minus exact-only guard,recall_at_1,-0.001769,-0.004748,0.000922,interval_includes_zero,5000
+strict near-duplicate guard minus exact-only guard,recall_at_5,-0.001457,-0.004395,0.001086,interval_includes_zero,5000
+strict near-duplicate guard minus exact-only guard,recall_at_10,-0.002585,-0.005702,-0.000097,left_lower,5000
+strict near-duplicate guard minus exact-only guard,ndcg_at_10,-0.002118,-0.004528,-0.000227,left_lower,5000
+strict shared-text exclusion minus shared-text-included ablation,mrr,-0.004655,-0.009329,-0.000116,left_lower,5000
+strict shared-text exclusion minus shared-text-included ablation,recall_at_1,-0.005262,-0.011527,0.000917,interval_includes_zero,5000
+strict shared-text exclusion minus shared-text-included ablation,recall_at_5,-0.005381,-0.012103,0.001381,interval_includes_zero,5000
+strict shared-text exclusion minus shared-text-included ablation,recall_at_10,-0.007949,-0.014929,-0.001519,left_lower,5000
+strict shared-text exclusion minus shared-text-included ablation,ndcg_at_10,-0.005633,-0.010158,-0.001267,left_lower,5000

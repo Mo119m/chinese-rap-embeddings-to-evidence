@@ -1,0 +1,1225 @@
+﻿system,task_role,source_credit_label,queries,within_label_component_units,mrr,recall_at_1,recall_at_5,recall_at_10,ndcg_at_10,median_true_label_rank,most_common_incorrect_top1_source_credit_label,share_of_incorrect_group_weight_for_common_top1
+BGE-M3 dense (strict),primary_comparison,Six City,9,9,0.779669,0.777778,0.777778,0.777778,0.777778,1.000000,C-Block,0.500000
+BGE-M3 dense (strict),primary_comparison,王以太,24,24,0.149856,0.041667,0.208333,0.333333,0.178531,23.000000,孔令奇,0.086957
+BGE-M3 dense (strict),primary_comparison,王嘉尔,37,37,0.806861,0.783784,0.837838,0.891892,0.824574,1.000000,Nxmad诺曼得,0.500000
+BGE-M3 dense (strict),primary_comparison,福克斯,40,39,0.604272,0.538462,0.692308,0.717949,0.627842,1.000000,阿童木,0.222222
+BGE-M3 dense (strict),primary_comparison,徐真真,42,42,0.173699,0.071429,0.238095,0.333333,0.188524,13.000000,张雪飞,0.128205
+BGE-M3 dense (strict),primary_comparison,隐藏,9,9,0.166754,0.000000,0.333333,0.555556,0.251699,9.000000,爽子,0.222222
+BGE-M3 dense (strict),primary_comparison,天府事变CDREV,44,44,0.426525,0.340909,0.477273,0.613636,0.457823,6.000000,张昊,0.103448
+BGE-M3 dense (strict),primary_comparison,jinjibewater,20,20,0.198327,0.150000,0.250000,0.300000,0.208796,32.000000,Capper,0.176471
+BGE-M3 dense (strict),primary_comparison,APMOZART,45,45,0.712398,0.600000,0.822222,0.888889,0.752458,1.000000,MULA SAKEE,0.277778
+BGE-M3 dense (strict),primary_comparison,多雷 Swang,39,39,0.360174,0.256410,0.461538,0.589744,0.405267,7.000000,BossWang,0.068966
+BGE-M3 dense (strict),primary_comparison,刘柄鑫,30,30,0.656928,0.533333,0.800000,0.800000,0.689081,1.000000,孤矢,0.214286
+BGE-M3 dense (strict),primary_comparison,国蛋,36,34,0.550985,0.441176,0.676471,0.764706,0.594675,2.000000,Kc,0.105263
+BGE-M3 dense (strict),primary_comparison,弹壳,10,10,0.012558,0.000000,0.000000,0.000000,0.000000,84.000000,小青龙,0.200000
+BGE-M3 dense (strict),primary_comparison,梁维嘉,32,32,0.117375,0.031250,0.187500,0.312500,0.136950,14.000000,梁老师Tsong,0.064516
+BGE-M3 dense (strict),primary_comparison,冲天小火煎,18,18,0.142532,0.055556,0.166667,0.388889,0.187212,34.000000,阿斯巴田,0.117647
+BGE-M3 dense (strict),primary_comparison,TOYOKI,35,35,0.224754,0.142857,0.257143,0.457143,0.260170,12.000000,APMOZART,0.100000
+BGE-M3 dense (strict),primary_comparison,Capper,28,28,0.504055,0.428571,0.607143,0.678571,0.535558,3.000000,老黑Black J,0.125000
+BGE-M3 dense (strict),primary_comparison,義胜合,12,12,0.555385,0.500000,0.583333,0.666667,0.578866,1.000000,秃子,0.333333
+BGE-M3 dense (strict),primary_comparison,红狼,12,11,0.061692,0.000000,0.136364,0.181818,0.078999,55.000000,C-Low,0.181818
+BGE-M3 dense (strict),primary_comparison,雾都 (Wudu Montana),21,21,0.066411,0.000000,0.095238,0.238095,0.086649,29.000000,秃子,0.142857
+BGE-M3 dense (strict),primary_comparison,zhazha,8,8,0.093332,0.000000,0.125000,0.250000,0.114999,24.000000,jinjibewater,0.125000
+BGE-M3 dense (strict),primary_comparison,李大奔BENZO,31,31,0.233716,0.064516,0.387097,0.612903,0.309483,7.000000,Capper,0.103448
+BGE-M3 dense (strict),primary_comparison,丸,21,20,0.337447,0.200000,0.425000,0.525000,0.364917,10.000000,杀手耗,0.187500
+BGE-M3 dense (strict),primary_comparison,Tangoz,36,35,0.365251,0.314286,0.400000,0.485714,0.380231,12.000000,NOTTIBO1,0.083333
+BGE-M3 dense (strict),primary_comparison,离合,28,28,0.726961,0.607143,0.928571,0.964286,0.784522,1.000000,MULA SAKEE,0.181818
+BGE-M3 dense (strict),primary_comparison,G Sauce,34,34,0.594489,0.470588,0.735294,0.852941,0.653430,2.000000,CJ BAda$$ (希介),0.111111
+BGE-M3 dense (strict),primary_comparison,Cream D,16,16,0.353566,0.250000,0.437500,0.562500,0.391581,7.000000,张雪飞,0.166667
+BGE-M3 dense (strict),primary_comparison,李佳隆,36,36,0.217055,0.166667,0.222222,0.333333,0.229352,31.000000,罗言,0.066667
+BGE-M3 dense (strict),primary_comparison,Poorman,9,9,0.188671,0.111111,0.222222,0.444444,0.238364,24.000000,天府事变CDREV,0.125000
+BGE-M3 dense (strict),primary_comparison,小青龙,29,29,0.164396,0.068966,0.241379,0.344828,0.187259,16.000000,刘柄鑫,0.111111
+BGE-M3 dense (strict),primary_comparison,吴晨阳,10,10,0.685704,0.600000,0.800000,0.800000,0.713093,1.000000,王嘉尔,0.250000
+BGE-M3 dense (strict),primary_comparison,Melo,15,15,0.134805,0.000000,0.200000,0.400000,0.174761,13.000000,Rich4ever,0.200000
+BGE-M3 dense (strict),primary_comparison,JD,38,38,0.649091,0.578947,0.710526,0.736842,0.664447,1.000000,Sbazzo,0.125000
+BGE-M3 dense (strict),primary_comparison,Korn,25,25,0.162252,0.040000,0.320000,0.360000,0.194651,20.000000,秃子,0.083333
+BGE-M3 dense (strict),primary_comparison,梁老师Tsong,39,38,0.254309,0.157895,0.328947,0.381579,0.261975,12.000000,张雪飞,0.109375
+BGE-M3 dense (strict),primary_comparison,木秦,34,34,0.510632,0.441176,0.529412,0.676471,0.539598,2.000000,Capper,0.105263
+BGE-M3 dense (strict),primary_comparison,孔令奇,32,32,0.327932,0.218750,0.406250,0.562500,0.371897,8.000000,Capper,0.120000
+BGE-M3 dense (strict),primary_comparison,鹿奇,42,42,0.369757,0.309524,0.428571,0.476190,0.384856,11.000000,Kzoo,0.137931
+BGE-M3 dense (strict),primary_comparison,ROB93,17,17,0.228967,0.176471,0.294118,0.294118,0.231216,40.000000,Kzoo,0.214286
+BGE-M3 dense (strict),primary_comparison,泰格西,22,22,0.428576,0.318182,0.500000,0.590909,0.453767,3.000000,G Sauce,0.133333
+BGE-M3 dense (strict),primary_comparison,王晨宇IceCraz,47,47,0.159861,0.085106,0.191489,0.276596,0.168571,24.000000,Melo,0.046512
+BGE-M3 dense (strict),primary_comparison,Green Soldier,10,10,0.365133,0.200000,0.500000,0.600000,0.418185,2.000000,V.O.B.,0.375000
+BGE-M3 dense (strict),primary_comparison,傲傲,40,40,0.153348,0.050000,0.250000,0.425000,0.202894,14.000000,廖效浓,0.184211
+BGE-M3 dense (strict),primary_comparison,CJ BAda$$ (希介),27,27,0.296209,0.222222,0.296296,0.555556,0.341793,10.000000,TOYOKI,0.095238
+BGE-M3 dense (strict),primary_comparison,花生,12,12,0.113530,0.083333,0.083333,0.083333,0.083333,30.000000,吴晨阳,0.090909
+BGE-M3 dense (strict),primary_comparison,刀脚,23,23,0.431790,0.304348,0.565217,0.739130,0.494403,4.000000,秃子,0.187500
+BGE-M3 dense (strict),primary_comparison,河南说唱之神,46,46,0.524510,0.434783,0.630435,0.717391,0.559959,3.000000,张雪飞,0.153846
+BGE-M3 dense (strict),primary_comparison,C-Block,43,42,0.147703,0.047619,0.190476,0.380952,0.185418,19.000000,Gm仙,0.075000
+BGE-M3 dense (strict),primary_comparison,V.O.B.,15,15,0.527909,0.400000,0.666667,0.733333,0.574169,2.000000,Green Soldier,0.222222
+BGE-M3 dense (strict),primary_comparison,土人儿,21,21,0.229879,0.095238,0.428571,0.476190,0.274105,14.000000,张雪飞,0.105263
+BGE-M3 dense (strict),primary_comparison,Surfosho,7,7,0.114229,0.000000,0.142857,0.428571,0.180266,32.000000,neverkilltheape,0.285714
+BGE-M3 dense (strict),primary_comparison,满舒克,33,33,0.351491,0.272727,0.393939,0.515152,0.371586,10.000000,艾热 AIR,0.083333
+BGE-M3 dense (strict),primary_comparison,金熙宇,16,16,0.036448,0.000000,0.000000,0.062500,0.018814,40.000000,爆音Boom,0.125000
+BGE-M3 dense (strict),primary_comparison,Ice Paper,32,32,0.226997,0.093750,0.406250,0.562500,0.299410,6.000000,张雪飞,0.103448
+BGE-M3 dense (strict),primary_comparison,ljz329,11,11,0.061851,0.000000,0.090909,0.272727,0.094110,45.000000,TOYOKI,0.090909
+BGE-M3 dense (strict),primary_comparison,AR,36,36,0.534780,0.416667,0.638889,0.750000,0.581213,2.000000,滇声气,0.142857
+BGE-M3 dense (strict),primary_comparison,黄昭,24,24,0.205697,0.125000,0.333333,0.416667,0.243565,25.000000,Kzoo,0.095238
+BGE-M3 dense (strict),primary_comparison,Over$ize,16,16,0.421340,0.312500,0.562500,0.625000,0.463613,3.000000,AR,0.181818
+BGE-M3 dense (strict),primary_comparison,直火帮,39,39,0.290218,0.153846,0.435897,0.538462,0.328876,8.000000,Jony J,0.121212
+BGE-M3 dense (strict),primary_comparison,爽子,17,17,0.566210,0.470588,0.705882,0.764706,0.604811,2.000000,新街口组合,0.222222
+BGE-M3 dense (strict),primary_comparison,Nasty Ray,6,6,0.070690,0.000000,0.166667,0.166667,0.083333,39.000000,泰格西,0.166667
+BGE-M3 dense (strict),primary_comparison,望江晴,18,18,0.260745,0.166667,0.388889,0.500000,0.303685,8.000000,孤矢,0.133333
+BGE-M3 dense (strict),primary_comparison,Jony J,42,42,0.508631,0.404762,0.595238,0.690476,0.541450,2.000000,Gm仙,0.120000
+BGE-M3 dense (strict),primary_comparison,SASIOVERLXRD,26,26,0.348486,0.269231,0.384615,0.576923,0.392098,9.000000,G Sauce,0.157895
+BGE-M3 dense (strict),primary_comparison,张昊,15,15,0.252466,0.133333,0.333333,0.466667,0.286506,12.000000,Sbazzo,0.230769
+BGE-M3 dense (strict),primary_comparison,秃子,20,20,0.640831,0.550000,0.700000,0.850000,0.688167,1.000000,辉子,0.333333
+BGE-M3 dense (strict),primary_comparison,方仔,32,31,0.302887,0.258065,0.306452,0.370968,0.299126,16.000000,张雪飞,0.173913
+BGE-M3 dense (strict),primary_comparison,404 Rapper,23,23,0.052580,0.000000,0.086957,0.086957,0.038559,34.000000,离合,0.043478
+BGE-M3 dense (strict),primary_comparison,金蛇 traphouse,6,6,0.293832,0.166667,0.333333,0.500000,0.331189,6.000000,G Sauce,0.200000
+BGE-M3 dense (strict),primary_comparison,老黑Black J,11,11,0.472641,0.363636,0.545455,0.636364,0.508654,2.000000,刘柄鑫,0.142857
+BGE-M3 dense (strict),primary_comparison,坚强的小黄瓜,41,41,0.463309,0.365854,0.560976,0.707317,0.512820,4.000000,连麻Swimming,0.076923
+BGE-M3 dense (strict),primary_comparison,C-Low,28,28,0.294145,0.214286,0.357143,0.428571,0.311981,18.000000,张昊,0.090909
+BGE-M3 dense (strict),primary_comparison,thomeboydontkill,21,21,0.195881,0.142857,0.238095,0.285714,0.196809,20.000000,离合,0.111111
+BGE-M3 dense (strict),primary_comparison,MULA SAKEE,33,33,0.630265,0.545455,0.757576,0.848485,0.677067,1.000000,APMOZART,0.200000
+BGE-M3 dense (strict),primary_comparison,DBL.D,12,12,0.153743,0.083333,0.166667,0.250000,0.160000,25.000000,大D,0.181818
+BGE-M3 dense (strict),primary_comparison,刘聪 (Key.L),35,35,0.227709,0.171429,0.257143,0.342857,0.234616,17.000000,张雪飞,0.103448
+BGE-M3 dense (strict),primary_comparison,Max马俊,14,14,0.339040,0.214286,0.500000,0.571429,0.385347,5.000000,福克斯,0.090909
+BGE-M3 dense (strict),primary_comparison,连麻Swimming,26,26,0.392558,0.269231,0.500000,0.576923,0.428613,4.000000,李尔新,0.157895
+BGE-M3 dense (strict),primary_comparison,OWVRO老弟,23,23,0.282620,0.173913,0.391304,0.521739,0.323827,10.000000,李大奔BENZO,0.105263
+BGE-M3 dense (strict),primary_comparison,Vava,26,26,0.075678,0.000000,0.115385,0.269231,0.101674,26.000000,Higher Brothers,0.115385
+BGE-M3 dense (strict),primary_comparison,KKLUV,27,27,0.299896,0.185185,0.444444,0.518519,0.340804,10.000000,TOYOKI,0.090909
+BGE-M3 dense (strict),primary_comparison,孤矢,37,37,0.362562,0.243243,0.486486,0.648649,0.419920,6.000000,阿童木,0.178571
+BGE-M3 dense (strict),primary_comparison,Turbo嗣尧,20,20,0.141607,0.050000,0.200000,0.450000,0.199565,11.000000,王嘉尔,0.105263
+BGE-M3 dense (strict),primary_comparison,李尔新,32,32,0.292094,0.187500,0.437500,0.562500,0.346185,7.000000,CJ BAda$$ (希介),0.115385
+BGE-M3 dense (strict),primary_comparison,YuGo,33,33,0.303953,0.181818,0.393939,0.545455,0.347614,9.000000,廖效浓,0.185185
+BGE-M3 dense (strict),primary_comparison,Regi 陈彦希,12,12,0.112355,0.000000,0.250000,0.333333,0.148446,20.000000,王嘉尔,0.250000
+BGE-M3 dense (strict),primary_comparison,正义感,18,18,0.298477,0.222222,0.388889,0.611111,0.359617,7.000000,刘柄鑫,0.142857
+BGE-M3 dense (strict),primary_comparison,southsidesamurai,12,12,0.534623,0.416667,0.583333,0.750000,0.579283,2.000000,丸,0.142857
+BGE-M3 dense (strict),primary_comparison,滇声气,23,23,0.558000,0.478261,0.652174,0.695652,0.584771,2.000000,梁维嘉,0.083333
+BGE-M3 dense (strict),primary_comparison,新街口组合,26,26,0.364199,0.153846,0.653846,0.730769,0.445942,3.000000,张雪飞,0.363636
+BGE-M3 dense (strict),primary_comparison,YOUNG,21,21,0.152770,0.095238,0.142857,0.190476,0.142245,35.000000,罗言,0.157895
+BGE-M3 dense (strict),primary_comparison,杨布拉德,42,42,0.511007,0.428571,0.571429,0.619048,0.527781,2.000000,Higher Brothers,0.125000
+BGE-M3 dense (strict),primary_comparison,TY,27,27,0.168935,0.037037,0.333333,0.481481,0.230052,12.000000,金熙宇,0.115385
+BGE-M3 dense (strict),primary_comparison,恶童,33,33,0.286078,0.212121,0.333333,0.424242,0.304955,16.000000,滇声气,0.076923
+BGE-M3 dense (strict),primary_comparison,班比 Bambii,41,41,0.259629,0.170732,0.317073,0.439024,0.282772,11.000000,TOYOKI,0.058824
+BGE-M3 dense (strict),primary_comparison,S1,14,14,0.066692,0.000000,0.142857,0.142857,0.071429,42.000000,杀手耗,0.142857
+BGE-M3 dense (strict),primary_comparison,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+BGE-M3 dense (strict),primary_comparison,Kzoo,43,42,0.493998,0.369048,0.642857,0.761905,0.552658,2.000000,离合,0.113208
+BGE-M3 dense (strict),primary_comparison,罗言,21,21,0.362829,0.190476,0.571429,0.619048,0.414311,4.000000,张雪飞,0.235294
+BGE-M3 dense (strict),primary_comparison,阿斯巴田,42,42,0.226094,0.119048,0.309524,0.404762,0.253682,15.000000,罗言,0.054054
+BGE-M3 dense (strict),primary_comparison,笑男孩,28,27,0.183579,0.111111,0.222222,0.296296,0.188771,20.000000,张雪飞,0.125000
+BGE-M3 dense (strict),primary_comparison,黑麦,33,33,0.495445,0.424242,0.575758,0.636364,0.521959,3.000000,坚强的小黄瓜,0.105263
+BGE-M3 dense (strict),primary_comparison,张大炮,42,42,0.655020,0.595238,0.738095,0.785714,0.683869,1.000000,秃子,0.117647
+BGE-M3 dense (strict),primary_comparison,Rich4ever,29,29,0.648586,0.551724,0.793103,0.896552,0.705608,1.000000,G Sauce,0.230769
+BGE-M3 dense (strict),primary_comparison,二狗子,22,22,0.427871,0.363636,0.454545,0.636364,0.467521,6.000000,jinjibewater,0.142857
+BGE-M3 dense (strict),primary_comparison,FAC-D12,25,25,0.408561,0.360000,0.440000,0.480000,0.416800,11.000000,滇声气,0.125000
+BGE-M3 dense (strict),primary_comparison,法老,39,39,0.295109,0.205128,0.358974,0.461538,0.317728,12.000000,孤矢,0.064516
+BGE-M3 dense (strict),primary_comparison,HAS,38,38,0.316066,0.131579,0.578947,0.631579,0.381804,4.000000,Nxmad诺曼得,0.090909
+BGE-M3 dense (strict),primary_comparison,NOTTIBO1,22,22,0.583440,0.454545,0.772727,0.863636,0.647775,2.000000,王嘉尔,0.166667
+BGE-M3 dense (strict),primary_comparison,Busta Z,28,28,0.325935,0.214286,0.464286,0.500000,0.362224,9.000000,滇声气,0.136364
+BGE-M3 dense (strict),primary_comparison,Athree,22,22,0.154720,0.090909,0.181818,0.272727,0.170606,40.000000,AR,0.100000
+BGE-M3 dense (strict),primary_comparison,赵山河,31,31,0.332572,0.193548,0.483871,0.548387,0.377022,6.000000,张大炮,0.200000
+BGE-M3 dense (strict),primary_comparison,Gm仙,27,27,0.451052,0.370370,0.518519,0.555556,0.468770,4.000000,Kigga,0.117647
+BGE-M3 dense (strict),primary_comparison,PO8,39,39,0.514815,0.435897,0.589744,0.743590,0.561788,3.000000,GALI,0.090909
+BGE-M3 dense (strict),primary_comparison,斯威特,40,40,0.363468,0.250000,0.525000,0.525000,0.394105,4.000000,秃子,0.066667
+BGE-M3 dense (strict),primary_comparison,八口8uck,33,33,0.335070,0.242424,0.454545,0.545455,0.373525,8.000000,APMOZART,0.120000
+BGE-M3 dense (strict),primary_comparison,艾热 AIR,22,22,0.286872,0.136364,0.454545,0.636364,0.359645,7.000000,胡彦斌 TIGER HU,0.157895
+BGE-M3 dense (strict),primary_comparison,大狗,21,21,0.217999,0.095238,0.428571,0.571429,0.286413,9.000000,刘柄鑫,0.157895
+BGE-M3 dense (strict),primary_comparison,龙胆紫,10,10,0.272251,0.200000,0.300000,0.300000,0.263093,15.000000,Jony J,0.250000
+BGE-M3 dense (strict),primary_comparison,孙八一,34,34,0.389163,0.264706,0.558824,0.647059,0.437854,4.000000,龙井说唱 孙旭,0.120000
+BGE-M3 dense (strict),primary_comparison,功夫胖,28,28,0.337592,0.285714,0.357143,0.428571,0.344704,11.000000,Capper,0.100000
+BGE-M3 dense (strict),primary_comparison,于漂 eZ Yang Fizz,23,23,0.628669,0.521739,0.782609,0.782609,0.664332,1.000000,辛巴,0.181818
+BGE-M3 dense (strict),primary_comparison,上官承诺,18,18,0.247791,0.166667,0.333333,0.500000,0.295525,7.000000,杨布拉德,0.133333
+BGE-M3 dense (strict),primary_comparison,BossWang,15,15,0.222789,0.133333,0.333333,0.400000,0.253644,24.000000,梁维嘉,0.076923
+BGE-M3 dense (strict),primary_comparison,Blow Fever,25,25,0.478155,0.400000,0.600000,0.760000,0.534269,5.000000,罗言,0.200000
+BGE-M3 dense (strict),primary_comparison,ICE,28,28,0.205920,0.142857,0.214286,0.250000,0.198675,28.000000,阿水YoungBJ,0.125000
+BGE-M3 dense (strict),primary_comparison,Kigga,19,19,0.088428,0.000000,0.157895,0.263158,0.105750,19.000000,Jony J,0.105263
+BGE-M3 dense (strict),primary_comparison,马思唯,32,32,0.237276,0.156250,0.281250,0.343750,0.239022,14.000000,Mercy(lago),0.148148
+BGE-M3 dense (strict),primary_comparison,胡彦斌 TIGER HU,33,30,0.436405,0.266667,0.633333,0.766667,0.509540,3.000000,张雪飞,0.272727
+BGE-M3 dense (strict),primary_comparison,Hotkey金朝,31,30,0.405508,0.350000,0.416667,0.550000,0.431546,7.000000,Capper,0.102564
+BGE-M3 dense (strict),primary_comparison,小老虎,18,18,0.287627,0.111111,0.388889,0.666667,0.363583,7.000000,张雪飞,0.125000
+BGE-M3 dense (strict),primary_comparison,Mercy(lago),42,42,0.362681,0.285714,0.476190,0.571429,0.400381,6.000000,滇声气,0.066667
+BGE-M3 dense (strict),primary_comparison,光光 (MC),31,31,0.117940,0.032258,0.193548,0.354839,0.150034,13.000000,滇声气,0.066667
+BGE-M3 dense (strict),primary_comparison,GNS耀耀,13,13,0.032391,0.000000,0.000000,0.000000,0.000000,49.000000,多雷 Swang,0.076923
+BGE-M3 dense (strict),primary_comparison,辛巴,34,34,0.255586,0.176471,0.294118,0.441176,0.283405,11.000000,刘柄鑫,0.107143
+BGE-M3 dense (strict),primary_comparison,姜云升,33,33,0.277702,0.121212,0.484848,0.575758,0.337662,6.000000,张雪飞,0.172414
+BGE-M3 dense (strict),primary_comparison,西米,21,21,0.158464,0.000000,0.238095,0.476190,0.213022,11.000000,Capper,0.095238
+BGE-M3 dense (strict),primary_comparison,张千,30,29,0.184471,0.068966,0.241379,0.448276,0.230555,13.000000,滇声气,0.111111
+BGE-M3 dense (strict),primary_comparison,GALI,33,33,0.363649,0.272727,0.515152,0.606061,0.411223,5.000000,YuGo,0.083333
+BGE-M3 dense (strict),primary_comparison,乃万,38,38,0.181292,0.052632,0.289474,0.526316,0.243148,10.000000,Capper,0.111111
+BGE-M3 dense (strict),primary_comparison,小鸭哥,40,40,0.336717,0.200000,0.450000,0.600000,0.391027,6.000000,张雪飞,0.093750
+BGE-M3 dense (strict),primary_comparison,Ansr J,24,24,0.159887,0.041667,0.291667,0.291667,0.172863,20.000000,Capper,0.086957
+BGE-M3 dense (strict),primary_comparison,Ghost Crew,43,43,0.283684,0.186047,0.325581,0.534884,0.327931,10.000000,刘柄鑫,0.085714
+BGE-M3 dense (strict),primary_comparison,诺米么Lodmemo,12,12,0.301823,0.166667,0.416667,0.500000,0.341266,7.000000,张雪飞,0.200000
+BGE-M3 dense (strict),primary_comparison,饺子,39,39,0.295575,0.179487,0.435897,0.615385,0.358942,8.000000,张雪飞,0.187500
+BGE-M3 dense (strict),primary_comparison,九块钱,20,20,0.347030,0.250000,0.500000,0.650000,0.409520,4.000000,姜云升,0.133333
+BGE-M3 dense (strict),primary_comparison,KnowKnow,20,20,0.189690,0.100000,0.250000,0.300000,0.200246,29.000000,王嘉尔,0.111111
+BGE-M3 dense (strict),primary_comparison,阿水YoungBJ,39,39,0.568379,0.461538,0.666667,0.743590,0.602568,2.000000,罗言,0.190476
+BGE-M3 dense (strict),primary_comparison,YOUNGLEGO,26,26,0.316742,0.230769,0.461538,0.461538,0.343191,13.000000,G Sauce,0.150000
+BGE-M3 dense (strict),primary_comparison,派克特,18,18,0.037341,0.000000,0.000000,0.111111,0.035052,41.000000,罗言,0.111111
+BGE-M3 dense (strict),primary_comparison,嫩桃弟弟,20,20,0.408963,0.300000,0.550000,0.700000,0.475963,3.000000,离合,0.142857
+BGE-M3 dense (strict),primary_comparison,黑螺丝,26,26,0.428278,0.307692,0.576923,0.576923,0.454749,3.000000,AR,0.111111
+BGE-M3 dense (strict),primary_comparison,龙井说唱 孙旭,16,16,0.384772,0.312500,0.437500,0.562500,0.420830,6.000000,张昊,0.181818
+BGE-M3 dense (strict),primary_comparison,邓典果,24,24,0.339131,0.250000,0.416667,0.583333,0.386875,10.000000,MULA SAKEE,0.111111
+BGE-M3 dense (strict),primary_comparison,谢帝,21,21,0.245470,0.190476,0.238095,0.428571,0.267184,14.000000,Jony J,0.117647
+BGE-M3 dense (strict),primary_comparison,阿童木,17,17,0.856509,0.823529,0.882353,0.882353,0.860643,1.000000,Ice Paper,0.333333
+BGE-M3 dense (strict),primary_comparison,GAI,27,27,0.274351,0.148148,0.407407,0.555556,0.328364,7.000000,胡彦斌 TIGER HU,0.347826
+BGE-M3 dense (strict),primary_comparison,Nxmad诺曼得,37,37,0.454475,0.270270,0.648649,0.756757,0.521993,2.000000,王嘉尔,0.185185
+BGE-M3 dense (strict),primary_comparison,那奇沃夫,31,31,0.354098,0.225806,0.451613,0.612903,0.408728,8.000000,Six City,0.125000
+BGE-M3 dense (strict),primary_comparison,呆宝静,21,21,0.104381,0.000000,0.190476,0.285714,0.131107,34.000000,张雪飞,0.142857
+BGE-M3 dense (strict),primary_comparison,爆音Boom,23,23,0.308150,0.260870,0.304348,0.434783,0.322663,12.000000,老黑Black J,0.176471
+BGE-M3 dense (strict),primary_comparison,杨和苏KeyNG,29,29,0.356656,0.275862,0.413793,0.551724,0.389669,9.000000,河南说唱之神,0.095238
+BGE-M3 dense (strict),primary_comparison,Tizzy T,37,37,0.270096,0.162162,0.378378,0.459459,0.299666,13.000000,Bridge,0.096774
+BGE-M3 dense (strict),primary_comparison,龙泽宇,29,29,0.320960,0.275862,0.310345,0.379310,0.316881,21.000000,廖效浓,0.142857
+BGE-M3 dense (strict),primary_comparison,Sbazzo,31,30,0.304593,0.200000,0.400000,0.533333,0.344254,9.000000,张昊,0.125000
+BGE-M3 dense (strict),primary_comparison,大笑,22,22,0.325739,0.181818,0.409091,0.636364,0.390565,7.000000,Tangoz,0.055556
+BGE-M3 dense (strict),primary_comparison,辉子,22,22,0.177271,0.090909,0.272727,0.272727,0.182626,28.000000,zhazha,0.050000
+BGE-M3 dense (strict),primary_comparison,卢慈航,28,27,0.110375,0.037037,0.148148,0.277778,0.132035,22.000000,小鸭哥,0.115385
+BGE-M3 dense (strict),primary_comparison,Kc,41,41,0.218024,0.097561,0.341463,0.439024,0.252046,12.000000,罗言,0.162162
+BGE-M3 dense (strict),primary_comparison,Jarstick,30,30,0.273739,0.200000,0.333333,0.533333,0.321926,10.000000,刘柄鑫,0.083333
+BGE-M3 dense (strict),primary_comparison,Higher Brothers,23,23,0.375350,0.260870,0.478261,0.565217,0.411589,6.000000,小青龙,0.117647
+BGE-M3 dense (strict),primary_comparison,宝石老舅,34,34,0.322065,0.176471,0.441176,0.588235,0.372890,6.000000,GAI,0.107143
+BGE-M3 dense (strict),primary_comparison,熊猫涂杰,41,41,0.228877,0.121951,0.292683,0.439024,0.262520,15.000000,滇声气,0.111111
+BGE-M3 dense (strict),primary_comparison,张雪飞,41,41,0.442645,0.292683,0.634146,0.707317,0.498262,3.000000,老黑Black J,0.172414
+BGE-M3 dense (strict),primary_comparison,No Fear Family,33,33,0.255298,0.121212,0.484848,0.515152,0.307643,10.000000,黑麦,0.103448
+BGE-M3 dense (strict),primary_comparison,杀手耗,33,33,0.347897,0.242424,0.393939,0.545455,0.383986,9.000000,G Sauce,0.120000
+BGE-M3 dense (strict),primary_comparison,揽佬,17,17,0.689942,0.588235,0.764706,0.823529,0.720529,1.000000,G Sauce,0.142857
+BGE-M3 dense (strict),primary_comparison,艾福杰尼,34,34,0.222552,0.088235,0.352941,0.441176,0.257262,12.000000,Capper,0.129032
+BGE-M3 dense (strict),primary_comparison,说唱东百人,23,23,0.649406,0.521739,0.782609,0.826087,0.688660,1.000000,刀脚,0.181818
+BGE-M3 dense (strict),primary_comparison,大傻 (Damnshine),22,22,0.192290,0.136364,0.227273,0.318182,0.208018,27.000000,罗言,0.105263
+BGE-M3 dense (strict),primary_comparison,龙井说唱 孙骁,15,14,0.067982,0.000000,0.071429,0.071429,0.045066,28.000000,姜云升,0.142857
+BGE-M3 dense (strict),primary_comparison,Dirty Twinz,13,13,0.055747,0.000000,0.153846,0.153846,0.066258,77.000000,刘柄鑫,0.076923
+BGE-M3 dense (strict),primary_comparison,那吾克热-NW,24,24,0.164716,0.041667,0.291667,0.416667,0.211850,12.000000,Six City,0.217391
+BGE-M3 dense (strict),primary_comparison,雲道,43,42,0.180860,0.047619,0.285714,0.452381,0.227404,12.000000,滇声气,0.100000
+BGE-M3 dense (strict),primary_comparison,Mac Overseas,23,22,0.078778,0.000000,0.136364,0.227273,0.091870,19.000000,李大奔BENZO,0.090909
+BGE-M3 dense (strict),primary_comparison,廖效浓,33,33,0.397739,0.303030,0.515152,0.606061,0.432108,5.000000,Capper,0.130435
+BGE-M3 dense (strict),primary_comparison,YoungChigga,43,43,0.615176,0.534884,0.674419,0.720930,0.634882,1.000000,ROB93,0.100000
+BGE-M3 dense (strict),primary_comparison,张颜齐,20,20,0.274498,0.200000,0.300000,0.450000,0.303440,12.000000,福克斯,0.125000
+BGE-M3 dense (strict),primary_comparison,默示船政,48,48,0.370646,0.250000,0.479167,0.583333,0.411166,6.000000,张雪飞,0.111111
+BGE-M3 dense (strict),primary_comparison,KITO,30,30,0.418515,0.333333,0.500000,0.666667,0.464901,5.000000,APMOZART,0.100000
+BGE-M3 dense (strict),primary_comparison,Kandi 侃迪,34,34,0.249460,0.176471,0.294118,0.352941,0.257961,18.000000,G Sauce,0.071429
+BGE-M3 dense (strict),primary_comparison,西奥,26,25,0.212758,0.140000,0.240000,0.320000,0.222516,41.000000,刘柄鑫,0.093023
+BGE-M3 dense (strict),primary_comparison,王齐铭,30,30,0.420251,0.300000,0.600000,0.666667,0.471481,3.000000,Jony J,0.095238
+BGE-M3 dense (strict),primary_comparison,大D,42,42,0.465876,0.357143,0.595238,0.714286,0.519333,3.000000,河南说唱之神,0.111111
+BGE-M3 dense (strict),primary_comparison,OG Three,43,43,0.338307,0.232558,0.441860,0.534884,0.372826,8.000000,G Sauce,0.151515
+BGE-M3 dense (strict),primary_comparison,红手指,6,6,0.024286,0.000000,0.000000,0.000000,0.000000,50.000000,河南说唱之神,0.166667
+BGE-M3 dense (strict),primary_comparison,万赛文,18,18,0.132572,0.055556,0.222222,0.333333,0.158485,13.000000,王嘉尔,0.117647
+BGE-M3 dense (strict),primary_comparison,黄旭,23,23,0.236352,0.130435,0.434783,0.434783,0.270529,13.000000,滇声气,0.100000
+BGE-M3 dense (strict),primary_comparison,吾人莲花,8,8,0.260109,0.250000,0.250000,0.250000,0.250000,57.000000,AR,0.166667
+BGE-M3 dense (strict),primary_comparison,热狗,29,29,0.113862,0.034483,0.137931,0.206897,0.114602,29.000000,李尔新,0.071429
+BGE-M3 dense (strict),primary_comparison,Bridge,17,17,0.082196,0.000000,0.176471,0.294118,0.109507,21.000000,滇声气,0.176471
+BGE-M3 dense (strict),primary_comparison,小酷coola,16,15,0.378411,0.333333,0.400000,0.400000,0.375395,21.000000,小青龙,0.100000
+BGE-M3 dense (strict),primary_comparison,Wya乌鸦,36,36,0.269339,0.138889,0.361111,0.583333,0.331450,8.000000,Capper,0.096774
+BGE-M3 dense (strict),primary_comparison,是Triple M,14,14,0.192642,0.142857,0.214286,0.214286,0.187924,59.000000,APMOZART,0.083333
+character 2-5 gram TF-IDF (strict),primary_comparison,Six City,9,9,0.925926,0.888889,1.000000,1.000000,0.944444,1.000000,Athree,1.000000
+character 2-5 gram TF-IDF (strict),primary_comparison,王以太,24,24,0.186106,0.125000,0.208333,0.208333,0.169234,25.000000,雲道,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,王嘉尔,37,37,0.927245,0.918919,0.945946,0.972973,0.937187,1.000000,胡彦斌 TIGER HU,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,福克斯,40,39,0.675260,0.641026,0.717949,0.717949,0.679289,1.000000,天府事变CDREV,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,徐真真,42,42,0.282327,0.142857,0.404762,0.500000,0.320309,9.000000,廖效浓,0.111111
+character 2-5 gram TF-IDF (strict),primary_comparison,隐藏,9,9,0.026648,0.000000,0.000000,0.111111,0.033448,87.000000,Sbazzo,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,天府事变CDREV,44,44,0.683861,0.636364,0.750000,0.750000,0.697962,1.000000,爽子,0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,jinjibewater,20,20,0.038423,0.000000,0.100000,0.100000,0.043068,72.000000,APMOZART,0.150000
+character 2-5 gram TF-IDF (strict),primary_comparison,APMOZART,45,45,0.988889,0.977778,1.000000,1.000000,0.991798,1.000000,MULA SAKEE,1.000000
+character 2-5 gram TF-IDF (strict),primary_comparison,多雷 Swang,39,39,0.490229,0.384615,0.641026,0.666667,0.522668,3.000000,天府事变CDREV,0.083333
+character 2-5 gram TF-IDF (strict),primary_comparison,刘柄鑫,30,30,0.788038,0.733333,0.833333,0.866667,0.806062,1.000000,天府事变CDREV,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,国蛋,36,34,0.783326,0.735294,0.823529,0.852941,0.795967,1.000000,GALI,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,弹壳,10,10,0.006302,0.000000,0.000000,0.000000,0.000000,167.000000,天府事变CDREV,0.100000
+character 2-5 gram TF-IDF (strict),primary_comparison,梁维嘉,32,32,0.603870,0.500000,0.718750,0.843750,0.657614,1.000000,雲道,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,冲天小火煎,18,18,0.076669,0.055556,0.055556,0.055556,0.055556,53.000000,YuGo,0.176471
+character 2-5 gram TF-IDF (strict),primary_comparison,TOYOKI,35,35,0.224915,0.114286,0.314286,0.514286,0.271034,9.000000,张雪飞,0.225806
+character 2-5 gram TF-IDF (strict),primary_comparison,Capper,28,28,0.190647,0.107143,0.285714,0.357143,0.208021,13.000000,Nxmad诺曼得,0.160000
+character 2-5 gram TF-IDF (strict),primary_comparison,義胜合,12,12,0.765142,0.750000,0.750000,0.833333,0.776289,1.000000,爽子,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,红狼,12,11,0.191922,0.181818,0.181818,0.181818,0.181818,71.000000,天府事变CDREV,0.444444
+character 2-5 gram TF-IDF (strict),primary_comparison,雾都 (Wudu Montana),21,21,0.128574,0.095238,0.142857,0.190476,0.127425,47.000000,王嘉尔,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,zhazha,8,8,0.020627,0.000000,0.000000,0.000000,0.000000,52.000000,AR,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,李大奔BENZO,31,31,0.589994,0.387097,0.935484,0.967742,0.682434,2.000000,MULA SAKEE,0.263158
+character 2-5 gram TF-IDF (strict),primary_comparison,丸,21,20,0.474749,0.350000,0.700000,0.750000,0.533432,3.000000,刘柄鑫,0.230769
+character 2-5 gram TF-IDF (strict),primary_comparison,Tangoz,36,35,0.563927,0.514286,0.571429,0.628571,0.567247,1.000000,天府事变CDREV,0.235294
+character 2-5 gram TF-IDF (strict),primary_comparison,离合,28,28,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+character 2-5 gram TF-IDF (strict),primary_comparison,G Sauce,34,34,0.816280,0.764706,0.882353,0.911765,0.836007,1.000000,APMOZART,0.375000
+character 2-5 gram TF-IDF (strict),primary_comparison,Cream D,16,16,0.141002,0.062500,0.187500,0.250000,0.144926,21.000000,雲道,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,李佳隆,36,36,0.296743,0.222222,0.333333,0.416667,0.312235,21.000000,李大奔BENZO,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,Poorman,9,9,0.027751,0.000000,0.000000,0.111111,0.033448,144.000000,新街口组合,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,小青龙,29,29,0.093490,0.034483,0.103448,0.172414,0.094867,37.000000,廖效浓,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,吴晨阳,10,10,0.614148,0.500000,0.800000,0.800000,0.656161,1.000000,天府事变CDREV,0.600000
+character 2-5 gram TF-IDF (strict),primary_comparison,Melo,15,15,0.084759,0.066667,0.066667,0.066667,0.066667,73.000000,APMOZART,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,JD,38,38,0.821355,0.789474,0.842105,0.894737,0.836216,1.000000,APMOZART,0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,Korn,25,25,0.429969,0.400000,0.400000,0.520000,0.438429,10.000000,天府事变CDREV,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,梁老师Tsong,39,38,0.277595,0.210526,0.289474,0.315789,0.268258,18.000000,李大奔BENZO,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,木秦,34,34,0.334844,0.205882,0.470588,0.558824,0.380734,6.000000,天府事变CDREV,0.185185
+character 2-5 gram TF-IDF (strict),primary_comparison,孔令奇,32,32,0.242387,0.156250,0.281250,0.500000,0.285603,10.000000,王嘉尔,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,鹿奇,42,42,0.589954,0.547619,0.642857,0.666667,0.600418,1.000000,李大奔BENZO,0.105263
+character 2-5 gram TF-IDF (strict),primary_comparison,ROB93,17,17,0.275223,0.176471,0.352941,0.411765,0.293361,22.000000,APMOZART,0.214286
+character 2-5 gram TF-IDF (strict),primary_comparison,泰格西,22,22,0.266620,0.136364,0.409091,0.545455,0.322694,9.000000,APMOZART,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,王晨宇IceCraz,47,47,0.362735,0.234043,0.489362,0.595745,0.401642,6.000000,王嘉尔,0.055556
+character 2-5 gram TF-IDF (strict),primary_comparison,Green Soldier,10,10,0.264652,0.200000,0.300000,0.300000,0.263093,32.000000,APMOZART,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,傲傲,40,40,0.368708,0.225000,0.525000,0.700000,0.435854,5.000000,廖效浓,0.129032
+character 2-5 gram TF-IDF (strict),primary_comparison,CJ BAda$$ (希介),27,27,0.406850,0.296296,0.555556,0.666667,0.454024,5.000000,李大奔BENZO,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,花生,12,12,0.184667,0.083333,0.333333,0.333333,0.213467,62.000000,乃万,0.181818
+character 2-5 gram TF-IDF (strict),primary_comparison,刀脚,23,23,0.378935,0.260870,0.521739,0.608696,0.421817,5.000000,G Sauce,0.235294
+character 2-5 gram TF-IDF (strict),primary_comparison,河南说唱之神,46,46,0.739775,0.695652,0.782609,0.804348,0.747328,1.000000,饺子,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,C-Block,43,42,0.423586,0.285714,0.571429,0.690476,0.476686,3.000000,梁维嘉,0.133333
+character 2-5 gram TF-IDF (strict),primary_comparison,V.O.B.,15,15,0.572653,0.466667,0.733333,0.733333,0.605293,2.000000,APMOZART,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,土人儿,21,21,0.132404,0.047619,0.142857,0.190476,0.122042,25.000000,MULA SAKEE,0.150000
+character 2-5 gram TF-IDF (strict),primary_comparison,Surfosho,7,7,0.227677,0.142857,0.285714,0.285714,0.232990,44.000000,neverkilltheape,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,满舒克,33,33,0.293460,0.151515,0.424242,0.575758,0.348170,7.000000,Nxmad诺曼得,0.107143
+character 2-5 gram TF-IDF (strict),primary_comparison,金熙宇,16,16,0.069217,0.000000,0.125000,0.187500,0.074668,28.000000,廖效浓,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,Ice Paper,32,32,0.157476,0.062500,0.218750,0.406250,0.197670,13.000000,刘柄鑫,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,ljz329,11,11,0.172069,0.090909,0.272727,0.272727,0.187419,55.000000,王嘉尔,0.100000
+character 2-5 gram TF-IDF (strict),primary_comparison,AR,36,36,0.874606,0.861111,0.888889,0.888889,0.873074,1.000000,Nxmad诺曼得,0.400000
+character 2-5 gram TF-IDF (strict),primary_comparison,黄昭,24,24,0.326378,0.208333,0.416667,0.500000,0.352142,7.000000,YuGo,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,Over$ize,16,16,0.632769,0.562500,0.687500,0.875000,0.683480,1.000000,杀手耗,0.285714
+character 2-5 gram TF-IDF (strict),primary_comparison,直火帮,39,39,0.713328,0.615385,0.846154,0.974359,0.773351,1.000000,天府事变CDREV,0.400000
+character 2-5 gram TF-IDF (strict),primary_comparison,爽子,17,17,0.942330,0.941176,0.941176,0.941176,0.941176,1.000000,饺子,1.000000
+character 2-5 gram TF-IDF (strict),primary_comparison,Nasty Ray,6,6,0.210144,0.166667,0.166667,0.333333,0.226035,21.000000,天府事变CDREV,0.400000
+character 2-5 gram TF-IDF (strict),primary_comparison,望江晴,18,18,0.052251,0.000000,0.055556,0.055556,0.035052,53.000000,张雪飞,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,Jony J,42,42,0.793784,0.738095,0.857143,0.857143,0.807395,1.000000,刘柄鑫,0.181818
+character 2-5 gram TF-IDF (strict),primary_comparison,SASIOVERLXRD,26,26,0.415001,0.307692,0.500000,0.615385,0.452896,3.000000,李大奔BENZO,0.111111
+character 2-5 gram TF-IDF (strict),primary_comparison,张昊,15,15,0.095179,0.000000,0.200000,0.266667,0.127854,76.000000,刘柄鑫,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,秃子,20,20,0.549163,0.400000,0.750000,0.750000,0.595529,2.000000,张大炮,0.416667
+character 2-5 gram TF-IDF (strict),primary_comparison,方仔,32,31,0.349544,0.258065,0.419355,0.612903,0.401976,8.000000,新街口组合,0.130435
+character 2-5 gram TF-IDF (strict),primary_comparison,404 Rapper,23,23,0.117260,0.086957,0.086957,0.217391,0.130025,87.000000,雲道,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,金蛇 traphouse,6,6,0.494124,0.333333,0.666667,0.833333,0.574399,2.000000,李尔新,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,老黑Black J,11,11,0.238047,0.181818,0.272727,0.272727,0.239175,72.000000,张大炮,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,坚强的小黄瓜,41,41,0.697797,0.585366,0.853659,0.853659,0.733788,1.000000,张雪飞,0.176471
+character 2-5 gram TF-IDF (strict),primary_comparison,C-Low,28,28,0.413499,0.321429,0.464286,0.678571,0.463003,6.000000,雲道,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,thomeboydontkill,21,21,0.072417,0.000000,0.142857,0.238095,0.086139,20.000000,APMOZART,0.285714
+character 2-5 gram TF-IDF (strict),primary_comparison,MULA SAKEE,33,33,0.959596,0.939394,0.969697,1.000000,0.969307,1.000000,Rich4ever,0.500000
+character 2-5 gram TF-IDF (strict),primary_comparison,DBL.D,12,12,0.068165,0.000000,0.083333,0.166667,0.082261,57.000000,APMOZART,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,刘聪 (Key.L),35,35,0.590195,0.485714,0.714286,0.800000,0.635418,2.000000,C-Block,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,Max马俊,14,14,0.213340,0.142857,0.285714,0.428571,0.253149,12.000000,爽子,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,连麻Swimming,26,26,0.409678,0.269231,0.615385,0.730769,0.481785,4.000000,张雪飞,0.263158
+character 2-5 gram TF-IDF (strict),primary_comparison,OWVRO老弟,23,23,0.325484,0.217391,0.434783,0.565217,0.371612,7.000000,雲道,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,Vava,26,26,0.075233,0.000000,0.115385,0.230769,0.098716,41.000000,王嘉尔,0.115385
+character 2-5 gram TF-IDF (strict),primary_comparison,KKLUV,27,27,0.370847,0.222222,0.555556,0.740741,0.448339,4.000000,APMOZART,0.190476
+character 2-5 gram TF-IDF (strict),primary_comparison,孤矢,37,37,0.399180,0.297297,0.540541,0.648649,0.449570,4.000000,张雪飞,0.192308
+character 2-5 gram TF-IDF (strict),primary_comparison,Turbo嗣尧,20,20,0.027685,0.000000,0.000000,0.000000,0.000000,32.000000,王嘉尔,0.150000
+character 2-5 gram TF-IDF (strict),primary_comparison,李尔新,32,32,0.362118,0.250000,0.468750,0.562500,0.398338,8.000000,Mercy(lago),0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,YuGo,33,33,0.450352,0.303030,0.666667,0.818182,0.528593,4.000000,李大奔BENZO,0.173913
+character 2-5 gram TF-IDF (strict),primary_comparison,Regi 陈彦希,12,12,0.029779,0.000000,0.000000,0.000000,0.000000,30.000000,王嘉尔,0.500000
+character 2-5 gram TF-IDF (strict),primary_comparison,正义感,18,18,0.210595,0.055556,0.333333,0.388889,0.238207,13.000000,Jony J,0.235294
+character 2-5 gram TF-IDF (strict),primary_comparison,southsidesamurai,12,12,0.114641,0.000000,0.250000,0.250000,0.126482,15.000000,爽子,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,滇声气,23,23,0.531699,0.434783,0.695652,0.739130,0.573304,2.000000,雲道,0.230769
+character 2-5 gram TF-IDF (strict),primary_comparison,新街口组合,26,26,0.611452,0.461538,0.807692,0.846154,0.668263,2.000000,张雪飞,0.214286
+character 2-5 gram TF-IDF (strict),primary_comparison,YOUNG,21,21,0.408511,0.333333,0.428571,0.619048,0.448528,8.000000,G Sauce,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,杨布拉德,42,42,0.792997,0.714286,0.880952,0.904762,0.818993,1.000000,APMOZART,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,TY,27,27,0.194834,0.037037,0.370370,0.481481,0.250792,13.000000,张雪飞,0.269231
+character 2-5 gram TF-IDF (strict),primary_comparison,恶童,33,33,0.386411,0.303030,0.454545,0.666667,0.444076,6.000000,雲道,0.130435
+character 2-5 gram TF-IDF (strict),primary_comparison,班比 Bambii,41,41,0.687122,0.536585,0.829268,0.951220,0.749225,1.000000,MULA SAKEE,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,S1,14,14,0.229358,0.214286,0.214286,0.214286,0.214286,46.000000,李大奔BENZO,0.090909
+character 2-5 gram TF-IDF (strict),primary_comparison,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+character 2-5 gram TF-IDF (strict),primary_comparison,Kzoo,43,42,0.653781,0.571429,0.761905,0.809524,0.685024,1.000000,APMOZART,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,罗言,21,21,0.133308,0.095238,0.095238,0.142857,0.112200,30.000000,张雪飞,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,阿斯巴田,42,42,0.343198,0.214286,0.452381,0.523810,0.368081,7.000000,张雪飞,0.212121
+character 2-5 gram TF-IDF (strict),primary_comparison,笑男孩,28,27,0.118428,0.074074,0.074074,0.185185,0.111296,23.000000,张雪飞,0.240000
+character 2-5 gram TF-IDF (strict),primary_comparison,黑麦,33,33,0.646566,0.636364,0.636364,0.636364,0.636364,1.000000,张雪飞,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,张大炮,42,42,0.781849,0.761905,0.809524,0.833333,0.792000,1.000000,APMOZART,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,Rich4ever,29,29,0.648690,0.551724,0.758621,0.896552,0.702433,1.000000,APMOZART,0.230769
+character 2-5 gram TF-IDF (strict),primary_comparison,二狗子,22,22,0.764336,0.727273,0.818182,0.863636,0.783916,1.000000,Capper,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,FAC-D12,25,25,0.569574,0.480000,0.680000,0.800000,0.618650,2.000000,爽子,0.230769
+character 2-5 gram TF-IDF (strict),primary_comparison,法老,39,39,0.621840,0.512821,0.743590,0.820513,0.667861,1.000000,张雪飞,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,HAS,38,38,0.589496,0.500000,0.684211,0.789474,0.629175,1.000000,APMOZART,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,NOTTIBO1,22,22,0.758173,0.636364,0.909091,0.909091,0.793382,1.000000,王嘉尔,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,Busta Z,28,28,0.527450,0.464286,0.607143,0.642857,0.544213,2.000000,天府事变CDREV,0.133333
+character 2-5 gram TF-IDF (strict),primary_comparison,Athree,22,22,0.221668,0.181818,0.227273,0.272727,0.223636,50.000000,Six City,0.111111
+character 2-5 gram TF-IDF (strict),primary_comparison,赵山河,31,31,0.524702,0.419355,0.677419,0.677419,0.557159,2.000000,张雪飞,0.277778
+character 2-5 gram TF-IDF (strict),primary_comparison,Gm仙,27,27,0.836289,0.777778,0.888889,0.888889,0.847881,1.000000,福克斯,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,PO8,39,39,0.445206,0.256410,0.666667,0.846154,0.535646,3.000000,天府事变CDREV,0.344828
+character 2-5 gram TF-IDF (strict),primary_comparison,斯威特,40,40,0.708214,0.650000,0.775000,0.850000,0.738230,1.000000,天府事变CDREV,0.214286
+character 2-5 gram TF-IDF (strict),primary_comparison,八口8uck,33,33,0.368725,0.242424,0.454545,0.666667,0.423204,7.000000,APMOZART,0.160000
+character 2-5 gram TF-IDF (strict),primary_comparison,艾热 AIR,22,22,0.177464,0.136364,0.181818,0.272727,0.186457,38.000000,刘柄鑫,0.105263
+character 2-5 gram TF-IDF (strict),primary_comparison,大狗,21,21,0.324036,0.238095,0.428571,0.523810,0.356788,9.000000,刘柄鑫,0.187500
+character 2-5 gram TF-IDF (strict),primary_comparison,龙胆紫,10,10,0.195137,0.000000,0.500000,0.700000,0.301305,4.000000,Ghost Crew,0.400000
+character 2-5 gram TF-IDF (strict),primary_comparison,孙八一,34,34,0.855882,0.794118,0.970588,0.970588,0.882649,1.000000,爽子,0.285714
+character 2-5 gram TF-IDF (strict),primary_comparison,功夫胖,28,28,0.553978,0.535714,0.571429,0.571429,0.553571,1.000000,Tizzy T,0.153846
+character 2-5 gram TF-IDF (strict),primary_comparison,于漂 eZ Yang Fizz,23,23,0.669653,0.652174,0.695652,0.695652,0.670899,1.000000,王嘉尔,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,上官承诺,18,18,0.200082,0.111111,0.333333,0.333333,0.224198,46.000000,傲傲,0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,BossWang,15,15,0.223421,0.133333,0.266667,0.466667,0.269347,16.000000,天府事变CDREV,0.153846
+character 2-5 gram TF-IDF (strict),primary_comparison,Blow Fever,25,25,0.661725,0.560000,0.800000,0.920000,0.718973,1.000000,王嘉尔,0.272727
+character 2-5 gram TF-IDF (strict),primary_comparison,ICE,28,28,0.074642,0.000000,0.142857,0.214286,0.093061,36.000000,张雪飞,0.107143
+character 2-5 gram TF-IDF (strict),primary_comparison,Kigga,19,19,0.068929,0.000000,0.105263,0.105263,0.059523,36.000000,杨布拉德,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,马思唯,32,32,0.464502,0.343750,0.562500,0.781250,0.530710,3.000000,李大奔BENZO,0.238095
+character 2-5 gram TF-IDF (strict),primary_comparison,胡彦斌 TIGER HU,33,30,0.412925,0.400000,0.400000,0.466667,0.421145,50.000000,新街口组合,0.222222
+character 2-5 gram TF-IDF (strict),primary_comparison,Hotkey金朝,31,30,0.515049,0.500000,0.500000,0.533333,0.510034,1.000000,APMOZART,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,小老虎,18,18,0.255389,0.166667,0.388889,0.444444,0.281144,11.000000,张雪飞,0.333333
+character 2-5 gram TF-IDF (strict),primary_comparison,Mercy(lago),42,42,0.615495,0.476190,0.833333,0.904762,0.681386,2.000000,Nxmad诺曼得,0.363636
+character 2-5 gram TF-IDF (strict),primary_comparison,光光 (MC),31,31,0.525334,0.354839,0.645161,0.838710,0.591934,2.000000,APMOZART,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,GNS耀耀,13,13,0.074884,0.000000,0.153846,0.230769,0.089414,21.000000,小鸭哥,0.307692
+character 2-5 gram TF-IDF (strict),primary_comparison,辛巴,34,34,0.185504,0.088235,0.294118,0.382353,0.215227,16.000000,刘柄鑫,0.129032
+character 2-5 gram TF-IDF (strict),primary_comparison,姜云升,33,33,0.698473,0.606061,0.848485,0.909091,0.748566,1.000000,张雪飞,0.230769
+character 2-5 gram TF-IDF (strict),primary_comparison,西米,21,21,0.077978,0.047619,0.047619,0.047619,0.047619,43.000000,天府事变CDREV,0.100000
+character 2-5 gram TF-IDF (strict),primary_comparison,张千,30,29,0.477186,0.379310,0.586207,0.620690,0.504494,2.000000,刘柄鑫,0.111111
+character 2-5 gram TF-IDF (strict),primary_comparison,GALI,33,33,0.599655,0.454545,0.757576,0.818182,0.643464,2.000000,王嘉尔,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,乃万,38,38,0.135351,0.000000,0.236842,0.500000,0.201438,10.000000,王嘉尔,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,小鸭哥,40,40,0.640773,0.550000,0.750000,0.800000,0.670294,1.000000,张雪飞,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,Ansr J,24,24,0.269675,0.166667,0.375000,0.458333,0.296672,13.000000,王嘉尔,0.100000
+character 2-5 gram TF-IDF (strict),primary_comparison,Ghost Crew,43,43,0.580734,0.488372,0.697674,0.790698,0.626929,2.000000,爽子,0.181818
+character 2-5 gram TF-IDF (strict),primary_comparison,诺米么Lodmemo,12,12,0.452781,0.416667,0.500000,0.500000,0.452556,4.000000,张雪飞,0.428571
+character 2-5 gram TF-IDF (strict),primary_comparison,饺子,39,39,0.529330,0.410256,0.692308,0.692308,0.559834,2.000000,YuGo,0.173913
+character 2-5 gram TF-IDF (strict),primary_comparison,九块钱,20,20,0.496583,0.400000,0.550000,0.650000,0.527079,2.000000,廖效浓,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,KnowKnow,20,20,0.364689,0.300000,0.400000,0.500000,0.388265,9.000000,王嘉尔,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,阿水YoungBJ,39,39,0.741626,0.615385,0.871795,0.871795,0.773804,1.000000,廖效浓,0.266667
+character 2-5 gram TF-IDF (strict),primary_comparison,YOUNGLEGO,26,26,0.405674,0.384615,0.423077,0.423077,0.403846,44.000000,APMOZART,0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,派克特,18,18,0.247393,0.222222,0.222222,0.277778,0.238281,37.000000,天府事变CDREV,0.214286
+character 2-5 gram TF-IDF (strict),primary_comparison,嫩桃弟弟,20,20,0.504537,0.450000,0.600000,0.600000,0.519343,3.000000,APMOZART,0.181818
+character 2-5 gram TF-IDF (strict),primary_comparison,黑螺丝,26,26,0.271232,0.192308,0.307692,0.384615,0.276517,15.000000,天府事变CDREV,0.190476
+character 2-5 gram TF-IDF (strict),primary_comparison,龙井说唱 孙旭,16,16,0.414734,0.375000,0.437500,0.562500,0.440845,7.000000,爽子,0.300000
+character 2-5 gram TF-IDF (strict),primary_comparison,邓典果,24,24,0.399822,0.291667,0.500000,0.583333,0.435471,5.000000,MULA SAKEE,0.176471
+character 2-5 gram TF-IDF (strict),primary_comparison,谢帝,21,21,0.633844,0.523810,0.761905,0.857143,0.682489,1.000000,天府事变CDREV,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,阿童木,17,17,0.796886,0.764706,0.882353,0.882353,0.816874,1.000000,天府事变CDREV,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,GAI,27,27,0.374649,0.259259,0.481481,0.518519,0.397922,7.000000,胡彦斌 TIGER HU,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,Nxmad诺曼得,37,37,0.720666,0.621622,0.891892,0.891892,0.759878,1.000000,王嘉尔,0.285714
+character 2-5 gram TF-IDF (strict),primary_comparison,那奇沃夫,31,31,0.509785,0.387097,0.612903,0.645161,0.530372,2.000000,Six City,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,呆宝静,21,21,0.079464,0.047619,0.047619,0.142857,0.078346,64.000000,直火帮,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,爆音Boom,23,23,0.429806,0.347826,0.565217,0.652174,0.476923,4.000000,新街口组合,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,杨和苏KeyNG,29,29,0.562848,0.448276,0.689655,0.724138,0.596917,2.000000,天府事变CDREV,0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,Tizzy T,37,37,0.459319,0.324324,0.621622,0.702703,0.507575,3.000000,廖效浓,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,龙泽宇,29,29,0.467044,0.379310,0.551724,0.758621,0.522932,5.000000,王嘉尔,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,Sbazzo,31,30,0.435048,0.333333,0.500000,0.666667,0.478677,5.000000,隐藏,0.150000
+character 2-5 gram TF-IDF (strict),primary_comparison,大笑,22,22,0.168666,0.136364,0.181818,0.227273,0.167087,45.000000,王嘉尔,0.105263
+character 2-5 gram TF-IDF (strict),primary_comparison,辉子,22,22,0.290166,0.227273,0.272727,0.500000,0.325173,8.000000,杨布拉德,0.117647
+character 2-5 gram TF-IDF (strict),primary_comparison,卢慈航,28,27,0.222988,0.148148,0.259259,0.407407,0.248657,14.000000,小鸭哥,0.130435
+character 2-5 gram TF-IDF (strict),primary_comparison,Kc,41,41,0.612073,0.536585,0.682927,0.707317,0.628181,1.000000,张雪飞,0.210526
+character 2-5 gram TF-IDF (strict),primary_comparison,Jarstick,30,30,0.588880,0.566667,0.600000,0.633333,0.591057,1.000000,天府事变CDREV,0.153846
+character 2-5 gram TF-IDF (strict),primary_comparison,Higher Brothers,23,23,0.237018,0.130435,0.260870,0.521739,0.280007,10.000000,马思唯,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,宝石老舅,34,34,0.406078,0.323529,0.500000,0.558824,0.429013,5.000000,张雪飞,0.173913
+character 2-5 gram TF-IDF (strict),primary_comparison,熊猫涂杰,41,41,0.390730,0.243902,0.634146,0.707317,0.457163,4.000000,Jony J,0.129032
+character 2-5 gram TF-IDF (strict),primary_comparison,张雪飞,41,41,0.728444,0.658537,0.780488,0.829268,0.747030,1.000000,饺子,0.142857
+character 2-5 gram TF-IDF (strict),primary_comparison,No Fear Family,33,33,0.482071,0.454545,0.515152,0.545455,0.488441,5.000000,王嘉尔,0.111111
+character 2-5 gram TF-IDF (strict),primary_comparison,杀手耗,33,33,0.620422,0.606061,0.606061,0.636364,0.616855,1.000000,爽子,0.153846
+character 2-5 gram TF-IDF (strict),primary_comparison,揽佬,17,17,0.602507,0.588235,0.588235,0.647059,0.607843,1.000000,李尔新,0.285714
+character 2-5 gram TF-IDF (strict),primary_comparison,艾福杰尼,34,34,0.285048,0.147059,0.411765,0.647059,0.351690,7.000000,天府事变CDREV,0.206897
+character 2-5 gram TF-IDF (strict),primary_comparison,说唱东百人,23,23,0.943478,0.913043,1.000000,1.000000,0.957295,1.000000,Over$ize,0.500000
+character 2-5 gram TF-IDF (strict),primary_comparison,大傻 (Damnshine),22,22,0.285817,0.227273,0.318182,0.363636,0.294870,36.000000,廖效浓,0.235294
+character 2-5 gram TF-IDF (strict),primary_comparison,龙井说唱 孙骁,15,14,0.304739,0.285714,0.285714,0.285714,0.285714,25.000000,刘柄鑫,0.400000
+character 2-5 gram TF-IDF (strict),primary_comparison,Dirty Twinz,13,13,0.017530,0.000000,0.000000,0.000000,0.000000,84.000000,王嘉尔,0.076923
+character 2-5 gram TF-IDF (strict),primary_comparison,那吾克热-NW,24,24,0.178718,0.041667,0.291667,0.375000,0.211764,14.000000,Six City,0.173913
+character 2-5 gram TF-IDF (strict),primary_comparison,雲道,43,42,0.418175,0.238095,0.714286,0.809524,0.507414,3.000000,天府事变CDREV,0.218750
+character 2-5 gram TF-IDF (strict),primary_comparison,Mac Overseas,23,22,0.141241,0.045455,0.227273,0.318182,0.158308,15.000000,APMOZART,0.238095
+character 2-5 gram TF-IDF (strict),primary_comparison,廖效浓,33,33,0.693374,0.636364,0.757576,0.787879,0.706202,1.000000,NOTTIBO1,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,YoungChigga,43,43,0.525029,0.418605,0.651163,0.720930,0.558568,3.000000,天府事变CDREV,0.200000
+character 2-5 gram TF-IDF (strict),primary_comparison,张颜齐,20,20,0.127183,0.100000,0.100000,0.150000,0.117810,47.000000,王嘉尔,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,默示船政,48,48,0.588087,0.520833,0.666667,0.729167,0.614748,1.000000,傲傲,0.086957
+character 2-5 gram TF-IDF (strict),primary_comparison,KITO,30,30,0.517951,0.366667,0.733333,0.833333,0.585529,2.000000,MULA SAKEE,0.315789
+character 2-5 gram TF-IDF (strict),primary_comparison,Kandi 侃迪,34,34,0.337094,0.264706,0.411765,0.470588,0.354948,14.000000,王嘉尔,0.080000
+character 2-5 gram TF-IDF (strict),primary_comparison,西奥,26,25,0.397610,0.260000,0.560000,0.640000,0.446131,3.000000,张雪飞,0.189189
+character 2-5 gram TF-IDF (strict),primary_comparison,王齐铭,30,30,0.543052,0.466667,0.633333,0.666667,0.564991,2.000000,张雪飞,0.187500
+character 2-5 gram TF-IDF (strict),primary_comparison,大D,42,42,0.232003,0.119048,0.357143,0.404762,0.259933,14.000000,河南说唱之神,0.135135
+character 2-5 gram TF-IDF (strict),primary_comparison,OG Three,43,43,0.662813,0.534884,0.813953,0.860465,0.707675,1.000000,爽子,0.150000
+character 2-5 gram TF-IDF (strict),primary_comparison,红手指,6,6,0.342373,0.333333,0.333333,0.333333,0.333333,34.000000,刘柄鑫,0.500000
+character 2-5 gram TF-IDF (strict),primary_comparison,万赛文,18,18,0.186399,0.166667,0.166667,0.166667,0.166667,51.000000,王嘉尔,0.133333
+character 2-5 gram TF-IDF (strict),primary_comparison,黄旭,23,23,0.156645,0.043478,0.304348,0.304348,0.176256,20.000000,Mercy(lago),0.136364
+character 2-5 gram TF-IDF (strict),primary_comparison,吾人莲花,8,8,0.025398,0.000000,0.000000,0.000000,0.000000,60.000000,张雪飞,0.250000
+character 2-5 gram TF-IDF (strict),primary_comparison,热狗,29,29,0.459897,0.344828,0.517241,0.689655,0.504097,3.000000,雲道,0.157895
+character 2-5 gram TF-IDF (strict),primary_comparison,Bridge,17,17,0.129035,0.058824,0.176471,0.294118,0.150501,34.000000,CJ BAda$$ (希介),0.125000
+character 2-5 gram TF-IDF (strict),primary_comparison,小酷coola,16,15,0.162392,0.133333,0.133333,0.133333,0.133333,36.000000,雲道,0.153846
+character 2-5 gram TF-IDF (strict),primary_comparison,Wya乌鸦,36,36,0.414322,0.333333,0.555556,0.583333,0.442831,5.000000,王齐铭,0.166667
+character 2-5 gram TF-IDF (strict),primary_comparison,是Triple M,14,14,0.161317,0.142857,0.142857,0.142857,0.142857,54.000000,雲道,0.166667
+equal-weight z-score fusion (strict),primary_comparison,Six City,9,9,0.889620,0.888889,0.888889,0.888889,0.888889,1.000000,Athree,1.000000
+equal-weight z-score fusion (strict),primary_comparison,王以太,24,24,0.278932,0.208333,0.291667,0.291667,0.260911,18.000000,Mercy(lago),0.157895
+equal-weight z-score fusion (strict),primary_comparison,王嘉尔,37,37,0.861452,0.810811,0.945946,0.972973,0.888278,1.000000,Nxmad诺曼得,0.428571
+equal-weight z-score fusion (strict),primary_comparison,福克斯,40,39,0.697644,0.666667,0.717949,0.769231,0.711931,1.000000,天府事变CDREV,0.153846
+equal-weight z-score fusion (strict),primary_comparison,徐真真,42,42,0.273040,0.119048,0.428571,0.547619,0.323186,9.000000,张雪飞,0.189189
+equal-weight z-score fusion (strict),primary_comparison,隐藏,9,9,0.050956,0.000000,0.111111,0.111111,0.047853,41.000000,爽子,0.222222
+equal-weight z-score fusion (strict),primary_comparison,天府事变CDREV,44,44,0.622944,0.545455,0.727273,0.727273,0.644119,1.000000,Nxmad诺曼得,0.150000
+equal-weight z-score fusion (strict),primary_comparison,jinjibewater,20,20,0.082902,0.000000,0.150000,0.200000,0.093699,47.000000,班比 Bambii,0.150000
+equal-weight z-score fusion (strict),primary_comparison,APMOZART,45,45,0.969136,0.955556,0.977778,1.000000,0.976266,1.000000,G Sauce,0.500000
+equal-weight z-score fusion (strict),primary_comparison,多雷 Swang,39,39,0.608943,0.538462,0.743590,0.769231,0.640802,1.000000,张雪飞,0.111111
+equal-weight z-score fusion (strict),primary_comparison,刘柄鑫,30,30,0.826835,0.800000,0.833333,0.900000,0.843253,1.000000,张雪飞,0.333333
+equal-weight z-score fusion (strict),primary_comparison,国蛋,36,34,0.848265,0.794118,0.882353,0.941176,0.868446,1.000000,雲道,0.285714
+equal-weight z-score fusion (strict),primary_comparison,弹壳,10,10,0.008133,0.000000,0.000000,0.000000,0.000000,142.000000,张雪飞,0.200000
+equal-weight z-score fusion (strict),primary_comparison,梁维嘉,32,32,0.616460,0.531250,0.750000,0.812500,0.657469,1.000000,刘柄鑫,0.066667
+equal-weight z-score fusion (strict),primary_comparison,冲天小火煎,18,18,0.107875,0.055556,0.111111,0.277778,0.130593,33.000000,小鸭哥,0.176471
+equal-weight z-score fusion (strict),primary_comparison,TOYOKI,35,35,0.270867,0.171429,0.285714,0.628571,0.333398,9.000000,APMOZART,0.137931
+equal-weight z-score fusion (strict),primary_comparison,Capper,28,28,0.469501,0.392857,0.500000,0.678571,0.505386,4.000000,王嘉尔,0.117647
+equal-weight z-score fusion (strict),primary_comparison,義胜合,12,12,0.765646,0.750000,0.750000,0.833333,0.779684,1.000000,秃子,0.333333
+equal-weight z-score fusion (strict),primary_comparison,红狼,12,11,0.195943,0.181818,0.181818,0.181818,0.181818,69.000000,天府事变CDREV,0.222222
+equal-weight z-score fusion (strict),primary_comparison,雾都 (Wudu Montana),21,21,0.141788,0.095238,0.095238,0.285714,0.155084,29.000000,AR,0.105263
+equal-weight z-score fusion (strict),primary_comparison,zhazha,8,8,0.060943,0.000000,0.125000,0.125000,0.062500,33.000000,Mercy(lago),0.250000
+equal-weight z-score fusion (strict),primary_comparison,李大奔BENZO,31,31,0.665487,0.516129,0.870968,0.935484,0.729431,1.000000,MULA SAKEE,0.266667
+equal-weight z-score fusion (strict),primary_comparison,丸,21,20,0.520923,0.400000,0.625000,0.800000,0.575321,2.000000,刘柄鑫,0.250000
+equal-weight z-score fusion (strict),primary_comparison,Tangoz,36,35,0.574539,0.500000,0.628571,0.742857,0.605393,1.000000,直火帮,0.114286
+equal-weight z-score fusion (strict),primary_comparison,离合,28,28,0.967033,0.964286,0.964286,0.964286,0.964286,1.000000,MULA SAKEE,1.000000
+equal-weight z-score fusion (strict),primary_comparison,G Sauce,34,34,0.837229,0.794118,0.911765,0.941176,0.859940,1.000000,APMOZART,0.285714
+equal-weight z-score fusion (strict),primary_comparison,Cream D,16,16,0.248771,0.125000,0.312500,0.562500,0.308924,8.000000,NOTTIBO1,0.214286
+equal-weight z-score fusion (strict),primary_comparison,李佳隆,36,36,0.320290,0.250000,0.388889,0.472222,0.339492,11.000000,KITO,0.111111
+equal-weight z-score fusion (strict),primary_comparison,Poorman,9,9,0.071324,0.000000,0.222222,0.222222,0.098539,59.000000,孤矢,0.222222
+equal-weight z-score fusion (strict),primary_comparison,小青龙,29,29,0.140695,0.068966,0.206897,0.344828,0.169885,19.000000,刘柄鑫,0.074074
+equal-weight z-score fusion (strict),primary_comparison,吴晨阳,10,10,0.754613,0.700000,0.800000,0.800000,0.763093,1.000000,王嘉尔,0.333333
+equal-weight z-score fusion (strict),primary_comparison,Melo,15,15,0.104836,0.066667,0.133333,0.133333,0.092457,34.000000,AR,0.142857
+equal-weight z-score fusion (strict),primary_comparison,JD,38,38,0.825730,0.815789,0.842105,0.842105,0.827123,1.000000,徐真真,0.142857
+equal-weight z-score fusion (strict),primary_comparison,Korn,25,25,0.418045,0.360000,0.480000,0.560000,0.439368,7.000000,天府事变CDREV,0.125000
+equal-weight z-score fusion (strict),primary_comparison,梁老师Tsong,39,38,0.348196,0.263158,0.394737,0.473684,0.360607,12.000000,廖效浓,0.142857
+equal-weight z-score fusion (strict),primary_comparison,木秦,34,34,0.460722,0.323529,0.676471,0.705882,0.513425,3.000000,天府事变CDREV,0.130435
+equal-weight z-score fusion (strict),primary_comparison,孔令奇,32,32,0.358393,0.250000,0.437500,0.531250,0.385168,6.000000,新街口组合,0.166667
+equal-weight z-score fusion (strict),primary_comparison,鹿奇,42,42,0.581047,0.547619,0.595238,0.666667,0.595152,1.000000,C-Block,0.105263
+equal-weight z-score fusion (strict),primary_comparison,ROB93,17,17,0.348601,0.294118,0.352941,0.411765,0.348235,21.000000,雲道,0.166667
+equal-weight z-score fusion (strict),primary_comparison,泰格西,22,22,0.430389,0.318182,0.590909,0.590909,0.458154,3.000000,APMOZART,0.200000
+equal-weight z-score fusion (strict),primary_comparison,王晨宇IceCraz,47,47,0.327202,0.212766,0.425532,0.617021,0.380895,8.000000,张雪飞,0.081081
+equal-weight z-score fusion (strict),primary_comparison,Green Soldier,10,10,0.320673,0.200000,0.400000,0.400000,0.326186,11.000000,V.O.B.,0.250000
+equal-weight z-score fusion (strict),primary_comparison,傲傲,40,40,0.351638,0.200000,0.550000,0.625000,0.405894,4.000000,廖效浓,0.156250
+equal-weight z-score fusion (strict),primary_comparison,CJ BAda$$ (希介),27,27,0.459526,0.333333,0.592593,0.740741,0.518600,4.000000,MULA SAKEE,0.166667
+equal-weight z-score fusion (strict),primary_comparison,花生,12,12,0.166946,0.083333,0.166667,0.333333,0.193373,39.000000,雲道,0.181818
+equal-weight z-score fusion (strict),primary_comparison,刀脚,23,23,0.511960,0.347826,0.782609,0.826087,0.583158,3.000000,G Sauce,0.333333
+equal-weight z-score fusion (strict),primary_comparison,河南说唱之神,46,46,0.803253,0.760870,0.847826,0.913043,0.826655,1.000000,张雪飞,0.181818
+equal-weight z-score fusion (strict),primary_comparison,C-Block,43,42,0.402415,0.285714,0.500000,0.714286,0.462921,5.000000,梁维嘉,0.100000
+equal-weight z-score fusion (strict),primary_comparison,V.O.B.,15,15,0.672764,0.533333,0.800000,0.800000,0.701581,1.000000,Green Soldier,0.285714
+equal-weight z-score fusion (strict),primary_comparison,土人儿,21,21,0.284129,0.190476,0.380952,0.428571,0.300369,16.000000,MULA SAKEE,0.235294
+equal-weight z-score fusion (strict),primary_comparison,Surfosho,7,7,0.234539,0.142857,0.285714,0.285714,0.232990,30.000000,neverkilltheape,0.333333
+equal-weight z-score fusion (strict),primary_comparison,满舒克,33,33,0.326623,0.151515,0.515152,0.696970,0.405012,5.000000,饺子,0.107143
+equal-weight z-score fusion (strict),primary_comparison,金熙宇,16,16,0.053267,0.000000,0.062500,0.062500,0.026917,28.000000,杀手耗,0.187500
+equal-weight z-score fusion (strict),primary_comparison,Ice Paper,32,32,0.189778,0.031250,0.468750,0.562500,0.270520,7.000000,张雪飞,0.193548
+equal-weight z-score fusion (strict),primary_comparison,ljz329,11,11,0.143999,0.090909,0.181818,0.181818,0.136364,46.000000,Mercy(lago),0.300000
+equal-weight z-score fusion (strict),primary_comparison,AR,36,36,0.826379,0.777778,0.888889,0.888889,0.838682,1.000000,王嘉尔,0.125000
+equal-weight z-score fusion (strict),primary_comparison,黄昭,24,24,0.337383,0.208333,0.458333,0.541667,0.371909,6.000000,YuGo,0.105263
+equal-weight z-score fusion (strict),primary_comparison,Over$ize,16,16,0.735106,0.687500,0.750000,0.812500,0.747766,1.000000,AR,0.200000
+equal-weight z-score fusion (strict),primary_comparison,直火帮,39,39,0.741697,0.615385,0.923077,0.974359,0.797895,1.000000,Nxmad诺曼得,0.200000
+equal-weight z-score fusion (strict),primary_comparison,爽子,17,17,0.903743,0.882353,0.941176,0.941176,0.911765,1.000000,梁老师Tsong,0.500000
+equal-weight z-score fusion (strict),primary_comparison,Nasty Ray,6,6,0.190747,0.166667,0.166667,0.166667,0.166667,28.000000,天府事变CDREV,0.400000
+equal-weight z-score fusion (strict),primary_comparison,望江晴,18,18,0.132106,0.000000,0.166667,0.444444,0.190042,12.000000,张雪飞,0.166667
+equal-weight z-score fusion (strict),primary_comparison,Jony J,42,42,0.830457,0.809524,0.833333,0.880952,0.841508,1.000000,天府事变CDREV,0.125000
+equal-weight z-score fusion (strict),primary_comparison,SASIOVERLXRD,26,26,0.464906,0.384615,0.538462,0.653846,0.499760,4.000000,G Sauce,0.125000
+equal-weight z-score fusion (strict),primary_comparison,张昊,15,15,0.123389,0.000000,0.266667,0.266667,0.137440,21.000000,刘柄鑫,0.333333
+equal-weight z-score fusion (strict),primary_comparison,秃子,20,20,0.683558,0.600000,0.750000,0.750000,0.694639,1.000000,张大炮,0.250000
+equal-weight z-score fusion (strict),primary_comparison,方仔,32,31,0.378318,0.290323,0.483871,0.612903,0.421851,6.000000,张雪飞,0.272727
+equal-weight z-score fusion (strict),primary_comparison,404 Rapper,23,23,0.092058,0.000000,0.173913,0.217391,0.108910,52.000000,离合,0.086957
+equal-weight z-score fusion (strict),primary_comparison,金蛇 traphouse,6,6,0.570726,0.500000,0.666667,0.833333,0.631147,1.000000,CJ BAda$$ (希介),0.333333
+equal-weight z-score fusion (strict),primary_comparison,老黑Black J,11,11,0.306752,0.272727,0.272727,0.363636,0.305110,20.000000,Jony J,0.250000
+equal-weight z-score fusion (strict),primary_comparison,坚强的小黄瓜,41,41,0.678610,0.536585,0.878049,0.878049,0.727792,1.000000,张雪飞,0.210526
+equal-weight z-score fusion (strict),primary_comparison,C-Low,28,28,0.455504,0.357143,0.535714,0.642857,0.487633,3.000000,王嘉尔,0.111111
+equal-weight z-score fusion (strict),primary_comparison,thomeboydontkill,21,21,0.209210,0.142857,0.285714,0.380952,0.230416,15.000000,APMOZART,0.222222
+equal-weight z-score fusion (strict),primary_comparison,MULA SAKEE,33,33,0.879849,0.818182,0.939394,0.969697,0.900792,1.000000,APMOZART,0.500000
+equal-weight z-score fusion (strict),primary_comparison,DBL.D,12,12,0.080482,0.000000,0.166667,0.250000,0.107240,34.000000,PO8,0.166667
+equal-weight z-score fusion (strict),primary_comparison,刘聪 (Key.L),35,35,0.557574,0.457143,0.628571,0.742857,0.592215,2.000000,C-Block,0.157895
+equal-weight z-score fusion (strict),primary_comparison,Max马俊,14,14,0.317128,0.214286,0.428571,0.500000,0.351428,10.000000,小鸭哥,0.181818
+equal-weight z-score fusion (strict),primary_comparison,连麻Swimming,26,26,0.443275,0.269231,0.615385,0.692308,0.495818,2.000000,李尔新,0.157895
+equal-weight z-score fusion (strict),primary_comparison,OWVRO老弟,23,23,0.410945,0.304348,0.565217,0.565217,0.435220,4.000000,离合,0.125000
+equal-weight z-score fusion (strict),primary_comparison,Vava,26,26,0.104564,0.038462,0.192308,0.230769,0.115854,32.000000,王嘉尔,0.080000
+equal-weight z-score fusion (strict),primary_comparison,KKLUV,27,27,0.410785,0.259259,0.555556,0.703704,0.468956,3.000000,那奇沃夫,0.150000
+equal-weight z-score fusion (strict),primary_comparison,孤矢,37,37,0.471642,0.378378,0.540541,0.675676,0.507465,3.000000,张雪飞,0.173913
+equal-weight z-score fusion (strict),primary_comparison,Turbo嗣尧,20,20,0.065400,0.000000,0.050000,0.200000,0.068427,18.000000,王嘉尔,0.150000
+equal-weight z-score fusion (strict),primary_comparison,李尔新,32,32,0.387815,0.250000,0.562500,0.656250,0.442978,4.000000,G Sauce,0.083333
+equal-weight z-score fusion (strict),primary_comparison,YuGo,33,33,0.444527,0.303030,0.545455,0.818182,0.525734,4.000000,廖效浓,0.173913
+equal-weight z-score fusion (strict),primary_comparison,Regi 陈彦希,12,12,0.057586,0.000000,0.000000,0.250000,0.080641,21.000000,王嘉尔,0.250000
+equal-weight z-score fusion (strict),primary_comparison,正义感,18,18,0.331522,0.222222,0.388889,0.500000,0.353688,10.000000,Jony J,0.428571
+equal-weight z-score fusion (strict),primary_comparison,southsidesamurai,12,12,0.305676,0.166667,0.333333,0.666667,0.378458,7.000000,爽子,0.200000
+equal-weight z-score fusion (strict),primary_comparison,滇声气,23,23,0.602582,0.521739,0.695652,0.782609,0.638431,1.000000,雲道,0.181818
+equal-weight z-score fusion (strict),primary_comparison,新街口组合,26,26,0.548446,0.384615,0.730769,0.769231,0.598061,2.000000,张雪飞,0.312500
+equal-weight z-score fusion (strict),primary_comparison,YOUNG,21,21,0.373866,0.285714,0.428571,0.571429,0.411394,7.000000,G Sauce,0.200000
+equal-weight z-score fusion (strict),primary_comparison,杨布拉德,42,42,0.764688,0.714286,0.809524,0.904762,0.794727,1.000000,jinjibewater,0.083333
+equal-weight z-score fusion (strict),primary_comparison,TY,27,27,0.271843,0.148148,0.370370,0.555556,0.328883,9.000000,刘柄鑫,0.173913
+equal-weight z-score fusion (strict),primary_comparison,恶童,33,33,0.417200,0.303030,0.575758,0.666667,0.467965,4.000000,滇声气,0.130435
+equal-weight z-score fusion (strict),primary_comparison,班比 Bambii,41,41,0.616122,0.487805,0.731707,0.902439,0.679859,2.000000,MULA SAKEE,0.142857
+equal-weight z-score fusion (strict),primary_comparison,S1,14,14,0.229615,0.214286,0.214286,0.214286,0.214286,59.000000,张雪飞,0.181818
+equal-weight z-score fusion (strict),primary_comparison,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+equal-weight z-score fusion (strict),primary_comparison,Kzoo,43,42,0.688305,0.619048,0.785714,0.833333,0.717984,1.000000,离合,0.125000
+equal-weight z-score fusion (strict),primary_comparison,罗言,21,21,0.207158,0.095238,0.238095,0.523810,0.263392,9.000000,张雪飞,0.210526
+equal-weight z-score fusion (strict),primary_comparison,阿斯巴田,42,42,0.347852,0.214286,0.428571,0.619048,0.396704,6.000000,张雪飞,0.121212
+equal-weight z-score fusion (strict),primary_comparison,笑男孩,28,27,0.155209,0.074074,0.222222,0.333333,0.178495,19.000000,张雪飞,0.160000
+equal-weight z-score fusion (strict),primary_comparison,黑麦,33,33,0.652370,0.636364,0.666667,0.696970,0.658974,1.000000,姜云升,0.166667
+equal-weight z-score fusion (strict),primary_comparison,张大炮,42,42,0.807620,0.785714,0.809524,0.857143,0.816609,1.000000,APMOZART,0.111111
+equal-weight z-score fusion (strict),primary_comparison,Rich4ever,29,29,0.756125,0.655172,0.896552,0.931034,0.797894,1.000000,李大奔BENZO,0.200000
+equal-weight z-score fusion (strict),primary_comparison,二狗子,22,22,0.804854,0.772727,0.818182,0.818182,0.801406,1.000000,新街口组合,0.200000
+equal-weight z-score fusion (strict),primary_comparison,FAC-D12,25,25,0.541192,0.480000,0.560000,0.680000,0.563466,2.000000,直火帮,0.153846
+equal-weight z-score fusion (strict),primary_comparison,法老,39,39,0.621982,0.538462,0.743590,0.794872,0.658506,1.000000,张雪飞,0.222222
+equal-weight z-score fusion (strict),primary_comparison,HAS,38,38,0.588155,0.473684,0.710526,0.868421,0.651982,2.000000,张雪飞,0.150000
+equal-weight z-score fusion (strict),primary_comparison,NOTTIBO1,22,22,0.756995,0.636364,0.909091,0.909091,0.793382,1.000000,王嘉尔,0.375000
+equal-weight z-score fusion (strict),primary_comparison,Busta Z,28,28,0.508684,0.428571,0.571429,0.678571,0.541826,2.000000,滇声气,0.125000
+equal-weight z-score fusion (strict),primary_comparison,Athree,22,22,0.237919,0.181818,0.318182,0.318182,0.247657,36.000000,AR,0.222222
+equal-weight z-score fusion (strict),primary_comparison,赵山河,31,31,0.526463,0.387097,0.677419,0.709677,0.569663,2.000000,张大炮,0.263158
+equal-weight z-score fusion (strict),primary_comparison,Gm仙,27,27,0.800932,0.740741,0.888889,0.888889,0.819664,1.000000,梁维嘉,0.142857
+equal-weight z-score fusion (strict),primary_comparison,PO8,39,39,0.739197,0.666667,0.846154,0.897436,0.773947,1.000000,直火帮,0.153846
+equal-weight z-score fusion (strict),primary_comparison,斯威特,40,40,0.641539,0.575000,0.700000,0.825000,0.680734,1.000000,张雪飞,0.235294
+equal-weight z-score fusion (strict),primary_comparison,八口8uck,33,33,0.428795,0.272727,0.666667,0.757576,0.498648,4.000000,APMOZART,0.166667
+equal-weight z-score fusion (strict),primary_comparison,艾热 AIR,22,22,0.189211,0.090909,0.272727,0.363636,0.214493,18.000000,乃万,0.100000
+equal-weight z-score fusion (strict),primary_comparison,大狗,21,21,0.346113,0.190476,0.523810,0.666667,0.411671,5.000000,新街口组合,0.235294
+equal-weight z-score fusion (strict),primary_comparison,龙胆紫,10,10,0.223150,0.100000,0.300000,0.600000,0.294412,6.000000,爽子,0.333333
+equal-weight z-score fusion (strict),primary_comparison,孙八一,34,34,0.799440,0.735294,0.882353,0.941176,0.830916,1.000000,爽子,0.111111
+equal-weight z-score fusion (strict),primary_comparison,功夫胖,28,28,0.531369,0.500000,0.571429,0.571429,0.535714,1.000000,C-Block,0.142857
+equal-weight z-score fusion (strict),primary_comparison,于漂 eZ Yang Fizz,23,23,0.678995,0.652174,0.739130,0.782609,0.699529,1.000000,PO8,0.375000
+equal-weight z-score fusion (strict),primary_comparison,上官承诺,18,18,0.242376,0.111111,0.388889,0.388889,0.265536,12.000000,小鸭哥,0.125000
+equal-weight z-score fusion (strict),primary_comparison,BossWang,15,15,0.323337,0.266667,0.333333,0.600000,0.378699,10.000000,滇声气,0.181818
+equal-weight z-score fusion (strict),primary_comparison,Blow Fever,25,25,0.731536,0.640000,0.880000,0.920000,0.774651,1.000000,离合,0.222222
+equal-weight z-score fusion (strict),primary_comparison,ICE,28,28,0.164326,0.107143,0.142857,0.321429,0.183549,25.000000,张雪飞,0.120000
+equal-weight z-score fusion (strict),primary_comparison,Kigga,19,19,0.084012,0.000000,0.105263,0.263158,0.101539,20.000000,Jony J,0.157895
+equal-weight z-score fusion (strict),primary_comparison,马思唯,32,32,0.442627,0.281250,0.562500,0.812500,0.521641,3.000000,李大奔BENZO,0.260870
+equal-weight z-score fusion (strict),primary_comparison,胡彦斌 TIGER HU,33,30,0.428553,0.400000,0.466667,0.466667,0.427251,13.000000,新街口组合,0.166667
+equal-weight z-score fusion (strict),primary_comparison,Hotkey金朝,31,30,0.527431,0.500000,0.533333,0.533333,0.521031,1.000000,张雪飞,0.200000
+equal-weight z-score fusion (strict),primary_comparison,小老虎,18,18,0.334594,0.222222,0.555556,0.611111,0.389392,5.000000,张雪飞,0.285714
+equal-weight z-score fusion (strict),primary_comparison,Mercy(lago),42,42,0.603236,0.476190,0.785714,0.833333,0.653235,2.000000,Nxmad诺曼得,0.181818
+equal-weight z-score fusion (strict),primary_comparison,光光 (MC),31,31,0.457711,0.322581,0.580645,0.806452,0.530035,4.000000,APMOZART,0.095238
+equal-weight z-score fusion (strict),primary_comparison,GNS耀耀,13,13,0.073979,0.000000,0.153846,0.153846,0.071591,25.000000,小鸭哥,0.384615
+equal-weight z-score fusion (strict),primary_comparison,辛巴,34,34,0.253301,0.147059,0.382353,0.529412,0.306889,9.000000,刘柄鑫,0.137931
+equal-weight z-score fusion (strict),primary_comparison,姜云升,33,33,0.693334,0.606061,0.818182,0.818182,0.719822,1.000000,张雪飞,0.461538
+equal-weight z-score fusion (strict),primary_comparison,西米,21,21,0.164357,0.047619,0.238095,0.476190,0.222417,13.000000,APMOZART,0.100000
+equal-weight z-score fusion (strict),primary_comparison,张千,30,29,0.505997,0.413793,0.620690,0.655172,0.536852,2.000000,刘柄鑫,0.117647
+equal-weight z-score fusion (strict),primary_comparison,GALI,33,33,0.547544,0.424242,0.727273,0.818182,0.604155,2.000000,王嘉尔,0.105263
+equal-weight z-score fusion (strict),primary_comparison,乃万,38,38,0.205161,0.026316,0.500000,0.657895,0.301602,5.000000,Nxmad诺曼得,0.135135
+equal-weight z-score fusion (strict),primary_comparison,小鸭哥,40,40,0.653875,0.550000,0.775000,0.800000,0.685387,1.000000,张雪飞,0.166667
+equal-weight z-score fusion (strict),primary_comparison,Ansr J,24,24,0.356198,0.250000,0.458333,0.541667,0.385552,8.000000,李大奔BENZO,0.222222
+equal-weight z-score fusion (strict),primary_comparison,Ghost Crew,43,43,0.601341,0.511628,0.697674,0.813953,0.646845,1.000000,爽子,0.190476
+equal-weight z-score fusion (strict),primary_comparison,诺米么Lodmemo,12,12,0.469474,0.416667,0.583333,0.583333,0.484794,4.000000,张雪飞,0.428571
+equal-weight z-score fusion (strict),primary_comparison,饺子,39,39,0.498911,0.358974,0.692308,0.743590,0.551699,3.000000,张雪飞,0.160000
+equal-weight z-score fusion (strict),primary_comparison,九块钱,20,20,0.506399,0.450000,0.550000,0.650000,0.530117,3.000000,廖效浓,0.272727
+equal-weight z-score fusion (strict),primary_comparison,KnowKnow,20,20,0.287335,0.200000,0.300000,0.450000,0.314237,16.000000,王嘉尔,0.125000
+equal-weight z-score fusion (strict),primary_comparison,阿水YoungBJ,39,39,0.750490,0.666667,0.846154,0.871795,0.775485,1.000000,新街口组合,0.230769
+equal-weight z-score fusion (strict),primary_comparison,YOUNGLEGO,26,26,0.407726,0.384615,0.423077,0.423077,0.401180,14.000000,饺子,0.187500
+equal-weight z-score fusion (strict),primary_comparison,派克特,18,18,0.248371,0.222222,0.222222,0.277778,0.239748,29.000000,新街口组合,0.142857
+equal-weight z-score fusion (strict),primary_comparison,嫩桃弟弟,20,20,0.540393,0.450000,0.700000,0.700000,0.578080,2.000000,离合,0.181818
+equal-weight z-score fusion (strict),primary_comparison,黑螺丝,26,26,0.430299,0.269231,0.576923,0.730769,0.493320,3.000000,天府事变CDREV,0.157895
+equal-weight z-score fusion (strict),primary_comparison,龙井说唱 孙旭,16,16,0.447286,0.375000,0.562500,0.625000,0.483595,4.000000,爽子,0.400000
+equal-weight z-score fusion (strict),primary_comparison,邓典果,24,24,0.446152,0.375000,0.500000,0.500000,0.445522,4.000000,MULA SAKEE,0.266667
+equal-weight z-score fusion (strict),primary_comparison,谢帝,21,21,0.595959,0.476190,0.714286,0.714286,0.613942,2.000000,直火帮,0.181818
+equal-weight z-score fusion (strict),primary_comparison,阿童木,17,17,0.832413,0.823529,0.823529,0.882353,0.841237,1.000000,天府事变CDREV,0.333333
+equal-weight z-score fusion (strict),primary_comparison,GAI,27,27,0.378817,0.222222,0.555556,0.666667,0.441879,4.000000,胡彦斌 TIGER HU,0.190476
+equal-weight z-score fusion (strict),primary_comparison,Nxmad诺曼得,37,37,0.709101,0.594595,0.864865,0.864865,0.744365,1.000000,王嘉尔,0.333333
+equal-weight z-score fusion (strict),primary_comparison,那奇沃夫,31,31,0.512327,0.387097,0.612903,0.709677,0.550823,2.000000,Six City,0.210526
+equal-weight z-score fusion (strict),primary_comparison,呆宝静,21,21,0.107646,0.047619,0.095238,0.190476,0.107708,24.000000,张雪飞,0.150000
+equal-weight z-score fusion (strict),primary_comparison,爆音Boom,23,23,0.437332,0.391304,0.478261,0.565217,0.457824,6.000000,新街口组合,0.214286
+equal-weight z-score fusion (strict),primary_comparison,杨和苏KeyNG,29,29,0.526172,0.448276,0.586207,0.724138,0.566304,3.000000,张雪飞,0.187500
+equal-weight z-score fusion (strict),primary_comparison,Tizzy T,37,37,0.455636,0.324324,0.648649,0.783784,0.526095,3.000000,廖效浓,0.240000
+equal-weight z-score fusion (strict),primary_comparison,龙泽宇,29,29,0.403385,0.310345,0.482759,0.724138,0.465418,6.000000,雲道,0.150000
+equal-weight z-score fusion (strict),primary_comparison,Sbazzo,31,30,0.462377,0.300000,0.633333,0.733333,0.519269,3.000000,隐藏,0.142857
+equal-weight z-score fusion (strict),primary_comparison,大笑,22,22,0.212296,0.136364,0.227273,0.454545,0.258679,19.000000,Jony J,0.105263
+equal-weight z-score fusion (strict),primary_comparison,辉子,22,22,0.300660,0.227273,0.318182,0.500000,0.330232,10.000000,杨布拉德,0.117647
+equal-weight z-score fusion (strict),primary_comparison,卢慈航,28,27,0.200021,0.074074,0.296296,0.407407,0.232341,14.000000,小鸭哥,0.200000
+equal-weight z-score fusion (strict),primary_comparison,Kc,41,41,0.574880,0.487805,0.658537,0.707317,0.598575,2.000000,APMOZART,0.142857
+equal-weight z-score fusion (strict),primary_comparison,Jarstick,30,30,0.563194,0.500000,0.600000,0.666667,0.577563,1.000000,新街口组合,0.133333
+equal-weight z-score fusion (strict),primary_comparison,Higher Brothers,23,23,0.409484,0.260870,0.478261,0.652174,0.449376,6.000000,马思唯,0.235294
+equal-weight z-score fusion (strict),primary_comparison,宝石老舅,34,34,0.430708,0.352941,0.529412,0.647059,0.468421,4.000000,GAI,0.136364
+equal-weight z-score fusion (strict),primary_comparison,熊猫涂杰,41,41,0.429443,0.341463,0.536585,0.658537,0.470761,5.000000,滇声气,0.185185
+equal-weight z-score fusion (strict),primary_comparison,张雪飞,41,41,0.704957,0.634146,0.804878,0.804878,0.724642,1.000000,饺子,0.133333
+equal-weight z-score fusion (strict),primary_comparison,No Fear Family,33,33,0.466692,0.424242,0.454545,0.545455,0.473275,8.000000,Nxmad诺曼得,0.105263
+equal-weight z-score fusion (strict),primary_comparison,杀手耗,33,33,0.628664,0.606061,0.636364,0.666667,0.632006,1.000000,G Sauce,0.153846
+equal-weight z-score fusion (strict),primary_comparison,揽佬,17,17,0.680770,0.647059,0.764706,0.764706,0.695149,1.000000,AR,0.166667
+equal-weight z-score fusion (strict),primary_comparison,艾福杰尼,34,34,0.343044,0.176471,0.558824,0.764706,0.434909,4.000000,雲道,0.178571
+equal-weight z-score fusion (strict),primary_comparison,说唱东百人,23,23,0.921827,0.913043,0.913043,0.956522,0.926132,1.000000,爽子,0.500000
+equal-weight z-score fusion (strict),primary_comparison,大傻 (Damnshine),22,22,0.306154,0.272727,0.318182,0.409091,0.320186,29.000000,满舒克,0.125000
+equal-weight z-score fusion (strict),primary_comparison,龙井说唱 孙骁,15,14,0.307364,0.285714,0.285714,0.285714,0.285714,22.000000,Jony J,0.200000
+equal-weight z-score fusion (strict),primary_comparison,Dirty Twinz,13,13,0.019458,0.000000,0.000000,0.000000,0.000000,77.000000,王嘉尔,0.076923
+equal-weight z-score fusion (strict),primary_comparison,那吾克热-NW,24,24,0.249973,0.083333,0.416667,0.500000,0.302466,10.000000,Six City,0.181818
+equal-weight z-score fusion (strict),primary_comparison,雲道,43,42,0.496676,0.333333,0.738095,0.833333,0.573240,3.000000,直火帮,0.107143
+equal-weight z-score fusion (strict),primary_comparison,Mac Overseas,23,22,0.255230,0.136364,0.318182,0.454545,0.285533,11.000000,李大奔BENZO,0.105263
+equal-weight z-score fusion (strict),primary_comparison,廖效浓,33,33,0.670003,0.575758,0.787879,0.818182,0.699953,1.000000,李大奔BENZO,0.142857
+equal-weight z-score fusion (strict),primary_comparison,YoungChigga,43,43,0.727539,0.651163,0.837209,0.860465,0.756078,1.000000,APMOZART,0.133333
+equal-weight z-score fusion (strict),primary_comparison,张颜齐,20,20,0.252298,0.200000,0.250000,0.350000,0.261773,24.000000,刘柄鑫,0.125000
+equal-weight z-score fusion (strict),primary_comparison,默示船政,48,48,0.636532,0.562500,0.708333,0.750000,0.652784,1.000000,YoungChigga,0.238095
+equal-weight z-score fusion (strict),primary_comparison,KITO,30,30,0.629966,0.533333,0.766667,0.900000,0.689917,1.000000,Nxmad诺曼得,0.214286
+equal-weight z-score fusion (strict),primary_comparison,Kandi 侃迪,34,34,0.371359,0.264706,0.470588,0.558824,0.405954,6.000000,G Sauce,0.080000
+equal-weight z-score fusion (strict),primary_comparison,西奥,26,25,0.370415,0.280000,0.440000,0.560000,0.402664,7.000000,新街口组合,0.111111
+equal-weight z-score fusion (strict),primary_comparison,王齐铭,30,30,0.618732,0.566667,0.633333,0.700000,0.628398,1.000000,刘柄鑫,0.153846
+equal-weight z-score fusion (strict),primary_comparison,大D,42,42,0.359624,0.214286,0.476190,0.619048,0.410555,6.000000,河南说唱之神,0.181818
+equal-weight z-score fusion (strict),primary_comparison,OG Three,43,43,0.666096,0.581395,0.744186,0.790698,0.690339,1.000000,张雪飞,0.222222
+equal-weight z-score fusion (strict),primary_comparison,红手指,6,6,0.258430,0.166667,0.333333,0.333333,0.271822,38.000000,刘柄鑫,0.200000
+equal-weight z-score fusion (strict),primary_comparison,万赛文,18,18,0.199077,0.166667,0.166667,0.222222,0.186456,23.000000,王嘉尔,0.133333
+equal-weight z-score fusion (strict),primary_comparison,黄旭,23,23,0.257291,0.130435,0.347826,0.434783,0.286188,16.000000,Mercy(lago),0.200000
+equal-weight z-score fusion (strict),primary_comparison,吾人莲花,8,8,0.258608,0.250000,0.250000,0.250000,0.250000,68.000000,刘柄鑫,0.166667
+equal-weight z-score fusion (strict),primary_comparison,热狗,29,29,0.398309,0.310345,0.448276,0.586207,0.425885,7.000000,Jony J,0.100000
+equal-weight z-score fusion (strict),primary_comparison,Bridge,17,17,0.102026,0.000000,0.176471,0.294118,0.121468,14.000000,CJ BAda$$ (希介),0.117647
+equal-weight z-score fusion (strict),primary_comparison,小酷coola,16,15,0.265113,0.166667,0.366667,0.366667,0.275395,13.000000,Mercy(lago),0.120000
+equal-weight z-score fusion (strict),primary_comparison,Wya乌鸦,36,36,0.433931,0.305556,0.611111,0.722222,0.496459,4.000000,王齐铭,0.160000
+equal-weight z-score fusion (strict),primary_comparison,是Triple M,14,14,0.172614,0.142857,0.214286,0.214286,0.170489,46.000000,GALI,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Six City,9,9,0.889583,0.888889,0.888889,0.888889,0.888889,1.000000,Athree,1.000000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,王以太,24,24,0.274107,0.208333,0.291667,0.291667,0.260911,21.000000,APMOZART,0.105263
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,王嘉尔,37,37,0.870446,0.810811,0.945946,0.972973,0.895563,1.000000,Nxmad诺曼得,0.428571
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,福克斯,40,39,0.684035,0.641026,0.717949,0.743590,0.694749,1.000000,天府事变CDREV,0.214286
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,徐真真,42,42,0.259914,0.119048,0.380952,0.571429,0.320103,9.000000,张雪飞,0.189189
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,隐藏,9,9,0.058345,0.000000,0.111111,0.111111,0.055556,40.000000,爽子,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,天府事变CDREV,44,44,0.683268,0.636364,0.727273,0.750000,0.694611,1.000000,Jony J,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,jinjibewater,20,20,0.075301,0.000000,0.150000,0.150000,0.078080,63.000000,班比 Bambii,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,APMOZART,45,45,0.974074,0.955556,1.000000,1.000000,0.980687,1.000000,G Sauce,0.500000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,多雷 Swang,39,39,0.600165,0.538462,0.717949,0.769231,0.633627,1.000000,张雪飞,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,刘柄鑫,30,30,0.829317,0.800000,0.866667,0.900000,0.845421,1.000000,张雪飞,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,国蛋,36,34,0.835984,0.794118,0.852941,0.911765,0.850986,1.000000,雲道,0.285714
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,弹壳,10,10,0.008317,0.000000,0.000000,0.000000,0.000000,139.000000,张雪飞,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,梁维嘉,32,32,0.631067,0.562500,0.718750,0.812500,0.668600,1.000000,滇声气,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,冲天小火煎,18,18,0.114077,0.055556,0.111111,0.333333,0.150573,37.000000,小鸭哥,0.176471
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,TOYOKI,35,35,0.236588,0.114286,0.342857,0.571429,0.292332,9.000000,APMOZART,0.129032
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Capper,28,28,0.381834,0.250000,0.535714,0.678571,0.441951,5.000000,王嘉尔,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,義胜合,12,12,0.765472,0.750000,0.750000,0.833333,0.779684,1.000000,秃子,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,红狼,12,11,0.193396,0.181818,0.181818,0.181818,0.181818,57.000000,天府事变CDREV,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,雾都 (Wudu Montana),21,21,0.144485,0.095238,0.095238,0.238095,0.145036,34.000000,李大奔BENZO,0.105263
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,zhazha,8,8,0.059687,0.000000,0.125000,0.125000,0.062500,40.000000,APMOZART,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,李大奔BENZO,31,31,0.693117,0.548387,0.903226,0.935484,0.750500,1.000000,MULA SAKEE,0.357143
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,丸,21,20,0.462575,0.300000,0.625000,0.700000,0.502921,2.000000,刘柄鑫,0.214286
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Tangoz,36,35,0.556622,0.471429,0.628571,0.714286,0.582778,2.000000,直火帮,0.162162
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,离合,28,28,0.976190,0.964286,1.000000,1.000000,0.982143,1.000000,MULA SAKEE,1.000000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,G Sauce,34,34,0.840536,0.794118,0.882353,0.941176,0.862890,1.000000,APMOZART,0.285714
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Cream D,16,16,0.221994,0.125000,0.312500,0.437500,0.251662,11.000000,NOTTIBO1,0.214286
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,李佳隆,36,36,0.313565,0.250000,0.333333,0.444444,0.326428,12.000000,乃万,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Poorman,9,9,0.156157,0.111111,0.222222,0.222222,0.158964,58.000000,Six City,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,小青龙,29,29,0.142068,0.068966,0.241379,0.310345,0.163359,21.000000,廖效浓,0.148148
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,吴晨阳,10,10,0.688287,0.600000,0.800000,0.800000,0.713093,1.000000,王嘉尔,0.250000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Melo,15,15,0.111473,0.066667,0.133333,0.133333,0.100000,36.000000,AR,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,JD,38,38,0.825075,0.815789,0.842105,0.842105,0.827123,1.000000,徐真真,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Korn,25,25,0.415154,0.360000,0.440000,0.520000,0.424809,7.000000,天府事变CDREV,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,梁老师Tsong,39,38,0.334336,0.236842,0.394737,0.500000,0.357129,9.000000,李大奔BENZO,0.137931
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,木秦,34,34,0.444882,0.323529,0.617647,0.705882,0.501732,3.000000,天府事变CDREV,0.130435
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,孔令奇,32,32,0.353509,0.218750,0.468750,0.593750,0.396836,6.000000,王嘉尔,0.120000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,鹿奇,42,42,0.566691,0.523810,0.642857,0.642857,0.578369,1.000000,C-Block,0.100000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,ROB93,17,17,0.355300,0.294118,0.411765,0.411765,0.353987,17.000000,APMOZART,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,泰格西,22,22,0.412901,0.318182,0.590909,0.590909,0.445068,5.000000,APMOZART,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,王晨宇IceCraz,47,47,0.309076,0.212766,0.361702,0.531915,0.343158,10.000000,张雪飞,0.081081
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Green Soldier,10,10,0.279991,0.200000,0.300000,0.400000,0.294639,16.000000,V.O.B.,0.250000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,傲傲,40,40,0.354113,0.200000,0.525000,0.575000,0.393732,4.000000,YuGo,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,CJ BAda$$ (希介),27,27,0.452210,0.333333,0.629630,0.703704,0.502355,4.000000,TOYOKI,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,花生,12,12,0.177058,0.083333,0.250000,0.333333,0.202663,39.000000,乃万,0.181818
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,刀脚,23,23,0.475797,0.304348,0.826087,0.826087,0.555816,3.000000,G Sauce,0.375000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,河南说唱之神,46,46,0.770134,0.717391,0.869565,0.913043,0.801615,1.000000,张雪飞,0.230769
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,C-Block,43,42,0.393053,0.285714,0.440476,0.666667,0.442060,7.000000,张雪飞,0.100000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,V.O.B.,15,15,0.672566,0.533333,0.800000,0.800000,0.701581,1.000000,Green Soldier,0.285714
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,土人儿,21,21,0.263201,0.190476,0.238095,0.380952,0.270318,16.000000,MULA SAKEE,0.235294
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Surfosho,7,7,0.239428,0.142857,0.285714,0.428571,0.278056,30.000000,neverkilltheape,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,满舒克,33,33,0.326860,0.151515,0.515152,0.666667,0.397605,5.000000,李大奔BENZO,0.107143
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,金熙宇,16,16,0.049788,0.000000,0.062500,0.062500,0.026917,28.000000,杀手耗,0.187500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Ice Paper,32,32,0.209585,0.031250,0.468750,0.562500,0.287045,6.000000,刘柄鑫,0.161290
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,ljz329,11,11,0.141791,0.090909,0.181818,0.181818,0.136364,51.000000,Mercy(lago),0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,AR,36,36,0.822350,0.777778,0.888889,0.888889,0.835539,1.000000,王嘉尔,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,黄昭,24,24,0.324551,0.208333,0.500000,0.541667,0.360449,5.000000,张雪飞,0.157895
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Over$ize,16,16,0.737019,0.687500,0.750000,0.812500,0.749196,1.000000,AR,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,直火帮,39,39,0.759280,0.641026,0.948718,0.974359,0.811303,1.000000,Nxmad诺曼得,0.214286
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,爽子,17,17,0.903799,0.882353,0.941176,0.941176,0.911765,1.000000,梁老师Tsong,0.500000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Nasty Ray,6,6,0.192962,0.166667,0.166667,0.166667,0.166667,23.000000,天府事变CDREV,0.400000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,望江晴,18,18,0.147935,0.055556,0.166667,0.444444,0.202706,14.000000,天府事变CDREV,0.117647
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Jony J,42,42,0.830393,0.809524,0.833333,0.880952,0.841508,1.000000,天府事变CDREV,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,SASIOVERLXRD,26,26,0.458922,0.384615,0.538462,0.653846,0.497638,4.000000,G Sauce,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,张昊,15,15,0.105366,0.000000,0.266667,0.266667,0.128712,26.000000,刘柄鑫,0.266667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,秃子,20,20,0.707739,0.650000,0.750000,0.750000,0.713093,1.000000,张大炮,0.285714
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,方仔,32,31,0.363542,0.290323,0.403226,0.580645,0.402008,6.000000,张雪飞,0.272727
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,404 Rapper,23,23,0.132183,0.086957,0.130435,0.217391,0.137899,57.000000,NOTTIBO1,0.095238
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,金蛇 traphouse,6,6,0.552850,0.500000,0.500000,0.833333,0.614923,1.000000,CJ BAda$$ (希介),0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,老黑Black J,11,11,0.347119,0.272727,0.454545,0.545455,0.386013,8.000000,Jony J,0.250000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,坚强的小黄瓜,41,41,0.661641,0.536585,0.829268,0.853659,0.706836,1.000000,张雪飞,0.210526
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,C-Low,28,28,0.447245,0.357143,0.571429,0.714286,0.500048,4.000000,王嘉尔,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,thomeboydontkill,21,21,0.197773,0.142857,0.190476,0.380952,0.220961,16.000000,APMOZART,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,MULA SAKEE,33,33,0.916787,0.878788,0.939394,1.000000,0.936249,1.000000,APMOZART,0.500000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,DBL.D,12,12,0.051031,0.000000,0.083333,0.166667,0.059978,40.000000,Nxmad诺曼得,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,刘聪 (Key.L),35,35,0.536253,0.428571,0.600000,0.742857,0.575842,2.000000,C-Block,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Max马俊,14,14,0.332694,0.214286,0.428571,0.500000,0.363942,7.000000,小鸭哥,0.181818
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,连麻Swimming,26,26,0.430540,0.269231,0.615385,0.653846,0.473732,3.000000,李尔新,0.157895
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,OWVRO老弟,23,23,0.390416,0.304348,0.521739,0.565217,0.420262,5.000000,雲道,0.187500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Vava,26,26,0.098830,0.038462,0.153846,0.230769,0.113433,35.000000,王嘉尔,0.120000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,KKLUV,27,27,0.391574,0.222222,0.555556,0.666667,0.445982,3.000000,那奇沃夫,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,孤矢,37,37,0.442716,0.324324,0.513514,0.675676,0.486066,3.000000,张雪飞,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Turbo嗣尧,20,20,0.044650,0.000000,0.000000,0.100000,0.030825,21.000000,王嘉尔,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,李尔新,32,32,0.375263,0.250000,0.562500,0.687500,0.441741,5.000000,G Sauce,0.083333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,YuGo,33,33,0.472923,0.333333,0.666667,0.787879,0.540327,3.000000,APMOZART,0.181818
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Regi 陈彦希,12,12,0.044274,0.000000,0.000000,0.083333,0.025086,24.000000,王嘉尔,0.416667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,正义感,18,18,0.282447,0.111111,0.388889,0.444444,0.306159,11.000000,Jony J,0.312500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,southsidesamurai,12,12,0.363976,0.250000,0.500000,0.750000,0.447657,5.000000,爽子,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,滇声气,23,23,0.600379,0.521739,0.652174,0.782609,0.636475,1.000000,雲道,0.181818
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,新街口组合,26,26,0.543949,0.384615,0.730769,0.730769,0.583555,2.000000,张雪飞,0.312500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,YOUNG,21,21,0.367708,0.285714,0.428571,0.523810,0.395521,9.000000,G Sauce,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,杨布拉德,42,42,0.757933,0.714286,0.809524,0.857143,0.776326,1.000000,天府事变CDREV,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,TY,27,27,0.269913,0.148148,0.370370,0.555556,0.327512,8.000000,刘柄鑫,0.130435
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,恶童,33,33,0.443690,0.333333,0.606061,0.696970,0.495807,4.000000,雲道,0.136364
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,班比 Bambii,41,41,0.658315,0.560976,0.731707,0.902439,0.711190,1.000000,MULA SAKEE,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,S1,14,14,0.229635,0.214286,0.214286,0.214286,0.214286,50.000000,张雪飞,0.181818
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Kzoo,43,42,0.660192,0.595238,0.761905,0.809524,0.690461,1.000000,APMOZART,0.117647
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,罗言,21,21,0.230523,0.095238,0.380952,0.523810,0.284588,8.000000,张雪飞,0.315789
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,阿斯巴田,42,42,0.307335,0.142857,0.452381,0.666667,0.380302,8.000000,张雪飞,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,笑男孩,28,27,0.149751,0.074074,0.148148,0.333333,0.174534,20.000000,爽子,0.120000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,黑麦,33,33,0.639342,0.606061,0.696970,0.696970,0.649953,1.000000,张雪飞,0.153846
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,张大炮,42,42,0.796592,0.785714,0.809524,0.809524,0.794925,1.000000,APMOZART,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Rich4ever,29,29,0.739718,0.655172,0.862069,0.931034,0.784522,1.000000,李大奔BENZO,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,二狗子,22,22,0.827113,0.818182,0.818182,0.818182,0.818182,1.000000,新街口组合,0.250000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,FAC-D12,25,25,0.529599,0.480000,0.560000,0.600000,0.534045,2.000000,直火帮,0.153846
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,法老,39,39,0.606360,0.538462,0.692308,0.794872,0.646056,1.000000,张雪飞,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,HAS,38,38,0.588933,0.473684,0.736842,0.868421,0.653185,2.000000,张雪飞,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,NOTTIBO1,22,22,0.777004,0.636364,0.954545,0.954545,0.822060,1.000000,王嘉尔,0.375000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Busta Z,28,28,0.483290,0.392857,0.571429,0.642857,0.512187,2.000000,Mercy(lago),0.117647
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Athree,22,22,0.233150,0.181818,0.272727,0.318182,0.243233,37.000000,AR,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,赵山河,31,31,0.523511,0.387097,0.645161,0.709677,0.567361,2.000000,张大炮,0.315789
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Gm仙,27,27,0.769165,0.666667,0.888889,0.888889,0.797175,1.000000,阿童木,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,PO8,39,39,0.699103,0.589744,0.820513,0.923077,0.751998,1.000000,天府事变CDREV,0.187500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,斯威特,40,40,0.624113,0.575000,0.700000,0.775000,0.653844,1.000000,张雪飞,0.235294
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,八口8uck,33,33,0.403500,0.242424,0.636364,0.727273,0.471064,4.000000,APMOZART,0.160000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,艾热 AIR,22,22,0.241112,0.136364,0.318182,0.454545,0.277438,11.000000,福克斯,0.105263
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,大狗,21,21,0.372348,0.238095,0.476190,0.666667,0.429593,6.000000,新街口组合,0.187500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,龙胆紫,10,10,0.224439,0.100000,0.400000,0.600000,0.297477,6.000000,爽子,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,孙八一,34,34,0.771695,0.705882,0.882353,0.941176,0.809619,1.000000,爆音Boom,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,功夫胖,28,28,0.524291,0.500000,0.535714,0.571429,0.529762,1.000000,C-Block,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,于漂 eZ Yang Fizz,23,23,0.682741,0.652174,0.739130,0.782609,0.703206,1.000000,PO8,0.375000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,上官承诺,18,18,0.239969,0.111111,0.333333,0.500000,0.295155,10.000000,小鸭哥,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,BossWang,15,15,0.286545,0.200000,0.333333,0.533333,0.333093,10.000000,滇声气,0.250000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Blow Fever,25,25,0.707053,0.600000,0.840000,0.920000,0.755156,1.000000,雲道,0.300000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,ICE,28,28,0.157384,0.107143,0.142857,0.285714,0.170063,26.000000,张雪飞,0.120000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Kigga,19,19,0.083821,0.000000,0.105263,0.368421,0.132463,17.000000,Jony J,0.157895
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,马思唯,32,32,0.471959,0.312500,0.625000,0.750000,0.528037,2.000000,李大奔BENZO,0.227273
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,胡彦斌 TIGER HU,33,30,0.452171,0.400000,0.466667,0.600000,0.479303,6.000000,新街口组合,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Hotkey金朝,31,30,0.525826,0.500000,0.533333,0.533333,0.521031,1.000000,张雪飞,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,小老虎,18,18,0.337314,0.222222,0.500000,0.611111,0.391540,5.000000,张雪飞,0.214286
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Mercy(lago),42,42,0.621063,0.500000,0.761905,0.857143,0.672273,1.000000,Nxmad诺曼得,0.238095
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,光光 (MC),31,31,0.445944,0.290323,0.612903,0.774194,0.514292,4.000000,APMOZART,0.136364
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,GNS耀耀,13,13,0.070082,0.000000,0.153846,0.153846,0.071591,40.000000,小鸭哥,0.384615
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,辛巴,34,34,0.252256,0.147059,0.352941,0.558824,0.315556,8.000000,孤矢,0.137931
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,姜云升,33,33,0.654034,0.545455,0.818182,0.818182,0.690597,1.000000,张雪飞,0.400000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,西米,21,21,0.176942,0.095238,0.190476,0.380952,0.205728,17.000000,APMOZART,0.105263
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,张千,30,29,0.481145,0.379310,0.620690,0.620690,0.509643,3.000000,刘柄鑫,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,GALI,33,33,0.548819,0.393939,0.696970,0.848485,0.614968,2.000000,MULA SAKEE,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,乃万,38,38,0.208875,0.052632,0.421053,0.631579,0.293881,6.000000,王嘉尔,0.194444
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,小鸭哥,40,40,0.633614,0.525000,0.750000,0.800000,0.670443,1.000000,张雪飞,0.210526
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Ansr J,24,24,0.346733,0.250000,0.458333,0.541667,0.378451,7.000000,李大奔BENZO,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Ghost Crew,43,43,0.597603,0.534884,0.651163,0.744186,0.623945,1.000000,爽子,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,诺米么Lodmemo,12,12,0.480934,0.416667,0.666667,0.666667,0.517032,4.000000,张雪飞,0.428571
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,饺子,39,39,0.469109,0.307692,0.692308,0.743590,0.530539,3.000000,张雪飞,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,九块钱,20,20,0.507912,0.450000,0.550000,0.700000,0.545737,3.000000,廖效浓,0.272727
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,KnowKnow,20,20,0.287657,0.200000,0.350000,0.400000,0.301293,16.000000,王嘉尔,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,阿水YoungBJ,39,39,0.735410,0.641026,0.820513,0.846154,0.758324,1.000000,廖效浓,0.285714
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,YOUNGLEGO,26,26,0.406800,0.384615,0.423077,0.423077,0.401180,20.000000,饺子,0.187500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,派克特,18,18,0.247902,0.222222,0.222222,0.277778,0.239748,30.000000,大D,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,嫩桃弟弟,20,20,0.558989,0.500000,0.700000,0.700000,0.590876,1.000000,张雪飞,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,黑螺丝,26,26,0.350247,0.192308,0.461538,0.653846,0.410674,6.000000,雲道,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,龙井说唱 孙旭,16,16,0.489718,0.437500,0.562500,0.625000,0.516501,3.000000,爽子,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,邓典果,24,24,0.440337,0.375000,0.458333,0.500000,0.440722,8.000000,MULA SAKEE,0.266667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,谢帝,21,21,0.573694,0.476190,0.666667,0.761905,0.608148,2.000000,直火帮,0.181818
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,阿童木,17,17,0.830015,0.823529,0.823529,0.823529,0.823529,1.000000,天府事变CDREV,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,GAI,27,27,0.381033,0.222222,0.592593,0.666667,0.442900,5.000000,胡彦斌 TIGER HU,0.190476
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Nxmad诺曼得,37,37,0.689515,0.567568,0.864865,0.891892,0.736425,1.000000,王嘉尔,0.375000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,那奇沃夫,31,31,0.530487,0.419355,0.612903,0.709677,0.564222,2.000000,Six City,0.222222
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,呆宝静,21,21,0.113519,0.047619,0.142857,0.238095,0.124872,29.000000,张雪飞,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,爆音Boom,23,23,0.385862,0.304348,0.434783,0.521739,0.407916,7.000000,张雪飞,0.187500
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,杨和苏KeyNG,29,29,0.494554,0.413793,0.620690,0.655172,0.522441,3.000000,张雪飞,0.176471
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Tizzy T,37,37,0.451381,0.324324,0.621622,0.702703,0.499787,3.000000,廖效浓,0.240000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,龙泽宇,29,29,0.434645,0.344828,0.551724,0.758621,0.497747,5.000000,王嘉尔,0.105263
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Sbazzo,31,30,0.464215,0.333333,0.600000,0.733333,0.519235,3.000000,隐藏,0.150000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,大笑,22,22,0.227415,0.136364,0.318182,0.454545,0.268760,11.000000,Jony J,0.157895
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,辉子,22,22,0.302495,0.227273,0.363636,0.409091,0.308243,15.000000,杨布拉德,0.117647
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,卢慈航,28,27,0.194490,0.074074,0.259259,0.370370,0.218675,15.000000,小鸭哥,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Kc,41,41,0.573074,0.487805,0.682927,0.707317,0.598190,2.000000,APMOZART,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Jarstick,30,30,0.527317,0.466667,0.600000,0.666667,0.552165,2.000000,新街口组合,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Higher Brothers,23,23,0.326120,0.173913,0.478261,0.608696,0.374987,6.000000,雲道,0.210526
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,宝石老舅,34,34,0.415389,0.323529,0.500000,0.588235,0.440670,5.000000,GAI,0.130435
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,熊猫涂杰,41,41,0.421757,0.341463,0.512195,0.658537,0.463987,5.000000,滇声气,0.185185
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,张雪飞,41,41,0.685252,0.609756,0.780488,0.804878,0.709373,1.000000,爽子,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,No Fear Family,33,33,0.461290,0.424242,0.454545,0.484848,0.454156,12.000000,龙泽宇,0.105263
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,杀手耗,33,33,0.626956,0.606061,0.636364,0.666667,0.630772,1.000000,Jony J,0.153846
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,揽佬,17,17,0.676580,0.647059,0.705882,0.764706,0.690768,1.000000,李尔新,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,艾福杰尼,34,34,0.309012,0.147059,0.470588,0.705882,0.391456,6.000000,李大奔BENZO,0.103448
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,说唱东百人,23,23,0.899209,0.869565,0.913043,0.913043,0.896997,1.000000,刀脚,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,大傻 (Damnshine),22,22,0.301666,0.272727,0.318182,0.363636,0.304651,28.000000,功夫胖,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,龙井说唱 孙骁,15,14,0.309187,0.285714,0.285714,0.285714,0.285714,22.000000,Jony J,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Dirty Twinz,13,13,0.021219,0.000000,0.000000,0.000000,0.000000,79.000000,王嘉尔,0.076923
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,那吾克热-NW,24,24,0.215669,0.041667,0.416667,0.416667,0.253555,12.000000,Six City,0.173913
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,雲道,43,42,0.483143,0.285714,0.761905,0.857143,0.570869,2.000000,王嘉尔,0.100000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Mac Overseas,23,22,0.230099,0.090909,0.318182,0.363636,0.241391,12.000000,李大奔BENZO,0.100000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,廖效浓,33,33,0.661633,0.575758,0.787879,0.787879,0.685552,1.000000,王嘉尔,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,YoungChigga,43,43,0.690812,0.627907,0.744186,0.860465,0.726522,1.000000,王嘉尔,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,张颜齐,20,20,0.288037,0.250000,0.300000,0.400000,0.304867,25.000000,王嘉尔,0.133333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,默示船政,48,48,0.632548,0.562500,0.708333,0.750000,0.652030,1.000000,AR,0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,KITO,30,30,0.596606,0.466667,0.733333,0.900000,0.664939,2.000000,MULA SAKEE,0.250000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Kandi 侃迪,34,34,0.360163,0.264706,0.411765,0.470588,0.373919,12.000000,G Sauce,0.080000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,西奥,26,25,0.367837,0.280000,0.440000,0.520000,0.391784,9.000000,新街口组合,0.111111
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,王齐铭,30,30,0.620976,0.566667,0.633333,0.700000,0.631713,1.000000,刘柄鑫,0.153846
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,大D,42,42,0.371970,0.238095,0.500000,0.619048,0.420676,5.000000,河南说唱之神,0.156250
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,OG Three,43,43,0.634721,0.581395,0.697674,0.767442,0.659345,1.000000,张雪飞,0.277778
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,红手指,6,6,0.258319,0.166667,0.333333,0.333333,0.271822,40.000000,刘柄鑫,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,万赛文,18,18,0.199527,0.166667,0.166667,0.222222,0.186456,23.000000,王嘉尔,0.200000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,黄旭,23,23,0.237243,0.086957,0.391304,0.434783,0.271455,16.000000,Mercy(lago),0.142857
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,吾人莲花,8,8,0.258645,0.250000,0.250000,0.250000,0.250000,70.000000,雲道,0.333333
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,热狗,29,29,0.384500,0.310345,0.448276,0.551724,0.406763,7.000000,李尔新,0.100000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Bridge,17,17,0.096825,0.000000,0.176471,0.294118,0.119237,20.000000,CJ BAda$$ (希介),0.117647
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,小酷coola,16,15,0.302525,0.200000,0.433333,0.433333,0.325138,14.000000,GALI,0.166667
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,Wya乌鸦,36,36,0.439741,0.333333,0.611111,0.722222,0.500569,4.000000,张雪飞,0.125000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,是Triple M,14,14,0.164256,0.142857,0.142857,0.214286,0.163505,51.000000,GALI,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Six City,9,9,0.889625,0.888889,0.888889,0.888889,0.888889,1.000000,Athree,1.000000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,王以太,24,24,0.278990,0.208333,0.291667,0.291667,0.260911,18.000000,Mercy(lago),0.157895
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,王嘉尔,37,37,0.861452,0.810811,0.945946,0.972973,0.888278,1.000000,Nxmad诺曼得,0.428571
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,福克斯,40,39,0.697485,0.666667,0.717949,0.769231,0.711931,1.000000,天府事变CDREV,0.153846
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,徐真真,42,42,0.273309,0.119048,0.428571,0.571429,0.330068,9.000000,张雪飞,0.189189
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,隐藏,9,9,0.051360,0.000000,0.111111,0.111111,0.047853,40.000000,爽子,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,天府事变CDREV,44,44,0.622971,0.545455,0.727273,0.727273,0.644119,1.000000,Nxmad诺曼得,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,jinjibewater,20,20,0.082951,0.000000,0.150000,0.200000,0.093699,47.000000,班比 Bambii,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,APMOZART,45,45,0.969136,0.955556,0.977778,1.000000,0.976266,1.000000,G Sauce,0.500000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,多雷 Swang,39,39,0.608982,0.538462,0.743590,0.769231,0.640802,1.000000,张雪飞,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,刘柄鑫,30,30,0.826838,0.800000,0.833333,0.900000,0.843253,1.000000,张雪飞,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,国蛋,36,34,0.824803,0.764706,0.882353,0.911765,0.842321,1.000000,雲道,0.375000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,弹壳,10,10,0.008133,0.000000,0.000000,0.000000,0.000000,142.000000,小青龙,0.100000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,梁维嘉,32,32,0.617196,0.531250,0.750000,0.812500,0.658184,1.000000,刘柄鑫,0.066667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,冲天小火煎,18,18,0.107866,0.055556,0.111111,0.277778,0.130593,33.000000,小鸭哥,0.176471
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,TOYOKI,35,35,0.270947,0.171429,0.285714,0.628571,0.333468,9.000000,APMOZART,0.137931
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Capper,28,28,0.470745,0.392857,0.500000,0.678571,0.506540,4.000000,王嘉尔,0.117647
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,義胜合,12,12,0.765646,0.750000,0.750000,0.833333,0.779684,1.000000,秃子,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,红狼,12,11,0.287700,0.272727,0.272727,0.272727,0.272727,62.000000,雲道,0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,雾都 (Wudu Montana),21,21,0.141796,0.095238,0.095238,0.285714,0.155084,29.000000,AR,0.105263
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,zhazha,8,8,0.060943,0.000000,0.125000,0.125000,0.062500,33.000000,Mercy(lago),0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,李大奔BENZO,31,31,0.665487,0.516129,0.870968,0.935484,0.729431,1.000000,MULA SAKEE,0.266667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,丸,21,20,0.525866,0.400000,0.600000,0.750000,0.564232,2.000000,张雪飞,0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Tangoz,36,35,0.567052,0.485714,0.628571,0.742857,0.600121,2.000000,直火帮,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,离合,28,28,0.967033,0.964286,0.964286,0.964286,0.964286,1.000000,MULA SAKEE,1.000000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,G Sauce,34,34,0.837239,0.794118,0.911765,0.941176,0.859940,1.000000,APMOZART,0.285714
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Cream D,16,16,0.248665,0.125000,0.312500,0.562500,0.308924,8.000000,NOTTIBO1,0.214286
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,李佳隆,36,36,0.320430,0.250000,0.388889,0.472222,0.339492,11.000000,KITO,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Poorman,9,9,0.071364,0.000000,0.222222,0.222222,0.098539,58.000000,孤矢,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,小青龙,29,29,0.140889,0.068966,0.206897,0.344828,0.169885,19.000000,刘柄鑫,0.074074
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,吴晨阳,10,10,0.754613,0.700000,0.800000,0.800000,0.763093,1.000000,王嘉尔,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Melo,15,15,0.104894,0.066667,0.133333,0.133333,0.092457,34.000000,AR,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,JD,38,38,0.825736,0.815789,0.842105,0.842105,0.827123,1.000000,徐真真,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Korn,25,25,0.418076,0.360000,0.480000,0.560000,0.439368,7.000000,天府事变CDREV,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,梁老师Tsong,39,38,0.343182,0.263158,0.368421,0.447368,0.351409,12.000000,廖效浓,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,木秦,34,34,0.460990,0.323529,0.676471,0.735294,0.521927,3.000000,天府事变CDREV,0.130435
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,孔令奇,32,32,0.359466,0.250000,0.468750,0.531250,0.386126,6.000000,新街口组合,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,鹿奇,42,42,0.569153,0.523810,0.595238,0.666667,0.586365,1.000000,C-Block,0.100000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,ROB93,17,17,0.348594,0.294118,0.352941,0.411765,0.348235,21.000000,雲道,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,泰格西,22,22,0.437965,0.318182,0.590909,0.590909,0.464105,3.000000,APMOZART,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,王晨宇IceCraz,47,47,0.327484,0.212766,0.425532,0.617021,0.381202,8.000000,张雪飞,0.081081
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Green Soldier,10,10,0.321586,0.200000,0.400000,0.500000,0.355092,10.000000,V.O.B.,0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,傲傲,40,40,0.354021,0.200000,0.550000,0.625000,0.407926,3.000000,廖效浓,0.156250
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,CJ BAda$$ (希介),27,27,0.459550,0.333333,0.592593,0.740741,0.518600,4.000000,MULA SAKEE,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,花生,12,12,0.167000,0.083333,0.166667,0.333333,0.193373,39.000000,乃万,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,刀脚,23,23,0.512747,0.347826,0.782609,0.826087,0.583935,3.000000,G Sauce,0.266667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,河南说唱之神,46,46,0.804114,0.760870,0.847826,0.913043,0.827466,1.000000,张雪飞,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,C-Block,43,42,0.422636,0.309524,0.523810,0.738095,0.485402,5.000000,张雪飞,0.103448
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,V.O.B.,15,15,0.672569,0.533333,0.800000,0.800000,0.701581,1.000000,Green Soldier,0.285714
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,土人儿,21,21,0.281827,0.190476,0.380952,0.428571,0.298282,16.000000,MULA SAKEE,0.235294
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Surfosho,7,7,0.234532,0.142857,0.285714,0.285714,0.232990,30.000000,neverkilltheape,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,满舒克,33,33,0.326570,0.151515,0.515152,0.696970,0.405012,5.000000,饺子,0.107143
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,金熙宇,16,16,0.053158,0.000000,0.062500,0.062500,0.026917,28.000000,杀手耗,0.187500
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Ice Paper,32,32,0.189840,0.031250,0.468750,0.562500,0.270520,7.000000,张雪飞,0.193548
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,ljz329,11,11,0.144126,0.090909,0.181818,0.181818,0.136364,46.000000,Mercy(lago),0.300000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,AR,36,36,0.828693,0.777778,0.888889,0.888889,0.840607,1.000000,王嘉尔,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,黄昭,24,24,0.336401,0.208333,0.458333,0.541667,0.370956,7.000000,YuGo,0.105263
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Over$ize,16,16,0.735106,0.687500,0.750000,0.812500,0.747766,1.000000,AR,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,直火帮,39,39,0.741697,0.615385,0.923077,0.974359,0.797895,1.000000,Nxmad诺曼得,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,爽子,17,17,0.903743,0.882353,0.941176,0.941176,0.911765,1.000000,Jony J,0.500000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Nasty Ray,6,6,0.190741,0.166667,0.166667,0.166667,0.166667,28.000000,天府事变CDREV,0.400000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,望江晴,18,18,0.132967,0.000000,0.166667,0.444444,0.191034,13.000000,张雪飞,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Jony J,42,42,0.830461,0.809524,0.833333,0.880952,0.841508,1.000000,天府事变CDREV,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,SASIOVERLXRD,26,26,0.466613,0.384615,0.576923,0.653846,0.501399,4.000000,G Sauce,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,张昊,15,15,0.123648,0.000000,0.266667,0.266667,0.137440,20.000000,刘柄鑫,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,秃子,20,20,0.708706,0.650000,0.750000,0.750000,0.713093,1.000000,张大炮,0.285714
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,方仔,32,31,0.378325,0.290323,0.483871,0.612903,0.421851,6.000000,张雪飞,0.272727
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,404 Rapper,23,23,0.094426,0.000000,0.173913,0.217391,0.110815,52.000000,离合,0.086957
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,金蛇 traphouse,6,6,0.570726,0.500000,0.666667,0.833333,0.631147,1.000000,CJ BAda$$ (希介),0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,老黑Black J,11,11,0.304588,0.272727,0.272727,0.363636,0.303030,20.000000,Jony J,0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,坚强的小黄瓜,41,41,0.678612,0.536585,0.878049,0.878049,0.727792,1.000000,张雪飞,0.210526
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,C-Low,28,28,0.455499,0.357143,0.535714,0.642857,0.487633,3.000000,王嘉尔,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,thomeboydontkill,21,21,0.208637,0.142857,0.285714,0.380952,0.229847,15.000000,APMOZART,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,MULA SAKEE,33,33,0.879849,0.818182,0.939394,0.969697,0.900792,1.000000,APMOZART,0.500000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,DBL.D,12,12,0.080995,0.000000,0.166667,0.250000,0.107240,34.000000,PO8,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,刘聪 (Key.L),35,35,0.557956,0.457143,0.628571,0.742857,0.592215,2.000000,C-Block,0.157895
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Max马俊,14,14,0.317006,0.214286,0.428571,0.500000,0.351428,10.000000,小鸭哥,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,连麻Swimming,26,26,0.443272,0.269231,0.615385,0.692308,0.495818,2.000000,李尔新,0.157895
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,OWVRO老弟,23,23,0.410830,0.304348,0.565217,0.565217,0.435220,4.000000,离合,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Vava,26,26,0.103916,0.038462,0.192308,0.230769,0.115167,32.000000,王嘉尔,0.080000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,KKLUV,27,27,0.410785,0.259259,0.555556,0.703704,0.468956,3.000000,那奇沃夫,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,孤矢,37,37,0.472051,0.378378,0.540541,0.675676,0.507465,3.000000,张雪飞,0.173913
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Turbo嗣尧,20,20,0.065195,0.000000,0.050000,0.200000,0.068427,18.000000,王嘉尔,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,李尔新,32,32,0.387790,0.250000,0.562500,0.656250,0.442978,4.000000,G Sauce,0.083333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,YuGo,33,33,0.444554,0.303030,0.545455,0.818182,0.525734,4.000000,廖效浓,0.173913
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Regi 陈彦希,12,12,0.057595,0.000000,0.000000,0.250000,0.080641,21.000000,王嘉尔,0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,正义感,18,18,0.332526,0.222222,0.388889,0.500000,0.354681,10.000000,Jony J,0.428571
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,southsidesamurai,12,12,0.305676,0.166667,0.333333,0.666667,0.378458,7.000000,爽子,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,滇声气,23,23,0.602582,0.521739,0.695652,0.782609,0.638431,1.000000,雲道,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,新街口组合,26,26,0.550807,0.384615,0.769231,0.769231,0.600120,2.000000,张雪飞,0.312500
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,YOUNG,21,21,0.373887,0.285714,0.428571,0.571429,0.411394,7.000000,G Sauce,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,杨布拉德,42,42,0.764684,0.714286,0.809524,0.904762,0.794727,1.000000,jinjibewater,0.083333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,TY,27,27,0.271975,0.148148,0.370370,0.555556,0.328883,9.000000,刘柄鑫,0.173913
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,恶童,33,33,0.412790,0.303030,0.575758,0.666667,0.464434,4.000000,雲道,0.173913
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,班比 Bambii,41,41,0.620189,0.487805,0.731707,0.902439,0.683052,2.000000,MULA SAKEE,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,S1,14,14,0.229831,0.214286,0.214286,0.214286,0.214286,58.000000,张雪飞,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Kzoo,43,42,0.687684,0.619048,0.761905,0.833333,0.717764,1.000000,离合,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,罗言,21,21,0.209828,0.095238,0.238095,0.523810,0.265717,9.000000,张雪飞,0.210526
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,阿斯巴田,42,42,0.348056,0.214286,0.428571,0.619048,0.396704,6.000000,张雪飞,0.121212
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,笑男孩,28,27,0.188672,0.111111,0.259259,0.370370,0.215532,18.000000,张雪飞,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,黑麦,33,33,0.652369,0.636364,0.666667,0.696970,0.658974,1.000000,姜云升,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,张大炮,42,42,0.807620,0.785714,0.809524,0.857143,0.816609,1.000000,APMOZART,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Rich4ever,29,29,0.756125,0.655172,0.896552,0.931034,0.797894,1.000000,李大奔BENZO,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,二狗子,22,22,0.782197,0.727273,0.818182,0.818182,0.784630,1.000000,新街口组合,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,FAC-D12,25,25,0.547798,0.480000,0.560000,0.680000,0.568704,2.000000,直火帮,0.153846
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,法老,39,39,0.622079,0.538462,0.743590,0.794872,0.658506,1.000000,张雪飞,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,HAS,38,38,0.583794,0.473684,0.710526,0.868421,0.648537,2.000000,张雪飞,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,NOTTIBO1,22,22,0.756995,0.636364,0.909091,0.909091,0.793382,1.000000,王嘉尔,0.375000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Busta Z,28,28,0.509014,0.428571,0.571429,0.714286,0.552150,2.000000,滇声气,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Athree,22,22,0.238034,0.181818,0.318182,0.318182,0.247657,36.000000,AR,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,赵山河,31,31,0.526412,0.387097,0.677419,0.709677,0.569663,2.000000,张大炮,0.263158
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Gm仙,27,27,0.800935,0.740741,0.888889,0.888889,0.819664,1.000000,梁维嘉,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,PO8,39,39,0.739252,0.666667,0.846154,0.897436,0.773947,1.000000,直火帮,0.153846
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,斯威特,40,40,0.641816,0.575000,0.700000,0.825000,0.681034,1.000000,张雪飞,0.235294
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,八口8uck,33,33,0.428838,0.272727,0.666667,0.757576,0.498648,4.000000,APMOZART,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,艾热 AIR,22,22,0.189232,0.090909,0.272727,0.363636,0.214493,18.000000,乃万,0.100000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,大狗,21,21,0.346050,0.190476,0.523810,0.666667,0.411671,5.000000,新街口组合,0.235294
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,龙胆紫,10,10,0.223150,0.100000,0.300000,0.600000,0.294412,6.000000,爽子,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,孙八一,34,34,0.799440,0.735294,0.882353,0.941176,0.830916,1.000000,爽子,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,功夫胖,28,28,0.531374,0.500000,0.571429,0.571429,0.535714,1.000000,C-Block,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,于漂 eZ Yang Fizz,23,23,0.681169,0.652174,0.739130,0.782609,0.701435,1.000000,PO8,0.375000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,上官承诺,18,18,0.242318,0.111111,0.388889,0.388889,0.265536,12.000000,小鸭哥,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,BossWang,15,15,0.328377,0.266667,0.333333,0.600000,0.382593,9.000000,滇声气,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Blow Fever,25,25,0.751536,0.680000,0.880000,0.920000,0.789414,1.000000,离合,0.250000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,ICE,28,28,0.163767,0.107143,0.142857,0.321429,0.182911,24.000000,张雪飞,0.120000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Kigga,19,19,0.084366,0.000000,0.105263,0.263158,0.101539,21.000000,Jony J,0.157895
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,马思唯,32,32,0.442579,0.281250,0.562500,0.812500,0.521641,3.000000,李大奔BENZO,0.260870
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,胡彦斌 TIGER HU,33,30,0.415923,0.400000,0.400000,0.466667,0.421627,29.000000,新街口组合,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Hotkey金朝,31,30,0.558925,0.533333,0.566667,0.566667,0.554364,1.000000,张雪飞,0.214286
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,小老虎,18,18,0.335106,0.222222,0.555556,0.611111,0.389392,5.000000,张雪飞,0.285714
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Mercy(lago),42,42,0.603249,0.476190,0.785714,0.833333,0.653235,2.000000,Nxmad诺曼得,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,光光 (MC),31,31,0.457711,0.322581,0.580645,0.806452,0.530035,4.000000,APMOZART,0.095238
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,GNS耀耀,13,13,0.073986,0.000000,0.153846,0.153846,0.071591,25.000000,小鸭哥,0.384615
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,辛巴,34,34,0.253308,0.147059,0.382353,0.529412,0.306889,9.000000,刘柄鑫,0.137931
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,姜云升,33,33,0.693334,0.606061,0.818182,0.818182,0.719822,1.000000,张雪飞,0.461538
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,西米,21,21,0.164932,0.047619,0.238095,0.476190,0.223105,13.000000,APMOZART,0.100000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,张千,30,29,0.518477,0.413793,0.620690,0.655172,0.545193,2.000000,滇声气,0.176471
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,GALI,33,33,0.547804,0.424242,0.727273,0.818182,0.604155,2.000000,王嘉尔,0.105263
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,乃万,38,38,0.206285,0.026316,0.500000,0.684211,0.309892,5.000000,Nxmad诺曼得,0.135135
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,小鸭哥,40,40,0.653895,0.550000,0.775000,0.800000,0.685387,1.000000,张雪飞,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Ansr J,24,24,0.356281,0.250000,0.458333,0.541667,0.385552,8.000000,李大奔BENZO,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Ghost Crew,43,43,0.601473,0.511628,0.697674,0.813953,0.646845,1.000000,爽子,0.190476
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,诺米么Lodmemo,12,12,0.469505,0.416667,0.583333,0.583333,0.484794,4.000000,张雪飞,0.428571
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,饺子,39,39,0.498903,0.358974,0.692308,0.743590,0.551699,3.000000,张雪飞,0.160000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,九块钱,20,20,0.506399,0.450000,0.550000,0.650000,0.530117,3.000000,廖效浓,0.272727
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,KnowKnow,20,20,0.287304,0.200000,0.300000,0.450000,0.314237,16.000000,王嘉尔,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,阿水YoungBJ,39,39,0.750562,0.666667,0.846154,0.871795,0.775485,1.000000,新街口组合,0.230769
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,YOUNGLEGO,26,26,0.407677,0.384615,0.423077,0.423077,0.401180,14.000000,饺子,0.187500
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,派克特,18,18,0.248423,0.222222,0.222222,0.277778,0.239748,29.000000,天府事变CDREV,0.071429
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,嫩桃弟弟,20,20,0.540365,0.450000,0.700000,0.700000,0.578080,2.000000,离合,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,黑螺丝,26,26,0.430304,0.269231,0.576923,0.730769,0.493320,3.000000,天府事变CDREV,0.157895
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,龙井说唱 孙旭,16,16,0.447107,0.375000,0.562500,0.625000,0.483595,4.000000,爽子,0.400000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,邓典果,24,24,0.446152,0.375000,0.500000,0.500000,0.445522,4.000000,MULA SAKEE,0.266667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,谢帝,21,21,0.595959,0.476190,0.714286,0.714286,0.613942,2.000000,直火帮,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,阿童木,17,17,0.832565,0.823529,0.823529,0.882353,0.841237,1.000000,天府事变CDREV,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,GAI,27,27,0.378862,0.222222,0.555556,0.666667,0.441879,4.000000,胡彦斌 TIGER HU,0.190476
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Nxmad诺曼得,37,37,0.709132,0.594595,0.864865,0.864865,0.744365,1.000000,王嘉尔,0.333333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,那奇沃夫,31,31,0.512303,0.387097,0.612903,0.709677,0.550823,2.000000,Six City,0.210526
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,呆宝静,21,21,0.107828,0.047619,0.095238,0.190476,0.107708,24.000000,张雪飞,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,爆音Boom,23,23,0.435123,0.391304,0.478261,0.565217,0.455918,6.000000,新街口组合,0.214286
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,杨和苏KeyNG,29,29,0.526166,0.448276,0.586207,0.724138,0.566304,3.000000,张雪飞,0.187500
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Tizzy T,37,37,0.457874,0.324324,0.648649,0.783784,0.527969,3.000000,廖效浓,0.240000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,龙泽宇,29,29,0.403586,0.310345,0.482759,0.724138,0.465418,6.000000,雲道,0.150000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Sbazzo,31,30,0.481029,0.300000,0.666667,0.733333,0.533962,2.000000,隐藏,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,大笑,22,22,0.212310,0.136364,0.227273,0.454545,0.258679,19.000000,Jony J,0.105263
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,辉子,22,22,0.300672,0.227273,0.318182,0.500000,0.330232,10.000000,杨布拉德,0.117647
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,卢慈航,28,27,0.231767,0.111111,0.333333,0.444444,0.266243,14.000000,小鸭哥,0.208333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Kc,41,41,0.574811,0.487805,0.658537,0.707317,0.598575,2.000000,APMOZART,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Jarstick,30,30,0.563373,0.500000,0.600000,0.666667,0.577563,1.000000,新街口组合,0.133333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Higher Brothers,23,23,0.409563,0.260870,0.478261,0.652174,0.449376,6.000000,马思唯,0.235294
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,宝石老舅,34,34,0.430706,0.352941,0.529412,0.647059,0.468421,4.000000,GAI,0.136364
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,熊猫涂杰,41,41,0.427500,0.341463,0.536585,0.658537,0.469070,5.000000,滇声气,0.185185
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,张雪飞,41,41,0.705173,0.634146,0.804878,0.804878,0.724642,1.000000,饺子,0.133333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,No Fear Family,33,33,0.466979,0.424242,0.454545,0.545455,0.473275,8.000000,Nxmad诺曼得,0.105263
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,杀手耗,33,33,0.628700,0.606061,0.636364,0.666667,0.632006,1.000000,G Sauce,0.153846
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,揽佬,17,17,0.680974,0.647059,0.764706,0.764706,0.695149,1.000000,AR,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,艾福杰尼,34,34,0.343046,0.176471,0.558824,0.764706,0.434909,4.000000,雲道,0.178571
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,说唱东百人,23,23,0.921827,0.913043,0.913043,0.956522,0.926132,1.000000,爽子,0.500000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,大傻 (Damnshine),22,22,0.306767,0.272727,0.318182,0.409091,0.320842,29.000000,满舒克,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,龙井说唱 孙骁,15,14,0.336983,0.285714,0.357143,0.357143,0.330781,21.000000,Jony J,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Dirty Twinz,13,13,0.019453,0.000000,0.000000,0.000000,0.000000,76.000000,王嘉尔,0.076923
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,那吾克热-NW,24,24,0.250028,0.083333,0.416667,0.500000,0.302466,10.000000,Six City,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,雲道,43,42,0.478518,0.309524,0.714286,0.833333,0.559901,3.000000,直火帮,0.103448
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Mac Overseas,23,22,0.290173,0.181818,0.318182,0.545455,0.334951,9.000000,李大奔BENZO,0.111111
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,廖效浓,33,33,0.669931,0.575758,0.787879,0.818182,0.699953,1.000000,李大奔BENZO,0.142857
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,YoungChigga,43,43,0.727539,0.651163,0.837209,0.860465,0.756078,1.000000,王嘉尔,0.133333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,张颜齐,20,20,0.252324,0.200000,0.250000,0.350000,0.261773,24.000000,刘柄鑫,0.125000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,默示船政,48,48,0.635478,0.562500,0.708333,0.750000,0.651871,1.000000,YoungChigga,0.238095
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,KITO,30,30,0.629966,0.533333,0.766667,0.900000,0.689917,1.000000,Nxmad诺曼得,0.214286
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Kandi 侃迪,34,34,0.370504,0.264706,0.441176,0.558824,0.405052,6.000000,G Sauce,0.080000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,西奥,26,25,0.390766,0.320000,0.440000,0.560000,0.418342,6.000000,新街口组合,0.117647
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,王齐铭,30,30,0.618731,0.566667,0.633333,0.700000,0.628398,1.000000,刘柄鑫,0.153846
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,大D,42,42,0.360465,0.214286,0.500000,0.619048,0.411285,5.000000,河南说唱之神,0.181818
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,OG Three,43,43,0.662107,0.581395,0.744186,0.790698,0.687294,1.000000,张雪飞,0.222222
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,红手指,6,6,0.258438,0.166667,0.333333,0.333333,0.271822,38.000000,刘柄鑫,0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,万赛文,18,18,0.199146,0.166667,0.166667,0.222222,0.186456,23.000000,王嘉尔,0.133333
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,黄旭,23,23,0.257395,0.130435,0.347826,0.434783,0.286188,16.000000,Mercy(lago),0.200000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,吾人莲花,8,8,0.258608,0.250000,0.250000,0.250000,0.250000,68.000000,刘柄鑫,0.166667
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,热狗,29,29,0.397193,0.310345,0.448276,0.586207,0.424653,8.000000,Jony J,0.100000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Bridge,17,17,0.106955,0.000000,0.176471,0.294118,0.125546,14.000000,CJ BAda$$ (希介),0.117647
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,小酷coola,16,15,0.329479,0.266667,0.400000,0.400000,0.333333,12.000000,王嘉尔,0.090909
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,Wya乌鸦,36,36,0.433952,0.305556,0.611111,0.722222,0.496459,4.000000,王齐铭,0.160000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,是Triple M,14,14,0.172614,0.142857,0.214286,0.214286,0.170489,46.000000,GALI,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Six City,9,9,0.889635,0.888889,0.888889,0.888889,0.888889,1.000000,Athree,1.000000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,王以太,24,24,0.308265,0.250000,0.291667,0.333333,0.288832,15.000000,雲道,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,王嘉尔,37,37,0.861452,0.810811,0.945946,0.972973,0.888278,1.000000,Nxmad诺曼得,0.428571
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,福克斯,40,39,0.702679,0.666667,0.717949,0.769231,0.715288,1.000000,天府事变CDREV,0.153846
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,徐真真,42,42,0.273306,0.119048,0.428571,0.547619,0.323730,9.000000,张雪飞,0.162162
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,隐藏,9,9,0.050795,0.000000,0.111111,0.111111,0.047853,42.000000,爽子,0.222222
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,天府事变CDREV,44,44,0.622796,0.545455,0.727273,0.727273,0.644119,1.000000,Nxmad诺曼得,0.150000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,jinjibewater,20,20,0.082383,0.000000,0.150000,0.200000,0.091662,43.000000,班比 Bambii,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,APMOZART,45,45,0.969444,0.955556,0.977778,1.000000,0.976587,1.000000,G Sauce,0.500000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,多雷 Swang,39,39,0.606316,0.538462,0.743590,0.769231,0.638438,1.000000,张雪飞,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,刘柄鑫,30,30,0.828147,0.800000,0.866667,0.900000,0.844442,1.000000,张雪飞,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,国蛋,36,34,0.853011,0.794118,0.882353,0.970588,0.879872,1.000000,雲道,0.285714
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,弹壳,10,10,0.008073,0.000000,0.000000,0.000000,0.000000,144.000000,张雪飞,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,梁维嘉,32,32,0.619115,0.531250,0.750000,0.812500,0.659394,1.000000,爽子,0.133333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,冲天小火煎,18,18,0.108044,0.055556,0.111111,0.277778,0.131258,35.000000,小鸭哥,0.176471
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,TOYOKI,35,35,0.266201,0.171429,0.285714,0.600000,0.321880,9.000000,APMOZART,0.137931
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Capper,28,28,0.471444,0.392857,0.500000,0.714286,0.516867,4.000000,王嘉尔,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,義胜合,12,12,0.765635,0.750000,0.750000,0.833333,0.779684,1.000000,秃子,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,红狼,12,11,0.195292,0.181818,0.181818,0.181818,0.181818,75.000000,天府事变CDREV,0.222222
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,雾都 (Wudu Montana),21,21,0.187666,0.142857,0.142857,0.285714,0.188087,17.000000,AR,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,zhazha,8,8,0.060361,0.000000,0.125000,0.125000,0.062500,34.000000,Mercy(lago),0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,李大奔BENZO,31,31,0.665843,0.516129,0.870968,0.935484,0.729817,1.000000,MULA SAKEE,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,丸,21,20,0.519836,0.400000,0.625000,0.800000,0.574599,2.000000,刘柄鑫,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Tangoz,36,35,0.577445,0.500000,0.657143,0.742857,0.607521,1.000000,直火帮,0.114286
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,离合,28,28,0.967033,0.964286,0.964286,0.964286,0.964286,1.000000,MULA SAKEE,1.000000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,G Sauce,34,34,0.836420,0.794118,0.882353,0.970588,0.866868,1.000000,APMOZART,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Cream D,16,16,0.248455,0.125000,0.312500,0.562500,0.308924,8.000000,NOTTIBO1,0.214286
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,李佳隆,36,36,0.317499,0.250000,0.361111,0.444444,0.329382,14.000000,KITO,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Poorman,9,9,0.045811,0.000000,0.000000,0.222222,0.076616,62.000000,新街口组合,0.222222
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,小青龙,29,29,0.138731,0.068966,0.206897,0.344828,0.168683,20.000000,刘柄鑫,0.074074
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,吴晨阳,10,10,0.754602,0.700000,0.800000,0.800000,0.763093,1.000000,王嘉尔,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Melo,15,15,0.112407,0.066667,0.133333,0.133333,0.095378,33.000000,AR,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,JD,38,38,0.825578,0.815789,0.842105,0.842105,0.827123,1.000000,徐真真,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Korn,25,25,0.415683,0.360000,0.440000,0.560000,0.438142,7.000000,天府事变CDREV,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,梁老师Tsong,39,38,0.344627,0.263158,0.394737,0.421053,0.342784,12.000000,廖效浓,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,木秦,34,34,0.464303,0.323529,0.676471,0.705882,0.516526,3.000000,天府事变CDREV,0.130435
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,孔令奇,32,32,0.360622,0.250000,0.468750,0.531250,0.387496,6.000000,王嘉尔,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,鹿奇,42,42,0.576979,0.547619,0.595238,0.666667,0.592035,1.000000,C-Block,0.105263
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,ROB93,17,17,0.318698,0.235294,0.352941,0.411765,0.326525,22.000000,APMOZART,0.230769
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,泰格西,22,22,0.414486,0.272727,0.590909,0.590909,0.446521,3.000000,APMOZART,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,王晨宇IceCraz,47,47,0.312886,0.191489,0.425532,0.595745,0.364034,9.000000,张雪飞,0.078947
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Green Soldier,10,10,0.303902,0.200000,0.400000,0.400000,0.313093,11.000000,V.O.B.,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,傲傲,40,40,0.349138,0.200000,0.550000,0.625000,0.403800,4.000000,廖效浓,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,CJ BAda$$ (希介),27,27,0.455282,0.333333,0.592593,0.740741,0.514524,4.000000,MULA SAKEE,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,花生,12,12,0.180227,0.083333,0.250000,0.333333,0.205355,39.000000,雲道,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,刀脚,23,23,0.533025,0.391304,0.826087,0.869565,0.611109,3.000000,G Sauce,0.357143
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,河南说唱之神,46,46,0.803566,0.760870,0.847826,0.913043,0.826892,1.000000,张雪飞,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,C-Block,43,42,0.406075,0.285714,0.523810,0.690476,0.460227,4.000000,梁维嘉,0.100000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,V.O.B.,15,15,0.706301,0.600000,0.800000,0.800000,0.726186,1.000000,Green Soldier,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,土人儿,21,21,0.279787,0.190476,0.333333,0.428571,0.296823,16.000000,MULA SAKEE,0.235294
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Surfosho,7,7,0.097049,0.000000,0.142857,0.285714,0.135199,111.000000,neverkilltheape,0.285714
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,满舒克,33,33,0.352382,0.181818,0.515152,0.696970,0.423486,3.000000,廖效浓,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,金熙宇,16,16,0.053714,0.000000,0.062500,0.125000,0.044984,29.000000,杀手耗,0.187500
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Ice Paper,32,32,0.192640,0.031250,0.468750,0.593750,0.281720,7.000000,张雪飞,0.161290
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,ljz329,11,11,0.144961,0.090909,0.181818,0.181818,0.136364,39.000000,Mercy(lago),0.300000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,AR,36,36,0.875115,0.861111,0.888889,0.888889,0.875000,1.000000,王嘉尔,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,黄昭,24,24,0.337197,0.208333,0.458333,0.541667,0.371307,6.000000,YuGo,0.105263
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Over$ize,16,16,0.734972,0.687500,0.750000,0.812500,0.747766,1.000000,AR,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,直火帮,39,39,0.779372,0.666667,0.897436,0.974359,0.826107,1.000000,Nxmad诺曼得,0.230769
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,爽子,17,17,0.931373,0.882353,1.000000,1.000000,0.948878,1.000000,Jony J,0.500000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Nasty Ray,6,6,0.208368,0.166667,0.166667,0.333333,0.226035,25.000000,天府事变CDREV,0.400000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,望江晴,18,18,0.131430,0.000000,0.166667,0.388889,0.174310,13.000000,张雪飞,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Jony J,42,42,0.830901,0.809524,0.833333,0.880952,0.841508,1.000000,天府事变CDREV,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,SASIOVERLXRD,26,26,0.471701,0.384615,0.615385,0.615385,0.495351,3.000000,G Sauce,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,张昊,15,15,0.188840,0.066667,0.266667,0.333333,0.204193,17.000000,刘柄鑫,0.285714
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,秃子,20,20,0.731859,0.700000,0.750000,0.850000,0.754867,1.000000,梁维嘉,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,方仔,32,31,0.340759,0.225806,0.483871,0.645161,0.403011,6.000000,张雪飞,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,404 Rapper,23,23,0.091509,0.000000,0.173913,0.217391,0.108910,57.000000,离合,0.086957
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,金蛇 traphouse,6,6,0.599183,0.500000,0.833333,0.833333,0.655113,1.000000,雾都 (Wudu Montana),0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,老黑Black J,11,11,0.306137,0.272727,0.272727,0.363636,0.305110,20.000000,Jony J,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,坚强的小黄瓜,41,41,0.678604,0.536585,0.878049,0.878049,0.727792,1.000000,张雪飞,0.210526
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,C-Low,28,28,0.455777,0.357143,0.535714,0.678571,0.497957,3.000000,王嘉尔,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,thomeboydontkill,21,21,0.203651,0.142857,0.190476,0.380952,0.225411,15.000000,APMOZART,0.222222
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,MULA SAKEE,33,33,0.877331,0.818182,0.939394,0.969697,0.898149,1.000000,APMOZART,0.666667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,DBL.D,12,12,0.175978,0.083333,0.250000,0.333333,0.202663,36.000000,王嘉尔,0.090909
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,刘聪 (Key.L),35,35,0.563379,0.457143,0.628571,0.771429,0.604144,2.000000,C-Block,0.157895
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Max马俊,14,14,0.298704,0.214286,0.428571,0.500000,0.337124,10.000000,小鸭哥,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,连麻Swimming,26,26,0.454054,0.307692,0.576923,0.692308,0.502459,2.000000,小鸭哥,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,OWVRO老弟,23,23,0.403352,0.304348,0.565217,0.565217,0.429528,4.000000,离合,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Vava,26,26,0.105421,0.038462,0.192308,0.230769,0.115854,32.000000,王嘉尔,0.080000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,KKLUV,27,27,0.438484,0.296296,0.629630,0.703704,0.491556,3.000000,那奇沃夫,0.157895
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,孤矢,37,37,0.483426,0.378378,0.621622,0.702703,0.526167,3.000000,张雪飞,0.173913
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Turbo嗣尧,20,20,0.064455,0.000000,0.050000,0.250000,0.082880,18.000000,王嘉尔,0.150000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,李尔新,32,32,0.378069,0.250000,0.531250,0.687500,0.443878,4.000000,G Sauce,0.083333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,YuGo,33,33,0.462984,0.333333,0.575758,0.818182,0.539988,4.000000,廖效浓,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Regi 陈彦希,12,12,0.058211,0.000000,0.000000,0.250000,0.080641,21.000000,王嘉尔,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,正义感,18,18,0.292503,0.166667,0.388889,0.500000,0.324444,10.000000,Jony J,0.266667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,southsidesamurai,12,12,0.310874,0.166667,0.333333,0.750000,0.406653,6.000000,爽子,0.300000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,滇声气,23,23,0.594098,0.478261,0.739130,0.826087,0.645402,2.000000,雲道,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,新街口组合,26,26,0.549138,0.384615,0.730769,0.769231,0.598941,2.000000,张雪飞,0.312500
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,YOUNG,21,21,0.373080,0.285714,0.428571,0.523810,0.396519,9.000000,G Sauce,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,杨布拉德,42,42,0.764685,0.714286,0.809524,0.904762,0.794183,1.000000,jinjibewater,0.083333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,TY,27,27,0.278057,0.148148,0.370370,0.555556,0.333732,9.000000,刘柄鑫,0.173913
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,恶童,33,33,0.403435,0.272727,0.606061,0.666667,0.458147,4.000000,滇声气,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,班比 Bambii,41,41,0.622716,0.487805,0.756098,0.878049,0.678138,2.000000,MULA SAKEE,0.190476
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,S1,14,14,0.230266,0.214286,0.214286,0.214286,0.214286,59.000000,张雪飞,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Kzoo,43,42,0.673472,0.595238,0.761905,0.833333,0.706817,1.000000,离合,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,罗言,21,21,0.211461,0.095238,0.285714,0.619048,0.293039,7.000000,张雪飞,0.263158
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,阿斯巴田,42,42,0.335849,0.190476,0.428571,0.595238,0.381378,6.000000,张雪飞,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,笑男孩,28,27,0.143782,0.074074,0.185185,0.333333,0.169096,20.000000,张雪飞,0.160000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,黑麦,33,33,0.652522,0.636364,0.666667,0.696970,0.658974,1.000000,姜云升,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,张大炮,42,42,0.803962,0.785714,0.809524,0.857143,0.813611,1.000000,YuGo,0.222222
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Rich4ever,29,29,0.764616,0.655172,0.931034,0.931034,0.804871,1.000000,NOTTIBO1,0.300000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,二狗子,22,22,0.860931,0.818182,0.909091,0.909091,0.869588,1.000000,杨和苏KeyNG,0.500000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,FAC-D12,25,25,0.546521,0.480000,0.560000,0.680000,0.567989,2.000000,直火帮,0.153846
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,法老,39,39,0.636028,0.538462,0.769231,0.794872,0.670031,1.000000,Nxmad诺曼得,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,HAS,38,38,0.587612,0.473684,0.710526,0.842105,0.644375,2.000000,张雪飞,0.150000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,NOTTIBO1,22,22,0.788347,0.681818,0.954545,0.954545,0.829734,1.000000,王嘉尔,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Busta Z,28,28,0.490345,0.392857,0.571429,0.714286,0.538331,2.000000,滇声气,0.176471
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Athree,22,22,0.238865,0.181818,0.318182,0.318182,0.247657,36.000000,AR,0.222222
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,赵山河,31,31,0.513010,0.387097,0.677419,0.709677,0.558980,2.000000,张大炮,0.210526
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Gm仙,27,27,0.797931,0.740741,0.888889,0.888889,0.817097,1.000000,梁维嘉,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,PO8,39,39,0.731044,0.666667,0.820513,0.871795,0.760535,1.000000,直火帮,0.153846
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,斯威特,40,40,0.667402,0.600000,0.725000,0.825000,0.701273,1.000000,张雪飞,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,八口8uck,33,33,0.417167,0.242424,0.636364,0.727273,0.481116,4.000000,APMOZART,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,艾热 AIR,22,22,0.202487,0.090909,0.272727,0.409091,0.236735,17.000000,王以太,0.100000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,大狗,21,21,0.369618,0.238095,0.523810,0.666667,0.429246,5.000000,新街口组合,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,龙胆紫,10,10,0.225811,0.100000,0.400000,0.600000,0.297477,6.000000,爽子,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,孙八一,34,34,0.804208,0.735294,0.882353,0.941176,0.834767,1.000000,爽子,0.111111
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,功夫胖,28,28,0.505021,0.464286,0.571429,0.571429,0.515381,3.000000,C-Block,0.133333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,于漂 eZ Yang Fizz,23,23,0.687100,0.652174,0.739130,0.782609,0.706220,1.000000,PO8,0.375000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,上官承诺,18,18,0.241675,0.111111,0.388889,0.388889,0.265536,12.000000,小鸭哥,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,BossWang,15,15,0.319350,0.266667,0.333333,0.600000,0.375443,10.000000,V.O.B.,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Blow Fever,25,25,0.743917,0.680000,0.880000,0.920000,0.783262,1.000000,李大奔BENZO,0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,ICE,28,28,0.194964,0.142857,0.178571,0.321429,0.206541,25.000000,张雪飞,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Kigga,19,19,0.096905,0.000000,0.105263,0.421053,0.154466,18.000000,Jony J,0.157895
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,马思唯,32,32,0.446927,0.281250,0.593750,0.750000,0.508250,3.000000,李大奔BENZO,0.260870
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,胡彦斌 TIGER HU,33,30,0.430420,0.400000,0.466667,0.466667,0.428712,14.000000,新街口组合,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Hotkey金朝,31,30,0.544075,0.533333,0.533333,0.533333,0.533333,1.000000,刘柄鑫,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,小老虎,18,18,0.496448,0.388889,0.666667,0.722222,0.540650,3.000000,天府事变CDREV,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Mercy(lago),42,42,0.615754,0.500000,0.761905,0.833333,0.662326,1.000000,Nxmad诺曼得,0.190476
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,光光 (MC),31,31,0.490692,0.354839,0.677419,0.838710,0.564186,4.000000,Jony J,0.100000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,GNS耀耀,13,13,0.072346,0.000000,0.153846,0.153846,0.071591,25.000000,小鸭哥,0.230769
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,辛巴,34,34,0.251753,0.147059,0.382353,0.529412,0.305600,9.000000,刘柄鑫,0.137931
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,姜云升,33,33,0.662900,0.545455,0.818182,0.818182,0.697455,1.000000,张雪飞,0.400000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,西米,21,21,0.155879,0.047619,0.238095,0.476190,0.216183,15.000000,APMOZART,0.100000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,张千,30,29,0.504622,0.413793,0.586207,0.655172,0.535795,2.000000,刘柄鑫,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,GALI,33,33,0.546919,0.424242,0.727273,0.818182,0.603600,2.000000,王嘉尔,0.105263
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,乃万,38,38,0.206066,0.026316,0.500000,0.631579,0.295148,5.000000,Nxmad诺曼得,0.135135
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,小鸭哥,40,40,0.625828,0.525000,0.725000,0.800000,0.663790,1.000000,张雪飞,0.157895
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Ansr J,24,24,0.387925,0.291667,0.458333,0.541667,0.407485,8.000000,李大奔BENZO,0.235294
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Ghost Crew,43,43,0.601407,0.511628,0.697674,0.813953,0.646986,1.000000,爽子,0.190476
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,诺米么Lodmemo,12,12,0.469042,0.416667,0.583333,0.583333,0.484794,4.000000,张雪飞,0.428571
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,饺子,39,39,0.498191,0.358974,0.692308,0.743590,0.551113,3.000000,张雪飞,0.160000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,九块钱,20,20,0.505959,0.450000,0.550000,0.650000,0.530117,3.000000,廖效浓,0.272727
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,KnowKnow,20,20,0.263566,0.150000,0.350000,0.450000,0.295248,15.000000,王嘉尔,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,阿水YoungBJ,39,39,0.754501,0.666667,0.846154,0.871795,0.778842,1.000000,新街口组合,0.230769
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,YOUNGLEGO,26,26,0.406531,0.384615,0.423077,0.423077,0.401180,17.000000,饺子,0.187500
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,派克特,18,18,0.249211,0.222222,0.222222,0.333333,0.255005,33.000000,新街口组合,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,嫩桃弟弟,20,20,0.532031,0.450000,0.700000,0.700000,0.571534,3.000000,离合,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,黑螺丝,26,26,0.417495,0.269231,0.576923,0.730769,0.483185,3.000000,AR,0.157895
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,龙井说唱 孙旭,16,16,0.473064,0.437500,0.500000,0.625000,0.504775,5.000000,爽子,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,邓典果,24,24,0.458345,0.375000,0.500000,0.500000,0.453866,2.000000,MULA SAKEE,0.266667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,谢帝,21,21,0.564092,0.428571,0.714286,0.714286,0.590133,2.000000,直火帮,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,阿童木,17,17,0.832283,0.823529,0.823529,0.882353,0.841237,1.000000,天府事变CDREV,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,GAI,27,27,0.352161,0.185185,0.555556,0.629630,0.411915,4.000000,胡彦斌 TIGER HU,0.227273
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Nxmad诺曼得,37,37,0.704456,0.594595,0.864865,0.864865,0.740826,1.000000,王嘉尔,0.333333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,那奇沃夫,31,31,0.512124,0.387097,0.612903,0.709677,0.550823,2.000000,Six City,0.210526
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,呆宝静,21,21,0.107106,0.047619,0.095238,0.190476,0.107708,23.000000,傲傲,0.100000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,爆音Boom,23,23,0.437683,0.391304,0.478261,0.565217,0.457824,6.000000,新街口组合,0.214286
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,杨和苏KeyNG,29,29,0.529871,0.448276,0.620690,0.724138,0.569555,3.000000,张雪飞,0.187500
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Tizzy T,37,37,0.457419,0.324324,0.648649,0.810811,0.535188,3.000000,廖效浓,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,龙泽宇,29,29,0.398480,0.310345,0.482759,0.689655,0.451773,6.000000,直火帮,0.100000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Sbazzo,31,30,0.483866,0.333333,0.633333,0.766667,0.544622,2.000000,隐藏,0.150000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,大笑,22,22,0.213721,0.136364,0.272727,0.409091,0.246932,19.000000,Jony J,0.157895
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,辉子,22,22,0.342247,0.272727,0.409091,0.454545,0.349714,11.000000,杨布拉德,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,卢慈航,28,27,0.218462,0.111111,0.296296,0.407407,0.246985,15.000000,小鸭哥,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Kc,41,41,0.585836,0.512195,0.658537,0.707317,0.606437,1.000000,APMOZART,0.150000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Jarstick,30,30,0.562065,0.500000,0.600000,0.666667,0.576569,1.000000,新街口组合,0.133333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Higher Brothers,23,23,0.409161,0.260870,0.478261,0.652174,0.449376,6.000000,马思唯,0.235294
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,宝石老舅,34,34,0.427765,0.352941,0.529412,0.647059,0.466355,5.000000,张雪飞,0.136364
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,熊猫涂杰,41,41,0.428264,0.341463,0.536585,0.634146,0.463635,5.000000,滇声气,0.185185
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,张雪飞,41,41,0.692844,0.609756,0.804878,0.804878,0.715640,1.000000,爽子,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,No Fear Family,33,33,0.469549,0.424242,0.484848,0.545455,0.475635,7.000000,AR,0.105263
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,杀手耗,33,33,0.628516,0.606061,0.636364,0.666667,0.632006,1.000000,G Sauce,0.153846
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,揽佬,17,17,0.661953,0.588235,0.764706,0.764706,0.680094,1.000000,李尔新,0.285714
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,艾福杰尼,34,34,0.346397,0.176471,0.558824,0.735294,0.429060,4.000000,雲道,0.178571
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,说唱东百人,23,23,0.921827,0.913043,0.913043,0.956522,0.926132,1.000000,爽子,0.500000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,大傻 (Damnshine),22,22,0.272271,0.227273,0.272727,0.363636,0.279491,19.000000,满舒克,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,龙井说唱 孙骁,15,14,0.306829,0.285714,0.285714,0.285714,0.285714,22.000000,Jony J,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Dirty Twinz,13,13,0.021665,0.000000,0.000000,0.000000,0.000000,66.000000,王嘉尔,0.076923
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,那吾克热-NW,24,24,0.232745,0.041667,0.416667,0.500000,0.288932,8.000000,Six City,0.173913
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,雲道,43,42,0.496533,0.333333,0.738095,0.833333,0.573240,3.000000,直火帮,0.107143
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Mac Overseas,23,22,0.304932,0.227273,0.363636,0.500000,0.335334,9.000000,李大奔BENZO,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,廖效浓,33,33,0.685187,0.606061,0.787879,0.818182,0.711137,1.000000,李大奔BENZO,0.153846
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,YoungChigga,43,43,0.736351,0.674419,0.837209,0.883721,0.768617,1.000000,APMOZART,0.142857
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,张颜齐,20,20,0.251144,0.200000,0.250000,0.350000,0.261051,24.000000,刘柄鑫,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,默示船政,48,48,0.632805,0.562500,0.708333,0.750000,0.650287,1.000000,YoungChigga,0.238095
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,KITO,30,30,0.646022,0.566667,0.733333,0.900000,0.701198,1.000000,APMOZART,0.230769
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Kandi 侃迪,34,34,0.392117,0.294118,0.470588,0.558824,0.420908,6.000000,G Sauce,0.083333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,西奥,26,25,0.387910,0.320000,0.440000,0.600000,0.426660,7.000000,新街口组合,0.117647
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,王齐铭,30,30,0.676708,0.633333,0.700000,0.766667,0.689866,1.000000,Jony J,0.181818
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,大D,42,42,0.346446,0.190476,0.476190,0.571429,0.387433,6.000000,河南说唱之神,0.176471
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,OG Three,43,43,0.668723,0.581395,0.767442,0.813953,0.699387,1.000000,张雪飞,0.277778
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,红手指,6,6,0.258551,0.166667,0.333333,0.333333,0.271822,38.000000,刘柄鑫,0.200000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,万赛文,18,18,0.197201,0.166667,0.166667,0.222222,0.185185,24.000000,王嘉尔,0.133333
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,黄旭,23,23,0.247211,0.130435,0.347826,0.521739,0.299308,10.000000,Mercy(lago),0.250000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,吾人莲花,8,8,0.258618,0.250000,0.250000,0.250000,0.250000,68.000000,刘柄鑫,0.166667
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,热狗,29,29,0.432957,0.344828,0.482759,0.620690,0.461642,7.000000,张雪飞,0.105263
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Bridge,17,17,0.142669,0.058824,0.176471,0.470588,0.197616,13.000000,CJ BAda$$ (希介),0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,小酷coola,16,15,0.389285,0.300000,0.533333,0.533333,0.417002,4.000000,直火帮,0.190476
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,Wya乌鸦,36,36,0.443209,0.333333,0.583333,0.694444,0.495066,4.000000,张雪飞,0.125000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,是Triple M,14,14,0.233171,0.214286,0.214286,0.214286,0.214286,40.000000,GALI,0.181818

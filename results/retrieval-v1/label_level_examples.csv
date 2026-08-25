@@ -1,0 +1,31 @@
+﻿aggregate_example_category,category_rank,source_credit_label,queries,within_label_component_units,strict_fusion_mrr,strict_fusion_recall_at_1,strict_fusion_recall_at_5,strict_fusion_recall_at_10,median_true_label_rank,fusion_mrr_lift_over_better_single_system,most_common_incorrect_top1_source_credit_label,share_of_incorrect_group_weight_for_common_top1
+highest_strict_fusion_mrr,1,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,0.000000,,0.000000
+highest_strict_fusion_mrr,2,APMOZART,45,45,0.969136,0.955556,0.977778,1.000000,1.000000,-0.019753,G Sauce,0.500000
+highest_strict_fusion_mrr,3,离合,28,28,0.967033,0.964286,0.964286,0.964286,1.000000,-0.032967,MULA SAKEE,1.000000
+highest_strict_fusion_mrr,4,说唱东百人,23,23,0.921827,0.913043,0.913043,0.956522,1.000000,-0.021651,爽子,0.500000
+highest_strict_fusion_mrr,5,爽子,17,17,0.903743,0.882353,0.941176,0.941176,1.000000,-0.038587,梁老师Tsong,0.500000
+highest_strict_fusion_mrr,6,Six City,9,9,0.889620,0.888889,0.888889,0.888889,1.000000,-0.036306,Athree,1.000000
+highest_strict_fusion_mrr,7,MULA SAKEE,33,33,0.879849,0.818182,0.939394,0.969697,1.000000,-0.079747,APMOZART,0.500000
+highest_strict_fusion_mrr,8,王嘉尔,37,37,0.861452,0.810811,0.945946,0.972973,1.000000,-0.065793,Nxmad诺曼得,0.428571
+highest_strict_fusion_mrr,9,国蛋,36,34,0.848265,0.794118,0.882353,0.941176,1.000000,0.064939,雲道,0.285714
+highest_strict_fusion_mrr,10,G Sauce,34,34,0.837229,0.794118,0.911765,0.941176,1.000000,0.020949,APMOZART,0.285714
+lowest_strict_fusion_mrr,1,弹壳,10,10,0.008133,0.000000,0.000000,0.000000,142.000000,-0.004425,张雪飞,0.200000
+lowest_strict_fusion_mrr,2,Dirty Twinz,13,13,0.019458,0.000000,0.000000,0.000000,77.000000,-0.036289,王嘉尔,0.076923
+lowest_strict_fusion_mrr,3,隐藏,9,9,0.050956,0.000000,0.111111,0.111111,41.000000,-0.115798,爽子,0.222222
+lowest_strict_fusion_mrr,4,金熙宇,16,16,0.053267,0.000000,0.062500,0.062500,28.000000,-0.015950,杀手耗,0.187500
+lowest_strict_fusion_mrr,5,Regi 陈彦希,12,12,0.057586,0.000000,0.000000,0.250000,21.000000,-0.054769,王嘉尔,0.250000
+lowest_strict_fusion_mrr,6,zhazha,8,8,0.060943,0.000000,0.125000,0.125000,33.000000,-0.032389,Mercy(lago),0.250000
+lowest_strict_fusion_mrr,7,Turbo嗣尧,20,20,0.065400,0.000000,0.050000,0.200000,18.000000,-0.076207,王嘉尔,0.150000
+lowest_strict_fusion_mrr,8,Poorman,9,9,0.071324,0.000000,0.222222,0.222222,59.000000,-0.117347,孤矢,0.222222
+lowest_strict_fusion_mrr,9,GNS耀耀,13,13,0.073979,0.000000,0.153846,0.153846,25.000000,-0.000905,小鸭哥,0.384615
+lowest_strict_fusion_mrr,10,DBL.D,12,12,0.080482,0.000000,0.166667,0.250000,34.000000,-0.073261,PO8,0.166667
+largest_fusion_lift_over_best_single_system,1,PO8,39,39,0.739197,0.666667,0.846154,0.897436,1.000000,0.224382,直火帮,0.153846
+largest_fusion_lift_over_best_single_system,2,多雷 Swang,39,39,0.608943,0.538462,0.743590,0.769231,1.000000,0.118714,张雪飞,0.111111
+largest_fusion_lift_over_best_single_system,3,Mac Overseas,23,22,0.255230,0.136364,0.318182,0.454545,11.000000,0.113989,李大奔BENZO,0.105263
+largest_fusion_lift_over_best_single_system,4,YoungChigga,43,43,0.727539,0.651163,0.837209,0.860465,1.000000,0.112363,APMOZART,0.133333
+largest_fusion_lift_over_best_single_system,5,KITO,30,30,0.629966,0.533333,0.766667,0.900000,1.000000,0.112015,Nxmad诺曼得,0.214286
+largest_fusion_lift_over_best_single_system,6,Rich4ever,29,29,0.756125,0.655172,0.896552,0.931034,1.000000,0.107435,李大奔BENZO,0.200000
+largest_fusion_lift_over_best_single_system,7,Over$ize,16,16,0.735106,0.687500,0.750000,0.812500,1.000000,0.102337,AR,0.200000
+largest_fusion_lift_over_best_single_system,8,V.O.B.,15,15,0.672764,0.533333,0.800000,0.800000,1.000000,0.100111,Green Soldier,0.285714
+largest_fusion_lift_over_best_single_system,9,BossWang,15,15,0.323337,0.266667,0.333333,0.600000,10.000000,0.099916,滇声气,0.181818
+largest_fusion_lift_over_best_single_system,10,王以太,24,24,0.278932,0.208333,0.291667,0.291667,18.000000,0.092826,Mercy(lago),0.157895

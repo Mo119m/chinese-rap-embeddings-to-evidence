@@ -1,0 +1,220 @@
+{
+  "artifact_id": "chinese-rap-downstream-retrieval-v1",
+  "claim_boundary": "Held-out-song retrieval of corpus source-credit-label lyrical repertoire similarity; not artist identification, biography, influence, collaboration, genre, social relation, or a human semantic-similarity gold standard.",
+  "evidence_interpretation": {
+    "claim_rule": "A diagnostic performance increase after relaxing a leakage guard is reported as removed optimism, not as evidence that the guard should be discarded.",
+    "near_duplicate_guard_ablation": {
+      "finding": "Removing the near-duplicate guard creates a small optimistic advantage where strict-minus-ablation intervals are below zero; this supports retaining the guard rather than treating the ablation as a preferred model.",
+      "interval_includes_zero_metrics": [
+        "mrr",
+        "recall_at_1",
+        "recall_at_5"
+      ],
+      "strict_lower_metrics": [
+        "recall_at_10",
+        "ndcg_at_10"
+      ]
+    },
+    "primary_fusion_comparison": {
+      "finding": "Fusion is higher than each strict single representation for every requested metric under paired intervals.",
+      "fusion_higher_than_bge_metrics": [
+        "mrr",
+        "recall_at_1",
+        "recall_at_5",
+        "recall_at_10",
+        "ndcg_at_10"
+      ],
+      "fusion_higher_than_tfidf_metrics": [
+        "mrr",
+        "recall_at_1",
+        "recall_at_5",
+        "recall_at_10",
+        "ndcg_at_10"
+      ]
+    },
+    "score_standardization_ablation": {
+      "finding": "Standardization has a small positive advantage for some metrics; unsupported metrics remain explicitly inconclusive.",
+      "interval_includes_zero_metrics": [
+        "recall_at_1",
+        "recall_at_5"
+      ],
+      "standardized_higher_metrics": [
+        "mrr",
+        "recall_at_10",
+        "ndcg_at_10"
+      ]
+    },
+    "shared_text_guard_ablation": {
+      "finding": "Including cross-label shared text creates a small optimistic advantage where strict-minus-ablation intervals are below zero; the strict leakage-controlled result remains primary.",
+      "interval_includes_zero_metrics": [
+        "recall_at_1",
+        "recall_at_5"
+      ],
+      "strict_lower_metrics": [
+        "mrr",
+        "recall_at_10",
+        "ndcg_at_10"
+      ]
+    }
+  },
+  "generated_at_utc": "2026-08-25T21:54:27Z",
+  "headline": {
+    "fusion_macro_mrr": 0.44708377442609354,
+    "fusion_macro_mrr_ci": [
+      0.41448984211642265,
+      0.48148237867137317
+    ]
+  },
+  "leakage_controls": {
+    "cross_label_exact_or_near_duplicate_pairs": 3,
+    "cross_label_exact_text_hashes_after_strict_filter": 0,
+    "duplicate_candidate_pairs_verified": 1171,
+    "exact_duplicate_pairs": 1,
+    "exact_only_groups": 5454,
+    "near_duplicate_threshold_character_trigram_jaccard": 0.8,
+    "nonexact_near_duplicate_pairs": 25,
+    "primary_membership_rows": 20637,
+    "shared_membership_rows_removed_all_eligible": 4877,
+    "shared_membership_rows_removed_evaluation_population": 522,
+    "strict_exact_and_near_groups": 5430,
+    "strict_membership_rows": 15760
+  },
+  "lineage": {
+    "builder_code_sha256": "340564076f8a9cbb1b4b90eabab9d82636b5dbaba52333117cecee5deef9b016",
+    "clean_embedding_contract_sha256": "d65a446dc8ac3cb9fb5f513c63e9d10a3f6a94a6c1cebd28953b045170600c5b",
+    "clean_text_validation_sha256": "4cba2f7d9b9bf16a7e82513b09d63015010ca48454a6daea2f20c41bd2b94fc8",
+    "encoder_benchmark_results_sha256": "4658998ff8434ca213ffdb83dffb2b243700565b4486e32aed4609ce98321b19",
+    "encoder_benchmark_summary_sha256": "bb935704718ac0099a648c6f1f19bab2b29d37441de1d3e94bc9bf79c1ef493f",
+    "graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6"
+  },
+  "population": {
+    "eligible_source_credit_labels": 204,
+    "global_strict_duplicate_components": 5430,
+    "length_qualified_song_queries": 5455,
+    "maximum_label_query_groups": 48,
+    "median_label_query_groups": 27.0,
+    "minimum_effective_characters": 50,
+    "minimum_label_query_groups": 6,
+    "minimum_training_groups_after_holdout": 5,
+    "primary_songs_before_shared_text_exclusion": 6848,
+    "short_songs_excluded": 164,
+    "songs_lost_entirely_to_shared_text_exclusion": 1229,
+    "strict_label_stratum_component_units": 5432,
+    "strict_songs_before_length_filter": 5619
+  },
+  "primary_macro_metrics": {
+    "BGE-M3 dense (strict)": {
+      "mrr": {
+        "ci95_lower": 0.294891,
+        "ci95_upper": 0.34649,
+        "estimate": 0.320392
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.326477,
+        "ci95_upper": 0.379826,
+        "estimate": 0.352662
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.199389,
+        "ci95_upper": 0.25206,
+        "estimate": 0.225508
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.477569,
+        "ci95_upper": 0.538212,
+        "estimate": 0.507765
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.376505,
+        "ci95_upper": 0.437266,
+        "estimate": 0.406703
+      }
+    },
+    "character 2-5 gram TF-IDF (strict)": {
+      "mrr": {
+        "ci95_lower": 0.38099,
+        "ci95_upper": 0.451041,
+        "estimate": 0.415771
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.404689,
+        "ci95_upper": 0.476505,
+        "estimate": 0.440356
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.30125,
+        "ci95_upper": 0.373702,
+        "estimate": 0.336942
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.523056,
+        "ci95_upper": 0.600529,
+        "estimate": 0.561546
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.45342,
+        "ci95_upper": 0.530445,
+        "estimate": 0.492181
+      }
+    },
+    "equal-weight z-score fusion (strict)": {
+      "mrr": {
+        "ci95_lower": 0.41449,
+        "ci95_upper": 0.481482,
+        "estimate": 0.447084
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.443134,
+        "ci95_upper": 0.510818,
+        "estimate": 0.476315
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.327502,
+        "ci95_upper": 0.398402,
+        "estimate": 0.362071
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.577127,
+        "ci95_upper": 0.646206,
+        "estimate": 0.611186
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.492722,
+        "ci95_upper": 0.564052,
+        "estimate": 0.528082
+      }
+    }
+  },
+  "prior_encoder_sanity_benchmark": {
+    "claim_boundary": "Corpus-internal continuation/cohesion sanity check; not a human semantic-similarity benchmark and not proof of cultural interpretation.",
+    "queries": 1000,
+    "task": "low-character-trigram-overlap same-song chunk retrieval"
+  },
+  "representations": {
+    "bge_m3_dimensions": 1024,
+    "fusion": "equal-weight per-query candidate-label z-score average; no tuned weight",
+    "shared_text_ablation_tfidf_features": 150000,
+    "strict_tfidf_features": 150000
+  },
+  "task": "strict held-out-song corpus source-credit-label lyrical-repertoire retrieval",
+  "uncertainty": {
+    "definition": "Each replicate samples 204 outer label occurrences with replacement; each occurrence independently resamples its label-stratum components with replacement at the original stratum size, including repeated occurrences of the same label. One component draw is shared across every system and metric.",
+    "diagnostics": {
+      "algorithm": "literal_occurrence_wise_two_stage_paired_bootstrap_v1",
+      "independent_inner_resample_occurrences": 1020000,
+      "outer_label_occurrences_per_replicate": 204,
+      "repeated_outer_label_occurrences": 374003,
+      "repeated_outer_occurrences_reuse_inner_draw": false,
+      "replicates": 5000,
+      "same_component_draw_applied_to_all_systems_and_metrics": true,
+      "total_inner_component_draws": 27169787,
+      "total_outer_label_occurrences": 1020000
+    },
+    "method": "literal occurrence-wise paired two-stage source-credit-label then within-label duplicate-component bootstrap",
+    "random_seed": 20260825,
+    "replicates": 5000,
+    "scope": "resampling variability within the fixed corpus strata; not external-population uncertainty"
+  },
+  "version": "1.1.0"
+}

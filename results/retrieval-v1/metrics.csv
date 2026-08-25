@@ -1,0 +1,61 @@
+﻿system,task_role,aggregation,metric,estimate,ci95_lower,ci95_upper,queries,source_credit_labels,global_duplicate_components,label_stratum_component_units,bootstrap_replicates
+BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.320392,0.294891,0.346490,5455,204,5430,5432,5000
+BGE-M3 dense (strict),primary_comparison,query_micro_descriptive,mrr,0.336691,,,5455,204,5430,5432,
+BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.225508,0.199389,0.252060,5455,204,5430,5432,5000
+BGE-M3 dense (strict),primary_comparison,query_micro_descriptive,recall_at_1,0.238863,,,5455,204,5430,5432,
+BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.406703,0.376505,0.437266,5455,204,5430,5432,5000
+BGE-M3 dense (strict),primary_comparison,query_micro_descriptive,recall_at_5,0.428231,,,5455,204,5430,5432,
+BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.507765,0.477569,0.538212,5455,204,5430,5432,5000
+BGE-M3 dense (strict),primary_comparison,query_micro_descriptive,recall_at_10,0.531989,,,5455,204,5430,5432,
+BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.352662,0.326477,0.379826,5455,204,5430,5432,5000
+BGE-M3 dense (strict),primary_comparison,query_micro_descriptive,ndcg_at_10,0.370852,,,5455,204,5430,5432,
+character 2-5 gram TF-IDF (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.415771,0.380990,0.451041,5455,204,5430,5432,5000
+character 2-5 gram TF-IDF (strict),primary_comparison,query_micro_descriptive,mrr,0.460715,,,5455,204,5430,5432,
+character 2-5 gram TF-IDF (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.336942,0.301250,0.373702,5455,204,5430,5432,5000
+character 2-5 gram TF-IDF (strict),primary_comparison,query_micro_descriptive,recall_at_1,0.376719,,,5455,204,5430,5432,
+character 2-5 gram TF-IDF (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.492181,0.453420,0.530445,5455,204,5430,5432,5000
+character 2-5 gram TF-IDF (strict),primary_comparison,query_micro_descriptive,recall_at_5,0.546471,,,5455,204,5430,5432,
+character 2-5 gram TF-IDF (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.561546,0.523056,0.600529,5455,204,5430,5432,5000
+character 2-5 gram TF-IDF (strict),primary_comparison,query_micro_descriptive,recall_at_10,0.618698,,,5455,204,5430,5432,
+character 2-5 gram TF-IDF (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.440356,0.404689,0.476505,5455,204,5430,5432,5000
+character 2-5 gram TF-IDF (strict),primary_comparison,query_micro_descriptive,ndcg_at_10,0.488855,,,5455,204,5430,5432,
+equal-weight z-score fusion (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.447084,0.414490,0.481482,5455,204,5430,5432,5000
+equal-weight z-score fusion (strict),primary_comparison,query_micro_descriptive,mrr,0.488613,,,5455,204,5430,5432,
+equal-weight z-score fusion (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.362071,0.327502,0.398402,5455,204,5430,5432,5000
+equal-weight z-score fusion (strict),primary_comparison,query_micro_descriptive,recall_at_1,0.399817,,,5455,204,5430,5432,
+equal-weight z-score fusion (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.528082,0.492722,0.564052,5455,204,5430,5432,5000
+equal-weight z-score fusion (strict),primary_comparison,query_micro_descriptive,recall_at_5,0.578368,,,5455,204,5430,5432,
+equal-weight z-score fusion (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.611186,0.577127,0.646206,5455,204,5430,5432,5000
+equal-weight z-score fusion (strict),primary_comparison,query_micro_descriptive,recall_at_10,0.663795,,,5455,204,5430,5432,
+equal-weight z-score fusion (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.476315,0.443134,0.510818,5455,204,5430,5432,5000
+equal-weight z-score fusion (strict),primary_comparison,query_micro_descriptive,ndcg_at_10,0.521327,,,5455,204,5430,5432,
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,mrr,0.441644,0.409255,0.475346,5455,204,5430,5432,5000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,query_micro_descriptive,mrr,0.481815,,,5455,204,5430,5432,
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.357501,0.323445,0.393427,5455,204,5430,5432,5000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,query_micro_descriptive,recall_at_1,0.393767,,,5455,204,5430,5432,
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.524087,0.488194,0.559775,5455,204,5430,5432,5000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,query_micro_descriptive,recall_at_5,0.572136,,,5455,204,5430,5432,
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.603137,0.568876,0.638252,5455,204,5430,5432,5000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,query_micro_descriptive,recall_at_10,0.653896,,,5455,204,5430,5432,
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.470275,0.437401,0.504282,5455,204,5430,5432,5000
+raw-cosine equal fusion (score-scale ablation),diagnostic_ablation,query_micro_descriptive,ndcg_at_10,0.513693,,,5455,204,5430,5432,
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,mrr,0.448918,0.416598,0.483263,5455,204,5430,5432,5000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,query_micro_descriptive,mrr,0.491553,,,5455,204,5430,5432,
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.363840,0.329719,0.400250,5455,204,5430,5432,5000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,query_micro_descriptive,recall_at_1,0.402750,,,5455,204,5430,5432,
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.529539,0.494025,0.565418,5455,204,5430,5432,5000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,query_micro_descriptive,recall_at_5,0.580935,,,5455,204,5430,5432,
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.613771,0.579969,0.648269,5455,204,5430,5432,5000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,query_micro_descriptive,recall_at_10,0.667278,,,5455,204,5430,5432,
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.478432,0.445496,0.512630,5455,204,5430,5432,5000
+z-score fusion (near-duplicate guard removed),diagnostic_ablation,query_micro_descriptive,ndcg_at_10,0.524554,,,5455,204,5430,5432,
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,mrr,0.451739,0.418914,0.486454,5455,204,5430,5432,5000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,query_micro_descriptive,mrr,0.492547,,,5455,204,5430,5432,
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.367334,0.332251,0.403440,5455,204,5430,5432,5000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,query_micro_descriptive,recall_at_1,0.404400,,,5455,204,5430,5432,
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.533463,0.497371,0.570326,5455,204,5430,5432,5000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,query_micro_descriptive,recall_at_5,0.583135,,,5455,204,5430,5432,
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.619135,0.586122,0.653523,5455,204,5430,5432,5000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,query_micro_descriptive,recall_at_10,0.668378,,,5455,204,5430,5432,
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.481948,0.448849,0.516731,5455,204,5430,5432,5000
+z-score fusion (shared-text exclusion removed),diagnostic_ablation,query_micro_descriptive,ndcg_at_10,0.525487,,,5455,204,5430,5432,

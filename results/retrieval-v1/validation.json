@@ -1,0 +1,92 @@
+{
+  "artifact_id": "chinese-rap-downstream-retrieval-v1",
+  "checks": [
+    {
+      "name": "all_input_contracts_current_and_passing",
+      "passed": true
+    },
+    {
+      "detail": {
+        "primary_songs": 6848,
+        "queries": 5455,
+        "short_songs_excluded": 164,
+        "songs_lost_entirely_to_shared_text_exclusion": 1229,
+        "source_credit_labels": 204
+      },
+      "name": "strict_song_held_out_population_complete",
+      "passed": true
+    },
+    {
+      "detail": {
+        "shared_rows_removed": 4877
+      },
+      "name": "exact_cross_label_shared_text_removed",
+      "passed": true
+    },
+    {
+      "detail": {
+        "global_duplicate_components": 5430,
+        "label_stratum_component_units": 5432,
+        "minimum_training_groups": 5,
+        "pairs": 26
+      },
+      "name": "exact_and_near_duplicate_groups_held_out_and_weighted_once",
+      "passed": true
+    },
+    {
+      "detail": {
+        "algorithm": "literal_occurrence_wise_two_stage_paired_bootstrap_v1",
+        "independent_inner_resample_occurrences": 1020000,
+        "outer_label_occurrences_per_replicate": 204,
+        "repeated_outer_label_occurrences": 374003,
+        "repeated_outer_occurrences_reuse_inner_draw": false,
+        "replicates": 5000,
+        "same_component_draw_applied_to_all_systems_and_metrics": true,
+        "total_inner_component_draws": 27169787,
+        "total_outer_label_occurrences": 1020000
+      },
+      "name": "bootstrap_is_literal_occurrence_wise_two_stage_and_paired",
+      "passed": true
+    },
+    {
+      "name": "all_requested_systems_and_metrics_present",
+      "passed": true
+    },
+    {
+      "name": "macro_metrics_recompute_from_component_values",
+      "passed": true
+    },
+    {
+      "name": "bootstrap_intervals_are_ordered_and_bounded",
+      "passed": true
+    },
+    {
+      "detail": {
+        "expected": 1224,
+        "rows": 1224
+      },
+      "name": "per_label_metrics_complete",
+      "passed": true
+    },
+    {
+      "name": "public_examples_are_aggregate_label_level_only",
+      "passed": true
+    },
+    {
+      "detail": {},
+      "name": "public_csv_headers_exclude_song_chunk_text_and_vector_fields",
+      "passed": true
+    },
+    {
+      "name": "no_vector_artifact_copied_to_public_or_private_output",
+      "passed": true
+    },
+    {
+      "name": "claim_boundary_present_in_public_documents",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-25T21:54:27Z",
+  "status": "pass",
+  "version": "1.1.0"
+}
