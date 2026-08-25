@@ -1,0 +1,163 @@
+{
+  "artifact": "Chinese_Rap_Research_Release_V2",
+  "generated_at_utc": "2026-08-25T20:33:11.735642+00:00",
+  "status": "pass",
+  "checks": [
+    {
+      "name": "docx_accessibility",
+      "passed": true,
+      "detail": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      }
+    },
+    {
+      "name": "docx_structure",
+      "passed": true,
+      "detail": "17 Heading 1, 16 Heading 2, four inline figures, Letter portrait, exact table geometry"
+    },
+    {
+      "name": "pdf_pages_and_size",
+      "passed": true,
+      "detail": {
+        "pages": 26,
+        "sizes_points": [
+          [
+            612,
+            792
+          ]
+        ]
+      }
+    },
+    {
+      "name": "clean_title_page",
+      "passed": true,
+      "detail": "Internal target/review labels removed"
+    },
+    {
+      "name": "human_metadata_placeholders_are_explicit",
+      "passed": true,
+      "detail": "No author identity was guessed"
+    },
+    {
+      "name": "structured_abstract",
+      "passed": true,
+      "detail": [
+        "Purpose",
+        "Design/methodology/approach",
+        "Findings",
+        "Originality",
+        "Contribution to the field of Digital Humanities"
+      ]
+    },
+    {
+      "name": "atlas_validation",
+      "passed": true,
+      "detail": "14/14 checks"
+    },
+    {
+      "name": "figure_validation",
+      "passed": true,
+      "detail": "11/11 checks"
+    },
+    {
+      "name": "atlas_core_counts",
+      "passed": true,
+      "detail": {
+        "profiles": 204,
+        "all_matches": 86,
+        "default_matches": 16,
+        "default_nodes": 25
+      }
+    },
+    {
+      "name": "atlas_meaningful_copy",
+      "passed": true,
+      "detail": "Every comparison exposes shared evidence, repeatability, and limits; vague/filler phrases are absent"
+    },
+    {
+      "name": "atlas_self_contained",
+      "passed": true,
+      "detail": "No remote script, stylesheet, font, or image dependency"
+    },
+    {
+      "name": "submission_figure_resolution",
+      "passed": true,
+      "detail": {
+        "figure_1": {
+          "pixels": [
+            5125,
+            2799
+          ],
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        },
+        "figure_2": {
+          "pixels": [
+            4681,
+            2410
+          ],
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        },
+        "figure_3": {
+          "pixels": [
+            4722,
+            2465
+          ],
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        },
+        "figure_4": {
+          "pixels": [
+            5842,
+            6039
+          ],
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "result_table_rows",
+      "passed": true,
+      "detail": {
+        "encoder_benchmark": 3,
+        "repeatable_core": 16,
+        "edge_bootstrap": 86
+      }
+    },
+    {
+      "name": "pdf_visual_regression",
+      "passed": true,
+      "detail": "Clean page 1 inspected; pages 2–26 are pixel-identical to the fully reviewed baseline"
+    }
+  ],
+  "browser_qa": {
+    "desktop": "passed",
+    "mobile_390x844": "passed",
+    "default_graph": {
+      "nodes": 25,
+      "edges": 16
+    },
+    "exploratory_graph": {
+      "nodes": 93,
+      "edges": 86
+    },
+    "comparison_checked": "APMOZART ↔ MULA SAKEE"
+  },
+  "human_actions_before_submission": [
+    "Fill author, affiliation, corresponding-email, funding, conflict-of-interest and CRediT fields.",
+    "Provide the final public repository DOI/licence and lyric-access statement.",
+    "Replace the AI-disclosure placeholder with the exact model/version and access date."
+  ]
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+private-*/
+*.npy
+*.npz
+*lyrics*.csv
+*membership*.csv
+*rowmap*.csv

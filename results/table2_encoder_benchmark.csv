@@ -1,0 +1,4 @@
+﻿system,MRR,Recall@1,Recall@5,Recall@10,nDCG@10,queries,task_boundary
+BGE-M3 dense,0.223176,0.179000,0.258000,0.303000,0.152130,1000,Corpus-internal continuation/cohesion sanity check; not a human semantic-similarity benchmark and not proof of cultural interpretation.
+Character 2-5 gram TF-IDF,0.254824,0.210000,0.298000,0.319000,0.190295,1000,Corpus-internal continuation/cohesion sanity check; not a human semantic-similarity benchmark and not proof of cultural interpretation.
+Equal-weight z-score fusion,0.278117,0.230000,0.319000,0.363000,0.208016,1000,Corpus-internal continuation/cohesion sanity check; not a human semantic-similarity benchmark and not proof of cultural interpretation.

@@ -1,0 +1,166 @@
+{
+  "artifact": "chinese-rap-embeddings-to-evidence",
+  "generated_at_utc": "2026-08-25T20:39:14.621989+00:00",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 134,
+      "sha256": "2836ad82e9323df3de693cdfdcd9a74663a3212147e9449b0e11f93fa88032f0"
+    },
+    {
+      "path": "figures/figure1_pipeline.png",
+      "bytes": 277039,
+      "sha256": "c1bdeddc178a15694d2651e3db806221017de3d3aa415d08c34adc495e251422"
+    },
+    {
+      "path": "figures/figure1_pipeline.tif",
+      "bytes": 1821214,
+      "sha256": "658f49ceba4abeea346f8fe888d55bf8dbb2de6f5a4020fca3795c417368896b"
+    },
+    {
+      "path": "figures/figure2_encoder_benchmark.png",
+      "bytes": 139068,
+      "sha256": "369228e949682f61221e73b59882fb934bccb1b46f650044c9212dde3d7b1cf6"
+    },
+    {
+      "path": "figures/figure2_encoder_benchmark.tif",
+      "bytes": 948718,
+      "sha256": "25abf6141ac3f2baf318f09b420abc87c23a148d7b62362b1f3ae072b1ae97f2"
+    },
+    {
+      "path": "figures/figure3_bootstrap_distribution.png",
+      "bytes": 202043,
+      "sha256": "7039b3d632137ae6131b9d379f52ece33bf95cae685fdaaefcab6a39987327d8"
+    },
+    {
+      "path": "figures/figure3_bootstrap_distribution.tif",
+      "bytes": 1128246,
+      "sha256": "4263f9b9602b996bff20bae1204c74f8fb8a8fe85f297391285af69a505e55ee"
+    },
+    {
+      "path": "figures/figure4_repeatable_core.png",
+      "bytes": 350787,
+      "sha256": "668ff342aecc4023cd95a0ae8981bf0e00ad6115a6e14269a25fc2ca8fc55909"
+    },
+    {
+      "path": "figures/figure4_repeatable_core.tif",
+      "bytes": 2219002,
+      "sha256": "ca1e28b8a14c59daeb57a6c1c6122295d4db611f8c44fbd352bed17214c16276"
+    },
+    {
+      "path": "index.html",
+      "bytes": 710842,
+      "sha256": "38d62dc9e40ddbb70574bb2d957e1c4a41c3f5cf7eacb0dd6bdc7a0f2f69393a"
+    },
+    {
+      "path": "methods/METHODS_AND_LIMITS.md",
+      "bytes": 5168,
+      "sha256": "fa0c5b1f7ce237d587fef3dfbb0bb3d3fc57d65fca5f2007a529f71a7b1aeb74"
+    },
+    {
+      "path": "paper/From_Embeddings_to_Evidence.docx",
+      "bytes": 941782,
+      "sha256": "8f09b960360551db936a8e9d5fde2d914d3da2af8dfb376f77c78b3d3e14050f"
+    },
+    {
+      "path": "paper/From_Embeddings_to_Evidence.pdf",
+      "bytes": 974170,
+      "sha256": "ddde42dfedecf18e442233c6d41ff24f85ed27274802b5b7e3798a081acb5e7b"
+    },
+    {
+      "path": "paper/manuscript.md",
+      "bytes": 40863,
+      "sha256": "9314f5493320b2450417e5e719d4c85e995c4d9ee0cf34d35be15365ff0ade44"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2995,
+      "sha256": "3aa233e005729be5ea96b5539fac404add62ca0a6d70e8d8719fad6132909562"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 168,
+      "sha256": "82f0e4f60d5e4d6af0f8cdd7c7f2b1082853bf7b991b21c3e98cf5560ff27c5c"
+    },
+    {
+      "path": "results/table2_encoder_benchmark.csv",
+      "bytes": 701,
+      "sha256": "8a1440a391ff3dcfc95faf59145fee6de566eb829f608a9bbb9f059630ccd6f3"
+    },
+    {
+      "path": "results/table5_repeatable_core.csv",
+      "bytes": 811,
+      "sha256": "356ed161963fa705af34b5213c8bb9866fa470253a3050a2b66a8f40b81f6759"
+    },
+    {
+      "path": "results/table_s1_edge_bootstrap.csv",
+      "bytes": 14994,
+      "sha256": "755dd051d869c3b61d998a3c74595b42784fb9f9622993ca1675aedb48c6a0c9"
+    },
+    {
+      "path": "src/build_canonical_song_metadata_quality_v1.py",
+      "bytes": 22230,
+      "sha256": "9a24689dae9a075afd58115741cce3f5cd62892e1d137fe3bb85c3d321e0261d"
+    },
+    {
+      "path": "src/build_chinese_rap_cultural_coordinates_v1.py",
+      "bytes": 87092,
+      "sha256": "a5e3f8bf1f6747c6447965bca94b4b3c41412c88d2751c471ae0b5355f0bb864"
+    },
+    {
+      "path": "src/build_chinese_rap_edge_bootstrap_v1.py",
+      "bytes": 18535,
+      "sha256": "b585e65df1f90f78cda48c9b8e32f28f6d43d3bdfe686f76fac1666b007b2018"
+    },
+    {
+      "path": "src/build_chinese_rap_encoder_sanity_benchmark_v1.py",
+      "bytes": 20748,
+      "sha256": "2cf73f89c3a1c99ee865f4e7b787b4e2f256f453a6d3338eb36db18b7bf01e4b"
+    },
+    {
+      "path": "src/build_chinese_rap_interpretable_profiles_v1.py",
+      "bytes": 57029,
+      "sha256": "841fb56cb09aea781d1b301f6c8e658e39ea3d2550b0fa718fbb4abd32e88fba"
+    },
+    {
+      "path": "src/build_chinese_rap_lyrical_repertoire_explorer_v1.py",
+      "bytes": 44786,
+      "sha256": "d970748146541678c7e079d2fc098ce0b7b9f841aaf42ebd09ee07a3c49bf097"
+    },
+    {
+      "path": "src/build_chinese_rap_lyrical_repertoire_graph_v2.py",
+      "bytes": 57269,
+      "sha256": "f0ae16dd7fc528df3279750d258830f7c2f469930348d6b4846714e3c5d24078"
+    },
+    {
+      "path": "src/build_chinese_rap_paper_docx_v1.py",
+      "bytes": 18234,
+      "sha256": "90f2df70b5812e6ec665f8adc33dd35c835f99b2bb32e43161a92a83d246d642"
+    },
+    {
+      "path": "src/build_chinese_rap_paper_figures_v1.py",
+      "bytes": 17504,
+      "sha256": "e3b2f4651f9cc2f1dff39abad69575670ac0a2e30281c9ce9c224c094c563a27"
+    },
+    {
+      "path": "src/build_chinese_rap_research_atlas_v1.py",
+      "bytes": 42701,
+      "sha256": "1388675ab204a10c1ac334bcbe555f922322f729d1e5c65550fbda62b8772f40"
+    },
+    {
+      "path": "validation/atlas_validation.json",
+      "bytes": 1297,
+      "sha256": "994bd3f2dd3a8cfbbd54ff6c6b4432285276052fc3f3099a2d27e835bd809b61"
+    },
+    {
+      "path": "validation/figure_validation.json",
+      "bytes": 929,
+      "sha256": "a0fd064af5ccab4f7fb902a2cedd5a6bfacaa2e147883fd3bdfcb1ef147ee142"
+    },
+    {
+      "path": "validation/release_validation.json",
+      "bytes": 3868,
+      "sha256": "406cf0102df50d0e5b13c69728d02119b51ec912d1757a0ade4246c74ee5b792"
+    }
+  ]
+}

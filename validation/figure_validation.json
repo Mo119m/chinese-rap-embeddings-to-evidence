@@ -1,0 +1,49 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "name": "figure_1_png_exists_and_large",
+      "passed": true
+    },
+    {
+      "name": "figure_1_tif_exists",
+      "passed": true
+    },
+    {
+      "name": "figure_2_png_exists_and_large",
+      "passed": true
+    },
+    {
+      "name": "figure_2_tif_exists",
+      "passed": true
+    },
+    {
+      "name": "figure_3_png_exists_and_large",
+      "passed": true
+    },
+    {
+      "name": "figure_3_tif_exists",
+      "passed": true
+    },
+    {
+      "name": "figure_4_png_exists_and_large",
+      "passed": true
+    },
+    {
+      "name": "figure_4_tif_exists",
+      "passed": true
+    },
+    {
+      "name": "encoder_table_exists",
+      "passed": true
+    },
+    {
+      "name": "bootstrap_table_has_86_rows",
+      "passed": true
+    },
+    {
+      "name": "repeatable_core_has_16_edges",
+      "passed": true
+    }
+  ]
+}
