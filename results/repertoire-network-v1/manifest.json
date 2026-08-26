@@ -1,0 +1,37 @@
+{
+  "artifact_id": "chinese-rap-repertoire-network-v1",
+  "version": "1.0.0",
+  "classification": "public_aggregate_repertoire_network",
+  "expected_counts": {
+    "eligible_labels": 204,
+    "released_edges": 86,
+    "connected_labels": 93,
+    "bootstrap_replicates": 250,
+    "edges_repeatability_at_least_0_50": 16
+  },
+  "projection_variance_explained_2d": 0.26195958910407646,
+  "components": {
+    "graph": {
+      "artifact_id": "chinese-rap-lyrical-repertoire-graph-v2",
+      "manifest_sha256": "bbb546d4b9f68220245b91998242de3f016886d391a887d7c5618e60e7b4237d",
+      "validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6"
+    },
+    "profiles": {
+      "artifact_id": "chinese-rap-interpretable-profiles-v1",
+      "manifest_sha256": "7128bf340bf8902948f5efad614b1daf13717d0ef3efb77218940770f08b4431",
+      "validation_sha256": "68703d6e0339a812b9c650e59f6654a295774fb7fd108f26435e4e725bdba358"
+    },
+    "bootstrap": {
+      "artifact_id": "chinese-rap-edge-bootstrap-v1",
+      "manifest_sha256": "b47969ebc5ee414825fc52391055b59eb2153e8ee3907c6e7e06926087bb2006",
+      "validation_sha256": "0644969e447d5d91f4255960741f1e3ce880ab0432b46fcfbf151e136d42391e"
+    }
+  },
+  "validation": {
+    "file": "validation.json",
+    "bytes": 1832,
+    "sha256": "b0cfed9b734ef073513ea019b892d4943bb89804be57028d217085536c33869c"
+  },
+  "privacy": "Aggregate source-label evidence only; no lyric text, song/chunk identifiers, membership rows, or embeddings.",
+  "claim_boundary": "Lyrical-repertoire proximity between source-credit-labelled corpus slices; not verified identity, biography, popularity, affiliation, genre, collaboration, influence, social relationship, audio performance, or flow."
+}

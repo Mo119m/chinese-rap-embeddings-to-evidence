@@ -1,0 +1,62 @@
+{
+  "artifact_id": "chinese-rap-repertoire-network-v1",
+  "version": "1.0.0",
+  "checks": [
+    {
+      "name": "all_component_validations_pass",
+      "passed": true
+    },
+    {
+      "name": "frozen_component_manifest_and_validation_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "all_component_public_payload_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "eligible_node_layout_profile_join_is_one_to_one",
+      "passed": true,
+      "observed": 204
+    },
+    {
+      "name": "retained_edge_explanation_bootstrap_join_is_one_to_one",
+      "passed": true,
+      "observed": 86
+    },
+    {
+      "name": "connected_label_count_exact",
+      "passed": true,
+      "observed": 93
+    },
+    {
+      "name": "repeatability_gate_count_exact",
+      "passed": true,
+      "observed": 16,
+      "gate": 0.5,
+      "bootstrap_replicates": 250
+    },
+    {
+      "name": "pca_variance_explained_2d_exact",
+      "passed": true,
+      "observed": 0.26195958910407646
+    },
+    {
+      "name": "public_components_contain_no_lyric_lines_song_chunk_ids_membership_or_embeddings",
+      "passed": true,
+      "evidence": "Inherited public-boundary checks in the frozen component validations and independently enforced by the release-site join."
+    },
+    {
+      "name": "site_rebuild_preserves_repertoire_nodes_and_edge_records",
+      "passed": true,
+      "evidence": "204 label records matched exactly; the 86 edge records matched exactly after order-insensitive sorting."
+    },
+    {
+      "name": "site_rebuild_preserves_non_repertoire_downstream_payloads",
+      "passed": true,
+      "evidence": "Retrieval, provisional NER, and written-rhyme payloads matched the pre-refactor release exactly."
+    }
+  ],
+  "validated_with": "src/build_chinese_rap_release_site_data_v1.py",
+  "status": "pass"
+}

@@ -1,0 +1,46 @@
+{
+  "artifact_id": "chinese-rap-interpretable-profiles-v1",
+  "classification": "public_aggregate_profiles_and_post_hoc_stable_link_evidence",
+  "files": {
+    "analysis_summary.json": {
+      "bytes": 2168,
+      "sha256": "02576998bf413e9177a37ff7a58b1da982f36dc606cc678d74694f328e16bbc6"
+    },
+    "data_dictionary.md": {
+      "bytes": 1044,
+      "sha256": "c5a041d40a5e80e35ec50f32824f3065bfcabdcb1c4901da4dff249883d4f57d"
+    },
+    "method.md": {
+      "bytes": 2832,
+      "sha256": "f2a591b50c24e88f0652f1dd81958207b2bd2b1460a15d9c34c93d58cbb14701"
+    },
+    "source_label_profile_summary.csv": {
+      "bytes": 43763,
+      "sha256": "94b4e34489921d2b6a9c03252187b48c02f60698200160f111277d83996cbd34"
+    },
+    "source_label_profiles.json": {
+      "bytes": 740909,
+      "sha256": "b2f7e867d4d4694ad72821f0dbf74523b4b7b2f901cde6845242f028e5f0de50"
+    },
+    "stable_link_evidence_summary.csv": {
+      "bytes": 31841,
+      "sha256": "7cd746ad4c4c0f85f5003cddcc26af16de7b0646b1faea49da6c842b9c5865f0"
+    },
+    "stable_link_explanations.json": {
+      "bytes": 78105,
+      "sha256": "fbda9fc3b9f9ba8805167d75b1c3543e1e09d977de8d8d481220d41a4a15a208"
+    },
+    "validation.json": {
+      "bytes": 1083,
+      "sha256": "68703d6e0339a812b9c650e59f6654a295774fb7fd108f26435e4e725bdba358"
+    }
+  },
+  "generated_at_utc": "2026-08-25T19:17:45.495951+00:00",
+  "lineage": {
+    "clean_manifest_sha256": "493887bd9db9d40d556a28338adf42543590823e173f174ea8907aa905c29d4e",
+    "graph_manifest_sha256": "bbb546d4b9f68220245b91998242de3f016886d391a887d7c5618e60e7b4237d",
+    "graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_graph_manifest_sha256": "27928a300af21b81cca208238a9037384003c85266653ef1af00aa327c5c46ed"
+  },
+  "version": "1.0.0"
+}

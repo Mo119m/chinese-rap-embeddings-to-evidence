@@ -1,0 +1,28 @@
+{
+  "artifact_id": "chinese-rap-edge-bootstrap-v1",
+  "checks": [
+    {
+      "name": "edge_count_exact",
+      "passed": true
+    },
+    {
+      "name": "edge_keys_unique",
+      "passed": true
+    },
+    {
+      "name": "probability_ranges",
+      "passed": true
+    },
+    {
+      "name": "intersection_probability_bounded",
+      "passed": true
+    },
+    {
+      "name": "replicate_count_exact",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-25T19:34:44.175417+00:00",
+  "status": "pass",
+  "version": "1.0.0"
+}

@@ -1,0 +1,1960 @@
+[
+  {
+    "a": "ALBL-6470d1206d77a5344903490c8022085d5434995cb18f11140acf297a51a4c0f7",
+    "b": "ALBL-05027a559ca8274e1af58649dead83910cf96e6bbae590d148a5efe5010ede07",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 29.8,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 78.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-05027a559ca8274e1af58649dead83910cf96e6bbae590d148a5efe5010ede07|ALBL-6470d1206d77a5344903490c8022085d5434995cb18f11140acf297a51a4c0f7",
+    "signals": []
+  },
+  {
+    "a": "ALBL-05027a559ca8274e1af58649dead83910cf96e6bbae590d148a5efe5010ede07",
+    "b": "ALBL-f6c453a4cec050452655cd7fefbae80257efb4583635d09d28721f006bc73813",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 99.0,
+      "languagePercentile": 98.1,
+      "lineEndingPercentile": 63.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-05027a559ca8274e1af58649dead83910cf96e6bbae590d148a5efe5010ede07|ALBL-f6c453a4cec050452655cd7fefbae80257efb4583635d09d28721f006bc73813",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 99.0,
+        "summary": "Similar writing-form profile: low repeated-line use"
+      },
+      {
+        "items": [
+          "享受"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.1,
+        "summary": "Shared characteristic language: 享受"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-0929cce7f34a4cdb493f568ffaa9af65e0d1e65bd213ca7ccc8238383301f5d9",
+    "b": "ALBL-284f21f38fb89fffc6231f1c8e4e864ddfb421bed3792bc18e665896dd0864c9",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 82.5,
+      "languagePercentile": 95.2,
+      "lineEndingPercentile": 55.8,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0929cce7f34a4cdb493f568ffaa9af65e0d1e65bd213ca7ccc8238383301f5d9|ALBL-284f21f38fb89fffc6231f1c8e4e864ddfb421bed3792bc18e665896dd0864c9",
+    "signals": [
+      {
+        "items": [
+          "男孩",
+          "关系",
+          "电影"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 95.2,
+        "summary": "Shared characteristic language: 男孩, 关系, 电影"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab",
+    "b": "ALBL-0929cce7f34a4cdb493f568ffaa9af65e0d1e65bd213ca7ccc8238383301f5d9",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 84.6,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 74.3,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-0929cce7f34a4cdb493f568ffaa9af65e0d1e65bd213ca7ccc8238383301f5d9|ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab",
+    "signals": []
+  },
+  {
+    "a": "ALBL-0929cce7f34a4cdb493f568ffaa9af65e0d1e65bd213ca7ccc8238383301f5d9",
+    "b": "ALBL-b97bd56b9ca53434dfd6bfe48b6585fffd4ce36eddfbe206e6c90faf56a9d6cd",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.2,
+      "languagePercentile": 95.9,
+      "lineEndingPercentile": 83.1,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0929cce7f34a4cdb493f568ffaa9af65e0d1e65bd213ca7ccc8238383301f5d9|ALBL-b97bd56b9ca53434dfd6bfe48b6585fffd4ce36eddfbe206e6c90faf56a9d6cd",
+    "signals": [
+      {
+        "items": [
+          "陪伴",
+          "开心",
+          "生命"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 95.9,
+        "summary": "Shared characteristic language: 陪伴, 开心, 生命"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404",
+    "b": "ALBL-1f58a6ffe8bece560a2d7cd3f95b1c5fedac73381c77a301c279e6c79036b7f0",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 87.3,
+      "languagePercentile": 98.9,
+      "lineEndingPercentile": 33.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404|ALBL-1f58a6ffe8bece560a2d7cd3f95b1c5fedac73381c77a301c279e6c79036b7f0",
+    "signals": [
+      {
+        "items": [
+          "老子",
+          "保证",
+          "成都"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.9,
+        "summary": "Shared characteristic language: 老子, 保证, 成都"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404",
+    "b": "ALBL-591263eefafdb52e5702e00434d710421ec77268e1974ea65c6faf003f8b94b8",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 11.1,
+      "languagePercentile": 99.7,
+      "lineEndingPercentile": 42.2,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404|ALBL-591263eefafdb52e5702e00434d710421ec77268e1974ea65c6faf003f8b94b8",
+    "signals": [
+      {
+        "items": [
+          "娃儿",
+          "老子",
+          "晓得",
+          "创造"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 99.7,
+        "summary": "Shared characteristic language: 娃儿, 老子, 晓得, 创造"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404",
+    "b": "ALBL-ee761957fd84d9c113ca2d9014b1d2209def3e6742e7c877eae5c8bdcb8b533e",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 22.2,
+      "languagePercentile": 99.8,
+      "lineEndingPercentile": 55.5,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404|ALBL-ee761957fd84d9c113ca2d9014b1d2209def3e6742e7c877eae5c8bdcb8b533e",
+    "signals": [
+      {
+        "items": [
+          "娃儿",
+          "老子",
+          "晓得",
+          "不得"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 99.8,
+        "summary": "Shared characteristic language: 娃儿, 老子, 晓得, 不得"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e",
+    "b": "ALBL-45fb690b1fa5ef0d23dbeb44ff194f49e6899ee138d850ccb0f8ca44cf44f801",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 45.2,
+      "languagePercentile": 91.4,
+      "lineEndingPercentile": 78.7,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e|ALBL-45fb690b1fa5ef0d23dbeb44ff194f49e6899ee138d850ccb0f8ca44cf44f801",
+    "signals": [
+      {
+        "items": [
+          "等待"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 91.4,
+        "summary": "Shared characteristic language: 等待"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e",
+    "b": "ALBL-653f823573f2940bf2c73dfbdb26faef76f3062d797274a12eade0e8fd765269",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 66.1,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 73.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e|ALBL-653f823573f2940bf2c73dfbdb26faef76f3062d797274a12eade0e8fd765269",
+    "signals": []
+  },
+  {
+    "a": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e",
+    "b": "ALBL-93a39f5d64d4b1cd045f2ea90c301f10cfa84e6cb7474f61bb8f90b8b551a8bb",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 21.9,
+      "languagePercentile": 91.1,
+      "lineEndingPercentile": 77.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e|ALBL-93a39f5d64d4b1cd045f2ea90c301f10cfa84e6cb7474f61bb8f90b8b551a8bb",
+    "signals": [
+      {
+        "items": [
+          "等待"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 91.1,
+        "summary": "Shared characteristic language: 等待"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b8557601edc484332b5e016a21d4bbb0916313ae828752e757fc70bab4e86dd4",
+    "b": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 74.0,
+      "languagePercentile": 96.0,
+      "lineEndingPercentile": 73.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-0e0e8e661f2739ca41959d3626f404f85140a2cbdc6d8ed229931879550ab46e|ALBL-b8557601edc484332b5e016a21d4bbb0916313ae828752e757fc70bab4e86dd4",
+    "signals": [
+      {
+        "items": [
+          "伤口",
+          "留在",
+          "力量"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 96.0,
+        "summary": "Shared characteristic language: 伤口, 留在, 力量"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c",
+    "b": "ALBL-11f90a8c55fbe0699911c1c19ab4046d0a93a992a97ac914cf60449351307a39",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 67.6,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 39.8,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-11f90a8c55fbe0699911c1c19ab4046d0a93a992a97ac914cf60449351307a39|ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c",
+    "signals": []
+  },
+  {
+    "a": "ALBL-d7a92b911b2c469f9fb85d220c4cc53811a7f280d395332df796bd1660aeeee1",
+    "b": "ALBL-1753897f8c66389b862ec914699598c03d64c509e330ce87a7421c9325a0ac9f",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 95.1,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 97.0,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-1753897f8c66389b862ec914699598c03d64c509e330ce87a7421c9325a0ac9f|ALBL-d7a92b911b2c469f9fb85d220c4cc53811a7f280d395332df796bd1660aeeee1",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-ian"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 97.0,
+        "summary": "Similar written line endings: -i, -e, -ian"
+      },
+      {
+        "items": [
+          "high repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 95.1,
+        "summary": "Similar writing-form profile: high repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-17684bc3770d1aec5c2bd652a8807086eae2d17921537773d7065a03fe954aab",
+    "b": "ALBL-2b47111c3ae429f7fd49243653f4b70387bf44642bbb3d8c30fd5cc8b8063b34",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 54.8,
+      "languagePercentile": 98.7,
+      "lineEndingPercentile": 89.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-17684bc3770d1aec5c2bd652a8807086eae2d17921537773d7065a03fe954aab|ALBL-2b47111c3ae429f7fd49243653f4b70387bf44642bbb3d8c30fd5cc8b8063b34",
+    "signals": [
+      {
+        "items": [
+          "快乐"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.7,
+        "summary": "Shared characteristic language: 快乐"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-17684bc3770d1aec5c2bd652a8807086eae2d17921537773d7065a03fe954aab",
+    "b": "ALBL-b54a07b05128f5872fa2d2cafea41ad88da5df11665216730e41d3f0d57f30ff",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 95.7,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 58.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-17684bc3770d1aec5c2bd652a8807086eae2d17921537773d7065a03fe954aab|ALBL-b54a07b05128f5872fa2d2cafea41ad88da5df11665216730e41d3f0d57f30ff",
+    "signals": [
+      {
+        "items": [
+          "high short-line writing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 95.7,
+        "summary": "Similar writing-form profile: high short-line writing"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-17684bc3770d1aec5c2bd652a8807086eae2d17921537773d7065a03fe954aab",
+    "b": "ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 79.5,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 31.5,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-17684bc3770d1aec5c2bd652a8807086eae2d17921537773d7065a03fe954aab|ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "b": "ALBL-1977978993b2949e4425ba3d1e00a27af4ff44e6123be893f0fff6439f76e7e3",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 64.2,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 50.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-1977978993b2949e4425ba3d1e00a27af4ff44e6123be893f0fff6439f76e7e3|ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "signals": []
+  },
+  {
+    "a": "ALBL-e46eba02dd6aeba07ab93fe500e9c0e763b4d30e10187dc7876ef527c9fca822",
+    "b": "ALBL-1977978993b2949e4425ba3d1e00a27af4ff44e6123be893f0fff6439f76e7e3",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 95.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 95.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-1977978993b2949e4425ba3d1e00a27af4ff44e6123be893f0fff6439f76e7e3|ALBL-e46eba02dd6aeba07ab93fe500e9c0e763b4d30e10187dc7876ef527c9fca822",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 95.1,
+        "summary": "Similar written line endings: -i, -e, -u"
+      },
+      {
+        "items": [
+          "high short-line writing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 95.0,
+        "summary": "Similar writing-form profile: high short-line writing"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-19e6d081ff62ae40b3e88e22cef1e5d0ec872a8e6f3866590efc6d45eb909d16",
+    "b": "ALBL-73c8a1a36223a670dc4911fa645f78397410791c1681cf627e1903abaceeedf8",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 73.0,
+      "languagePercentile": 85.0,
+      "lineEndingPercentile": 70.3,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-19e6d081ff62ae40b3e88e22cef1e5d0ec872a8e6f3866590efc6d45eb909d16|ALBL-73c8a1a36223a670dc4911fa645f78397410791c1681cf627e1903abaceeedf8",
+    "signals": []
+  },
+  {
+    "a": "ALBL-19e6d081ff62ae40b3e88e22cef1e5d0ec872a8e6f3866590efc6d45eb909d16",
+    "b": "ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 28.0,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 61.8,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-19e6d081ff62ae40b3e88e22cef1e5d0ec872a8e6f3866590efc6d45eb909d16|ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf",
+    "signals": []
+  },
+  {
+    "a": "ALBL-19e6d081ff62ae40b3e88e22cef1e5d0ec872a8e6f3866590efc6d45eb909d16",
+    "b": "ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 92.8,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 74.5,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-19e6d081ff62ae40b3e88e22cef1e5d0ec872a8e6f3866590efc6d45eb909d16|ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use",
+          "high Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 92.8,
+        "summary": "Similar writing-form profile: low repeated-line use, high Chinese-English mixing"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-1f7fed06b8efb360d17055fb5863e54d09a25560e048c3bf2ee01153da3c93c4",
+    "b": "ALBL-7e9a60002d7d27bc747175d30b340b7dc85f9fd3a264c05f42b5130737e9af57",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 79.0,
+      "languagePercentile": 98.5,
+      "lineEndingPercentile": 60.4,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-1f7fed06b8efb360d17055fb5863e54d09a25560e048c3bf2ee01153da3c93c4|ALBL-7e9a60002d7d27bc747175d30b340b7dc85f9fd3a264c05f42b5130737e9af57",
+    "signals": [
+      {
+        "items": [
+          "晓得",
+          "肯定",
+          "老子",
+          "不得"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.5,
+        "summary": "Shared characteristic language: 晓得, 肯定, 老子, 不得"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-1f7fed06b8efb360d17055fb5863e54d09a25560e048c3bf2ee01153da3c93c4",
+    "b": "ALBL-ee761957fd84d9c113ca2d9014b1d2209def3e6742e7c877eae5c8bdcb8b533e",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 50.8,
+      "languagePercentile": 99.0,
+      "lineEndingPercentile": 97.3,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-1f7fed06b8efb360d17055fb5863e54d09a25560e048c3bf2ee01153da3c93c4|ALBL-ee761957fd84d9c113ca2d9014b1d2209def3e6742e7c877eae5c8bdcb8b533e",
+    "signals": [
+      {
+        "items": [
+          "老子",
+          "晓得",
+          "不得",
+          "直接"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 99.0,
+        "summary": "Shared characteristic language: 老子, 晓得, 不得, 直接"
+      },
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-a"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 97.3,
+        "summary": "Similar written line endings: -i, -e, -a"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-ce1dbed42e4ffd01b17b35012dd06687b42c427b4423c451dd09eb33b4e346a1",
+    "b": "ALBL-247a321492792bdb57c32c163643edba2d15422f23a86af468d8f0bfb5c89077",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 87.9,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 35.8,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-247a321492792bdb57c32c163643edba2d15422f23a86af468d8f0bfb5c89077|ALBL-ce1dbed42e4ffd01b17b35012dd06687b42c427b4423c451dd09eb33b4e346a1",
+    "signals": []
+  },
+  {
+    "a": "ALBL-65f4c44000b0b3238b828e0cf5c3707b1e174d6799866358fb0a3a8f41ea30c0",
+    "b": "ALBL-24b00b86757b8524f811b193bdeb83ef1329a0c57055807a6ded111fa42e68f3",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 74.3,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 12.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-24b00b86757b8524f811b193bdeb83ef1329a0c57055807a6ded111fa42e68f3|ALBL-65f4c44000b0b3238b828e0cf5c3707b1e174d6799866358fb0a3a8f41ea30c0",
+    "signals": []
+  },
+  {
+    "a": "ALBL-3031bd18d220db6520e49505d607f0577ab0291d63ca904ef8c75c6e35e6d3fc",
+    "b": "ALBL-2807b98ea33a2a358a5e75262d1634d94c6402340cb7f15b88794a34f694ba24",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 49.5,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 93.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-2807b98ea33a2a358a5e75262d1634d94c6402340cb7f15b88794a34f694ba24|ALBL-3031bd18d220db6520e49505d607f0577ab0291d63ca904ef8c75c6e35e6d3fc",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 93.4,
+        "summary": "Similar written line endings: -i, -e, -u"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-2f8b2ec6bcd75a5e76215bbd5e2e95d25bed68c81acf7ea38f86e111ac5ced35",
+    "b": "ALBL-284f21f38fb89fffc6231f1c8e4e864ddfb421bed3792bc18e665896dd0864c9",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 77.2,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 86.7,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-284f21f38fb89fffc6231f1c8e4e864ddfb421bed3792bc18e665896dd0864c9|ALBL-2f8b2ec6bcd75a5e76215bbd5e2e95d25bed68c81acf7ea38f86e111ac5ced35",
+    "signals": []
+  },
+  {
+    "a": "ALBL-2b47111c3ae429f7fd49243653f4b70387bf44642bbb3d8c30fd5cc8b8063b34",
+    "b": "ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 39.9,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 33.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-2b47111c3ae429f7fd49243653f4b70387bf44642bbb3d8c30fd5cc8b8063b34|ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "signals": []
+  },
+  {
+    "a": "ALBL-d7a92b911b2c469f9fb85d220c4cc53811a7f280d395332df796bd1660aeeee1",
+    "b": "ALBL-2cd7183a0cf674ea30188d5d0032a7ba17c2775bd7ee862325f9ed98d3d5ee1f",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 93.6,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 98.6,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-2cd7183a0cf674ea30188d5d0032a7ba17c2775bd7ee862325f9ed98d3d5ee1f|ALBL-d7a92b911b2c469f9fb85d220c4cc53811a7f280d395332df796bd1660aeeee1",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-ian"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 98.6,
+        "summary": "Similar written line endings: -i, -e, -ian"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-2f8b2ec6bcd75a5e76215bbd5e2e95d25bed68c81acf7ea38f86e111ac5ced35",
+    "b": "ALBL-ebe5f9209243e8cc0730f985167ab1298e9e6b87f738cbdaaa2789cd93dc9812",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 67.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 40.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-2f8b2ec6bcd75a5e76215bbd5e2e95d25bed68c81acf7ea38f86e111ac5ced35|ALBL-ebe5f9209243e8cc0730f985167ab1298e9e6b87f738cbdaaa2789cd93dc9812",
+    "signals": []
+  },
+  {
+    "a": "ALBL-3031bd18d220db6520e49505d607f0577ab0291d63ca904ef8c75c6e35e6d3fc",
+    "b": "ALBL-668adef71637ce73ed0d6930da3df75035de7b9f85a5b5d81a63482870edf608",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 47.3,
+      "languagePercentile": 99.7,
+      "lineEndingPercentile": 99.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-3031bd18d220db6520e49505d607f0577ab0291d63ca904ef8c75c6e35e6d3fc|ALBL-668adef71637ce73ed0d6930da3df75035de7b9f85a5b5d81a63482870edf608",
+    "signals": [
+      {
+        "items": [
+          "不得",
+          "娃儿",
+          "晓得",
+          "脑壳"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 99.7,
+        "summary": "Shared characteristic language: 不得, 娃儿, 晓得, 脑壳"
+      },
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 99.4,
+        "summary": "Similar written line endings: -i, -e, -u"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b3dec828679c767afa3e13f22a6124b9e70b8f8a07941068f89132a6c497954b",
+    "b": "ALBL-33f39cebde978ce9aa6e4c3876032ec25f0e8d1871843f6f21ed6dd57e8d7d4a",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 72.1,
+      "languagePercentile": 86.2,
+      "lineEndingPercentile": 61.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-33f39cebde978ce9aa6e4c3876032ec25f0e8d1871843f6f21ed6dd57e8d7d4a|ALBL-b3dec828679c767afa3e13f22a6124b9e70b8f8a07941068f89132a6c497954b",
+    "signals": []
+  },
+  {
+    "a": "ALBL-f17a363490fbf411d96b103d956dc0fa2f5ffeed1ce475e10c0db695c00b516d",
+    "b": "ALBL-33f39cebde978ce9aa6e4c3876032ec25f0e8d1871843f6f21ed6dd57e8d7d4a",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 7.5,
+      "languagePercentile": 98.6,
+      "lineEndingPercentile": 51.5,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-33f39cebde978ce9aa6e4c3876032ec25f0e8d1871843f6f21ed6dd57e8d7d4a|ALBL-f17a363490fbf411d96b103d956dc0fa2f5ffeed1ce475e10c0db695c00b516d",
+    "signals": [
+      {
+        "items": [
+          "眼泪",
+          "情绪",
+          "伤害",
+          "感情"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.6,
+        "summary": "Shared characteristic language: 眼泪, 情绪, 伤害, 感情"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-3516aca92330ace937d4d66d19489d317129d236c505c76c829d30f582c702ec",
+    "b": "ALBL-b2a691a1a1df18c00b161abfd5f160861921f76fd419e4a473cba62f11a6bdc2",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 66.8,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 25.1,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-3516aca92330ace937d4d66d19489d317129d236c505c76c829d30f582c702ec|ALBL-b2a691a1a1df18c00b161abfd5f160861921f76fd419e4a473cba62f11a6bdc2",
+    "signals": []
+  },
+  {
+    "a": "ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab",
+    "b": "ALBL-377b054a1f71b14c70428b5910256bbb843ebcec24665eff55383c467e7c9df7",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 85.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 66.0,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-377b054a1f71b14c70428b5910256bbb843ebcec24665eff55383c467e7c9df7|ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab",
+    "signals": []
+  },
+  {
+    "a": "ALBL-ce1dbed42e4ffd01b17b35012dd06687b42c427b4423c451dd09eb33b4e346a1",
+    "b": "ALBL-377b054a1f71b14c70428b5910256bbb843ebcec24665eff55383c467e7c9df7",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 33.4,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 52.3,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-377b054a1f71b14c70428b5910256bbb843ebcec24665eff55383c467e7c9df7|ALBL-ce1dbed42e4ffd01b17b35012dd06687b42c427b4423c451dd09eb33b4e346a1",
+    "signals": []
+  },
+  {
+    "a": "ALBL-3dab537bbce562a80504255944b4f84168fe4cdfe736c5f5569088ee394644b6",
+    "b": "ALBL-c8b292a6fd797d5864b6f98a4ca3145941af864722740d9be02e52bb5e4d4d14",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 73.4,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 96.7,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-3dab537bbce562a80504255944b4f84168fe4cdfe736c5f5569088ee394644b6|ALBL-c8b292a6fd797d5864b6f98a4ca3145941af864722740d9be02e52bb5e4d4d14",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 96.7,
+        "summary": "Similar written line endings: -i, -e, -u"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-4351325bff68d9ba2013f7254620f426c6d51a30ec2bb8dae4c1d2c8017071f4",
+    "b": "ALBL-68861076b744e959ac73e2117efa8b1b2b9c67339252c49fa74c306ae22b118d",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 38.7,
+      "languagePercentile": 47.4,
+      "lineEndingPercentile": 45.3,
+      "supportBucket": "10-19 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-4351325bff68d9ba2013f7254620f426c6d51a30ec2bb8dae4c1d2c8017071f4|ALBL-68861076b744e959ac73e2117efa8b1b2b9c67339252c49fa74c306ae22b118d",
+    "signals": []
+  },
+  {
+    "a": "ALBL-cf2f15a296686c84d839bd68c5e7f9f4aa3c7531a3115b6d11bb4422a06a2037",
+    "b": "ALBL-45fb690b1fa5ef0d23dbeb44ff194f49e6899ee138d850ccb0f8ca44cf44f801",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 87.5,
+      "languagePercentile": 90.2,
+      "lineEndingPercentile": 99.8,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-45fb690b1fa5ef0d23dbeb44ff194f49e6899ee138d850ccb0f8ca44cf44f801|ALBL-cf2f15a296686c84d839bd68c5e7f9f4aa3c7531a3115b6d11bb4422a06a2037",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-u",
+          "-ang"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 99.8,
+        "summary": "Similar written line endings: -i, -u, -ang"
+      },
+      {
+        "items": [
+          "结局"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 90.2,
+        "summary": "Shared characteristic language: 结局"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-e3629c2151d449562136201f8da51770a96f0b5e1d3ab3324e65c4f2fe40256d",
+    "b": "ALBL-50741b2ec0bf3af4af14534601eb2b25106535e1be6e7fa756e6062fa54090e3",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 94.7,
+      "languagePercentile": 47.4,
+      "lineEndingPercentile": 81.9,
+      "supportBucket": "10-19 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-50741b2ec0bf3af4af14534601eb2b25106535e1be6e7fa756e6062fa54090e3|ALBL-e3629c2151d449562136201f8da51770a96f0b5e1d3ab3324e65c4f2fe40256d",
+    "signals": [
+      {
+        "items": [
+          "high repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 94.7,
+        "summary": "Similar writing-form profile: high repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-6e2c5eea321edcf85b9bddb1be052f37af0d813916ec5db39e7691ed75c22ca0",
+    "b": "ALBL-5588dea76589911df854bcd8ae85996bb26f89521d661f3f591f4f339057cd55",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 53.8,
+      "languagePercentile": 47.4,
+      "lineEndingPercentile": 28.4,
+      "supportBucket": "10-19 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-5588dea76589911df854bcd8ae85996bb26f89521d661f3f591f4f339057cd55|ALBL-6e2c5eea321edcf85b9bddb1be052f37af0d813916ec5db39e7691ed75c22ca0",
+    "signals": []
+  },
+  {
+    "a": "ALBL-de0f80e3bfa4aad6217752f1c1440d11228188a028dc94fa69b1f787401c2def",
+    "b": "ALBL-5588dea76589911df854bcd8ae85996bb26f89521d661f3f591f4f339057cd55",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 44.8,
+      "languagePercentile": 47.4,
+      "lineEndingPercentile": 16.3,
+      "supportBucket": "10-19 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-5588dea76589911df854bcd8ae85996bb26f89521d661f3f591f4f339057cd55|ALBL-de0f80e3bfa4aad6217752f1c1440d11228188a028dc94fa69b1f787401c2def",
+    "signals": []
+  },
+  {
+    "a": "ALBL-5fd79266de1ca82a6a701b7b65788f6a770a569318a1351825159d92cf867337",
+    "b": "ALBL-cccdb653670a48994ebdcb438849469516c1dce56b03656b2018d90c9d7b2309",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 74.1,
+      "languagePercentile": 88.6,
+      "lineEndingPercentile": 55.3,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-5fd79266de1ca82a6a701b7b65788f6a770a569318a1351825159d92cf867337|ALBL-cccdb653670a48994ebdcb438849469516c1dce56b03656b2018d90c9d7b2309",
+    "signals": []
+  },
+  {
+    "a": "ALBL-f1d17edd22455d0bb54bc9f551890a1040c9af1b1f7c4e516f53bb4c5cd7ad5b",
+    "b": "ALBL-6333d5595ce07957878659758f2179f94c4e244fc91a624bad260e48824e6d0a",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 76.4,
+      "languagePercentile": 95.4,
+      "lineEndingPercentile": 7.3,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-6333d5595ce07957878659758f2179f94c4e244fc91a624bad260e48824e6d0a|ALBL-f1d17edd22455d0bb54bc9f551890a1040c9af1b1f7c4e516f53bb4c5cd7ad5b",
+    "signals": [
+      {
+        "items": [
+          "妈妈",
+          "老子"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 95.4,
+        "summary": "Shared characteristic language: 妈妈, 老子"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-65f4c44000b0b3238b828e0cf5c3707b1e174d6799866358fb0a3a8f41ea30c0",
+    "b": "ALBL-73c8a1a36223a670dc4911fa645f78397410791c1681cf627e1903abaceeedf8",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 43.2,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 29.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-65f4c44000b0b3238b828e0cf5c3707b1e174d6799866358fb0a3a8f41ea30c0|ALBL-73c8a1a36223a670dc4911fa645f78397410791c1681cf627e1903abaceeedf8",
+    "signals": []
+  },
+  {
+    "a": "ALBL-65f4c44000b0b3238b828e0cf5c3707b1e174d6799866358fb0a3a8f41ea30c0",
+    "b": "ALBL-e9a4c85e9728ea650fe95413c3e3e10896819996b77097c55e8b48164ad00e35",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 77.4,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 35.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-65f4c44000b0b3238b828e0cf5c3707b1e174d6799866358fb0a3a8f41ea30c0|ALBL-e9a4c85e9728ea650fe95413c3e3e10896819996b77097c55e8b48164ad00e35",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "b": "ALBL-668adef71637ce73ed0d6930da3df75035de7b9f85a5b5d81a63482870edf608",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.7,
+      "languagePercentile": 82.5,
+      "lineEndingPercentile": 94.3,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-668adef71637ce73ed0d6930da3df75035de7b9f85a5b5d81a63482870edf608|ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use",
+          "high Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 97.7,
+        "summary": "Similar writing-form profile: low repeated-line use, high Chinese-English mixing"
+      },
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-ou"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 94.3,
+        "summary": "Similar written line endings: -i, -e, -ou"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-668adef71637ce73ed0d6930da3df75035de7b9f85a5b5d81a63482870edf608",
+    "b": "ALBL-c8913c29ed1bccc83766366e0c593a46aecfcfec350af2ca425ad6fa27b75a61",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 88.8,
+      "languagePercentile": 99.2,
+      "lineEndingPercentile": 87.8,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-668adef71637ce73ed0d6930da3df75035de7b9f85a5b5d81a63482870edf608|ALBL-c8913c29ed1bccc83766366e0c593a46aecfcfec350af2ca425ad6fa27b75a61",
+    "signals": [
+      {
+        "items": [
+          "成都",
+          "娃儿",
+          "演出",
+          "晓得"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 99.2,
+        "summary": "Shared characteristic language: 成都, 娃儿, 演出, 晓得"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-674cdf7bedf87c3a984532f3b6d1e7baeeab9de3979127e45718e65f125c5971",
+    "b": "ALBL-b05b2ef6bdc95c06ba891db690f7d2bd4fbc6bc9b317302a948bc3323352ed89",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 80.1,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 98.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-674cdf7bedf87c3a984532f3b6d1e7baeeab9de3979127e45718e65f125c5971|ALBL-b05b2ef6bdc95c06ba891db690f7d2bd4fbc6bc9b317302a948bc3323352ed89",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-ai"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 98.6,
+        "summary": "Similar written line endings: -i, -e, -ai"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-674cdf7bedf87c3a984532f3b6d1e7baeeab9de3979127e45718e65f125c5971",
+    "b": "ALBL-cec5217a1ba6f2e262da20bd31748b0bc5f4f0dcc7dbf9542cd8d69ed4719a82",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 72.2,
+      "languagePercentile": 97.2,
+      "lineEndingPercentile": 78.5,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-674cdf7bedf87c3a984532f3b6d1e7baeeab9de3979127e45718e65f125c5971|ALBL-cec5217a1ba6f2e262da20bd31748b0bc5f4f0dcc7dbf9542cd8d69ed4719a82",
+    "signals": [
+      {
+        "items": [
+          "感情"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 97.2,
+        "summary": "Shared characteristic language: 感情"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-de0f80e3bfa4aad6217752f1c1440d11228188a028dc94fa69b1f787401c2def",
+    "b": "ALBL-6e2c5eea321edcf85b9bddb1be052f37af0d813916ec5db39e7691ed75c22ca0",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.6,
+      "languagePercentile": 98.3,
+      "lineEndingPercentile": 40.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-6e2c5eea321edcf85b9bddb1be052f37af0d813916ec5db39e7691ed75c22ca0|ALBL-de0f80e3bfa4aad6217752f1c1440d11228188a028dc94fa69b1f787401c2def",
+    "signals": [
+      {
+        "items": [
+          "怀念",
+          "眼泪",
+          "浪漫",
+          "爱情"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.3,
+        "summary": "Shared characteristic language: 怀念, 眼泪, 浪漫, 爱情"
+      },
+      {
+        "items": [
+          "low short-line writing",
+          "low repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 97.6,
+        "summary": "Similar writing-form profile: low short-line writing, low repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-73c8a1a36223a670dc4911fa645f78397410791c1681cf627e1903abaceeedf8",
+    "b": "ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 55.4,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 85.2,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-73c8a1a36223a670dc4911fa645f78397410791c1681cf627e1903abaceeedf8|ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b54a07b05128f5872fa2d2cafea41ad88da5df11665216730e41d3f0d57f30ff",
+    "b": "ALBL-792d55b0a19edfc124c50aba34e23dc8797d058ad9d19feb36f247dd21034d18",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.2,
+      "languagePercentile": 97.7,
+      "lineEndingPercentile": 50.0,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-792d55b0a19edfc124c50aba34e23dc8797d058ad9d19feb36f247dd21034d18|ALBL-b54a07b05128f5872fa2d2cafea41ad88da5df11665216730e41d3f0d57f30ff",
+    "signals": [
+      {
+        "items": [
+          "拥抱"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 97.7,
+        "summary": "Shared characteristic language: 拥抱"
+      },
+      {
+        "items": [
+          "high short-line writing",
+          "high repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 97.2,
+        "summary": "Similar writing-form profile: high short-line writing, high repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-792d55b0a19edfc124c50aba34e23dc8797d058ad9d19feb36f247dd21034d18",
+    "b": "ALBL-b97bd56b9ca53434dfd6bfe48b6585fffd4ce36eddfbe206e6c90faf56a9d6cd",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 71.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 26.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-792d55b0a19edfc124c50aba34e23dc8797d058ad9d19feb36f247dd21034d18|ALBL-b97bd56b9ca53434dfd6bfe48b6585fffd4ce36eddfbe206e6c90faf56a9d6cd",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b4d84befc7e96dbb8387757e7d31f4727c1237610f3bd1ee0bea968bcd69b253",
+    "b": "ALBL-794d5a373c990e135a5ac3527a23c5c8c9431cb100be6cc02eaab0e303e3160e",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 13.4,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 85.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-794d5a373c990e135a5ac3527a23c5c8c9431cb100be6cc02eaab0e303e3160e|ALBL-b4d84befc7e96dbb8387757e7d31f4727c1237610f3bd1ee0bea968bcd69b253",
+    "signals": []
+  },
+  {
+    "a": "ALBL-ee761957fd84d9c113ca2d9014b1d2209def3e6742e7c877eae5c8bdcb8b533e",
+    "b": "ALBL-7e9a60002d7d27bc747175d30b340b7dc85f9fd3a264c05f42b5130737e9af57",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 83.9,
+      "languagePercentile": 99.7,
+      "lineEndingPercentile": 87.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-7e9a60002d7d27bc747175d30b340b7dc85f9fd3a264c05f42b5130737e9af57|ALBL-ee761957fd84d9c113ca2d9014b1d2209def3e6742e7c877eae5c8bdcb8b533e",
+    "signals": [
+      {
+        "items": [
+          "晓得",
+          "不得",
+          "脑壳",
+          "老子"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 99.7,
+        "summary": "Shared characteristic language: 晓得, 不得, 脑壳, 老子"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-7f3967d3975472e31ce4362dd92a45b49955b2ff273e500482ac5b4118c331c8",
+    "b": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 40.6,
+      "languagePercentile": 96.7,
+      "lineEndingPercentile": 86.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-7f3967d3975472e31ce4362dd92a45b49955b2ff273e500482ac5b4118c331c8|ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "signals": [
+      {
+        "items": [
+          "实力",
+          "轻松"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 96.7,
+        "summary": "Shared characteristic language: 实力, 轻松"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-851b250b2304762b91768b5123950704538062116628ddfaa11d82ce5c5be520",
+    "b": "ALBL-df36480d1c39db0bd7c57e8729258ffe1f0e03d719943c6ade41e38e9f4c0dcd",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 67.8,
+      "languagePercentile": 87.1,
+      "lineEndingPercentile": 98.7,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-851b250b2304762b91768b5123950704538062116628ddfaa11d82ce5c5be520|ALBL-df36480d1c39db0bd7c57e8729258ffe1f0e03d719943c6ade41e38e9f4c0dcd",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-ai"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 98.7,
+        "summary": "Similar written line endings: -i, -e, -ai"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-904fcc2d59908c38ed9f59b6a90b30096342461e51a746e515da335e08b6cf49",
+    "b": "ALBL-f13232ac4d20a03d1895a207e1d242b71a0fff71fc387a2dce2728146c4583ea",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 28.6,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 44.1,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-904fcc2d59908c38ed9f59b6a90b30096342461e51a746e515da335e08b6cf49|ALBL-f13232ac4d20a03d1895a207e1d242b71a0fff71fc387a2dce2728146c4583ea",
+    "signals": []
+  },
+  {
+    "a": "ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "b": "ALBL-91e7e3cdbb244167ab7bd584a228ec96d1798f373702980135847af0b640afa5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 95.0,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 50.7,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-91e7e3cdbb244167ab7bd584a228ec96d1798f373702980135847af0b640afa5|ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "signals": [
+      {
+        "items": [
+          "low Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 95.0,
+        "summary": "Similar writing-form profile: low Chinese-English mixing"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-ec3093fcb691301b6cc4a5e0a5c9ee093e661b6b35b618255b5590bc4b0c8826",
+    "b": "ALBL-91e7e3cdbb244167ab7bd584a228ec96d1798f373702980135847af0b640afa5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 89.2,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 34.1,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-91e7e3cdbb244167ab7bd584a228ec96d1798f373702980135847af0b640afa5|ALBL-ec3093fcb691301b6cc4a5e0a5c9ee093e661b6b35b618255b5590bc4b0c8826",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b8557601edc484332b5e016a21d4bbb0916313ae828752e757fc70bab4e86dd4",
+    "b": "ALBL-93a39f5d64d4b1cd045f2ea90c301f10cfa84e6cb7474f61bb8f90b8b551a8bb",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 68.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 28.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-93a39f5d64d4b1cd045f2ea90c301f10cfa84e6cb7474f61bb8f90b8b551a8bb|ALBL-b8557601edc484332b5e016a21d4bbb0916313ae828752e757fc70bab4e86dd4",
+    "signals": []
+  },
+  {
+    "a": "ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab",
+    "b": "ALBL-b54a07b05128f5872fa2d2cafea41ad88da5df11665216730e41d3f0d57f30ff",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 99.1,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 83.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab|ALBL-b54a07b05128f5872fa2d2cafea41ad88da5df11665216730e41d3f0d57f30ff",
+    "signals": [
+      {
+        "items": [
+          "high short-line writing",
+          "high repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 99.1,
+        "summary": "Similar writing-form profile: high short-line writing, high repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab",
+    "b": "ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 78.0,
+      "languagePercentile": 97.5,
+      "lineEndingPercentile": 81.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "language",
+    "interpretationState": "supported",
+    "key": "ALBL-a544a6bae8dc3a039e1a6690236454a235ec489b230bb6188381cf8018131cab|ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "signals": [
+      {
+        "items": [
+          "内心"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 97.5,
+        "summary": "Shared characteristic language: 内心"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b6fb9745908a9283df198b367153a16c8346bc5114b5856f9a7ffb412793e6ef",
+    "b": "ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 26.6,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 93.5,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf|ALBL-b6fb9745908a9283df198b367153a16c8346bc5114b5856f9a7ffb412793e6ef",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 93.5,
+        "summary": "Similar written line endings: -i, -e, -u"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-d979019ce70ed85f25885322d6573ee2b06fc89d5d3a312f05d0e571d3c1e6b9",
+    "b": "ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 46.6,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 68.8,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-a93087c6798ab7596000fae7b23bb99f5528ef60d41242c5914dcb12836422cf|ALBL-d979019ce70ed85f25885322d6573ee2b06fc89d5d3a312f05d0e571d3c1e6b9",
+    "signals": []
+  },
+  {
+    "a": "ALBL-cb7c78d5d00ac7147de7b814ebde9ef47d47e7961b8df535b0628bb71e594071",
+    "b": "ALBL-a969c82d8811c619b763ab618ec5363279fb26d32c93efeed133750060e06d93",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 99.9,
+      "languagePercentile": 98.5,
+      "lineEndingPercentile": 25.9,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-a969c82d8811c619b763ab618ec5363279fb26d32c93efeed133750060e06d93|ALBL-cb7c78d5d00ac7147de7b814ebde9ef47d47e7961b8df535b0628bb71e594071",
+    "signals": [
+      {
+        "items": [
+          "high short-line writing",
+          "low Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 99.9,
+        "summary": "Similar writing-form profile: high short-line writing, low Chinese-English mixing"
+      },
+      {
+        "items": [
+          "金牛"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 98.5,
+        "summary": "Shared characteristic language: 金牛"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b531a8de7a6d0c34b19b787255885398b63fd4b92d8984404c6d5271f7d268f1",
+    "b": "ALBL-ad0e4d83b1b91dd8dca2501c10a40db6acf0f405e34f11babd92198f6135a8f4",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 79.6,
+      "languagePercentile": 75.3,
+      "lineEndingPercentile": 93.8,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-ad0e4d83b1b91dd8dca2501c10a40db6acf0f405e34f11babd92198f6135a8f4|ALBL-b531a8de7a6d0c34b19b787255885398b63fd4b92d8984404c6d5271f7d268f1",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 93.8,
+        "summary": "Similar written line endings: -i, -e, -u"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b05b2ef6bdc95c06ba891db690f7d2bd4fbc6bc9b317302a948bc3323352ed89",
+    "b": "ALBL-ebe5f9209243e8cc0730f985167ab1298e9e6b87f738cbdaaa2789cd93dc9812",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 96.1,
+      "languagePercentile": 94.8,
+      "lineEndingPercentile": 89.5,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-b05b2ef6bdc95c06ba891db690f7d2bd4fbc6bc9b317302a948bc3323352ed89|ALBL-ebe5f9209243e8cc0730f985167ab1298e9e6b87f738cbdaaa2789cd93dc9812",
+    "signals": [
+      {
+        "items": [
+          "high repeated-line use",
+          "high Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 96.1,
+        "summary": "Similar writing-form profile: high repeated-line use, high Chinese-English mixing"
+      },
+      {
+        "items": [
+          "认识",
+          "画面"
+        ],
+        "kind": "language",
+        "label": "Shared characteristic language",
+        "percentile": 94.8,
+        "summary": "Shared characteristic language: 认识, 画面"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "b": "ALBL-b2a691a1a1df18c00b161abfd5f160861921f76fd419e4a473cba62f11a6bdc2",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 78.1,
+      "languagePercentile": 85.6,
+      "lineEndingPercentile": 28.4,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-b2a691a1a1df18c00b161abfd5f160861921f76fd419e4a473cba62f11a6bdc2|ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b3dec828679c767afa3e13f22a6124b9e70b8f8a07941068f89132a6c497954b",
+    "b": "ALBL-cd62211172109255e518aac9c918feef626c1ec8599caa975e444bfce28c7e28",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 83.3,
+      "languagePercentile": 88.9,
+      "lineEndingPercentile": 71.3,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-b3dec828679c767afa3e13f22a6124b9e70b8f8a07941068f89132a6c497954b|ALBL-cd62211172109255e518aac9c918feef626c1ec8599caa975e444bfce28c7e28",
+    "signals": []
+  },
+  {
+    "a": "ALBL-b3dec828679c767afa3e13f22a6124b9e70b8f8a07941068f89132a6c497954b",
+    "b": "ALBL-de0f80e3bfa4aad6217752f1c1440d11228188a028dc94fa69b1f787401c2def",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.5,
+      "languagePercentile": 85.6,
+      "lineEndingPercentile": 85.2,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-b3dec828679c767afa3e13f22a6124b9e70b8f8a07941068f89132a6c497954b|ALBL-de0f80e3bfa4aad6217752f1c1440d11228188a028dc94fa69b1f787401c2def",
+    "signals": [
+      {
+        "items": [
+          "low short-line writing",
+          "low repeated-line use",
+          "low Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 97.5,
+        "summary": "Similar writing-form profile: low short-line writing, low repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-cf2f15a296686c84d839bd68c5e7f9f4aa3c7531a3115b6d11bb4422a06a2037",
+    "b": "ALBL-b47259c0f8ec7dc8b05a94acb2921670b00d27d9b8e2b94848653ffd4aa9c890",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 57.2,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 47.5,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-b47259c0f8ec7dc8b05a94acb2921670b00d27d9b8e2b94848653ffd4aa9c890|ALBL-cf2f15a296686c84d839bd68c5e7f9f4aa3c7531a3115b6d11bb4422a06a2037",
+    "signals": []
+  },
+  {
+    "a": "ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c",
+    "b": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 94.5,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 65.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac|ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 94.5,
+        "summary": "Similar writing-form profile: low repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac",
+    "b": "ALBL-f6c453a4cec050452655cd7fefbae80257efb4583635d09d28721f006bc73813",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.1,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 94.7,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-b63cf1e776045825584819d4a14d194bd5a31d3d26a8b732ba027e3967fb2bac|ALBL-f6c453a4cec050452655cd7fefbae80257efb4583635d09d28721f006bc73813",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 97.1,
+        "summary": "Similar writing-form profile: low repeated-line use"
+      },
+      {
+        "items": [
+          "-i",
+          "-e",
+          "-u"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 94.7,
+        "summary": "Similar written line endings: -i, -e, -u"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-b6fb9745908a9283df198b367153a16c8346bc5114b5856f9a7ffb412793e6ef",
+    "b": "ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 86.7,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 92.0,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-b6fb9745908a9283df198b367153a16c8346bc5114b5856f9a7ffb412793e6ef|ALBL-e36a821d097c02334c1e15e0e35e40107b21fac23a4c1d89fe9b45f1030533c5",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-ou",
+          "-e"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 92.0,
+        "summary": "Similar written line endings: -i, -ou, -e"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-cd9f7aaab55c5ae86a60abdfb037d7af75d0de0443a6fade6adadc7eeab5a80f",
+    "b": "ALBL-c28203421388af56e88d8f0ad4f9f31fd91f1b6e3815ee08511ee620b9046d21",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 54.7,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 46.8,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-c28203421388af56e88d8f0ad4f9f31fd91f1b6e3815ee08511ee620b9046d21|ALBL-cd9f7aaab55c5ae86a60abdfb037d7af75d0de0443a6fade6adadc7eeab5a80f",
+    "signals": []
+  },
+  {
+    "a": "ALBL-cb7c78d5d00ac7147de7b814ebde9ef47d47e7961b8df535b0628bb71e594071",
+    "b": "ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 89.4,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 12.2,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-cb7c78d5d00ac7147de7b814ebde9ef47d47e7961b8df535b0628bb71e594071|ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "signals": []
+  },
+  {
+    "a": "ALBL-cccdb653670a48994ebdcb438849469516c1dce56b03656b2018d90c9d7b2309",
+    "b": "ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 98.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 69.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-cccdb653670a48994ebdcb438849469516c1dce56b03656b2018d90c9d7b2309|ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "signals": [
+      {
+        "items": [
+          "low Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 98.0,
+        "summary": "Similar writing-form profile: low Chinese-English mixing"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c",
+    "b": "ALBL-df36480d1c39db0bd7c57e8729258ffe1f0e03d719943c6ade41e38e9f4c0dcd",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 75.0,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 99.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "lineEnding",
+    "interpretationState": "supported",
+    "key": "ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c|ALBL-df36480d1c39db0bd7c57e8729258ffe1f0e03d719943c6ade41e38e9f4c0dcd",
+    "signals": [
+      {
+        "items": [
+          "-i",
+          "-ai",
+          "-e"
+        ],
+        "kind": "lineEnding",
+        "label": "Similar written line endings",
+        "percentile": 99.4,
+        "summary": "Similar written line endings: -i, -ai, -e"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c",
+    "b": "ALBL-f6c453a4cec050452655cd7fefbae80257efb4583635d09d28721f006bc73813",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 99.5,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 59.4,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-d7bb01eb8d746f1f9d0a1c46bb8ab67c980a36f3fbbdf2d4671c7ce7e040539c|ALBL-f6c453a4cec050452655cd7fefbae80257efb4583635d09d28721f006bc73813",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 99.5,
+        "summary": "Similar writing-form profile: low repeated-line use"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-d979019ce70ed85f25885322d6573ee2b06fc89d5d3a312f05d0e571d3c1e6b9",
+    "b": "ALBL-e9a4c85e9728ea650fe95413c3e3e10896819996b77097c55e8b48164ad00e35",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 90.8,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 63.8,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-d979019ce70ed85f25885322d6573ee2b06fc89d5d3a312f05d0e571d3c1e6b9|ALBL-e9a4c85e9728ea650fe95413c3e3e10896819996b77097c55e8b48164ad00e35",
+    "signals": []
+  },
+  {
+    "a": "ALBL-fddf535e5b713884564473e370696e9d3ff93e4f56e8f974e38c66f522386646",
+    "b": "ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 97.9,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 28.3,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "form",
+    "interpretationState": "supported",
+    "key": "ALBL-da9d5eb8de99255ccb4d6af827d525b9756ed63f0144d90067a98ac15e7404e8|ALBL-fddf535e5b713884564473e370696e9d3ff93e4f56e8f974e38c66f522386646",
+    "signals": [
+      {
+        "items": [
+          "low repeated-line use",
+          "low Chinese-English mixing"
+        ],
+        "kind": "form",
+        "label": "Similar writing-form profile",
+        "percentile": 97.9,
+        "summary": "Similar writing-form profile: low repeated-line use, low Chinese-English mixing"
+      }
+    ]
+  },
+  {
+    "a": "ALBL-fc83eb0c2b9caf7b6655f612f98b6c57a3a90e33dadb1e65cb5c8eaae604cd5a",
+    "b": "ALBL-de2120b6e55092ce5c5aa011967ce8dcfffae11ffbb993f47bdf018134f00676",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 63.6,
+      "languagePercentile": 42.4,
+      "lineEndingPercentile": 25.6,
+      "supportBucket": "20-39 songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-de2120b6e55092ce5c5aa011967ce8dcfffae11ffbb993f47bdf018134f00676|ALBL-fc83eb0c2b9caf7b6655f612f98b6c57a3a90e33dadb1e65cb5c8eaae604cd5a",
+    "signals": []
+  },
+  {
+    "a": "ALBL-ec1a6a5ce2ff06a97a913a555309205d1ec638937f61e263acda0f10b28e85aa",
+    "b": "ALBL-ecfef7f6f92be0e12b16b1883492c5074fcebcc87b380e577cea3d43f25ef6df",
+    "boundary": "These are post-hoc concordant signals, not a causal decomposition of BGE-M3 and not a social relationship.",
+    "calibration": {
+      "formPercentile": 83.4,
+      "languagePercentile": 35.0,
+      "lineEndingPercentile": 87.1,
+      "supportBucket": "40+ songs"
+    },
+    "dominantSignal": "semanticOnly",
+    "interpretationState": "semantic-only",
+    "key": "ALBL-ec1a6a5ce2ff06a97a913a555309205d1ec638937f61e263acda0f10b28e85aa|ALBL-ecfef7f6f92be0e12b16b1883492c5074fcebcc87b380e577cea3d43f25ef6df",
+    "signals": []
+  }
+]

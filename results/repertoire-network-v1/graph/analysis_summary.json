@@ -1,0 +1,33 @@
+{
+  "artifact_id": "chinese-rap-lyrical-repertoire-graph-v2",
+  "claim_boundary": "lyrical-repertoire proximity between source-labelled corpus slices only; not a real-world rapper relationship, identity, affiliation, style, genre, or audio-performance claim",
+  "counts": {
+    "clean_lyric_chunks": 21346,
+    "clean_songs": 7129,
+    "comparison_ineligible_clean_chunks_excluded": 207,
+    "comparison_ineligible_songs_excluded": 77,
+    "connected_stable_graph_nodes": 93,
+    "graph_eligible_labels": 204,
+    "pre_filter_clean_lyric_chunks": 21553,
+    "pre_filter_clean_songs": 7206,
+    "pre_filter_source_artist_labels": 241,
+    "source_artist_labels": 240,
+    "stable_retained_edges": 86
+  },
+  "model": {
+    "comparison_duplicate_weight_policy": "within_metadata_eligible_population_exact_clean_text_hash_total_mass_one",
+    "comparison_population_policy": "canonical_artist_title_comparison_eligible=true",
+    "edge_rule": "mutual_top_5_neighbours_in_primary_duplicate_weighted_chunk_centroids_and_shared_text_exclusion_sensitivity",
+    "embedding": "BGE-M3 clean-text embeddings; no audio, beat, voice, or Flow input",
+    "minimum_clean_songs": 5,
+    "minimum_effective_text_mass": 20.0,
+    "representation": "comparison-population exact-clean-text duplicate-controlled lyric chunk centroids by source artist label",
+    "sensitivity": "remove exact clean text that occurs under more than one source artist label",
+    "spatial_projection": "deterministic 2D PCA of normalized consensus primary-plus-sensitivity lyric-repertoire centroids across all graph-eligible labels; distance is an approximate semantic display and does not define edges",
+    "spatial_projection_method": "consensus_semantic_pca",
+    "spatial_projection_population": 204,
+    "spatial_projection_variance_explained_2d": 0.26195958910407646,
+    "top_k": 5
+  },
+  "version": "2.3.0"
+}

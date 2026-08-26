@@ -1,0 +1,172 @@
+{
+  "input": "C:\\Users\\Fudap\\Documents\\Codex\\2026-08-06\\ni-k\\work\\chinese-rap-embeddings-to-evidence\\paper\\Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
+  "fonts_by_char_count": {
+    "Times New Roman": 66264,
+    "Courier New": 499,
+    "Cambria Math": 153
+  },
+  "direct_run_formatting_runs": 474,
+  "direct_paragraph_formatting_paragraphs": 241,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 1,
+      "text": "RESEARCH ARTICLE",
+      "style": "Normal"
+    },
+    {
+      "para_index": 3,
+      "text": "[Author name(s)]",
+      "style": "Normal"
+    },
+    {
+      "para_index": 207,
+      "text": "Population",
+      "style": "Normal"
+    },
+    {
+      "para_index": 208,
+      "text": "Count",
+      "style": "Normal"
+    },
+    {
+      "para_index": 209,
+      "text": "Role",
+      "style": "Normal"
+    },
+    {
+      "para_index": 234,
+      "text": "System",
+      "style": "Normal"
+    },
+    {
+      "para_index": 235,
+      "text": "MRR",
+      "style": "Normal"
+    },
+    {
+      "para_index": 236,
+      "text": "Recall@1",
+      "style": "Normal"
+    },
+    {
+      "para_index": 237,
+      "text": "Recall@5",
+      "style": "Normal"
+    },
+    {
+      "para_index": 238,
+      "text": "Recall@10",
+      "style": "Normal"
+    },
+    {
+      "para_index": 239,
+      "text": "nDCG@10",
+      "style": "Normal"
+    },
+    {
+      "para_index": 253,
+      "text": "0.447 [0.414, 0.481]",
+      "style": "Normal"
+    },
+    {
+      "para_index": 254,
+      "text": "0.362 [0.328, 0.398]",
+      "style": "Normal"
+    },
+    {
+      "para_index": 255,
+      "text": "0.528 [0.493, 0.564]",
+      "style": "Normal"
+    },
+    {
+      "para_index": 256,
+      "text": "0.611 [0.577, 0.646]",
+      "style": "Normal"
+    },
+    {
+      "para_index": 257,
+      "text": "0.476 [0.443, 0.511]",
+      "style": "Normal"
+    },
+    {
+      "para_index": 258,
+      "text": "Stage",
+      "style": "Normal"
+    },
+    {
+      "para_index": 259,
+      "text": "Count",
+      "style": "Normal"
+    },
+    {
+      "para_index": 260,
+      "text": "Evidential meaning",
+      "style": "Normal"
+    },
+    {
+      "para_index": 285,
+      "text": "Model",
+      "style": "Normal"
+    }
+  ],
+  "examples": {
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 1,
+        "text": "RESEARCH ARTICLE",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "text": "Language, Reference, and Written Rhyme: Evidence-Grounded Downstream Analysis of Chinese Rap Lyrics",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "text": "[Author name(s)]",
+        "style": "Normal"
+      },
+      {
+        "para_index": 4,
+        "text": "[Affiliation(s)]",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "text": "[Corresponding author email]",
+        "style": "Normal"
+      }
+    ],
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "RESEARCH ARTICLE",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "run_text": "Language, Reference, and Written Rhyme: Evidence-Grounded Downstream Analysis of",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "run_text": "[Author name(s)]",
+        "style": "Normal"
+      },
+      {
+        "para_index": 4,
+        "run_text": "[Affiliation(s)]",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "run_text": "[Corresponding author email]",
+        "style": "Normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

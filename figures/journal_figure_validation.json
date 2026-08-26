@@ -1,0 +1,375 @@
+{
+  "artifact_id": "chinese-rap-journal-figures-v1",
+  "generated_at_utc": "2026-08-26T19:17:43.117988Z",
+  "status": "pass",
+  "journal_canvas_width_inches": 6.5,
+  "minimum_visible_font_pt_required": 7.0,
+  "typography": {
+    "latin": "Arial (Helvetica-style sans serif)",
+    "cjk_fallback": "Microsoft YaHei",
+    "pdf_font_mode": "TrueType / Type 42",
+    "svg_text_mode": "text retained as text"
+  },
+  "artwork_policy": {
+    "internal_figure_numbers": false,
+    "internal_headlines": false,
+    "internal_captions": false,
+    "internal_sources": false,
+    "internal_claim_boundary_prose": false,
+    "panel_labels_retained": true,
+    "non_colour_redundancy": "marker shape, open/filled markers, hatch, row position, and direct labels"
+  },
+  "figures": [
+    {
+      "number": 1,
+      "print_size_inches": [
+        6.5,
+        4.35
+      ],
+      "pixels_at_600_dpi": [
+        3900,
+        2610
+      ],
+      "minimum_visible_font_pt": 7.1,
+      "visible_text_elements": 20,
+      "font_policy": "Arial/Helvetica-style sans serif with Microsoft YaHei CJK fallback",
+      "internal_figure_label_count": 0,
+      "text_outside_canvas": [],
+      "files": [
+        "figure_1_research_design.png",
+        "figure_1_research_design.tiff",
+        "fig1.tif",
+        "fig1.pdf",
+        "fig1.svg"
+      ]
+    },
+    {
+      "number": 2,
+      "print_size_inches": [
+        6.5,
+        3.55
+      ],
+      "pixels_at_600_dpi": [
+        3900,
+        2130
+      ],
+      "minimum_visible_font_pt": 7.1,
+      "visible_text_elements": 53,
+      "font_policy": "Arial/Helvetica-style sans serif with Microsoft YaHei CJK fallback",
+      "internal_figure_label_count": 0,
+      "text_outside_canvas": [],
+      "files": [
+        "figure_2_retrieval_benchmark.png",
+        "figure_2_retrieval_benchmark.tiff",
+        "fig2.tif",
+        "fig2.pdf",
+        "fig2.svg"
+      ]
+    },
+    {
+      "number": 3,
+      "print_size_inches": [
+        6.5,
+        5.55
+      ],
+      "pixels_at_600_dpi": [
+        3900,
+        3330
+      ],
+      "minimum_visible_font_pt": 7.0,
+      "visible_text_elements": 49,
+      "font_policy": "Arial/Helvetica-style sans serif with Microsoft YaHei CJK fallback",
+      "internal_figure_label_count": 0,
+      "text_outside_canvas": [],
+      "files": [
+        "figure_3_cultural_reference_evidence.png",
+        "figure_3_cultural_reference_evidence.tiff",
+        "fig3.tif",
+        "fig3.pdf",
+        "fig3.svg"
+      ]
+    },
+    {
+      "number": 4,
+      "print_size_inches": [
+        6.5,
+        5.05
+      ],
+      "pixels_at_600_dpi": [
+        3900,
+        3030
+      ],
+      "minimum_visible_font_pt": 7.0,
+      "visible_text_elements": 46,
+      "font_policy": "Arial/Helvetica-style sans serif with Microsoft YaHei CJK fallback",
+      "internal_figure_label_count": 0,
+      "text_outside_canvas": [],
+      "files": [
+        "figure_4_written_rhyme_benchmark.png",
+        "figure_4_written_rhyme_benchmark.tiff",
+        "fig4.tif",
+        "fig4.pdf",
+        "fig4.svg"
+      ]
+    }
+  ],
+  "raster_audit": [
+    {
+      "path": "figures/figure_1_research_design.png",
+      "bytes": 373161,
+      "sha256": "1a641cdb341f841919a6c13b48e53c10aaaddc5a7d166fc2795b1e126a009bbd",
+      "pixels": [
+        3900,
+        2610
+      ],
+      "mode": "RGBA",
+      "dpi": [
+        599.999,
+        599.999
+      ],
+      "compression": ""
+    },
+    {
+      "path": "figures/figure_1_research_design.tiff",
+      "bytes": 975206,
+      "sha256": "24a0c50ce9c3bc61a3b675f1719f6e9fa523b318b8db1f3ec57025548d7584d7",
+      "pixels": [
+        3900,
+        2610
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "path": "figures/fig1.tif",
+      "bytes": 30537192,
+      "sha256": "6bc40a7ce8c6df471902d8b0d097f0e5305783016ee5d79f786fb9fbc46de41f",
+      "pixels": [
+        3900,
+        2610
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "raw"
+    },
+    {
+      "path": "figures/figure_2_retrieval_benchmark.png",
+      "bytes": 356768,
+      "sha256": "5a0180cf9d8643198dcdd347615861a6e2e701dbdff83f46363c6ec1b511ea28",
+      "pixels": [
+        3900,
+        2130
+      ],
+      "mode": "RGBA",
+      "dpi": [
+        599.999,
+        599.999
+      ],
+      "compression": ""
+    },
+    {
+      "path": "figures/figure_2_retrieval_benchmark.tiff",
+      "bytes": 559380,
+      "sha256": "09830bdcb74dfa686ff165ec76cfcbe23444e37ff993bbb4fed129b27c9143ec",
+      "pixels": [
+        3900,
+        2130
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "path": "figures/fig2.tif",
+      "bytes": 24921192,
+      "sha256": "9c16df9350cd2d2ae07749e6c99e40cbe7e36e11d1d9ddfea0a1865b1693a955",
+      "pixels": [
+        3900,
+        2130
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "raw"
+    },
+    {
+      "path": "figures/figure_3_cultural_reference_evidence.png",
+      "bytes": 442759,
+      "sha256": "7a36fa6db08fdc30b46520aefcb751c6290d7e7831cdeac9db5f701814bd3625",
+      "pixels": [
+        3900,
+        3330
+      ],
+      "mode": "RGBA",
+      "dpi": [
+        599.999,
+        599.999
+      ],
+      "compression": ""
+    },
+    {
+      "path": "figures/figure_3_cultural_reference_evidence.tiff",
+      "bytes": 740040,
+      "sha256": "892964ecae8ab060fddf998b4ac3895b889fe7fa27e11773c92c68f312398f2c",
+      "pixels": [
+        3900,
+        3330
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "path": "figures/fig3.tif",
+      "bytes": 38961192,
+      "sha256": "385f20474e9ec30fe69702393e2cc58db49222817c0da99be68e96888b03c0e4",
+      "pixels": [
+        3900,
+        3330
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "raw"
+    },
+    {
+      "path": "figures/figure_4_written_rhyme_benchmark.png",
+      "bytes": 354479,
+      "sha256": "d665a31a94a2720b0c070f67b65df5c82a9da0e3632e8e10d8592fd6abf4897e",
+      "pixels": [
+        3900,
+        3030
+      ],
+      "mode": "RGBA",
+      "dpi": [
+        599.999,
+        599.999
+      ],
+      "compression": ""
+    },
+    {
+      "path": "figures/figure_4_written_rhyme_benchmark.tiff",
+      "bytes": 752650,
+      "sha256": "e19998352a294c20c5d3a7ce34c69a9e9653dc3434e40a13e2326f687799ae11",
+      "pixels": [
+        3900,
+        3030
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "path": "figures/fig4.tif",
+      "bytes": 35451192,
+      "sha256": "e5858372c5c67b697ff54425fd4a7b0ed4a823aefbeedf023469f8b9943bf8dc",
+      "pixels": [
+        3900,
+        3030
+      ],
+      "mode": "RGB",
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "raw"
+    }
+  ],
+  "vector_audit": [
+    {
+      "path": "figures/fig1.pdf",
+      "bytes": 57693,
+      "sha256": "2d0e393fc3b87c25d64c713aa1bccdf1b1c28f890a2603b3761731b9798d63ec",
+      "format": "PDF"
+    },
+    {
+      "path": "figures/fig1.svg",
+      "bytes": 12801,
+      "sha256": "fff289622b53f992052d1aa86f008a961323f186b673cd12170dc7d740950258",
+      "format": "SVG"
+    },
+    {
+      "path": "figures/fig2.pdf",
+      "bytes": 48279,
+      "sha256": "077b3dfdb362ef18eb0cfc78abad7bca294d450fc5c8f22225ac6a54022cd79e",
+      "format": "PDF"
+    },
+    {
+      "path": "figures/fig2.svg",
+      "bytes": 47545,
+      "sha256": "4aa5da9569f7b4c107589db494a9501d68a8cdb10684ed4e75c5982fde2efe3e",
+      "format": "SVG"
+    },
+    {
+      "path": "figures/fig3.pdf",
+      "bytes": 81069,
+      "sha256": "8f43179227d408d8b36eaf60b72963474bd126bc50e703db043919972760e764",
+      "format": "PDF"
+    },
+    {
+      "path": "figures/fig3.svg",
+      "bytes": 37977,
+      "sha256": "6af802dab4b5a6076284f8e5b2c47e3ee09c827381a871dad76f8fa97680c7da",
+      "format": "SVG"
+    },
+    {
+      "path": "figures/fig4.pdf",
+      "bytes": 57192,
+      "sha256": "e0362136af992751c159373c8a03b9ef85ef9f3b994637b1f86402ba2a1d7779",
+      "format": "PDF"
+    },
+    {
+      "path": "figures/fig4.svg",
+      "bytes": 57966,
+      "sha256": "fb32f1b82b6e501f0c8297232750b81020b366596264efb4ac00109352152365",
+      "format": "SVG"
+    }
+  ],
+  "checks": [
+    {
+      "name": "all_visible_text_at_least_7pt",
+      "passed": true
+    },
+    {
+      "name": "no_internal_figure_labels",
+      "passed": true
+    },
+    {
+      "name": "no_text_outside_fixed_canvas",
+      "passed": true
+    },
+    {
+      "name": "all_rasters_exact_600dpi",
+      "passed": true
+    },
+    {
+      "name": "submission_tiffs_uncompressed_rgb",
+      "passed": true
+    },
+    {
+      "name": "vector_pdf_and_svg_present",
+      "passed": true
+    }
+  ],
+  "claim_boundary": "The visual refactor changes only presentation. All numerical claims remain frozen corpus-internal aggregate results; the figures do not establish performer identity, authorship, biography, residence, preference, social relations, performed rhyme, flow, delivery, or audio properties."
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chinese Rap Evidence — Publication Figures</title>
+  <style>
+    :root{--ink:#131820;--paper:#f5f2ea;--card:#fffefb;--line:#cbc7bd;--blue:#0679b8;--orange:#d55e00;--violet:#8e5b89;--muted:#5b626a}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Microsoft YaHei",sans-serif}
+    main{width:min(1160px,calc(100% - 32px));margin:auto;padding:54px 0 70px}.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.15em;color:var(--blue)}
+    h1{max-width:880px;margin:12px 0 14px;font-size:clamp(2.4rem,6vw,4.8rem);line-height:.96;letter-spacing:-.055em}p{line-height:1.55;color:var(--muted)}
+    .summary{max-width:760px;font-size:1.05rem}.facts{display:grid;grid-template-columns:repeat(4,1fr);margin:34px 0 42px;border:1px solid var(--line);background:var(--card)}
+    .fact{padding:18px}.fact+.fact{border-left:1px solid var(--line)}.fact b{display:block;font-size:1.35rem}.fact span{font-size:.78rem;color:var(--muted)}
+    .figure-list{display:grid;gap:22px}.figure-card{background:var(--card);border:1px solid var(--line);padding:24px}.figure-head{display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:start}
+    .number{font-size:2.2rem;font-weight:800;line-height:1;color:var(--blue)}h2{margin:0 0 5px;font-size:1.45rem}.result{margin:0;color:var(--ink);font-weight:700}.formats{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+    .formats a{border:1px solid var(--line);padding:7px 9px;color:var(--ink);font-size:.72rem;font-weight:700;text-decoration:none}.formats a:hover,.formats a:focus-visible{border-color:var(--blue);outline:2px solid var(--blue);outline-offset:2px}
+    figure{margin:22px 0 0}img{display:block;width:100%;height:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:white;padding:10px 0}figcaption{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px;font-size:.86rem}figcaption p{margin:0}figcaption b{color:var(--ink)}
+    .boundary{border-left:3px solid var(--orange);padding-left:12px}.foot{margin-top:28px;font-size:.82rem}
+    @media(max-width:780px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(3){border-left:0;border-top:1px solid var(--line)}.fact:nth-child(4){border-top:1px solid var(--line)}.figure-head{grid-template-columns:48px 1fr}.formats{grid-column:1/-1;justify-content:flex-start}figcaption{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">PUBLICATION FIGURE SET · DSH-READY ARTWORK</div>
+  <h1>Four figures, four research questions.</h1>
+  <p class="summary">Each chart answers one question. The clean artwork is 6.5 inches wide, 600 dpi, and uses redundant shapes or line styles so that meaning does not depend on colour.</p>
+  <section class="facts" aria-label="Figure validation summary">
+    <div class="fact"><b>4</b><span>separate analytical figures</span></div>
+    <div class="fact"><b>600 dpi</b><span>submission raster resolution</span></div>
+    <div class="fact"><b>≥7 pt</b><span>minimum visible figure text</span></div>
+    <div class="fact"><b>3 formats</b><span>TIFF · PDF · SVG</span></div>
+  </section>
+
+  <section class="figure-list">
+    <article class="figure-card">
+      <header class="figure-head"><div class="number">01</div><div><h2>How does evidence move through the study?</h2><p class="result">One frozen corpus feeds three task-specific pipelines with shared leakage controls and different valid claims.</p></div><nav class="formats" aria-label="Figure 1 downloads"><a href="fig1.tif">TIFF</a><a href="fig1.pdf">PDF</a><a href="fig1.svg">SVG</a><a href="figure_1_pipeline_source.csv">DATA</a></nav></header>
+      <figure><img src="figure_1_research_design.png" alt="A frozen Chinese-rap corpus passes through shared evidence controls before branching into repertoire retrieval, cultural-reference extraction, and written-rhyme prediction."><figcaption><p><b>Read it as:</b> corpus → controls → three distinct downstream tasks.</p><p class="boundary"><b>Boundary:</b> the shared input does not make the three tasks interchangeable.</p></figcaption></figure>
+    </article>
+
+    <article class="figure-card">
+      <header class="figure-head"><div class="number">02</div><div><h2>Does BGE-M3 alone capture lyrical repertoire?</h2><p class="result">No. Untuned dense–lexical fusion reaches MRR 0.447 and improves on character TF–IDF by 0.031 on held-out songs.</p></div><nav class="formats" aria-label="Figure 2 downloads"><a href="fig2.tif">TIFF</a><a href="fig2.pdf">PDF</a><a href="fig2.svg">SVG</a><a href="figure_2_retrieval_benchmark_source.csv">DATA</a></nav></header>
+      <figure><img src="figure_2_retrieval_benchmark.png" alt="Dot-and-whisker panels show fusion above BGE-M3 and character TF-IDF on five held-out retrieval metrics, with every paired fusion advantage above zero."><figcaption><p><b>Read it as:</b> filled blue circles are fusion; right-hand intervals quantify its gain over each single representation.</p><p class="boundary"><b>Boundary:</b> this is corpus-internal repertoire retrieval, not artist identification or authorship attribution.</p></figcaption></figure>
+    </article>
+
+    <article class="figure-card">
+      <header class="figure-head"><div class="number">03</div><div><h2>Which cultural-reference relations survive controls?</h2><p class="result">Six source-label-to-place enrichments and four same-song reference pairs remain after shared-text exclusion and false-discovery control.</p></div><nav class="formats" aria-label="Figure 3 downloads"><a href="fig3.tif">TIFF</a><a href="fig3.pdf">PDF</a><a href="fig3.svg">SVG</a><a href="figure_3_label_place_links_source.csv">LINK DATA</a><a href="figure_3_co_mentions_source.csv">PAIR DATA</a></nav></header>
+      <figure><img src="figure_3_cultural_reference_evidence.png" alt="Evidence-control progressions narrow candidate entities and relations, followed by six place-enrichment intervals and four same-song co-mention associations."><figcaption><p><b>Read it as:</b> upper panel shows contraction under controls; lower panels show only relations that pass the release gates.</p><p class="boundary"><b>Boundary:</b> human NER gold is still pending; lyric references are not residence, biography, preference, or social ties.</p></figcaption></figure>
+    </article>
+
+    <article class="figure-card">
+      <header class="figure-head"><div class="number">04</div><div><h2>How predictable is the next written rhyme family?</h2><p class="result">Full context reaches Top-3 0.695, but true family switches remain difficult and source-label conditioning adds no supported benefit.</p></div><nav class="formats" aria-label="Figure 4 downloads"><a href="fig4.tif">TIFF</a><a href="fig4.pdf">PDF</a><a href="fig4.svg">SVG</a><a href="figure_4_rhyme_benchmark_source.csv">DATA</a></nav></header>
+      <figure><img src="figure_4_written_rhyme_benchmark.png" alt="Held-out model comparisons show context models above global and Markov baselines, while a transition panel reveals strong continuation performance but weaker rhyme-family switching."><figcaption><p><b>Read it as:</b> context helps ranked next-family prediction; the lower panels expose where that performance comes from.</p><p class="boundary"><b>Boundary:</b> dictionary-estimated written endings do not measure performed rhyme, flow, delivery, voice, or beat.</p></figcaption></figure>
+    </article>
+  </section>
+  <p class="foot">Full legends and journal alt text: <a href="figure_captions_and_alt_text.md">figure_captions_and_alt_text.md</a>. Validation record: <a href="journal_figure_validation.json">journal_figure_validation.json</a>.</p>
+</main>
+</body>
+</html>

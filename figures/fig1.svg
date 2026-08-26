@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="468pt" height="313.2pt" viewBox="0 0 468 313.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Chinese rap study figure 1</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Chinese rap study figure 1</dc:title>
+    <dc:date>2026-08-26T14:17:37.671568</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 313.2 
+L 468 313.2 
+L 468 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 29.016 60.1344 
+L 438.984 60.1344 
+Q 445.536 60.1344 445.536 55.7496 
+L 445.536 20.9844 
+Q 445.536 16.5996 438.984 16.5996 
+L 29.016 16.5996 
+Q 22.464 16.5996 22.464 20.9844 
+L 22.464 55.7496 
+Q 22.464 60.1344 29.016 60.1344 
+z
+" style="fill: #f5f6f7; stroke: #d7dce2; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 234 59.944385 
+Q 234 64.676305 234 68.346093 
+" style="fill: none; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+    <path d="M 235.8 64.746093 
+L 234 68.346093 
+L 232.2 64.746093 
+z
+" style="fill: #5f6772; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 29.016 122.7744 
+L 438.984 122.7744 
+Q 445.536 122.7744 445.536 118.3896 
+L 445.536 82.0584 
+Q 445.536 77.6736 438.984 77.6736 
+L 29.016 77.6736 
+Q 22.464 77.6736 22.464 82.0584 
+L 22.464 118.3896 
+Q 22.464 122.7744 29.016 122.7744 
+z
+" style="fill: #202124; stroke: #202124; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 232.012057 120.796579 
+Q 161.459481 128.412056 91.962903 135.913548 
+" style="fill: none; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+    <path d="M 95.735283 137.316811 
+L 91.962903 135.913548 
+L 95.348942 133.737602 
+z
+" style="fill: #5f6772; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 24.336 282.5064 
+L 153.504 282.5064 
+Q 160.056 282.5064 160.056 278.1216 
+L 160.056 144.6984 
+Q 160.056 140.3136 153.504 140.3136 
+L 24.336 140.3136 
+Q 17.784 140.3136 17.784 144.6984 
+L 17.784 278.1216 
+Q 17.784 282.5064 24.336 282.5064 
+z
+" style="fill: #d9eef8; stroke: #0072b2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 21.06 162.2376 
+L 156.78 162.2376 
+L 156.78 142.506 
+L 21.06 142.506 
+z
+" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 234 122.581556 
+Q 234 128.412925 234 133.182161 
+" style="fill: none; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+    <path d="M 235.8 129.582161 
+L 234 133.182161 
+L 232.2 129.582161 
+z
+" style="fill: #5f6772; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 169.416 282.5064 
+L 298.584 282.5064 
+Q 305.136 282.5064 305.136 278.1216 
+L 305.136 144.6984 
+Q 305.136 140.3136 298.584 140.3136 
+L 169.416 140.3136 
+Q 162.864 140.3136 162.864 144.6984 
+L 162.864 278.1216 
+Q 162.864 282.5064 169.416 282.5064 
+z
+" style="fill: #f7ddce; stroke: #c75500; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 166.14 162.2376 
+L 301.86 162.2376 
+L 301.86 142.506 
+L 166.14 142.506 
+z
+" style="fill: #c75500"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 235.987943 120.796579 
+Q 306.540519 128.412056 376.037097 135.913548 
+" style="fill: none; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+    <path d="M 372.651058 133.737602 
+L 376.037097 135.913548 
+L 372.264717 137.316811 
+z
+" style="fill: #5f6772; stroke: #5f6772; stroke-width: 0.95; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 314.496 282.5064 
+L 443.664 282.5064 
+Q 450.216 282.5064 450.216 278.1216 
+L 450.216 144.6984 
+Q 450.216 140.3136 443.664 140.3136 
+L 314.496 140.3136 
+Q 307.944 140.3136 307.944 144.6984 
+L 307.944 278.1216 
+Q 307.944 282.5064 314.496 282.5064 
+z
+" style="fill: #f0e6ed; stroke: #8e5a82; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 311.22 162.2376 
+L 446.94 162.2376 
+L 446.94 142.506 
+L 311.22 142.506 
+z
+" style="fill: #8e5a82"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 27.612 217.674 
+L 150.228 217.674 
+" clip-path="url(#pcf34358455)" style="fill: none; stroke: #d7dce2; stroke-width: 0.75; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 172.692 217.674 
+L 295.308 217.674 
+" clip-path="url(#pcf34358455)" style="fill: none; stroke: #d7dce2; stroke-width: 0.75; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 317.772 217.674 
+L 440.388 217.674 
+" clip-path="url(#pcf34358455)" style="fill: none; stroke: #d7dce2; stroke-width: 0.75; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 7.4px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="36.504" y="32.608639" transform="rotate(-0 36.504 32.608639)">FROZEN CORPUS</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #202124" x="36.504" y="48.001793" transform="rotate(-0 36.504 48.001793)">7,211 songs   |   22,128 chunks   |   21,553 analysis-eligible chunks</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 7.4px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="36.504" y="93.369439" transform="rotate(-0 36.504 93.369439)">SHARED EVIDENCE CONTROLS</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 7.6px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="36.504" y="105.322723" transform="rotate(-0 36.504 105.322723)">Song-aware holdout  |  exact-content grouping  |  task-specific fitting boundaries</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #e1e5ea" x="36.504" y="116.207089" transform="rotate(-0 36.504 116.207089)">405 cross-song content groups (921 songs); no test-outcome tuning</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="27.612" y="154.391681" transform="rotate(-0 27.612 154.391681)">1  REPERTOIRE RETRIEVAL</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="27.612" y="178.368594" transform="rotate(-0 27.612 178.368594)">METHOD</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(27.612 191.920471)">BGE-M3 dense</text>
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(27.612 200.241615)">Character 2-5-gram TF-IDF</text>
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(27.612 210.008502)">Untuned z-score fusion</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="27.612" y="229.733394" transform="rotate(-0 27.612 229.733394)">OUTPUT</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(27.612 242.446831)">Held-out-song</text>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(27.612 251.245049)">source-label ranking</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="172.692" y="154.391681" transform="rotate(-0 172.692 154.391681)">2  CULTURAL REFERENCES</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="172.692" y="178.368594" transform="rotate(-0 172.692 178.368594)">METHOD</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(172.692 191.922182)">Lexicon/rule baseline</text>
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(172.692 200.965342)">Contextual Chinese NER</text>
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(172.692 209.240291)">Agreement + BH-FDR gates</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="172.692" y="229.733394" transform="rotate(-0 172.692 229.733394)">OUTPUT</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(172.692 242.492534)">Typed references and</text>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(172.692 251.245049)">same-song co-mentions</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="317.772" y="154.391681" transform="rotate(-0 317.772 154.391681)">3  WRITTEN RHYME</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="317.772" y="178.368594" transform="rotate(-0 317.772 178.368594)">METHOD</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(317.772 191.198455)">Terminal-Han pinyin finals</text>
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(317.772 200.922568)">Markov baseline</text>
+    <text style="font-size: 7.3px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(317.772 209.965729)">Hierarchical context model</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #5f6772" x="317.772" y="229.733394" transform="rotate(-0 317.772 229.733394)">OUTPUT</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(317.772 242.446831)">Next written-ending</text>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #202124" transform="translate(317.772 251.290752)">family probabilities</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcf34358455">
+   <rect x="0" y="0" width="468" height="313.2"/>
+  </clipPath>
+ </defs>
+</svg>

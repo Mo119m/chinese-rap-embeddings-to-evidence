@@ -1,0 +1,34 @@
+{
+  "artifact_id": "chinese-rap-edge-bootstrap-v1",
+  "bootstrap_graph_edge_count": {
+    "maximum": 90,
+    "median": 66.0,
+    "minimum": 46
+  },
+  "claim_boundary": "Selection probability under within-label song resampling for the existing representation rule; not a confidence probability for a social or cultural relationship.",
+  "counts": {
+    "edges_probability_at_least_0_50": 16,
+    "edges_probability_at_least_0_80": 0,
+    "edges_probability_at_least_0_90": 0,
+    "eligible_labels": 204,
+    "original_stable_edges": 86,
+    "replicates": 250
+  },
+  "edge_probability_distribution": {
+    "maximum": 0.712,
+    "median": 0.28,
+    "minimum": 0.072,
+    "q25": 0.192,
+    "q75": 0.427
+  },
+  "generated_at_utc": "2026-08-25T19:34:44.146291+00:00",
+  "lineage": {
+    "embedding_contract_sha256": "d65a446dc8ac3cb9fb5f513c63e9d10a3f6a94a6c1cebd28953b045170600c5b",
+    "graph_manifest_sha256": "bbb546d4b9f68220245b91998242de3f016886d391a887d7c5618e60e7b4237d",
+    "graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_graph_manifest_sha256": "27928a300af21b81cca208238a9037384003c85266653ef1af00aa327c5c46ed"
+  },
+  "method": "within-source-label song bootstrap; reciprocal top-5 recomputed in primary and exact-cross-label-shared-text-exclusion representations",
+  "resample_retries_for_zero_sensitivity_mass": 0,
+  "version": "1.0.0"
+}

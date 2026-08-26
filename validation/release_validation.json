@@ -1,71 +1,43 @@
 {
-  "artifact": "Chinese_Rap_Research_Release_V3",
-  "generated_at_utc": "2026-08-26T03:50:04.2240569Z",
+  "artifact": "Chinese_Rap_Research_Release_V4",
+  "generated_at_utc": "2026-08-26T19:18:56.559401+00:00",
   "status": "pass_for_public_release_author_actions_required_before_journal_submission",
   "public_release_ready": true,
   "journal_submission_ready": false,
-  "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
-  "checks": [
-    {
-      "name": "frozen_input_audit",
-      "passed": true,
-      "detail": "12/12 checks; 7,211 songs, 22,128 chunks, 21,553 eligible clean chunks"
-    },
-    {
-      "name": "retrieval_validation",
-      "passed": true,
-      "detail": "13/13 checks; 5,455 held-out queries, 204 source-credit labels, fusion MRR 0.447084"
-    },
-    {
-      "name": "ner_independent_recomputation",
-      "passed": true,
-      "detail": "19/19 checks; 4,488 label/entity and 231 co-mention tests independently recomputed with zero mismatch"
-    },
-    {
-      "name": "written_rhyme_validation",
-      "passed": true,
-      "detail": "20/20 checks; 34,395 leakage-safe test transitions across 787 held-out songs; full-context Top-3 0.695421"
-    },
-    {
-      "name": "publication_figures",
-      "passed": true,
-      "detail": "21/21 checks; four PNG and four RGB TIFF figures at 600 DPI"
-    },
-    {
-      "name": "manuscript_empirical_integrity",
-      "passed": true,
-      "detail": "Zero frozen-result mismatches; 26/26 citation closure; RQ1-RQ4, PD-001, NER interval definition, figure and table callouts checked"
-    },
-    {
-      "name": "docx_pdf_render",
-      "passed": true,
-      "detail": "Main manuscript 39 Letter pages and supplement 4 Letter pages; tagged PDFs; every page visually reviewed, with affected pages rechecked after the final wording correction"
-    },
-    {
-      "name": "standalone_results_website",
-      "passed": true,
-      "detail": "Self-contained 496,700-byte HTML; zero external assets; desktop, mobile, keyboard, graph search/click, cultural-reference path, and written-ending input tested"
-    },
-    {
-      "name": "application_source",
-      "passed": true,
-      "detail": "Lint and production build pass; publication-site data builder round-trips the frozen aggregate data with an identical SHA-256"
-    },
-    {
-      "name": "code_and_table_parseability",
-      "passed": true,
-      "detail": "15 Python files compile; 35 JSON and 38 CSV files parse; README relative links and required core artifacts resolve"
-    },
-    {
-      "name": "public_release_boundary",
-      "passed": true,
-      "detail": "No full lyrics, full written lines, song/chunk/line IDs, lyric-level hashes, embeddings, private membership rows, reviewer contexts, credentials, or personal emails. File-level checksums and aggregate ALBL-/ENT- join keys are explicitly documented as non-content integrity metadata; the reader-facing site exposes neither."
-    }
-  ],
+  "central_question": "How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?",
+  "checks": {
+    "global_network_204_nodes": true,
+    "global_network_86_released_edges": true,
+    "global_network_16_repeatable_edges": true,
+    "global_network_93_connected_labels": true,
+    "global_before_local_in_application": true,
+    "edge_rule_and_repeatability_explained": true,
+    "portable_global_network_present": true,
+    "no_keyword_occurrence_search": true,
+    "four_primary_co_mentions": true,
+    "six_primary_label_reference_links": true,
+    "human_gold_not_overclaimed": true,
+    "rhyme_held_out_events": true,
+    "journal_figures_pass": true,
+    "journal_figures_600_dpi": true,
+    "journal_figure_text_at_least_7pt": true,
+    "manuscript_under_9000_words": true,
+    "structured_abstract_present": true,
+    "strict_docx_exists": true,
+    "strict_pdf_exists": true
+  },
   "headline_results": {
-    "retrieval": {
-      "fusion_macro_mrr": 0.447084,
-      "fusion_minus_character_tfidf_mrr": 0.031312,
+    "global_repertoire_map": {
+      "eligible_labels": 204,
+      "connected_labels": 93,
+      "released_reciprocal_edges": 86,
+      "repeatable_edges_at_50pct_gate": 16,
+      "bootstrap_replicates": 250,
+      "pca_2d_variance": 0.26195958910407646
+    },
+    "held_out_retrieval": {
+      "fusion_mrr": 0.447084,
+      "character_tfidf_mrr": 0.415771,
       "fusion_recall_at_10": 0.611186
     },
     "cultural_reference": {
@@ -74,23 +46,37 @@
       "human_gold_complete": false
     },
     "written_rhyme": {
-      "full_context_top3": 0.695421,
-      "full_context_minus_markov_top3": 0.049775,
-      "switch_top1": 0.026447
+      "held_out_events": 34395,
+      "held_out_songs": 787,
+      "full_context_top3": 0.695421
     }
   },
-  "artifact_hashes": {
-    "standalone_site_sha256": "6898a5b66aa1a33f43007d3b532108699a0cf2cdc28262af101b3ca90eb8d16e",
-    "manuscript_markdown_sha256": "ed6e8d4d941bf8784d6bf98a6f3dc8e85484253d51f1c43aae06e99dc989a4bf",
-    "manuscript_docx_sha256": "bd1231028e8c4b47020e0b6254ae801f3a67b3cb551b80e60512d46fa4afd2a1",
-    "manuscript_pdf_sha256": "e071e65ca2106bff36c5b0de068d6f7d0ce4009a4f8a925be2b8c22df594c4bf",
-    "supplement_docx_sha256": "c9d1115fc8046ccb2fdd28e3eb25dc92093951ceb83e35c80fb22845d4769f7c",
-    "supplement_pdf_sha256": "9d8309de2e2e9a70212e7530b711f74f9d0d545a1f5e203d6095caa259a5ce43"
+  "meaning_and_scope": {
+    "done": [
+      "One clear theme and three evaluated downstream tasks.",
+      "A corpus-wide network appears before the focused ego network.",
+      "Every released network line exposes its rule, repeatability, auxiliary signal, and claim boundary.",
+      "The application uses aggregate ML/statistical outputs rather than keyword-occurrence search.",
+      "English scholarly explanation is paired with Chinese analytic evidence where needed.",
+      "The manuscript separates BGE-M3 representation from the downstream retrieval, graph, NER, and rhyme methods.",
+      "Journal figures meet the documented DSH artwork contract."
+    ],
+    "partial_or_human_required": [
+      "NER occurrence accuracy cannot be reported until the planned dual human review is completed.",
+      "The 204 source-credit labels are not globally verified artist identities; only four title-field corrections have approved external evidence.",
+      "Authors must supply names, affiliations, funding, conflicts, CRediT roles, corpus provenance, rights, ethics determination, exact AI disclosure, licence, and archival DOI."
+    ]
   },
-  "human_actions_before_journal_submission": [
-    "Complete author names, affiliations, corresponding-author email, funding, conflict-of-interest, and CRediT roles.",
-    "Provide documented corpus acquisition, sampling, temporal coverage, transcription, custody, rights, and institutional ethics facts, or retain Unknown-not-supplied and narrow the claims.",
-    "Choose a public licence, create the archival repository DOI, and replace the DOI placeholder.",
-    "Confirm the exact AI-tool disclosure and perform the journal portal's final upload preview."
-  ]
+  "artifact_hashes": {
+    "portable_site_sha256": "bfd730b8c9f0a10681f3c018e169a3b677c9f8bbf9725c1098aa645c96066e69",
+    "application_data_sha256": "9d0cca83d51c0eb24b328edfdc315fa658e46fe0fd49083f951f93189e1e139c",
+    "manuscript_markdown_sha256": "3d88c063842bf70918f32eac7b4b9fcb48045a3c29acd4a11356835a89e357bd",
+    "review_manuscript_docx_sha256": "50f841f6bbe79b89c8cb0cf4910b2dc9010c6d7bcc47c4bceb680a9c0e9d4131",
+    "review_manuscript_pdf_sha256": "6eb78be869002a67428aed072c452b3a7ad5d63aa374407e478bea4c34e8cae5",
+    "dsh_manuscript_docx_sha256": "f40ecf0653e83bf2b12d5c6dade5e67cdb067ee3043837fa554d2c3871a83326",
+    "dsh_manuscript_pdf_sha256": "52b6791bb300b8c4024b9c1643e16b70f6d28c1858baa5ef623f97caecb140a0",
+    "supplement_docx_sha256": "14a7a4fb98c43554c3aa129f534c2f0f5f489ee3d2ec376a17800b7ab7cb3da0",
+    "supplement_pdf_sha256": "1285e31ffe585ebae141b4dcab44d76204608a8203e529a232747d7031cffd56",
+    "journal_figure_validation_sha256": "6a7525b254f40d604ef8a1946bab2a7e46f60a75aaaf343fd77002e8ecf2a0ea"
+  }
 }

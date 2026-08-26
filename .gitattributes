@@ -1,0 +1,3 @@
+# Preserve the frozen public artifact byte-for-byte so its published SHA-256
+# manifests validate identically on Windows, macOS, and Linux checkouts.
+results/repertoire-network-v1/** -text

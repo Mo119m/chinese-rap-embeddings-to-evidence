@@ -1,0 +1,30 @@
+{
+  "artifact_id": "chinese-rap-edge-bootstrap-v1",
+  "classification": "public_aggregate_song_bootstrap_edge_stability",
+  "files": {
+    "analysis_summary.json": {
+      "bytes": 1407,
+      "sha256": "db6fb0302d2226bc13c8b7f551c9dd1eeb559c68576bd9ebb29c4841b15de1f7"
+    },
+    "method.md": {
+      "bytes": 867,
+      "sha256": "54bffffbeb343472c3a1a7c8095abd70e7c5cafcb3ad1f0f6e752955d62e4378"
+    },
+    "stable_edge_bootstrap.csv": {
+      "bytes": 28838,
+      "sha256": "2470c363e1ad81d86da4de00b0d37b0a70419f18e2728d4dc9567c79c1c9d256"
+    },
+    "validation.json": {
+      "bytes": 534,
+      "sha256": "0644969e447d5d91f4255960741f1e3ce880ab0432b46fcfbf151e136d42391e"
+    }
+  },
+  "generated_at_utc": "2026-08-25T19:34:44.175417+00:00",
+  "lineage": {
+    "embedding_contract_sha256": "d65a446dc8ac3cb9fb5f513c63e9d10a3f6a94a6c1cebd28953b045170600c5b",
+    "graph_manifest_sha256": "bbb546d4b9f68220245b91998242de3f016886d391a887d7c5618e60e7b4237d",
+    "graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_graph_manifest_sha256": "27928a300af21b81cca208238a9037384003c85266653ef1af00aa327c5c46ed"
+  },
+  "version": "1.0.0"
+}

@@ -2,10 +2,14 @@
   "artifact": "chinese-rap-results-site-data-v1",
   "labels": 204,
   "lyricalEdges": 86,
+  "connectedLyricalLabels": 93,
+  "repeatableLyricalEdges": 16,
+  "repertoireBootstrapReplicates": 250,
   "nerEntities": 22,
   "nerLinks": 6,
+  "nerCoMentions": 4,
   "rhymeContexts": 373,
   "dictionaryCharacters": 20921,
-  "researchDataSha256": "67dcc7624eaf1a20c32334d7487ce658d121a84d8a6e2ed97af944518425bf3a",
+  "researchDataSha256": "9d0cca83d51c0eb24b328edfdc315fa658e46fe0fd49083f951f93189e1e139c",
   "status": "pass"
 }

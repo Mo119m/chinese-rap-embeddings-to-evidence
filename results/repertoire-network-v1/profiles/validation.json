@@ -1,0 +1,57 @@
+{
+  "artifact_id": "chinese-rap-interpretable-profiles-v1",
+  "checks": [
+    {
+      "name": "profile_count_exact",
+      "passed": true
+    },
+    {
+      "name": "profile_ids_unique",
+      "passed": true
+    },
+    {
+      "name": "edge_explanation_count_exact",
+      "passed": true
+    },
+    {
+      "name": "edge_keys_unique",
+      "passed": true
+    },
+    {
+      "name": "summary_counts_match",
+      "passed": true
+    },
+    {
+      "name": "term_gates_hold",
+      "passed": true
+    },
+    {
+      "name": "trait_ranges_hold",
+      "passed": true
+    },
+    {
+      "name": "rhyme_profiles_are_bounded",
+      "passed": true
+    },
+    {
+      "name": "pair_signal_gate_holds",
+      "passed": true
+    },
+    {
+      "name": "references_withheld",
+      "passed": true
+    },
+    {
+      "detail": "[]",
+      "name": "no_private_payload_keys",
+      "passed": true
+    },
+    {
+      "name": "public_inventory_pre_manifest_exact",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-25T19:17:45.485151+00:00",
+  "status": "pass",
+  "version": "1.0.0"
+}

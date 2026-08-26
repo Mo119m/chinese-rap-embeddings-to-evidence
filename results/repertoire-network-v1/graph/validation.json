@@ -1,0 +1,92 @@
+{
+  "artifact_id": "chinese-rap-lyrical-repertoire-graph-v2",
+  "checks": [
+    {
+      "name": "public_inventory_exact",
+      "passed": true
+    },
+    {
+      "name": "private_inventory_exact",
+      "passed": true
+    },
+    {
+      "name": "manifest_lineage_configuration_and_counts_current",
+      "passed": true
+    },
+    {
+      "name": "analysis_summary_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "public_documents_recompute_exactly",
+      "passed": true
+    },
+    {
+      "name": "registry_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "nodes_recompute_exactly",
+      "passed": true
+    },
+    {
+      "name": "stable_edges_recompute_exactly",
+      "passed": true
+    },
+    {
+      "name": "display_layout_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "robustness_summary_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "private_membership_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "private_neighbour_audit_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "private_vectors_recompute_exactly",
+      "passed": true
+    },
+    {
+      "name": "private_vector_rowmap_recomputes_exactly",
+      "passed": true
+    },
+    {
+      "name": "public_payload_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "private_payload_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "public_outputs_contain_no_song_chunk_or_lyric_columns",
+      "passed": true
+    },
+    {
+      "name": "comparison_population_filter_applied",
+      "passed": true
+    },
+    {
+      "name": "comparison_duplicate_weights_sum_to_one_per_retained_exact_clean_text",
+      "passed": true
+    },
+    {
+      "name": "all_retained_edges_pass_the_two_representation_rule",
+      "passed": true
+    },
+    {
+      "name": "prior_validation_current_and_passing",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-25T17:01:55.860383+00:00",
+  "status": "pass",
+  "version": "2.3.0"
+}

@@ -23,10 +23,22 @@ PAGE_WIDTH_DXA = 12240
 MARGIN_DXA = 1440
 CONTENT_WIDTH_DXA = PAGE_WIDTH_DXA - (2 * MARGIN_DXA)
 
-INK = "172536"
-MUTED = "52657A"
+INK = "000000"
+MUTED = "000000"
 LIGHT = "E8EEF5"
 RULE = "CBD5E1"
+
+
+def set_rfonts(element, name: str) -> None:
+    """Pin all script fonts and remove Word theme overrides."""
+    r_pr = element.get_or_add_rPr()
+    r_fonts = r_pr.get_or_add_rFonts()
+    for attribute in ("ascii", "hAnsi", "eastAsia", "cs"):
+        r_fonts.set(qn(f"w:{attribute}"), name)
+    for attribute in ("asciiTheme", "hAnsiTheme", "eastAsiaTheme", "cstheme"):
+        key = qn(f"w:{attribute}")
+        if key in r_fonts.attrib:
+            del r_fonts.attrib[key]
 
 
 def set_run_font(run, name: str = "Times New Roman", size: float = 12, *, bold=None, italic=None, color=INK):
@@ -37,8 +49,23 @@ def set_run_font(run, name: str = "Times New Roman", size: float = 12, *, bold=N
     if italic is not None:
         run.italic = italic
     run.font.color.rgb = RGBColor.from_string(color)
-    run._element.rPr.rFonts.set(qn("w:eastAsia"), name)
-    run._element.rPr.rFonts.set(qn("w:cs"), name)
+    set_rfonts(run._element, name)
+
+
+def set_style_font(style, name: str, size: float, *, bold=None, italic=None, color=INK) -> None:
+    style.font.name = name
+    style.font.size = Pt(size)
+    if bold is not None:
+        style.font.bold = bold
+    if italic is not None:
+        style.font.italic = italic
+    style.font.color.rgb = RGBColor.from_string(color)
+    set_rfonts(style._element, name)
+
+
+def journal_heading(text: str) -> str:
+    """Use an en space after a numbered heading without changing source Markdown."""
+    return re.sub(r"^(\d+(?:\.\d+)*\.)\s+", lambda match: match.group(1) + "\u2002", text)
 
 
 def set_cell_shading(cell, fill: str):
@@ -165,20 +192,13 @@ def configure_styles(doc: Document):
     styles = doc.styles
 
     normal = styles["Normal"]
-    normal.font.name = "Times New Roman"
-    normal.font.size = Pt(12)
-    normal.font.color.rgb = RGBColor.from_string(INK)
-    normal._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    set_style_font(normal, "Times New Roman", 12)
     normal.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
     normal.paragraph_format.space_after = Pt(0)
     normal.paragraph_format.widow_control = True
 
     h1 = styles["Heading 1"]
-    h1.font.name = "Times New Roman"
-    h1.font.size = Pt(13)
-    h1.font.bold = True
-    h1.font.color.rgb = RGBColor.from_string(INK)
-    h1._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    set_style_font(h1, "Times New Roman", 13, bold=True, italic=False)
     h1.paragraph_format.space_before = Pt(12)
     h1.paragraph_format.space_after = Pt(3)
     h1.paragraph_format.line_spacing = 1.15
@@ -186,12 +206,7 @@ def configure_styles(doc: Document):
     h1.paragraph_format.keep_together = True
 
     h2 = styles["Heading 2"]
-    h2.font.name = "Times New Roman"
-    h2.font.size = Pt(12)
-    h2.font.bold = False
-    h2.font.italic = True
-    h2.font.color.rgb = RGBColor.from_string(INK)
-    h2._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    set_style_font(h2, "Times New Roman", 12, bold=False, italic=True)
     h2.paragraph_format.space_before = Pt(9)
     h2.paragraph_format.space_after = Pt(2)
     h2.paragraph_format.line_spacing = 1.15
@@ -200,10 +215,7 @@ def configure_styles(doc: Document):
 
     for style_name in ("Caption",):
         style = styles[style_name]
-        style.font.name = "Times New Roman"
-        style.font.size = Pt(10)
-        style.font.color.rgb = RGBColor.from_string(INK)
-        style._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+        set_style_font(style, "Times New Roman", 10, bold=False, italic=False)
         style.paragraph_format.line_spacing = 1.15
         style.paragraph_format.space_before = Pt(3)
         style.paragraph_format.space_after = Pt(6)
@@ -213,11 +225,7 @@ def configure_styles(doc: Document):
         alt = styles.add_style("Alt Text", 1)
     else:
         alt = styles["Alt Text"]
-    alt.font.name = "Times New Roman"
-    alt.font.size = Pt(9)
-    alt.font.italic = True
-    alt.font.color.rgb = RGBColor.from_string(MUTED)
-    alt._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    set_style_font(alt, "Times New Roman", 9, bold=False, italic=True, color=MUTED)
     alt.paragraph_format.left_indent = Inches(0.25)
     alt.paragraph_format.right_indent = Inches(0.25)
     alt.paragraph_format.line_spacing = 1.15
@@ -227,10 +235,7 @@ def configure_styles(doc: Document):
         ref = styles.add_style("References", 1)
     else:
         ref = styles["References"]
-    ref.font.name = "Times New Roman"
-    ref.font.size = Pt(11)
-    ref.font.color.rgb = RGBColor.from_string(INK)
-    ref._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    set_style_font(ref, "Times New Roman", 11, bold=False, italic=False)
     ref.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
     ref.paragraph_format.left_indent = Inches(0.25)
     ref.paragraph_format.first_line_indent = Inches(-0.25)
@@ -357,7 +362,7 @@ def add_body_paragraph(doc: Document, text: str, *, after_heading=False, in_refe
             text,
         )
     )
-    if not after_heading and not is_abstract_field and not re.match(r"^(RQ\d+\.|Keywords:|Table \d+|Fig\. \d+|Alt text:|\[)", text):
+    if not after_heading and not is_abstract_field and not re.match(r"^(RQ\d+\.|Keywords:|Table \d+\s+[A-Z]|Fig\. \d+\s+[A-Z]|Alt text:|\[)", text):
         p.paragraph_format.first_line_indent = Inches(0.25)
     match = re.match(r"^(RQ\d+\.)\s*(.*)$", text)
     if match:
@@ -390,7 +395,7 @@ def add_math_block(doc: Document, latex: str):
     set_run_font(run, name="Cambria Math", size=11.5, italic=True)
 
 
-def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_page: bool):
+def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_page: bool, submission_mode: bool = False):
     docx_path.parent.mkdir(parents=True, exist_ok=True)
     raw = source.read_text(encoding="utf-8")
     lines = raw.splitlines()
@@ -416,7 +421,7 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
     doc.core_properties.keywords = "Chinese rap, digital humanities, BGE-M3, lyrics, robustness"
     doc.core_properties.author = ""
     doc.core_properties.last_modified_by = ""
-    doc.core_properties.comments = "Human verification required before journal submission."
+    doc.core_properties.comments = ""
 
     if include_title_page:
         add_title_page(doc, title)
@@ -431,6 +436,8 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
     last_shape = None
     expect_figure_caption = False
     expect_table_caption = False
+    pending_figure_caption: str | None = None
+    figure_legends: list[tuple[str, str]] = []
 
     while i < len(lines):
         line = lines[i].rstrip()
@@ -440,9 +447,9 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
             continue
 
         if stripped.startswith("## "):
-            heading = stripped[3:]
+            heading = journal_heading(stripped[3:])
             p = doc.add_paragraph(heading, style="Heading 1")
-            if heading == "References":
+            if heading in {"References", "Figure Legends and Alt Text"}:
                 p.paragraph_format.page_break_before = True
             in_references = heading == "References"
             in_figure_legends = heading == "Figure Legends and Alt Text"
@@ -451,7 +458,7 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
             continue
 
         if stripped.startswith("### "):
-            doc.add_paragraph(stripped[4:], style="Heading 2")
+            doc.add_paragraph(journal_heading(stripped[4:]), style="Heading 2")
             after_heading = True
             i += 1
             continue
@@ -461,12 +468,15 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
             image_path = figures / filename
             if not image_path.exists():
                 raise FileNotFoundError(image_path)
-            p = doc.add_paragraph()
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_before = Pt(8)
-            p.paragraph_format.space_after = Pt(2)
-            p.paragraph_format.keep_together = True
-            last_shape = p.add_run().add_picture(str(image_path), width=Inches(6.25))
+            if submission_mode:
+                last_shape = None
+            else:
+                p = doc.add_paragraph()
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                p.paragraph_format.space_before = Pt(8)
+                p.paragraph_format.space_after = Pt(2)
+                p.paragraph_format.keep_together = True
+                last_shape = p.add_run().add_picture(str(image_path), width=Inches(6.25))
             expect_figure_caption = True
             after_heading = False
             i += 1
@@ -491,8 +501,11 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
         if (expect_figure_caption and stripped.startswith("Fig. ")) or (
             expect_table_caption and stripped.startswith("Table ")
         ) or (in_figure_legends and stripped.startswith("Fig. ")):
-            p = doc.add_paragraph(style="Caption")
-            add_markdown_runs(p, stripped, base_size=10)
+            if submission_mode and expect_figure_caption:
+                pending_figure_caption = stripped
+            else:
+                p = doc.add_paragraph(style="Caption")
+                add_markdown_runs(p, stripped, base_size=10)
             expect_figure_caption = False
             expect_table_caption = False
             after_heading = False
@@ -500,11 +513,15 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
             continue
 
         if stripped.startswith("Alt text:"):
-            p = doc.add_paragraph(style="Alt Text")
-            add_markdown_runs(p, stripped, base_size=9, base_color=MUTED)
-            if last_shape is not None:
-                set_image_alt_text(last_shape, stripped.removeprefix("Alt text:").strip())
-                last_shape = None
+            if submission_mode and pending_figure_caption is not None:
+                figure_legends.append((pending_figure_caption, stripped))
+                pending_figure_caption = None
+            else:
+                p = doc.add_paragraph(style="Alt Text")
+                add_markdown_runs(p, stripped, base_size=9, base_color=MUTED)
+                if last_shape is not None:
+                    set_image_alt_text(last_shape, stripped.removeprefix("Alt text:").strip())
+                    last_shape = None
             after_heading = False
             i += 1
             continue
@@ -546,6 +563,15 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
         after_heading = False
         i += 1
 
+    if submission_mode and figure_legends:
+        doc.add_page_break()
+        doc.add_paragraph("Figure Legends and Alt Text", style="Heading 1")
+        for caption, alt_text in figure_legends:
+            p = doc.add_paragraph(style="Caption")
+            add_markdown_runs(p, caption, base_size=10)
+            p = doc.add_paragraph(style="Alt Text")
+            add_markdown_runs(p, alt_text, base_size=9, base_color=MUTED)
+
     # Keep document free of page and line numbering as required for the target submission format.
     for section in doc.sections:
         sect_pr = section._sectPr
@@ -563,5 +589,6 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=Path, default=DOCX_PATH)
     parser.add_argument("--figures", type=Path, default=FIGURES)
     parser.add_argument("--no-title-page", action="store_true")
+    parser.add_argument("--submission-mode", action="store_true", help="Omit embedded figures and collect legends/alt text on a final page")
     args = parser.parse_args()
-    build_docx(args.source, args.output, args.figures, include_title_page=not args.no_title_page)
+    build_docx(args.source, args.output, args.figures, include_title_page=not args.no_title_page, submission_mode=args.submission_mode)

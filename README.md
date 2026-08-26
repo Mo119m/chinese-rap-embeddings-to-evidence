@@ -10,15 +10,16 @@ The central question is:
 
 Open [`index.html`](index.html). It is a self-contained results interface that works without a server and supports three research-backed actions:
 
-1. inspect explainable held-out-song lyrical-repertoire relations;
+1. start with a 204-label corpus overview, then inspect one label's evidence-graded lyrical-repertoire neighbours;
 2. explore statistically screened, provisional cultural-reference links and co-mentions;
 3. enter a Chinese line-final character to inspect its dictionary-estimated ending family and possible next-family transitions.
 
-For the scholarly account, read [`paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf`](paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf). The exact computational environment, protocol amendment, and public/private boundary are in [`paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf`](paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf).
+For the scholarly account, read [`paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf`](paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf). View the four questions and figures in [`figures/index.html`](figures/index.html). The exact computational environment, protocol amendment, and public/private boundary are in [`paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf`](paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf).
 
 ## Main results
 
 - **Explainable repertoire retrieval:** 5,455 held-out songs across 204 source-credit labels. Untuned dense–lexical fusion reaches macro MRR **0.447** (95% CI 0.414–0.481) and Recall@10 **0.611** (0.577–0.646). Fusion improves over character TF–IDF by **0.031 MRR** (0.021–0.042).
+- **Descriptive repertoire companion:** a separate BGE-M3-only map retains 86 reciprocal top-five matches under both duplicate-controlled text treatments, connecting 93 of 204 labels. Sixteen matches reappear in at least half of 250 within-label song resamples. Global PCA position is approximate (26.2% of profile variation); only a line defines a released match.
 - **Cultural-reference evidence:** the provisional entity inventory contracts from 33 corpus-wide surfaces to 22 after shared-text exclusion and the fixed comparison universe. Six source-label-to-place associations and four same-song reference co-mentions survive uncertainty and BH-FDR screening. Human occurrence gold remains incomplete, so precision, recall, F1, biography, and social-relation claims are withheld.
 - **Written-ending continuation:** 34,395 leakage-safe adjacent-line events from 787 held-out songs. The hierarchical context model reaches Top-3 **0.695** (0.685–0.705), improving on first-order Markov by **0.050** (0.044–0.055). Switch Top-1 remains only **0.026**, and source-credit-label conditioning has no supported benefit.
 
@@ -37,12 +38,13 @@ The retrieval TF–IDF vocabulary and IDF are estimated transductively on the fi
 ## Repository map
 
 - `paper/` — final English manuscript and supplementary methods in Markdown, DOCX, and PDF.
-- `figures/` — four publication figures in PNG and 600-DPI TIFF, with source tables and alt text.
-- `results/` — aggregate input-audit, retrieval, NER/cultural-reference, and written-ending outputs.
+- `figures/` — visual gallery plus four publication figures in PNG, 600-DPI TIFF, PDF, and SVG, with source tables and alt text.
+- `results/` — aggregate input-audit, retrieval, reproducible repertoire-network, NER/cultural-reference, and written-ending outputs.
 - `methods/` — frozen research contract, protocol amendment, journal-format contract, pipeline explanation, public-release boundary, and author-owned provenance actions.
 - `src/` — deterministic builders and validators.
 - `site/` — source for the richer local results application.
 - `validation/` — independent numerical, manuscript, accessibility, render, and release checks.
+- `submission/dsh/` — technically prepared DSH upload bundle and the remaining author checklist.
 
 ## Evidence boundary
 

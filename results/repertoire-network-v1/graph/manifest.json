@@ -1,0 +1,77 @@
+{
+  "artifact_id": "chinese-rap-lyrical-repertoire-graph-v2",
+  "claim_boundary": "lyrical-repertoire proximity between source-labelled corpus slices only; not a real-world rapper relationship, identity, affiliation, style, genre, or audio-performance claim",
+  "configuration": {
+    "comparison_duplicate_weight_policy": "within_metadata_eligible_population_exact_clean_text_hash_total_mass_one",
+    "comparison_population_policy": "canonical_artist_title_comparison_eligible=true",
+    "edge_rule": "mutual_top_5_neighbours_in_primary_duplicate_weighted_chunk_centroids_and_shared_text_exclusion_sensitivity",
+    "label_attribution_status": "source_artist_label_not_externally_identity_verified",
+    "minimum_clean_songs": 5,
+    "minimum_effective_text_mass": 20.0,
+    "spatial_projection_method": "consensus_semantic_pca",
+    "spatial_projection_population": 204,
+    "spatial_projection_variance_explained_2d": 0.26195958910407646,
+    "top_k": 5
+  },
+  "counts": {
+    "clean_lyric_chunks": 21346,
+    "clean_songs": 7129,
+    "comparison_ineligible_clean_chunks_excluded": 207,
+    "comparison_ineligible_songs_excluded": 77,
+    "connected_stable_graph_nodes": 93,
+    "graph_eligible_labels": 204,
+    "pre_filter_clean_lyric_chunks": 21553,
+    "pre_filter_clean_songs": 7206,
+    "pre_filter_source_artist_labels": 241,
+    "source_artist_labels": 240,
+    "stable_retained_edges": 86
+  },
+  "input_hashes": {
+    "canonical_analysis_manifest_sha256": "5dab5f2262a4214d41aa8ee19355a515c71dea2d8e7de194b1d8a20a57982c99",
+    "clean_bge_manifest_sha256": "bf393fea4e50086508ac549447466bbbe2f8c45346c3eacf2df5d350d72040d2",
+    "clean_text_sidecar_manifest_sha256": "00d3d0c9d8e4dca4f1b09186eb8244eb5ccd069407c25652ddb24b244f753c09",
+    "metadata_quality_manifest_sha256": "21ed5843ce0093597f357d886a71a64eef9ce48d4b7a22d118250b3b0a6d306f",
+    "metadata_quality_private_manifest_sha256": "c5e4acb7243d74a2130d879506661ef58da7673d9ac0a88a1ce905839aa631bf",
+    "metadata_quality_validation_sha256": "51ae5682f8d5fd6f54ebeb1fde4db8e08a10e2e9730baf8d84f8eff271e0f806"
+  },
+  "output_files": {
+    "README.md": {
+      "bytes": 917,
+      "sha256": "c463e31442ec5bb7801b16d5e756471cc7ec1b4a4369a63a40492447591f64c2"
+    },
+    "analysis_summary.json": {
+      "bytes": 1879,
+      "sha256": "a4ac2a2a3e3be1d2e70976af429a51049cd8c870942bbb8b013d7fc1b86f02a3"
+    },
+    "artist_label_registry.csv": {
+      "bytes": 36721,
+      "sha256": "c02d51c8c24474161b895d9349421a22796d44789a56852d0cbf8cbd0cda4598"
+    },
+    "artist_repertoire_edges.csv": {
+      "bytes": 28543,
+      "sha256": "5b7d5cf7c1f31f8d47940f6de5dda365f7f81bffff0675eb1b506aad6cd620cb"
+    },
+    "artist_repertoire_layout.csv": {
+      "bytes": 69087,
+      "sha256": "829344d2bd63882ca526564057c41e9737c603391089c29a2fea178e01bfb59b"
+    },
+    "artist_repertoire_nodes.csv": {
+      "bytes": 52476,
+      "sha256": "543b93a8a3eceb49a7e33619f2994a77659e6d814eda7ea09ace7b230a5a0a69"
+    },
+    "data_dictionary.md": {
+      "bytes": 1382,
+      "sha256": "8bbee587a42aa2c24121b3696a7c46856a6372de7cb8753ef002909ea280be9d"
+    },
+    "research_protocol.md": {
+      "bytes": 1765,
+      "sha256": "a2ecfd541ac82ad82e737aad79911533f55700028922a9d1673b07f5a9f43ab3"
+    },
+    "robustness_summary.csv": {
+      "bytes": 2680,
+      "sha256": "4bfc24605744bad6205758f2af74b11d95f0eabe61528930f1376d61506bd780"
+    }
+  },
+  "privacy": "public files contain source-label graph summaries only; song/chunk identifiers, membership, and embeddings remain private local-only",
+  "version": "2.3.0"
+}

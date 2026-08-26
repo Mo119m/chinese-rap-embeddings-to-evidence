@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, useMemo, useRef, useState } from 'react';
 import rawData from './data/researchData.json';
 import rawCharacterMap from './data/characterToRhymeFamily.json';
 
@@ -63,6 +63,18 @@ type ReferenceLink = {
   plainMeaning: string;
   status: string;
 };
+type CoMention = {
+  a: string;
+  aType: string;
+  b: string;
+  bType: string;
+  songUnits: number;
+  labels: number;
+  lift: number;
+  npmi: number;
+  qValue: number;
+  reliability: string;
+};
 type Recommendation = { written_rhyme_family: string; probability: number };
 type RhymeLabelEvidence = {
   labelId: string;
@@ -85,6 +97,19 @@ type ResearchData = {
   question: string;
   labels: LabelNode[];
   lyricalEdges: LyricalEdge[];
+  repertoireGraph?: {
+    representation: string;
+    eligibleLabels: number;
+    connectedLabels: number;
+    retainedEdges: number;
+    repeatableEdges: number;
+    bootstrapReplicates: number;
+    repeatabilityGate: number;
+    pcaVariance2d: number;
+    edgeRule: string;
+    layoutMeaning: string;
+    claimBoundary: string;
+  };
   retrieval: {
     systems: {
       name: string;
@@ -103,6 +128,7 @@ type ResearchData = {
   ner: {
     entities: Entity[];
     links: ReferenceLink[];
+    coMentions?: CoMention[];
     status: string;
     humanGoldAvailable: boolean;
     counts: Record<string, number>;
@@ -180,6 +206,19 @@ const pp = (value: number, digits = 1) => `${(value * 100).toFixed(digits)} pp`;
 const qText = (value: number) => value < .001 ? value.toExponential(1) : value.toFixed(3);
 const labelById = new Map(data.labels.map((label) => [label.id, label]));
 const entityById = new Map(data.ner.entities.map((entity) => [entity.id, entity]));
+const graphMeta = data.repertoireGraph ?? {
+  representation: 'BGE-M3 source-label centroids under two duplicate-controlled text treatments',
+  eligibleLabels: data.labels.length,
+  connectedLabels: new Set(data.lyricalEdges.flatMap((edge) => [edge.a, edge.b])).size,
+  retainedEdges: data.lyricalEdges.length,
+  repeatableEdges: data.lyricalEdges.filter((edge) => edge.status === 'repeatable').length,
+  bootstrapReplicates: 250,
+  repeatabilityGate: .5,
+  pcaVariance2d: .261959589,
+  edgeRule: 'Both source-label profiles rank each other among their five closest matches in both text treatments.',
+  layoutMeaning: 'Position is an approximate two-dimensional summary of BGE-M3 repertoire profiles; only a line defines a released match.',
+  claimBoundary: 'Textual-repertoire proximity inside this corpus—not friendship, collaboration, influence, genre, geography, biography, preference, popularity, or verified identity.',
+};
 
 function traitText(trait: Trait): string {
   const high = trait.percentile >= 70;
@@ -191,7 +230,7 @@ function traitText(trait: Trait): string {
 
 function reasonText(edge: LyricalEdge): string {
   const first = edge.reasons[0];
-  if (!first) return 'Overall lyrical wording remains close after duplicate controls; no single probe dominates.';
+  if (!first) return 'No vocabulary, written-ending, or writing-form probe reached the preset display gate; the BGE-M3 profiles still satisfy the reciprocal match rule.';
   if (first.kind === 'language') return `Shared distinctive wording: ${first.items.join(' · ')}`;
   if (first.kind === 'lineEnding') return `Both favour these written endings: ${first.items.join(' · ')}`;
   if (first.kind === 'form') {
@@ -262,7 +301,7 @@ function Header({ view, setView }: { view: View; setView: (view: View) => void }
 
 function Home({ setView }: { setView: (view: View) => void }) {
   const cards: { key: View; number: string; title: string; action: string; description: string; proof: string }[] = [
-    { key: 'repertoire', number: '01', title: 'Who writes nearby?', action: 'Open repertoire map', description: 'Select a source label. The graph returns the closest lyric repertoires and states whether wording, written endings, or writing form explains each link.', proof: 'Inside the fixed corpus, dense + character fusion beats either representation alone.' },
+    { key: 'repertoire', number: '01', title: 'Who writes nearby?', action: 'Open repertoire map', description: 'Start with all 204 eligible source labels, then select one to inspect its retained repertoire neighbours and measurable common ground.', proof: 'Every line is a reciprocal top-five BGE-M3 match under two duplicate-controlled text treatments.' },
     { key: 'references', number: '02', title: 'Which cultural worlds appear?', action: 'Open reference network', description: 'Move from one source label to a supported lyric reference, then see which other labels invoke the same reference.', proof: 'Visible edges survive shared-text exclusion, uncertainty, and false-discovery-rate control.' },
     { key: 'rhyme', number: '03', title: 'What ending could come next?', action: 'Open rhyme lab', description: 'Enter a Chinese ending to receive ranked next written-ending families, then see which repertoires emphasize a selected family.', proof: 'Sequential context is tested on song-held-out data; label personalization is not claimed.' },
   ];
@@ -277,12 +316,46 @@ function Home({ setView }: { setView: (view: View) => void }) {
   );
 }
 
+function GlobalRepertoireGraph({ selected, onSelect }: { selected: LabelNode; onSelect: (node: LabelNode) => void }) {
+  const [mode, setMode] = useState<'all' | 'repeatable'>('all');
+  const visibleEdges = useMemo(() => mode === 'repeatable' ? data.lyricalEdges.filter((edge) => edge.status === 'repeatable') : data.lyricalEdges, [mode]);
+  const linkedIds = useMemo(() => new Set(visibleEdges.flatMap((edge) => [edge.a, edge.b])), [visibleEdges]);
+  const repeatableDegree = useMemo(() => {
+    const result = new Map<string, number>();
+    data.lyricalEdges.filter((edge) => edge.status === 'repeatable').forEach((edge) => {
+      result.set(edge.a, (result.get(edge.a) ?? 0) + 1);
+      result.set(edge.b, (result.get(edge.b) ?? 0) + 1);
+    });
+    return result;
+  }, []);
+  const point = (node: LabelNode) => ({ x: 64 + ((node.x + 1) / 2) * 1072, y: 42 + (1 - ((node.y + 1) / 2)) * 496 });
+  const labelled = new Set([...data.labels].sort((a, b) => (repeatableDegree.get(b.id) ?? 0) - (repeatableDegree.get(a.id) ?? 0)).slice(0, 8).map((node) => node.id));
+  labelled.add(selected.id);
+  return (
+    <section className="global-network" aria-labelledby="global-network-title">
+      <div className="global-network-head">
+        <div><p className="micro-label">CORPUS OVERVIEW</p><h2 id="global-network-title">The full repertoire landscape</h2><p>See the whole corpus first. Click any dot to carry that label into the focused view below.</p></div>
+        <div className="network-toggle" aria-label="Visible repertoire edges"><button className={mode === 'all' ? 'active' : ''} onClick={() => setMode('all')}>All {graphMeta.retainedEdges} released</button><button className={mode === 'repeatable' ? 'active' : ''} onClick={() => setMode('repeatable')}>{graphMeta.repeatableEdges} display-gate matches</button></div>
+      </div>
+      <div className="global-counts"><div><b>{graphMeta.eligibleLabels}</b><span>eligible labels</span></div><div><b>{graphMeta.connectedLabels}</b><span>with a released line</span></div><div><b>{graphMeta.retainedEdges}</b><span>reciprocal matches</span></div><div><b>{graphMeta.repeatableEdges}</b><span>returned in ≥50% of repeats</span></div></div>
+      <div className="global-canvas">
+        <svg viewBox="0 0 1200 580" role="img" aria-label={`Corpus-wide BGE-M3 repertoire overview with ${graphMeta.eligibleLabels} labels and ${visibleEdges.length} visible released matches`}>
+          {visibleEdges.map((edge) => { const a = labelById.get(edge.a); const b = labelById.get(edge.b); if (!a || !b) return null; const pa = point(a); const pb = point(b); const color = SIGNAL_COLOR[edge.dominantSignal] ?? SIGNAL_COLOR.semanticOnly; return <line key={`${edge.a}-${edge.b}`} x1={pa.x} y1={pa.y} x2={pb.x} y2={pb.y} stroke={color} strokeWidth={edge.status === 'repeatable' ? 1.6 + edge.repeatability * 2.2 : .8 + edge.repeatability} strokeOpacity={edge.status === 'repeatable' ? .78 : .20} strokeDasharray={edge.status === 'exploratory' ? '3 5' : undefined}><title>{`${a.label} ↔ ${b.label}; returned in ${Math.round(edge.repeatability * graphMeta.bootstrapReplicates)} of ${graphMeta.bootstrapReplicates} repeated song samples`}</title></line>; })}
+          {data.labels.map((node) => { const p = point(node); const active = node.id === selected.id; const connected = linkedIds.has(node.id); const radius = 3.8 + Math.min(7.5, Math.sqrt(Math.max(node.independentSongs, 1)) * .7); const selectNode = () => onSelect(node); return <g key={node.id} className={`overview-node ${active ? 'selected' : ''}`} transform={`translate(${p.x} ${p.y})`} role="button" tabIndex={0} aria-label={`Open ${node.label} focused repertoire; ${node.independentSongs} independent-song support${connected ? '' : '; no line released under the current rule'}`} onClick={selectNode} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectNode(); } }}><circle r={active ? radius + 4 : radius} fill={active ? '#e5ff3d' : connected ? '#f8f5ed' : '#69717d'} fillOpacity={connected || active ? .96 : .38} stroke={active ? '#11141a' : '#f8f5ed'} strokeWidth={active ? 2.5 : .7}><title>{`${node.label}: ${node.independentSongs} independent-song support${connected ? '' : '; no line released under the current rule'}`}</title></circle>{labelled.has(node.id) && <text x={radius + 6} y="4">{node.label}</text>}</g>; })}
+        </svg>
+      </div>
+      <div className="global-legend"><span><i className="node-key" />Dot size = independent-song support, not popularity</span>{Object.entries(SIGNAL_LABEL).map(([key, label]) => <span key={key}><i style={{ background: SIGNAL_COLOR[key] }} />{label}</span>)}<span><b>solid</b> ≥50% display gate</span><span><b>dashed</b> lower-repeatability candidate</span></div>
+      <p className="map-boundary"><b>How to read it:</b> {graphMeta.layoutMeaning} The two axes retain {pct(graphMeta.pcaVariance2d, 1)} of profile variation. {graphMeta.claimBoundary}</p>
+    </section>
+  );
+}
+
 function RepertoireGraph({ selected, onSelect, selectedEdge, onEdge }: { selected: LabelNode; onSelect: (node: LabelNode) => void; selectedEdge: LyricalEdge | null; onEdge: (edge: LyricalEdge) => void }) {
   const adjacent = useMemo(() => data.lyricalEdges.filter((edge) => edge.a === selected.id || edge.b === selected.id).sort((a, b) => (a.status === b.status ? b.repeatability - a.repeatability : a.status === 'repeatable' ? -1 : 1)).slice(0, 7), [selected.id]);
   const center = { x: 380, y: 278 };
   const points = adjacent.map((edge, index) => {
     const angle = -Math.PI / 2 + index * (Math.PI * 2 / Math.max(adjacent.length, 1));
-    const distance = 178 + (1 - edge.repeatability) * 54;
+    const distance = 205;
     const other = labelById.get(edge.a === selected.id ? edge.b : edge.a)!;
     return { edge, other, x: center.x + Math.cos(angle) * distance, y: center.y + Math.sin(angle) * distance };
   });
@@ -290,12 +363,12 @@ function RepertoireGraph({ selected, onSelect, selectedEdge, onEdge }: { selecte
     <div className="graph-stage">
       <svg viewBox="0 0 760 556" role="img" aria-label={`Closest lyrical repertoires around ${selected.label}`}>
         <defs><filter id="soft"><feDropShadow dx="0" dy="8" stdDeviation="10" floodOpacity="0.24" /></filter></defs>
-        {points.map(({ edge, other, x, y }) => { const active = selectedEdge === edge; const color = SIGNAL_COLOR[edge.dominantSignal] ?? SIGNAL_COLOR.semanticOnly; const mx = (x + center.x) / 2; const my = (y + center.y) / 2; return <g key={`${edge.a}-${edge.b}`} className={`graph-edge ${active ? 'active' : ''}`} role="button" tabIndex={0} aria-pressed={active} aria-label={`Explain link to ${other.label}: ${reasonText(edge)}; ${pct(edge.repeatability)} resample repeatability`} onClick={() => onEdge(edge)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onEdge(edge); } }}><circle cx={mx} cy={my} r="22" fill="transparent" /><line x1={center.x} y1={center.y} x2={x} y2={y} stroke={color} strokeWidth={active ? 6 : 2 + edge.repeatability * 3} strokeDasharray={edge.status === 'exploratory' ? '5 8' : undefined} /><circle cx={mx} cy={my} r="13" fill="#11141a" stroke={color} /><text x={mx} y={my + 4} textAnchor="middle" className="edge-percent">{Math.round(edge.repeatability * 100)}</text><title>{`${other.label}: ${reasonText(edge)}; ${pct(edge.repeatability)} resample repeatability`}</title></g>; })}
+        {points.map(({ edge, other, x, y }) => { const active = selectedEdge === edge; const color = SIGNAL_COLOR[edge.dominantSignal] ?? SIGNAL_COLOR.semanticOnly; const mx = (x + center.x) / 2; const my = (y + center.y) / 2; const returns = Math.round(edge.repeatability * graphMeta.bootstrapReplicates); return <g key={`${edge.a}-${edge.b}`} className={`graph-edge ${active ? 'active' : ''}`} role="button" tabIndex={0} aria-pressed={active} aria-label={`Explain match to ${other.label}: ${reasonText(edge)}; returned in ${returns} of ${graphMeta.bootstrapReplicates} repeated song samples`} onClick={() => onEdge(edge)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onEdge(edge); } }}><circle cx={mx} cy={my} r="22" fill="transparent" /><line x1={center.x} y1={center.y} x2={x} y2={y} stroke={color} strokeWidth={active ? 6 : 2 + edge.repeatability * 3} strokeDasharray={edge.status === 'exploratory' ? '5 8' : undefined} /><circle cx={mx} cy={my} r="15" fill="#11141a" stroke={color} /><text x={mx} y={my + 4} textAnchor="middle" className="edge-percent">{returns}</text><title>{`${other.label}: returned in ${returns} of ${graphMeta.bootstrapReplicates} repeated song samples`}</title></g>; })}
         {points.map(({ edge, other, x, y }) => <g key={other.id} className="graph-node" transform={`translate(${x} ${y})`} role="button" tabIndex={0} aria-label={`Select ${other.label} repertoire`} onClick={() => onSelect(other)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onSelect(other); } }}><circle r={edge.status === 'repeatable' ? 28 : 23} fill={edge.status === 'repeatable' ? '#f4f0e8' : '#20262f'} stroke={SIGNAL_COLOR[edge.dominantSignal] ?? '#8e96a3'} strokeWidth="3" /><text y={edge.status === 'repeatable' ? 44 : 39} textAnchor="middle" className="node-name">{other.label}</text></g>)}
         <g className="center-node" transform={`translate(${center.x} ${center.y})`} filter="url(#soft)"><circle r="72" /><text y="-5" textAnchor="middle">{selected.label}</text><text y="20" textAnchor="middle" className="center-sub">selected repertoire</text></g>
-        {adjacent.length === 0 && <text x="380" y="395" textAnchor="middle" className="empty-svg">No stable lyrical neighbour is available for this label.</text>}
+        {adjacent.length === 0 && <text x="380" y="395" textAnchor="middle" className="empty-svg">No reciprocal match is released for this label under the current rule.</text>}
       </svg>
-      <div className="graph-legend">{Object.entries(SIGNAL_LABEL).map(([key, label]) => <span key={key}><i style={{ background: SIGNAL_COLOR[key] }} />{label}</span>)}<span><b>solid</b> repeatable</span><span><b>dashed</b> exploratory</span></div>
+      <div className="graph-legend">{Object.entries(SIGNAL_LABEL).map(([key, label]) => <span key={key}><i style={{ background: SIGNAL_COLOR[key] }} />{label}</span>)}<span><b>number</b> returns out of 250</span><span><b>solid</b> display gate met</span><span><b>dashed</b> lower-repeatability</span></div>
     </div>
   );
 }
@@ -303,22 +376,27 @@ function RepertoireGraph({ selected, onSelect, selectedEdge, onEdge }: { selecte
 function RepertoireView() {
   const [selected, setSelected] = useState<LabelNode>(bestConnectedLabel());
   const [selectedEdge, setSelectedEdge] = useState<LyricalEdge | null>(null);
+  const localRef = useRef<HTMLElement | null>(null);
   const adjacent = useMemo(() => data.lyricalEdges.filter((edge) => edge.a === selected.id || edge.b === selected.id).sort((a, b) => (a.status === b.status ? b.repeatability - a.repeatability : a.status === 'repeatable' ? -1 : 1)), [selected.id]);
   const standout = selected.traits.length ? [...selected.traits].sort((a, b) => Math.abs(b.percentile - 50) - Math.abs(a.percentile - 50))[0] : null;
+  const distinctiveEnding = selected.rhyme?.distinctiveFamilies?.[0] ?? null;
   const fusion = data.retrieval.systems.find((system) => system.name === 'Fusion')!;
   const single = data.retrieval.systems.find((system) => system.name === 'Character TF-IDF')!;
   const openLabel = (label: LabelNode) => { setSelected(label); setSelectedEdge(null); };
+  const openFromOverview = (label: LabelNode) => { openLabel(label); requestAnimationFrame(() => localRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })); };
   return (
     <main className="tool-shell">
-      <section className="tool-intro"><div><p className="eyebrow">RESULT 01 · LANGUAGE</p><h1>Lyrical repertoire map</h1><p>Select one label; distance and links are recomputed from its nearest released matches, so every visible line has an explanation.</p></div><LabelSearch selected={selected} onSelect={openLabel} available={data.labels.filter((label) => label.terms.length > 0)} /></section>
+      <section className="tool-intro"><div><p className="eyebrow">RESULT 01 · LANGUAGE</p><h1>Lyrical repertoire map</h1><p>Start with the full 204-label landscape, then open one repertoire to see its released neighbours, writing signature, and the evidence behind every line.</p></div><LabelSearch selected={selected} onSelect={openLabel} available={data.labels} /></section>
+      <GlobalRepertoireGraph selected={selected} onSelect={openFromOverview} />
+      <section className="local-network-head" ref={localRef}><p className="micro-label">FOCUSED VIEW</p><h2>{selected.label} and its retained neighbours</h2><p>This circle is an ego diagram for navigation; angle and distance carry no additional meaning. Line colour shows an auxiliary writing signal, while the number shows how often the same match returned across 250 repeated song samples.</p></section>
       <section className="workspace two-column"><RepertoireGraph selected={selected} onSelect={openLabel} selectedEdge={selectedEdge} onEdge={setSelectedEdge} /><aside className="result-panel">
         <div className="panel-head"><span className="status-dot verified" /><span>{selected.independentSongs} independent-song profile</span></div><h2>{selected.label}</h2>
-        <p className="lead-result">{standout ? `Most distinctive writing habit: ${traitText(standout)}.` : 'This label has reference evidence but not enough material for a full repertoire profile.'} {selected.rhyme ? `Its most common written-ending family is ${selected.rhyme.dominantFamily}.` : ''}</p>
+        <p className="lead-result">{standout ? `Most distinctive writing habit: ${traitText(standout)}.` : 'This label has reference evidence but not enough material for a full repertoire profile.'} {distinctiveEnding ? `Ending signature: ${distinctiveEnding.family} appears ${Math.pow(2, distinctiveEnding.log2_rate_ratio_vs_corpus).toFixed(1)}× as often as in the corpus overall (for example ${FAMILY_EXAMPLES[distinctiveEnding.family]?.join(' / ') ?? distinctiveEnding.family}).` : ''}</p>
         {selected.terms.length > 0 && <section className="panel-section"><h3>Distinctive wording</h3><div className="term-cloud">{selected.terms.map((term) => <span key={term.text} title={`Supported across ${term.supportSongs} songs`}>{term.text}</span>)}</div></section>}
         {selected.rhyme && <section className="panel-section"><h3>Written-ending fingerprint</h3><div className="family-row">{selected.rhyme.topFamilies.slice(0, 4).map((item) => <div key={item.value}><b>{item.value}</b><span>{pct(item.share)}</span></div>)}</div><p className="meaning-line">Adjacent lines retain the same ending family {pct(selected.rhyme.adjacentSameFamilyRate)} of the time.</p></section>}
-        <section className="panel-section"><h3>{selectedEdge ? 'Why this pair is linked' : 'Closest released matches'}</h3>{selectedEdge ? <div className="why-card" style={{ borderColor: SIGNAL_COLOR[selectedEdge.dominantSignal] }}><b>{labelById.get(selectedEdge.a === selected.id ? selectedEdge.b : selectedEdge.a)?.label}</b><p>{reasonText(selectedEdge)}</p><span className={selectedEdge.status === 'repeatable' ? 'evidence strong' : 'evidence provisional'}>{pct(selectedEdge.repeatability)} resample repeatability · {selectedEdge.status}</span><button onClick={() => setSelectedEdge(null)}>Back to all matches</button></div> : adjacent.slice(0, 5).map((edge) => { const other = labelById.get(edge.a === selected.id ? edge.b : edge.a)!; return <button className="match-row" key={`${edge.a}-${edge.b}`} onClick={() => setSelectedEdge(edge)}><span className="signal-bar" style={{ background: SIGNAL_COLOR[edge.dominantSignal] }} /><span><b>{other.label}</b><small>{reasonText(edge)}</small></span><em>{Math.round(edge.repeatability * 100)}</em></button>; })}</section>
+        <section className="panel-section"><h3>{selectedEdge ? 'What supports this match' : 'Retained repertoire matches'}</h3>{selectedEdge ? <div className="why-card" style={{ borderColor: SIGNAL_COLOR[selectedEdge.dominantSignal] }}><b>{labelById.get(selectedEdge.a === selected.id ? selectedEdge.b : selectedEdge.a)?.label}</b><p><strong>Why there is a line:</strong> {graphMeta.edgeRule}</p><p><strong>Also shared:</strong> {reasonText(selectedEdge)}</p><span className={selectedEdge.status === 'repeatable' ? 'evidence strong' : 'evidence provisional'}>Returned in {Math.round(selectedEdge.repeatability * graphMeta.bootstrapReplicates)}/{graphMeta.bootstrapReplicates} repeated song samples · {selectedEdge.status === 'repeatable' ? 'display gate met' : 'lower-repeatability candidate'}</span><button onClick={() => setSelectedEdge(null)}>Back to all matches</button></div> : adjacent.slice(0, 5).map((edge) => { const other = labelById.get(edge.a === selected.id ? edge.b : edge.a)!; return <button className="match-row" key={`${edge.a}-${edge.b}`} onClick={() => setSelectedEdge(edge)}><span className="signal-bar" style={{ background: SIGNAL_COLOR[edge.dominantSignal] }} /><span><b>{other.label}</b><small>{reasonText(edge)}</small></span><em>{Math.round(edge.repeatability * graphMeta.bootstrapReplicates)}</em></button>; })}</section>
       </aside></section>
-      <section className="evidence-strip"><div><span>Fixed-corpus holdout</span><b>Fusion puts the correct label in the top 10 for {pct(fusion.recall10.estimate, 1)} of songs.</b></div><div><span>Why fusion</span><b>MRR rises from {single.mrr.estimate.toFixed(3)} to {fusion.mrr.estimate.toFixed(3)} by combining character and BGE-M3 evidence.</b></div><div><span>Boundary</span><b>TF–IDF learns the frozen unlabeled corpus distribution; matches are not friendship, influence, or verified identity.</b></div></section>
+      <section className="evidence-strip"><div><span>What builds this map</span><b>BGE-M3 source-label profiles only; the network is descriptive and separate from the held-out retrieval benchmark.</b></div><div><span>What wins the benchmark</span><b>On unseen songs, fusion raises MRR from {single.mrr.estimate.toFixed(3)} to {fusion.mrr.estimate.toFixed(3)} and reaches {pct(fusion.recall10.estimate, 1)} Recall@10.</b></div><div><span>Boundary</span><b>{graphMeta.claimBoundary}</b></div></section>
     </main>
   );
 }
@@ -352,7 +430,8 @@ function ReferenceView() {
   return (
     <main className="tool-shell"><section className="tool-intro"><div><p className="eyebrow">RESULT 02 · CULTURAL REFERENCE</p><h1>Reference network</h1><p>Select a label, then a place, language, or person reference. The next column shows who else invokes the same reference.</p></div><LabelSearch selected={selected} onSelect={openLabel} available={available} /></section>
       <section className="workspace two-column"><ReferenceGraph selected={selected} selectedEntity={selectedEntity} onEntity={setSelectedEntity} /><aside className="result-panel"><div className="panel-head"><span className="status-dot provisional" /><span>Statistically supported · human gold pending</span></div><h2>{selectedEntity?.name ?? selected.label}</h2>{selectedEntity && selectedLink ? <><p className="lead-result">After shared-text exclusion, <b>{selectedEntity.name}</b> appears in {selectedLink.songs} of {selectedLink.labelSongs} eligible <b>{selected.label}</b> song units ({pct(selectedLink.share, 1)}). Its shrunken enrichment is {selectedLink.lift.toFixed(1)}× versus other labels.</p><section className="panel-section"><h3>What the edge means</h3><div className="definition-card"><span>{ENTITY_LABEL[selectedEntity.type] ?? selectedEntity.type}</span><p>A repeated textual reference inside this source-labelled repertoire. It does not establish hometown, affiliation, belief, collaboration, preference, or a real-world relationship.</p></div></section><section className="panel-section"><h3>Who else references it?</h3>{sharedLabels.length ? <div className="shared-list">{sharedLabels.sort((a, b) => b.lift * b.songs - a.lift * a.songs).slice(0, 6).map((link) => <button key={link.labelId} onClick={() => openLabel(labelById.get(link.labelId)!)}><b>{labelById.get(link.labelId)?.label}</b><span>{link.songs}/{link.labelSongs} song units · {link.lift.toFixed(1)}× shrunken enrichment</span></button>)}</div> : <p className="meaning-line">No other source-label edge to this reference survives the same uncertainty and FDR gates.</p>}</section><section className="panel-section"><h3>Reliability</h3><p className="meaning-line">Conservative 95% enrichment interval: {selectedLink.liftLow.toFixed(1)}–{selectedLink.liftHigh.toFixed(1)}×; BH q={qText(selectedLink.qValue)}; class {selectedLink.reliability.toLocaleLowerCase()}. The lexicon and transformer agree on the released surface, but extraction precision/recall remains unknown until dual review.</p></section></> : <p className="lead-result">No entity clears shared-text, support, uncertainty, and FDR gates for this label.</p>}</aside></section>
-      <section className="evidence-strip"><div><span>Released layer</span><b>{data.ner.entities.length} provisional surfaces remain after shared-text and semantic gates.</b></div><div><span>Supported relations</span><b>{data.ner.links.length} label–reference edges survive uncertainty and BH-FDR control.</b></div><div><span>Boundary</span><b>Edges encode lyric references—not social relations, biography, or preference.</b></div></section>
+      {!!data.ner.coMentions?.length && <section className="co-mention-wrap"><div className="co-mention-head"><p className="micro-label">SEPARATE RELATION TYPE</p><h2>References appearing in the same songs</h2><p>These four pairs co-occur more than expected across all 5,681 eligible song units after shared-text exclusion. They connect lyric references—not people or social groups.</p></div><div className="co-mention-grid">{data.ner.coMentions.map((pair) => <article key={`${pair.a}-${pair.b}`}><div><b>{pair.a}</b><i /><b>{pair.b}</b></div><strong>{pair.songUnits} song units across {pair.labels} source labels</strong><span>Positive association NPMI {pair.npmi.toFixed(2)} · BH q={qText(pair.qValue)}</span></article>)}</div></section>}
+      <section className="evidence-strip"><div><span>Released label → reference layer</span><b>{data.ner.links.length} edges survive shared-text exclusion, support, uncertainty, and BH-FDR control.</b></div><div><span>Same-song layer</span><b>{data.ner.coMentions?.length ?? 0} co-mention pairs pass a separate gate across all eligible song units.</b></div><div><span>Boundary</span><b>Edges encode lyric references—not social relations, biography, or preference.</b></div></section>
     </main>
   );
 }
@@ -377,7 +456,7 @@ function RhymeView() {
   return (
     <main className="tool-shell rhyme-shell"><section className="tool-intro"><div><p className="eyebrow">RESULT 03 · WRITTEN RHYME</p><h1>Next-ending lab</h1><p>Enter a Chinese line ending. The tool ranks likely next written-ending families and shows which corpus repertoires emphasize the selected family.</p></div><div className="rhyme-controls"><label>Line ending<input value={ending} onChange={(event) => { setEnding(event.target.value); setFocusedFamily(''); }} maxLength={20} placeholder="e.g. 爱" /></label></div></section>
       <section className="rhyme-workspace"><div className="rhyme-input-card"><p className="micro-label">DICTIONARY ESTIMATE</p><div className="ending-readout"><span>{han || '—'}</span><div><b>{family || 'No ending recognized'}</b><small>{family ? `${FAMILY_EXAMPLES[family]?.join(' · ')} share this broad family` : 'Try one Chinese character or choose an example below.'}</small></div></div><div className="example-buttons">{['爱', '梦', '路', '光', '城', '你'].map((example) => <button key={example} onClick={() => { setEnding(example); setFocusedFamily(''); }}>{example}</button>)}</div><div className="toggle-row"><button className={!switchOnly ? 'active' : ''} onClick={() => setSwitchOnly(false)}>All options</button><button className={switchOnly ? 'active' : ''} onClick={() => setSwitchOnly(true)}>Switch options only</button></div><p className="boundary-note">Dictionary pinyin represents written text only. It cannot hear pronunciation, flow, cadence, or beat.</p></div>
-        <div className="recommendation-card"><div className="recommendation-head"><div><p className="micro-label">RANKED NEXT FAMILIES</p><h2>{family ? `After ${family}` : 'Corpus-wide baseline'}</h2></div><span className="answer-state fallback">{family ? 'observed transition' : 'global baseline'}</span></div><div className="recommendations">{recommendations.slice(0, 5).map((item, index) => { const globalItem = data.rhyme.globalTop5.find((candidate) => candidate.written_rhyme_family === item.written_rhyme_family); const lift = globalItem ? item.probability / globalItem.probability : null; return <button type="button" className={`recommendation ${focusedFamily === item.written_rhyme_family ? 'selected' : ''}`} key={item.written_rhyme_family} onClick={() => setFocusedFamily(item.written_rhyme_family)}><span className="rank">0{index + 1}</span><span className="family"><b>{item.written_rhyme_family}</b><small>Try {FAMILY_EXAMPLES[item.written_rhyme_family]?.join(' / ')}</small></span><span className="probability"><b>{pct(item.probability, 1)}</b><span>{lift === null ? 'outside global top 5' : lift >= 1 ? `${lift.toFixed(1)}× global` : 'below global'}</span></span><span className="prob-bar"><i style={{ width: `${Math.min(100, item.probability * 180)}%` }} /></span></button>; })}</div><p className="recommendation-why">{family ? `Why these results: a smoothed transition model learned from ${markov?.training_event_support.toLocaleString()} training events that originally followed ${family}. Select a result to inspect repertoire evidence.` : 'Enter an ending to use an observed transition.'}</p><section className="family-evidence"><h3>Repertoires emphasizing {evidenceFamily || 'this family'}</h3>{relatedLabels.length ? <div className="family-label-list">{relatedLabels.map((row) => <div key={row.labelId}><b>{labelById.get(row.labelId)?.label}</b><span>{pct(row.share, 1)} of written endings · {Math.pow(2, row.log2RateRatio).toFixed(1)}× corpus rate</span></div>)}</div> : <p>No label clears the public support gate for this family.</p>}<small>Descriptive corpus evidence only—not an intrinsic rapper preference.</small></section></div>
+        <div className="recommendation-card"><div className="recommendation-head"><div><p className="micro-label">INTERPRETABLE ONE-STEP TABLE</p><h2>{family ? `After ${family}` : 'Corpus-wide baseline'}</h2></div><span className="answer-state fallback">{family ? 'observed transition' : 'global baseline'}</span></div><div className="recommendations">{recommendations.slice(0, 5).map((item, index) => { const globalItem = data.rhyme.globalTop5.find((candidate) => candidate.written_rhyme_family === item.written_rhyme_family); const lift = globalItem ? item.probability / globalItem.probability : null; return <button type="button" className={`recommendation ${focusedFamily === item.written_rhyme_family ? 'selected' : ''}`} key={item.written_rhyme_family} onClick={() => setFocusedFamily(item.written_rhyme_family)}><span className="rank">0{index + 1}</span><span className="family"><b>{item.written_rhyme_family}</b><small>Try {FAMILY_EXAMPLES[item.written_rhyme_family]?.join(' / ')}</small></span><span className="probability"><b>{pct(item.probability, 1)}</b><span>{lift === null ? 'outside global top 5' : lift >= 1 ? `${lift.toFixed(1)}× global` : 'below global'}</span></span><span className="prob-bar"><i style={{ width: `${Math.min(100, item.probability * 180)}%` }} /></span></button>; })}</div><p className="recommendation-why">{family ? `This visible list is a smoothed one-step table learned from ${markov?.training_event_support.toLocaleString()} training events that originally followed ${family}. The higher-scoring full-context model is evaluated separately in the dark panel; it is not the list shown here.` : 'Enter an ending to use the one-step table.'}</p><section className="family-evidence"><h3>Repertoires emphasizing {evidenceFamily || 'this family'}</h3>{relatedLabels.length ? <div className="family-label-list">{relatedLabels.map((row) => <div key={row.labelId}><b>{labelById.get(row.labelId)?.label}</b><span>{pct(row.share, 1)} of written endings · {Math.pow(2, row.log2RateRatio).toFixed(1)}× corpus rate</span></div>)}</div> : <p>No label clears the public support gate for this family.</p>}<small>Descriptive corpus evidence only—not an intrinsic rapper preference.</small></section></div>
         <aside className="rhyme-proof"><p className="micro-label">HOW RELIABLE?</p><h2>Useful for ranked options.<br />Exact switches remain hard.</h2><div className="metric-stack"><div><span>Global Top-3</span><i><b style={{ width: `${global.top3_accuracy * 100}%` }} /></i><em>{pct(global.top3_accuracy, 1)}</em></div><div><span>One-step Top-3</span><i><b style={{ width: `${markovMetric.top3_accuracy * 100}%` }} /></i><em>{pct(markovMetric.top3_accuracy, 1)}</em></div><div className="highlight"><span>Full-context Top-3</span><i><b style={{ width: `${modelMetric.top3_accuracy * 100}%` }} /></i><em>{pct(modelMetric.top3_accuracy, 1)}</em></div></div><p className="proof-result">Full sequential context adds {pp(modelMetric.top3_accuracy - markovMetric.top3_accuracy)} over the one-step baseline on held-out songs.</p><div className="diagnostic"><span><b>{continueRow ? pct(Number(continueRow.top1_accuracy), 1) : '98.5%'}</b> Top-1 when the family continues</span><span><b>{changeRow ? pct(Number(changeRow.top1_accuracy), 1) : '2.6%'}</b> Top-1 after a real switch</span></div><p className="proof-result selective">At an illustrative validation-median gate, the full model answers {pct(selective.test_coverage)} of leakage-safe events and reaches {pct(selective.top3_accuracy_on_accepted, 1)} Top-3.</p><div className="definition-card"><span>NO PERSONALIZATION CLAIM</span><p>Adding the source-credit label did not improve held-out prediction. Label profiles above are descriptive, not personalized model evidence.</p></div></aside>
       </section>
     </main>

@@ -1,35 +1,18 @@
 {
-  "artifact": "index.html",
-  "release": "site_singlefile_v2",
-  "validated_on": "2026-08-25",
-  "status": "PASS",
-  "bytes": 496700,
-  "sha256": "6898a5b66aa1a33f43007d3b532108699a0cf2cdc28262af101b3ca90eb8d16e",
-  "self_contained": {
-    "file_url_runtime": "PASS",
+  "artifact": "chinese-rap-portable-results-site-v4",
+  "generated_at_utc": "2026-08-26T19:18:56.559401+00:00",
+  "status": "pass",
+  "bytes": 575614,
+  "sha256": "bfd730b8c9f0a10681f3c018e169a3b677c9f8bbf9725c1098aa645c96066e69",
+  "checks": {
+    "self_contained_single_html": true,
+    "global_network_precedes_local_network": true,
+    "global_network_keyboard_open": true,
+    "labels": 204,
+    "released_edges": 86,
+    "repeatable_edges": 16,
     "external_assets": 0,
-    "unresolved_template_markers": 0,
-    "embedded_research_data_parses": true,
-    "embedded_character_map_parses": true,
-    "character_map_entries": 20921,
-    "executable_javascript_parses": true
+    "generic_keyword_occurrence_search": false
   },
-  "runtime_checks": {
-    "desktop_viewport": "1440x1000",
-    "home": "PASS: question and three task entry points render",
-    "repertoire": "PASS: graph, reasons, repeatability, search, click, and keyboard Enter",
-    "references": "PASS: GALI to 上海 to 法老 path, support/RR/q, and four co-mention cards",
-    "written_rhyme": "PASS: 爱 maps to AI and returns five ranked next-family possibilities",
-    "mobile": "PASS: 375x812, zero horizontal overflow, navigation fits",
-    "browser_errors": 0,
-    "visible_controls_below_44px": 0
-  },
-  "public_boundary_checks": {
-    "raw_lyric_lines": 0,
-    "song_or_chunk_ids": 0,
-    "hashes": 0,
-    "embeddings": 0,
-    "reviewer_contexts": 0,
-    "keyword_occurrence_search": false
-  }
+  "note": "Static structure, embedded-data lineage, and script syntax are release checks; the richer application also passes TypeScript and production build."
 }

@@ -1,0 +1,11 @@
+{
+  "artifact": "chinese-rap-portable-results-site-v2",
+  "labels": 204,
+  "lyricalEdges": 86,
+  "connectedLabels": 93,
+  "repeatableEdges": 16,
+  "characterMapEntries": 20921,
+  "researchDataSourceSha256": "9d0cca83d51c0eb24b328edfdc315fa658e46fe0fd49083f951f93189e1e139c",
+  "portableHtmlSha256": "5877655ed49fd2a4d7c1176d7680703e4d0ae335de950f49cf286e3268a92ed8",
+  "status": "pass"
+}
