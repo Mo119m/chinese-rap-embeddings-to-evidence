@@ -1,0 +1,138 @@
+{
+  "artifact_id": "chinese-rap-ner-cultural-graph-v1",
+  "checks": [
+    {
+      "name": "no_completed_human_gold_claim",
+      "passed": true
+    },
+    {
+      "name": "two_reproducible_baselines_reported",
+      "passed": true
+    },
+    {
+      "name": "audit_package_has_600_plus_occurrences",
+      "passed": true
+    },
+    {
+      "detail": [],
+      "name": "public_columns_exclude_private_occurrence_fields",
+      "passed": true
+    },
+    {
+      "detail": 216,
+      "name": "public_csv_cells_are_bounded_noncontext",
+      "passed": true
+    },
+    {
+      "name": "all_public_result_rows_are_provisional",
+      "passed": true
+    },
+    {
+      "name": "surface_type_audit_covers_every_quantitative_candidate",
+      "passed": true
+    },
+    {
+      "name": "surface_type_audit_has_only_explicit_release_or_withhold_decisions",
+      "passed": true
+    },
+    {
+      "name": "all_public_entities_are_explicitly_released_by_surface_type_audit",
+      "passed": true
+    },
+    {
+      "name": "primary_entity_inventory_is_strict_subset_of_frozen_corpuswide_candidates",
+      "passed": true
+    },
+    {
+      "name": "withheld_surface_type_pairs_do_not_enter_public_entities",
+      "passed": true
+    },
+    {
+      "name": "released_person_references_are_in_t1_named_individual_ledger",
+      "passed": true
+    },
+    {
+      "name": "source_label_links_target_only_released_entities",
+      "passed": true
+    },
+    {
+      "name": "graph_label_universe_is_exactly_204_unique_labels",
+      "passed": true
+    },
+    {
+      "name": "source_label_links_use_only_204_label_universe",
+      "passed": true
+    },
+    {
+      "name": "co_mentions_target_only_released_entities",
+      "passed": true
+    },
+    {
+      "name": "network_has_exactly_the_released_entity_nodes",
+      "passed": true
+    },
+    {
+      "name": "source_label_entity_edges_are_unique",
+      "passed": true
+    },
+    {
+      "name": "network_edges_are_unique",
+      "passed": true
+    },
+    {
+      "name": "released_label_links_pass_support_uncertainty_and_fdr_gates",
+      "passed": true
+    },
+    {
+      "name": "association_test_q_values_are_bounded_and_complete",
+      "passed": true
+    },
+    {
+      "name": "shared_text_sensitivity_counts_are_monotone",
+      "passed": true
+    },
+    {
+      "name": "unique_line_agreement_counts_and_ratios_are_bounded",
+      "passed": true
+    },
+    {
+      "name": "network_edges_define_bounded_meaning",
+      "passed": true
+    },
+    {
+      "name": "public_artifact_contains_no_html_or_full_context_file",
+      "passed": true
+    },
+    {
+      "name": "required_documents_present",
+      "passed": true
+    },
+    {
+      "detail": {
+        "private": [],
+        "public": []
+      },
+      "name": "public_and_private_manifest_file_hashes_verified",
+      "passed": true
+    },
+    {
+      "name": "co_mentions_use_all_eligible_song_unit_denominator",
+      "passed": true
+    },
+    {
+      "name": "released_co_mentions_pass_support_and_fdr_gates",
+      "passed": true
+    },
+    {
+      "name": "entity_co_mentions_are_not_named_relations",
+      "passed": true
+    },
+    {
+      "name": "occurrence_and_unique_line_units_are_explicitly_separate",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-26T01:36:24.239211+00:00",
+  "status": "pass",
+  "version": "1.1.0"
+}

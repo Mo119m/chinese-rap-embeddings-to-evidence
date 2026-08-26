@@ -1,0 +1,85 @@
+﻿source_credit_label,entity,entity_type,before_shared_exclusion_song_support,after_shared_exclusion_song_support,before_shared_exclusion_legacy_basic_gate,after_shared_exclusion_legacy_basic_gate,after_uncertainty_and_bh_release_gate,after_shrunken_risk_ratio,after_conservative_rr_ci95_low,after_bh_q_value,final_reliability_class,final_withhold_reason
+AR,中文,LANGUAGE_OR_DIALECT_REFERENCE,8,5,True,True,False,6.582512,2.067861,0.22900187349399753,WITHHOLD,bh_fdr_q_above_0.05
+AR,潮汕,PLACE,3,0,True,False,False,,,,WITHHOLD,entity_not_in_primary_inventory
+AR,英文,LANGUAGE_OR_DIALECT_REFERENCE,4,4,True,True,False,28.027579,6.226327,0.010184102282315668,WITHHOLD,entity_support_below_5_song_units
+Ansr J,巴黎,PLACE,4,3,True,True,False,11.735111,2.446473,0.40294629052007513,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Athree,上海,PLACE,3,0,True,False,False,1.155338,0.00098,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | shrunken_risk_ratio_below_1.50 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+Athree,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,1,True,False,False,2.807076,0.18119,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+Athree,新疆,PLACE,5,3,True,True,False,22.968116,4.489713,0.11318965740584025,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Blow Fever,上海,PLACE,4,3,True,True,False,7.083915,1.530407,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Blow Fever,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,3,True,True,False,5.661662,1.246443,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Bridge,上海,PLACE,3,2,True,False,False,5.414354,0.80073,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+Bridge,中文,LANGUAGE_OR_DIALECT_REFERENCE,7,3,True,True,False,6.116757,1.354697,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+C-Block,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,3,True,True,False,3.463759,0.741379,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+GAI,中文,LANGUAGE_OR_DIALECT_REFERENCE,5,2,True,False,False,3.182894,0.471276,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+GALI,上海,PLACE,12,8,True,True,True,13.168061,5.28451,0.00019840646134977326,SUPPORTED,
+GNS耀耀,青藏,PLACE,3,0,True,False,False,,,,WITHHOLD,entity_not_in_primary_inventory
+HAS,上海,PLACE,6,5,True,True,False,7.456686,2.282355,0.15712074432670625,WITHHOLD,bh_fdr_q_above_0.05
+HAS,巴黎,PLACE,3,3,True,True,False,7.135321,1.442234,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Jarstick,上海,PLACE,3,2,True,False,False,4.095984,0.596143,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+KKLUV,中文,LANGUAGE_OR_DIALECT_REFERENCE,6,2,True,False,False,3.734972,0.557636,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+Kigga,中文,LANGUAGE_OR_DIALECT_REFERENCE,4,1,True,False,False,2.935188,0.189935,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+Max马俊,新疆,PLACE,5,3,True,True,False,35.267556,7.239943,0.038520437651239164,WITHHOLD,entity_support_below_5_song_units
+Melo,中文,LANGUAGE_OR_DIALECT_REFERENCE,4,2,True,False,False,6.785201,1.062336,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Mercy(lago),上海,PLACE,3,2,True,False,False,3.137866,0.451503,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+Mercy(lago),中文,LANGUAGE_OR_DIALECT_REFERENCE,7,6,True,True,False,6.73959,2.340267,0.10171455664985042,WITHHOLD,bh_fdr_q_above_0.05
+SASIOVERLXRD,中文,LANGUAGE_OR_DIALECT_REFERENCE,4,3,True,True,False,5.458494,1.198535,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+TOYOKI,巴黎,PLACE,4,3,True,True,False,8.133539,1.654891,0.8821184391148527,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+Tangoz,杭州,PLACE,13,10,True,True,True,74.123827,26.873679,3.042623045608577e-12,HIGH,
+Tizzy T,上海,PLACE,4,2,True,False,False,3.375,0.486993,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+V.O.B.,天津,PLACE,3,3,True,True,False,63.055644,11.369885,0.010184102282315668,WITHHOLD,entity_support_below_5_song_units
+Vava,上海,PLACE,4,2,True,False,False,4.507974,0.659371,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+YoungChigga,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,2,True,False,False,2.29722,0.335692,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+jinjibewater,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,0,True,False,False,0.92863,0.000802,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | shrunken_risk_ratio_below_1.50 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+二狗子,河北,PLACE,3,0,True,False,False,,,,WITHHOLD,entity_not_in_primary_inventory
+光光 (MC),中文,LANGUAGE_OR_DIALECT_REFERENCE,4,1,True,False,False,2.014377,0.128041,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+刀脚,上海,PLACE,3,1,True,False,False,3.21782,0.20302,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+功夫胖,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,2,True,False,False,3.609834,0.537934,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+功夫胖,梅溪湖,PLACE,4,0,True,False,False,,,,WITHHOLD,entity_not_in_primary_inventory
+国蛋,台北,PLACE,6,6,True,True,True,63.991282,17.031561,2.3789262580140696e-06,SUPPORTED,
+土人儿,上海,PLACE,3,1,True,False,False,3.658552,0.232426,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+多雷 Swang,新疆,PLACE,5,4,True,True,False,16.558708,3.878975,0.05670896108672057,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+大傻 (Damnshine),上海,PLACE,6,3,True,True,False,7.357674,1.594109,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+大傻 (Damnshine),中文,LANGUAGE_OR_DIALECT_REFERENCE,3,1,True,False,False,2.481866,0.159187,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+天府事变CDREV,巴黎,PLACE,4,4,True,True,False,8.478195,2.130195,0.30505509192248137,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+天府事变CDREV,香港,PLACE,3,3,True,True,False,26.576431,4.354805,0.10171455664985042,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+小酷coola,上海,PLACE,4,1,True,False,False,4.474724,0.287975,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+张大炮,英文,LANGUAGE_OR_DIALECT_REFERENCE,3,2,True,False,False,12.373848,1.509233,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | bh_fdr_q_above_0.05
+徐真真,巴黎,PLACE,4,4,True,True,False,8.875678,2.235195,0.27634680022479424,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+李大奔BENZO,杭州,PLACE,4,4,True,True,False,29.073756,6.589772,0.010184102282315668,WITHHOLD,entity_support_below_5_song_units
+李尔新,上海,PLACE,4,2,True,False,False,4.095984,0.596143,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+李尔新,中文,LANGUAGE_OR_DIALECT_REFERENCE,4,3,True,True,False,4.627355,1.005183,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+杨和苏KeyNG,中文,LANGUAGE_OR_DIALECT_REFERENCE,5,2,True,False,False,3.383022,0.502415,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+杨布拉德,中文,LANGUAGE_OR_DIALECT_REFERENCE,6,3,True,True,False,3.463759,0.741379,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+梁维嘉,中文,LANGUAGE_OR_DIALECT_REFERENCE,5,4,True,True,False,5.818379,1.57987,0.7055340617001189,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+法老,上海,PLACE,9,7,True,True,True,10.123833,3.756767,0.004955357390838317,SUPPORTED,
+法老,中文,LANGUAGE_OR_DIALECT_REFERENCE,5,2,True,False,False,2.572979,0.377524,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+泰格西,湖南,PLACE,6,5,True,True,True,159.55641,33.222097,1.2527862668009402e-06,SUPPORTED,
+派克特,上海,PLACE,4,1,True,False,False,3.352488,0.211963,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+派克特,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,0,True,False,False,0.88978,0.000768,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | shrunken_risk_ratio_below_1.50 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+热狗,台北,PLACE,3,2,True,False,False,21.950272,2.571205,0.6785259571927926,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+熊猫涂杰,上海,PLACE,3,0,True,False,False,0.630561,0.000527,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | shrunken_risk_ratio_below_1.50 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+熊猫涂杰,天津,PLACE,3,0,True,False,False,3.123477,0.002134,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+熊猫涂杰,新疆,PLACE,3,0,True,False,False,1.658142,0.001247,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+熊猫涂杰,河北,PLACE,3,0,True,False,False,,,,WITHHOLD,entity_not_in_primary_inventory
+王以太,万妮达,PERSON_REFERENCE,3,2,True,False,False,120.876068,10.11415,0.08255353942860412,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+直火帮,上海,PLACE,5,4,True,True,False,6.193537,1.633571,0.6734423737227173,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+离合,深圳,PLACE,4,4,True,True,False,54.706452,11.354121,0.0015064253635685542,WITHHOLD,entity_support_below_5_song_units
+离合,香港,PLACE,3,3,True,True,False,39.970707,6.693654,0.038520437651239164,WITHHOLD,entity_support_below_5_song_units
+秃子,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,3,True,True,False,6.650999,1.483469,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+艾福杰尼,新疆,PLACE,5,3,True,True,False,13.507009,2.54804,0.3330161131013596,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+西米,上海,PLACE,3,3,True,True,False,8.701581,1.912286,0.7027226407926358,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+谢帝,中文,LANGUAGE_OR_DIALECT_REFERENCE,4,2,True,False,False,4.929467,0.749552,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+连麻Swimming,中文,LANGUAGE_OR_DIALECT_REFERENCE,4,1,True,False,False,2.223941,0.141934,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+邓典果,中文,LANGUAGE_OR_DIALECT_REFERENCE,6,4,True,True,False,7.619425,2.11255,0.3382187996355846,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+那吾克热-NW,新疆,PLACE,4,2,True,False,False,14.128372,1.866423,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+那奇沃夫,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,0,True,False,False,0.646083,0.000553,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | shrunken_risk_ratio_below_1.50 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+那奇沃夫,新疆,PLACE,4,2,True,False,False,11.11767,1.449089,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+雲道,上海,PLACE,3,3,True,True,False,4.143982,0.868734,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+马思唯,中文,LANGUAGE_OR_DIALECT_REFERENCE,6,4,True,True,False,5.995755,1.631337,0.6785259571927926,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+黄旭,中文,LANGUAGE_OR_DIALECT_REFERENCE,3,1,True,False,False,2.389523,0.15299,1.0,WITHHOLD,entity_support_below_5_song_units | within_label_share_below_0.05 | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+黄旭,新疆,PLACE,3,2,True,False,False,13.602694,1.792739,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05
+黄昭,昆明,PLACE,3,3,True,True,False,104.981432,14.231207,0.004955357390838317,WITHHOLD,entity_support_below_5_song_units
+黑麦,天津,PLACE,10,10,True,True,True,151.699488,49.780413,1.4696215482327603e-14,HIGH,
+龙井说唱 孙旭,上海,PLACE,3,1,True,False,False,4.238463,0.271747,1.0,WITHHOLD,entity_support_below_5_song_units | uncertainty_interval_includes_no_enrichment | bh_fdr_q_above_0.05
+龙泽宇,新疆,PLACE,3,2,True,False,False,10.78877,1.404176,1.0,WITHHOLD,entity_support_below_5_song_units | bh_fdr_q_above_0.05

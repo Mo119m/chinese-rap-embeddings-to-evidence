@@ -1,0 +1,5 @@
+﻿stage,entities,label_entity_links,co_mentions,meaning
+v1_legacy_all_labels_before_shared_exclusion,33,85,9,"Reconciliation of v1: all eligible labels, shared text included, support/lift-only links, entity-bearing co-mention denominator."
+all_labels_after_shared_exclusion_legacy_gates,23,40,1,Shared text excluded across all labels; legacy gates retained only to isolate that change.
+204_label_primary_universe_after_shared_exclusion_legacy_gates,22,40,1,"204 retrieval graph-eligible labels, shared text excluded, legacy gates retained only for sensitivity."
+v1_1_primary_all_song_denominator_uncertainty_fdr_release,22,6,4,"Primary release after shared-text exclusion, shrinkage/interval gates, and BH-FDR."

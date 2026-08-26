@@ -1,0 +1,71 @@
+{
+  "artifact_id": "chinese-rap-ner-cultural-graph-v1",
+  "checks": [
+    {
+      "detail": {
+        "expected": 37983,
+        "persisted": 37983
+      },
+      "name": "persisted_private_candidate_map_preserves_every_lexicon_occurrence",
+      "passed": true
+    },
+    {
+      "name": "persisted_candidate_ids_are_unique",
+      "passed": true
+    },
+    {
+      "name": "recomputed_label_link_song_support_matches_public_release",
+      "passed": true
+    },
+    {
+      "name": "recomputed_co_mention_song_support_matches_public_release",
+      "passed": true
+    },
+    {
+      "name": "independent_full_association_release_rerun_matches_support_effect_and_q",
+      "passed": true
+    },
+    {
+      "name": "independent_full_co_mention_release_rerun_matches_support_npmi_and_q",
+      "passed": true
+    },
+    {
+      "name": "released_links_use_only_graph_eligible_labels",
+      "passed": true
+    },
+    {
+      "name": "persisted_graph_label_universe_is_exactly_204",
+      "passed": true
+    },
+    {
+      "detail": [],
+      "name": "public_manifest_file_hashes_match",
+      "passed": true
+    },
+    {
+      "detail": [],
+      "name": "private_manifest_file_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "public_manifest_input_and_builder_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "private_manifest_input_and_builder_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "persisted_release_counts_match_summary",
+      "passed": true
+    },
+    {
+      "name": "no_shared_hash_can_support_reconciled_primary_edges",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-26T01:36:26.725470+00:00",
+  "status": "pass",
+  "validation_mode": "independent_reload_of_raw_sources_and_persisted_private_occurrence_map",
+  "version": "1.1.0"
+}

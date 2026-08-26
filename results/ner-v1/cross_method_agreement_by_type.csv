@@ -1,0 +1,11 @@
+﻿entity_type,lexicon_candidate_spans_on_unique_line_frame,transformer_candidate_spans_on_unique_line_frame,exact_span_type_agreements_on_unique_line_frame,strict_high_consistency_spans_on_unique_line_frame,exact_agreement_per_lexicon_candidate_span,exact_agreement_per_transformer_candidate_span,metric_boundary
+BRAND_OR_PRODUCT,1535,153,7,4,0.00456,0.045752,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+ETHNOCULTURAL_GROUP_REFERENCE,273,138,20,19,0.07326,0.144928,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+EVENT,103,16,3,3,0.029126,0.1875,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+GROUP_CREW_OR_ORGANIZATION,864,802,15,15,0.017361,0.018703,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+LANGUAGE_OR_DIALECT_REFERENCE,515,249,243,234,0.471845,0.975904,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+OTHER_CULTURAL_REFERENCE,171,0,0,0,0.0,,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+PERSON_REFERENCE,3477,8725,437,410,0.125683,0.050086,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+PLACE,4506,2279,1284,1201,0.284953,0.563405,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+RAP_CULTURE_CONCEPT,10965,0,0,0,0.0,,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
+WORK_OR_MEDIA,39,240,2,2,0.051282,0.008333,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"

@@ -1,0 +1,14 @@
+﻿entity_a,entity_a_type,entity_b,entity_b_type,before_shared_exclusion_song_support,after_shared_exclusion_song_support,before_shared_exclusion_legacy_entity_bearing_gate,after_shared_exclusion_all_eligible_denominator_basic_gate,after_bh_release_gate,after_npmi_all_eligible_denominator,after_bh_q_value,final_reliability_class
+上海,PLACE,中文,LANGUAGE_OR_DIALECT_REFERENCE,13,6,False,True,False,0.129926,0.4643840655982423,WITHHOLD
+上海,PLACE,巴黎,PLACE,7,7,False,True,True,0.250614,0.01700920397947923,SUPPORTED
+上海,PLACE,新疆,PLACE,14,5,False,True,True,0.270346,0.03100053901544082,SUPPORTED
+上海,PLACE,河北,PLACE,5,0,True,False,False,,,WITHHOLD
+上海,PLACE,深圳,PLACE,12,3,True,False,False,0.283003,0.12634589054687903,WITHHOLD
+上海,PLACE,香港,PLACE,10,2,True,False,False,0.217582,0.5277981817894348,WITHHOLD
+中文,LANGUAGE_OR_DIALECT_REFERENCE,英文,LANGUAGE_OR_DIALECT_REFERENCE,6,6,False,True,True,0.324179,0.004013675340509879,SUPPORTED
+伦敦,PLACE,巴黎,PLACE,5,5,True,True,True,0.500454,4.206421320557345e-05,SUPPORTED
+台北,PLACE,香港,PLACE,6,1,True,False,False,0.307225,0.5822059958391694,WITHHOLD
+天津,PLACE,新疆,PLACE,5,0,True,False,False,0.0,1.0,WITHHOLD
+天津,PLACE,河北,PLACE,5,0,True,False,False,,,WITHHOLD
+新疆,PLACE,河北,PLACE,5,0,True,False,False,,,WITHHOLD
+江西,PLACE,河北,PLACE,5,0,True,False,False,,,WITHHOLD

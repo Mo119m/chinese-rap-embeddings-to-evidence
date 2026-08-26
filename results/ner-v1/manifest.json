@@ -1,0 +1,127 @@
+{
+  "artifact_id": "chinese-rap-ner-cultural-graph-v1",
+  "files": {
+    "METHOD.md": {
+      "bytes": 8886,
+      "sha256": "fd4da531b70c4b9c474ee427483537f1b45efd742b11ed7c88b4babce875313c"
+    },
+    "README.md": {
+      "bytes": 969,
+      "sha256": "eae4bdc3a1cc7b8a4244a8c7cc657e289c062039a1329b9308ec15553bcec7e9"
+    },
+    "SCHEMA_AND_ANNOTATION.md": {
+      "bytes": 4810,
+      "sha256": "7c8c046b7c0fbdd59459a5dfb0b6c6120c1817c627cb32b449f99e942d25cc17"
+    },
+    "baseline_comparison.csv": {
+      "bytes": 368,
+      "sha256": "482418bd94c3d5e97c64fb3e812eddbe91b077ccde11b56f5f08821e37ea641f"
+    },
+    "cross_method_agreement_by_type.csv": {
+      "bytes": 1686,
+      "sha256": "92f00aaee2a9920503341c55af7989ed7de66b9b134caa48ef453dd6aece9bc3"
+    },
+    "cultural_network_edges_provisional.csv": {
+      "bytes": 4148,
+      "sha256": "3bd46d7b153e52577404f22f8a8453c013cfade127d06ea821d01dbcc18776b6"
+    },
+    "cultural_network_nodes_provisional.csv": {
+      "bytes": 3550,
+      "sha256": "1e391cb0f2c241b0c8996bb60778bba1b3dfdd03fe18b8b1a14d66d6690d4e4b"
+    },
+    "entity_aggregate_provisional.csv": {
+      "bytes": 2739,
+      "sha256": "d0f9b976e795fcedf750ff81001bc9b3a104996e90cf06fe344af196231c187b"
+    },
+    "entity_co_mention_sensitivity.csv": {
+      "bytes": 1396,
+      "sha256": "42efd4ebf1fe4521317106710f7fe6890f3e1fba43294daf3075b281bd65d744"
+    },
+    "entity_co_mentions_provisional.csv": {
+      "bytes": 1977,
+      "sha256": "fd5bc30f48e3155b55e45b2fa789683da3e947d293dc9945853e98a512748187"
+    },
+    "entity_inventory_corpuswide_sensitivity.csv": {
+      "bytes": 4393,
+      "sha256": "daa04df0836b091b73f0d56ec6f8047b2ab5ab22fd0d9d0cd2ec1c72deccf67c"
+    },
+    "entity_inventory_shared_text_excluded_all_labels_sensitivity.csv": {
+      "bytes": 3030,
+      "sha256": "9f049f6caf90b0768e6b4a9a16e400aef869e357fa717fd211741f3d096fd784"
+    },
+    "graph_label_universe.csv": {
+      "bytes": 37443,
+      "sha256": "76ccf37132e282a997d12b4a6a9284b61cc13891e9049cd5f1ed98c9d45c8ee4"
+    },
+    "release_sensitivity_summary.csv": {
+      "bytes": 718,
+      "sha256": "c87fa07ba3c022f6b8bba9fcfa5f134741de5c77307e937dccf35cd715145926"
+    },
+    "shared_text_exclusion_entity_sensitivity.csv": {
+      "bytes": 7521,
+      "sha256": "16466263a06feaac059848fa87a4a08b32d33cf85aa0d4bc6cf2068696ab215f"
+    },
+    "source_label_entity_association_tests.csv": {
+      "bytes": 2923705,
+      "sha256": "ef39989c4f95997d3137fb4f4480bd5e0759c9d0086ee0c17526e1bf3b28ee0a"
+    },
+    "source_label_entity_link_sensitivity.csv": {
+      "bytes": 14221,
+      "sha256": "b5d12d995c03d48b935ffb1dadb0e730ba33d404baf8695b92e4f71a0b788995"
+    },
+    "source_label_entity_links_provisional.csv": {
+      "bytes": 4067,
+      "sha256": "572963b8985c3adcc0054230ab9dfcbbd830a8f62219ac2a9e14480def114759"
+    },
+    "summary.json": {
+      "bytes": 3556,
+      "sha256": "54931519ebf6ed8ae63109ad4334dd0bbcebefd50a384f79baeac2f2a53f0ccb"
+    },
+    "surface_type_release_audit.csv": {
+      "bytes": 20652,
+      "sha256": "5650a4db5d867b6ba7135d4918905f0cca01af614cf67772fb583dd379612f2d"
+    }
+  },
+  "generated_at_utc": "2026-08-26T01:36:23.933090+00:00",
+  "inputs": {
+    "batch_size": 96,
+    "builder_code_sha256": "8260592777d8fdddf79ca5c82c0b6e884c7c0efb4757e1824ffdd5c957c0ea75",
+    "cleaned_chunks_sha256": "d605f5ccdf0004940e0cfe453e2ff527d08dd6d34f843a6afda3aa03926e5730",
+    "core_reference_ledger_sha256": "c8c3ce28ce348a7fb3439f7843a69ef9a11a52c89c171d394f7e046d3638e7a4",
+    "graph_label_registry_sha256": "543b93a8a3eceb49a7e33619f2994a77659e6d814eda7ea09ace7b230a5a0a69",
+    "max_tokens": 256,
+    "model_config_sha256": "4828a80f3c7eb67514f3d9c76ed2544149bad4e498f6b74e4978b48a542b5b5b",
+    "model_directory": "ckiplab-albert-tiny-chinese-ner-bcb5198",
+    "model_labels": [
+      "EVENT",
+      "FAC",
+      "GPE",
+      "LANGUAGE",
+      "LAW",
+      "LOC",
+      "NORP",
+      "ORG",
+      "PERSON",
+      "PRODUCT",
+      "WORK_OF_ART"
+    ],
+    "model_weights_sha256": "03f6e38f92ada4b59b88ae9122a50a0c98b85f07722ff1234048928e55ed10d3",
+    "overlap_chars": 40,
+    "safe_lexicon_sha256": "e43cdf8c3ffddee96bc7484f37ce64724f41fc840dfeddaa1dca152b0b8c2a57",
+    "songs_sha256": "6a4caa73bab3b04165785388856ecb758d3514945a0faefe41ca2fd354ecb017",
+    "tokenizer_vocab_sha256": "45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c",
+    "torch_threads": 4,
+    "window_chars": 180
+  },
+  "runtime": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "scipy": "1.18.0",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.14.1"
+  },
+  "validation_contract": "validation.json and reconciliation_validation.json are written after this manifest and excluded from its non-self-referential file hash table",
+  "version": "1.1.0"
+}

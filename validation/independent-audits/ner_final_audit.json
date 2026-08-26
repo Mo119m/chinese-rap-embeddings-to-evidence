@@ -1,0 +1,48 @@
+{
+  "artifact_id": "chinese-rap-ner-cultural-graph-v1",
+  "artifact_version": "1.1.0",
+  "audit": "independent_final_read_only_recomputation",
+  "audited_at_utc": "2026-08-26T02:01:24Z",
+  "status": "PASS",
+  "checks_passed": 19,
+  "checks_total": 19,
+  "production_builder_sha256": "8260592777d8fdddf79ca5c82c0b6e884c7c0efb4757e1824ffdd5c957c0ea75",
+  "audit_script_sha256": "79e3404df0b8e2f5d518d187cf2b126b29b792ef064dfddda3a75f1b4b2ac186",
+  "auditor_boundary": "No production builder functions were imported; no frozen output files were modified.",
+  "checks": [
+    {"name": "public_manifest_hashes", "passed": true, "evidence": {"files_checked": 20, "failures": []}},
+    {"name": "private_manifest_hashes", "passed": true, "evidence": {"files_checked": 8, "failures": []}},
+    {"name": "builder_and_input_hashes", "passed": true, "evidence": {"mismatches": {}}},
+    {"name": "eligible_chunk_population", "passed": true, "evidence": {"eligible_chunks": 21553}},
+    {"name": "cross_label_shared_text_ledger", "passed": true, "evidence": {"recomputed_shared_hashes": 2187, "persisted_shared_hashes": 2187}},
+    {"name": "graph_label_universe_and_denominators", "passed": true, "evidence": {"graph_labels": 204, "membership_units": 5681, "distinct_full_song_content_units": 5681, "song_units_attached_to_multiple_graph_labels": 0, "persisted_label_counts_match": true}},
+    {"name": "private_occurrence_map_completeness", "passed": true, "evidence": {"all_candidate_rows": 44970, "unique_candidate_ids": 44970, "lexicon_occurrence_rows": 37983}},
+    {"name": "private_occurrences_cover_shared_exclusion", "passed": true, "evidence": {"shared_hashes_with_lexicon_occurrences": 1115}},
+    {"name": "occurrence_vs_unique_line_agreement_units", "passed": true, "evidence": {"exact_occurrences": 3566, "strict_occurrences": 3290, "exact_unique_line_spans": 2011, "strict_unique_line_spans": 1888, "missing_chunk_keys": 0}},
+    {"name": "entity_inventory_recomputed", "passed": true, "evidence": {"corpuswide": 33, "all_labels_after_shared_exclusion": 23, "primary_204_label": 22, "persisted_primary": 22, "key_difference": []}},
+    {"name": "entity_inventory_metrics", "passed": true, "evidence": {"mismatches": []}},
+    {"name": "all_4488_association_tests_recomputed", "passed": true, "evidence": {"tests": 4488, "mismatch_count": 0}},
+    {"name": "six_released_label_entity_edges", "passed": true, "evidence": {"released": 6, "released_strict_rows_on_shared_hashes": 0}},
+    {"name": "all_231_co_mention_tests_recomputed", "passed": true, "evidence": {"tests": 231, "basic_gate_candidates": 5, "released": 4, "mismatches": []}},
+    {"name": "release_sensitivity_funnel", "passed": true, "evidence": {"stages": [[33, 85, 9], [23, 40, 1], [22, 40, 1], [22, 6, 4]]}},
+    {"name": "no_completed_human_gold", "passed": true, "evidence": {"review_tasks": 800, "r1_completed": 0, "r2_completed": 0, "adjudication_fields_nonblank": 0, "human_gold_available": false}},
+    {"name": "public_csv_privacy_boundary", "passed": true, "evidence": {"csv_files": 16, "forbidden_columns": {}, "cells_over_512_chars": [], "bare_sha256_values": [], "maximum_cell_length": 216}},
+    {"name": "network_and_claim_boundary", "passed": true, "evidence": {"nodes": 28, "edges": 10, "label_reference_edges": 6, "same_song_co_mention_edges": 4}},
+    {"name": "documentation_claims_are_bounded", "passed": true, "evidence": {"precision_recall_f1_disclaimer": true, "social_relation_disclaimer": true, "human_gold_absence_stated": true}}
+  ],
+  "released_label_entity_edges": [
+    {"source_credit_label": "黑麦", "entity": "天津", "support": 10, "label_song_units": 33, "shrunken_risk_ratio": 151.699488, "ci95_low_conservative": 49.780413, "ci95_high_conservative": 455.252441, "q_value_bh": 1.4696215482327603e-14, "reliability_class": "HIGH"},
+    {"source_credit_label": "Tangoz", "entity": "杭州", "support": 10, "label_song_units": 38, "shrunken_risk_ratio": 74.123827, "ci95_low_conservative": 26.873679, "ci95_high_conservative": 186.438626, "q_value_bh": 3.042623045608577e-12, "reliability_class": "HIGH"},
+    {"source_credit_label": "泰格西", "entity": "湖南", "support": 5, "label_song_units": 25, "shrunken_risk_ratio": 159.556410, "ci95_low_conservative": 33.222097, "ci95_high_conservative": 693.819927, "q_value_bh": 1.2527862668009402e-6, "reliability_class": "SUPPORTED"},
+    {"source_credit_label": "国蛋", "entity": "台北", "support": 6, "label_song_units": 36, "shrunken_risk_ratio": 63.991282, "ci95_low_conservative": 17.031561, "ci95_high_conservative": 200.533981, "q_value_bh": 2.3789262580140696e-6, "reliability_class": "SUPPORTED"},
+    {"source_credit_label": "GALI", "entity": "上海", "support": 8, "label_song_units": 36, "shrunken_risk_ratio": 13.168061, "ci95_low_conservative": 5.284510, "ci95_high_conservative": 26.485202, "q_value_bh": 0.00019840646134977326, "reliability_class": "SUPPORTED"},
+    {"source_credit_label": "法老", "entity": "上海", "support": 7, "label_song_units": 41, "shrunken_risk_ratio": 10.123833, "ci95_low_conservative": 3.756767, "ci95_high_conservative": 21.313106, "q_value_bh": 0.004955357390838317, "reliability_class": "SUPPORTED"}
+  ],
+  "released_co_mentions": [
+    {"entity_a": "伦敦", "entity_b": "巴黎", "co_mentions": 5, "source_credit_labels": 5, "all_eligible_song_units": 5681, "npmi": 0.500454, "q_value_bh": 4.206421320557345e-5},
+    {"entity_a": "中文", "entity_b": "英文", "co_mentions": 6, "source_credit_labels": 5, "all_eligible_song_units": 5681, "npmi": 0.324179, "q_value_bh": 0.004013675340509879},
+    {"entity_a": "上海", "entity_b": "巴黎", "co_mentions": 7, "source_credit_labels": 5, "all_eligible_song_units": 5681, "npmi": 0.250614, "q_value_bh": 0.01700920397947923},
+    {"entity_a": "上海", "entity_b": "新疆", "co_mentions": 5, "source_credit_labels": 5, "all_eligible_song_units": 5681, "npmi": 0.270346, "q_value_bh": 0.03100053901544082}
+  ],
+  "interpretation_boundary": "Released edges are aggregate lyric-reference evidence in this frozen corpus. They do not establish residence, preference, biography, identity, collaboration, influence, affiliation, or social relationships. No precision, recall, or F1 is estimable before human review is completed."
+}
