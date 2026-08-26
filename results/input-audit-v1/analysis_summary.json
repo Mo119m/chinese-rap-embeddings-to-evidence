@@ -1,0 +1,145 @@
+{
+  "artifact_id": "chinese-rap-downstream-input-audit-v1",
+  "version": "1.0.0",
+  "generated_at_utc": "2026-08-25T21:00:57.955652+00:00",
+  "status": "pass",
+  "intended_use": [
+    "explainable lyrical-repertoire retrieval",
+    "provisional Chinese-rap NER and grounded cultural-network research",
+    "dictionary-estimated written-rhyme modelling and recommendation"
+  ],
+  "grain": {
+    "songs": 7211,
+    "chunks": 22128,
+    "clean_sidecar_rows": 22128,
+    "metadata_rows": 7211
+  },
+  "coverage": {
+    "source_credit_labels": 241,
+    "labels_with_at_least_five_songs": 226,
+    "eligible_clean_text_chunks": 21553,
+    "withheld_metadata_only_chunks": 575,
+    "artist_title_comparison_eligible_songs": 7134,
+    "artist_title_comparison_ineligible_songs": 77,
+    "title_semantic_ineligible_songs": 102
+  },
+  "identity_status": {
+    "verified_exact_internal_match": 7207,
+    "verified_external_title_override": 4
+  },
+  "duplicate_risk": {
+    "exact_song_content_groups_spanning_multiple_songs": 405,
+    "songs_in_those_groups": 921,
+    "required_split_rule": "All rows sharing exact song-content or cleaned-text hashes stay in one split; split by song before line/chunk expansion."
+  },
+  "claim_boundary": {
+    "labels": "Corpus source-credit labels, not independently verified performer identities.",
+    "titles": "Use artist/title comparisons only where artist_title_comparison_eligible is true; no guessed correction.",
+    "rhyme": "Dictionary-estimated written endings, not performed rhyme, flow, voice, or beat.",
+    "ner": "Model candidates and lyric co-mentions are not verified identities or real-world relations."
+  },
+  "checks": [
+    {
+      "name": "song_primary_key_unique",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Mixed song grain or train/test leakage."
+    },
+    {
+      "name": "chunk_composite_key_unique",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Duplicated lyric evidence and inflated metrics."
+    },
+    {
+      "name": "clean_sidecar_composite_key_unique",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Ambiguous cleaned text joins."
+    },
+    {
+      "name": "all_chunks_join_to_song",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Orphan text rows and incorrect source-label attribution."
+    },
+    {
+      "name": "clean_sidecar_keyset_matches_chunks",
+      "passed": true,
+      "value": {
+        "missing": 0,
+        "extra": 0
+      },
+      "expected": {
+        "missing": 0,
+        "extra": 0
+      },
+      "downstream_risk_if_failed": "Training/evaluation populations would silently diverge."
+    },
+    {
+      "name": "eligible_clean_text_nonempty",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Empty model inputs."
+    },
+    {
+      "name": "eligible_clean_text_hash_valid",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Broken duplicate grouping and leakage controls."
+    },
+    {
+      "name": "canonical_artist_nonempty",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Undefined retrieval/NER/rhyme profile labels."
+    },
+    {
+      "name": "canonical_title_nonempty",
+      "passed": true,
+      "value": 0,
+      "expected": 0,
+      "downstream_risk_if_failed": "Unusable title-level review records."
+    },
+    {
+      "name": "metadata_sidecar_covers_songs",
+      "passed": true,
+      "value": {
+        "missing": 0,
+        "extra": 0
+      },
+      "expected": {
+        "missing": 0,
+        "extra": 0
+      },
+      "downstream_risk_if_failed": "Missing eligibility flags."
+    },
+    {
+      "name": "expected_frozen_song_count",
+      "passed": true,
+      "value": 7211,
+      "expected": 7211,
+      "downstream_risk_if_failed": "Input snapshot drift."
+    },
+    {
+      "name": "expected_frozen_chunk_count",
+      "passed": true,
+      "value": {
+        "canonical": 22128,
+        "clean": 22128
+      },
+      "expected": {
+        "canonical": 22128,
+        "clean": 22128
+      },
+      "downstream_risk_if_failed": "Input snapshot drift."
+    }
+  ]
+}

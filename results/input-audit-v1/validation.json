@@ -1,0 +1,56 @@
+{
+  "artifact_id": "chinese-rap-downstream-input-audit-v1",
+  "generated_at_utc": "2026-08-25T21:00:58.020134+00:00",
+  "status": "pass",
+  "checks": [
+    {
+      "name": "song_primary_key_unique",
+      "passed": true
+    },
+    {
+      "name": "chunk_composite_key_unique",
+      "passed": true
+    },
+    {
+      "name": "clean_sidecar_composite_key_unique",
+      "passed": true
+    },
+    {
+      "name": "all_chunks_join_to_song",
+      "passed": true
+    },
+    {
+      "name": "clean_sidecar_keyset_matches_chunks",
+      "passed": true
+    },
+    {
+      "name": "eligible_clean_text_nonempty",
+      "passed": true
+    },
+    {
+      "name": "eligible_clean_text_hash_valid",
+      "passed": true
+    },
+    {
+      "name": "canonical_artist_nonempty",
+      "passed": true
+    },
+    {
+      "name": "canonical_title_nonempty",
+      "passed": true
+    },
+    {
+      "name": "metadata_sidecar_covers_songs",
+      "passed": true
+    },
+    {
+      "name": "expected_frozen_song_count",
+      "passed": true
+    },
+    {
+      "name": "expected_frozen_chunk_count",
+      "passed": true
+    }
+  ],
+  "privacy": "aggregate only; no lyric text, labels, titles, identifiers, embeddings, or private rows"
+}

@@ -1,7 +1,7 @@
 {
   "artifact_id": "chinese-rap-downstream-figures-v1",
   "version": "1.1.0",
-  "generated_at_utc": "2026-08-26T02:02:33.173818Z",
+  "generated_at_utc": "2026-08-26T03:09:35.551084Z",
   "status": "pass",
   "renderer": {
     "matplotlib": "3.11.1",
@@ -65,7 +65,7 @@
   "lineage": {
     "builder": {
       "path": "work/build_chinese_rap_downstream_figures_v1.py",
-      "sha256": "b7933357f244d7355c09465fcbf8793a07c077f9493e5961e7563ed3381c2a8d"
+      "sha256": "35be6955c8c1049ac511c8c06c206b5cf8898dcaeb5d7a1ec455aa6255042bfd"
     },
     "sources": [
       {
@@ -147,13 +147,13 @@
     },
     {
       "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.png",
-      "bytes": 678309,
-      "sha256": "01382c95b4ccf5d7b0ef00eb30825b6d2f857b229010003fc778f120d0496548"
+      "bytes": 676927,
+      "sha256": "0f8f3e4ffe4d1da39c27134054a41ba1867621cef169c5f62bcaa6a89a1d3e29"
     },
     {
       "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.tiff",
-      "bytes": 1461456,
-      "sha256": "b7ca7100d273c41ce75a9923b945b29dc217b5909cab9c9735ac83ae26c4dc6e"
+      "bytes": 1461904,
+      "sha256": "db7499c98de947f1d072940b1e17a891e7392c1ac18e77e5808aa781f9021db6"
     },
     {
       "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.png",
@@ -227,13 +227,13 @@
     },
     {
       "path": "outputs/chinese-rap-downstream-figures-v1/figure_captions_and_alt_text.md",
-      "bytes": 7318,
-      "sha256": "c509cdbc6e0cf2fc4cce060eef88a3eaa5e6d37417d4924bb72f9b2c449d2b59"
+      "bytes": 7305,
+      "sha256": "9268ce053218b0d100b9f8424f32d2bc9edad2f023d0e8c049cc37a02c1e5ec2"
     },
     {
       "path": "outputs/chinese-rap-downstream-figures-v1/validation.json",
       "bytes": 7951,
-      "sha256": "2063470008242a64e646f76eb3cc00207b5fae7005488a3f9cb7d144a9f976d2"
+      "sha256": "eed614f12601b364f66eb2e40d61c8092559c81e6aef998918f000e882698d08"
     }
   ],
   "privacy": "Aggregate-only figures and source tables; no lyric text, song/chunk IDs, content hashes, embeddings, or private audit rows."

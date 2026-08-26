@@ -1,0 +1,13 @@
+﻿name,passed,value,expected,downstream_risk_if_failed
+song_primary_key_unique,True,0,0,Mixed song grain or train/test leakage.
+chunk_composite_key_unique,True,0,0,Duplicated lyric evidence and inflated metrics.
+clean_sidecar_composite_key_unique,True,0,0,Ambiguous cleaned text joins.
+all_chunks_join_to_song,True,0,0,Orphan text rows and incorrect source-label attribution.
+clean_sidecar_keyset_matches_chunks,True,"{""missing"": 0, ""extra"": 0}","{""missing"": 0, ""extra"": 0}",Training/evaluation populations would silently diverge.
+eligible_clean_text_nonempty,True,0,0,Empty model inputs.
+eligible_clean_text_hash_valid,True,0,0,Broken duplicate grouping and leakage controls.
+canonical_artist_nonempty,True,0,0,Undefined retrieval/NER/rhyme profile labels.
+canonical_title_nonempty,True,0,0,Unusable title-level review records.
+metadata_sidecar_covers_songs,True,"{""missing"": 0, ""extra"": 0}","{""missing"": 0, ""extra"": 0}",Missing eligibility flags.
+expected_frozen_song_count,True,7211,7211,Input snapshot drift.
+expected_frozen_chunk_count,True,"{""canonical"": 22128, ""clean"": 22128}","{""canonical"": 22128, ""clean"": 22128}",Input snapshot drift.

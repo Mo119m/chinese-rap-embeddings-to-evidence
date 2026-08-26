@@ -1,163 +1,96 @@
 {
-  "artifact": "Chinese_Rap_Research_Release_V2",
-  "generated_at_utc": "2026-08-25T20:33:11.735642+00:00",
-  "status": "pass",
+  "artifact": "Chinese_Rap_Research_Release_V3",
+  "generated_at_utc": "2026-08-26T03:50:04.2240569Z",
+  "status": "pass_for_public_release_author_actions_required_before_journal_submission",
+  "public_release_ready": true,
+  "journal_submission_ready": false,
+  "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
   "checks": [
     {
-      "name": "docx_accessibility",
+      "name": "frozen_input_audit",
       "passed": true,
-      "detail": {
-        "high": 0,
-        "medium": 0,
-        "low": 0
-      }
+      "detail": "12/12 checks; 7,211 songs, 22,128 chunks, 21,553 eligible clean chunks"
     },
     {
-      "name": "docx_structure",
+      "name": "retrieval_validation",
       "passed": true,
-      "detail": "17 Heading 1, 16 Heading 2, four inline figures, Letter portrait, exact table geometry"
+      "detail": "13/13 checks; 5,455 held-out queries, 204 source-credit labels, fusion MRR 0.447084"
     },
     {
-      "name": "pdf_pages_and_size",
+      "name": "ner_independent_recomputation",
       "passed": true,
-      "detail": {
-        "pages": 26,
-        "sizes_points": [
-          [
-            612,
-            792
-          ]
-        ]
-      }
+      "detail": "19/19 checks; 4,488 label/entity and 231 co-mention tests independently recomputed with zero mismatch"
     },
     {
-      "name": "clean_title_page",
+      "name": "written_rhyme_validation",
       "passed": true,
-      "detail": "Internal target/review labels removed"
+      "detail": "20/20 checks; 34,395 leakage-safe test transitions across 787 held-out songs; full-context Top-3 0.695421"
     },
     {
-      "name": "human_metadata_placeholders_are_explicit",
+      "name": "publication_figures",
       "passed": true,
-      "detail": "No author identity was guessed"
+      "detail": "21/21 checks; four PNG and four RGB TIFF figures at 600 DPI"
     },
     {
-      "name": "structured_abstract",
+      "name": "manuscript_empirical_integrity",
       "passed": true,
-      "detail": [
-        "Purpose",
-        "Design/methodology/approach",
-        "Findings",
-        "Originality",
-        "Contribution to the field of Digital Humanities"
-      ]
+      "detail": "Zero frozen-result mismatches; 26/26 citation closure; RQ1-RQ4, PD-001, NER interval definition, figure and table callouts checked"
     },
     {
-      "name": "atlas_validation",
+      "name": "docx_pdf_render",
       "passed": true,
-      "detail": "14/14 checks"
+      "detail": "Main manuscript 39 Letter pages and supplement 4 Letter pages; tagged PDFs; every page visually reviewed, with affected pages rechecked after the final wording correction"
     },
     {
-      "name": "figure_validation",
+      "name": "standalone_results_website",
       "passed": true,
-      "detail": "11/11 checks"
+      "detail": "Self-contained 496,700-byte HTML; zero external assets; desktop, mobile, keyboard, graph search/click, cultural-reference path, and written-ending input tested"
     },
     {
-      "name": "atlas_core_counts",
+      "name": "application_source",
       "passed": true,
-      "detail": {
-        "profiles": 204,
-        "all_matches": 86,
-        "default_matches": 16,
-        "default_nodes": 25
-      }
+      "detail": "Lint and production build pass; publication-site data builder round-trips the frozen aggregate data with an identical SHA-256"
     },
     {
-      "name": "atlas_meaningful_copy",
+      "name": "code_and_table_parseability",
       "passed": true,
-      "detail": "Every comparison exposes shared evidence, repeatability, and limits; vague/filler phrases are absent"
+      "detail": "15 Python files compile; 35 JSON and 38 CSV files parse; README relative links and required core artifacts resolve"
     },
     {
-      "name": "atlas_self_contained",
+      "name": "public_release_boundary",
       "passed": true,
-      "detail": "No remote script, stylesheet, font, or image dependency"
-    },
-    {
-      "name": "submission_figure_resolution",
-      "passed": true,
-      "detail": {
-        "figure_1": {
-          "pixels": [
-            5125,
-            2799
-          ],
-          "dpi": [
-            600.0,
-            600.0
-          ]
-        },
-        "figure_2": {
-          "pixels": [
-            4681,
-            2410
-          ],
-          "dpi": [
-            600.0,
-            600.0
-          ]
-        },
-        "figure_3": {
-          "pixels": [
-            4722,
-            2465
-          ],
-          "dpi": [
-            600.0,
-            600.0
-          ]
-        },
-        "figure_4": {
-          "pixels": [
-            5842,
-            6039
-          ],
-          "dpi": [
-            600.0,
-            600.0
-          ]
-        }
-      }
-    },
-    {
-      "name": "result_table_rows",
-      "passed": true,
-      "detail": {
-        "encoder_benchmark": 3,
-        "repeatable_core": 16,
-        "edge_bootstrap": 86
-      }
-    },
-    {
-      "name": "pdf_visual_regression",
-      "passed": true,
-      "detail": "Clean page 1 inspected; pages 2–26 are pixel-identical to the fully reviewed baseline"
+      "detail": "No full lyrics, full written lines, song/chunk/line IDs, lyric-level hashes, embeddings, private membership rows, reviewer contexts, credentials, or personal emails. File-level checksums and aggregate ALBL-/ENT- join keys are explicitly documented as non-content integrity metadata; the reader-facing site exposes neither."
     }
   ],
-  "browser_qa": {
-    "desktop": "passed",
-    "mobile_390x844": "passed",
-    "default_graph": {
-      "nodes": 25,
-      "edges": 16
+  "headline_results": {
+    "retrieval": {
+      "fusion_macro_mrr": 0.447084,
+      "fusion_minus_character_tfidf_mrr": 0.031312,
+      "fusion_recall_at_10": 0.611186
     },
-    "exploratory_graph": {
-      "nodes": 93,
-      "edges": 86
+    "cultural_reference": {
+      "released_label_reference_edges": 6,
+      "released_same_song_reference_pairs": 4,
+      "human_gold_complete": false
     },
-    "comparison_checked": "APMOZART ↔ MULA SAKEE"
+    "written_rhyme": {
+      "full_context_top3": 0.695421,
+      "full_context_minus_markov_top3": 0.049775,
+      "switch_top1": 0.026447
+    }
   },
-  "human_actions_before_submission": [
-    "Fill author, affiliation, corresponding-email, funding, conflict-of-interest and CRediT fields.",
-    "Provide the final public repository DOI/licence and lyric-access statement.",
-    "Replace the AI-disclosure placeholder with the exact model/version and access date."
+  "artifact_hashes": {
+    "standalone_site_sha256": "6898a5b66aa1a33f43007d3b532108699a0cf2cdc28262af101b3ca90eb8d16e",
+    "manuscript_markdown_sha256": "ed6e8d4d941bf8784d6bf98a6f3dc8e85484253d51f1c43aae06e99dc989a4bf",
+    "manuscript_docx_sha256": "bd1231028e8c4b47020e0b6254ae801f3a67b3cb551b80e60512d46fa4afd2a1",
+    "manuscript_pdf_sha256": "e071e65ca2106bff36c5b0de068d6f7d0ce4009a4f8a925be2b8c22df594c4bf",
+    "supplement_docx_sha256": "c9d1115fc8046ccb2fdd28e3eb25dc92093951ceb83e35c80fb22845d4769f7c",
+    "supplement_pdf_sha256": "9d8309de2e2e9a70212e7530b711f74f9d0d545a1f5e203d6095caa259a5ce43"
+  },
+  "human_actions_before_journal_submission": [
+    "Complete author names, affiliations, corresponding-author email, funding, conflict-of-interest, and CRediT roles.",
+    "Provide documented corpus acquisition, sampling, temporal coverage, transcription, custody, rights, and institutional ethics facts, or retain Unknown-not-supplied and narrow the claims.",
+    "Choose a public licence, create the archival repository DOI, and replace the DOI placeholder.",
+    "Confirm the exact AI-tool disclosure and perform the journal portal's final upload preview."
   ]
 }

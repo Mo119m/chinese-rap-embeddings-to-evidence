@@ -333,7 +333,7 @@ def build_figure_1(audit: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str
     ax.text(
         0.078,
         0.625,
-        "Song-level split  |  exact-content grouping  |  task-specific fitting boundaries  |  no test-outcome tuning",
+        "Song-aware holdout / partition  |  exact-content grouping  |  task-specific fitting boundaries  |  no test-outcome tuning",
         transform=ax.transAxes,
         fontsize=6.9,
         fontweight="bold",
@@ -424,7 +424,7 @@ def build_figure_1(audit: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str
         color=INK,
         linespacing=1.3,
     )
-    fig.text(0.045, 0.035, "Source: frozen public input audit and preregistered research contract.", fontsize=6.5, color=MUTED)
+    fig.text(0.045, 0.035, "Source: frozen public input audit and frozen research contract.", fontsize=6.5, color=MUTED)
 
     data_rows: list[dict[str, Any]] = [
         {"component": "frozen_corpus", "branch": "shared", "item": "songs", "value": songs, "unit": "songs", "source": rel(INPUT_AUDIT)},
@@ -985,7 +985,7 @@ def caption_markdown() -> str:
 
 ## Figure 1 — Research design and bounded evidence flow
 
-**Caption.** Figure 1. Study design. A frozen cleaned corpus (7,211 songs; 22,128 canonical chunks; 21,553 eligible clean-text chunks) enters shared song-level splitting, duplicate controls, task-specific fitting boundaries, a prohibition on using test outcomes for fitting or selection, and aggregate-only public release. The retrieval TF-IDF representation is transductively fit on the fixed unlabeled evaluation corpus, while labelled outcomes remain unused. The branches then use distinct task methods. BGE-M3 is evaluated only in held-out-song retrieval alongside character TF-IDF and untuned fusion; cultural-reference extraction combines lexicon and contextual-model candidate evidence and remains provisional without human gold; written-rhyme prediction uses dictionary-estimated terminal-Han pinyin-final families and task-specific context models. Every output is paired with its permitted interpretation.
+**Caption.** Figure 1. Study design. A frozen cleaned corpus (7,211 songs; 22,128 canonical chunks; 21,553 eligible clean-text chunks) enters shared song-aware partition or holdout rules, duplicate controls, task-specific fitting boundaries, a prohibition on using test outcomes for fitting or selection, and aggregate-only public release. The retrieval TF-IDF representation is transductively fit on the fixed unlabeled evaluation corpus, while labelled outcomes remain unused. The branches then use distinct task methods. BGE-M3 is evaluated only in held-out-song retrieval alongside character TF-IDF and untuned fusion; cultural-reference extraction aggregates duplicate-controlled song units and awaits a future gold split; written-rhyme prediction uses a fixed song-level split and dictionary-estimated terminal-Han pinyin-final families. Every output is paired with its permitted interpretation.
 
 **Alt text.** A top-to-bottom research pipeline begins with a frozen Chinese-rap lyric corpus and a shared evidence-control block. Three side-by-side branches follow: repertoire retrieval using BGE-M3, character TF-IDF, and fusion; provisional cultural-reference extraction using lexicon and contextual Chinese NER evidence; and written-rhyme prediction using terminal-Han pinyin-final families and Markov or hierarchical context models. The branches converge on one question about lyrical identity. Each branch states a boundary: retrieval is not identity or authorship, NER is not identity or a social relation, and written rhyme is not performed rhyme or flow.
 

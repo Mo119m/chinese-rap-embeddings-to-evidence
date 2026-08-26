@@ -1,6 +1,6 @@
 {
   "artifact_id": "chinese-rap-downstream-figures-v1",
-  "generated_at_utc": "2026-08-26T02:02:33.169408Z",
+  "generated_at_utc": "2026-08-26T03:09:35.551084Z",
   "status": "pass",
   "confidence": "ready_to_share",
   "claim_boundary": "Figures report corpus-internal aggregate evidence. They do not establish performer identity, authorship, biography, residence, preference, social relations, performed rhyme, flow, delivery, or audio properties.",
@@ -279,16 +279,16 @@
       "passed": true,
       "detail": {
         "before": {
-          "figure_1_research_design.png": "01382c95b4ccf5d7b0ef00eb30825b6d2f857b229010003fc778f120d0496548",
-          "figure_1_research_design.tiff": "b7ca7100d273c41ce75a9923b945b29dc217b5909cab9c9735ac83ae26c4dc6e",
+          "figure_1_research_design.png": "0f8f3e4ffe4d1da39c27134054a41ba1867621cef169c5f62bcaa6a89a1d3e29",
+          "figure_1_research_design.tiff": "db7499c98de947f1d072940b1e17a891e7392c1ac18e77e5808aa781f9021db6",
           "figure_2_retrieval_benchmark.png": "54329a2d15424fa6c4056c970911babed8bd14bc9808e3dc3d5d05efc16d7009",
           "figure_2_retrieval_benchmark.tiff": "d672acd5a3f8f5720d425a885b4aaf58c91041066901f7b9236c3504ed2bd2b9",
           "figure_4_written_rhyme_benchmark.png": "d2b986d02dd8e811f5ef1f290ab3a9422b6226253b4f2a89cf2885e1d17c9692",
           "figure_4_written_rhyme_benchmark.tiff": "e8bd2f63cb2a7a1827b276f71f028cf1dd72ca47fb9d52bc731d07eafbeb486a"
         },
         "after": {
-          "figure_1_research_design.png": "01382c95b4ccf5d7b0ef00eb30825b6d2f857b229010003fc778f120d0496548",
-          "figure_1_research_design.tiff": "b7ca7100d273c41ce75a9923b945b29dc217b5909cab9c9735ac83ae26c4dc6e",
+          "figure_1_research_design.png": "0f8f3e4ffe4d1da39c27134054a41ba1867621cef169c5f62bcaa6a89a1d3e29",
+          "figure_1_research_design.tiff": "db7499c98de947f1d072940b1e17a891e7392c1ac18e77e5808aa781f9021db6",
           "figure_2_retrieval_benchmark.png": "54329a2d15424fa6c4056c970911babed8bd14bc9808e3dc3d5d05efc16d7009",
           "figure_2_retrieval_benchmark.tiff": "d672acd5a3f8f5720d425a885b4aaf58c91041066901f7b9236c3504ed2bd2b9",
           "figure_4_written_rhyme_benchmark.png": "d2b986d02dd8e811f5ef1f290ab3a9422b6226253b4f2a89cf2885e1d17c9692",

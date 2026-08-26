@@ -1,0 +1,445 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "software-citation-recommendations",
+  "generated_at_utc": "2026-08-26T02:32:16Z",
+  "scope": "Analysis-critical software and pretrained-model provenance for the final Chinese rap paper and release",
+  "mutation_boundary": "Audit only; manuscript, data, models, and result artifacts were not modified",
+  "overall_assessment": {
+    "status": "conditionally_ready",
+    "summary": "Model snapshots and the NER and written-rhyme execution environments are well pinned. The retrieval manifest lacks dependency versions, and the BGE embedding manifest lacks realized device and mixed-precision state. Frozen vector and artifact hashes preserve downstream result integrity.",
+    "result_rerun_required_for_citation_fix": false
+  },
+  "environment": {
+    "python": "3.12.13",
+    "python_distribution": "Anaconda CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_executable_sha256": "e062889e4e300decf318005fd4fbb4e00fe7b94790d157f8ad63b39e46aaea35",
+    "packages": {
+      "FlagEmbedding": "1.4.0",
+      "huggingface-hub": "1.27.0",
+      "numpy": "2.4.6",
+      "pandas": "3.0.5",
+      "pypinyin": "0.55.0",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0",
+      "sentence-transformers": "5.7.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.11.0+cu128",
+      "transformers": "5.14.1"
+    },
+    "package_map_fingerprint": {
+      "algorithm": "sha256",
+      "canonicalization": "UTF-8 JSON, compact separators, keys sorted lexicographically",
+      "value": "b290363fa776f50219cd16ee124fd88b7253d77658bdb9f0d2cef42ee2453152"
+    },
+    "evidence_boundary": "These versions are direct run-manifest evidence where explicitly recorded. For the earlier BGE and retrieval runs, unrecorded transitive versions are strong local forensic/current-environment evidence, not cryptographically bound historical runtime evidence."
+  },
+  "models": {
+    "bge_m3": {
+      "provider": "Beijing Academy of Artificial Intelligence",
+      "model_id": "BAAI/bge-m3",
+      "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "license": "MIT",
+      "implementation": "FlagEmbedding.BGEM3FlagModel dense vectors",
+      "project_parameters": {
+        "output_head": "dense_only",
+        "dimensions": 1024,
+        "max_length": 2048,
+        "batch_size": 2,
+        "dtype": "float32",
+        "l2_normalized": true,
+        "offline_only": true
+      },
+      "verified_hashes": {
+        "config_sha256": "26159e7ad065073448460117eb24b7a4572f6f4e78eadff65dc0a11c052449fa",
+        "weights_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+        "clean_embedding_matrix_sha256": "90a6d1680c9dba20d53c6e6bebcd3eef24b9343746bf73c10b742db3eabc0c6a"
+      },
+      "clean_embedding_matrix": {
+        "rows": 21553,
+        "dimensions": 1024,
+        "dtype": "float32"
+      },
+      "runtime_directly_recorded": {
+        "FlagEmbedding": "1.4.0",
+        "torch": "2.11.0+cu128",
+        "python": "3.12.13",
+        "platform": "Windows-11-10.0.26200-SP0"
+      },
+      "runtime_forensic_not_manifest_bound": {
+        "transformers": "5.14.1",
+        "tokenizers": "0.22.2",
+        "huggingface-hub": "1.27.0",
+        "sentence-transformers": "5.7.0"
+      },
+      "historical_runtime_unknown": [
+        "torch.cuda.is_available()",
+        "realized use_fp16 value",
+        "GPU identity",
+        "CUDA runtime",
+        "cuDNN version"
+      ],
+      "warning": "The checkpoint config field transformers_version=4.33.0 is upstream checkpoint serialization metadata and must not be reported as this project's runtime.",
+      "official_urls": {
+        "paper": "https://aclanthology.org/2024.findings-acl.137/",
+        "paper_doi": "https://doi.org/10.18653/v1/2024.findings-acl.137",
+        "model_card": "https://huggingface.co/BAAI/bge-m3",
+        "pinned_snapshot": "https://huggingface.co/BAAI/bge-m3/tree/5617a9f61b028005a4858fdac845db406aefb181",
+        "flagembedding_release": "https://github.com/FlagOpen/FlagEmbedding/releases/tag/v1.4.0"
+      }
+    },
+    "ckip_ner": {
+      "provider": "CKIP Lab",
+      "model_id": "ckiplab/albert-tiny-chinese-ner",
+      "revision": "bcb519856ca93a666b1e48a9daef3f88c9b572a0",
+      "license": "GPL-3.0",
+      "loader": {
+        "model": "transformers.AutoModelForTokenClassification",
+        "tokenizer": "transformers.BertTokenizerFast",
+        "ckip_transformers_package_used": false
+      },
+      "project_parameters": {
+        "max_tokens": 256,
+        "window_chars": 180,
+        "overlap_chars": 40,
+        "batch_size": 96,
+        "torch_threads": 4
+      },
+      "runtime_directly_recorded": {
+        "transformers": "5.14.1",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "scipy": "1.18.0",
+        "python": "3.12.13",
+        "platform": "Windows-11-10.0.26200-SP0"
+      },
+      "verified_hashes": {
+        "config_sha256": "4828a80f3c7eb67514f3d9c76ed2544149bad4e498f6b74e4978b48a542b5b5b",
+        "weights_sha256": "03f6e38f92ada4b59b88ae9122a50a0c98b85f07722ff1234048928e55ed10d3",
+        "vocabulary_sha256": "45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c"
+      },
+      "official_urls": {
+        "model_card": "https://huggingface.co/ckiplab/albert-tiny-chinese-ner",
+        "pinned_snapshot": "https://huggingface.co/ckiplab/albert-tiny-chinese-ner/tree/bcb519856ca93a666b1e48a9daef3f88c9b572a0"
+      },
+      "interpretive_caveat": "General-domain Traditional Chinese NER applied to Chinese rap; retain domain-shift caveat and human validation."
+    }
+  },
+  "task_software": {
+    "written_rhyme": {
+      "manifest_bound_versions": {
+        "python": "3.12.13",
+        "numpy": "2.4.6",
+        "pypinyin": "0.55.0",
+        "scikit-learn": "1.9.0"
+      },
+      "official_dictionary_versions_for_pypinyin_0_55_0": {
+        "pinyin-data": "0.15.0",
+        "phrase-pinyin-data": "0.19.0",
+        "evidence": "Official pypinyin changelog"
+      },
+      "analysis_settings": {
+        "pypinyin_style": "FINALS_TONE3",
+        "strict": true,
+        "neutral_tone": 5,
+        "classifier": "sklearn.linear_model.SGDClassifier",
+        "classifier_parameters": {
+          "loss": "log_loss",
+          "average": true
+        },
+        "feature_encoder": "sklearn.feature_extraction.DictVectorizer"
+      }
+    },
+    "retrieval": {
+      "direct_dependencies_from_builder": [
+        "numpy",
+        "scipy.sparse",
+        "sklearn.feature_extraction.text.TfidfVectorizer",
+        "sklearn.preprocessing.normalize"
+      ],
+      "best_supported_versions": {
+        "numpy": "2.4.6",
+        "scipy": "1.18.0",
+        "scikit-learn": "1.9.0"
+      },
+      "evidence_status": "current_and_forensic_environment_not_bound_in_retrieval_manifest",
+      "recommended_fix": "Add a non-result-changing environment sidecar or regenerate only provenance metadata with exact versions, module hashes, Python executable hash, and package-map fingerprint."
+    }
+  },
+  "findings": [
+    {
+      "id": "SW-001",
+      "severity": "medium",
+      "confidence": "high",
+      "component": "retrieval",
+      "finding": "Retrieval manifest omits Python/platform and NumPy/SciPy/scikit-learn versions.",
+      "impact": "Exact rebuild may differ because library defaults and sparse operations can change.",
+      "smallest_remediation": "Add an environment sidecar or provenance-only manifest refresh; do not alter output hashes."
+    },
+    {
+      "id": "SW-002",
+      "severity": "medium",
+      "confidence": "high",
+      "component": "BGE-M3 embedding",
+      "finding": "The original run manifest omits device, CUDA/cuDNN, and realized use_fp16.",
+      "impact": "Raw re-encoding could differ slightly by precision or backend.",
+      "smallest_remediation": "Preserve the frozen vector hash and record device/precision fields in all future encoding runs; do not claim current hardware historically."
+    },
+    {
+      "id": "SW-003",
+      "severity": "low",
+      "confidence": "high",
+      "component": "bibliography",
+      "finding": "The current BGE-M3 reference uses the arXiv record despite an archival ACL Findings version.",
+      "impact": "The paper misses the preferred peer-reviewed citation.",
+      "smallest_remediation": "Use DOI 10.18653/v1/2024.findings-acl.137."
+    },
+    {
+      "id": "SW-004",
+      "severity": "low",
+      "confidence": "high",
+      "component": "NER model revision",
+      "finding": "The public manifest directory name contains only short revision bcb5198.",
+      "impact": "The executable checkpoint is less explicit than it could be.",
+      "smallest_remediation": "Publish the full revision SHA and the verified configuration, weights, and vocabulary hashes in the supplement."
+    },
+    {
+      "id": "SW-005",
+      "severity": "low",
+      "confidence": "high",
+      "component": "BGE-M3 runtime labeling",
+      "finding": "The checkpoint config contains transformers_version 4.33.0, which could be mistaken for the project runtime.",
+      "impact": "Incorrect environment reporting.",
+      "smallest_remediation": "Label 4.33.0 as checkpoint serialization metadata only; report the project runtime separately."
+    }
+  ],
+  "recommended_reproducibility_table": [
+    {
+      "component": "Execution environment",
+      "exact_record": "CPython 3.12.13, Anaconda build; Windows 11 10.0.26200; Python executable SHA-256 e062889e...aea35",
+      "status": "directly recorded for BGE, NER, and rhyme; missing from retrieval manifest"
+    },
+    {
+      "component": "Semantic encoder",
+      "exact_record": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181; FlagEmbedding 1.4.0; torch 2.11.0+cu128",
+      "settings": "dense only; 1024 dimensions; max_length 2048; batch size 2; L2-normalized",
+      "status": "model and output hashes verified; historical device/precision absent"
+    },
+    {
+      "component": "NER model",
+      "exact_record": "ckiplab/albert-tiny-chinese-ner@bcb519856ca93a666b1e48a9daef3f88c9b572a0; Transformers 5.14.1; torch 2.11.0+cu128",
+      "settings": "BertTokenizerFast; max_tokens 256; 40-character overlap; batch size 96",
+      "status": "full runtime and model-file hashes verified"
+    },
+    {
+      "component": "Written-rhyme extraction/model",
+      "exact_record": "pypinyin 0.55.0; pinyin-data 0.15.0; phrase-pinyin-data 0.19.0; scikit-learn 1.9.0",
+      "settings": "FINALS_TONE3; strict=true; neutral tone 5; SGDClassifier(log_loss, average=true)",
+      "status": "direct version/module-hash evidence; dictionary versions from official changelog"
+    },
+    {
+      "component": "Numerical/data stack",
+      "exact_record": "NumPy 2.4.6; pandas 3.0.5; SciPy 1.18.0; scikit-learn 1.9.0",
+      "status": "manifest-bound for NER/rhyme as applicable; retrieval needs binding"
+    },
+    {
+      "component": "Transformer support stack",
+      "exact_record": "Transformers 5.14.1; tokenizers 0.22.2; huggingface-hub 1.27.0; sentence-transformers 5.7.0",
+      "status": "Transformers direct for NER; remaining BGE support stack is forensic/current-environment evidence"
+    }
+  ],
+  "bibliography": [
+    {
+      "key": "chen2024m3embedding",
+      "entry": "Chen, J., Xiao, S., Zhang, P., Luo, K., Lian, D. and Liu, Z. (2024). M3-Embedding: Multi-linguality, multi-functionality, multi-granularity text embeddings through self-knowledge distillation. Findings of the Association for Computational Linguistics: ACL 2024, 2318–2335.",
+      "doi": "10.18653/v1/2024.findings-acl.137",
+      "url": "https://aclanthology.org/2024.findings-acl.137/",
+      "role": "main scholarly method citation"
+    },
+    {
+      "key": "flagopen2026flagembedding",
+      "entry": "FlagOpen. (2026). FlagEmbedding (Version 1.4.0) [Computer software]. GitHub.",
+      "url": "https://github.com/FlagOpen/FlagEmbedding/releases/tag/v1.4.0",
+      "role": "exact inference-library citation"
+    },
+    {
+      "key": "baai2024bgem3model",
+      "entry": "Beijing Academy of Artificial Intelligence. (2024). BAAI/bge-m3 (revision 5617a9f61b028005a4858fdac845db406aefb181) [Pretrained language model]. Hugging Face.",
+      "url": "https://huggingface.co/BAAI/bge-m3/tree/5617a9f61b028005a4858fdac845db406aefb181",
+      "role": "exact model artifact citation"
+    },
+    {
+      "key": "ckiplab2022alberttinyner",
+      "entry": "CKIP Lab. (2022). ckiplab/albert-tiny-chinese-ner (revision bcb519856ca93a666b1e48a9daef3f88c9b572a0) [Pretrained token-classification model]. Hugging Face.",
+      "url": "https://huggingface.co/ckiplab/albert-tiny-chinese-ner/tree/bcb519856ca93a666b1e48a9daef3f88c9b572a0",
+      "role": "exact NER model artifact citation"
+    },
+    {
+      "key": "wolf2020transformers",
+      "entry": "Wolf, T., Debut, L., Sanh, V., et al. (2020). Transformers: State-of-the-art natural language processing. Proceedings of EMNLP 2020: System Demonstrations, 38–45.",
+      "doi": "10.18653/v1/2020.emnlp-demos.6",
+      "url": "https://aclanthology.org/2020.emnlp-demos.6/",
+      "role": "main scholarly library citation"
+    },
+    {
+      "key": "paszke2019pytorch",
+      "entry": "Paszke, A., Gross, S., Massa, F., et al. (2019). PyTorch: An imperative style, high-performance deep learning library. Advances in Neural Information Processing Systems, 32.",
+      "url": "https://proceedings.neurips.cc/paper/2019/hash/bdbca288fee7f92f2bfa9f7012727740-Abstract.html",
+      "role": "main scholarly framework citation"
+    },
+    {
+      "key": "mozillazg2025pypinyin",
+      "entry": "mozillazg and contributors. (2025). pypinyin (Version 0.55.0) [Computer software]. PyPI.",
+      "url": "https://pypi.org/project/pypinyin/0.55.0/",
+      "role": "exact package citation"
+    },
+    {
+      "key": "pedregosa2011scikitlearn",
+      "entry": "Pedregosa, F., Varoquaux, G., Gramfort, A., et al. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830.",
+      "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
+      "role": "main scholarly ML citation"
+    },
+    {
+      "key": "virtanen2020scipy",
+      "entry": "Virtanen, P., Gommers, R., Oliphant, T. E., et al. and SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. Nature Methods, 17, 261–272.",
+      "doi": "10.1038/s41592-019-0686-2",
+      "url": "https://doi.org/10.1038/s41592-019-0686-2",
+      "role": "main scholarly scientific-computing citation"
+    },
+    {
+      "key": "harris2020numpy",
+      "entry": "Harris, C. R., Millman, K. J., van der Walt, S. J., et al. (2020). Array programming with NumPy. Nature, 585, 357–362.",
+      "doi": "10.1038/s41586-020-2649-2",
+      "url": "https://doi.org/10.1038/s41586-020-2649-2",
+      "role": "main scholarly array-computing citation"
+    },
+    {
+      "key": "pandas2026v305",
+      "entry": "The pandas development team. (2026). pandas (Version 3.0.5) [Computer software]. Zenodo.",
+      "doi": "10.5281/zenodo.21500199",
+      "url": "https://doi.org/10.5281/zenodo.21500199",
+      "role": "exact software version citation"
+    }
+  ],
+  "optional_exact_version_records": [
+    {
+      "software": "scikit-learn",
+      "version": "1.9.0",
+      "doi": "10.5281/zenodo.20510517",
+      "url": "https://doi.org/10.5281/zenodo.20510517"
+    },
+    {
+      "software": "SciPy",
+      "version": "1.18.0",
+      "doi": "10.5281/zenodo.20764140",
+      "url": "https://doi.org/10.5281/zenodo.20764140"
+    },
+    {
+      "software": "pandas",
+      "version": "3.0.5",
+      "doi": "10.5281/zenodo.21500199",
+      "url": "https://doi.org/10.5281/zenodo.21500199"
+    }
+  ],
+  "official_sources": [
+    {
+      "name": "BGE-M3 ACL Findings paper",
+      "url": "https://aclanthology.org/2024.findings-acl.137/",
+      "type": "peer_reviewed_primary"
+    },
+    {
+      "name": "BGE-M3 pinned model snapshot",
+      "url": "https://huggingface.co/BAAI/bge-m3/tree/5617a9f61b028005a4858fdac845db406aefb181",
+      "type": "official_model_artifact"
+    },
+    {
+      "name": "FlagEmbedding 1.4.0 release",
+      "url": "https://github.com/FlagOpen/FlagEmbedding/releases/tag/v1.4.0",
+      "type": "official_software_release"
+    },
+    {
+      "name": "CKIP NER pinned model snapshot",
+      "url": "https://huggingface.co/ckiplab/albert-tiny-chinese-ner/tree/bcb519856ca93a666b1e48a9daef3f88c9b572a0",
+      "type": "official_model_artifact"
+    },
+    {
+      "name": "Transformers paper",
+      "url": "https://aclanthology.org/2020.emnlp-demos.6/",
+      "type": "peer_reviewed_primary"
+    },
+    {
+      "name": "Transformers 5.14.1 release",
+      "url": "https://github.com/huggingface/transformers/releases/tag/v5.14.1",
+      "type": "official_software_release"
+    },
+    {
+      "name": "PyTorch paper",
+      "url": "https://proceedings.neurips.cc/paper/2019/hash/bdbca288fee7f92f2bfa9f7012727740-Abstract.html",
+      "type": "peer_reviewed_primary"
+    },
+    {
+      "name": "pypinyin 0.55.0",
+      "url": "https://pypi.org/project/pypinyin/0.55.0/",
+      "type": "official_package_record"
+    },
+    {
+      "name": "scikit-learn paper",
+      "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
+      "type": "peer_reviewed_primary"
+    },
+    {
+      "name": "SciPy paper",
+      "url": "https://doi.org/10.1038/s41592-019-0686-2",
+      "type": "peer_reviewed_primary"
+    },
+    {
+      "name": "NumPy paper",
+      "url": "https://doi.org/10.1038/s41586-020-2649-2",
+      "type": "peer_reviewed_primary"
+    },
+    {
+      "name": "pandas official citation guidance",
+      "url": "https://pandas.pydata.org/about/citing.html",
+      "type": "official_citation_guidance"
+    }
+  ],
+  "local_evidence": [
+    {
+      "path": "outputs/embedding-benchmark-v1/bge-m3-corpus-v1/model_manifest.json",
+      "sha256": "193c99da281dae521736de9c5a12961faa4a5d36cb0ae8e927a635aa53cfef52"
+    },
+    {
+      "path": "work/private-canonical-clean-text-embeddings-v1/canonical_clean_text_embedding_contract_v1.json",
+      "sha256": "d65a446dc8ac3cb9fb5f513c63e9d10a3f6a94a6c1cebd28953b045170600c5b"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-retrieval-v1/manifest.json",
+      "sha256": "facd87827a50767e7507d7dc039d4b16dbb97870af5fb26c44e05bcd54fd3f3c"
+    },
+    {
+      "path": "outputs/chinese-rap-ner-cultural-graph-v1/manifest.json",
+      "sha256": "d60986eb4cb484cfba9e5957e2eb20292e93dffc64516e93b837b65a491096af"
+    },
+    {
+      "path": "outputs/chinese-rap-written-rhyme-v1/manifest.json",
+      "sha256": "55131351ba5b1d1b8f49c60f3750ebf930df3b2199cc974ca5314d93f975f7e3"
+    },
+    {
+      "path": "work/canonical_semantic_embeddings_v1.py",
+      "sha256": "e506c70c35f893b3386760c002972ece31b8082b2d9392765048fd0c3409946e"
+    },
+    {
+      "path": "work/build_chinese_rap_downstream_retrieval_v1.py",
+      "sha256": "340564076f8a9cbb1b4b90eabab9d82636b5dbaba52333117cecee5deef9b016"
+    },
+    {
+      "path": "work/build_chinese_rap_ner_cultural_graph_v1.py",
+      "sha256": "8260592777d8fdddf79ca5c82c0b6e884c7c0efb4757e1824ffdd5c957c0ea75"
+    },
+    {
+      "path": "work/build_chinese_rap_written_rhyme_v1.py",
+      "sha256": "57e1b53bf505bde9ba02906db92d3aa4c6f666c7afac5a1cb31d7d356255e47d"
+    }
+  ]
+}

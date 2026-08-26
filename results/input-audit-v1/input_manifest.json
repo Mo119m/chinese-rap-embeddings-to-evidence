@@ -1,0 +1,21 @@
+{
+  "artifact_id": "chinese-rap-downstream-input-audit-v1",
+  "inputs": {
+    "work/private-canonical-analysis-input-v1/canonical_analysis_songs_v1.csv": {
+      "bytes": 2006696,
+      "sha256": "6a4caa73bab3b04165785388856ecb758d3514945a0faefe41ca2fd354ecb017"
+    },
+    "work/private-canonical-analysis-input-v1/canonical_analysis_chunks_v1.csv": {
+      "bytes": 26679816,
+      "sha256": "3d688bfd3d6b567642861f107fbffc11dbdf3a19f9964b75cd6a40a24f55a7e9"
+    },
+    "work/private-canonical-lyric-text-sidecar-v1/cleaned_analysis_chunks_v1.csv": {
+      "bytes": 22063127,
+      "sha256": "d605f5ccdf0004940e0cfe453e2ff527d08dd6d34f843a6afda3aa03926e5730"
+    },
+    "work/private-canonical-song-metadata-quality-v1/canonical_song_metadata_quality_v1.csv": {
+      "bytes": 1968906,
+      "sha256": "eafd40179ebabf1ca7869df0174184d1bdaba0b2a05ae26e90e5320f345ec368"
+    }
+  }
+}

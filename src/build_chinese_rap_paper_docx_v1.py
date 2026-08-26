@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import re
 from pathlib import Path
 
@@ -13,10 +14,10 @@ from docx.shared import Inches, Pt, RGBColor
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "work" / "paper_v2" / "manuscript.md"
-FIGURES = ROOT / "outputs" / "chinese-rap-embeddings-to-evidence-paper-v1" / "figures"
-OUTPUT = ROOT / "outputs" / "chinese-rap-embeddings-to-evidence-paper-v1" / "paper"
-DOCX_PATH = OUTPUT / "From_Embeddings_to_Evidence.docx"
+SOURCE = ROOT / "paper" / "manuscript.md"
+FIGURES = ROOT / "figures"
+OUTPUT = ROOT / "paper"
+DOCX_PATH = OUTPUT / "Chinese_Rap_Evidence_Grounded_Manuscript.docx"
 
 PAGE_WIDTH_DXA = 12240
 MARGIN_DXA = 1440
@@ -130,7 +131,15 @@ def set_image_alt_text(inline_shape, description: str):
 def add_markdown_runs(paragraph, text: str, *, base_size=12, base_color=INK):
     text = re.sub(r"\\\((.*?)\\\)", lambda m: m.group(1), text)
     text = re.sub(r"_\{([^}]+)\}", r"_\1", text)
-    pattern = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*)")
+    text = re.sub(r"\^\{([^}]+)\}", r"^\1", text)
+    for source, target in (
+        (r"\ell", "ℓ"), (r"\alpha", "α"), (r"\sigma", "σ"), (r"\mu", "μ"),
+        (r"\neq", "≠"), (r"\leq", "≤"), (r"\le", "≤"), (r"\geq", "≥"),
+        (r"\mid", "|"), (r"\in", "∈"), (r"\times", "×"),
+    ):
+        text = text.replace(source, target)
+    text = text.replace(r"\,", " ").replace(r"\{", "{").replace(r"\}", "}")
+    pattern = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)")
     pos = 0
     for match in pattern.finditer(text):
         if match.start() > pos:
@@ -140,6 +149,9 @@ def add_markdown_runs(paragraph, text: str, *, base_size=12, base_color=INK):
         if token.startswith("**"):
             run = paragraph.add_run(token[2:-2])
             set_run_font(run, size=base_size, bold=True, color=base_color)
+        elif token.startswith("`"):
+            run = paragraph.add_run(token[1:-1])
+            set_run_font(run, name="Courier New", size=max(8, base_size - 0.5), color=base_color)
         else:
             run = paragraph.add_run(token[1:-1])
             set_run_font(run, size=base_size, italic=True, color=base_color)
@@ -255,6 +267,14 @@ def add_title_page(doc: Document, title: str):
     p.add_run().add_break(WD_BREAK.PAGE)
 
 
+def add_document_title(doc: Document, title: str):
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_after = Pt(18)
+    run = p.add_run(title)
+    set_run_font(run, size=17, bold=True)
+
+
 def choose_column_widths(headers: list[str]) -> list[int]:
     n = len(headers)
     if n == 2:
@@ -339,8 +359,8 @@ def add_body_paragraph(doc: Document, text: str, *, after_heading=False, in_refe
     )
     if not after_heading and not is_abstract_field and not re.match(r"^(RQ\d+\.|Keywords:|Table \d+|Fig\. \d+|Alt text:|\[)", text):
         p.paragraph_format.first_line_indent = Inches(0.25)
-    if text.startswith("RQ"):
-        match = re.match(r"^(RQ\d+\.)\s*(.*)$", text)
+    match = re.match(r"^(RQ\d+\.)\s*(.*)$", text)
+    if match:
         run = p.add_run(match.group(1) + " ")
         set_run_font(run, bold=True)
         add_markdown_runs(p, match.group(2))
@@ -349,9 +369,30 @@ def add_body_paragraph(doc: Document, text: str, *, after_heading=False, in_refe
     return p
 
 
-def build_docx():
-    OUTPUT.mkdir(parents=True, exist_ok=True)
-    raw = SOURCE.read_text(encoding="utf-8")
+def add_math_block(doc: Document, latex: str):
+    # The fusion equation also contains both z terms, so match it first.
+    if "s_{q\\ell}^{F}" in latex:
+        text = "sᶠ_qℓ = ½zᴰ_qℓ + ½zᴸ_qℓ."
+    elif "z_{q\\ell}^{D}" in latex and "z_{q\\ell}^{L}" in latex:
+        text = "zᴰ_qℓ = (sᴰ_qℓ − μᴰ_q) / σᴰ_q,    zᴸ_qℓ = (sᴸ_qℓ − μᴸ_q) / σᴸ_q."
+    elif "P(y_t=k" in latex and "begin{cases}" in latex:
+        text = "P(yₜ = k | xₜ) = g(xₜ), if k = c;    [1 − g(xₜ)]hₖ(xₜ), if k ≠ c."
+    else:
+        text = latex.replace("\\qquad", "    ").replace("\\,", " ").replace("&", "")
+        text = re.sub(r"\\(?:begin|end)\{[^}]+\}", "", text)
+        text = text.replace("\\", " ")
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.line_spacing = 1.15
+    p.paragraph_format.space_before = Pt(6)
+    p.paragraph_format.space_after = Pt(6)
+    run = p.add_run(text)
+    set_run_font(run, name="Cambria Math", size=11.5, italic=True)
+
+
+def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_page: bool):
+    docx_path.parent.mkdir(parents=True, exist_ok=True)
+    raw = source.read_text(encoding="utf-8")
     lines = raw.splitlines()
     title = lines[0].removeprefix("# ").strip()
 
@@ -373,11 +414,16 @@ def build_docx():
     doc.core_properties.title = title
     doc.core_properties.subject = "Chinese rap lyrical-repertoire analysis"
     doc.core_properties.keywords = "Chinese rap, digital humanities, BGE-M3, lyrics, robustness"
+    doc.core_properties.author = ""
+    doc.core_properties.last_modified_by = ""
     doc.core_properties.comments = "Human verification required before journal submission."
 
-    add_title_page(doc, title)
-
-    start = next(i for i, line in enumerate(lines) if line.strip() == "## Structured Abstract")
+    if include_title_page:
+        add_title_page(doc, title)
+        start = next(i for i, line in enumerate(lines) if line.strip() == "## Structured Abstract")
+    else:
+        add_document_title(doc, title)
+        start = 1
     i = start
     after_heading = True
     in_references = False
@@ -412,7 +458,7 @@ def build_docx():
 
         if stripped.startswith("[[FIGURE:"):
             filename = stripped.removeprefix("[[FIGURE:").removesuffix("]]")
-            image_path = FIGURES / filename
+            image_path = figures / filename
             if not image_path.exists():
                 raise FileNotFoundError(image_path)
             p = doc.add_paragraph()
@@ -464,17 +510,34 @@ def build_docx():
             continue
 
         if stripped in {"\\[", "\\]"}:
+            if stripped == "\\[":
+                math_lines = []
+                i += 1
+                while i < len(lines) and lines[i].strip() != "\\]":
+                    math_lines.append(lines[i].strip())
+                    i += 1
+                add_math_block(doc, " ".join(math_lines))
+                i += 1
+                after_heading = False
+            else:
+                i += 1
+            continue
+
+        if stripped.startswith("- "):
+            p = doc.add_paragraph(style="List Bullet")
+            p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
+            p.paragraph_format.space_after = Pt(0)
+            add_markdown_runs(p, stripped[2:])
+            after_heading = False
             i += 1
             continue
 
-        if stripped.startswith("c_i ="):
+        if stripped.startswith("> "):
             p = doc.add_paragraph()
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.line_spacing = 1.15
-            p.paragraph_format.space_before = Pt(6)
-            p.paragraph_format.space_after = Pt(6)
-            run = p.add_run("cᵢ = norm(Σⱼ wⱼeᵢⱼ).")
-            set_run_font(run, name="Cambria Math", size=12, italic=True)
+            p.paragraph_format.left_indent = Inches(0.35)
+            p.paragraph_format.right_indent = Inches(0.35)
+            p.paragraph_format.line_spacing = 1.5
+            add_markdown_runs(p, stripped[2:], base_size=11)
             after_heading = False
             i += 1
             continue
@@ -490,9 +553,15 @@ def build_docx():
         if ln_num is not None:
             sect_pr.remove(ln_num)
 
-    doc.save(DOCX_PATH)
-    print(DOCX_PATH)
+    doc.save(docx_path)
+    print(docx_path)
 
 
 if __name__ == "__main__":
-    build_docx()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", type=Path, default=SOURCE)
+    parser.add_argument("--output", type=Path, default=DOCX_PATH)
+    parser.add_argument("--figures", type=Path, default=FIGURES)
+    parser.add_argument("--no-title-page", action="store_true")
+    args = parser.parse_args()
+    build_docx(args.source, args.output, args.figures, include_title_page=not args.no_title_page)

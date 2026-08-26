@@ -1,44 +1,59 @@
-# From Embeddings to Evidence: Chinese Rap Lyrical Repertoires
+# Language, Reference, and Written Rhyme
 
-This repository contains the paper, aggregate results, publication figures, analysis/build scripts, and a self-contained interactive Atlas for a claim-bounded study of Chinese rap lyrics.
+This repository is the public, copyright-safe research release for an evidence-grounded study of Chinese rap lyrics.
 
-## Start with the result
+The central question is:
 
-- Inspect the independently audited [held-out-song retrieval release](results/retrieval-v1/README.md), including metrics, paired uncertainty intervals, leakage controls, and aggregate label-level diagnostics.
-- Inspect the independently audited [written-ending prediction release](results/written-rhyme-v1/README.md), including strict original-line adjacency, train/validation/test leakage control, baselines, ablations, abstention, and descriptive label fingerprints.
-- Inspect the independently audited [provisional NER and cultural-reference release](results/ner-v1/README.md), including shared-text exclusion, uncertainty intervals, BH-FDR screening, sensitivity analyses, and the explicit no-gold evaluation boundary.
-- Open [`index.html`](index.html) to inspect 204 corpus credit-label profiles and the 16 lyric matches that reappeared in at least half of 250 within-label song resamples.
-- Read the [paper](paper/From_Embeddings_to_Evidence.pdf) for the research questions, methods, results, and limitations.
-- Read [Methods and limits](methods/METHODS_AND_LIMITS.md) for a compact reproducibility contract.
+> How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?
 
-The Atlas is not a keyword-search demo. A label profile reports characteristic words, dictionary-estimated written endings, and writing habits. A pair view reports exactly which independently measured signal the profiles share and the match's song-bootstrap repeatability.
+## See the result first
 
-## Main empirical results
+Open [`index.html`](index.html). It is a self-contained results interface that works without a server and supports three research-backed actions:
 
-- In the frozen downstream evaluation, equal-weight standardized fusion retrieves the correct source-credit label's remaining repertoire with macro MRR **0.447** (95% hierarchical-bootstrap CI 0.414–0.481) and Recall@10 **0.611** across 5,455 held-out songs and 204 labels.
-- Fusion improves over character TF–IDF by +0.031 MRR (95% CI 0.021–0.042) and +0.050 Recall@10 (0.033–0.066); all five paired metric intervals are above zero. BGE-M3 alone reaches MRR 0.320, while character TF–IDF alone reaches 0.416.
-- On 34,395 leakage-safe, originally adjacent written-line events, the hierarchical context model reaches Top-3 **0.695** and MRR **0.628**. Relative to a first-order Markov model, gains are +0.050 Top-3 (95% song-bootstrap CI 0.044–0.055) and +0.020 MRR (0.018–0.022).
-- The written-ending analysis also preserves two important negative results: exact switch prediction remains weak (Top-1 0.026), and removing the source-credit-label feature produces no supported loss. Label fingerprints are therefore descriptive corpus summaries, not evidence of intrinsic rapper preferences or personalized prediction.
-- The provisional NER release contracts from 33 corpus-wide candidate surfaces to 22 fixed-universe released surfaces after shared-text and semantic gates. Six source-label-to-place associations and four same-song co-mentions survive uncertainty and BH-FDR controls. With zero completed human occurrence reviews, no precision, recall, or F1 is reported.
-- An earlier 1,000-query encoder sanity check showed the same ordering and motivated the dense–lexical design; it is not the paper's primary downstream estimate.
-- Two duplicate-control representations agreed on 86 reciprocal top-five matches among 204 eligible labels.
-- Only 16 of those 86 matches reappeared in at least 50% of 250 within-label song resamples; none reached 80%.
-- Eleven of the 16 repeatable matches have a separately calculated lexical, written-ending, or writing-form signal. Five are overall wording matches with no single post-hoc trait passing the calibration gate.
+1. inspect explainable held-out-song lyrical-repertoire relations;
+2. explore statistically screened, provisional cultural-reference links and co-mentions;
+3. enter a Chinese line-final character to inspect its dictionary-estimated ending family and possible next-family transitions.
 
-## Repository layout
+For the scholarly account, read [`paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf`](paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf). The exact computational environment, protocol amendment, and public/private boundary are in [`paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf`](paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf).
 
-- `paper/` — English manuscript in PDF, DOCX, and Markdown.
-- `figures/` — four publication figures in PNG and 600-DPI TIFF.
-- `results/` — independently audited retrieval, written-ending, and provisional NER/cultural-reference releases, plus earlier supporting analyses.
-- `src/` — research and artifact builders.
-- `validation/` — automated artifact checks.
+## Main results
 
-## Reproduction boundary
+- **Explainable repertoire retrieval:** 5,455 held-out songs across 204 source-credit labels. Untuned dense–lexical fusion reaches macro MRR **0.447** (95% CI 0.414–0.481) and Recall@10 **0.611** (0.577–0.646). Fusion improves over character TF–IDF by **0.031 MRR** (0.021–0.042).
+- **Cultural-reference evidence:** the provisional entity inventory contracts from 33 corpus-wide surfaces to 22 after shared-text exclusion and the fixed comparison universe. Six source-label-to-place associations and four same-song reference co-mentions survive uncertainty and BH-FDR screening. Human occurrence gold remains incomplete, so precision, recall, F1, biography, and social-relation claims are withheld.
+- **Written-ending continuation:** 34,395 leakage-safe adjacent-line events from 787 held-out songs. The hierarchical context model reaches Top-3 **0.695** (0.685–0.705), improving on first-order Markov by **0.050** (0.044–0.055). Switch Top-1 remains only **0.026**, and source-credit-label conditioning has no supported benefit.
 
-The scripts expect an access-controlled lyric corpus, cleaned-text sidecars, and frozen BGE-M3 embeddings in the directory contracts documented in the source. Those inputs are not included because of copyright and privacy constraints. Public outputs contain no full lyrics, song/chunk identifiers, embeddings, private membership rows, or unreviewed NER contexts.
+## What happens after BGE-M3
 
-Source credit labels have not been independently identity-verified. Results describe written lyrical repertoires and do not establish collaboration, influence, friendship, biography, hometown, preferred genre, performed rhyme, flow, voice, or beat. NER entities and associations remain provisional pending occurrence-level two-reviewer validation; the public layer contains no extraction-accuracy claim.
+BGE-M3 is a frozen representation, not the finding. It is evaluated inside a downstream task with:
 
-## Status
+- full-song holdout and duplicate-component removal;
+- a strong character 2–5-gram TF–IDF baseline;
+- per-query score standardization and untuned equal-weight fusion;
+- label-balanced estimation and paired two-stage bootstrap uncertainty;
+- explicit explanations and claim boundaries.
 
-The technical package passes the included validations. Before journal submission, the human authors must fill the author/funding/CRediT fields, select licences for code and research outputs, provide the final repository DOI and lyric-access statement, and complete the exact AI-use disclosure.
+The retrieval TF–IDF vocabulary and IDF are estimated transductively on the fixed unlabeled evaluation corpus. Source labels and outcomes are not used for fitting, but the estimand is fixed-corpus retrieval rather than prospective performance. The original contract and formal amendment are both retained.
+
+## Repository map
+
+- `paper/` — final English manuscript and supplementary methods in Markdown, DOCX, and PDF.
+- `figures/` — four publication figures in PNG and 600-DPI TIFF, with source tables and alt text.
+- `results/` — aggregate input-audit, retrieval, NER/cultural-reference, and written-ending outputs.
+- `methods/` — frozen research contract, protocol amendment, journal-format contract, pipeline explanation, public-release boundary, and author-owned provenance actions.
+- `src/` — deterministic builders and validators.
+- `site/` — source for the richer local results application.
+- `validation/` — independent numerical, manuscript, accessibility, render, and release checks.
+
+## Evidence boundary
+
+The public release contains no full lyrics, full written lines, song/chunk identifiers, row-level lyric-content hashes, embeddings, private membership rows, or reviewer contexts. Short Chinese entity and ending tokens are retained only where needed to interpret aggregate results. File-level SHA-256 checksums and deterministic aggregate join keys are retained as non-content integrity metadata.
+
+Source-credit labels are corpus provenance, not verified natural-person identities. The outputs do not establish authorship, biography, hometown, preference, collaboration, influence, friendship, performed rhyme, flow, voice, or beat.
+
+## Reproduction
+
+The pipeline order and expected private inputs are documented in [`methods/METHODS_AND_LIMITS.md`](methods/METHODS_AND_LIMITS.md). Researchers must supply a lawfully accessible copy of the frozen corpus and private derived sidecars; the copyrighted lyric text is not redistributed here.
+
+## Submission status
+
+The technical and analytical release passes the included validations. Before journal submission, the authors must complete the factual items in [`methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md`](methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md), including authorship, funding, rights, acquisition provenance, ethics determination, licences, and an archival DOI.

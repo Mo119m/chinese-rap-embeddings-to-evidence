@@ -1,0 +1,11 @@
+{
+  "artifact": "chinese-rap-results-site-data-v1",
+  "labels": 204,
+  "lyricalEdges": 86,
+  "nerEntities": 22,
+  "nerLinks": 6,
+  "rhymeContexts": 373,
+  "dictionaryCharacters": 20921,
+  "researchDataSha256": "67dcc7624eaf1a20c32334d7487ce658d121a84d8a6e2ed97af944518425bf3a",
+  "status": "pass"
+}

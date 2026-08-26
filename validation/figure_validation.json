@@ -1,49 +1,307 @@
 {
+  "artifact_id": "chinese-rap-downstream-figures-v1",
+  "generated_at_utc": "2026-08-26T03:09:35.551084Z",
   "status": "pass",
+  "confidence": "ready_to_share",
+  "claim_boundary": "Figures report corpus-internal aggregate evidence. They do not establish performer identity, authorship, biography, residence, preference, social relations, performed rhyme, flow, delivery, or audio properties.",
   "checks": [
     {
-      "name": "figure_1_png_exists_and_large",
-      "passed": true
+      "name": "figure_2_benchmark_source_roundtrip",
+      "passed": true,
+      "detail": {
+        "expected_rows": 15,
+        "actual_rows": 15
+      }
     },
     {
-      "name": "figure_1_tif_exists",
-      "passed": true
+      "name": "figure_2_delta_source_roundtrip",
+      "passed": true,
+      "detail": {
+        "expected_rows": 10,
+        "actual_rows": 10
+      }
     },
     {
-      "name": "figure_2_png_exists_and_large",
-      "passed": true
+      "name": "figure_4_benchmark_source_roundtrip",
+      "passed": true,
+      "detail": {
+        "expected_rows": 20,
+        "actual_rows": 20
+      }
     },
     {
-      "name": "figure_2_tif_exists",
-      "passed": true
+      "name": "figure_4_transition_source_roundtrip",
+      "passed": true,
+      "detail": {
+        "expected_rows": 4,
+        "actual_rows": 4
+      }
     },
     {
-      "name": "figure_3_png_exists_and_large",
-      "passed": true
+      "name": "figure_4_personalization_source_roundtrip",
+      "passed": true,
+      "detail": {
+        "expected_rows": 4,
+        "actual_rows": 4
+      }
     },
     {
-      "name": "figure_3_tif_exists",
-      "passed": true
+      "name": "retrieval_primary_rows_complete",
+      "passed": true,
+      "detail": {
+        "rows": 15
+      }
     },
     {
-      "name": "figure_4_png_exists_and_large",
-      "passed": true
+      "name": "retrieval_paired_delta_rows_complete",
+      "passed": true,
+      "detail": {
+        "rows": 10
+      }
     },
     {
-      "name": "figure_4_tif_exists",
-      "passed": true
+      "name": "retrieval_bootstrap_replicates_5000",
+      "passed": true,
+      "detail": {
+        "replicates": [
+          5000
+        ]
+      }
     },
     {
-      "name": "encoder_table_exists",
-      "passed": true
+      "name": "retrieval_fusion_intervals_above_zero",
+      "passed": true,
+      "detail": {
+        "minimum_lower_bound": 0.012573
+      }
     },
     {
-      "name": "bootstrap_table_has_86_rows",
-      "passed": true
+      "name": "rhyme_benchmark_rows_complete",
+      "passed": true,
+      "detail": {
+        "rows": 20
+      }
     },
     {
-      "name": "repeatable_core_has_16_edges",
-      "passed": true
+      "name": "rhyme_song_cluster_bootstrap_replicates_2000",
+      "passed": true,
+      "detail": {
+        "replicates": [
+          2000
+        ]
+      }
+    },
+    {
+      "name": "rhyme_personalization_intervals_include_zero",
+      "passed": true,
+      "detail": {
+        "contrasts": 4
+      }
+    },
+    {
+      "name": "image_dimensions_and_tiff_600dpi",
+      "passed": true,
+      "detail": [
+        {
+          "figure": "figure_1",
+          "format": "png",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.png",
+          "pixels": [
+            4500,
+            3480
+          ],
+          "mode": "RGBA",
+          "dpi": [
+            599.9988,
+            599.9988
+          ]
+        },
+        {
+          "figure": "figure_1",
+          "format": "tiff",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.tiff",
+          "pixels": [
+            4500,
+            3480
+          ],
+          "mode": "RGB",
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        },
+        {
+          "figure": "figure_2",
+          "format": "png",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.png",
+          "pixels": [
+            4500,
+            3120
+          ],
+          "mode": "RGBA",
+          "dpi": [
+            599.9988,
+            599.9988
+          ]
+        },
+        {
+          "figure": "figure_2",
+          "format": "tiff",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.tiff",
+          "pixels": [
+            4500,
+            3120
+          ],
+          "mode": "RGB",
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        },
+        {
+          "figure": "figure_4",
+          "format": "png",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_written_rhyme_benchmark.png",
+          "pixels": [
+            4500,
+            3720
+          ],
+          "mode": "RGBA",
+          "dpi": [
+            599.9988,
+            599.9988
+          ]
+        },
+        {
+          "figure": "figure_4",
+          "format": "tiff",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_written_rhyme_benchmark.tiff",
+          "pixels": [
+            4500,
+            3720
+          ],
+          "mode": "RGB",
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aggregate_only_privacy_schema_scan",
+      "passed": true,
+      "detail": {
+        "files_scanned": 6,
+        "forbidden_header_hits": []
+      }
+    },
+    {
+      "name": "figure_3_evidence_control_counts_exact",
+      "passed": true,
+      "detail": {
+        "observed": [
+          33,
+          23,
+          22,
+          85,
+          40,
+          6,
+          9,
+          1,
+          5,
+          4
+        ]
+      }
+    },
+    {
+      "name": "figure_3_six_released_label_place_links",
+      "passed": true,
+      "detail": {
+        "rows": 6,
+        "types": [
+          "PLACE"
+        ]
+      }
+    },
+    {
+      "name": "figure_3_label_link_intervals_and_q_pass",
+      "passed": true,
+      "detail": {
+        "minimum_lower": 3.756767,
+        "maximum_q": 0.004955357390838317
+      }
+    },
+    {
+      "name": "figure_3_four_released_co_mentions_correct_denominator",
+      "passed": true,
+      "detail": {
+        "rows": 4,
+        "denominators": [
+          5681
+        ]
+      }
+    },
+    {
+      "name": "figure_3_image_dimensions_and_tiff_600dpi",
+      "passed": true,
+      "detail": [
+        {
+          "format": "png",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_cultural_reference_evidence.png",
+          "pixels": [
+            4500,
+            3960
+          ],
+          "mode": "RGBA",
+          "dpi": [
+            599.9988,
+            599.9988
+          ]
+        },
+        {
+          "format": "tiff",
+          "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_cultural_reference_evidence.tiff",
+          "pixels": [
+            4500,
+            3960
+          ],
+          "mode": "RGB",
+          "dpi": [
+            600.0,
+            600.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "figures_1_2_4_unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "figure_1_research_design.png": "0f8f3e4ffe4d1da39c27134054a41ba1867621cef169c5f62bcaa6a89a1d3e29",
+          "figure_1_research_design.tiff": "db7499c98de947f1d072940b1e17a891e7392c1ac18e77e5808aa781f9021db6",
+          "figure_2_retrieval_benchmark.png": "54329a2d15424fa6c4056c970911babed8bd14bc9808e3dc3d5d05efc16d7009",
+          "figure_2_retrieval_benchmark.tiff": "d672acd5a3f8f5720d425a885b4aaf58c91041066901f7b9236c3504ed2bd2b9",
+          "figure_4_written_rhyme_benchmark.png": "d2b986d02dd8e811f5ef1f290ab3a9422b6226253b4f2a89cf2885e1d17c9692",
+          "figure_4_written_rhyme_benchmark.tiff": "e8bd2f63cb2a7a1827b276f71f028cf1dd72ca47fb9d52bc731d07eafbeb486a"
+        },
+        "after": {
+          "figure_1_research_design.png": "0f8f3e4ffe4d1da39c27134054a41ba1867621cef169c5f62bcaa6a89a1d3e29",
+          "figure_1_research_design.tiff": "db7499c98de947f1d072940b1e17a891e7392c1ac18e77e5808aa781f9021db6",
+          "figure_2_retrieval_benchmark.png": "54329a2d15424fa6c4056c970911babed8bd14bc9808e3dc3d5d05efc16d7009",
+          "figure_2_retrieval_benchmark.tiff": "d672acd5a3f8f5720d425a885b4aaf58c91041066901f7b9236c3504ed2bd2b9",
+          "figure_4_written_rhyme_benchmark.png": "d2b986d02dd8e811f5ef1f290ab3a9422b6226253b4f2a89cf2885e1d17c9692",
+          "figure_4_written_rhyme_benchmark.tiff": "e8bd2f63cb2a7a1827b276f71f028cf1dd72ca47fb9d52bc731d07eafbeb486a"
+        }
+      }
+    },
+    {
+      "name": "figure_3_aggregate_only_privacy_schema_scan",
+      "passed": true,
+      "detail": {
+        "forbidden_header_hits": []
+      }
     }
   ]
 }

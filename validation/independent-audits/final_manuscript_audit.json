@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "final-manuscript-audit-2026-08-25",
+  "generated_at_utc": "2026-08-26T03:53:55Z",
+  "overall_status": "FAIL_READY_TO_SUBMIT",
+  "publication_label": "empirically_reconciled_author_and_release_completion_required",
+  "target": {
+    "path": "work/paper_v3/manuscript.md",
+    "sha256": "ed6e8d4d941bf8784d6bf98a6f3dc8e85484253d51f1c43aae06e99dc989a4bf",
+    "bytes": 70217,
+    "last_write_time_local": "2026-08-25T22:45:11.8111978-05:00"
+  },
+  "source_hashes": {
+    "dsh_submission_contract": "8fed16aeca897842f142c73a433dae9e86f9f3d1af317d96d85bd657ad045c5a",
+    "research_contract": "ec5f36c787ff361e302cbdececb9e960975aa13915b327649d53cdc5e4a7d1d8",
+    "protocol_amendment_pd001": "e63e91b5f5b4064dad7ecfb3ad336154ae6baa642da5d0429ab530cd8e5800a6",
+    "supplementary_methods": "ed76578ec395ccbc7247da41970d57c865d3f0243bbc1d00d919dc45d7bc9b3d",
+    "data_provenance_actions": "53afbb7e098375d7e874f06869e64f2aab41beb845aa298da5a09122042fe3da",
+    "input_audit_summary": "b8dbcf835e303d10cbec6dc68fd107a6c30a64ed948e1330c9c842ea0c15b898",
+    "retrieval_summary": "8181520652a1a482fef3d54ebca82c2e7873f6c760cb81c1c8345c4e97ac9e2b",
+    "ner_summary": "54931519ebf6ed8ae63109ad4334dd0bbcebefd50a384f79baeac2f2a53f0ccb",
+    "rhyme_summary": "f543e907234d7968e8811f74aa972ecf037166c6fa379d3a4cfb5f299f26d8cf",
+    "figure_validation": "eed614f12601b364f66eb2e40d61c8092559c81e6aef998918f000e882698d08",
+    "figure_manifest": "449df280a2906ada3d44e4ec74ed9cd19231ab6fc950f29c25b72b64ec816fce",
+    "figure_captions": "9268ce053218b0d100b9f8424f32d2bc9edad2f023d0e8c049cc37a02c1e5ec2",
+    "local_release_validation": "b041a2a7d5a678660f17223ea537031291c9be2297f23f093d4108990a186fcc",
+    "paper_render_qa": "ae014ff7716e55c5ceae74d28ce1d850c566475e12c619478e6dc0131f320fc0",
+    "standalone_site_validation": "dd514faaa1e6e9745d729f872f5be9fe96196891f155a2ccd67a571887828081"
+  },
+  "summary": {
+    "numeric_mismatches": 0,
+    "unique_in_text_author_year_citations": 26,
+    "bibliography_entries": 26,
+    "missing_bibliography_entries": 0,
+    "orphan_bibliography_entries": 0,
+    "structured_abstract_words_including_labels": 204,
+    "pre_reference_words": 8600,
+    "keyword_count": 10,
+    "ready_for_internal_author_review": true,
+    "ready_to_submit": false,
+    "empirical_rerun_required": false
+  },
+  "checks": [
+    {
+      "id": "FMA-001",
+      "check": "corpus_and_result_reconciliation",
+      "status": "PASS",
+      "mismatch_count": 0
+    },
+    {
+      "id": "FMA-002",
+      "check": "retrieval_table_caption_and_reported_deltas",
+      "status": "PASS",
+      "details": {
+        "table_point_estimates_checked": 15,
+        "table_interval_endpoints_checked": 30,
+        "queries": 5455,
+        "labels": 204,
+        "bootstrap_replicates": 5000
+      }
+    },
+    {
+      "id": "FMA-003",
+      "check": "ner_table_caption_edges_and_examples",
+      "status": "PASS_WITH_NO_GOLD_BOUNDARY",
+      "details": {
+        "released_label_entity_edges_checked": 6,
+        "released_co_mentions_checked": 4,
+        "association_tests_independently_recomputed": 4488,
+        "co_mention_tests_independently_recomputed": 231,
+        "numeric_mismatches": 0,
+        "completed_gold_reviews": 0,
+        "review_tasks": 800
+      }
+    },
+    {
+      "id": "FMA-004",
+      "check": "written_rhyme_table_caption_deltas_strata_and_abstention",
+      "status": "PASS",
+      "details": {
+        "table_displayed_values_checked": 30,
+        "table_interval_endpoints_checked": 40,
+        "test_events": 34395,
+        "test_songs": 787,
+        "bootstrap_replicates": 2000,
+        "source_label_ablation_intervals_include_zero": true
+      }
+    },
+    {
+      "id": "FMA-005",
+      "check": "frozen_artifact_validation",
+      "status": "PASS",
+      "details": {
+        "input_audit": "12/12",
+        "retrieval": "13/13",
+        "ner": "31/31",
+        "ner_reconciliation": "14/14",
+        "ner_independent_audit": "19/19",
+        "written_rhyme": "20/20",
+        "figures": "21/21"
+      }
+    },
+    {
+      "id": "FMA-006",
+      "check": "transductive_tfidf_disclosure_and_governance",
+      "status": "PASS",
+      "details": {
+        "original_contract_preserved": true,
+        "dated_amendment_exists": true,
+        "query_text_influences_unlabelled_vocabulary_and_idf_disclosed": true,
+        "labels_or_outcomes_used_in_vectorizer_fit": false,
+        "fusion_weight_tuned": false,
+        "future_corpus_claim_disclaimed": true
+      }
+    },
+    {
+      "id": "FMA-007",
+      "check": "ner_interval_definition",
+      "status": "PASS",
+      "details": {
+        "formula_present": true,
+        "named_conservative_ratio_of_marginal_jeffreys_bounds": true,
+        "standard_rr_confidence_interval_claimed": false
+      }
+    },
+    {
+      "id": "FMA-008",
+      "check": "rq_and_section_alignment",
+      "status": "PASS",
+      "details": {
+        "rq1_retrieval": true,
+        "rq2_ner_network": true,
+        "rq3_written_ending": true,
+        "rq4_explicit_design_synthesis": true
+      }
+    },
+    {
+      "id": "FMA-009",
+      "check": "figure_and_table_callouts",
+      "status": "PASS",
+      "details": {
+        "tables_called_out": [1, 2, 3, 4],
+        "figures_called_out": [1, 2, 3, 4],
+        "alt_text_present": [1, 2, 3, 4]
+      }
+    },
+    {
+      "id": "FMA-010",
+      "check": "citation_reference_consistency",
+      "status": "PASS",
+      "details": {
+        "unique_author_year_citations": 26,
+        "bibliography_entries": 26,
+        "missing": [],
+        "orphan": [],
+        "muchin_dataset_citation_present": true,
+        "muchin_official_record": "https://www.ijcai.org/proceedings/2024/860"
+      }
+    },
+    {
+      "id": "FMA-011",
+      "check": "dsh_structured_abstract",
+      "status": "PASS",
+      "observed_words_including_labels": 204,
+      "limit": 250
+    },
+    {
+      "id": "FMA-012",
+      "check": "dsh_full_paper_word_limit",
+      "status": "PASS_WITH_MARGIN",
+      "observed_words_before_references": 8600,
+      "limit": 9000,
+      "remaining_margin": 400,
+      "method": "PowerShell whitespace-delimited word count; final Word count may differ"
+    },
+    {
+      "id": "FMA-013",
+      "check": "keywords_english_and_lyric_quotation",
+      "status": "PASS",
+      "details": {
+        "keywords": 10,
+        "keyword_limit": 12,
+        "english_exposition": true,
+        "chinese_only_as_bounded_analytic_evidence": true,
+        "lyric_passages_reproduced": false
+      }
+    },
+    {
+      "id": "FMA-014",
+      "check": "figure_source_resolution_and_alt_text",
+      "status": "PASS_AT_SOURCE_LEVEL",
+      "details": {
+        "tiff_files": 4,
+        "dpi": 600,
+        "mode": "RGB",
+        "figure_validation": "21/21",
+        "figure_1_png_visually_inspected": true,
+        "figure_1_song_aware_holdout_or_partition_wording_present": true,
+        "figure_1_source_credit_labels_bounded_as_provenance_not_verified_identity": true
+      }
+    },
+    {
+      "id": "FMA-015",
+      "check": "required_author_declarations_complete",
+      "status": "FAIL",
+      "blocker": true,
+      "details": {
+        "visible_bracketed_placeholders": 8,
+        "fields": [
+          "author_names",
+          "affiliations",
+          "corresponding_author_email",
+          "archival_doi_disposition",
+          "funding",
+          "conflict_of_interest",
+          "credit_roles",
+          "exact_ai_tool_version_or_model"
+        ],
+        "additional_unresolved_field": "institutional_ethics_determination"
+      }
+    },
+    {
+      "id": "FMA-016",
+      "check": "corpus_provenance_rights_and_ethics_complete",
+      "status": "FAIL",
+      "blocker": true,
+      "details": {
+        "owner_action_fields_unresolved": 12,
+        "action_record": "work/paper_v3/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md"
+      }
+    },
+    {
+      "id": "FMA-017",
+      "check": "public_repository_matches_data_availability_statement",
+      "status": "FAIL_AS_OF_AUDIT",
+      "blocker": true,
+      "details": {
+        "audited_repo_head": "58a3f5c",
+        "missing_or_stale_items": [
+          "revised_v3_manuscript_and_supplement",
+          "original_research_contract",
+          "protocol_amendment_pd001",
+          "downstream_input_audit_package"
+        ]
+      }
+    },
+    {
+      "id": "FMA-018",
+      "check": "final_rendered_submission_format",
+      "status": "PASS_LOCALLY",
+      "blocker": false,
+      "details": {
+        "manuscript_pages": 39,
+        "supplement_pages": 4,
+        "all_pages_visually_checked": true,
+        "affected_pages_rechecked_after_boundary_edit": true,
+        "layout_figures_tables_chinese_glyphs_math_and_pdf_text": "PASS",
+        "manuscript_docx_sha256": "bd1231028e8c4b47020e0b6254ae801f3a67b3cb551b80e60512d46fa4afd2a1",
+        "manuscript_pdf_sha256": "e071e65ca2106bff36c5b0de068d6f7d0ce4009a4f8a925be2b8c22df594c4bf",
+        "supplement_docx_sha256": "c9d1115fc8046ccb2fdd28e3eb25dc92093951ceb83e35c80fb22845d4769f7c",
+        "supplement_pdf_sha256": "9d8309de2e2e9a70212e7530b711f74f9d0d545a1f5e203d6095caa259a5ce43",
+        "final_portal_preview_still_required": true
+      }
+    },
+    {
+      "id": "FMA-019",
+      "check": "row_level_lyric_hash_and_file_checksum_boundary",
+      "status": "PASS",
+      "blocker": false,
+      "details": {
+        "row_level_lyric_content_hashes_public": false,
+        "file_level_sha256_checksums_public": true,
+        "aggregate_join_keys_public": true,
+        "reader_facing_site_hash_values": 0,
+        "input_audit_exposes_check_name_but_no_row_hash_values": true,
+        "source_code_mentions_hash_fields_but_contains_no_private_row_values": true,
+        "manuscript_supplement_readme_methods_and_validation_consistent": true,
+        "contradiction_found": false
+      }
+    }
+  ],
+  "remaining_blockers": [
+    {
+      "id": "B-001",
+      "owner": "human_authors",
+      "description": "Complete author identity, affiliations, email, DOI disposition, funding, conflict, CRediT, exact AI disclosure, cover-letter disclosure, and institutional ethics outcome."
+    },
+    {
+      "id": "B-002",
+      "owner": "dataset_owner_or_responsible_author",
+      "description": "Supply documentary corpus acquisition, sampling, temporal, transcription, custody, rights, ethics, bias, and access facts; otherwise retain Unknown-not-supplied and narrow claims."
+    },
+    {
+      "id": "B-003",
+      "owner": "release_maintainer",
+      "description": "Synchronize the public repository with every artifact named in Data Availability, verify the public commit, and resolve the archival DOI placeholder."
+    }
+  ],
+  "non_blocking_caveats": [
+    "Author additions and final portal conversion must preserve the 9000-word limit; the current source margin is 400 words.",
+    "NER remains provisional until dual review and adjudication are complete.",
+    "Retrieval conclusions are fixed-corpus and transductive, not prospective.",
+    "Historical BGE device and realized mixed precision were not captured and remain disclosed as unknown."
+  ],
+  "final_gate": {
+    "numeric_results_can_be_used": true,
+    "methods_are_auditably_disclosed": true,
+    "citations_are_closed": true,
+    "ready_for_internal_author_review": true,
+    "ready_to_submit": false,
+    "empirical_rerun_required": false,
+    "required_reaudit_after_manuscript_change": true,
+    "public_hash_boundary_consistent": true,
+    "local_render_qa_passed": true
+  }
+}

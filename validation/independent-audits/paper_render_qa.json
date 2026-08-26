@@ -1,0 +1,32 @@
+{
+  "artifact": "chinese-rap-paper-v3-render-qa",
+  "checked_at_utc": "2026-08-26T03:50:04.2240569Z",
+  "status": "pass",
+  "manuscript": {
+    "pages": 39,
+    "page_size": "Letter",
+    "tagged_pdf": true,
+    "visual_pages_checked": 39,
+    "pages_rechecked_after_final_wording_edit": [8, 33, 34],
+    "docx_sha256": "bd1231028e8c4b47020e0b6254ae801f3a67b3cb551b80e60512d46fa4afd2a1",
+    "pdf_sha256": "e071e65ca2106bff36c5b0de068d6f7d0ce4009a4f8a925be2b8c22df594c4bf"
+  },
+  "supplement": {
+    "pages": 4,
+    "page_size": "Letter",
+    "tagged_pdf": true,
+    "visual_pages_checked": 4,
+    "pages_rechecked_after_final_wording_edit": [3, 4],
+    "docx_sha256": "c9d1115fc8046ccb2fdd28e3eb25dc92093951ceb83e35c80fb22845d4769f7c",
+    "pdf_sha256": "9d8309de2e2e9a70212e7530b711f74f9d0d545a1f5e203d6095caa259a5ce43"
+  },
+  "checks": {
+    "layout": "pass",
+    "figures": "pass",
+    "tables": "pass",
+    "chinese_glyphs": "pass",
+    "math_notation": "pass",
+    "pdf_text_smoke_test": "pass",
+    "author_metadata_blank_pending_completion": true
+  }
+}
