@@ -1,0 +1,240 @@
+{
+  "artifact_id": "chinese-rap-downstream-figures-v1",
+  "version": "1.1.0",
+  "generated_at_utc": "2026-08-26T02:02:33.173818Z",
+  "status": "pass",
+  "renderer": {
+    "matplotlib": "3.11.1",
+    "pillow": "12.3.0",
+    "png_dpi": 600,
+    "tiff_dpi": 600,
+    "tiff_mode": "RGB",
+    "tiff_compression": "LZW"
+  },
+  "figures": {
+    "figure_1": {
+      "png": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.png",
+      "tiff": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.tiff",
+      "print_size_inches": [
+        7.5,
+        5.8
+      ],
+      "expected_pixels_at_600_dpi": [
+        4500,
+        3480
+      ]
+    },
+    "figure_2": {
+      "png": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.png",
+      "tiff": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.tiff",
+      "print_size_inches": [
+        7.5,
+        5.2
+      ],
+      "expected_pixels_at_600_dpi": [
+        4500,
+        3120
+      ]
+    },
+    "figure_3": {
+      "png": "outputs/chinese-rap-downstream-figures-v1/figure_3_cultural_reference_evidence.png",
+      "tiff": "outputs/chinese-rap-downstream-figures-v1/figure_3_cultural_reference_evidence.tiff",
+      "print_size_inches": [
+        7.5,
+        6.6
+      ],
+      "expected_pixels_at_600_dpi": [
+        4500,
+        3960
+      ]
+    },
+    "figure_4": {
+      "png": "outputs/chinese-rap-downstream-figures-v1/figure_4_written_rhyme_benchmark.png",
+      "tiff": "outputs/chinese-rap-downstream-figures-v1/figure_4_written_rhyme_benchmark.tiff",
+      "print_size_inches": [
+        7.5,
+        6.2
+      ],
+      "expected_pixels_at_600_dpi": [
+        4500,
+        3720
+      ]
+    }
+  },
+  "claim_boundary": "Figures report corpus-internal aggregate evidence. They do not establish performer identity, authorship, biography, residence, preference, social relations, performed rhyme, flow, delivery, or audio properties.",
+  "lineage": {
+    "builder": {
+      "path": "work/build_chinese_rap_downstream_figures_v1.py",
+      "sha256": "b7933357f244d7355c09465fcbf8793a07c077f9493e5961e7563ed3381c2a8d"
+    },
+    "sources": [
+      {
+        "path": "outputs/chinese-rap-downstream-input-audit-v1/analysis_summary.json",
+        "sha256": "b8dbcf835e303d10cbec6dc68fd107a6c30a64ed948e1330c9c842ea0c15b898"
+      },
+      {
+        "path": "outputs/chinese-rap-downstream-retrieval-v1/analysis_summary.json",
+        "sha256": "8181520652a1a482fef3d54ebca82c2e7873f6c760cb81c1c8345c4e97ac9e2b"
+      },
+      {
+        "path": "outputs/chinese-rap-downstream-retrieval-v1/metrics.csv",
+        "sha256": "7a5deae7d25865e499c48d9b1a63e84ec530182f67b0cb99c6b9654d0a0c778a"
+      },
+      {
+        "path": "outputs/chinese-rap-downstream-retrieval-v1/uncertainty.csv",
+        "sha256": "949ab50094e0d26494e2f974fac131f542768b12cb5b8ea547262cefcbcf5cae"
+      },
+      {
+        "path": "outputs/chinese-rap-ner-cultural-graph-v1/entity_co_mentions_provisional.csv",
+        "sha256": "fd5bc30f48e3155b55e45b2fa789683da3e947d293dc9945853e98a512748187"
+      },
+      {
+        "path": "outputs/chinese-rap-ner-cultural-graph-v1/reconciliation_validation.json",
+        "sha256": "da9ae5deec009d4824b4e196424573080b54c58081bb0ee57dcbc5e66909bc33"
+      },
+      {
+        "path": "outputs/chinese-rap-ner-cultural-graph-v1/release_sensitivity_summary.csv",
+        "sha256": "c87fa07ba3c022f6b8bba9fcfa5f134741de5c77307e937dccf35cd715145926"
+      },
+      {
+        "path": "outputs/chinese-rap-ner-cultural-graph-v1/source_label_entity_links_provisional.csv",
+        "sha256": "572963b8985c3adcc0054230ab9dfcbbd830a8f62219ac2a9e14480def114759"
+      },
+      {
+        "path": "outputs/chinese-rap-ner-cultural-graph-v1/summary.json",
+        "sha256": "54931519ebf6ed8ae63109ad4334dd0bbcebefd50a384f79baeac2f2a53f0ccb"
+      },
+      {
+        "path": "outputs/chinese-rap-ner-cultural-graph-v1/validation.json",
+        "sha256": "08e3448a73d112e7d2ecc3523a5263b7079835cc420f14a334e070be27a51cdd"
+      },
+      {
+        "path": "outputs/chinese-rap-written-rhyme-v1/analysis_summary.json",
+        "sha256": "f543e907234d7968e8811f74aa972ecf037166c6fa379d3a4cfb5f299f26d8cf"
+      },
+      {
+        "path": "outputs/chinese-rap-written-rhyme-v1/model_metrics.csv",
+        "sha256": "de62d5f6ae468a53129ecadcd29e235abed95c5f200f5b30956f0051625d57ae"
+      },
+      {
+        "path": "outputs/chinese-rap-written-rhyme-v1/paired_model_deltas.csv",
+        "sha256": "b128291b5d8bd9aad445b35fd280d43dd157df74fac54c0e883c32c6356b186a"
+      },
+      {
+        "path": "outputs/chinese-rap-written-rhyme-v1/stratified_metrics.csv",
+        "sha256": "a3e7fb7c652092b9bb2313091a332ffee813110af2641caa46fb64dfcad12d2e"
+      },
+      {
+        "path": "work/downstream_v1/RESEARCH_CONTRACT.md",
+        "sha256": "ec5f36c787ff361e302cbdececb9e960975aa13915b327649d53cdc5e4a7d1d8"
+      }
+    ],
+    "figure_3_builder": {
+      "path": "work/build_chinese_rap_figure_3_v1.py",
+      "sha256": "3a78909e3cf549b6e61d659a04f1637ea463fa7b55a178ad800f5573d0e8ea38"
+    }
+  },
+  "files": [
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/chart_contracts.json",
+      "bytes": 3251,
+      "sha256": "842a41783a4be8313271830c9e1087dbe05e6f69564de2d6b59a702eb76aa5e3"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_pipeline_source.csv",
+      "bytes": 1319,
+      "sha256": "e551f603675264eadb63acc3fa77506ba9bf92df14e2454725a71507d9058087"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.png",
+      "bytes": 678309,
+      "sha256": "01382c95b4ccf5d7b0ef00eb30825b6d2f857b229010003fc778f120d0496548"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_1_research_design.tiff",
+      "bytes": 1461456,
+      "sha256": "b7ca7100d273c41ce75a9923b945b29dc217b5909cab9c9735ac83ae26c4dc6e"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.png",
+      "bytes": 504286,
+      "sha256": "54329a2d15424fa6c4056c970911babed8bd14bc9808e3dc3d5d05efc16d7009"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark.tiff",
+      "bytes": 913506,
+      "sha256": "d672acd5a3f8f5720d425a885b4aaf58c91041066901f7b9236c3504ed2bd2b9"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_benchmark_source.csv",
+      "bytes": 3484,
+      "sha256": "5efee125dcb4b824ef41872150b4a43aa320b0547d40119a2508006f40a465e1"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_2_retrieval_deltas_source.csv",
+      "bytes": 1865,
+      "sha256": "87052b3eac664e03e18c11806c9b56e69c26ca6f3ae179cd92ab5185f3f91c81"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_co_mentions_source.csv",
+      "bytes": 1272,
+      "sha256": "cfbdf8c6ea2ef2c70a2bf1c1fa2104df4e13999460f1b6b10456cd7f2c8472e1"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_cultural_reference_evidence.png",
+      "bytes": 881677,
+      "sha256": "df70ca832740dbd2cdd0b8c909855035e5cdcee449d48a84d9e585b6e958ad84"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_cultural_reference_evidence.tiff",
+      "bytes": 1373550,
+      "sha256": "6ed56f47dde4f197ed44416358c030ac41acc30338f1120f2fe62d32c69839b4"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_evidence_controls_source.csv",
+      "bytes": 2619,
+      "sha256": "1edc94a371f08a48dcbfd7e03c15f448eeb9e7aa4abe6753b904c488659c9d75"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_3_label_place_links_source.csv",
+      "bytes": 2117,
+      "sha256": "f128f8092f3ae4181b80777abbd3495b1a6b9a146d69de464b9d30cc91b6734a"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_personalization_deltas_source.csv",
+      "bytes": 797,
+      "sha256": "0fedc30b6432eabc9d3aafdd7d7a001fb23a58b364e69be369d70784dd1f7242"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_rhyme_benchmark_source.csv",
+      "bytes": 3696,
+      "sha256": "238e01adb1645a3aeb1be94e9a01da0f632f0fc180924b7f0e045375df00239e"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_transition_source.csv",
+      "bytes": 701,
+      "sha256": "0bbed5791fe6c0f46cca914a89ab39dcbae970ff3f301a6c60bb47a5259f565f"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_written_rhyme_benchmark.png",
+      "bytes": 619059,
+      "sha256": "d2b986d02dd8e811f5ef1f290ab3a9422b6226253b4f2a89cf2885e1d17c9692"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_4_written_rhyme_benchmark.tiff",
+      "bytes": 1231142,
+      "sha256": "e8bd2f63cb2a7a1827b276f71f028cf1dd72ca47fb9d52bc731d07eafbeb486a"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/figure_captions_and_alt_text.md",
+      "bytes": 7318,
+      "sha256": "c509cdbc6e0cf2fc4cce060eef88a3eaa5e6d37417d4924bb72f9b2c449d2b59"
+    },
+    {
+      "path": "outputs/chinese-rap-downstream-figures-v1/validation.json",
+      "bytes": 7951,
+      "sha256": "2063470008242a64e646f76eb3cc00207b5fae7005488a3f9cb7d144a9f976d2"
+    }
+  ],
+  "privacy": "Aggregate-only figures and source tables; no lyric text, song/chunk IDs, content hashes, embeddings, or private audit rows."
+}

@@ -1,0 +1,10 @@
+component,branch,item,value,unit,source
+frozen_corpus,shared,songs,7211,songs,outputs/chinese-rap-downstream-input-audit-v1/analysis_summary.json
+frozen_corpus,shared,canonical_chunks,22128,chunks,outputs/chinese-rap-downstream-input-audit-v1/analysis_summary.json
+frozen_corpus,shared,eligible_clean_text_chunks,21553,chunks,outputs/chinese-rap-downstream-input-audit-v1/analysis_summary.json
+evidence_control,shared,exact_song_content_groups_spanning_songs,405,groups,outputs/chinese-rap-downstream-input-audit-v1/analysis_summary.json
+evidence_control,shared,songs_in_spanning_exact_groups,921,songs,outputs/chinese-rap-downstream-input-audit-v1/analysis_summary.json
+evidence_control,shared,task-specific fitting boundaries; no test-outcome fitting or selection,,design rule,work/downstream_v1/RESEARCH_CONTRACT.md
+task_method,retrieval,BGE-M3 dense + character 2-5 gram TF-IDF + untuned z-score fusion,,method,outputs/chinese-rap-downstream-retrieval-v1/analysis_summary.json
+task_method,ner,lexicon/rule baseline + contextual Chinese NER candidate evidence + agreement gates,,method,work/downstream_v1/RESEARCH_CONTRACT.md
+task_method,written_rhyme,terminal-Han dictionary pinyin-final families + Markov/hierarchical context prediction,,method,outputs/chinese-rap-written-rhyme-v1/analysis_summary.json

@@ -1,0 +1,50 @@
+{
+  "figure_1": {
+    "analytical_question": "How does one frozen corpus support three bounded downstream tasks without treating BGE-M3 as a universal method?",
+    "takeaway": "Shared evidence controls precede three task-specific branches; BGE-M3 is evaluated only in retrieval, while NER and written rhyme use their own methods and claim boundaries.",
+    "family": "process / research-design diagram",
+    "renderer": "Matplotlib static figure",
+    "data_sufficiency": "Frozen corpus counts and method definitions are available in public audit and method contracts.",
+    "palette_policy": "three branch roots plus neutrals; labels and position provide redundant distinction",
+    "print_size_inches": [
+      7.5,
+      5.8
+    ]
+  },
+  "figure_2": {
+    "analytical_question": "Does untuned dense-lexical fusion improve held-out-song source-credit-label repertoire retrieval over each strict single representation?",
+    "takeaway": "Fusion is higher than BGE-M3 and character TF-IDF on every requested macro metric; all paired 5,000-replicate intervals are above zero.",
+    "family": "faceted dot-and-interval benchmark with paired-delta panel",
+    "renderer": "Matplotlib static figure",
+    "data_sufficiency": "15 primary benchmark rows and 10 paired contrasts, 5,455 queries across 204 labels.",
+    "palette_policy": "hard two-root cap plus neutrals; marker shape/fill redundantly distinguishes systems and contrasts",
+    "print_size_inches": [
+      7.5,
+      5.2
+    ]
+  },
+  "figure_3": {
+    "analytical_question": "What cultural-reference evidence remains after shared-text exclusion, uncertainty control, and BH-FDR screening?",
+    "takeaway": "Evidence controls reduce a broad candidate inventory to 22 provisional entities, six source-label-to-place enrichments, and four same-song co-mentions; all remain lyric-reference claims rather than biographical or social claims.",
+    "family": "stage-progression evidence controls plus log-scale forest plot and compact co-mention dot bars",
+    "renderer": "Matplotlib static figure",
+    "data_sufficiency": "Six released label-to-PLACE links with conservative intervals and four released co-mentions over 5,681 eligible song units; no completed human gold.",
+    "palette_policy": "hard two-root cap plus neutrals; marker shape, fill, labels, and panel position provide non-colour distinction",
+    "print_size_inches": [
+      7.5,
+      6.6
+    ]
+  },
+  "figure_4": {
+    "analytical_question": "How accurately can strict written line-ending families be predicted, where does the task remain difficult, and does adding source-credit labels help?",
+    "takeaway": "Context models improve ranking, but family switches remain difficult and the source-credit-label feature has no supported held-out benefit.",
+    "family": "small-multiple dot-and-interval benchmark plus grouped transition bars",
+    "renderer": "Matplotlib static figure",
+    "data_sufficiency": "Five models on 34,395 leakage-safe events in 787 held-out songs; two transition strata and four paired label-ablation contrasts.",
+    "palette_policy": "hard two-root cap plus neutrals; open/filled markers and hatching provide non-colour distinction",
+    "print_size_inches": [
+      7.5,
+      6.2
+    ]
+  }
+}
