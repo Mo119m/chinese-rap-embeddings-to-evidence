@@ -1,0 +1,5 @@
+model,operating_point,threshold_derived_from_validation,test_coverage,accepted_event_count,coverage_against_all_primary_test_candidates,abstained_event_count,top1_accuracy_on_accepted,top3_accuracy_on_accepted,mrr_on_accepted
+hierarchical_sgd_context,all_predictions,0.0,1.0,34395,0.960057,0,0.498299,0.695421,0.628165
+hierarchical_sgd_context,validation_target_75pct_coverage,0.414776,0.744905,25621,0.715151,8774,0.558253,0.715936,0.667135
+hierarchical_sgd_context,validation_target_50pct_coverage,0.508069,0.499142,17168,0.479205,17227,0.610671,0.735904,0.701007
+hierarchical_sgd_context,validation_target_25pct_coverage,0.600615,0.244483,8409,0.234718,25986,0.658937,0.758354,0.733655

@@ -1,0 +1,18 @@
+written_rhyme_family,included_strict_pypinyin_finals,plain_description,tone_handling
+A,a | ia | ua,a / ia / ua,tone stored separately; family is tone-free
+O,o | uo,o / uo,tone stored separately; family is tone-free
+E,e,e,tone stored separately; family is tone-free
+IE_VE,ie | ve,ie / üe,tone stored separately; family is tone-free
+AI,ai | uai,ai / uai,tone stored separately; family is tone-free
+EI,ei | ui,ei / ui,tone stored separately; family is tone-free
+AO,ao | iao,ao / iao,tone stored separately; family is tone-free
+OU,ou | iu,ou / iu,tone stored separately; family is tone-free
+AN,an | ian | uan | van,an / ian / uan / üan,tone stored separately; family is tone-free
+EN,en | in | un | vn,en / in / un / ün,tone stored separately; family is tone-free
+ANG,ang | iang | uang,ang / iang / uang,tone stored separately; family is tone-free
+ENG,eng | ing | ueng,eng / ing / ueng,tone stored separately; family is tone-free
+ONG,ong | iong,ong / iong,tone stored separately; family is tone-free
+I,i,i (pypinyin final; apical subtypes are not separated),tone stored separately; family is tone-free
+U,u,u,tone stored separately; family is tone-free
+V,v,ü,tone stored separately; family is tone-free
+ER,er,er,tone stored separately; family is tone-free

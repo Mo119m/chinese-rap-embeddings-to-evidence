@@ -1,0 +1,123 @@
+{
+  "artifact_id": "chinese-rap-written-rhyme-v1",
+  "checks": [
+    {
+      "check": "public_forbidden_token_scan::abstention_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::abstention_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::analysis_summary.json",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::label_written_rhyme_fingerprints.json",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::label_written_rhyme_summary.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::label_written_rhyme_summary.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::METHOD.md",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::model_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::model_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::muchin_auxiliary_agreement.json",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::paired_model_deltas.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::paired_model_deltas.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::per_label_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::per_label_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::README.md",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::recommender_lookup.json",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::rhyme_class_inventory.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::rhyme_class_inventory.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_token_scan::stratified_metrics.csv",
+      "details": [],
+      "passed": true
+    },
+    {
+      "check": "public_forbidden_column_scan::stratified_metrics.csv",
+      "details": [],
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-25T22:18:31+00:00",
+  "status": "passed",
+  "structural_checks": {
+    "all_204_labels_have_complete_rows_for_every_primary_model": true,
+    "all_labels_have_train_validation_test": true,
+    "all_primary_models_have_full_coverage": true,
+    "all_transitions_are_between_originally_adjacent_lines_in_one_chunk": true,
+    "bootstrap_replicates_at_least_2000": true,
+    "configured_rhyme_family_count": 17,
+    "fingerprint_count": 204,
+    "graph_eligible_label_count": 204,
+    "public_output_contains_no_lyrics_or_private_identifiers": true,
+    "released_recommender_model_matches_selected_primary_model": true,
+    "strict_song_partition_overlap_zero": true,
+    "test_event_count_matches_model_audit": true,
+    "test_leakage_filter_uses_train_and_validation_reference": true
+  },
+  "version": "1.1.0"
+}

@@ -1,0 +1,93 @@
+{
+  "artifact_id": "chinese-rap-written-rhyme-v1",
+  "builder": {
+    "path": "work/build_chinese_rap_written_rhyme_v1.py",
+    "sha256": "57e1b53bf505bde9ba02906db92d3aa4c6f666c7afac5a1cb31d7d356255e47d"
+  },
+  "claim_boundary": "All results concern pypinyin-derived endings of written lyric lines attached to unverified source-credit labels. They do not measure performed rhyme, flow, cadence, beat alignment, pronunciation variants, audio style, or real-world identity.",
+  "classification": "public-safe aggregate written-rhyme analysis",
+  "dependencies": {
+    "numpy": {
+      "module_file_name": "__init__.py",
+      "module_file_sha256": "65d5e777b6d662ba19cb80800bef3eb999eda7aee51eea62c308feabf679dba4",
+      "version": "2.4.6"
+    },
+    "pypinyin": {
+      "module_file_name": "__init__.py",
+      "module_file_sha256": "d76b62b3b5b0b1a8f6f2f834e4c795d6580d9f3d2a9d4243524098217e528160",
+      "version": "0.55.0"
+    },
+    "python_executable_sha256": "e062889e4e300decf318005fd4fbb4e00fe7b94790d157f8ad63b39e46aaea35",
+    "python_version": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:16:45) [MSC v.1942 64 bit (AMD64)]",
+    "scikit_learn": {
+      "module_file_name": "__init__.py",
+      "module_file_sha256": "ee90855901358fefed403675a8e71a0976a8d5c980fa88323e86c0cda99a8968",
+      "version": "1.9.0"
+    }
+  },
+  "generated_at_utc": "2026-08-25T22:18:32+00:00",
+  "input_hashes": {
+    "outputs/chinese-rap-lyrical-repertoire-graph-v2/artist_repertoire_nodes.csv": "543b93a8a3eceb49a7e33619f2994a77659e6d814eda7ea09ace7b230a5a0a69",
+    "work/private-canonical-lyric-text-sidecar-v1/cleaned_analysis_chunks_v1.csv": "d605f5ccdf0004940e0cfe453e2ff527d08dd6d34f843a6afda3aa03926e5730",
+    "work/private-chinese-rap-lyrical-repertoire-graph-v2/artist_chunk_membership_v2.csv": "e46e940d35c40054c8dcc852b6d1ad2b324fe24f6f700138b5d1b18ae05bf863"
+  },
+  "output_files": {
+    "METHOD.md": {
+      "bytes": 6897,
+      "sha256": "649c1777e3aab95ff37264bba01978cc7f580c74da57ea2e045899377b2dfc2b"
+    },
+    "README.md": {
+      "bytes": 1047,
+      "sha256": "2f36b93836e0927032bf67d254fd1c77342df8d601f38ad8abd394ceaf39c91f"
+    },
+    "abstention_metrics.csv": {
+      "bytes": 694,
+      "sha256": "5147814f4d09a59e8176512cf89477d196ee76e4c670405cf2af04e096e6798c"
+    },
+    "analysis_summary.json": {
+      "bytes": 24846,
+      "sha256": "f543e907234d7968e8811f74aa972ecf037166c6fa379d3a4cfb5f299f26d8cf"
+    },
+    "label_written_rhyme_fingerprints.json": {
+      "bytes": 768898,
+      "sha256": "b0e7b05ae9e2ce349ad2b0fff04f1d36bcf1cdd67c3f27ab07e2b150b7270520"
+    },
+    "label_written_rhyme_summary.csv": {
+      "bytes": 42414,
+      "sha256": "bc7a7ea7381177cda4b8c3963bfb5fb442287447098a8afed69ea78f3b36d67a"
+    },
+    "model_metrics.csv": {
+      "bytes": 1782,
+      "sha256": "de62d5f6ae468a53129ecadcd29e235abed95c5f200f5b30956f0051625d57ae"
+    },
+    "muchin_auxiliary_agreement.json": {
+      "bytes": 2265,
+      "sha256": "9358029603d297cf4f0c801b805ad691dd48cbb6e7cd6cfbccc6bc05ca1a92f5"
+    },
+    "paired_model_deltas.csv": {
+      "bytes": 1318,
+      "sha256": "b128291b5d8bd9aad445b35fd280d43dd157df74fac54c0e883c32c6356b186a"
+    },
+    "per_label_metrics.csv": {
+      "bytes": 169446,
+      "sha256": "03a43bfd539123274c997b61ed342623d58039131a64c79ab498fa09f4cca2f7"
+    },
+    "recommender_lookup.json": {
+      "bytes": 345110,
+      "sha256": "404aa31b5b8c2e79c53b25ce6c983171b1f154f3d1a2b294c6bea50e4fd6674d"
+    },
+    "rhyme_class_inventory.csv": {
+      "bytes": 1272,
+      "sha256": "f6f72aabd9c73a7e5e2e173ee2c596c04ee83c77f2767adf6e597a2fe9777e43"
+    },
+    "stratified_metrics.csv": {
+      "bytes": 5007,
+      "sha256": "a3e7fb7c652092b9bb2313091a332ffee813110af2641caa46fb64dfcad12d2e"
+    },
+    "validation.json": {
+      "bytes": 3431,
+      "sha256": "19b614d563471e41f142ee81aa9fb4bba4ead934d472c0c0343469f3ab133c73"
+    }
+  },
+  "version": "1.1.0"
+}

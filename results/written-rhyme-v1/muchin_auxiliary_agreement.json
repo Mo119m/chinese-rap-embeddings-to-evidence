@@ -1,0 +1,51 @@
+{
+  "classified_written_lines": 44980,
+  "comparison_rule": "within each annotated section, mark a line positive when at least one other line has the same derived written-ending family",
+  "confusion": {
+    "false_negative": 36,
+    "false_positive": 5443,
+    "true_negative": 2822,
+    "true_positive": 36679
+  },
+  "dataset": "MuChin V1 1000 publisher-recommended annotation folders included in the local MuChin-V2 repository",
+  "derived_same_family_within_section_positive_rate": 0.936461,
+  "duplicate_policy": "used MuChin1000 folders only, as the publisher recommends for the 724 release overlaps; the combined 6066 JSON was not used",
+  "exact_line_and_section_aligned_song_folders": 1000,
+  "excluded_lines_without_classifiable_Han_ending": 5,
+  "invalid_claims": [
+    "independent gold-standard validation",
+    "Chinese-rap domain validation",
+    "performed-rhyme, flow, cadence, or audio validation"
+  ],
+  "manual_R_positive_rate": 0.816252,
+  "metrics": {
+    "accuracy": 0.87819,
+    "f1": 0.930502,
+    "matthews_correlation": 0.540534,
+    "precision": 0.87078,
+    "recall": 0.999019
+  },
+  "paired_song_folders_found": 1000,
+  "partial_circularity": "MuChin's annotation UI automatically grouped and colour-highlighted line-final pinyin rhymes; annotators were instructed mainly to check polyphonic pronunciation. The exported R marker collapses non-empty group membership and does not retain class identity.",
+  "provenance_hashes": {
+    "annotation_UI_sha256": "75ef25818fc403cd1f32943ee69392507258b0245a0f91f6a5b022b0449ecd42",
+    "backend_character_util_sha256": "41cc247bf44f6eb638072c94726f29a7603fc70e4281a39c4cd93ee56d16b945",
+    "overlap_list_sha256": "0467d76ed365af642fee38dda446bdcff7e08261deedfd910d8d88b0a345e8ce",
+    "root_LICENSE_sha256": "a2e59fcd5cba643405a8e4334d62d13e47ecb7884ed256df390e9e0cdb5b6d25"
+  },
+  "song_cluster_bootstrap_95pct": {
+    "f1": [
+      0.925416,
+      0.935619
+    ],
+    "matthews_correlation": [
+      0.5201,
+      0.559865
+    ],
+    "replicates": 2000
+  },
+  "status": "completed_auxiliary_partially_circular_agreement_check",
+  "use_in_model_selection": false,
+  "use_in_primary_model": false,
+  "valid_claim": "narrow implementation agreement / polyphone-sensitive sanity check only"
+}
