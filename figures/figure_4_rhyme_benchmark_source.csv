@@ -1,21 +1,21 @@
 model,model_short,metric,metric_label,estimate,ci95_lower,ci95_upper,leakage_safe_event_count,song_count,end_to_end_event_coverage,bootstrap_replicates,source
-global_frequency,Global frequency,top1_accuracy,Top-1,0.145603,0.137355,0.154017,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-global_frequency,Global frequency,top3_accuracy,Top-3,0.328129,0.317657,0.338858,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-global_frequency,Global frequency,top5_accuracy,Top-5,0.461695,0.450265,0.473535,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-global_frequency,Global frequency,mrr,MRR,0.313808,0.306585,0.321075,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-first_order_markov,First-order Markov,top1_accuracy,Top-1,0.49606,0.482981,0.508532,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-first_order_markov,First-order Markov,top3_accuracy,Top-3,0.645646,0.633546,0.657176,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-first_order_markov,First-order Markov,top5_accuracy,Top-5,0.729001,0.71839,0.738975,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-first_order_markov,First-order Markov,mrr,MRR,0.608331,0.597486,0.618738,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-flat_sgd_logistic_context,Flat context,top1_accuracy,Top-1,0.498067,0.485773,0.51099,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-flat_sgd_logistic_context,Flat context,top3_accuracy,Top-3,0.693764,0.683863,0.703811,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-flat_sgd_logistic_context,Flat context,top5_accuracy,Top-5,0.773485,0.765695,0.781479,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-flat_sgd_logistic_context,Flat context,mrr,MRR,0.627456,0.617949,0.637437,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,top1_accuracy,Top-1,0.498299,0.485517,0.511438,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,top3_accuracy,Top-3,0.695421,0.685488,0.704942,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,top5_accuracy,Top-5,0.774735,0.767016,0.782341,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,mrr,MRR,0.628165,0.618232,0.638164,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_no_source_label,"Hierarchical, no label",top1_accuracy,Top-1,0.497892,0.484932,0.510792,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_no_source_label,"Hierarchical, no label",top3_accuracy,Top-3,0.694752,0.685104,0.704461,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_no_source_label,"Hierarchical, no label",top5_accuracy,Top-5,0.775171,0.767226,0.782555,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
-hierarchical_sgd_no_source_label,"Hierarchical, no label",mrr,MRR,0.62769,0.617749,0.637547,34395,787,0.9600569418857813,2000,outputs/chinese-rap-written-rhyme-v1/model_metrics.csv
+global_frequency,Global frequency,top1_accuracy,Top-1,0.145603,0.137355,0.154017,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+global_frequency,Global frequency,top3_accuracy,Top-3,0.328129,0.317657,0.338858,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+global_frequency,Global frequency,top5_accuracy,Top-5,0.461695,0.450265,0.473535,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+global_frequency,Global frequency,mrr,MRR,0.313808,0.306585,0.321075,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+first_order_markov,First-order Markov,top1_accuracy,Top-1,0.49606,0.482981,0.508532,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+first_order_markov,First-order Markov,top3_accuracy,Top-3,0.645646,0.633546,0.657176,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+first_order_markov,First-order Markov,top5_accuracy,Top-5,0.729001,0.71839,0.738975,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+first_order_markov,First-order Markov,mrr,MRR,0.608331,0.597486,0.618738,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+flat_sgd_logistic_context,Flat context,top1_accuracy,Top-1,0.498067,0.485773,0.51099,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+flat_sgd_logistic_context,Flat context,top3_accuracy,Top-3,0.693764,0.683863,0.703811,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+flat_sgd_logistic_context,Flat context,top5_accuracy,Top-5,0.773485,0.765695,0.781479,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+flat_sgd_logistic_context,Flat context,mrr,MRR,0.627456,0.617949,0.637437,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,top1_accuracy,Top-1,0.498299,0.485517,0.511438,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,top3_accuracy,Top-3,0.695421,0.685488,0.704942,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,top5_accuracy,Top-5,0.774735,0.767016,0.782341,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,mrr,MRR,0.628165,0.618232,0.638164,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_no_source_label,"Hierarchical, no label",top1_accuracy,Top-1,0.497892,0.484932,0.510792,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_no_source_label,"Hierarchical, no label",top3_accuracy,Top-3,0.694752,0.685104,0.704461,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_no_source_label,"Hierarchical, no label",top5_accuracy,Top-5,0.775171,0.767226,0.782555,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv
+hierarchical_sgd_no_source_label,"Hierarchical, no label",mrr,MRR,0.62769,0.617749,0.637547,34395,787,0.9600569418857813,2000,results/written-rhyme-v1/model_metrics.csv

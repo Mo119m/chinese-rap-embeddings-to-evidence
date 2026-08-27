@@ -1,0 +1,27 @@
+{
+  "artifact_id": "chinese-rap-repertoire-robustness-inference-v1",
+  "checks": [
+    {
+      "name": "private_source_manifest_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "released_edges_equal_two_layer_intersection",
+      "passed": true
+    },
+    {
+      "name": "public_pca_reproduces_from_consensus_vectors",
+      "passed": true
+    },
+    {
+      "name": "primary_null_is_seeded_and_degree_sequence_preserving",
+      "passed": true
+    },
+    {
+      "name": "all_outputs_are_aggregate_only",
+      "passed": true
+    }
+  ],
+  "status": "pass",
+  "version": "1.0.0"
+}

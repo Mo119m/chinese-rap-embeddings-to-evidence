@@ -1,0 +1,38 @@
+{
+  "artifact_id": "chinese-rap-repertoire-robustness-inference-v1",
+  "classification": "public aggregate graph-alignment and projection diagnostics",
+  "output_files": {
+    "METHOD.md": {
+      "bytes": 1441,
+      "sha256": "48a7bb1d854f41f7c557f72fde70c9f7d62a63dc872d5856a092ced55e592822"
+    },
+    "README.md": {
+      "bytes": 682,
+      "sha256": "d449d00c46f2211bdc47a72f3aee3624692151bda36a3df9061bb0c25008d609"
+    },
+    "analysis_summary.json": {
+      "bytes": 2257,
+      "sha256": "533664941e33129a7d5ac57103af4e8f1a80a0dc319d3a43db6fd2bab6e8927e"
+    },
+    "diagnostic_summary.csv": {
+      "bytes": 924,
+      "sha256": "c2de11ffe27beaf5f2426cc2bf5c2d385809571d13a446f12780043563b494fe"
+    },
+    "null_overlap_distribution.csv": {
+      "bytes": 1102,
+      "sha256": "82b740e5f38970712369ea6e2370cc42f72f970057573eb1b271ced11d9f41c9"
+    },
+    "projection_fidelity.csv": {
+      "bytes": 181,
+      "sha256": "ba62ea6f6bc34f96da79ff906949734d3e85e02329858392164640447cd48b47"
+    }
+  },
+  "privacy": "Aggregate statistics only; no lyrics, source-label strings, song/chunk identifiers, vectors, or memberships.",
+  "source_hashes": {
+    "private_graph_manifest_sha256": "27928a300af21b81cca208238a9037384003c85266653ef1af00aa327c5c46ed",
+    "private_vector_archive_sha256": "68c7d165693921d8aa9eff15da47cc11bb1660331c1e7d4a14071de348b97eb2",
+    "private_vector_rowmap_sha256": "2677528ac039a9a578cba7e123d14c398041d5a7859b8cb8adeea047bbf34bb6",
+    "public_graph_manifest_sha256": "d15fd5f4a2819c2cbac9ada8ea21d26037130b066e664ad8290b90e6b7882ed2"
+  },
+  "version": "1.0.0"
+}

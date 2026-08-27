@@ -1,0 +1,26 @@
+system,aggregation,metric,estimate,ci95_lower,ci95_upper,queries,source_credit_labels,global_duplicate_components,within_label_component_units,crossfit_folds,bootstrap_replicates
+BGE-M3 dense cross-fitted,source_credit_label_macro_duplicate_component_adjusted,mrr,0.312232,0.285722,0.339092,5455,204,5430,5432,6,5000
+BGE-M3 dense cross-fitted,source_credit_label_macro_duplicate_component_adjusted,recall_at_1,0.217793,0.191234,0.244768,5455,204,5430,5432,6,5000
+BGE-M3 dense cross-fitted,source_credit_label_macro_duplicate_component_adjusted,recall_at_5,0.396982,0.365787,0.428417,5455,204,5430,5432,6,5000
+BGE-M3 dense cross-fitted,source_credit_label_macro_duplicate_component_adjusted,recall_at_10,0.502429,0.470785,0.532875,5455,204,5430,5432,6,5000
+BGE-M3 dense cross-fitted,source_credit_label_macro_duplicate_component_adjusted,ndcg_at_10,0.345064,0.317376,0.372720,5455,204,5430,5432,6,5000
+TF-IDF inductive train-only,source_credit_label_macro_duplicate_component_adjusted,mrr,0.404763,0.368823,0.440378,5455,204,5430,5432,6,5000
+TF-IDF inductive train-only,source_credit_label_macro_duplicate_component_adjusted,recall_at_1,0.324455,0.287708,0.361386,5455,204,5430,5432,6,5000
+TF-IDF inductive train-only,source_credit_label_macro_duplicate_component_adjusted,recall_at_5,0.477023,0.437173,0.515559,5455,204,5430,5432,6,5000
+TF-IDF inductive train-only,source_credit_label_macro_duplicate_component_adjusted,recall_at_10,0.551857,0.512561,0.590359,5455,204,5430,5432,6,5000
+TF-IDF inductive train-only,source_credit_label_macro_duplicate_component_adjusted,ndcg_at_10,0.429369,0.392493,0.465665,5455,204,5430,5432,6,5000
+TF-IDF matched transductive,source_credit_label_macro_duplicate_component_adjusted,mrr,0.408726,0.372824,0.444381,5455,204,5430,5432,6,5000
+TF-IDF matched transductive,source_credit_label_macro_duplicate_component_adjusted,recall_at_1,0.326963,0.290202,0.364075,5455,204,5430,5432,6,5000
+TF-IDF matched transductive,source_credit_label_macro_duplicate_component_adjusted,recall_at_5,0.485930,0.447025,0.524210,5455,204,5430,5432,6,5000
+TF-IDF matched transductive,source_credit_label_macro_duplicate_component_adjusted,recall_at_10,0.556526,0.518036,0.594509,5455,204,5430,5432,6,5000
+TF-IDF matched transductive,source_credit_label_macro_duplicate_component_adjusted,ndcg_at_10,0.433682,0.396680,0.469753,5455,204,5430,5432,6,5000
+fusion inductive train-only,source_credit_label_macro_duplicate_component_adjusted,mrr,0.439712,0.406116,0.473561,5455,204,5430,5432,6,5000
+fusion inductive train-only,source_credit_label_macro_duplicate_component_adjusted,recall_at_1,0.354809,0.319775,0.390183,5455,204,5430,5432,6,5000
+fusion inductive train-only,source_credit_label_macro_duplicate_component_adjusted,recall_at_5,0.520352,0.484306,0.556132,5455,204,5430,5432,6,5000
+fusion inductive train-only,source_credit_label_macro_duplicate_component_adjusted,recall_at_10,0.604679,0.569925,0.639237,5455,204,5430,5432,6,5000
+fusion inductive train-only,source_credit_label_macro_duplicate_component_adjusted,ndcg_at_10,0.468971,0.435001,0.502978,5455,204,5430,5432,6,5000
+fusion matched transductive,source_credit_label_macro_duplicate_component_adjusted,mrr,0.443394,0.410090,0.477110,5455,204,5430,5432,6,5000
+fusion matched transductive,source_credit_label_macro_duplicate_component_adjusted,recall_at_1,0.358863,0.323671,0.394744,5455,204,5430,5432,6,5000
+fusion matched transductive,source_credit_label_macro_duplicate_component_adjusted,recall_at_5,0.523908,0.487813,0.559938,5455,204,5430,5432,6,5000
+fusion matched transductive,source_credit_label_macro_duplicate_component_adjusted,recall_at_10,0.605413,0.570719,0.640307,5455,204,5430,5432,6,5000
+fusion matched transductive,source_credit_label_macro_duplicate_component_adjusted,ndcg_at_10,0.471992,0.438178,0.506342,5455,204,5430,5432,6,5000

@@ -5,11 +5,16 @@
   "connectedLyricalLabels": 93,
   "repeatableLyricalEdges": 16,
   "repertoireBootstrapReplicates": 250,
+  "repertoireNullReplicates": 10000,
+  "retrievalInductiveFolds": 6,
+  "retrievalInductiveQueries": 5455,
   "nerEntities": 22,
   "nerLinks": 6,
   "nerCoMentions": 4,
+  "nerReleasedClaimAuditOccurrences": 157,
+  "nerReleasedClaimAuditStatus": "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION",
   "rhymeContexts": 373,
   "dictionaryCharacters": 20921,
-  "researchDataSha256": "9d0cca83d51c0eb24b328edfdc315fa658e46fe0fd49083f951f93189e1e139c",
+  "researchDataSha256": "fb65ce00d1d188a4c3b2ec7f5b0a2ed2283c456fb590306e5062bde82e314c27",
   "status": "pass"
 }

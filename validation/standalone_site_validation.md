@@ -2,9 +2,9 @@
 
 **Status:** PASS
 
-**SHA-256:** `bfd730b8c9f0a10681f3c018e169a3b677c9f8bbf9725c1098aa645c96066e69`
+**SHA-256:** `2a69998af24a761b78d6731bac434f9dc51157c5c6ab7ef5a2cc38d53b058d79`
 
-**Size:** 575,614 bytes
+**Size:** 582,105 bytes
 
 - One self-contained HTML file with no external assets.
 - The full 204-label network appears before the focused local network.

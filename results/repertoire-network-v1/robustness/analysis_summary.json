@@ -1,0 +1,67 @@
+{
+  "artifact_id": "chinese-rap-repertoire-robustness-inference-v1",
+  "claim_boundary": "The null tests cross-treatment label alignment, not whether every edge is true or whether real-world cultural structure is non-random. Projection diagnostics evaluate the display, not social or biographical relations.",
+  "graph_alignment_null": {
+    "auxiliary_label_permutation": {
+      "exceedances": 0,
+      "monte_carlo_p_add_one": 9.99990000099999e-06,
+      "null_95_interval": [
+        0.0,
+        3.0
+      ],
+      "null_maximum": 9,
+      "null_mean": 0.97868,
+      "null_replicates": 100000
+    },
+    "estimand": "specific cross-treatment adjacency agreement after controlling the complete sensitivity-layer degree sequence",
+    "exceedances": 0,
+    "monte_carlo_p_add_one": 9.999000099990002e-05,
+    "null_95_interval": [
+      1.0,
+      9.0
+    ],
+    "null_maximum": 13,
+    "null_mean": 4.5243,
+    "null_median": 4.0,
+    "null_model": "degree-preserving double-edge swaps of the sensitivity layer",
+    "null_replicates": 10000,
+    "observed_intersection_edges": 86,
+    "observed_jaccard": 0.4321608,
+    "primary_edges": 140,
+    "seed": 20260827,
+    "sensitivity_edges": 145,
+    "successful_swaps_per_replicate": 1450,
+    "union_edges": 199
+  },
+  "projection_fidelity": {
+    "interpretation": "Use PCA for broad navigation. Read exact relationships from released lines, not screen distance.",
+    "neighbourhood_fidelity": [
+      {
+        "k": 5,
+        "mean_exact_neighbour_overlap": 0.17254902,
+        "random_overlap_expectation": 0.02463054,
+        "trustworthiness": 0.78488896
+      },
+      {
+        "k": 10,
+        "mean_exact_neighbour_overlap": 0.26813725,
+        "random_overlap_expectation": 0.04926108,
+        "trustworthiness": 0.79520726
+      },
+      {
+        "k": 15,
+        "mean_exact_neighbour_overlap": 0.34673203,
+        "random_overlap_expectation": 0.07389163,
+        "trustworthiness": 0.80446322
+      }
+    ],
+    "pairwise_rank_spearman": 0.68028019,
+    "population": 204,
+    "released_edges": 86,
+    "released_edges_at_least_one_way_top5_in_2d": 28,
+    "released_edges_mutual_top5_in_2d": 18,
+    "variance_explained_2d": 0.26195959
+  },
+  "status": "pass",
+  "version": "1.0.0"
+}

@@ -71,6 +71,7 @@ def main() -> None:
     ]
     portable["repertoireGraph"] = site["repertoireGraph"]
     portable["question"] = site["question"]
+    portable["constructDefinition"] = site["constructDefinition"]
     portable["publicBoundary"] = site["publicBoundary"]
 
     linked = {

@@ -25,8 +25,8 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-NER_DIR = ROOT / "outputs" / "chinese-rap-ner-cultural-graph-v1"
-OUTPUT_DIR = ROOT / "outputs" / "chinese-rap-downstream-figures-v1"
+NER_DIR = ROOT / "results" / "ner-v1"
+OUTPUT_DIR = ROOT / "figures"
 
 NER_SUMMARY = NER_DIR / "summary.json"
 NER_SENSITIVITY = NER_DIR / "release_sensitivity_summary.csv"
@@ -637,7 +637,7 @@ def build_figure(
 def figure3_caption_section() -> str:
     return """## Figure 3 — Cultural-reference evidence after leakage and uncertainty controls
 
-**Caption.** Figure 3. Provisional cultural-reference evidence after cross-label exact shared-text exclusion and statistical screening. Panel A keeps three analytical units separate. The candidate inventory falls from 33 corpus-wide entity strings to 23 after shared-text exclusion and to 22 in the fixed 204-label primary universe. Legacy source-label/entity links fall from 85 to 40 after shared-text exclusion; shrinkage, conservative interval, and Benjamini–Hochberg false-discovery-rate gates retain six source-label-to-PLACE enrichments. Legacy co-mention sensitivity used an entity-bearing-song denominator (9 before exclusion; 1 after) and is shown separately from the corrected primary denominator of all 5,681 eligible song units (5 basic-gate candidates; 4 BH-FDR releases). Panel B plots all six released shrunken risk ratios with conservative 95% intervals and BH-adjusted q values. Panel C plots the four released same-song reference co-mentions by normalized pointwise mutual information (NPMI). Human review remains incomplete (0 completed gold reviews), so precision, recall, and F1 are not reported. All findings concern lyric references, not residence, preference, biography, collaboration, influence, or social relationships.
+**Caption.** Fig. 3 Provisional cultural-reference evidence after cross-label exact shared-text exclusion and statistical screening. Panel A keeps three analytical units separate. The candidate inventory falls from 33 corpus-wide entity strings to 23 after shared-text exclusion and to 22 in the fixed 204-label primary universe. Legacy source-label/entity links fall from 85 to 40 after shared-text exclusion; shrinkage, conservative interval, and Benjamini–Hochberg false-discovery-rate gates retain six source-label-to-PLACE enrichments. Legacy co-mention sensitivity used an entity-bearing-song denominator (9 before exclusion; 1 after) and is shown separately from the corrected primary denominator of all 5,681 eligible song units (5 basic-gate candidates; 4 BH-FDR releases). Panel B plots all six released shrunken risk ratios with conservative 95% intervals and BH-adjusted q values. Panel C plots the four released same-song reference co-mentions by normalized pointwise mutual information (NPMI). Human review remains incomplete (0 completed gold reviews), so precision, recall, and F1 are not reported. All findings concern lyric references, not residence, preference, biography, collaboration, influence, or social relationships.
 
 **Alt text.** Three evidence-control cards show separate progressions for entity strings, source-label/entity pairs, and co-mention pairs. The entity inventory decreases from 33 to 23 to 22. Label-to-reference links decrease from 85 to 40 to 6. The co-mention card separates the legacy entity-bearing denominator, which changes from 9 to 1, from the corrected all-5,681-song denominator, which changes from 5 to 4. A log-scale forest plot shows six released source-label-to-place enrichments; every conservative interval is above one. The strongest point estimates are 泰格西 to 湖南 and 黑麦 to 天津, while GALI and 法老 both link to 上海 with smaller but supported enrichments. A compact dot-bar panel shows four released same-song co-mentions: 伦敦–巴黎, 中文–英文, 上海–新疆, and 上海–巴黎. A note states that human gold is incomplete and that the edges are lyric-reference evidence, not biographical or social relations.
 

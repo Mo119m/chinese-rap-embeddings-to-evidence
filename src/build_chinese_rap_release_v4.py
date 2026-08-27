@@ -68,10 +68,15 @@ def manuscript_word_count(markdown: str) -> int:
     return len(body.split())
 
 
-def build_validation() -> dict:
+def build_validation(generated_at_utc: str) -> dict:
     data_path = ROOT / "site" / "app" / "data" / "researchData.json"
     data = json.loads(data_path.read_text(encoding="utf-8"))
     graph = data["repertoireGraph"]
+    alignment_null = graph["alignmentNull"]
+    projection_fidelity = graph["projectionFidelity"]
+    ner_claim_audit = json.loads(
+        (ROOT / "results" / "ner-v1" / "released_claim_audit_status.json").read_text(encoding="utf-8")
+    )
     page_source = (ROOT / "site" / "app" / "page.tsx").read_text(encoding="utf-8")
     portable_source = (ROOT / "index.html").read_text(encoding="utf-8")
     figure_validation = json.loads((ROOT / "figures" / "journal_figure_validation.json").read_text(encoding="utf-8"))
@@ -82,6 +87,11 @@ def build_validation() -> dict:
         "global_network_86_released_edges": graph["retainedEdges"] == 86,
         "global_network_16_repeatable_edges": graph["repeatableEdges"] == 16,
         "global_network_93_connected_labels": graph["connectedLabels"] == 93,
+        "graph_alignment_primary_null_degree_preserving": alignment_null["null_model"] == "degree-preserving double-edge swaps of the sensitivity layer",
+        "graph_alignment_primary_null_10000_replicates": alignment_null["null_replicates"] >= 10_000,
+        "graph_alignment_observed_exceeds_null_maximum": alignment_null["observed_intersection_edges"] == graph["retainedEdges"] and alignment_null["observed_intersection_edges"] > alignment_null["null_maximum"],
+        "projection_fidelity_matches_released_graph": projection_fidelity["population"] == graph["eligibleLabels"] and projection_fidelity["released_edges"] == graph["retainedEdges"],
+        "projection_fidelity_reports_k5_k10_k15": [row["k"] for row in projection_fidelity["neighbourhood_fidelity"]] == [5, 10, 15],
         "global_before_local_in_application": page_source.index("<GlobalRepertoireGraph") < page_source.index("FOCUSED VIEW"),
         "edge_rule_and_repeatability_explained": all(term in page_source for term in ("Why there is a line", "Returned in", "repeated song samples")),
         "portable_global_network_present": all(term in portable_source for term in ("overview-canvas", "The full repertoire landscape", "FOCUSED VIEW")),
@@ -89,6 +99,9 @@ def build_validation() -> dict:
         "four_primary_co_mentions": len(data["ner"]["coMentions"]) == 4,
         "six_primary_label_reference_links": len(data["ner"]["links"]) == 6,
         "human_gold_not_overclaimed": data["ner"]["humanGoldAvailable"] is False,
+        "ner_released_claim_audit_package_passes": ner_claim_audit["validation"]["package_generation"] == "pass",
+        "ner_released_claim_audit_covers_every_released_occurrence": ner_claim_audit["validation"]["released_claim_occurrence_coverage"] == 1.0,
+        "ner_released_claim_audit_metrics_remain_withheld": ner_claim_audit["status"] == "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION" and ner_claim_audit["global_ner_benchmark"]["precision_recall_f1"] == "WITHHELD",
         "rhyme_held_out_events": data["rhyme"]["testEvents"] == 34395,
         "journal_figures_pass": figure_validation["status"] == "pass",
         "journal_figures_600_dpi": all(check["passed"] for check in figure_validation["checks"] if check["name"] == "all_rasters_exact_600dpi"),
@@ -107,7 +120,7 @@ def build_validation() -> dict:
     rhyme = next(row for row in data["rhyme"]["metrics"] if row["model"] == "hierarchical_sgd_context")
     return {
         "artifact": "Chinese_Rap_Research_Release_V4",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": generated_at_utc,
         "status": "pass_for_public_release_author_actions_required_before_journal_submission",
         "public_release_ready": True,
         "journal_submission_ready": False,
@@ -121,6 +134,10 @@ def build_validation() -> dict:
                 "repeatable_edges_at_50pct_gate": graph["repeatableEdges"],
                 "bootstrap_replicates": graph["bootstrapReplicates"],
                 "pca_2d_variance": graph["pcaVariance2d"],
+                "degree_preserving_null_replicates": alignment_null["null_replicates"],
+                "degree_preserving_null_mean_edges": alignment_null["null_mean"],
+                "degree_preserving_null_p_add_one": alignment_null["monte_carlo_p_add_one"],
+                "pca_trustworthiness_at_5": projection_fidelity["neighbourhood_fidelity"][0]["trustworthiness"],
             },
             "held_out_retrieval": {
                 "fusion_mrr": fusion["mrr"]["estimate"],
@@ -131,6 +148,8 @@ def build_validation() -> dict:
                 "released_label_reference_edges": len(data["ner"]["links"]),
                 "released_same_song_reference_pairs": len(data["ner"]["coMentions"]),
                 "human_gold_complete": data["ner"]["humanGoldAvailable"],
+                "released_claim_occurrences_queued_for_dual_review": ner_claim_audit["scope"]["unique_contributing_occurrence_rows"],
+                "released_claim_audit_status": ner_claim_audit["status"],
             },
             "written_rhyme": {
                 "held_out_events": data["rhyme"]["testEvents"],
@@ -151,7 +170,7 @@ def build_validation() -> dict:
             "partial_or_human_required": [
                 "NER occurrence accuracy cannot be reported until the planned dual human review is completed.",
                 "The 204 source-credit labels are not globally verified artist identities; only four title-field corrections have approved external evidence.",
-                "Authors must supply names, affiliations, funding, conflicts, CRediT roles, corpus provenance, rights, ethics determination, exact AI disclosure, licence, and archival DOI.",
+                "Authors must supply affiliations, funding, conflicts, CRediT roles, corpus provenance, corpus-rights documentation, ethics determination, exact AI disclosure, and an archival DOI.",
             ],
         },
         "artifact_hashes": {
@@ -181,8 +200,8 @@ def build_submission(validation: dict) -> None:
         ROOT / "validation" / "dsh_submission_style_lint.json": SUBMISSION / "dsh_submission_style_lint.json",
         ROOT / "validation" / "dsh_submission_a11y.json": SUBMISSION / "dsh_submission_a11y.json",
     }
-    # The 600-dpi TIFFs are ~156 MB and byte-identical to figures/. Reference them
-    # there instead of shipping a second copy in every clone.
+    # The four 600-dpi TIFFs total about 130 MB and are byte-identical to the
+    # canonical copies under figures/. Do not ship a second copy in every clone.
     for number in range(1, 5):
         for suffix in ("pdf", "svg"):
             files[ROOT / "figures" / f"fig{number}.{suffix}"] = SUBMISSION / f"fig{number}.{suffix}"
@@ -198,12 +217,12 @@ Prepared for *Digital Scholarship in the Humanities* technical requirements chec
 - `manuscript.docx` — double-spaced English manuscript, under 9,000 words excluding references, with structured abstract, keywords, data-availability statement, AI-disclosure placeholder, and figure legends/alt text collected at the end. Figures are not embedded.
 - `supplementary_methods.docx` — reproducibility and public/private-boundary supplement.
 - `fig1.pdf`–`fig4.pdf` and `fig1.svg`–`fig4.svg` — vector submission artwork.
-- `../../figures/fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload these four files from `figures/` alongside this bundle; they are not duplicated here because each copy adds about 156 MB to every clone. Their checksums are recorded in `journal_figure_validation.json`.
+- `fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload the canonical files from the release-root Figures directory (`figures/` in the repository; `Figures/` in the desktop package). They are not duplicated here because the four files total about 130 MB. Their checksums are recorded in `journal_figure_validation.json`.
 - PDF files are previews for author checking; upload policy should follow the journal portal.
 
 ## Stop before submission
 
-The computational release is complete, but the responsible authors must still enter factual author names, affiliations, corresponding-author email, funding, conflict of interest, CRediT roles, corpus acquisition/provenance, rights/licence basis, ethics determination, exact AI-tool/model disclosure, repository licence, and archival DOI. NER precision/recall/F1 must remain unreported until dual human review is complete.
+The computational release is complete and its repository licences are fixed. Before submission, the responsible authors must still enter factual affiliations, corresponding-author email, funding, conflict of interest, CRediT roles, corpus acquisition/provenance, corpus-rights basis, ethics determination, exact AI-tool/model disclosure, and archival DOI. NER precision/recall/F1 must remain unreported until dual human review is complete.
 """
     write_text(SUBMISSION / "README_BEFORE_SUBMISSION.md", readme)
     manifest_files = sorted(path for path in SUBMISSION.rglob("*") if path.is_file() and path.name != "MANIFEST.json")
@@ -261,6 +280,13 @@ def write_release_manifests(validation: dict) -> None:
     )
 
     selected = [
+        ROOT / ".gitattributes",
+        ROOT / ".python-version",
+        ROOT / ".github" / "workflows" / "release-integrity.yml",
+        ROOT / "README.md",
+        ROOT / "LICENSE",
+        ROOT / "LICENSE-CODE",
+        ROOT / "requirements.txt",
         ROOT / "index.html",
         ROOT / "site" / "app" / "data" / "researchData.json",
         ROOT / "paper" / "manuscript.md",
@@ -271,13 +297,30 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.docx",
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.pdf",
         ROOT / "figures" / "journal_figure_validation.json",
+        ROOT / "figures" / "manifest.json",
+        ROOT / "methods" / "NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
+        ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
+        ROOT / "src" / "build_ner_released_claim_audit_v1.py",
+        ROOT / "src" / "build_repertoire_robustness_inference_v1.py",
+        ROOT / "src" / "build_retrieval_inductive_sensitivity_v1.py",
+        ROOT / "src" / "build_chinese_rap_release_v4.py",
+        ROOT / "src" / "normalize_public_text_v1.py",
+        ROOT / "src" / "restore_committed_bytes_v1.py",
+        ROOT / "src" / "update_public_result_manifests_v1.py",
+        ROOT / "src" / "validate_public_release_integrity_v1.py",
         ROOT / "submission" / "dsh" / "MANIFEST.json",
         ROOT / "validation" / "release_validation.json",
         ROOT / "validation" / "standalone_site_validation.json",
         ROOT / "validation" / "portable_site_manifest.json",
     ]
+    robustness_dir = ROOT / "results" / "repertoire-network-v1" / "robustness"
+    selected.extend(sorted(path for path in robustness_dir.iterdir() if path.is_file()))
+    retrieval_sensitivity_dir = ROOT / "results" / "retrieval-inductive-sensitivity-v1"
+    selected.extend(sorted(path for path in retrieval_sensitivity_dir.iterdir() if path.is_file()))
     for number in range(1, 5):
         selected.extend(ROOT / "figures" / f"fig{number}.{suffix}" for suffix in ("tif", "pdf", "svg"))
+    if len(selected) != len(set(selected)):
+        raise RuntimeError("Core release manifest contains duplicate paths")
     manifest = {
         "artifact": "chinese-rap-public-release-core-manifest-v4",
         "generated_at_utc": validation["generated_at_utc"],
@@ -318,7 +361,15 @@ The interactive result now starts with the complete 204-label map. Selecting a n
 - `Validation/RELEASE_READINESS_V4.md` — a plain-language Done / Partial / Human required audit.
 - `Reproducibility/` — deterministic builders and application source.
 
-The computational/public release is ready to share. Journal submission still requires author identity, provenance, rights, ethics, contribution, disclosure, licence, and DOI facts; NER precision/recall/F1 remains pending human annotation.
+The computational/public release is ready to share. Journal submission still requires affiliations, provenance, corpus-rights documentation, ethics, contribution, disclosure, and DOI facts; NER precision/recall/F1 remains pending human annotation.
+"""
+
+
+DESKTOP_PROJECT_README = README_FIRST + """
+
+## Licence
+
+Copyright © 2026 Moshi Fu. The manuscript, figures, methods, documentation, and aggregate result data are released under [CC BY 4.0](LICENSE). The build and validation code is released under the [MIT Licence](LICENSE-CODE). Neither licence covers the underlying lyric corpus, which is not redistributed.
 """
 
 
@@ -328,22 +379,64 @@ def copy_tree(source: Path, target: Path, ignore=None) -> None:
     shutil.copytree(source, target, dirs_exist_ok=True, ignore=ignore)
 
 
+def remove_previous_generated_files(target: Path) -> None:
+    """Remove only files declared by the previous desktop-package manifest."""
+    manifest_path = target / "Validation" / "RELEASE_PACKAGE_MANIFEST.json"
+    if not manifest_path.is_file():
+        return
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    root = target.resolve()
+    declared: list[Path] = []
+    for record in manifest.get("files", []):
+        candidate = (target / record["path"]).resolve()
+        if root not in candidate.parents:
+            raise RuntimeError(f"Refusing to remove escaped desktop-package path: {candidate}")
+        declared.append(candidate)
+    declared.append(manifest_path.resolve())
+    for path in declared:
+        if path.is_file():
+            path.unlink()
+    for directory in sorted((path for path in target.rglob("*") if path.is_dir()), key=lambda item: len(item.parts), reverse=True):
+        try:
+            directory.rmdir()
+        except OSError:
+            pass
+
+
 def build_desktop_release(target: Path, validation: dict) -> Path:
     safe_prepare_onedrive_dir(target, target.parent, "Chinese_Rap_Research_Release_V4")
+    remove_previous_generated_files(target)
+    undeclared = sorted(path.relative_to(target).as_posix() for path in target.rglob("*") if path.is_file())
+    if undeclared:
+        raise RuntimeError(
+            "Desktop target contains files not declared by its previous release manifest; "
+            f"refusing to package them: {undeclared}"
+        )
     write_text(target / "START_HERE.html", START_HERE)
     write_text(target / "README_FIRST.md", README_FIRST)
-    copy_file(ROOT / "README.md", target / "PROJECT_README.md")
+    write_text(target / "PROJECT_README.md", DESKTOP_PROJECT_README)
+    copy_file(ROOT / "LICENSE", target / "LICENSE")
+    copy_file(ROOT / "LICENSE-CODE", target / "LICENSE-CODE")
     copy_file(ROOT / "index.html", target / "Website" / "index.html")
 
     for path in (ROOT / "paper").iterdir():
         if path.is_file() and path.suffix.lower() in {".md", ".docx", ".pdf"}:
             copy_file(path, target / "Paper" / path.name)
     copy_tree(ROOT / "figures", target / "Figures")
-    for name in ("input-audit-v1", "retrieval-v1", "repertoire-network-v1", "ner-v1", "written-rhyme-v1"):
+    for name in (
+        "input-audit-v1",
+        "retrieval-v1",
+        "retrieval-inductive-sensitivity-v1",
+        "repertoire-network-v1",
+        "ner-v1",
+        "written-rhyme-v1",
+    ):
         copy_tree(ROOT / "results" / name, target / "Results" / name)
     copy_tree(ROOT / "methods", target / "Methods")
     copy_tree(SUBMISSION, target / "Submission_DSH")
     copy_tree(ROOT / "src", target / "Reproducibility" / "src", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    copy_file(ROOT / ".python-version", target / "Reproducibility" / ".python-version")
+    copy_file(ROOT / "requirements.txt", target / "Reproducibility" / "requirements.txt")
     copy_tree(
         ROOT / "site",
         target / "Reproducibility" / "site",
@@ -379,9 +472,26 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--desktop", type=Path, help="Build the complete V4 release at this exact directory")
+    timestamp = parser.add_mutually_exclusive_group()
+    timestamp.add_argument("--generated-at-utc", help="Use this ISO-8601 timestamp in generated manifests")
+    timestamp.add_argument(
+        "--reuse-generated-at",
+        action="store_true",
+        help="Reuse generated_at_utc from validation/release_validation.json for an idempotent rebuild",
+    )
     args = parser.parse_args()
 
-    validation = build_validation()
+    if args.generated_at_utc:
+        generated_at_utc = args.generated_at_utc
+    elif args.reuse_generated_at:
+        existing_path = ROOT / "validation" / "release_validation.json"
+        if not existing_path.is_file():
+            raise FileNotFoundError(f"Cannot reuse a missing validation timestamp: {existing_path}")
+        generated_at_utc = json.loads(existing_path.read_text(encoding="utf-8"))["generated_at_utc"]
+    else:
+        generated_at_utc = datetime.now(timezone.utc).isoformat()
+
+    validation = build_validation(generated_at_utc)
     write_text(ROOT / "validation" / "release_validation.json", json.dumps(validation, ensure_ascii=False, indent=2))
     readiness = """# Release Readiness V4
 
@@ -391,6 +501,7 @@ def main() -> None:
 - **Global → local network:** the application first shows all 204 eligible source-credit labels, 86 released reciprocal edges, 93 connected labels, and a 16-edge ≥50% repeatability view; clicking any node opens its focused network below.
 - **Useful relationship explanation:** every local edge states the mutual-top-five rule, its auxiliary vocabulary/written-ending/writing-form signal when gated, and its return count across 250 song-level resamples.
 - **Meaningful downstream evaluation:** retrieval uses held-out songs and paired uncertainty; cultural-reference links use shared-text exclusion, support, conservative intervals, and BH-FDR; written-ending prediction uses song-held-out evaluation, baselines, ablation, calibration, and switch diagnostics.
+- **Released-claim audit prepared:** a private, blinded dual-review package covers all 157 occurrences supporting the 10 released cultural-reference claims; the public protocol and aggregate status expose coverage and hashes without lyric contexts or locators.
 - **No Command-F-style output:** the release does not expose a generic word-occurrence search. Search is limited to choosing a source label or supplying a written ending to an evaluated model/table.
 - **Academic presentation:** the manuscript is English, double-spaced, under 9,000 words before references, uses a structured abstract and Oxford HUMSOC citations, and separates upload figures. The four figures are 6.5 inches wide, 600 dpi, and at least 7 pt at print size.
 - **Claim boundaries:** source-credit labels are not verified people; textual proximity is not friendship/collaboration/influence; cultural references are not biography/residence/preference; dictionary pinyin is not audio rhyme/flow/beat.

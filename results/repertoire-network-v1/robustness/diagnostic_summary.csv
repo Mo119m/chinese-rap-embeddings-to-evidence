@@ -1,0 +1,8 @@
+metric,value,unit,plain_english
+observed_cross_treatment_edge_intersection,86,edges,The same 86 reciprocal edges survive both text treatments.
+degree_preserving_null_expected_intersection,4.5243,edges,Random rewiring with every label's degree fixed produces only a few shared edges on average.
+degree_preserving_null_monte_carlo_p_add_one,0.00009999,probability,"None of 10,000 degree-preserving random graphs approached the observed overlap."
+label_permutation_null_expected_intersection,0.9787,edges,Random source-label correspondence produces about one shared edge on average.
+pca_trustworthiness_at_5,0.78488896,0-1,The map preserves broad local structure but not every exact neighbour.
+pca_exact_top5_overlap,0.17254902,share,Only about one sixth of exact high-dimensional top-five neighbours remain top-five on the page.
+pca_pairwise_rank_spearman,0.68028019,correlation,Overall pair ordering is moderately preserved.

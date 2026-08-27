@@ -1,0 +1,4 @@
+k,trustworthiness,mean_exact_neighbour_overlap,random_overlap_expectation
+5,0.78488896,0.17254902,0.02463054
+10,0.79520726,0.26813725,0.04926108
+15,0.80446322,0.34673203,0.07389163

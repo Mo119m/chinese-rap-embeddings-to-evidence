@@ -1,4 +1,4 @@
-﻿system,task_role,source_credit_label,queries,within_label_component_units,mrr,recall_at_1,recall_at_5,recall_at_10,ndcg_at_10,median_true_label_rank,most_common_incorrect_top1_source_credit_label,share_of_incorrect_group_weight_for_common_top1
+system,task_role,source_credit_label,queries,within_label_component_units,mrr,recall_at_1,recall_at_5,recall_at_10,ndcg_at_10,median_true_label_rank,most_common_incorrect_top1_source_credit_label,share_of_incorrect_group_weight_for_common_top1
 BGE-M3 dense (strict),primary_comparison,Six City,9,9,0.779669,0.777778,0.777778,0.777778,0.777778,1.000000,C-Block,0.500000
 BGE-M3 dense (strict),primary_comparison,王以太,24,24,0.149856,0.041667,0.208333,0.333333,0.178531,23.000000,孔令奇,0.086957
 BGE-M3 dense (strict),primary_comparison,王嘉尔,37,37,0.806861,0.783784,0.837838,0.891892,0.824574,1.000000,Nxmad诺曼得,0.500000

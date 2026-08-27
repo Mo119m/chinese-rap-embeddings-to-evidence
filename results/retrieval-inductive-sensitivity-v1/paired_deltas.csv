@@ -1,0 +1,21 @@
+comparison,left_system,right_system,metric,estimate_delta,ci95_lower,ci95_upper,interval_direction,paired_two_stage_bootstrap_replicates
+TF-IDF matched transductive minus inductive train-only,TF-IDF matched transductive,TF-IDF inductive train-only,mrr,0.003963,0.001020,0.006942,left_higher,5000
+TF-IDF matched transductive minus inductive train-only,TF-IDF matched transductive,TF-IDF inductive train-only,recall_at_1,0.002508,-0.002307,0.007292,interval_includes_zero,5000
+TF-IDF matched transductive minus inductive train-only,TF-IDF matched transductive,TF-IDF inductive train-only,recall_at_5,0.008907,0.004476,0.013749,left_higher,5000
+TF-IDF matched transductive minus inductive train-only,TF-IDF matched transductive,TF-IDF inductive train-only,recall_at_10,0.004669,0.000676,0.009091,left_higher,5000
+TF-IDF matched transductive minus inductive train-only,TF-IDF matched transductive,TF-IDF inductive train-only,ndcg_at_10,0.004313,0.001758,0.007017,left_higher,5000
+fusion matched transductive minus inductive train-only,fusion matched transductive,fusion inductive train-only,mrr,0.003681,0.001413,0.006416,left_higher,5000
+fusion matched transductive minus inductive train-only,fusion matched transductive,fusion inductive train-only,recall_at_1,0.004055,0.000139,0.008223,left_higher,5000
+fusion matched transductive minus inductive train-only,fusion matched transductive,fusion inductive train-only,recall_at_5,0.003556,-0.000254,0.007959,interval_includes_zero,5000
+fusion matched transductive minus inductive train-only,fusion matched transductive,fusion inductive train-only,recall_at_10,0.000734,-0.002466,0.003938,interval_includes_zero,5000
+fusion matched transductive minus inductive train-only,fusion matched transductive,fusion inductive train-only,ndcg_at_10,0.003020,0.000981,0.005352,left_higher,5000
+inductive fusion minus inductive TF-IDF,fusion inductive train-only,TF-IDF inductive train-only,mrr,0.034949,0.024373,0.046082,left_higher,5000
+inductive fusion minus inductive TF-IDF,fusion inductive train-only,TF-IDF inductive train-only,recall_at_1,0.030354,0.017390,0.044310,left_higher,5000
+inductive fusion minus inductive TF-IDF,fusion inductive train-only,TF-IDF inductive train-only,recall_at_5,0.043329,0.028701,0.058755,left_higher,5000
+inductive fusion minus inductive TF-IDF,fusion inductive train-only,TF-IDF inductive train-only,recall_at_10,0.052822,0.037790,0.069343,left_higher,5000
+inductive fusion minus inductive TF-IDF,fusion inductive train-only,TF-IDF inductive train-only,ndcg_at_10,0.039603,0.029242,0.050867,left_higher,5000
+matched-transductive fusion minus matched-transductive TF-IDF,fusion matched transductive,TF-IDF matched transductive,mrr,0.034667,0.024254,0.045845,left_higher,5000
+matched-transductive fusion minus matched-transductive TF-IDF,fusion matched transductive,TF-IDF matched transductive,recall_at_1,0.031901,0.018554,0.046044,left_higher,5000
+matched-transductive fusion minus matched-transductive TF-IDF,fusion matched transductive,TF-IDF matched transductive,recall_at_5,0.037978,0.023387,0.052969,left_higher,5000
+matched-transductive fusion minus matched-transductive TF-IDF,fusion matched transductive,TF-IDF matched transductive,recall_at_10,0.048887,0.034482,0.064733,left_higher,5000
+matched-transductive fusion minus matched-transductive TF-IDF,fusion matched transductive,TF-IDF matched transductive,ndcg_at_10,0.038310,0.027770,0.049624,left_higher,5000

@@ -1,4 +1,4 @@
-# Versions recovered from the final analysis environment.
+# Versions recovered from the final CPython 3.12.13 analysis environment.
 # The historical BGE device/CUDA/use_fp16 state was not recorded; see Supplementary Methods.
 FlagEmbedding==1.4.0
 huggingface-hub==1.27.0

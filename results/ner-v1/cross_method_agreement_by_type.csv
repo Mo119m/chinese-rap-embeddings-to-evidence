@@ -1,4 +1,4 @@
-﻿entity_type,lexicon_candidate_spans_on_unique_line_frame,transformer_candidate_spans_on_unique_line_frame,exact_span_type_agreements_on_unique_line_frame,strict_high_consistency_spans_on_unique_line_frame,exact_agreement_per_lexicon_candidate_span,exact_agreement_per_transformer_candidate_span,metric_boundary
+entity_type,lexicon_candidate_spans_on_unique_line_frame,transformer_candidate_spans_on_unique_line_frame,exact_span_type_agreements_on_unique_line_frame,strict_high_consistency_spans_on_unique_line_frame,exact_agreement_per_lexicon_candidate_span,exact_agreement_per_transformer_candidate_span,metric_boundary
 BRAND_OR_PRODUCT,1535,153,7,4,0.00456,0.045752,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
 ETHNOCULTURAL_GROUP_REFERENCE,273,138,20,19,0.07326,0.144928,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"
 EVENT,103,16,3,3,0.029126,0.1875,"unique-line candidate agreement only; not occurrence counts, precision, recall, or F1"

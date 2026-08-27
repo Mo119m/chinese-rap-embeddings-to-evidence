@@ -1,0 +1,7 @@
+fold,train_queries,test_queries,train_global_duplicate_components,test_global_duplicate_components,test_source_credit_labels,minimum_test_components_per_label,median_test_components_per_label,maximum_test_components_per_label,minimum_training_components_per_label,median_training_components_per_label,maximum_training_components_per_label,inductive_tfidf_features,matched_transductive_tfidf_features,fold_runtime_seconds
+1,4545,910,4525,905,204,1,4.000000,8,5,22.000000,40,150000,150000,76.174
+2,4546,909,4525,905,204,1,4.000000,8,5,22.000000,40,150000,150000,70.295
+3,4546,909,4525,905,204,1,4.000000,8,5,22.500000,40,150000,150000,83.521
+4,4546,909,4525,905,204,1,4.000000,8,5,22.000000,40,150000,150000,74.503
+5,4546,909,4525,905,204,1,4.000000,8,5,22.000000,40,150000,150000,83.147
+6,4546,909,4525,905,204,1,4.000000,8,5,22.000000,40,150000,150000,100.923

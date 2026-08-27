@@ -1,0 +1,73 @@
+name: Release integrity
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Ubuntu / core.autocrlf=input
+            os: ubuntu-latest
+            autocrlf: input
+          - name: Windows / core.autocrlf=true
+            os: windows-latest
+            autocrlf: "true"
+
+    steps:
+      - name: Configure checkout line endings
+        shell: bash
+        run: git config --global core.autocrlf "${{ matrix.autocrlf }}"
+
+      - name: Check out committed bytes
+        uses: actions/checkout@v4
+
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check source syntax
+        run: python -m compileall -q src
+
+      - name: Check UTF-8 and LF contract
+        run: python src/normalize_public_text_v1.py
+
+      - name: Validate committed release
+        run: python src/validate_public_release_integrity_v1.py
+
+      - name: Prove release rebuild is idempotent
+        run: python src/build_chinese_rap_release_v4.py --reuse-generated-at
+
+      - name: Validate rebuilt release
+        run: python src/validate_public_release_integrity_v1.py
+
+      - name: Reject stale or untracked generated artifacts
+        shell: bash
+        run: |
+          git diff --check
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - name: Build desktop release outside the checkout
+        run: python src/build_chinese_rap_release_v4.py --reuse-generated-at --desktop "${{ runner.temp }}/Chinese_Rap_Research_Release_V4"
+
+      - name: Validate desktop directory and ZIP
+        run: python src/validate_public_release_integrity_v1.py --desktop "${{ runner.temp }}/Chinese_Rap_Research_Release_V4"
+
+      - name: Confirm desktop build did not alter the release
+        shell: bash
+        run: |
+          git diff --check
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"

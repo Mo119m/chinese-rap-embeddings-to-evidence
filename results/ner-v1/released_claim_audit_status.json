@@ -1,0 +1,71 @@
+{
+  "artifact_id": "chinese-rap-ner-released-claim-audit-v1",
+  "evidence_boundary": "The package covers every occurrence contributing to the currently released NER edges and co-mentions. It is claim-conditioned, includes no corpus-wide negative frame, and therefore cannot establish corpus-wide NER precision, recall, or F1. Public claims remain provisional until dual review, adjudication, and gate reruns are complete.",
+  "generated_at_utc": "2026-08-27T19:32:22.000143Z",
+  "global_ner_benchmark": {
+    "completed_gold_items": 0,
+    "planned_dual_review_items": 800,
+    "precision_recall_f1": "WITHHELD",
+    "status": "NOT_COMPLETED"
+  },
+  "input_lineage": {
+    "builder_code_sha256": "98265a9a0f71ffb1f38cae287a5da42243f9e92e2e831ca12e7379356ebf15f6",
+    "private_candidate_occurrences_sha256": "3ac7a41cc971e34b2314c87d3c50c11c95af039e278b851cc144a8c553daa5e4",
+    "private_source_manifest_sha256": "e02383ab43ce3c7ec43c290d3986e2d14c5185962803919c9a118d2ea22f1465",
+    "protocol_sha256": "c5a88b14e0d832082862f23c9534d257edd1749440f65bfa2095f0b419fa936e",
+    "released_entity_co_mentions_sha256": "619c32c0b285570eec4ebbbaf29dacf6784f15ccfa9af4afa3c41c46720d1a07",
+    "released_source_label_entity_links_sha256": "8ea0bc80f84837a162b8808216e282bd725f4a4c141ee3f3a8aec25a36ca9b96"
+  },
+  "next_action": "Two independent reviewers complete their blinded occurrence and co-mention sheets; an adjudicator then resolves disagreements before control identities are revealed and the original release gates are rerun.",
+  "privacy": {
+    "private_package_classification": "PRIVATE_LOCAL_ONLY_CONTAINS_COPYRIGHTED_LYRIC_CONTEXTS_AND_SOURCE_LOCATORS",
+    "private_package_location_published": false,
+    "public_lyric_or_context_rows": 0,
+    "public_song_or_chunk_locators": 0
+  },
+  "protocol": "methods/NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
+  "review_progress": {
+    "co_mention_tasks_adjudicated": 0,
+    "occurrence_tasks_adjudicated": 0,
+    "reviewer_1_co_mention_decisions_completed": 0,
+    "reviewer_1_occurrence_decisions_completed": 0,
+    "reviewer_2_co_mention_decisions_completed": 0,
+    "reviewer_2_occurrence_decisions_completed": 0
+  },
+  "scope": {
+    "co_mention_contributing_occurrence_rows": 60,
+    "co_mention_pair_review_tasks_total": 31,
+    "link_claim_song_unit_memberships": 46,
+    "link_contributing_occurrence_rows": 102,
+    "occurrence_review_tasks_total": 193,
+    "overlapping_link_and_co_mention_occurrence_rows": 5,
+    "real_co_mention_comparator_tasks": 8,
+    "real_comparator_controls": 20,
+    "released_claims_total": 10,
+    "released_co_mention_claims": 4,
+    "released_co_mention_pair_tasks": 23,
+    "released_link_claims": 6,
+    "synthetic_boundary_controls": 16,
+    "unique_co_mention_support_song_units": 22,
+    "unique_contributing_occurrence_rows": 157,
+    "unique_link_support_song_units": 46
+  },
+  "status": "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION",
+  "targeted_audit_metrics": {
+    "co_mention_support_confirmation": "WITHHELD_PENDING_ADJUDICATION",
+    "inter_annotator_agreement": "WITHHELD_PENDING_BOTH_REVIEWERS",
+    "released_claim_occurrence_confirmation_rate": "WITHHELD_PENDING_ADJUDICATION",
+    "synthetic_boundary_attention_control_pass_rate": "WITHHELD_PENDING_REVIEW"
+  },
+  "validation": {
+    "package_generation": "pass",
+    "private_manifest_sha256": "28047168e60ac42a0cdd3ce5d7ac4a01fb95f692282ff98a2714f544bad79636",
+    "private_validation_sha256": "9afa3af210ee443ad6b913b877887a4df5df663fdb2e9de0cd5b8613f35c34cb",
+    "released_claim_occurrence_coverage": 1.0,
+    "released_co_mention_support_reconciliation": "pass",
+    "released_link_support_reconciliation": "pass",
+    "review_templates_blank": true,
+    "reviewer_claim_and_control_status_blinded": true
+  },
+  "version": "1.0.0"
+}

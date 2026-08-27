@@ -72,16 +72,23 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .global-network-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 30px; align-items: end; padding: 24px 26px 20px; }
 .global-network-head h2, .local-network-head h2 { margin: 8px 0 7px; font-size: clamp(25px, 2.7vw, 42px); line-height: 1; letter-spacing: -.035em; }
 .global-network-head p:not(.micro-label), .local-network-head > p:last-child { max-width: 790px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
-.network-toggle { display: grid; grid-template-columns: 1fr 1fr; min-width: 330px; border: 1px solid var(--ink); }
-.network-toggle button { min-height: 44px; border: 0; border-right: 1px solid var(--ink); background: transparent; padding: 9px 12px; font-size: 10px; font-weight: 800; cursor: pointer; }
-.network-toggle button:last-child { border-right: 0; }
-.network-toggle button.active { background: var(--ink); color: #fff; }
+.global-controls { display: grid; gap: 8px; }
+.network-toggle, .view-toggle { display: grid; grid-template-columns: 1fr 1fr; min-width: 330px; border: 1px solid var(--ink); }
+.network-toggle button, .view-toggle button { min-height: 44px; border: 0; border-right: 1px solid var(--ink); background: transparent; padding: 9px 12px; font-size: 10px; font-weight: 800; cursor: pointer; }
+.network-toggle button:last-child, .view-toggle button:last-child { border-right: 0; }
+.network-toggle button.active, .view-toggle button.active { background: var(--ink); color: #fff; }
 .global-counts { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--paper-2); }
 .global-counts div { min-height: 74px; padding: 14px 20px; border-right: 1px solid var(--ink); }
 .global-counts div:last-child { border-right: 0; }
 .global-counts b, .global-counts span { display: block; }
 .global-counts b { font: 900 25px/1 ui-monospace, monospace; }
 .global-counts span { margin-top: 8px; color: var(--muted); font-size: 9px; font-weight: 750; text-transform: uppercase; letter-spacing: .07em; }
+.robustness-proof { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--ink); background: #fffef9; }
+.robustness-proof > div { padding: 17px 20px; border-right: 1px solid var(--ink); }
+.robustness-proof > div:last-child { border-right: 0; }
+.robustness-proof span { display: block; color: var(--blue); font: 800 8px/1 ui-monospace, monospace; letter-spacing: .12em; }
+.robustness-proof b { display: block; margin-top: 8px; font-size: 14px; line-height: 1.25; }
+.robustness-proof p { margin: 7px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
 .global-canvas { position: relative; overflow: hidden; background: var(--ink); }
 .global-canvas::before { content: ''; position: absolute; inset: 0; opacity: .12; background-image: linear-gradient(#777 1px, transparent 1px), linear-gradient(90deg,#777 1px, transparent 1px); background-size: 42px 42px; }
 .global-canvas svg { position: relative; display: block; width: 100%; height: auto; min-height: 480px; }
@@ -95,6 +102,14 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .global-legend i { width: 17px; height: 3px; border-radius: 3px; }
 .global-legend .node-key { width: 9px; height: 9px; border-radius: 50%; background: #f8f5ed; }
 .global-legend b { color: #fff; }
+.graph-table-wrap { max-height: 620px; overflow: auto; border-top: 1px solid var(--ink); background: var(--white); }
+.graph-table-wrap table { width: 100%; border-collapse: collapse; font-size: 11px; line-height: 1.45; }
+.graph-table-wrap caption { padding: 14px 20px; color: var(--muted); text-align: left; font-weight: 700; }
+.graph-table-wrap th, .graph-table-wrap td { padding: 11px 14px; border-top: 1px solid var(--line); border-right: 1px solid var(--line); text-align: left; vertical-align: top; }
+.graph-table-wrap th:last-child, .graph-table-wrap td:last-child { border-right: 0; }
+.graph-table-wrap thead th { position: sticky; top: 0; z-index: 1; background: var(--ink); color: #fff; font: 800 9px/1.25 ui-monospace, monospace; letter-spacing: .05em; text-transform: uppercase; }
+.graph-table-wrap tbody th { min-width: 150px; background: var(--paper); }
+.graph-table-wrap tbody th button { border: 0; background: transparent; padding: 0; color: var(--blue); font-weight: 850; text-align: left; cursor: pointer; }
 .map-boundary { margin: 0; padding: 14px 22px; border-top: 1px solid var(--ink); color: #4e5864; background: var(--paper); font-size: 11px; line-height: 1.55; }
 .local-network-head { scroll-margin-top: 18px; padding: 4px 2px 18px; }
 .workspace { border: 1px solid var(--ink); background: var(--white); }
@@ -269,7 +284,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   .task-card h2 { margin-top: 45px; }
   .tool-intro { grid-template-columns: 1fr; gap: 22px; }
   .global-network-head { grid-template-columns: 1fr; gap: 18px; }
-  .network-toggle { min-width: 0; }
+  .network-toggle, .view-toggle { min-width: 0; }
+  .robustness-proof { grid-template-columns: 1fr; }
+  .robustness-proof > div { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .robustness-proof > div:last-child { border-bottom: 0; }
   .global-counts { grid-template-columns: repeat(2,1fr); }
   .global-counts div:nth-child(2) { border-right: 0; }
   .global-counts div:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
@@ -297,9 +315,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   .tool-shell { padding-top: 25px; }
   .tool-intro h1 { font-size: 42px; }
   .global-network-head { padding: 20px; }
-  .network-toggle { grid-template-columns: 1fr; }
-  .network-toggle button { border-right: 0; border-bottom: 1px solid var(--ink); }
-  .network-toggle button:last-child { border-bottom: 0; }
+  .network-toggle, .view-toggle { grid-template-columns: 1fr; }
+  .network-toggle button, .view-toggle button { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .network-toggle button:last-child, .view-toggle button:last-child { border-bottom: 0; }
+  .graph-table-wrap { max-height: 520px; }
   .global-canvas { overflow-x: auto; }
   .global-canvas svg { width: 980px; min-height: 470px; }
   .graph-stage svg { min-height: 500px; }

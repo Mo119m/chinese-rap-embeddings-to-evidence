@@ -16,24 +16,24 @@
       "sha256": "8181520652a1a482fef3d54ebca82c2e7873f6c760cb81c1c8345c4e97ac9e2b"
     },
     "coverage.csv": {
-      "bytes": 1311,
-      "sha256": "898e3a93f1b1a8783cfb3ef0eb332ba884f26dd86c22ec7031cae9c405382588"
+      "bytes": 1308,
+      "sha256": "6db13f3413e38123111737c24cf658fdb7cff87fd083e3ecbdc9c3440e323d33"
     },
     "label_level_examples.csv": {
-      "bytes": 4042,
-      "sha256": "dc710f2f0ecfe8755369893ea73a780d22d48ff1b6dcc83aaf9a375655439cea"
+      "bytes": 4039,
+      "sha256": "4230ac18676bb5712e0b31481e958e9a1ad02b2b74ec76dbc78dae337dd0b216"
     },
     "metrics.csv": {
-      "bytes": 9022,
-      "sha256": "a88a1c6b38736e0c4c4b5dc77338c1c84ea88c8cb226052192cec8c5a10928c3"
+      "bytes": 9019,
+      "sha256": "88c4012c2fdc1efde4dae989e020af8adb63d2d4deb7b801842efa5308fe8852"
     },
     "per_label_metrics.csv": {
-      "bytes": 181320,
-      "sha256": "014933b5d2b660e71c641c0fc4e02dec8a8ea7bd71321247b3675dd3c8407284"
+      "bytes": 181317,
+      "sha256": "6674eb14f0b8436e8d5d0bc92645b92b9db9809ebb5ae9876f6f245fa96dc9ca"
     },
     "uncertainty.csv": {
-      "bytes": 2709,
-      "sha256": "5ba77bffea4b30e8578dddb1a8f60ba47bada5886e1a7289daf2f558aad1e376"
+      "bytes": 2706,
+      "sha256": "bb317062179a7d5e3ddcc0f75cc0592b46239e8684c0df106a1781ccfeafffb3"
     },
     "validation.json": {
       "bytes": 2510,

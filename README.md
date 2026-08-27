@@ -56,6 +56,8 @@ Source-credit labels are corpus provenance, not verified natural-person identiti
 
 The pipeline order and expected private inputs are documented in [`methods/METHODS_AND_LIMITS.md`](methods/METHODS_AND_LIMITS.md). Researchers must supply a lawfully accessible copy of the frozen corpus and private derived sidecars; the copyrighted lyric text is not redistributed here.
 
+The frozen analysis artifacts record CPython 3.12.13. Cross-platform integrity checks run on Python 3.12, while the source syntax requires Python 3.10 or newer. The historical BGE-M3 device, CUDA, and half-precision state was not retained, so the release does not claim CPU/GPU or fp32/fp16 invariance.
+
 ## Licence
 
 Copyright © 2026 Moshi Fu.
@@ -66,18 +68,22 @@ Neither licence covers the underlying lyric corpus, which is not redistributed h
 
 ## Integrity
 
-Every published SHA-256 manifest hashes the bytes as committed, and `.gitattributes` disables line-ending translation so a checkout is byte-identical on Windows, macOS, and Linux. To verify a clone:
+Every published SHA-256 manifest hashes the bytes as committed, and `.gitattributes` disables line-ending translation so a checkout is byte-identical on Windows, macOS, and Linux. To verify a clone on any of those platforms:
 
 ```
-python - <<'EOF'
-import hashlib, json, pathlib
-root = pathlib.Path('.')
-manifest = json.loads((root / 'validation' / 'MANIFEST.json').read_text(encoding='utf-8'))
-bad = [f['path'] for f in manifest['files']
-       if hashlib.sha256((root / f['path']).read_bytes()).hexdigest() != f['sha256']]
-print('MISMATCH:', bad) if bad else print(f"all {len(manifest['files'])} files verified")
-EOF
+python src/validate_public_release_integrity_v1.py
 ```
+
+### Existing Windows checkouts
+
+A Windows checkout created before the repository adopted the byte-exact `.gitattributes` policy can remain clean in `git status` while still containing historical CRLF working-tree bytes. After pulling the current release, first preserve any tracked work on another branch or in a backup and return to a clean checkout of the release commit. Then run:
+
+```
+python src/restore_committed_bytes_v1.py
+python src/validate_public_release_integrity_v1.py
+```
+
+The restore helper reads every tracked file from its staged Git blob, writes those exact bytes atomically, verifies the result, and leaves untracked files alone. It refuses to run when tracked changes are present. Do not use `git add --renormalize .` for this migration: that changes staged content instead of restoring the published bytes.
 
 ## Submission status
 

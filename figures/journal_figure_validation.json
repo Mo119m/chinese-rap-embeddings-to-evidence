@@ -1,6 +1,6 @@
 {
   "artifact_id": "chinese-rap-journal-figures-v1",
-  "generated_at_utc": "2026-08-26T19:17:43.117988Z",
+  "generated_at_utc": "2026-08-27T19:42:50.142236Z",
   "status": "pass",
   "journal_canvas_width_inches": 6.5,
   "minimum_visible_font_pt_required": 7.0,
@@ -299,49 +299,49 @@
     {
       "path": "figures/fig1.pdf",
       "bytes": 57693,
-      "sha256": "2d0e393fc3b87c25d64c713aa1bccdf1b1c28f890a2603b3761731b9798d63ec",
+      "sha256": "424e38cd10b41ed68654e35b79a6cb764beb6d92ed15ba16b8d5d3088fb0cb68",
       "format": "PDF"
     },
     {
       "path": "figures/fig1.svg",
-      "bytes": 12547,
-      "sha256": "9180c5cfecd5e86542df0fcda7ddc3636c9c88056746ec54bf709a875b22d4c8",
+      "bytes": 12801,
+      "sha256": "a325f7966f01a068a4ef71546c3aafa1a47d25f9501fce55ea8bea6c3d4c7bf7",
       "format": "SVG"
     },
     {
       "path": "figures/fig2.pdf",
       "bytes": 48279,
-      "sha256": "077b3dfdb362ef18eb0cfc78abad7bca294d450fc5c8f22225ac6a54022cd79e",
+      "sha256": "44c7c9975f148f82a554df4a7193206efe49cfae7a8110de9f352c97f99335cf",
       "format": "PDF"
     },
     {
       "path": "figures/fig2.svg",
-      "bytes": 46464,
-      "sha256": "671624c81c884cf2ffe79c20af673443065825afa8fe755cce27481f5b30bb48",
+      "bytes": 47545,
+      "sha256": "c60dabd1361921d019e8ec553e41840933015873538655b4f2290b2d2a6e45ba",
       "format": "SVG"
     },
     {
       "path": "figures/fig3.pdf",
       "bytes": 81069,
-      "sha256": "8f43179227d408d8b36eaf60b72963474bd126bc50e703db043919972760e764",
+      "sha256": "ebb39ea1b5ca3c4e906ba0ff1af99076e5a368ab26d8553324a0fdca0a48bdc7",
       "format": "PDF"
     },
     {
       "path": "figures/fig3.svg",
-      "bytes": 37123,
-      "sha256": "0375d055d8c39d7ebbb522cc7d118554a14b86b79a5f743d555f42d258793fa3",
+      "bytes": 37977,
+      "sha256": "771499e296743cb10978f21b05987a7312374c8016f4a775f05403878cd1e056",
       "format": "SVG"
     },
     {
       "path": "figures/fig4.pdf",
       "bytes": 57192,
-      "sha256": "e0362136af992751c159373c8a03b9ef85ef9f3b994637b1f86402ba2a1d7779",
+      "sha256": "d9ee88dcd13c55d3b813c5ec074f24a06ba4ed2bba84b6e4f5fc5838fdfcba2c",
       "format": "PDF"
     },
     {
       "path": "figures/fig4.svg",
-      "bytes": 56530,
-      "sha256": "26cfc6eb7da1eca1ad025e5b6eae58cd1f64ec4ecc5835ee0a5d8f0af862e4e9",
+      "bytes": 57966,
+      "sha256": "02d50020e0501e1d354ac06e0ee94360771697d0d19691b18b8e5b76c1989ee8",
       "format": "SVG"
     }
   ],

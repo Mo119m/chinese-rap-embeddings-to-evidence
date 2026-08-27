@@ -179,7 +179,7 @@ def build() -> None:
     stage = Path(tempfile.mkdtemp(prefix=f".{ARTIFACT_ID}-", dir=OUT.parent))
     try:
         (stage / "analysis_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
-        with (stage / "quality_checks.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+        with (stage / "quality_checks.csv").open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(handle, fieldnames=["name", "passed", "value", "expected", "downstream_risk_if_failed"], lineterminator="\n")
             writer.writeheader()
             for item in checks:

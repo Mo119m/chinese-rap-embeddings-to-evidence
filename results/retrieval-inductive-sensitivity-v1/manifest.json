@@ -1,0 +1,50 @@
+{
+  "artifact_id": "retrieval-inductive-sensitivity-v1",
+  "claim_boundary": "Grouped cross-fitted held-out-song retrieval of corpus source-credit-label lyrical-repertoire similarity. The comparison isolates lexical vocabulary/IDF exposure within this fixed corpus; it is not artist identification, biography, influence, collaboration, genre, social relation, or external-population performance.",
+  "classification": "public aggregate-only grouped cross-fitted retrieval sensitivity",
+  "files": {
+    "METHOD.md": {
+      "bytes": 5592,
+      "sha256": "2283bcb8352319ab2376bb72118c9974694b39f16f9bf5f6b73f0e261c2606ea"
+    },
+    "README.md": {
+      "bytes": 1735,
+      "sha256": "debacda0bf77d456ac30c46e36c28d82cd3866ebe3e953d0f7cbe8dc316daf89"
+    },
+    "analysis_summary.json": {
+      "bytes": 11048,
+      "sha256": "ea6baa757343a875965f12ce772a27f47544e019ff39c1e60e136f77a6a38910"
+    },
+    "fold_summary.csv": {
+      "bytes": 860,
+      "sha256": "0e15c600a741af03194d8a70ff63bfccaa6f70a19985f2f9df6669c75935e22a"
+    },
+    "metrics.csv": {
+      "bytes": 3829,
+      "sha256": "4382f0812790b95ccda774ad59f3e1ccdfadc4612e880181dbb7f07caa2734f5"
+    },
+    "paired_deltas.csv": {
+      "bytes": 3441,
+      "sha256": "1a4c405e386b3941f8353064bad02dee69debe79367963dc0956c28e543bb750"
+    },
+    "validation.json": {
+      "bytes": 2737,
+      "sha256": "29770f8a945dc412934aac2417ed303e8e096c83f721660775c6b3eb7e44d1ae"
+    }
+  },
+  "generated_at_utc": "2026-08-27T19:23:11Z",
+  "lineage": {
+    "builder_code_sha256": "5225003d28781375906e9b9ff60dc97b5f9a84aae5fa9490e518b16adb88fb63",
+    "clean_embedding_contract_sha256": "d65a446dc8ac3cb9fb5f513c63e9d10a3f6a94a6c1cebd28953b045170600c5b",
+    "clean_text_validation_sha256": "4cba2f7d9b9bf16a7e82513b09d63015010ca48454a6daea2f20c41bd2b94fc8",
+    "encoder_benchmark_results_sha256": "4658998ff8434ca213ffdb83dffb2b243700565b4486e32aed4609ce98321b19",
+    "encoder_benchmark_summary_sha256": "bb935704718ac0099a648c6f1f19bab2b29d37441de1d3e94bc9bf79c1ef493f",
+    "graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_query_audit_sha256": "42b81abb1befead35cb6a26feca5db944c6551eba5f799bcd17928cc811d0e14",
+    "private_retrieval_manifest_sha256": "f8574b9033adfaaca6f2504ac4de18cf8ce10b906fb58b0223ac86f613611098",
+    "source_retrieval_manifest_sha256": "facd87827a50767e7507d7dc039d4b16dbb97870af5fb26c44e05bcd54fd3f3c",
+    "source_retrieval_validation_sha256": "397cbb179e413a5bb6c8d6d7a8065283374ad01e8b48e1d1386301c2efe65a4c"
+  },
+  "version": "1.0.0"
+}

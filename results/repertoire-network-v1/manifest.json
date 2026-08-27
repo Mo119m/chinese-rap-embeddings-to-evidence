@@ -13,24 +13,29 @@
   "components": {
     "graph": {
       "artifact_id": "chinese-rap-lyrical-repertoire-graph-v2",
-      "manifest_sha256": "bbb546d4b9f68220245b91998242de3f016886d391a887d7c5618e60e7b4237d",
+      "manifest_sha256": "d15fd5f4a2819c2cbac9ada8ea21d26037130b066e664ad8290b90e6b7882ed2",
       "validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6"
     },
     "profiles": {
       "artifact_id": "chinese-rap-interpretable-profiles-v1",
-      "manifest_sha256": "7128bf340bf8902948f5efad614b1daf13717d0ef3efb77218940770f08b4431",
+      "manifest_sha256": "8a09c96849e858d1ac735cc927f9856786d464095809fe106812c627bfdd4c5c",
       "validation_sha256": "68703d6e0339a812b9c650e59f6654a295774fb7fd108f26435e4e725bdba358"
     },
     "bootstrap": {
       "artifact_id": "chinese-rap-edge-bootstrap-v1",
-      "manifest_sha256": "b47969ebc5ee414825fc52391055b59eb2153e8ee3907c6e7e06926087bb2006",
+      "manifest_sha256": "a42e314a49f7898463d2c85c62fd962a9a9b0951189d75be9505355db20b369b",
       "validation_sha256": "0644969e447d5d91f4255960741f1e3ce880ab0432b46fcfbf151e136d42391e"
+    },
+    "robustness": {
+      "artifact_id": "chinese-rap-repertoire-robustness-inference-v1",
+      "manifest_sha256": "0c5462a111b80a31a6fb803ed18e411501215ac54646d75b30e2abd49c411d5c",
+      "validation_sha256": "29429f0db1120e5aa25a2da0391a68e51dc99c13f51f385b1499411ebbccf5cb"
     }
   },
   "validation": {
     "file": "validation.json",
-    "bytes": 1832,
-    "sha256": "b0cfed9b734ef073513ea019b892d4943bb89804be57028d217085536c33869c"
+    "bytes": 2121,
+    "sha256": "8e148b8f03f0e5f4479c123bfb84ccf766cba48a7f6a8f74783cd269a9b0da4e"
   },
   "privacy": "Aggregate source-label evidence only; no lyric text, song/chunk identifiers, membership rows, or embeddings.",
   "claim_boundary": "Lyrical-repertoire proximity between source-credit-labelled corpus slices; not verified identity, biography, popularity, affiliation, genre, collaboration, influence, social relationship, audio performance, or flow."

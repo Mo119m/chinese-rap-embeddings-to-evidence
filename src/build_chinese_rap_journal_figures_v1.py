@@ -37,6 +37,27 @@ FIGURE_DIR = ROOT / "figures"
 DPI = 600
 MIN_FONT_PT = 7.0
 
+PUBLIC_LINEAGE_PATHS = [
+    "src/build_chinese_rap_downstream_figures_v1.py",
+    "src/build_chinese_rap_figure_3_v1.py",
+    "src/build_chinese_rap_journal_figures_v1.py",
+    "results/input-audit-v1/analysis_summary.json",
+    "results/retrieval-v1/analysis_summary.json",
+    "results/retrieval-v1/metrics.csv",
+    "results/retrieval-v1/uncertainty.csv",
+    "results/ner-v1/entity_co_mentions_provisional.csv",
+    "results/ner-v1/reconciliation_validation.json",
+    "results/ner-v1/release_sensitivity_summary.csv",
+    "results/ner-v1/source_label_entity_links_provisional.csv",
+    "results/ner-v1/summary.json",
+    "results/ner-v1/validation.json",
+    "results/written-rhyme-v1/analysis_summary.json",
+    "results/written-rhyme-v1/model_metrics.csv",
+    "results/written-rhyme-v1/paired_model_deltas.csv",
+    "results/written-rhyme-v1/stratified_metrics.csv",
+    "methods/RESEARCH_CONTRACT.md",
+]
+
 ARIAL = Path("C:/Windows/Fonts/arial.ttf")
 ARIAL_BOLD = Path("C:/Windows/Fonts/arialbd.ttf")
 CJK = Path("C:/Windows/Fonts/msyh.ttc")
@@ -879,9 +900,23 @@ def update_manifest(exports: list[dict[str, Any]], validation_path: Path) -> Non
         }
         for item in exports
     }
-    manifest.setdefault("lineage", {})["journal_builder"] = {
-        "path": "src/build_chinese_rap_journal_figures_v1.py",
-        "sha256": sha256(Path(__file__).resolve()),
+    if "historical_render_lineage" not in manifest:
+        manifest["historical_render_lineage"] = {
+            "status": "historical_build_workspace_not_fully_public",
+            "note": "Preserved for provenance only. These original paths are not presented as public, checkout-verifiable lineage.",
+            "records": manifest.get("lineage", {}),
+        }
+    manifest["lineage"] = {
+        "status": "public_checkout_verifiable",
+        "note": "Published sources are value-equivalent promotions of the aggregate inputs used for the historical render; paths, bytes, and hashes below resolve in this repository.",
+        "public_files": [
+            {
+                "path": relative,
+                "bytes": (ROOT / relative).stat().st_size,
+                "sha256": sha256(ROOT / relative),
+            }
+            for relative in PUBLIC_LINEAGE_PATHS
+        ],
     }
     manifest["files"] = [
         {"path": f"figures/{file.name}", "bytes": file.stat().st_size, "sha256": sha256(file)}
