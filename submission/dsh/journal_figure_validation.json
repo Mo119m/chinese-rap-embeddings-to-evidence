@@ -304,8 +304,8 @@
     },
     {
       "path": "figures/fig1.svg",
-      "bytes": 12801,
-      "sha256": "fff289622b53f992052d1aa86f008a961323f186b673cd12170dc7d740950258",
+      "bytes": 12547,
+      "sha256": "9180c5cfecd5e86542df0fcda7ddc3636c9c88056746ec54bf709a875b22d4c8",
       "format": "SVG"
     },
     {
@@ -316,8 +316,8 @@
     },
     {
       "path": "figures/fig2.svg",
-      "bytes": 47545,
-      "sha256": "4aa5da9569f7b4c107589db494a9501d68a8cdb10684ed4e75c5982fde2efe3e",
+      "bytes": 46464,
+      "sha256": "671624c81c884cf2ffe79c20af673443065825afa8fe755cce27481f5b30bb48",
       "format": "SVG"
     },
     {
@@ -328,8 +328,8 @@
     },
     {
       "path": "figures/fig3.svg",
-      "bytes": 37977,
-      "sha256": "6af802dab4b5a6076284f8e5b2c47e3ee09c827381a871dad76f8fa97680c7da",
+      "bytes": 37123,
+      "sha256": "0375d055d8c39d7ebbb522cc7d118554a14b86b79a5f743d555f42d258793fa3",
       "format": "SVG"
     },
     {
@@ -340,8 +340,8 @@
     },
     {
       "path": "figures/fig4.svg",
-      "bytes": 57966,
-      "sha256": "fb32f1b82b6e501f0c8297232750b81020b366596264efb4ac00109352152365",
+      "bytes": 56530,
+      "sha256": "26cfc6eb7da1eca1ad025e5b6eae58cd1f64ec4ecc5835ee0a5d8f0af862e4e9",
       "format": "SVG"
     }
   ],

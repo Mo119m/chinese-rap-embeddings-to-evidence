@@ -6,13 +6,13 @@
   "files": [
     {
       "path": "dsh_submission_a11y.json",
-      "bytes": 175,
-      "sha256": "5fe3805dfe1180fb4b3bc1e60390da7cf1278927c28905f3e6976223b22ee9a0"
+      "bytes": 166,
+      "sha256": "2952501963e3f39696efea5a33fd1eca698abc07d90799dafc05cba099ee8b51"
     },
     {
       "path": "dsh_submission_style_lint.json",
-      "bytes": 3967,
-      "sha256": "7fa2b6b50d733782181b80edcb3d4f56a0f3448f075c1eb56852b2cf9da2b921"
+      "bytes": 3796,
+      "sha256": "fc34b5cd2637836f59245d95917bd99ce88a47a9614becaa3dd71da2a8103226"
     },
     {
       "path": "fig1.pdf",
@@ -21,8 +21,8 @@
     },
     {
       "path": "fig1.svg",
-      "bytes": 12801,
-      "sha256": "fff289622b53f992052d1aa86f008a961323f186b673cd12170dc7d740950258"
+      "bytes": 12547,
+      "sha256": "9180c5cfecd5e86542df0fcda7ddc3636c9c88056746ec54bf709a875b22d4c8"
     },
     {
       "path": "fig1.tif",
@@ -36,8 +36,8 @@
     },
     {
       "path": "fig2.svg",
-      "bytes": 47545,
-      "sha256": "4aa5da9569f7b4c107589db494a9501d68a8cdb10684ed4e75c5982fde2efe3e"
+      "bytes": 46464,
+      "sha256": "671624c81c884cf2ffe79c20af673443065825afa8fe755cce27481f5b30bb48"
     },
     {
       "path": "fig2.tif",
@@ -51,8 +51,8 @@
     },
     {
       "path": "fig3.svg",
-      "bytes": 37977,
-      "sha256": "6af802dab4b5a6076284f8e5b2c47e3ee09c827381a871dad76f8fa97680c7da"
+      "bytes": 37123,
+      "sha256": "0375d055d8c39d7ebbb522cc7d118554a14b86b79a5f743d555f42d258793fa3"
     },
     {
       "path": "fig3.tif",
@@ -66,8 +66,8 @@
     },
     {
       "path": "fig4.svg",
-      "bytes": 57966,
-      "sha256": "fb32f1b82b6e501f0c8297232750b81020b366596264efb4ac00109352152365"
+      "bytes": 56530,
+      "sha256": "26cfc6eb7da1eca1ad025e5b6eae58cd1f64ec4ecc5835ee0a5d8f0af862e4e9"
     },
     {
       "path": "fig4.tif",
@@ -82,7 +82,7 @@
     {
       "path": "journal_figure_validation.json",
       "bytes": 9279,
-      "sha256": "6a7525b254f40d604ef8a1946bab2a7e46f60a75aaaf343fd77002e8ecf2a0ea"
+      "sha256": "9b99baa6fff76fe513e1d20771a453d650cdbd654dee769e4eea8a3b07e7c21a"
     },
     {
       "path": "manuscript.docx",
