@@ -86,7 +86,7 @@ def main() -> None:
 
     html = replace_payload(html, "research-data", portable)
     html = replace_payload(html, "character-map", character_map)
-    HTML_PATH.write_text(html, encoding="utf-8")
+    HTML_PATH.write_text(html, encoding="utf-8", newline="\n")
 
     html_bytes = html.encode("utf-8")
     manifest = {
@@ -101,7 +101,7 @@ def main() -> None:
         "status": "pass",
     }
     MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
-    MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
 
 

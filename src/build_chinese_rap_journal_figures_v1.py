@@ -806,13 +806,12 @@ def update_primary_validation(journal_validation: dict[str, Any]) -> None:
         "figure_3_image_dimensions_and_tiff_600dpi",
         "figures_1_2_4_unchanged",
     }
-    checks = [check for check in original.get("checks", []) if check.get("name") not in stale_names]
     raster_details = [
         item
         for item in journal_validation["raster_audit"]
         if item["path"].endswith(".png") or item["path"].endswith(".tiff")
     ]
-    checks.extend(
+    journal_checks = (
         [
             {
                 "name": "journal_descriptive_rasters_exact_600dpi",
@@ -841,6 +840,11 @@ def update_primary_validation(journal_validation: dict[str, Any]) -> None:
             },
         ]
     )
+    # Replace, never append: re-running the builder must not stack a second copy of
+    # these checks on top of the previous run's now-stale hashes.
+    replaced_names = stale_names | {check["name"] for check in journal_checks}
+    checks = [check for check in original.get("checks", []) if check.get("name") not in replaced_names]
+    checks.extend(journal_checks)
     original["generated_at_utc"] = journal_validation["generated_at_utc"]
     original["status"] = "pass" if all(check.get("passed") for check in checks) else "fail"
     original["confidence"] = "ready_to_share" if original["status"] == "pass" else "needs_revision"

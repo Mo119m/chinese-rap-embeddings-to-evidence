@@ -97,7 +97,7 @@ def atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def atomic_write_csv(path: Path, columns: list[str], rows: list[dict[str, Any]]) -> None:
     output = io.StringIO(newline="")
-    writer = csv.DictWriter(output, fieldnames=columns, extrasaction="raise")
+    writer = csv.DictWriter(output, fieldnames=columns, extrasaction="raise", lineterminator="\n")
     writer.writeheader()
     for row in rows:
         writer.writerow({column: row.get(column, "") for column in columns})

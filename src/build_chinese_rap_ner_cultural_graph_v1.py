@@ -208,6 +208,7 @@ def write_json(path: Path, payload: Any) -> None:
     path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True, default=convert) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
 
 
@@ -218,7 +219,7 @@ def write_csv(path: Path, rows: Iterable[dict[str, Any]], columns: list[str] | N
             if column not in df.columns:
                 df[column] = ""
         df = df[columns]
-    df.to_csv(path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
+    df.to_csv(path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL, lineterminator="\n")
     return df
 
 
@@ -2502,7 +2503,7 @@ def main() -> None:
         "exact_span_type_agreement_unique_line_spans": exact_unique_line_spans,
     }
     write_json(args.public_output / "summary.json", summary)
-    (args.public_output / "SCHEMA_AND_ANNOTATION.md").write_text(schema_document(len(tasks)), encoding="utf-8")
+    (args.public_output / "SCHEMA_AND_ANNOTATION.md").write_text(schema_document(len(tasks)), encoding="utf-8", newline="\n")
     (args.public_output / "METHOD.md").write_text(
         method_document(chunks, lexicon, tasks, model_provenance, existing_audit, public_diagnostics),
         encoding="utf-8",
@@ -2515,7 +2516,7 @@ Start with `summary.json`, `release_sensitivity_summary.csv`, and `source_label_
 
 **Evidence boundary:** there is no completed human occurrence gold. Occurrence counts are repeated corpus spans, not independent samples. Shared exact cleaned text is excluded from label associations and co-mentions. Every released result remains provisional; co-mention is a text pattern, never collaboration, influence, identity, or a social relationship.
 """
-    (args.public_output / "README.md").write_text(readme, encoding="utf-8")
+    (args.public_output / "README.md").write_text(readme, encoding="utf-8", newline="\n")
 
     manifest = {
         "artifact_id": ARTIFACT_ID,

@@ -718,9 +718,9 @@ def main() -> None:
     PUBLIC_DATA_DIR.mkdir(parents=True, exist_ok=True)
     encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     characters_encoded = json.dumps(character_map, ensure_ascii=False, separators=(",", ":"))
-    (SITE_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8")
-    (SITE_DATA_DIR / "characterToRhymeFamily.json").write_text(characters_encoded, encoding="utf-8")
-    (PUBLIC_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8")
+    (SITE_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8", newline="\n")
+    (SITE_DATA_DIR / "characterToRhymeFamily.json").write_text(characters_encoded, encoding="utf-8", newline="\n")
+    (PUBLIC_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8", newline="\n")
 
     manifest = {
         "artifact": "chinese-rap-results-site-data-v1",
