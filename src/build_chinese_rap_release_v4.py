@@ -111,7 +111,7 @@ def build_validation() -> dict:
         "status": "pass_for_public_release_author_actions_required_before_journal_submission",
         "public_release_ready": True,
         "journal_submission_ready": False,
-        "central_question": "How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?",
+        "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
         "checks": assertions,
         "headline_results": {
             "global_repertoire_map": {
@@ -181,8 +181,10 @@ def build_submission(validation: dict) -> None:
         ROOT / "validation" / "dsh_submission_style_lint.json": SUBMISSION / "dsh_submission_style_lint.json",
         ROOT / "validation" / "dsh_submission_a11y.json": SUBMISSION / "dsh_submission_a11y.json",
     }
+    # The 600-dpi TIFFs are ~156 MB and byte-identical to figures/. Reference them
+    # there instead of shipping a second copy in every clone.
     for number in range(1, 5):
-        for suffix in ("tif", "pdf", "svg"):
+        for suffix in ("pdf", "svg"):
             files[ROOT / "figures" / f"fig{number}.{suffix}"] = SUBMISSION / f"fig{number}.{suffix}"
     for source, target in files.items():
         copy_file(source, target)
@@ -195,7 +197,8 @@ Prepared for *Digital Scholarship in the Humanities* technical requirements chec
 
 - `manuscript.docx` — double-spaced English manuscript, under 9,000 words excluding references, with structured abstract, keywords, data-availability statement, AI-disclosure placeholder, and figure legends/alt text collected at the end. Figures are not embedded.
 - `supplementary_methods.docx` — reproducibility and public/private-boundary supplement.
-- `fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. PDF and SVG companions are included for editorial flexibility.
+- `fig1.pdf`–`fig4.pdf` and `fig1.svg`–`fig4.svg` — vector submission artwork.
+- `../../figures/fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload these four files from `figures/` alongside this bundle; they are not duplicated here because each copy adds about 156 MB to every clone. Their checksums are recorded in `journal_figure_validation.json`.
 - PDF files are previews for author checking; upload policy should follow the journal portal.
 
 ## Stop before submission
@@ -301,7 +304,7 @@ README_FIRST = """# Chinese Rap Research Release V4
 
 Double-click `START_HERE.html`.
 
-The release has one theme: **how Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme**.
+The release has one theme: **how Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme**.
 
 The interactive result now starts with the complete 204-label map. Selecting a node opens the smaller focused network below it; every released line states its reciprocal-match rule, auxiliary writing signal, and return count across 250 song-level resamples. The same application includes statistically screened cultural references and an evaluated written-ending task.
 
@@ -403,7 +406,7 @@ def main() -> None:
 
 - Complete author names, affiliations, corresponding-author email, funding, conflict of interest, and CRediT roles.
 - Supply documented corpus acquisition, sampling, dates, temporal coverage, lyric origin, custody, rights/licence basis, ethics determination, and access policy.
-- Choose a repository licence, mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
+- Mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
 - Complete dual human NER review before reporting precision, recall, or F1.
 
 The computational and public-share package passes its V4 checks. It is **not** marked journal-submission-ready until the author-owned facts above are supplied.

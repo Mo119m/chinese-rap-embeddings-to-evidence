@@ -54,13 +54,13 @@
     },
     {
       "path": "submission/dsh/MANIFEST.json",
-      "bytes": 3470,
-      "sha256": "7f16b6d8e4a1b3ccab710d9ced9baa12e1833904cf62adc4cf5d512a3152f30e"
+      "bytes": 2882,
+      "sha256": "3de255c5591c8b256c01c6982e6a7b913d66428a874a78a15dc4015678fdbe85"
     },
     {
       "path": "validation/release_validation.json",
-      "bytes": 4144,
-      "sha256": "fa8e0d7b9d7c6e9f840cfcc13e5d09a323e81a2685218b8468208e4078db5f0a"
+      "bytes": 4143,
+      "sha256": "4e16fbd80b22a09e5dc409c8c62e957e515baeb92ce14f745ec46c66b1af36b4"
     },
     {
       "path": "validation/standalone_site_validation.json",

@@ -4,7 +4,7 @@
   "status": "pass_for_public_release_author_actions_required_before_journal_submission",
   "public_release_ready": true,
   "journal_submission_ready": false,
-  "central_question": "How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?",
+  "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
   "checks": {
     "global_network_204_nodes": true,
     "global_network_86_released_edges": true,

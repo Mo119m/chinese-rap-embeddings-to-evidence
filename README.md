@@ -4,7 +4,7 @@ This repository is the public, copyright-safe research release for an evidence-g
 
 The central question is:
 
-> How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?
+> How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?
 
 ## See the result first
 
@@ -56,6 +56,29 @@ Source-credit labels are corpus provenance, not verified natural-person identiti
 
 The pipeline order and expected private inputs are documented in [`methods/METHODS_AND_LIMITS.md`](methods/METHODS_AND_LIMITS.md). Researchers must supply a lawfully accessible copy of the frozen corpus and private derived sidecars; the copyrighted lyric text is not redistributed here.
 
+## Licence
+
+Copyright © 2026 Moshi Fu.
+
+The manuscript, figures, methods, documentation, and aggregate result data are released under [CC BY 4.0](LICENSE). The build and validation code under `src/` and `site/` is released under the [MIT Licence](LICENSE-CODE).
+
+Neither licence covers the underlying lyric corpus, which is not redistributed here. See [`methods/PUBLIC_RELEASE_BOUNDARY.md`](methods/PUBLIC_RELEASE_BOUNDARY.md).
+
+## Integrity
+
+Every published SHA-256 manifest hashes the bytes as committed, and `.gitattributes` disables line-ending translation so a checkout is byte-identical on Windows, macOS, and Linux. To verify a clone:
+
+```
+python - <<'EOF'
+import hashlib, json, pathlib
+root = pathlib.Path('.')
+manifest = json.loads((root / 'validation' / 'MANIFEST.json').read_text(encoding='utf-8'))
+bad = [f['path'] for f in manifest['files']
+       if hashlib.sha256((root / f['path']).read_bytes()).hexdigest() != f['sha256']]
+print('MISMATCH:', bad) if bad else print(f"all {len(manifest['files'])} files verified")
+EOF
+```
+
 ## Submission status
 
-The technical and analytical release passes the included validations. Before journal submission, the authors must complete the factual items in [`methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md`](methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md), including authorship, funding, rights, acquisition provenance, ethics determination, licences, and an archival DOI.
+The technical and analytical release passes the included validations. Before journal submission, the authors must complete the factual items in [`methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md`](methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md), including authorship, funding, rights, acquisition provenance, ethics determination, and an archival DOI.

@@ -21,7 +21,7 @@
 
 - Complete author names, affiliations, corresponding-author email, funding, conflict of interest, and CRediT roles.
 - Supply documented corpus acquisition, sampling, dates, temporal coverage, lyric origin, custody, rights/licence basis, ethics determination, and access policy.
-- Choose a repository licence, mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
+- Mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
 - Complete dual human NER review before reporting precision, recall, or F1.
 
 The computational and public-share package passes its V4 checks. It is **not** marked journal-submission-ready until the author-owned facts above are supplied.
