@@ -1769,8 +1769,20 @@ def build() -> None:
             "graph_eligible_source_credit_labels": len(nodes),
             "label_song_chunk_sequences": len(sequences),
             "unique_songs": len(song_split),
+            "unique_songs_definition": "fixed task universe before written-line eligibility filtering",
+            "songs_with_at_least_one_retained_strict_han_ending_line": len(
+                {song_id for (_, song_id, _), sequence in sequences.items() if sequence}
+            ),
+            "songs_with_at_least_one_adjacent_prediction_event": len({event["song_id"] for event in events}),
             "retained_strict_han_ending_written_line_occurrences": sum(len(sequence) for sequence in sequences.values()),
             "prediction_events_before_leakage_filter": len(events),
+            "retained_repeat_line_occurrences_definition": (
+                "additional within-source-label/song occurrences beyond each normalised written line's first occurrence; "
+                "not all occurrences belonging to repeated groups"
+            ),
+            "upstream_repeat_scope": (
+                "repeats retained only within chunks surviving the legacy source-label + exact-cleaned-chunk deduplication"
+            ),
             "strict_terminal_han_primary": True,
             "line_exclusion_counts": line_exclusions,
             "non_han_terminal_exclusions_by_split": {
@@ -1869,7 +1881,7 @@ The task predicts the tone-free pinyin-final family of the next **written lyric 
 
 The input population is the {len(nodes)} graph-eligible source-credit labels from `chinese-rap-lyrical-repertoire-graph-v2`. Only clean-text chunks retained by the graph's shared-clean-text exclusion sensitivity are used. Lines are defined by the cleaned source's written newline boundaries. The primary estimand requires the final non-space/non-punctuation written character itself to be Han; lines ending in Latin letters, digits, emoji, or other non-Han symbols are counted and excluded. Empty lines, explicit section/credit headers, lines without Han characters, and unclassifiable endings are also excluded.
 
-Repeated written lines are retained in their original positions. Prediction events are created only when two retained lines were adjacent in the original same chunk (`current line index = previous line index + 1`). An excluded line or a chunk boundary breaks the sequence, so no synthetic bridged transition is formed. Exact within-song repeats are flagged, and non-repeat-target metrics are released as a sensitivity stratum without reconnecting the surrounding lines.
+Within the frozen chunk-deduplicated snapshot, repeated written lines are retained in their surviving positions. Prediction events are created only when two retained lines were adjacent in the original same chunk (`current line index = previous line index + 1`). An excluded line or a chunk boundary breaks the sequence, so no synthetic bridged transition is formed. Exact within-song repeats are flagged, and non-repeat-target metrics are released as a sensitivity stratum without reconnecting the surrounding lines. A post-freeze source-lineage audit found that legacy preprocessing had already removed exact duplicate chunks within source-credit labels; the separate corpus-reconciliation artifact quantifies that population change. Aggregate ending-family and switch-rate sensitivity is reported there, but predictive robustness is withheld until duplicate-aware retraining.
 
 ## Written-ending representation
 
@@ -1904,7 +1916,7 @@ MuChin V1 1000 is never used for training, model selection, or primary evaluatio
     atomic_write_text(PUBLIC_DIR / "METHOD.md", method_text)
     readme_text = """# Chinese written-rhyme V1
 
-This release turns strict Han-ending Chinese-rap written lyric lines into interpretable ending-family fingerprints and a song-held-out exact-next-adjacent-line recommender. Repeated lines remain in sequence; excluded lines and chunk boundaries never create bridged transitions.
+This release turns strict Han-ending Chinese-rap written lyric lines into interpretable ending-family fingerprints and a song-held-out exact-next-adjacent-line recommender. Within the frozen chunk-deduplicated snapshot, repeated lines remain in surviving sequences; excluded lines and chunk boundaries never create bridged transitions. The post-freeze corpus-reconciliation artifact documents the legacy upstream chunk removal and the duplicate-aware repair action.
 
 Start with:
 

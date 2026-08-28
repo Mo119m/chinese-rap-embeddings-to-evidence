@@ -2,8 +2,13 @@
   "artifact": "chinese-rap-dsh-upload-bundle-v1",
   "generated_at_utc": "2026-08-27T19:50:43.375257+00:00",
   "journal_submission_ready": false,
-  "reason": "Technical package passes; author-owned factual fields and NER human gold remain outstanding.",
+  "reason": "Frozen-snapshot technical checks pass; PD-002 duplicate-aware repair/reruns, author-owned factual fields, and NER human gold remain outstanding.",
   "files": [
+    {
+      "path": "README_BEFORE_SUBMISSION.md",
+      "bytes": 1822,
+      "sha256": "2ad4264678bf8120ee20e5cb131645644d117c59ec7216d2ee04c332b94bf2b2"
+    },
     {
       "path": "dsh_submission_a11y.json",
       "bytes": 166,
@@ -66,28 +71,23 @@
     },
     {
       "path": "manuscript.docx",
-      "bytes": 72163,
-      "sha256": "c7969a855f9b431233fa343daa340743afe6b4a4af81ffb95c7cad3336139e43"
+      "bytes": 72422,
+      "sha256": "584173a4d46cdc6622de4f89b1465e232264257d3c79d9bcbdb3c537c7dd9393"
     },
     {
       "path": "manuscript_preview.pdf",
-      "bytes": 434230,
-      "sha256": "26c64ed49a78e861f40013552da37d17cad2e6f27e7a7ab58704cf9f49260e0a"
-    },
-    {
-      "path": "README_BEFORE_SUBMISSION.md",
-      "bytes": 1512,
-      "sha256": "12967a002e75754995edff125590d0fe86049e0a6f88323fbc57a77164eade4f"
+      "bytes": 435353,
+      "sha256": "d59a857881e9eb5154659d4a3e98b1412e7e4f3f5cad94ccedf4c5bf4de7d420"
     },
     {
       "path": "supplementary_methods.docx",
-      "bytes": 44629,
-      "sha256": "1c06c240f6557b137fdc093146b60ed2c19a9523b0f4dcdc3bd37f5eb5819fd6"
+      "bytes": 45469,
+      "sha256": "2cb34afc52aecac01a77a08287f2533b19115852575ea8f2c24ca4c96bad819c"
     },
     {
       "path": "supplementary_methods_preview.pdf",
-      "bytes": 213622,
-      "sha256": "f6d26157bfc4086c3ef85aef37507e472aa5a2fda0a39b941c7f49e823b201ba"
+      "bytes": 218143,
+      "sha256": "ba22ab2ba3f358619f0271762d20e9982798b8d26dbfe81847f7988a6b4cb733"
     }
   ]
 }

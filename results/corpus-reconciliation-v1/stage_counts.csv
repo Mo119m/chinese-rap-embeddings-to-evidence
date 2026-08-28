@@ -1,0 +1,5 @@
+stage,rows,songs,rows_removed_at_stage,songs_removed_at_stage
+raw lyric chunks,26833,7721,0,0
+after title exclusions,25279,7420,1554,301
+after line cleaning and empty removal,25026,7391,253,29
+after artist + exact-text deduplication,22132,7214,2894,177

@@ -8,6 +8,7 @@ the private lyric corpus, embeddings, membership rows, or reviewer contexts.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import re
@@ -77,6 +78,25 @@ def build_validation(generated_at_utc: str) -> dict:
     ner_claim_audit = json.loads(
         (ROOT / "results" / "ner-v1" / "released_claim_audit_status.json").read_text(encoding="utf-8")
     )
+    corpus_reconciliation = json.loads(
+        (ROOT / "results" / "corpus-reconciliation-v1" / "analysis_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    with (ROOT / "results" / "corpus-reconciliation-v1" / "stage_counts.csv").open(
+        "r", encoding="utf-8", newline=""
+    ) as handle:
+        reconciliation_stages = list(csv.DictReader(handle))
+    legacy_frozen_stage = next(
+        row
+        for row in reconciliation_stages
+        if row["stage"] == "after artist + exact-text deduplication"
+    )
+    input_audit = json.loads(
+        (ROOT / "results" / "input-audit-v1" / "analysis_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
     page_source = (ROOT / "site" / "app" / "page.tsx").read_text(encoding="utf-8")
     portable_source = (ROOT / "index.html").read_text(encoding="utf-8")
     figure_validation = json.loads((ROOT / "figures" / "journal_figure_validation.json").read_text(encoding="utf-8"))
@@ -103,6 +123,11 @@ def build_validation(generated_at_utc: str) -> dict:
         "ner_released_claim_audit_covers_every_released_occurrence": ner_claim_audit["validation"]["released_claim_occurrence_coverage"] == 1.0,
         "ner_released_claim_audit_metrics_remain_withheld": ner_claim_audit["status"] == "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION" and ner_claim_audit["global_ner_benchmark"]["precision_recall_f1"] == "WITHHELD",
         "rhyme_held_out_events": data["rhyme"]["testEvents"] == 34395,
+        "corpus_reconciliation_checks_pass": corpus_reconciliation["status"] == "pass_with_release_action" and all(check["passed"] for check in corpus_reconciliation["checks"]),
+        "legacy_snapshot_counts_reconciled": int(legacy_frozen_stage["songs"]) == 7214 and int(legacy_frozen_stage["rows"]) == 22132 and corpus_reconciliation["source_metadata_reconciliation"]["frozen_clean_song_ids"] == 7214 and corpus_reconciliation["duplicate_geometry"]["rows_removed_by_keep_first"] == 2894,
+        "canonical_downstream_counts_distinguished": input_audit["grain"]["songs"] == 7211 and input_audit["grain"]["chunks"] == 22128,
+        "corpus_repair_predictive_metrics_withheld": corpus_reconciliation["task_aligned_written_rhyme_sensitivity"]["predictive_metrics_retrained"] is False,
+        "drive_comparison_keeps_aggregate_boundary": corpus_reconciliation["drive_lineage"]["row_count_match"] is True and corpus_reconciliation["drive_lineage"]["local_canonical_content_bound_to_current_raw_export"] is True and corpus_reconciliation["drive_lineage"]["unresolved_substantive_mismatches"] == 0 and corpus_reconciliation["drive_lineage"]["remote_drive_object_byte_identity_verified"] is False,
         "journal_figures_pass": figure_validation["status"] == "pass",
         "journal_figures_600_dpi": all(check["passed"] for check in figure_validation["checks"] if check["name"] == "all_rasters_exact_600dpi"),
         "journal_figure_text_at_least_7pt": min(item["minimum_visible_font_pt"] for item in figure_validation["figures"]) >= 7.0,
@@ -121,11 +146,24 @@ def build_validation(generated_at_utc: str) -> dict:
     return {
         "artifact": "Chinese_Rap_Research_Release_V4",
         "generated_at_utc": generated_at_utc,
-        "status": "pass_for_public_release_author_actions_required_before_journal_submission",
+        "status": "pass_for_public_release_corpus_repair_and_author_actions_required_before_journal_submission",
         "public_release_ready": True,
         "journal_submission_ready": False,
         "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
         "checks": assertions,
+        "corpus_lineage_audit": {
+            "status": corpus_reconciliation["status"],
+            "classification": "release-lineage audit; not a fourth downstream task",
+            "legacy_frozen_song_ids": int(legacy_frozen_stage["songs"]),
+            "legacy_frozen_chunk_rows": int(legacy_frozen_stage["rows"]),
+            "canonical_downstream_song_ids": input_audit["grain"]["songs"],
+            "canonical_downstream_chunk_rows": input_audit["grain"]["chunks"],
+            "songs_erased_by_legacy_chunk_deduplication": corpus_reconciliation["duplicate_geometry"]["songs_removed_entirely_by_deduplication"],
+            "high_confidence_duplicate_records": corpus_reconciliation["interpretation"]["high_confidence_ingestion_duplicate_records"],
+            "manual_review_queue_records": corpus_reconciliation["interpretation"]["manual_review_queue_records"],
+            "predictive_metrics_retrained_on_repaired_population": corpus_reconciliation["task_aligned_written_rhyme_sensitivity"]["predictive_metrics_retrained"],
+            "drive_comparison_scope": corpus_reconciliation["drive_lineage"]["comparison_scope"] + "; public release retains aggregate checks and adjudication counts only; remote Drive object byte identity is not verified",
+        },
         "headline_results": {
             "global_repertoire_map": {
                 "eligible_labels": graph["eligibleLabels"],
@@ -165,10 +203,12 @@ def build_validation(generated_at_utc: str) -> dict:
                 "The application uses aggregate ML/statistical outputs rather than keyword-occurrence search.",
                 "English scholarly explanation is paired with Chinese analytic evidence where needed.",
                 "The manuscript separates BGE-M3 representation from the downstream retrieval, graph, NER, and rhyme methods.",
+                "The aggregate corpus-lineage audit reconstructs the legacy cleaner and is explicitly separated from the three downstream tasks.",
                 "Journal figures meet the documented DSH artwork contract.",
             ],
             "partial_or_human_required": [
                 "NER occurrence accuracy cannot be reported until the planned dual human review is completed.",
+                "PD-002 requires a duplicate-aware corpus rebuild and predictive reruns before repaired-corpus or predictive-robustness claims are made.",
                 "The 204 source-credit labels are not globally verified artist identities; only four title-field corrections have approved external evidence.",
                 "Authors must supply affiliations, funding, conflicts, CRediT roles, corpus provenance, corpus-rights documentation, ethics determination, exact AI disclosure, and an archival DOI.",
             ],
@@ -184,6 +224,9 @@ def build_validation(generated_at_utc: str) -> dict:
             "supplement_docx_sha256": sha256(ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.docx"),
             "supplement_pdf_sha256": sha256(ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.pdf"),
             "journal_figure_validation_sha256": sha256(ROOT / "figures" / "journal_figure_validation.json"),
+            "corpus_reconciliation_sha256": sha256(ROOT / "results" / "corpus-reconciliation-v1" / "analysis_summary.json"),
+            "corpus_reconciliation_builder_sha256": sha256(ROOT / "src" / "build_corpus_reconciliation_v1.py"),
+            "protocol_amendment_pd002_sha256": sha256(ROOT / "methods" / "PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md"),
         },
     }
 
@@ -222,15 +265,18 @@ Prepared for *Digital Scholarship in the Humanities* technical requirements chec
 
 ## Stop before submission
 
-The computational release is complete and its repository licences are fixed. Before submission, the responsible authors must still enter factual affiliations, corresponding-author email, funding, conflict of interest, CRediT roles, corpus acquisition/provenance, corpus-rights basis, ethics determination, exact AI-tool/model disclosure, and archival DOI. NER precision/recall/F1 must remain unreported until dual human review is complete.
+The frozen-snapshot public release is reproducible and its repository licences are fixed, but PD-002 records an outstanding computational release action. Before journal submission, rebuild the corpus with duplicate-aware song/component control and rerun the affected predictive downstream tasks; the aggregate corpus-lineage sensitivity does not establish predictive robustness on that repaired population. The responsible authors must also enter factual affiliations, corresponding-author email, funding, conflict of interest, CRediT roles, corpus acquisition/provenance, corpus-rights basis, ethics determination, exact AI-tool/model disclosure, and archival DOI. NER precision/recall/F1 must remain unreported until dual human review is complete.
 """
     write_text(SUBMISSION / "README_BEFORE_SUBMISSION.md", readme)
-    manifest_files = sorted(path for path in SUBMISSION.rglob("*") if path.is_file() and path.name != "MANIFEST.json")
+    manifest_files = sorted(
+        (path for path in SUBMISSION.rglob("*") if path.is_file() and path.name != "MANIFEST.json"),
+        key=lambda item: item.as_posix(),
+    )
     manifest = {
         "artifact": "chinese-rap-dsh-upload-bundle-v1",
         "generated_at_utc": validation["generated_at_utc"],
         "journal_submission_ready": False,
-        "reason": "Technical package passes; author-owned factual fields and NER human gold remain outstanding.",
+        "reason": "Frozen-snapshot technical checks pass; PD-002 duplicate-aware repair/reruns, author-owned factual fields, and NER human gold remain outstanding.",
         "files": [
             {"path": path.relative_to(SUBMISSION).as_posix(), "bytes": path.stat().st_size, "sha256": sha256(path)}
             for path in manifest_files
@@ -290,6 +336,7 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "index.html",
         ROOT / "site" / "app" / "data" / "researchData.json",
         ROOT / "paper" / "manuscript.md",
+        ROOT / "paper" / "derivative_provenance.json",
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Manuscript.docx",
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Manuscript.pdf",
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
@@ -298,25 +345,46 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.pdf",
         ROOT / "figures" / "journal_figure_validation.json",
         ROOT / "figures" / "manifest.json",
+        ROOT / "methods" / "DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md",
         ROOT / "methods" / "NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
+        ROOT / "methods" / "PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
         ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
+        ROOT / "src" / "build_canonical_lyric_text_sidecar_v1.py",
+        ROOT / "src" / "build_chinese_rap_written_rhyme_v1.py",
+        ROOT / "src" / "build_corpus_reconciliation_v1.py",
         ROOT / "src" / "build_ner_released_claim_audit_v1.py",
         ROOT / "src" / "build_repertoire_robustness_inference_v1.py",
         ROOT / "src" / "build_retrieval_inductive_sensitivity_v1.py",
         ROOT / "src" / "build_chinese_rap_release_v4.py",
+        ROOT / "src" / "build_chinese_rap_paper_docx_v1.py",
         ROOT / "src" / "normalize_public_text_v1.py",
         ROOT / "src" / "restore_committed_bytes_v1.py",
         ROOT / "src" / "update_public_result_manifests_v1.py",
         ROOT / "src" / "validate_public_release_integrity_v1.py",
+        ROOT / "tools" / "check_manuscript_derivatives.py",
         ROOT / "submission" / "dsh" / "MANIFEST.json",
         ROOT / "validation" / "release_validation.json",
         ROOT / "validation" / "standalone_site_validation.json",
         ROOT / "validation" / "portable_site_manifest.json",
     ]
     robustness_dir = ROOT / "results" / "repertoire-network-v1" / "robustness"
-    selected.extend(sorted(path for path in robustness_dir.iterdir() if path.is_file()))
+    selected.extend(
+        sorted((path for path in robustness_dir.iterdir() if path.is_file()), key=lambda item: item.as_posix())
+    )
     retrieval_sensitivity_dir = ROOT / "results" / "retrieval-inductive-sensitivity-v1"
-    selected.extend(sorted(path for path in retrieval_sensitivity_dir.iterdir() if path.is_file()))
+    selected.extend(
+        sorted(
+            (path for path in retrieval_sensitivity_dir.iterdir() if path.is_file()),
+            key=lambda item: item.as_posix(),
+        )
+    )
+    corpus_reconciliation_dir = ROOT / "results" / "corpus-reconciliation-v1"
+    selected.extend(
+        sorted(
+            (path for path in corpus_reconciliation_dir.iterdir() if path.is_file()),
+            key=lambda item: item.as_posix(),
+        )
+    )
     for number in range(1, 5):
         selected.extend(ROOT / "figures" / f"fig{number}.{suffix}" for suffix in ("tif", "pdf", "svg"))
     if len(selected) != len(set(selected)):
@@ -351,17 +419,19 @@ The release has one theme: **how Chinese rap lyrics form recognizable lyrical id
 
 The interactive result now starts with the complete 204-label map. Selecting a node opens the smaller focused network below it; every released line states its reciprocal-match rule, auxiliary writing signal, and return count across 250 song-level resamples. The same application includes statistically screened cultural references and an evaluated written-ending task.
 
+The release also contains a **corpus-lineage audit**, not a fourth downstream task. `Results/corpus-reconciliation-v1/` and `Methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md` reconstruct the legacy cleaner, distinguish its 7,214-song/22,132-chunk output from the later 7,211-song/22,128-chunk canonical downstream input, and record the duplicate-aware repair and predictive reruns required before journal submission.
+
 ## Core folders
 
 - `Website/` — self-contained interactive result.
 - `Paper/` — readable manuscript, DSH manuscript, supplement, and Markdown sources.
 - `Figures/` — four publication figures, a visual gallery, source tables, and journal formats.
-- `Results/` — aggregate outputs for the audit, retrieval, repertoire network, NER, and written rhyme.
+- `Results/` — aggregate outputs for input and corpus-lineage audits, retrieval, repertoire network, NER, and written rhyme.
 - `Submission_DSH/` — technically prepared upload bundle plus the remaining author checklist.
 - `Validation/RELEASE_READINESS_V4.md` — a plain-language Done / Partial / Human required audit.
 - `Reproducibility/` — deterministic builders and application source.
 
-The computational/public release is ready to share. Journal submission still requires affiliations, provenance, corpus-rights documentation, ethics, contribution, disclosure, and DOI facts; NER precision/recall/F1 remains pending human annotation.
+The frozen-snapshot public release is ready to share with its stated PD-002 boundary. Journal submission still requires the duplicate-aware corpus repair and affected predictive reruns, plus affiliations, provenance, corpus-rights documentation, ethics, contribution, disclosure, and DOI facts; NER precision/recall/F1 remains pending human annotation.
 """
 
 
@@ -396,7 +466,11 @@ def remove_previous_generated_files(target: Path) -> None:
     for path in declared:
         if path.is_file():
             path.unlink()
-    for directory in sorted((path for path in target.rglob("*") if path.is_dir()), key=lambda item: len(item.parts), reverse=True):
+    for directory in sorted(
+        (path for path in target.rglob("*") if path.is_dir()),
+        key=lambda item: (len(item.parts), item.as_posix()),
+        reverse=True,
+    ):
         try:
             directory.rmdir()
         except OSError:
@@ -419,12 +493,13 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
     copy_file(ROOT / "LICENSE-CODE", target / "LICENSE-CODE")
     copy_file(ROOT / "index.html", target / "Website" / "index.html")
 
-    for path in (ROOT / "paper").iterdir():
-        if path.is_file() and path.suffix.lower() in {".md", ".docx", ".pdf"}:
+    for path in sorted((ROOT / "paper").iterdir(), key=lambda item: item.as_posix()):
+        if path.is_file() and path.suffix.lower() in {".md", ".docx", ".pdf", ".json"}:
             copy_file(path, target / "Paper" / path.name)
     copy_tree(ROOT / "figures", target / "Figures")
     for name in (
         "input-audit-v1",
+        "corpus-reconciliation-v1",
         "retrieval-v1",
         "retrieval-inductive-sensitivity-v1",
         "repertoire-network-v1",
@@ -435,6 +510,7 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
     copy_tree(ROOT / "methods", target / "Methods")
     copy_tree(SUBMISSION, target / "Submission_DSH")
     copy_tree(ROOT / "src", target / "Reproducibility" / "src", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    copy_tree(ROOT / "tools", target / "Reproducibility" / "tools", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
     copy_file(ROOT / ".python-version", target / "Reproducibility" / ".python-version")
     copy_file(ROOT / "requirements.txt", target / "Reproducibility" / "requirements.txt")
     copy_tree(
@@ -450,7 +526,10 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
     ):
         copy_file(ROOT / "validation" / name, target / "Validation" / name)
 
-    manifest_files = sorted(path for path in target.rglob("*") if path.is_file() and path.name != "RELEASE_PACKAGE_MANIFEST.json")
+    manifest_files = sorted(
+        (path for path in target.rglob("*") if path.is_file() and path.name != "RELEASE_PACKAGE_MANIFEST.json"),
+        key=lambda item: item.as_posix(),
+    )
     manifest = {
         "artifact": "Chinese_Rap_Research_Release_V4",
         "generated_at_utc": validation["generated_at_utc"],
@@ -502,6 +581,7 @@ def main() -> None:
 - **Useful relationship explanation:** every local edge states the mutual-top-five rule, its auxiliary vocabulary/written-ending/writing-form signal when gated, and its return count across 250 song-level resamples.
 - **Meaningful downstream evaluation:** retrieval uses held-out songs and paired uncertainty; cultural-reference links use shared-text exclusion, support, conservative intervals, and BH-FDR; written-ending prediction uses song-held-out evaluation, baselines, ablation, calibration, and switch diagnostics.
 - **Released-claim audit prepared:** a private, blinded dual-review package covers all 157 occurrences supporting the 10 released cultural-reference claims; the public protocol and aggregate status expose coverage and hashes without lyric contexts or locators.
+- **Corpus lineage reconstructed:** the aggregate-only PD-002 audit exactly reconstructs the legacy 7,214-song/22,132-chunk cleaner output, separates it from the later 7,211-song/22,128-chunk canonical downstream input, and publishes the duplicate-loss diagnostics without lyric text or row identifiers. This is a release-lineage audit, not a fourth downstream task.
 - **No Command-F-style output:** the release does not expose a generic word-occurrence search. Search is limited to choosing a source label or supplying a written ending to an evaluated model/table.
 - **Academic presentation:** the manuscript is English, double-spaced, under 9,000 words before references, uses a structured abstract and Oxford HUMSOC citations, and separates upload figures. The four figures are 6.5 inches wide, 600 dpi, and at least 7 pt at print size.
 - **Claim boundaries:** source-credit labels are not verified people; textual proximity is not friendship/collaboration/influence; cultural references are not biography/residence/preference; dictionary pinyin is not audio rhyme/flow/beat.
@@ -512,6 +592,7 @@ def main() -> None:
 - Sixteen of 86 repertoire edges return in at least 50% of resamples; the remaining 70 are displayed as lower-repeatability candidates, not as equally stable facts.
 - Cultural-reference extraction is statistically screened but still provisional because human occurrence gold is 0/800.
 - The rhyme tool can rank plausible written-ending families, but exact switches remain difficult and source-label conditioning did not improve held-out prediction.
+- PD-002 has aggregate sensitivity results but remains `pass_with_release_action`: the duplicate-aware corpus repair and affected retrieval, graph, reference, and rhyme reruns are not yet complete, so repaired-corpus predictive robustness is withheld.
 
 ## Human required before journal submission
 
@@ -520,7 +601,7 @@ def main() -> None:
 - Mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
 - Complete dual human NER review before reporting precision, recall, or F1.
 
-The computational and public-share package passes its V4 checks. It is **not** marked journal-submission-ready until the author-owned facts above are supplied.
+The frozen-snapshot computational and public-share package passes its V4 checks with the disclosed PD-002 boundary. It is **not** marked journal-submission-ready until the duplicate-aware repair and affected predictive reruns are complete and the author-owned facts above are supplied.
 """
     write_text(ROOT / "validation" / "RELEASE_READINESS_V4.md", readiness)
     build_submission(validation)

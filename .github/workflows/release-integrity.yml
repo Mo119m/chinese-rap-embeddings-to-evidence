@@ -23,6 +23,9 @@ jobs:
           - name: Windows / core.autocrlf=true
             os: windows-latest
             autocrlf: "true"
+          - name: Ubuntu / core.autocrlf=false
+            os: ubuntu-latest
+            autocrlf: "false"
 
     steps:
       - name: Configure checkout line endings
@@ -45,6 +48,17 @@ jobs:
 
       - name: Validate committed release
         run: python src/validate_public_release_integrity_v1.py
+
+      - name: Confirm manuscript derivatives match their sources
+        run: python tools/check_manuscript_derivatives.py
+
+      - name: Confirm every tracked path is byte-frozen
+        shell: bash
+        run: |
+          git ls-files --eol | awk '
+            { index_eol = substr($1, 3); worktree_eol = substr($2, 3)
+              if (index_eol != worktree_eol || $3 != "attr/-text") { print; bad = 1 } }
+            END { exit bad ? 1 : 0 }'
 
       - name: Prove release rebuild is idempotent
         run: python src/build_chinese_rap_release_v4.py --reuse-generated-at

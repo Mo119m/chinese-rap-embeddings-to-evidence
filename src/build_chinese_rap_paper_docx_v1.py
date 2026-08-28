@@ -254,7 +254,7 @@ def add_title_page(doc: Document, title: str):
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(24)
     p.paragraph_format.line_spacing = 1.05
-    run = p.add_run(title)
+    run = p.add_run(title.replace("Evidence-Grounded", "Evidence\u2011Grounded"))
     set_run_font(run, size=19, bold=True, color=INK)
 
     for value, bold in (
@@ -276,7 +276,7 @@ def add_document_title(doc: Document, title: str):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(18)
-    run = p.add_run(title)
+    run = p.add_run(title.replace("Evidence-Grounded", "Evidence\u2011Grounded"))
     set_run_font(run, size=17, bold=True)
 
 
@@ -505,6 +505,11 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
                 pending_figure_caption = stripped
             else:
                 p = doc.add_paragraph(style="Caption")
+                # Figure captions should stay with their following visible alt text,
+                # but a table caption follows the table and must not be pulled onto
+                # the next page with the paragraph or figure that follows it.
+                if expect_table_caption:
+                    p.paragraph_format.keep_with_next = False
                 add_markdown_runs(p, stripped, base_size=10)
             expect_figure_caption = False
             expect_table_caption = False
@@ -568,8 +573,10 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
         doc.add_paragraph("Figure Legends and Alt Text", style="Heading 1")
         for caption, alt_text in figure_legends:
             p = doc.add_paragraph(style="Caption")
+            p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
             add_markdown_runs(p, caption, base_size=10)
             p = doc.add_paragraph(style="Alt Text")
+            p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
             add_markdown_runs(p, alt_text, base_size=9, base_color=MUTED)
 
     # Keep document free of page and line numbering as required for the target submission format.

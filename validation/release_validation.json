@@ -1,7 +1,7 @@
 {
   "artifact": "Chinese_Rap_Research_Release_V4",
   "generated_at_utc": "2026-08-27T19:50:43.375257+00:00",
-  "status": "pass_for_public_release_author_actions_required_before_journal_submission",
+  "status": "pass_for_public_release_corpus_repair_and_author_actions_required_before_journal_submission",
   "public_release_ready": true,
   "journal_submission_ready": false,
   "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
@@ -26,6 +26,11 @@
     "ner_released_claim_audit_covers_every_released_occurrence": true,
     "ner_released_claim_audit_metrics_remain_withheld": true,
     "rhyme_held_out_events": true,
+    "corpus_reconciliation_checks_pass": true,
+    "legacy_snapshot_counts_reconciled": true,
+    "canonical_downstream_counts_distinguished": true,
+    "corpus_repair_predictive_metrics_withheld": true,
+    "drive_comparison_keeps_aggregate_boundary": true,
     "journal_figures_pass": true,
     "journal_figures_600_dpi": true,
     "journal_figure_text_at_least_7pt": true,
@@ -33,6 +38,19 @@
     "structured_abstract_present": true,
     "strict_docx_exists": true,
     "strict_pdf_exists": true
+  },
+  "corpus_lineage_audit": {
+    "status": "pass_with_release_action",
+    "classification": "release-lineage audit; not a fourth downstream task",
+    "legacy_frozen_song_ids": 7214,
+    "legacy_frozen_chunk_rows": 22132,
+    "canonical_downstream_song_ids": 7211,
+    "canonical_downstream_chunk_rows": 22128,
+    "songs_erased_by_legacy_chunk_deduplication": 177,
+    "high_confidence_duplicate_records": 131,
+    "manual_review_queue_records": 46,
+    "predictive_metrics_retrained_on_repaired_population": false,
+    "drive_comparison_scope": "live native Google Sheet versus the local raw chunk export, row aligned; public release retains aggregate checks and adjudication counts only; remote Drive object byte identity is not verified"
   },
   "headline_results": {
     "global_repertoire_map": {
@@ -73,10 +91,12 @@
       "The application uses aggregate ML/statistical outputs rather than keyword-occurrence search.",
       "English scholarly explanation is paired with Chinese analytic evidence where needed.",
       "The manuscript separates BGE-M3 representation from the downstream retrieval, graph, NER, and rhyme methods.",
+      "The aggregate corpus-lineage audit reconstructs the legacy cleaner and is explicitly separated from the three downstream tasks.",
       "Journal figures meet the documented DSH artwork contract."
     ],
     "partial_or_human_required": [
       "NER occurrence accuracy cannot be reported until the planned dual human review is completed.",
+      "PD-002 requires a duplicate-aware corpus rebuild and predictive reruns before repaired-corpus or predictive-robustness claims are made.",
       "The 204 source-credit labels are not globally verified artist identities; only four title-field corrections have approved external evidence.",
       "Authors must supply affiliations, funding, conflicts, CRediT roles, corpus provenance, corpus-rights documentation, ethics determination, exact AI disclosure, and an archival DOI."
     ]
@@ -84,13 +104,16 @@
   "artifact_hashes": {
     "portable_site_sha256": "2a69998af24a761b78d6731bac434f9dc51157c5c6ab7ef5a2cc38d53b058d79",
     "application_data_sha256": "fb65ce00d1d188a4c3b2ec7f5b0a2ed2283c456fb590306e5062bde82e314c27",
-    "manuscript_markdown_sha256": "826e9f5d688cad6ffa70b35bd92975cea153c15c98cc93917c634e36b0dbc22c",
-    "review_manuscript_docx_sha256": "c3ecec13a370e7af2d0d1e34cd4c81c32d18471f44c229b4c2aefab2d6bc80c6",
-    "review_manuscript_pdf_sha256": "5dea4687c837d98e34b3164f5da9066b6d0c40e1f4d02fe3bf3b45cfaec7c2b1",
-    "dsh_manuscript_docx_sha256": "c7969a855f9b431233fa343daa340743afe6b4a4af81ffb95c7cad3336139e43",
-    "dsh_manuscript_pdf_sha256": "26c64ed49a78e861f40013552da37d17cad2e6f27e7a7ab58704cf9f49260e0a",
-    "supplement_docx_sha256": "1c06c240f6557b137fdc093146b60ed2c19a9523b0f4dcdc3bd37f5eb5819fd6",
-    "supplement_pdf_sha256": "f6d26157bfc4086c3ef85aef37507e472aa5a2fda0a39b941c7f49e823b201ba",
-    "journal_figure_validation_sha256": "6cea21ec443946ce74f8a3ca3f45ce630b3b850782a29ec07f25bbb39372c2d5"
+    "manuscript_markdown_sha256": "5366b85476ebc262ed495ddc814c3d8d783ad85dd6c73c0ca0aa8d8e817a1d6c",
+    "review_manuscript_docx_sha256": "84fa377272adb24ce0c2d618d7e878b91711bf5ccaa7021df5251faed99c2ff7",
+    "review_manuscript_pdf_sha256": "4d79314621852f566495c45f824892ae84eea402376eeff9f1a3551c37265fd4",
+    "dsh_manuscript_docx_sha256": "584173a4d46cdc6622de4f89b1465e232264257d3c79d9bcbdb3c537c7dd9393",
+    "dsh_manuscript_pdf_sha256": "d59a857881e9eb5154659d4a3e98b1412e7e4f3f5cad94ccedf4c5bf4de7d420",
+    "supplement_docx_sha256": "2cb34afc52aecac01a77a08287f2533b19115852575ea8f2c24ca4c96bad819c",
+    "supplement_pdf_sha256": "ba22ab2ba3f358619f0271762d20e9982798b8d26dbfe81847f7988a6b4cb733",
+    "journal_figure_validation_sha256": "6cea21ec443946ce74f8a3ca3f45ce630b3b850782a29ec07f25bbb39372c2d5",
+    "corpus_reconciliation_sha256": "b44e5c7627f035f187088d690f655332151b1f40c7cd1ba9e7ec11c1923c6460",
+    "corpus_reconciliation_builder_sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705",
+    "protocol_amendment_pd002_sha256": "0e3676259f0caa7f3564dd2147be8c442eda4834a6a205851b29741bfac34270"
   }
 }

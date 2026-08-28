@@ -59,11 +59,36 @@ def refresh_mapping(manifest_path: Path, key: str) -> int:
     manifest = read_json(manifest_path)
     directory = manifest_path.parent
     records = manifest[key]
-    for relative in list(records):
-        path = directory / relative
-        if not path.is_file():
-            raise FileNotFoundError(path)
-        records[relative] = file_record(path)
+    if isinstance(records, dict):
+        for relative, existing in list(records.items()):
+            path = directory / relative
+            if not path.is_file():
+                raise FileNotFoundError(path)
+            if not isinstance(existing, dict):
+                raise TypeError(f"Manifest record is not an object: {manifest_path}:{relative}")
+            refreshed = dict(existing)
+            refreshed.update(file_record(path))
+            records[relative] = refreshed
+    elif isinstance(records, list):
+        seen: set[str] = set()
+        for index, existing in enumerate(records):
+            if not isinstance(existing, dict) or not isinstance(existing.get("path"), str):
+                raise TypeError(f"Manifest list record lacks a string path: {manifest_path}:{index}")
+            relative = existing["path"]
+            if relative in seen:
+                raise ValueError(f"Manifest list contains a duplicate path: {manifest_path}:{relative}")
+            seen.add(relative)
+            path = directory / relative
+            if not path.is_file():
+                raise FileNotFoundError(path)
+            refreshed = dict(existing)
+            refreshed.update(file_record(path))
+            records[index] = refreshed
+    else:
+        raise TypeError(
+            f"Unsupported manifest record collection for {manifest_path}:{key}: "
+            f"{type(records).__name__}"
+        )
     write_json(manifest_path, manifest)
     return len(records)
 
@@ -144,6 +169,7 @@ def main() -> None:
         (ROOT / "results" / "retrieval-v1" / "manifest.json", "files"),
         (ROOT / "results" / "ner-v1" / "manifest.json", "files"),
         (ROOT / "results" / "written-rhyme-v1" / "manifest.json", "output_files"),
+        (ROOT / "results" / "corpus-reconciliation-v1" / "manifest.json", "files"),
         (ROOT / "results" / "repertoire-network-v1" / "graph" / "manifest.json", "output_files"),
         (ROOT / "results" / "repertoire-network-v1" / "profiles" / "manifest.json", "files"),
         (ROOT / "results" / "repertoire-network-v1" / "bootstrap" / "manifest.json", "files"),

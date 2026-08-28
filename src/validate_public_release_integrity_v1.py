@@ -19,6 +19,37 @@ from normalize_public_text_v1 import is_text_path, normalized_bytes, tracked_pat
 ROOT = Path(__file__).resolve().parents[1]
 ROBUSTNESS_DIR = ROOT / "results" / "repertoire-network-v1" / "robustness"
 RETRIEVAL_SENSITIVITY_DIR = ROOT / "results" / "retrieval-inductive-sensitivity-v1"
+CORPUS_RECONCILIATION_DIR = ROOT / "results" / "corpus-reconciliation-v1"
+CORPUS_RECONCILIATION_FILES = {
+    "analysis_summary.json",
+    "lost_song_classification.csv",
+    "manifest.json",
+    "METHOD.md",
+    "README.md",
+    "stage_counts.csv",
+    "task_aligned_family_distribution_sensitivity.csv",
+    "task_aligned_written_rhyme_sensitivity.csv",
+    "title_exclusion_counts.csv",
+    "validation.json",
+    "written_rhyme_sensitivity.csv",
+}
+CORPUS_RECONCILIATION_SOFTWARE = {
+    "src/build_canonical_lyric_text_sidecar_v1.py",
+    "src/build_chinese_rap_written_rhyme_v1.py",
+    "src/build_corpus_reconciliation_v1.py",
+}
+MANUSCRIPT_DERIVATIVES = {
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": "paper/manuscript.md",
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": "paper/manuscript.md",
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx": "paper/manuscript.md",
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf": "paper/manuscript.md",
+    "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx": "paper/supplementary_methods.md",
+    "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf": "paper/supplementary_methods.md",
+    "submission/dsh/manuscript.docx": "paper/manuscript.md",
+    "submission/dsh/manuscript_preview.pdf": "paper/manuscript.md",
+    "submission/dsh/supplementary_methods.docx": "paper/supplementary_methods.md",
+    "submission/dsh/supplementary_methods_preview.pdf": "paper/supplementary_methods.md",
+}
 CORE_REQUIRED_PATHS = {
     ".gitattributes",
     ".github/workflows/release-integrity.yml",
@@ -27,14 +58,20 @@ CORE_REQUIRED_PATHS = {
     "LICENSE-CODE",
     "README.md",
     "requirements.txt",
+    "paper/derivative_provenance.json",
+    "src/build_chinese_rap_paper_docx_v1.py",
     "src/build_chinese_rap_release_v4.py",
     "src/build_ner_released_claim_audit_v1.py",
     "src/build_repertoire_robustness_inference_v1.py",
     "src/build_retrieval_inductive_sensitivity_v1.py",
+    "src/build_canonical_lyric_text_sidecar_v1.py",
+    "src/build_chinese_rap_written_rhyme_v1.py",
+    "src/build_corpus_reconciliation_v1.py",
     "src/normalize_public_text_v1.py",
     "src/restore_committed_bytes_v1.py",
     "src/update_public_result_manifests_v1.py",
     "src/validate_public_release_integrity_v1.py",
+    "tools/check_manuscript_derivatives.py",
     "results/repertoire-network-v1/robustness/README.md",
     "results/repertoire-network-v1/robustness/METHOD.md",
     "results/repertoire-network-v1/robustness/analysis_summary.json",
@@ -52,8 +89,9 @@ CORE_REQUIRED_PATHS = {
     "results/retrieval-inductive-sensitivity-v1/paired_deltas.csv",
     "results/retrieval-inductive-sensitivity-v1/validation.json",
     "methods/NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
+    "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
     "results/ner-v1/released_claim_audit_status.json",
-}
+} | {f"results/corpus-reconciliation-v1/{name}" for name in CORPUS_RECONCILIATION_FILES}
 
 
 def sha256(path: Path) -> str:
@@ -122,6 +160,7 @@ def verify_repository_manifests() -> int:
         (ROOT / "figures" / "manifest.json", "files", ROOT),
         (ROOT / "results" / "retrieval-v1" / "manifest.json", "files", ROOT / "results" / "retrieval-v1"),
         (ROOT / "results" / "retrieval-inductive-sensitivity-v1" / "manifest.json", "files", ROOT / "results" / "retrieval-inductive-sensitivity-v1"),
+        (ROOT / "results" / "corpus-reconciliation-v1" / "manifest.json", "files", ROOT / "results" / "corpus-reconciliation-v1"),
         (ROOT / "results" / "ner-v1" / "manifest.json", "files", ROOT / "results" / "ner-v1"),
         (ROOT / "results" / "written-rhyme-v1" / "manifest.json", "output_files", ROOT / "results" / "written-rhyme-v1"),
         (ROOT / "results" / "repertoire-network-v1" / "graph" / "manifest.json", "output_files", ROOT / "results" / "repertoire-network-v1" / "graph"),
@@ -164,6 +203,357 @@ def verify_core_manifest_contract() -> int:
     if missing:
         raise AssertionError(f"Core release manifest omits required release files: {missing}")
     return len(CORE_REQUIRED_PATHS)
+
+
+def verify_manuscript_derivative_provenance() -> int:
+    provenance = read_json(ROOT / "paper" / "derivative_provenance.json")
+    sources = set(MANUSCRIPT_DERIVATIVES.values())
+    if set(provenance.get("sources", {})) != sources:
+        raise AssertionError("Manuscript derivative provenance has the wrong source set")
+    if set(provenance.get("derivatives", {})) != set(MANUSCRIPT_DERIVATIVES):
+        raise AssertionError("Manuscript derivative provenance has the wrong derivative set")
+
+    checked = 0
+    for source in sources:
+        if provenance["sources"][source] != sha256(ROOT / source):
+            raise AssertionError(f"Manuscript source is newer than its derivatives: {source}")
+        checked += 1
+    for derivative, source in MANUSCRIPT_DERIVATIVES.items():
+        record = provenance["derivatives"][derivative]
+        if record.get("built_from") != source or record.get("sha256") != sha256(ROOT / derivative):
+            raise AssertionError(f"Manuscript derivative provenance mismatch: {derivative}")
+        checked += 1
+    return checked
+
+
+def verify_corpus_reconciliation_claims() -> int:
+    artifact_id = "chinese-rap-corpus-reconciliation-v1"
+    expected_status = "pass_with_release_action"
+    manifest = read_json(CORPUS_RECONCILIATION_DIR / "manifest.json")
+    validation = read_json(CORPUS_RECONCILIATION_DIR / "validation.json")
+    summary = read_json(CORPUS_RECONCILIATION_DIR / "analysis_summary.json")
+
+    for name, payload in (("manifest", manifest), ("validation", validation), ("summary", summary)):
+        if payload.get("artifact_id") != artifact_id:
+            raise AssertionError(f"Corpus reconciliation {name} has the wrong artifact identifier")
+        if payload.get("status") != expected_status:
+            raise AssertionError(f"Corpus reconciliation {name} has the wrong release status")
+    generated_at_values = {
+        manifest.get("generated_at_utc"),
+        validation.get("generated_at_utc"),
+        summary.get("generated_at_utc"),
+    }
+    if None in generated_at_values or len(generated_at_values) != 1:
+        raise AssertionError("Corpus reconciliation generated_at_utc values disagree")
+    if manifest.get("version") != "1.0.0" or summary.get("version") != "1.0.0":
+        raise AssertionError("Corpus reconciliation version is not 1.0.0")
+
+    declared_records = list(iter_records(manifest.get("files")))
+    declared_paths = [relative for relative, _ in declared_records]
+    if len(declared_paths) != len(set(declared_paths)):
+        raise AssertionError("Corpus reconciliation manifest contains duplicate file paths")
+    expected_output_files = CORPUS_RECONCILIATION_FILES - {"manifest.json"}
+    actual_output_files = {
+        path.name
+        for path in CORPUS_RECONCILIATION_DIR.iterdir()
+        if path.is_file() and path.name != "manifest.json"
+    }
+    if set(declared_paths) != expected_output_files or actual_output_files != expected_output_files:
+        raise AssertionError(
+            "Corpus reconciliation directory disagrees with its release contract; "
+            f"manifest_missing={sorted(expected_output_files - set(declared_paths))}, "
+            f"manifest_extra={sorted(set(declared_paths) - expected_output_files)}, "
+            f"directory_missing={sorted(expected_output_files - actual_output_files)}, "
+            f"directory_extra={sorted(actual_output_files - expected_output_files)}"
+        )
+
+    def software_index(records: Any, label: str) -> dict[str, dict[str, Any]]:
+        if not isinstance(records, list):
+            raise AssertionError(f"Corpus reconciliation {label} must be a list")
+        indexed: dict[str, dict[str, Any]] = {}
+        for position, record in enumerate(records):
+            if not isinstance(record, dict) or not isinstance(record.get("path"), str):
+                raise AssertionError(f"Corpus reconciliation {label}[{position}] lacks a string path")
+            relative = record["path"]
+            if relative in indexed:
+                raise AssertionError(f"Corpus reconciliation {label} repeats software path: {relative}")
+            if not re.fullmatch(r"[0-9a-f]{64}", str(record.get("sha256", ""))):
+                raise AssertionError(f"Corpus reconciliation {label} has an invalid SHA-256: {relative}")
+            indexed[relative] = record
+        return indexed
+
+    manifest_software = software_index(manifest.get("software"), "manifest software")
+    summary_software = software_index(summary.get("software_fingerprints"), "summary software_fingerprints")
+    if set(manifest_software) != CORPUS_RECONCILIATION_SOFTWARE:
+        raise AssertionError(
+            "Corpus reconciliation software manifest has the wrong file set: "
+            f"{sorted(set(manifest_software) ^ CORPUS_RECONCILIATION_SOFTWARE)}"
+        )
+    if {
+        relative: record["sha256"] for relative, record in manifest_software.items()
+    } != {
+        relative: record["sha256"] for relative, record in summary_software.items()
+    }:
+        raise AssertionError("Corpus reconciliation manifest and summary software hashes disagree")
+    for relative, record in manifest_software.items():
+        verify_record(ROOT / relative, record, ROOT)
+
+    validation_checks = validation.get("checks")
+    summary_checks = summary.get("checks")
+    if not isinstance(validation_checks, list) or not isinstance(summary_checks, list):
+        raise AssertionError("Corpus reconciliation checks must be lists")
+    validation_check_index = {record.get("name"): record for record in validation_checks}
+    summary_check_index = {record.get("name"): record for record in summary_checks}
+    if len(validation_check_index) != len(validation_checks) or len(summary_check_index) != len(summary_checks):
+        raise AssertionError("Corpus reconciliation contains duplicate validation check names")
+    required_checks = {
+        "drive_live_sheet_keys_and_row_count_match_local_export",
+        "drive_live_substantive_mismatches_all_adjudicated",
+        "frozen_snapshot_content_exactly_reconstructed",
+        "source_only_metadata_count_reconciles",
+        "frozen_ids_all_join_source_metadata",
+        "all_dedup_lost_songs_reconciled_to_retained_exact_chunks",
+        "expected_reconstructed_counts",
+        "task_aligned_released_population_reconstructed",
+        "task_aligned_counterfactual_expected_counts",
+        "task_aligned_family_totals_and_headline_deltas_reconstructed",
+        "legacy_full_source_written_ending_sensitivity_reconstructed",
+    }
+    if set(validation_check_index) != required_checks or set(summary_check_index) != required_checks:
+        raise AssertionError("Corpus reconciliation validation check set is incomplete or unexpected")
+    if validation_check_index != summary_check_index or not all(
+        record.get("passed") is True for record in validation_checks
+    ):
+        raise AssertionError("Corpus reconciliation validation checks disagree or do not all pass")
+
+    stage_rows = read_csv_rows(CORPUS_RECONCILIATION_DIR / "stage_counts.csv")
+    expected_stages = {
+        "raw lyric chunks": (26833, 7721, 0, 0),
+        "after title exclusions": (25279, 7420, 1554, 301),
+        "after line cleaning and empty removal": (25026, 7391, 253, 29),
+        "after artist + exact-text deduplication": (22132, 7214, 2894, 177),
+    }
+    if len(stage_rows) != len(expected_stages) or {row["stage"] for row in stage_rows} != set(expected_stages):
+        raise AssertionError("Corpus reconciliation stage table has the wrong stages")
+    for row in stage_rows:
+        observed = tuple(
+            int(row[key])
+            for key in ("rows", "songs", "rows_removed_at_stage", "songs_removed_at_stage")
+        )
+        if observed != expected_stages[row["stage"]]:
+            raise AssertionError(f"Corpus reconciliation stage counts changed: {row['stage']}")
+
+    lost_rows = read_csv_rows(CORPUS_RECONCILIATION_DIR / "lost_song_classification.csv")
+    expected_lost = {
+        "exact_sequence_duplicate_of_retained_song": (136, 289, 131, 1.0),
+        "same_chunk_multiset_different_order": (0, 0, 0, 0.0),
+        "chunk_multiset_subset_of_one_retained_song": (33, 44, 13, 1.0),
+        "chunks_distributed_across_multiple_retained_songs": (8, 20, 8, 2.0),
+        "unreconciled_other": (0, 0, 0, 0.0),
+    }
+    if len({row["category"] for row in lost_rows}) != len(lost_rows):
+        raise AssertionError("Corpus reconciliation lost-song table repeats a category")
+    if unknown_categories := sorted({row["category"] for row in lost_rows} - set(expected_lost)):
+        raise AssertionError(f"Corpus reconciliation has unexpected lost-song categories: {unknown_categories}")
+    observed_lost = {
+        category: (0, 0, 0, 0.0)
+        for category in expected_lost
+    }
+    for row in lost_rows:
+        observed_lost[row["category"]] = (
+            int(row["songs"]),
+            int(row["cleaned_chunk_rows"]),
+            int(row["songs_with_exact_title_match"]),
+            float(row["median_related_retained_songs"]),
+        )
+    if observed_lost != expected_lost or sum(record[0] for record in observed_lost.values()) != 177:
+        raise AssertionError(f"Corpus reconciliation lost-song headline changed: {observed_lost}")
+
+    geometry = summary["duplicate_geometry"]
+    diagnostics = summary["lost_song_diagnostics"]
+    interpretation = summary["interpretation"]
+    expected_geometry = {
+        "rows_removed_by_keep_first": 2894,
+        "songs_removed_entirely_by_deduplication": 177,
+    }
+    if any(int(geometry.get(key, -1)) != value for key, value in expected_geometry.items()):
+        raise AssertionError("Corpus reconciliation duplicate-removal geometry changed")
+    expected_diagnostics = {
+        "lost_songs": 177,
+        "exact_cleaned_sequence_lost_songs": 136,
+        "exact_cleaned_sequence_and_title_lost_songs": 131,
+        "exact_raw_sequence_lost_songs": 134,
+        "exact_raw_sequence_and_title_lost_songs": 130,
+        "conservative_manual_review_queue": 46,
+    }
+    if any(int(diagnostics.get(key, -1)) != value for key, value in expected_diagnostics.items()):
+        raise AssertionError("Corpus reconciliation lost-song diagnostics changed")
+    if (
+        int(interpretation.get("high_confidence_ingestion_duplicate_records", -1)) != 131
+        or int(interpretation.get("manual_review_queue_records", -1)) != 46
+    ):
+        raise AssertionError("Corpus reconciliation release action counts changed")
+
+    drive = summary["drive_lineage"]
+    expected_drive_values = {
+        "live_sheet_rows": 26833,
+        "local_export_rows": 26833,
+        "song_id_exact_mismatches": 0,
+        "chunk_id_exact_mismatches": 0,
+        "artist_exact_mismatches": 7,
+        "artist_normalisation_equivalent_mismatches": 7,
+        "title_exact_mismatches": 161,
+        "title_normalisation_equivalent_mismatches": 132,
+        "drive_native_sheet_title_type_coercions": 29,
+        "text_exact_mismatches": 23836,
+        "text_newline_only_mismatches": 23832,
+        "drive_leading_apostrophe_escape_semantics": 2,
+        "drive_control_character_import_side_effects": 2,
+        "unresolved_substantive_mismatches": 0,
+    }
+    if any(int(drive.get(key, -1)) != value for key, value in expected_drive_values.items()):
+        raise AssertionError("Corpus reconciliation Drive-lineage headline changed")
+    if drive.get("row_count_match") is not True or drive.get("local_canonical_content_bound_to_current_raw_export") is not True:
+        raise AssertionError("Corpus reconciliation Drive comparison is not bound to the current raw export")
+    if drive.get("remote_drive_object_byte_identity_verified") is not False:
+        raise AssertionError("Corpus reconciliation overstates remote Drive byte identity")
+
+    task_rows = read_csv_rows(CORPUS_RECONCILIATION_DIR / "task_aligned_written_rhyme_sensitivity.csv")
+    task_index = {row["population"]: row for row in task_rows}
+    expected_task_rows = {
+        "released_frozen_task": (15760, 5619, 283806, 238881, 52152),
+        "pre_snapshot_duplicate_chunk_counterfactual": (17715, 5621, 290839, 243819, 58624),
+    }
+    if set(task_index) != set(expected_task_rows) or len(task_index) != len(task_rows):
+        raise AssertionError("Corpus reconciliation task-aligned sensitivity populations changed")
+    for population, expected in expected_task_rows.items():
+        row = task_index[population]
+        observed = tuple(
+            int(row[key])
+            for key in (
+                "input_chunks",
+                "input_songs",
+                "strict_han_ending_line_occurrences",
+                "adjacent_transitions_before_leakage_filter",
+                "repeat_excess_after_first",
+            )
+        )
+        if observed != expected:
+            raise AssertionError(f"Corpus reconciliation task-aligned headline changed: {population}")
+
+    family_rows = read_csv_rows(
+        CORPUS_RECONCILIATION_DIR / "task_aligned_family_distribution_sensitivity.csv"
+    )
+    if len(family_rows) != 17:
+        raise AssertionError("Corpus reconciliation must report all 17 written-ending families")
+    released_family_total = sum(int(row["released_count"]) for row in family_rows)
+    counterfactual_family_total = sum(int(row["counterfactual_count"]) for row in family_rows)
+    family_total_variation = 0.5 * sum(
+        abs(float(row["counterfactual_minus_released_share"])) for row in family_rows
+    )
+    if released_family_total != 283806 or counterfactual_family_total != 290839:
+        raise AssertionError("Corpus reconciliation family counts do not reconcile to the task populations")
+    if not math.isclose(family_total_variation, 0.0017890317967706243, rel_tol=0.0, abs_tol=1e-12):
+        raise AssertionError("Corpus reconciliation task-aligned family total variation changed")
+
+    task_summary = summary["task_aligned_written_rhyme_sensitivity"]
+    expected_task_summary = {
+        "strict_han_lines_restored": 7033,
+        "adjacent_transitions_restored": 4938,
+        "repeat_excess_restored": 6472,
+    }
+    if any(int(task_summary.get(key, -1)) != value for key, value in expected_task_summary.items()):
+        raise AssertionError("Corpus reconciliation task-aligned restored counts changed")
+    if task_summary.get("predictive_metrics_retrained") is not False:
+        raise AssertionError("Corpus reconciliation incorrectly claims predictive retraining")
+    if not math.isclose(
+        float(task_summary["family_distribution_total_variation"]),
+        0.0017890317967706243,
+        rel_tol=0.0,
+        abs_tol=1e-12,
+    ) or not math.isclose(
+        float(task_summary["switch_rate_counterfactual_minus_released"]),
+        -0.0013899941300251628,
+        rel_tol=0.0,
+        abs_tol=1e-12,
+    ):
+        raise AssertionError("Corpus reconciliation task-aligned sensitivity deltas changed")
+
+    broad_summary = summary["written_rhyme_sensitivity"]
+    expected_broad_counts = {
+        "strict_han_lines_removed_by_chunk_dedup": 16623,
+        "adjacent_transitions_removed_by_chunk_dedup": 13112,
+    }
+    if any(int(broad_summary.get(key, -1)) != value for key, value in expected_broad_counts.items()):
+        raise AssertionError("Corpus reconciliation broad written-ending counts changed")
+    if not math.isclose(
+        float(broad_summary["global_family_distribution_total_variation"]),
+        0.0017671763323308868,
+        rel_tol=0.0,
+        abs_tol=1e-12,
+    ) or not math.isclose(
+        float(broad_summary["switch_rate_absolute_difference"]),
+        0.0017874646921119952,
+        rel_tol=0.0,
+        abs_tol=1e-12,
+    ):
+        raise AssertionError("Corpus reconciliation broad written-ending deltas changed")
+
+    expected_privacy = "aggregate only; no lyric text, labels, titles, song/chunk identifiers, or row-level hashes"
+    if summary.get("privacy") != expected_privacy or validation.get("privacy") != expected_privacy:
+        raise AssertionError("Corpus reconciliation privacy declaration changed")
+    private_path_pattern = re.compile(r"(?:[A-Za-z]:[\\/]|/Users/|/home/|/mnt/|\\\\Users\\\\)", re.IGNORECASE)
+    for path in sorted(CORPUS_RECONCILIATION_DIR.iterdir()):
+        if path.is_file() and is_text_path(path):
+            text = path.read_text(encoding="utf-8")
+            if private_path_pattern.search(text):
+                raise AssertionError(f"Corpus reconciliation publishes an absolute private path: {path.name}")
+
+    prohibited_csv_columns = {
+        "artist",
+        "chunk_id",
+        "content_hash",
+        "label_id",
+        "line",
+        "line_id",
+        "line_text",
+        "lyric_hash",
+        "lyrics",
+        "song_id",
+        "song_title",
+        "source_credit_label",
+        "text",
+    }
+    for path in CORPUS_RECONCILIATION_DIR.glob("*.csv"):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            header = next(csv.reader(handle), [])
+        if prohibited := sorted(set(header) & prohibited_csv_columns):
+            raise AssertionError(f"Corpus reconciliation CSV exposes private columns in {path.name}: {prohibited}")
+
+    input_fingerprints = summary.get("input_fingerprints")
+    if not isinstance(input_fingerprints, dict) or "drive_live_comparison_summary" not in input_fingerprints:
+        raise AssertionError("Corpus reconciliation input fingerprints are incomplete")
+    for name, record in input_fingerprints.items():
+        if not isinstance(record, dict) or not isinstance(record.get("file"), str):
+            raise AssertionError(f"Corpus reconciliation input fingerprint is malformed: {name}")
+        file_name = record["file"]
+        if Path(file_name).name != file_name or "/" in file_name or "\\" in file_name:
+            raise AssertionError(f"Corpus reconciliation publishes a private input path: {name}")
+        if not re.fullmatch(r"[0-9a-f]{64}", str(record.get("sha256", ""))):
+            raise AssertionError(f"Corpus reconciliation input fingerprint SHA-256 is malformed: {name}")
+
+    return (
+        len(declared_paths)
+        + len(manifest_software)
+        + len(required_checks)
+        + len(expected_stages)
+        + len(expected_lost)
+        + len(expected_drive_values)
+        + len(expected_task_rows)
+        + len(family_rows)
+        + len(input_fingerprints)
+        + 18
+    )
 
 
 def verify_robustness_claims() -> int:
@@ -597,8 +987,14 @@ def verify_desktop_package(target: Path) -> int:
         "LICENSE-CODE",
         "PROJECT_README.md",
         "Methods/NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
+        "Methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
+        "Paper/derivative_provenance.json",
         "Reproducibility/.python-version",
         "Reproducibility/requirements.txt",
+        "Reproducibility/src/build_canonical_lyric_text_sidecar_v1.py",
+        "Reproducibility/src/build_chinese_rap_written_rhyme_v1.py",
+        "Reproducibility/src/build_chinese_rap_paper_docx_v1.py",
+        "Reproducibility/src/build_corpus_reconciliation_v1.py",
         "Reproducibility/src/build_repertoire_robustness_inference_v1.py",
         "Reproducibility/src/build_retrieval_inductive_sensitivity_v1.py",
         "Reproducibility/src/build_ner_released_claim_audit_v1.py",
@@ -606,6 +1002,7 @@ def verify_desktop_package(target: Path) -> int:
         "Reproducibility/src/restore_committed_bytes_v1.py",
         "Reproducibility/src/update_public_result_manifests_v1.py",
         "Reproducibility/src/validate_public_release_integrity_v1.py",
+        "Reproducibility/tools/check_manuscript_derivatives.py",
         "Results/repertoire-network-v1/robustness/analysis_summary.json",
         "Results/repertoire-network-v1/robustness/diagnostic_summary.csv",
         "Results/repertoire-network-v1/robustness/METHOD.md",
@@ -614,7 +1011,7 @@ def verify_desktop_package(target: Path) -> int:
         "Results/retrieval-inductive-sensitivity-v1/METHOD.md",
         "Results/retrieval-inductive-sensitivity-v1/validation.json",
         "Results/ner-v1/released_claim_audit_status.json",
-    }
+    } | {f"Results/corpus-reconciliation-v1/{name}" for name in CORPUS_RECONCILIATION_FILES}
     if missing_required := sorted(required_paths - actual_paths):
         raise AssertionError(f"Desktop release omits required integrity or robustness files: {missing_required}")
     for name in ("LICENSE", "LICENSE-CODE"):
@@ -656,6 +1053,8 @@ def main() -> None:
 
     declarations = verify_repository_manifests() + verify_internal_hashes()
     core_contract_checks = verify_core_manifest_contract()
+    manuscript_derivative_checks = verify_manuscript_derivative_provenance()
+    corpus_reconciliation_checks = verify_corpus_reconciliation_claims()
     robustness_checks = verify_robustness_claims()
     retrieval_sensitivity_checks = verify_retrieval_sensitivity_claims()
     ner_released_claim_audit_checks = verify_ner_released_claim_audit()
@@ -667,6 +1066,8 @@ def main() -> None:
                 "status": "pass",
                 "manifest_and_internal_hash_declarations": declarations,
                 "core_manifest_contract_checks": core_contract_checks,
+                "manuscript_derivative_checks": manuscript_derivative_checks,
+                "corpus_reconciliation_checks": corpus_reconciliation_checks,
                 "robustness_checks": robustness_checks,
                 "retrieval_sensitivity_checks": retrieval_sensitivity_checks,
                 "ner_released_claim_audit_checks": ner_released_claim_audit_checks,

@@ -29,19 +29,25 @@ A grouped sixfold sensitivity tests whether transductive vocabulary and IDF expo
 
 Inductive fusion yields macro MRR 0.439712 versus 0.404763 for inductive TF–IDF, a paired difference of +0.034949 (95% CI 0.024373–0.046082). Matched transductive exposure increases TF–IDF MRR by +0.003963 (0.001020–0.006942) and fusion MRR by +0.003681 (0.001413–0.006416). Intervals use the same 5,000-replicate paired two-stage label/component bootstrap principle as the primary analysis. Thus evaluation-corpus exposure is mildly optimistic within this corpus, but its magnitude cannot explain the training-only fusion advantage. This sensitivity does not estimate prospective or external-population performance.
 
-## S3. Repertoire-Graph Null and Projection Diagnostics
+## S3. PD-002 Corpus Reconciliation and Upstream Chunk Deduplication
+
+PD-002 was recorded after the frozen analyses when the legacy cleaner was found to delete repeated `(source-credit label, exact cleaned chunk text)` rows before downstream duplicate controls. The reconciliation exactly reproduces the four historical stages: 26,833 chunks/7,721 song IDs in the raw export; 25,279/7,420 after title exclusions; 25,026/7,391 after line cleaning and empty removal; and 22,132/7,214 after keep-first chunk deduplication. The final stage removes 2,894 chunks and erases 177 song records. Of those records, 131 meet the conservative high-confidence rule of matching source-credit label, normalized title, and complete cleaned chunk sequence; the remaining 46 require review rather than automatic deletion.
+
+The live native Google Sheet and local raw export align on all 26,833 song/chunk keys. All 33/33 substantive cell differences were adjudicated (29 title type coercions, two leading-apostrophe semantics, and two control-character import side effects), with none unresolved; this is a row-aligned provenance check, not a claim of remote/local byte identity. In the released shared-text-exclusion rhyme frame covering 204 labels, restoring eligible pre-snapshot chunks without retraining adds 7,033 strict-Han-ending lines, 4,938 adjacent transitions, and 6,472 repeat occurrences beyond first occurrences. Aggregate ending-family shares remain stable (total-variation distance 0.001789; switch-rate difference 0.001390), but the duplicate-aware population has not been used to retrain or reevaluate the predictive models. No stability claim is therefore made for top-*k* accuracy, mean reciprocal rank, calibration, abstention, or paired model differences.
+
+## S4. Repertoire-Graph Null and Projection Diagnostics
 
 The published graph is the intersection of a 140-edge reciprocal-top-five network under primary duplicate control and a 145-edge network after cross-label shared-text exclusion. The observed intersection contains 86 edges. The primary null holds the first network fixed and applies 1,450 successful undirected double-edge swaps to the second network per replicate, preserving its complete node-degree sequence while randomizing endpoints. Across 10,000 fixed-seed replicates, the null intersection has mean 4.524, median 4, 95% range 1–9, and maximum 13; no replicate reaches 86, giving an add-one Monte Carlo *p* of 0.00010. An auxiliary 100,000-replicate source-label permutation gives mean 0.979 and *p* = 0.000010. These tests concern cross-treatment adjacency alignment, not edgewise significance, social relations, influence, or external cultural structure.
 
 The deterministic two-dimensional display combines the normalized primary and sensitivity centroids, recentres them, and applies singular-value-decomposition PCA. Its first two components explain 26.20% of variation. Using cosine distance in the original 1,024-dimensional consensus space and Euclidean distance in the display, trustworthiness is 0.785, 0.795, and 0.804 at *k* = 5, 10, and 15. Exact-neighbour retention is 0.173, 0.268, and 0.347, compared with random expectations of 0.025, 0.049, and 0.074. Pairwise distance-rank correlation is 0.680. Only 18 of 86 released edges are mutual top-five neighbours in two dimensions. Accordingly, the PCA is a navigation overview; released graph lines, not screen distance, carry the relation claim.
 
-## S4. External Written-Ending Implementation Check
+## S5. External Written-Ending Implementation Check
 
 The external MuChin resource (Wang *et al.* 2024; DOI `10.24963/ijcai.2024/860`) was used only as an implementation sensitivity check. Across 1,000 publisher-recommended folders, 44,980 written lines align exactly by line and section. Treating exported `R` markers as same-family-within-section indicators gives an F1 score (the harmonic mean of precision and recall) of 0.931 and a Matthews correlation of 0.541 for the project's deterministic same-family detection.
 
 This is not independent gold. The MuChin interface automatically groups and colour-highlights pinyin rhyme families, annotators principally review polyphonic readings, and the exported `R` field collapses family identity. The check is therefore partially circular, excluded from model selection, and does not validate Chinese-rap rhyme, pronunciation, tone, cadence, beat alignment, or flow.
 
-## S5. NER Annotation Path to Human Gold
+## S6. NER Annotation Path to Human Gold
 
 The corpuswide private review package contains 800 distinct occurrences sampled by proposed type and agreement state: exact agreement, overlap agreement, type/boundary conflict, lexicon only, and transformer only. A separate claim-directed package contains every unique occurrence contributing to the ten currently released claims: 102 label/reference occurrence rows and 60 co-mention occurrence rows, with five rows overlapping, for 157 unique occurrences in total. Coverage is therefore 157/157 (100%) within the released-claim frame. Reviewer occurrence sheets add 20 real comparators and 16 synthetic boundary-attention controls; pair sheets add eight real non-released comparators to the 23 released co-mention support tasks.
 
@@ -49,7 +55,7 @@ For both packages, two reviewers work independently; in the claim-directed packa
 
 Two earlier, separate sets of 300 context forms and 300 occurrence tasks also contain no completed decisions and are superseded. No unreviewed package supports network centrality or demographic comparisons. The present 22-surface inventory and its six label-to-place and four co-mention edges are reproducibility-screened provisional evidence only.
 
-## S6. Public/Private Release Boundary
+## S7. Public/Private Release Boundary
 
 The public supplement contains aggregate metrics, uncertainty intervals, typed entity surfaces, support summaries, written-ending classes, figure-source tables, code, contracts, and validation manifests. It excludes lyric text, full written lines, song/chunk identifiers, private membership rows, row-level lyric hashes, embeddings, and reviewer contexts. Short Chinese surfaces are included only when needed to interpret an aggregate entity or written-ending result.
 

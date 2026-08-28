@@ -5,9 +5,11 @@
 ## Verified local facts
 
 - The project received and analyzes a **private, frozen supplied snapshot**. The local record does not establish who originally acquired the lyrics, from which platforms, by what collection mechanism, or on what dates.
-- The downstream frozen input contains **7,211 canonical songs** and **22,128 canonical lyric chunks**. The cleaned sidecar has the same 22,128 chunk keys. These counts pass the 12 structural checks in `outputs/chinese-rap-downstream-input-audit-v1/validation.json`.
+- The historical cleaner's legacy frozen output contains **7,214 songs** and **22,132 lyric chunks**. These are lineage-stage counts before the later canonical identity and downstream-eligibility gates; they must not be presented as the current canonical analysis population.
+- The downstream canonical input contains **7,211 songs** and **22,128 canonical lyric chunks**. Three songs and four chunks from the legacy cleaner output are withheld by the later identity/eligibility gates. The cleaned sidecar has the same 22,128 canonical chunk keys. These counts pass the 12 structural checks in `outputs/chinese-rap-downstream-input-audit-v1/validation.json`.
 - The corresponding clean-text sidecar marks 21,553 chunks eligible for analysis and withholds 575 metadata-only chunks. These are processing statuses, not evidence about the original acquisition route.
 - The source metadata export used for lineage checks has **no per-track source-URL column and no stable platform-ID column**. Internal artist/title agreement therefore is not independent discographic verification.
+- The Drive comparison used by PD-002 is bounded to aggregate row-count, mismatch-class, and adjudication evidence from a row-aligned comparison of a live native Sheet with the local raw export. The public artifact does not contain Drive rows, lyrics, titles, labels, identifiers, or row-level hashes. It records equal row counts, a hash binding to the current local raw export, and zero unresolved substantive mismatches after declared adjudications, while **remote Drive object byte identity remains unverified**. This comparison does not establish acquisition provenance, custody before the supplied snapshot, rights, representativeness, or universal record accuracy.
 - Exactly **four song-title fields** have approved external evidence in `work/data-drop/canonical-corpus-evidence-v1/approved_identity_overrides.csv`. Raw source and cleaned values are preserved in that evidence layer. These four field-level corrections do not verify the remaining corpus, performer identity, lyric accuracy, or collection provenance.
 - The analysis treats source-credit strings as corpus labels, not independently verified performer identities.
 - Public outputs are aggregate-only. They exclude lyric/full-line text, song and chunk identifiers, row-level lyric-content hashes, embeddings, private membership rows, and reviewer contexts. Short Chinese entity or rhyme-class surfaces may appear only as bounded analytic evidence. File-level checksums and deterministic aggregate join keys may remain as non-content integrity metadata.
@@ -20,8 +22,16 @@
 | `outputs/chinese-rap-downstream-input-audit-v1/input_manifest.json` | Exact private input files and hashes used by the downstream audit | `52abc68a887b7faa52bc3d81c4396d57b7601eed53b1d79466aead05af92c1e0` |
 | `outputs/chinese-rap-corpus-quality-v1/manifest.json` | Private-content classification, four approved title overrides, and missing track-level URL/stable-ID limitation | `265708db6d66a5359f7a085657a02944fed0d9af1f070f70b9ad73e22ae7d07e` |
 | `work/data-drop/canonical-corpus-evidence-v1/approved_identity_overrides.csv` | Four approved, evidence-backed title-field decisions | `8a315bea65ef2316ba83f73b3f73e4de63e4c0cb98f6d0274004310255c4ec62` |
+| `results/corpus-reconciliation-v1/analysis_summary.json` | Aggregate reconstruction of the legacy 7,214-song/22,132-chunk cleaner output, duplicate-loss diagnostics, task-aligned rhyme sensitivity, Drive-comparison boundary, and outstanding release action | `b44e5c7627f035f187088d690f655332151b1f40c7cd1ba9e7ec11c1923c6460` |
+| `methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md` | Post-freeze amendment separating legacy chunk deletion from duplicate-aware song/component control | `0e3676259f0caa7f3564dd2147be8c442eda4834a6a205851b29741bfac34270` |
 
 Passing these local audits establishes structural lineage and the stated exception counts. It does **not** establish original acquisition provenance, legal permission, ethical approval, representativeness, or universal metadata accuracy.
+
+## Corpus-lineage release action
+
+The corpus reconciliation is a release audit, not a fourth downstream task. It exactly reconstructs the legacy cleaner and shows that artist-level exact-cleaned-text keep-first deletion removed 2,894 chunks and erased 177 song records before canonical analysis. The conservative duplicate-record stratum contains 131 records; 46 records remain review-required.
+
+The current frozen-snapshot results remain reproducible within their declared 7,211-song/22,128-chunk population. However, aggregate counterfactual stability does not establish that held-out retrieval, repertoire-network stability, cultural-reference evidence, or written-ending prediction is unchanged after corpus repair. Before journal submission, the computational team must preserve song identity and within-song order, apply duplicate-aware song/component control, and rerun the affected downstream evaluations. Until then, repaired-corpus predictive-robustness claims are withheld.
 
 ## Information that remains owner-supplied
 

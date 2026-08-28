@@ -1,6 +1,6 @@
 # Chinese written-rhyme V1
 
-This release turns strict Han-ending Chinese-rap written lyric lines into interpretable ending-family fingerprints and a song-held-out exact-next-adjacent-line recommender. Repeated lines remain in sequence; excluded lines and chunk boundaries never create bridged transitions.
+This release turns strict Han-ending Chinese-rap written lyric lines into interpretable ending-family fingerprints and a song-held-out exact-next-adjacent-line recommender. Within the frozen chunk-deduplicated snapshot, repeated lines remain in surviving sequences; excluded lines and chunk boundaries never create bridged transitions. The post-freeze reconciliation in `../corpus-reconciliation-v1/` documents the legacy upstream chunk removal and the duplicate-aware repair action.
 
 Start with:
 

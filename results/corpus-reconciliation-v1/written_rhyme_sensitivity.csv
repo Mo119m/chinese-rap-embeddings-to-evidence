@@ -1,0 +1,3 @@
+corpus,chunk_rows,songs_with_strict_han_ending_lines,strict_han_ending_line_occurrences,within_song_repeat_line_occurrences,adjacent_transition_events,adjacent_same_family_events,written_rhyme_switch_rate
+all cleaned chunks before artist-text deduplication,25026,7272,422656,79247,355530,175079,0.507554918009732
+frozen chunks after artist-text deduplication,22132,7102,406033,70202,342418,168010,0.509342382701844
