@@ -4,7 +4,7 @@ This release turns strict Han-ending Chinese-rap written lyric lines into interp
 
 Start with:
 
-- `analysis_summary.json` for the result and all claim boundaries;
+- `analysis_summary.json` for the result and machine-readable claim boundaries;
 - `model_metrics.csv` and `paired_model_deltas.csv` for baseline-versus-context-model evaluation with song-bootstrap intervals;
 - `label_written_rhyme_summary.csv` / `label_written_rhyme_fingerprints.json` for public-safe source-credit-label summaries;
 - `recommender_lookup.json` for text-free aggregate next-class recommendations;

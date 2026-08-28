@@ -1,4 +1,7 @@
 {
+  "record_status": "historical_snapshot_superseded_for_current_release",
+  "current_release_record": "validation/release_validation.json",
+  "note": "This audit describes the 25 August work/paper_v3 snapshot. Its word count and hashes are not current; use validation/release_validation.json and paper/derivative_provenance.json for the current release.",
   "schema_version": "1.0.0",
   "audit_id": "final-manuscript-audit-2026-08-25",
   "generated_at_utc": "2026-08-26T03:53:55Z",

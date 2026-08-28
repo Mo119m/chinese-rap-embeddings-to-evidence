@@ -101,6 +101,7 @@ def build_validation(generated_at_utc: str) -> dict:
     portable_source = (ROOT / "index.html").read_text(encoding="utf-8")
     figure_validation = json.loads((ROOT / "figures" / "journal_figure_validation.json").read_text(encoding="utf-8"))
     manuscript = (ROOT / "paper" / "manuscript.md").read_text(encoding="utf-8")
+    manuscript_words = manuscript_word_count(manuscript)
 
     assertions = {
         "global_network_204_nodes": graph["eligibleLabels"] == 204,
@@ -131,7 +132,7 @@ def build_validation(generated_at_utc: str) -> dict:
         "journal_figures_pass": figure_validation["status"] == "pass",
         "journal_figures_600_dpi": all(check["passed"] for check in figure_validation["checks"] if check["name"] == "all_rasters_exact_600dpi"),
         "journal_figure_text_at_least_7pt": min(item["minimum_visible_font_pt"] for item in figure_validation["figures"]) >= 7.0,
-        "manuscript_under_9000_words": manuscript_word_count(manuscript) <= 9000,
+        "manuscript_under_9000_words": manuscript_words <= 9000,
         "structured_abstract_present": all(label in manuscript for label in ("**Purpose:**", "**Design/methodology/approach:**", "**Findings:**", "**Originality:**", "**Contribution to the field of Digital Humanities:**")),
         "strict_docx_exists": (ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx").is_file(),
         "strict_pdf_exists": (ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf").is_file(),
@@ -150,6 +151,12 @@ def build_validation(generated_at_utc: str) -> dict:
         "public_release_ready": True,
         "journal_submission_ready": False,
         "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
+        "manuscript_length": {
+            "method": "whitespace-delimited words before the References heading",
+            "words": manuscript_words,
+            "limit": 9000,
+            "remaining": 9000 - manuscript_words,
+        },
         "checks": assertions,
         "corpus_lineage_audit": {
             "status": corpus_reconciliation["status"],

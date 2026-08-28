@@ -917,6 +917,19 @@ def verify_internal_hashes() -> int:
         if release["artifact_hashes"][key] != sha256(path):
             raise AssertionError(f"release_validation artifact hash is stale: {key}")
         checked += 1
+
+    manuscript = (ROOT / "paper" / "manuscript.md").read_text(encoding="utf-8")
+    observed_words = len(manuscript.split("\n## References", 1)[0].split())
+    manuscript_length = release.get("manuscript_length", {})
+    if manuscript_length.get("method") != "whitespace-delimited words before the References heading":
+        raise AssertionError("release_validation manuscript word-count method is missing or changed")
+    if manuscript_length.get("words") != observed_words:
+        raise AssertionError("release_validation manuscript word count is stale")
+    if manuscript_length.get("limit") != 9000 or manuscript_length.get("remaining") != 9000 - observed_words:
+        raise AssertionError("release_validation manuscript word-count boundary is stale")
+    if observed_words > 9000:
+        raise AssertionError(f"Manuscript exceeds the 9,000-word limit: {observed_words}")
+    checked += 4
     return checked
 
 

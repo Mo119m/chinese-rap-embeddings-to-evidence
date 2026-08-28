@@ -49,43 +49,43 @@
     },
     {
       "path": "paper/manuscript.md",
-      "bytes": 72051,
-      "sha256": "5366b85476ebc262ed495ddc814c3d8d783ad85dd6c73c0ca0aa8d8e817a1d6c"
+      "bytes": 69130,
+      "sha256": "c666b3e8a49f6ed51f59e48d97418387fdb7b421d5ca51ca22aa8c559b6a9f85"
     },
     {
       "path": "paper/derivative_provenance.json",
       "bytes": 2341,
-      "sha256": "f36187470a9afed3c5dfa3ee677da74918fe63baf28e7cd046ed7638a8805249"
+      "sha256": "deb0ff085b2b4d52b4b26adbfc1531da5942fc077e7d047c3dcd500d7c01d761"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx",
-      "bytes": 1408319,
-      "sha256": "84fa377272adb24ce0c2d618d7e878b91711bf5ccaa7021df5251faed99c2ff7"
+      "bytes": 1407235,
+      "sha256": "4a048ce7deb186a0ce0387c75f3d526065d7c10cf36aef2d90b3ddb504565f17"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf",
-      "bytes": 947065,
-      "sha256": "4d79314621852f566495c45f824892ae84eea402376eeff9f1a3551c37265fd4"
+      "bytes": 943213,
+      "sha256": "b62c5604445b3723be75e2692de757297587d5d46b1fc278ee1945fd5ab96e85"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
-      "bytes": 72422,
-      "sha256": "584173a4d46cdc6622de4f89b1465e232264257d3c79d9bcbdb3c537c7dd9393"
+      "bytes": 71364,
+      "sha256": "f8ba2334ad11cb8415cb86281b2580395a6d46b5e29179769cb5a56e98d22584"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf",
-      "bytes": 435353,
-      "sha256": "d59a857881e9eb5154659d4a3e98b1412e7e4f3f5cad94ccedf4c5bf4de7d420"
+      "bytes": 431680,
+      "sha256": "693fdeed65720426f8710912ffe6224d1269c4b8c41932e667bbbe7b4fe3abc0"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx",
-      "bytes": 45469,
-      "sha256": "2cb34afc52aecac01a77a08287f2533b19115852575ea8f2c24ca4c96bad819c"
+      "bytes": 45529,
+      "sha256": "ab84c2f94de01634c7e2245b4080efcdbb4dca61b6aecaae2cd1158d6581542f"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf",
-      "bytes": 218143,
-      "sha256": "ba22ab2ba3f358619f0271762d20e9982798b8d26dbfe81847f7988a6b4cb733"
+      "bytes": 218262,
+      "sha256": "cb48a6f5f4583cafa852be1de31cb6a1a79f24342bcb83837145d44f67034322"
     },
     {
       "path": "figures/journal_figure_validation.json",
@@ -95,7 +95,7 @@
     {
       "path": "figures/manifest.json",
       "bytes": 15110,
-      "sha256": "97f1d0130ada0f7323024d1fcb223a97a52476976d5777090f2c7bba82d6e398"
+      "sha256": "ffe6226d9cd59b2c3ca86acdd513625750d4519c4e788e27e57881f1dbb66a7c"
     },
     {
       "path": "methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md",
@@ -149,8 +149,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 42890,
-      "sha256": "a3fb5cbfe47acd00d64d90ce78c15ebfe70228c8d09ad2ad14e8ffee66c386f0"
+      "bytes": 43170,
+      "sha256": "6a6472cfc94e342888dc0c1715f91dcec3ba1c32ec6c7cf14d234e43dbdb4e28"
     },
     {
       "path": "src/build_chinese_rap_paper_docx_v1.py",
@@ -174,8 +174,8 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 61262,
-      "sha256": "cf69f69814338e1ddb49c6a93b87512a0eb8f37a97b43ec4b5b541ef9461e9f3"
+      "bytes": 62162,
+      "sha256": "ade3b4537fd5f11dd53ac1fcaa14929596e1649ea4b1babee9f7e18a804b8b49"
     },
     {
       "path": "tools/check_manuscript_derivatives.py",
@@ -185,12 +185,12 @@
     {
       "path": "submission/dsh/MANIFEST.json",
       "bytes": 2934,
-      "sha256": "53a70d31356ab38f519acbf2115ef46636e6bf774ddc0716f1736c82ea8dd00b"
+      "sha256": "f0e8b789608fc0c88c6a0b4c2c756caa1a62fd445ffb2328af425ad72b02df6a"
     },
     {
       "path": "validation/release_validation.json",
-      "bytes": 6611,
-      "sha256": "07e3ec38a0c25db36ca24703845ed5f4258806a0ca50522c437aa4dd0a3d39a3"
+      "bytes": 6774,
+      "sha256": "d5d6cc57818b3d3e7044186b82d788f4df2e4f399b863f648d96e129b0693e1e"
     },
     {
       "path": "validation/standalone_site_validation.json",

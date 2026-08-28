@@ -1,5 +1,7 @@
 # Final independent manuscript audit
 
+> **Historical snapshot — superseded for the current release.** This file audits the 25 August `work/paper_v3` snapshot. Its 8,600-word count and recorded hashes do not describe the current manuscript. The authoritative current records are `validation/release_validation.json` and `paper/derivative_provenance.json`.
+
 ## Overall assessment: NOT READY TO SUBMIT — empirical and methodological integrity PASS; author and release completion required
 
 The revised manuscript is internally coherent and its scientific results are reconciled to the frozen artifacts. I found **zero numerical mismatches** across the corpus table, all retrieval values and intervals, the provisional NER/network funnel and released edges, the written-ending benchmark and abstention results, and all four figure captions. The transductive TF–IDF deviation is disclosed accurately and governed by a dated amendment. The NER risk-ratio bound is defined correctly, all figures and tables are called out in the prose, RQ4 is explicitly a design synthesis, and the citation list is closed. The final public-boundary correction is also coherent: row-level lyric-content hashes remain private, whereas whole-file SHA-256 checksums are retained solely as non-content integrity metadata.
