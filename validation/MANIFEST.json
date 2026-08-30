@@ -154,8 +154,8 @@
     },
     {
       "path": "methods/METADATA_BLOCK_AUDIT_PROTOCOL.md",
-      "bytes": 8549,
-      "sha256": "c2ae2447d05b717ee7371554db782506d5b2cabb6ad0a0d7525bdcaceede3a60"
+      "bytes": 10076,
+      "sha256": "6931b49b22a42e5bee7d0c4eabc0a53dba74b23bc70d180a0622b68dfa66764f"
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
@@ -193,6 +193,11 @@
       "sha256": "4af8847c30b4d9313bd4e43bc401616b907c18a58d15cb7166d2f4856d4265d8"
     },
     {
+      "path": "tools/build_metadata_gold_sheet.py",
+      "bytes": 15472,
+      "sha256": "61e9c71242a95b1add948814442a51dee8320ea261e7f73fa6035326ecc92eaa"
+    },
+    {
       "path": "results/ner-v1/released_claim_audit_status.json",
       "bytes": 3796,
       "sha256": "c6515f94b6a2278315044b14451a634efddb0788f110b0afd8803e89a57e95b3"
@@ -214,8 +219,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 49389,
-      "sha256": "a054a4bb811bd46370e5f7e9837eb704f012703cd453267f6d313df99f1a6dee"
+      "bytes": 49446,
+      "sha256": "d86711a39b79c61f0f1b828067cebd7d54235ee6a38c082154dc523c4e9c45fc"
     },
     {
       "path": "src/normalize_public_text_v1.py",
@@ -234,8 +239,8 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 81359,
-      "sha256": "48055a9bab87385338a8ddad13d32d6b5ab47f9b57b8b9c6e350d3d5edb965cf"
+      "bytes": 81401,
+      "sha256": "f1fc2af853c7b4c3717a69eb9f7e756cba06fd8fc88f4d79ea909116713a6235"
     },
     {
       "path": "submission/dsh/MANIFEST.json",

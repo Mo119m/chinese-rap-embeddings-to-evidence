@@ -135,3 +135,13 @@ truthfully, whether PD-002 deduplication has been applied to its input
 (`--dedup-state applied|not-applied`), and stamps that state into the summary. A
 pre-dedup run is permitted for private scoping but its summary is marked
 `provisional_pre_dedup` and must not be published as the audit result.
+
+## Gold-set labelling (MB-001-GOLD-001)
+
+The detector carries no precision, recall, or F-measure because nothing independent has labelled what a metadata line is. `tools/build_metadata_gold_sheet.py` renders a sample of the repaired corpus for labelling, blind: the rater is not shown which lines fired, which stratum a chunk came from, or any rule name.
+
+The sample is stratified by detector output -- half from chunks where at least one line fires, half from chunks where none does -- because a uniform sample of a corpus this size contains too few positives to estimate precision. That makes the sample non-representative by construction. The per-stratum populations and draw sizes are written into the key file, and every estimate computed from these labels must be weighted by the sampling probabilities and reported as stratified. It is not a random sample of the corpus and may not be described as one.
+
+Every sampled chunk requires an affirmative answer, including "no metadata line here". A chunk left untouched is an unread chunk, not a negative, and is excluded rather than counted as clean; recall is estimated from the affirmative negatives, so the distinction is not cosmetic.
+
+Labels collected this way are author labels from a single rater. They license a stratified precision and recall estimate attributed to one rater. They do not establish inter-rater reliability, they are not an independent human review, and no F-measure may be reported as validated until a genuine second independent labelling exists.

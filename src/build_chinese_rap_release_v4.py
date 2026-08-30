@@ -421,6 +421,7 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "src" / "duplicate_control_v2.py",
         ROOT / "tests" / "test_repaired_corpus_v2.py",
         ROOT / "tools" / "build_duplicate_review_sheet.py",
+        ROOT / "tools" / "build_metadata_gold_sheet.py",
         ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
         ROOT / "src" / "build_ner_released_claim_audit_v1.py",
         ROOT / "src" / "build_repertoire_robustness_inference_v1.py",
