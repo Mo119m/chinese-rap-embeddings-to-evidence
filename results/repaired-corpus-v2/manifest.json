@@ -1,0 +1,66 @@
+{
+  "artifact_id": "chinese-rap-repaired-corpus-v2",
+  "files": [
+    {
+      "bytes": 4918,
+      "path": "analysis_summary.json",
+      "sha256": "0ab6475c3aae98dc87c3c4e411c3d590d823411a86864b3c8c5cc3654a95dbd5"
+    },
+    {
+      "bytes": 200,
+      "path": "corpus_stage_counts.csv",
+      "sha256": "57f0c133f0964f98a1688a471cab13c9f073a29b5e2c95ee8ab9c7e07499eadd"
+    },
+    {
+      "bytes": 41,
+      "path": "duplicate_group_size_distribution.csv",
+      "sha256": "cdef466dcf47de6d4c344cb16a2776b3ddb340a910df31374afe1ab7bb71924b"
+    },
+    {
+      "bytes": 2815,
+      "path": "METHOD.md",
+      "sha256": "b5f5e6891b39f9cce71b0e680b80afb064f87ec91f4fc471f04db2f455c5a816"
+    },
+    {
+      "bytes": 1574,
+      "path": "README.md",
+      "sha256": "2c883b6eeb596b66f802d9912c50455775a6767341bef682e43cb64271514798"
+    },
+    {
+      "bytes": 174,
+      "path": "review_queue_by_reason.csv",
+      "sha256": "99ded0ffb33155badffd2816832e056a120943852a02f1fd2ab8a5d84ed72dd6"
+    },
+    {
+      "bytes": 112,
+      "path": "text_component_size_distribution.csv",
+      "sha256": "731863b6abbfdfa1dc04e64196f8e1982fab75362df1722299c90eb45ae942b5"
+    },
+    {
+      "bytes": 1492,
+      "path": "validation.json",
+      "sha256": "079c23f1d1fd4d7f3a670640829c81f486935f00ff3380a8ad8305ec03415795"
+    }
+  ],
+  "generated_at_utc": "2026-08-30T23:09:50+00:00",
+  "software": [
+    {
+      "path": "src/build_repaired_corpus_v2.py",
+      "sha256": "9fcdf391a9c0dd0d297976a3e11b5a4cb55dee530ccf2aace94d91c57e199e85"
+    },
+    {
+      "path": "src/build_corpus_reconciliation_v1.py",
+      "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
+    },
+    {
+      "path": "src/build_canonical_lyric_text_sidecar_v1.py",
+      "sha256": "c86786b8631fdba98fb7cc5354aaaa66d5bfa851fb00726354279c50a8574c49"
+    },
+    {
+      "path": "src/build_chinese_rap_written_rhyme_v1.py",
+      "sha256": "1583f279c3aa224a5b551df7e4bdb8a82a7deccb95db1e0c94b9256fc1d87a2e"
+    }
+  ],
+  "status": "pass_pending_author_review",
+  "version": "2.0.0"
+}

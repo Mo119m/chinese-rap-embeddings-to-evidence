@@ -45,7 +45,7 @@ ROLE_ALTERNATION = "|".join(re.escape(role) for role in ROLES)
 # A credit label may chain several role terms and a bilingual gloss before its separator
 # ("企划统筹A&R COORDINATOR：..."), so the role run continues over further role terms and
 # Latin label text. Han that is not itself a role term ends the run, which keeps lyric
-# lines that merely begin with a role word (曲终人散..., 词穷了...) out.
+# lines that merely begin with a role word (曲子还没有写完..., 词穷了...) out.
 ROLE_LINE = re.compile(
     r"^\s*(?:[\(（\[【][^）\)\]】]{1,12}[\)）\]】]\s*)?"
     r"(?:" + ROLE_ALTERNATION + r")"
@@ -219,10 +219,12 @@ def self_test() -> int:
     check("a Chinese sample attribution is metadata",
           rule_hit("采样自 甲乙丙") == "sample_attribution")
 
-    # the real shape author review surfaced: a coordinator label, bare personnel names,
-    # a publisher label, then the song
+    # The shape author review surfaced: a coordinator label, bare personnel names, a
+    # publisher label, then the song. The two closing lines stand in for what actually
+    # followed -- a short repeated English line and a Han line -- because this file is
+    # public and its fixtures must not be corpus text. Both are verified absent.
     block = classify("企划统筹A&R COORDINATOR：甲乙丙\n丁戊\n己庚/辛壬\n"
-                     "OP/SP：癸子文化传媒有限公司\nBaby Baby\n我想要问你")
+                     "OP/SP：癸子文化传媒有限公司\nHello Hello\n我想去看看那座桥")
     check("every line of a real credits header is caught",
           [entry["rule"] is not None for entry in block[:4]] == [True] * 4)
     check("and the first lyric line after it is NOT swallowed",

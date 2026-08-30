@@ -61,6 +61,12 @@ The next corpus version must preserve all non-empty cleaned source chunks and th
 4. Give each component total weight one within a source-label aggregate so repeated imports cannot dominate centroids, vocabulary probes, or cultural-reference rates.
 5. Report sensitivities for: high-confidence duplicate-record collapse versus preservation; exact-component weighting versus raw occurrence weighting; and the 46-record review queue included versus withheld.
 
+## Implementation status
+
+The replacement rule above is implemented in `src/build_repaired_corpus_v2.py`, whose decision rules live in `src/duplicate_control_v2.py` and are covered by `tests/test_repaired_corpus_v2.py`. Corpus v2 retains all 25,026 cleaned chunks across 7,391 song records in original order and deletes nothing; it carries 84 duplicate groups over 227 song records and 6,025 exact-text components, 799 of them spanning more than one song. Aggregate counts, input and software hashes, and validation gates are published in `results/repaired-corpus-v2/`; the corpus itself is private.
+
+Rules 1 through 4 are implemented. Rule 5 -- the sensitivities -- is not yet reported, because two of its three strata depend on the 46-record review queue, which is generated under `methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md` but not yet adjudicated. The queue is reproduced at the size published above and is not narrowed by the automatic rule: 12 of the 46 are additionally grouped by the v2 primary stratum, because their exact-sequence twin was itself erased by the legacy rule, and those 12 remain in the queue as a declared sub-stratum.
+
 ## Downstream consequences
 
 - **Retrieval:** V1 remains an internally valid frozen-corpus benchmark. V2 must rebuild the song universe, keep duplicate components together, and rerun paired metrics and intervals.

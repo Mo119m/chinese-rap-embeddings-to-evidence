@@ -1,6 +1,6 @@
 {
   "artifact": "chinese-rap-public-release-core-manifest-v4",
-  "generated_at_utc": "2026-08-27T19:50:43.375257+00:00",
+  "generated_at_utc": "2026-08-30T23:16:47.302181+00:00",
   "files": [
     {
       "path": ".gitattributes",
@@ -14,13 +14,13 @@
     },
     {
       "path": ".github/workflows/release-integrity.yml",
-      "bytes": 6537,
-      "sha256": "acc3cae2c2a508fe846448525c5efaa3873a4bff119a87664f18c1b18cf57f95"
+      "bytes": 6856,
+      "sha256": "1903e4c8b071913fe24a7134b0d22c6ee2119935f46483ce6fd3e865cd58b0b3"
     },
     {
       "path": "README.md",
-      "bytes": 11401,
-      "sha256": "68fedc51f80382e3b0ee668853ed584c185f9dacb42dba04ed5b006f1c143a80"
+      "bytes": 12866,
+      "sha256": "9ab649be373e1951e1573d94785957ce92ffd2729e25620469026b421b5b7879"
     },
     {
       "path": "LICENSE",
@@ -149,8 +149,8 @@
     },
     {
       "path": "tools/detect_metadata_blocks.py",
-      "bytes": 16356,
-      "sha256": "f3aa979b36ff995530a72443f4f685cce121f762373441f6a459488541ca5675"
+      "bytes": 16589,
+      "sha256": "fcdc79edc56925bcebeafd5c42a484e3f4e906469684cfe0a32012552c0b9ca1"
     },
     {
       "path": "methods/METADATA_BLOCK_AUDIT_PROTOCOL.md",
@@ -159,13 +159,38 @@
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
-      "bytes": 8353,
-      "sha256": "0e3676259f0caa7f3564dd2147be8c442eda4834a6a205851b29741bfac34270"
+      "bytes": 9499,
+      "sha256": "ad2138a2150e33b91c743bca0c0a32e0dbacd225a1b30681a1c0cc32ed8916c2"
+    },
+    {
+      "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
+      "bytes": 4516,
+      "sha256": "d298f043c072d8941ca4dde54770684a339927a1f118289806d9067eb5c6d518"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
       "bytes": 52018,
       "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
+    },
+    {
+      "path": "src/build_repaired_corpus_v2.py",
+      "bytes": 26464,
+      "sha256": "9fcdf391a9c0dd0d297976a3e11b5a4cb55dee530ccf2aace94d91c57e199e85"
+    },
+    {
+      "path": "src/duplicate_control_v2.py",
+      "bytes": 11611,
+      "sha256": "9a55371f5fe715e802410160e90ba4f620007ee30c0f1c7fae4a772e3d162d33"
+    },
+    {
+      "path": "tests/test_repaired_corpus_v2.py",
+      "bytes": 17408,
+      "sha256": "94729a1726e0060a1bf9ddae80b565c3219c1326854a6b5c189a2711230e1c82"
+    },
+    {
+      "path": "tools/build_duplicate_review_sheet.py",
+      "bytes": 14004,
+      "sha256": "4af8847c30b4d9313bd4e43bc401616b907c18a58d15cb7166d2f4856d4265d8"
     },
     {
       "path": "results/ner-v1/released_claim_audit_status.json",
@@ -189,8 +214,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 48818,
-      "sha256": "2603732826732a088789fe0de334d1c677b6ee3c1a1676fef948c1964a8622d7"
+      "bytes": 49389,
+      "sha256": "a054a4bb811bd46370e5f7e9837eb704f012703cd453267f6d313df99f1a6dee"
     },
     {
       "path": "src/normalize_public_text_v1.py",
@@ -209,23 +234,23 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 68515,
-      "sha256": "d1b67bc2a9fbc11b6050f75b7669953e640f23feddd1cdb00583a82554a93f08"
+      "bytes": 81359,
+      "sha256": "48055a9bab87385338a8ddad13d32d6b5ab47f9b57b8b9c6e350d3d5edb965cf"
     },
     {
       "path": "submission/dsh/MANIFEST.json",
       "bytes": 2882,
-      "sha256": "bb41b257aa11ebda43b5946805683b9e5572f1979d41a56032a75fd57cba0bc1"
+      "sha256": "82d38def67682423c84e53d7771709038bbca412b956dc897a35c5fdf6fa1511"
     },
     {
       "path": "validation/release_validation.json",
       "bytes": 4982,
-      "sha256": "70f6fcd7209c7ddb03da374a64dd77f752ee87f435a6fb4b7fae6eb862f7d101"
+      "sha256": "3ab54eca17f1518f59ff75acff6c275d6c9f389967722aa1802d0d44eb6ca7f6"
     },
     {
       "path": "validation/standalone_site_validation.json",
       "bytes": 692,
-      "sha256": "f9b06d37184216c7df9b4831ca3995d955b53cc67d6bd0de72f4d1d9a5d4f4fa"
+      "sha256": "2fc16f85ab673c9b61acf370c3a7e096101eaaff63c2ac61c25c2a520901371e"
     },
     {
       "path": "validation/portable_site_manifest.json",
@@ -326,6 +351,51 @@
       "path": "results/corpus-reconciliation-v1/written_rhyme_sensitivity.csv",
       "bytes": 415,
       "sha256": "2ea4b8c755cfc1074261518c24f593a1fdfbf7ff0ebac6262f531a796d8be3bc"
+    },
+    {
+      "path": "results/repaired-corpus-v2/METHOD.md",
+      "bytes": 2815,
+      "sha256": "b5f5e6891b39f9cce71b0e680b80afb064f87ec91f4fc471f04db2f455c5a816"
+    },
+    {
+      "path": "results/repaired-corpus-v2/README.md",
+      "bytes": 1574,
+      "sha256": "2c883b6eeb596b66f802d9912c50455775a6767341bef682e43cb64271514798"
+    },
+    {
+      "path": "results/repaired-corpus-v2/analysis_summary.json",
+      "bytes": 4918,
+      "sha256": "0ab6475c3aae98dc87c3c4e411c3d590d823411a86864b3c8c5cc3654a95dbd5"
+    },
+    {
+      "path": "results/repaired-corpus-v2/corpus_stage_counts.csv",
+      "bytes": 200,
+      "sha256": "57f0c133f0964f98a1688a471cab13c9f073a29b5e2c95ee8ab9c7e07499eadd"
+    },
+    {
+      "path": "results/repaired-corpus-v2/duplicate_group_size_distribution.csv",
+      "bytes": 41,
+      "sha256": "cdef466dcf47de6d4c344cb16a2776b3ddb340a910df31374afe1ab7bb71924b"
+    },
+    {
+      "path": "results/repaired-corpus-v2/manifest.json",
+      "bytes": 2066,
+      "sha256": "00f2fd2da8d616c7aa5e62b658dfc6df22fd1617cd62af35a3182884d05ae4f1"
+    },
+    {
+      "path": "results/repaired-corpus-v2/review_queue_by_reason.csv",
+      "bytes": 174,
+      "sha256": "99ded0ffb33155badffd2816832e056a120943852a02f1fd2ab8a5d84ed72dd6"
+    },
+    {
+      "path": "results/repaired-corpus-v2/text_component_size_distribution.csv",
+      "bytes": 112,
+      "sha256": "731863b6abbfdfa1dc04e64196f8e1982fab75362df1722299c90eb45ae942b5"
+    },
+    {
+      "path": "results/repaired-corpus-v2/validation.json",
+      "bytes": 1492,
+      "sha256": "079c23f1d1fd4d7f3a670640829c81f486935f00ff3380a8ad8305ec03415795"
     },
     {
       "path": "results/retrieval-inductive-sensitivity-v1/METHOD.md",

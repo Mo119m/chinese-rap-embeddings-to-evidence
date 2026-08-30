@@ -1,0 +1,130 @@
+{
+  "artifact_id": "chinese-rap-repaired-corpus-v2",
+  "checks": [
+    {
+      "name": "duplicate_control_title_rule_agrees_with_reconciliation_v1",
+      "passed": true
+    },
+    {
+      "name": "legacy_stages_reproduce_pd002_counts",
+      "passed": true
+    },
+    {
+      "name": "frozen_snapshot_content_exactly_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "no_chunk_row_deleted_by_duplicate_control",
+      "passed": true
+    },
+    {
+      "name": "source_order_and_song_chunk_relation_preserved",
+      "passed": true
+    },
+    {
+      "name": "within_song_repetition_preserved",
+      "passed": true
+    },
+    {
+      "name": "pd002_published_erasure_and_queue_reproduced",
+      "passed": true
+    },
+    {
+      "name": "review_queue_not_narrowed_by_automatic_grouping",
+      "passed": true
+    },
+    {
+      "name": "every_song_has_exactly_one_component_and_positive_weight",
+      "passed": true
+    },
+    {
+      "name": "component_weights_total_one_per_label_component",
+      "passed": true
+    },
+    {
+      "name": "duplicate_groups_have_exactly_one_representative",
+      "passed": true
+    },
+    {
+      "name": "duplicate_group_members_share_one_text_component",
+      "passed": true
+    }
+  ],
+  "corpus_geometry": {
+    "chunk_rows": 25026,
+    "chunk_rows_restored_versus_legacy": 2894,
+    "cross_song_shared_exact_texts": 2530,
+    "del_control_characters_removed": 3,
+    "del_control_rows_corrected": 2,
+    "duplicate_group_size_histogram": {
+      "2": 63,
+      "4": 4,
+      "5": 17
+    },
+    "duplicate_groups": 84,
+    "largest_text_component_songs": 27,
+    "multi_song_components": 799,
+    "non_representative_duplicate_records": 143,
+    "single_song_components": 5226,
+    "song_records": 7391,
+    "song_records_in_duplicate_groups": 227,
+    "song_records_in_multi_song_components": 2165,
+    "song_records_restored_versus_legacy": 177,
+    "text_components": 6025
+  },
+  "generated_at_utc": "2026-08-30T23:09:50+00:00",
+  "independent_human_review_status": "pending",
+  "input_fingerprints": {
+    "frozen_snapshot": {
+      "file": "lyrics_chunks_cleaned_v1.csv",
+      "sha256": "98fd4984398d32429bf1330117dd7459749b710c75caff02132aa847915316dc"
+    },
+    "raw_chunks": {
+      "file": "lyrics_chunks_enriched.csv",
+      "sha256": "6896e533406137d8f6fcf382ce7902083da8ce2244a776e81b9611c7937c9262"
+    }
+  },
+  "permitted_claim": "corpus v2 preserves song identity, within-song repetition, and source order, and represents duplicate structure without deleting source rows",
+  "privacy": "aggregate only; no lyric text, titles, source-credit labels, song/chunk identifiers, embeddings, or row-level hashes",
+  "repaired_corpus_content_sha256": "8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b",
+  "replacement_rule": {
+    "component_rule": "songs sharing any exact cleaned chunk text form one component; components must not cross evaluation partitions",
+    "del_control_correction": "DEL controls removed while preserving the preceding character, unlike the destructive live-sheet import",
+    "duplicate_control": "represented as group membership and component weights; no chunk is deleted",
+    "preservation": "every non-empty cleaned source chunk retained with its (song ID, chunk ID, source order) relation",
+    "primary_duplicate_stratum": "same source-credit label + same normalized title + exact complete cleaned chunk sequence",
+    "weighting_rule": "each component carries total weight one inside a source-label aggregate"
+  },
+  "review_queue": {
+    "high_confidence_duplicate_records": 131,
+    "legacy_erased_song_records": 177,
+    "manual_review_queue_records": 46,
+    "queue_by_reason": {
+      "chunk_multiset_subset_of_one_retained_song": 33,
+      "chunks_distributed_across_multiple_retained_songs": 8,
+      "exact_cleaned_sequence_but_different_normalized_title": 5
+    },
+    "queue_records_also_grouped_by_v2_primary_rule": 12
+  },
+  "software_fingerprints": [
+    {
+      "path": "src/build_repaired_corpus_v2.py",
+      "sha256": "9fcdf391a9c0dd0d297976a3e11b5a4cb55dee530ccf2aace94d91c57e199e85"
+    },
+    {
+      "path": "src/build_corpus_reconciliation_v1.py",
+      "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
+    },
+    {
+      "path": "src/build_canonical_lyric_text_sidecar_v1.py",
+      "sha256": "c86786b8631fdba98fb7cc5354aaaa66d5bfa851fb00726354279c50a8574c49"
+    },
+    {
+      "path": "src/build_chinese_rap_written_rhyme_v1.py",
+      "sha256": "1583f279c3aa224a5b551df7e4bdb8a82a7deccb95db1e0c94b9256fc1d87a2e"
+    }
+  ],
+  "status": "pass_pending_author_review",
+  "version": "2.0.0",
+  "withheld_claim": "that the duplicate groups establish real-world work identity, reissue status, authorship, or performer identity; and that any downstream predictive metric is stable under the repair, since no model has been retrained on this population"
+}

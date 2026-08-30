@@ -44,6 +44,12 @@ The reconstruction shows that the legacy chunk rule removed 2,894 chunks and era
 
 See [`results/corpus-reconciliation-v1/`](results/corpus-reconciliation-v1/) for aggregate evidence and [`methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md`](methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md) for the replacement rule. The live-Drive comparison is retained publicly only as aggregate row-count, mismatch-class, and adjudication evidence; it does not verify remote-object byte identity, acquisition provenance, rights, or universal metadata accuracy.
 
+### The repaired corpus
+
+The replacement rule is implemented in [`src/build_repaired_corpus_v2.py`](src/build_repaired_corpus_v2.py), with its decision rules isolated in [`src/duplicate_control_v2.py`](src/duplicate_control_v2.py) so they can be tested without any dependency. Corpus v2 retains all **25,026 cleaned chunks across 7,391 song records** in original `(song ID, chunk ID, source order)` — restoring the 2,894 chunks and 177 song records the legacy rule deleted — and deletes nothing for being a duplicate. Duplicate structure is carried as **84 duplicate groups** over 227 records and **6,025 exact-text components**, of which 799 span more than one song; each component carries total weight one inside a source-label aggregate. Aggregate counts and gates are published in [`results/repaired-corpus-v2/`](results/repaired-corpus-v2/); the corpus itself carries lyric text and is never published.
+
+The 46-record review queue is reproduced, not narrowed, and is adjudicated under [`methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md`](methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md). `independent_human_review_status` remains `pending`. The duplicate groups establish that two ingestion records carry identical cleaned content under one label and title, and nothing more: not work identity, reissue status, authorship, or performer identity. No downstream model has been retrained on this population, so every predictive metric remains a frozen-snapshot result.
+
 ## Repository map
 
 - `paper/` — final English manuscript and supplementary methods in Markdown, DOCX, and PDF.

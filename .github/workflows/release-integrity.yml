@@ -60,6 +60,9 @@ jobs:
       - name: Try to bypass the compound resolution gate
         run: python tests/test_compound_resolution_gate.py
 
+      - name: Check the PD-002 duplicate-control rules
+        run: python tests/test_repaired_corpus_v2.py
+
       - name: Self-test the metadata-block detector
         run: python tools/detect_metadata_blocks.py --self-test
 
@@ -125,6 +128,9 @@ jobs:
 
       - name: Run the packaged adversarial suite from inside the desktop package
         run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_compound_resolution_gate.py"
+
+      - name: Run the packaged duplicate-control tests from inside the desktop package
+        run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_repaired_corpus_v2.py"
 
       - name: Run the packaged tool tests from inside the desktop package
         run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_tools.py"

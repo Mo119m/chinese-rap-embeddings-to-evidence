@@ -49,6 +49,27 @@ CORPUS_RECONCILIATION_SOFTWARE = {
     "src/build_corpus_reconciliation_v1.py",
 }
 
+REPAIRED_CORPUS_DIR = ROOT / "results" / "repaired-corpus-v2"
+
+REPAIRED_CORPUS_FILES = {
+    "analysis_summary.json",
+    "corpus_stage_counts.csv",
+    "duplicate_group_size_distribution.csv",
+    "manifest.json",
+    "METHOD.md",
+    "README.md",
+    "review_queue_by_reason.csv",
+    "text_component_size_distribution.csv",
+    "validation.json",
+}
+
+REPAIRED_CORPUS_SOFTWARE = {
+    "src/build_canonical_lyric_text_sidecar_v1.py",
+    "src/build_chinese_rap_written_rhyme_v1.py",
+    "src/build_corpus_reconciliation_v1.py",
+    "src/build_repaired_corpus_v2.py",
+}
+
 MANUSCRIPT_DERIVATIVES = {
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": "paper/manuscript.md",
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": "paper/manuscript.md",
@@ -109,8 +130,15 @@ CORE_REQUIRED_PATHS = {
     "tools/detect_metadata_blocks.py",
     "methods/METADATA_BLOCK_AUDIT_PROTOCOL.md",
     "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
+    "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
     "src/build_corpus_reconciliation_v1.py",
-} | {f"results/corpus-reconciliation-v1/{name}" for name in CORPUS_RECONCILIATION_FILES}
+    "src/build_repaired_corpus_v2.py",
+    "src/duplicate_control_v2.py",
+    "tests/test_repaired_corpus_v2.py",
+    "tools/build_duplicate_review_sheet.py",
+} | {f"results/corpus-reconciliation-v1/{name}" for name in CORPUS_RECONCILIATION_FILES} | {
+    f"results/repaired-corpus-v2/{name}" for name in REPAIRED_CORPUS_FILES
+}
 
 # Everything that states a rule or performs a verification must be byte-identical in the
 # package. Checking only that the packaged copy exists let a packaged verifier be edited
@@ -593,6 +621,241 @@ def verify_corpus_reconciliation_claims() -> int:
         + len(family_rows)
         + len(input_fingerprints)
         + 18
+    )
+
+
+def verify_repaired_corpus_claims() -> int:
+    """Check the published corpus v2 artifact against what PD-002 committed to.
+
+    Two things have to hold. The repair must actually be a repair -- every cleaned chunk and
+    song record still present, none deleted for being a duplicate -- and it must not have
+    quietly narrowed the review queue PD-002 published. Both numbers are written here rather
+    than read from the artifact, so a rebuild cannot redefine its own success criterion.
+    """
+    artifact_id = "chinese-rap-repaired-corpus-v2"
+    expected_status = "pass_pending_author_review"
+    manifest = read_json(REPAIRED_CORPUS_DIR / "manifest.json")
+    validation = read_json(REPAIRED_CORPUS_DIR / "validation.json")
+    summary = read_json(REPAIRED_CORPUS_DIR / "analysis_summary.json")
+
+    for name, payload in (("manifest", manifest), ("validation", validation), ("summary", summary)):
+        if payload.get("artifact_id") != artifact_id:
+            raise AssertionError(f"Repaired corpus {name} has the wrong artifact identifier")
+        if payload.get("status") != expected_status:
+            raise AssertionError(f"Repaired corpus {name} has the wrong release status")
+        if payload.get("version") != "2.0.0":
+            raise AssertionError(f"Repaired corpus {name} version is not 2.0.0")
+    generated_at_values = {
+        manifest.get("generated_at_utc"),
+        validation.get("generated_at_utc"),
+        summary.get("generated_at_utc"),
+    }
+    if None in generated_at_values or len(generated_at_values) != 1:
+        raise AssertionError("Repaired corpus generated_at_utc values disagree")
+
+    declared_records = list(iter_records(manifest.get("files")))
+    declared_paths = [relative for relative, _ in declared_records]
+    if len(declared_paths) != len(set(declared_paths)):
+        raise AssertionError("Repaired corpus manifest contains duplicate file paths")
+    expected_output_files = REPAIRED_CORPUS_FILES - {"manifest.json"}
+    actual_output_files = {
+        path.name
+        for path in REPAIRED_CORPUS_DIR.iterdir()
+        if path.is_file() and path.name != "manifest.json"
+    }
+    if set(declared_paths) != expected_output_files or actual_output_files != expected_output_files:
+        raise AssertionError(
+            "Repaired corpus directory disagrees with its release contract; "
+            f"manifest_missing={sorted(expected_output_files - set(declared_paths))}, "
+            f"manifest_extra={sorted(set(declared_paths) - expected_output_files)}, "
+            f"directory_missing={sorted(expected_output_files - actual_output_files)}, "
+            f"directory_extra={sorted(actual_output_files - expected_output_files)}"
+        )
+    for relative, record in declared_records:
+        verify_record(REPAIRED_CORPUS_DIR / relative, record, REPAIRED_CORPUS_DIR)
+
+    manifest_software = {
+        record["path"]: record
+        for record in manifest.get("software", [])
+        if isinstance(record, dict) and isinstance(record.get("path"), str)
+    }
+    summary_software = {
+        record["path"]: record
+        for record in summary.get("software_fingerprints", [])
+        if isinstance(record, dict) and isinstance(record.get("path"), str)
+    }
+    if set(manifest_software) != REPAIRED_CORPUS_SOFTWARE:
+        raise AssertionError(
+            "Repaired corpus software manifest has the wrong file set: "
+            f"{sorted(set(manifest_software) ^ REPAIRED_CORPUS_SOFTWARE)}"
+        )
+    if {r: v["sha256"] for r, v in manifest_software.items()} != {
+        r: v["sha256"] for r, v in summary_software.items()
+    }:
+        raise AssertionError("Repaired corpus manifest and summary software hashes disagree")
+    for relative, record in manifest_software.items():
+        verify_record(ROOT / relative, record, ROOT)
+
+    validation_checks = validation.get("checks")
+    summary_checks = summary.get("checks")
+    if not isinstance(validation_checks, list) or not isinstance(summary_checks, list):
+        raise AssertionError("Repaired corpus checks must be lists")
+    validation_check_index = {record.get("name"): record for record in validation_checks}
+    summary_check_index = {record.get("name"): record for record in summary_checks}
+    if len(validation_check_index) != len(validation_checks) or len(summary_check_index) != len(summary_checks):
+        raise AssertionError("Repaired corpus contains duplicate validation check names")
+    required_checks = {
+        "duplicate_control_title_rule_agrees_with_reconciliation_v1",
+        "legacy_stages_reproduce_pd002_counts",
+        "frozen_snapshot_content_exactly_reconstructed",
+        "no_chunk_row_deleted_by_duplicate_control",
+        "source_order_and_song_chunk_relation_preserved",
+        "within_song_repetition_preserved",
+        "pd002_published_erasure_and_queue_reproduced",
+        "review_queue_not_narrowed_by_automatic_grouping",
+        "every_song_has_exactly_one_component_and_positive_weight",
+        "component_weights_total_one_per_label_component",
+        "duplicate_groups_have_exactly_one_representative",
+        "duplicate_group_members_share_one_text_component",
+    }
+    if set(validation_check_index) != required_checks or set(summary_check_index) != required_checks:
+        raise AssertionError("Repaired corpus validation check set is incomplete or unexpected")
+    if validation_check_index != summary_check_index or not all(
+        record.get("passed") is True for record in validation_checks
+    ):
+        raise AssertionError("Repaired corpus validation checks disagree or do not all pass")
+
+    stage_rows = read_csv_rows(REPAIRED_CORPUS_DIR / "corpus_stage_counts.csv")
+    expected_stages = {
+        "raw lyric chunks": (26833, 7721),
+        "after title exclusions": (25279, 7420),
+        "after line cleaning and empty removal": (25026, 7391),
+        "legacy keep-first (superseded)": (22132, 7214),
+        "repaired corpus v2": (25026, 7391),
+    }
+    if len(stage_rows) != len(expected_stages) or {row["stage"] for row in stage_rows} != set(expected_stages):
+        raise AssertionError("Repaired corpus stage table has the wrong stages")
+    for row in stage_rows:
+        if (int(row["rows"]), int(row["songs"])) != expected_stages[row["stage"]]:
+            raise AssertionError(f"Repaired corpus stage counts changed: {row['stage']}")
+
+    geometry = summary["corpus_geometry"]
+    # the repair is only a repair if the pre-deduplication population is intact
+    expected_geometry = {
+        "chunk_rows": 25026,
+        "song_records": 7391,
+        "chunk_rows_restored_versus_legacy": 2894,
+        "song_records_restored_versus_legacy": 177,
+        "duplicate_groups": 84,
+        "song_records_in_duplicate_groups": 227,
+        "non_representative_duplicate_records": 143,
+        "text_components": 6025,
+        "multi_song_components": 799,
+        "song_records_in_multi_song_components": 2165,
+        "largest_text_component_songs": 27,
+        "cross_song_shared_exact_texts": 2530,
+        "del_control_rows_corrected": 2,
+        "del_control_characters_removed": 3,
+    }
+    if any(int(geometry.get(key, -1)) != value for key, value in expected_geometry.items()):
+        raise AssertionError(f"Repaired corpus geometry changed: {geometry}")
+
+    queue = summary["review_queue"]
+    expected_queue = {
+        "legacy_erased_song_records": 177,
+        "high_confidence_duplicate_records": 131,
+        "manual_review_queue_records": 46,
+        "queue_records_also_grouped_by_v2_primary_rule": 12,
+    }
+    if any(int(queue.get(key, -1)) != value for key, value in expected_queue.items()):
+        raise AssertionError(f"Repaired corpus review queue changed: {queue}")
+    if queue["high_confidence_duplicate_records"] + queue["manual_review_queue_records"] != 177:
+        raise AssertionError("Repaired corpus erased-record strata do not sum to the erased total")
+
+    queue_rows = read_csv_rows(REPAIRED_CORPUS_DIR / "review_queue_by_reason.csv")
+    expected_reasons = {
+        "chunk_multiset_subset_of_one_retained_song": 33,
+        "chunks_distributed_across_multiple_retained_songs": 8,
+        "exact_cleaned_sequence_but_different_normalized_title": 5,
+    }
+    observed_reasons = {row["reason"]: int(row["song_records"]) for row in queue_rows}
+    if observed_reasons != expected_reasons or sum(observed_reasons.values()) != 46:
+        raise AssertionError(f"Repaired corpus review-queue reasons changed: {observed_reasons}")
+
+    if summary.get("independent_human_review_status") != "pending":
+        raise AssertionError(
+            "Repaired corpus claims a human review status other than pending; the 46-record "
+            "queue has no recorded adjudication"
+        )
+    withheld = str(summary.get("withheld_claim", ""))
+    for phrase in ("work identity", "reissue status", "authorship", "performer identity"):
+        if phrase not in withheld:
+            raise AssertionError(f"Repaired corpus stopped withholding a claim about {phrase}")
+
+    if not re.fullmatch(r"[0-9a-f]{64}", str(summary.get("repaired_corpus_content_sha256", ""))):
+        raise AssertionError("Repaired corpus content digest is malformed")
+
+    expected_privacy = (
+        "aggregate only; no lyric text, titles, source-credit labels, song/chunk "
+        "identifiers, embeddings, or row-level hashes"
+    )
+    if summary.get("privacy") != expected_privacy or validation.get("privacy") != expected_privacy:
+        raise AssertionError("Repaired corpus privacy declaration changed")
+    private_path_pattern = re.compile(r"(?:[A-Za-z]:[\\/]|/Users/|/home/|/mnt/|\\\\Users\\\\)", re.IGNORECASE)
+    for path in sorted(REPAIRED_CORPUS_DIR.iterdir()):
+        if path.is_file() and is_text_path(path):
+            if private_path_pattern.search(path.read_text(encoding="utf-8")):
+                raise AssertionError(f"Repaired corpus publishes an absolute private path: {path.name}")
+
+    prohibited_csv_columns = {
+        "artist",
+        "chunk_id",
+        "cleaned_text",
+        "content_hash",
+        "label_id",
+        "line",
+        "line_id",
+        "line_text",
+        "lyric_hash",
+        "lyrics",
+        "song_duplicate_group_id",
+        "song_id",
+        "song_title",
+        "source_credit_label",
+        "text",
+        "text_component_id",
+    }
+    for path in REPAIRED_CORPUS_DIR.glob("*.csv"):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            header = next(csv.reader(handle), [])
+        if prohibited := sorted(set(header) & prohibited_csv_columns):
+            raise AssertionError(f"Repaired corpus CSV exposes private columns in {path.name}: {prohibited}")
+
+    input_fingerprints = summary.get("input_fingerprints")
+    if not isinstance(input_fingerprints, dict) or set(input_fingerprints) != {
+        "raw_chunks",
+        "frozen_snapshot",
+    }:
+        raise AssertionError("Repaired corpus input fingerprints are incomplete")
+    for name, record in input_fingerprints.items():
+        if not isinstance(record, dict) or not isinstance(record.get("file"), str):
+            raise AssertionError(f"Repaired corpus input fingerprint is malformed: {name}")
+        file_name = record["file"]
+        if Path(file_name).name != file_name or "/" in file_name or "\\" in file_name:
+            raise AssertionError(f"Repaired corpus publishes a private input path: {name}")
+        if not re.fullmatch(r"[0-9a-f]{64}", str(record.get("sha256", ""))):
+            raise AssertionError(f"Repaired corpus input fingerprint SHA-256 is malformed: {name}")
+
+    return (
+        len(declared_paths)
+        + len(manifest_software)
+        + len(required_checks)
+        + len(expected_stages)
+        + len(expected_geometry)
+        + len(expected_queue)
+        + len(expected_reasons)
+        + len(input_fingerprints)
+        + 9
     )
 
 
@@ -1177,6 +1440,7 @@ def main() -> None:
     core_contract_checks = verify_core_manifest_contract()
     manuscript_derivative_checks = verify_manuscript_derivative_provenance()
     corpus_reconciliation_checks = verify_corpus_reconciliation_claims()
+    repaired_corpus_checks = verify_repaired_corpus_claims()
     robustness_checks = verify_robustness_claims()
     retrieval_sensitivity_checks = verify_retrieval_sensitivity_claims()
     ner_released_claim_audit_checks = verify_ner_released_claim_audit()
@@ -1190,6 +1454,7 @@ def main() -> None:
                 "core_manifest_contract_checks": core_contract_checks,
                 "manuscript_derivative_checks": manuscript_derivative_checks,
                 "corpus_reconciliation_checks": corpus_reconciliation_checks,
+                "repaired_corpus_checks": repaired_corpus_checks,
                 "robustness_checks": robustness_checks,
                 "retrieval_sensitivity_checks": retrieval_sensitivity_checks,
                 "ner_released_claim_audit_checks": ner_released_claim_audit_checks,

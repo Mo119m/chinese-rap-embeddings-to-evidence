@@ -28,7 +28,10 @@ diverge again over every file both sides regenerated.
 The order of work is not negotiable, and merging is the LAST step, not the first:
 
 1. agree the scientific boundary between the two branches
-2. generate and freeze the PD-002 repaired corpus, with its manifest and hash
+2. generate and freeze the PD-002 repaired corpus, with its manifest and hash — DONE:
+   `src/build_repaired_corpus_v2.py`, `results/repaired-corpus-v2/`, content digest
+   `8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b`. The corpus itself
+   is private; the 46-record review queue is generated but not yet adjudicated.
 3. run the MB audit over the repaired corpus, and build its independent gold set
 4. decide and apply the cleaning policy
 5. rebuild the NER candidate frame and every affected downstream result
