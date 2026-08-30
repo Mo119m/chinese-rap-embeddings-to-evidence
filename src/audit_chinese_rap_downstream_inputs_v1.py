@@ -178,9 +178,9 @@ def build() -> None:
 
     stage = Path(tempfile.mkdtemp(prefix=f".{ARTIFACT_ID}-", dir=OUT.parent))
     try:
-        (stage / "analysis_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        with (stage / "quality_checks.csv").open("w", encoding="utf-8-sig", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=["name", "passed", "value", "expected", "downstream_risk_if_failed"])
+        (stage / "analysis_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        with (stage / "quality_checks.csv").open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=["name", "passed", "value", "expected", "downstream_risk_if_failed"], lineterminator="\n")
             writer.writeheader()
             for item in checks:
                 writer.writerow({**item, "value": json.dumps(item["value"], ensure_ascii=False), "expected": json.dumps(item["expected"], ensure_ascii=False)})
@@ -190,11 +190,11 @@ The audit freezes the exact song, chunk, cleaned-text, and metadata sidecars use
 
 Passing this audit means the files satisfy the declared structural contract. It does not mean every source-credit label, title, lyric line, entity, or pronunciation has been manually or externally verified. The task builders must preserve the claim boundaries in `analysis_summary.json` and publish aggregate-only outputs.
 """
-        (stage / "METHOD.md").write_text(method, encoding="utf-8")
+        (stage / "METHOD.md").write_text(method, encoding="utf-8", newline="\n")
         manifest_files = {}
         for path in (SONGS, CHUNKS, CLEAN, METADATA):
             manifest_files[str(path.relative_to(ROOT)).replace("\\", "/")] = {"bytes": path.stat().st_size, "sha256": sha256(path)}
-        (stage / "input_manifest.json").write_text(json.dumps({"artifact_id": ARTIFACT_ID, "inputs": manifest_files}, indent=2) + "\n", encoding="utf-8")
+        (stage / "input_manifest.json").write_text(json.dumps({"artifact_id": ARTIFACT_ID, "inputs": manifest_files}, indent=2) + "\n", encoding="utf-8", newline="\n")
         validation = {
             "artifact_id": ARTIFACT_ID,
             "generated_at_utc": utc_now(),
@@ -202,7 +202,7 @@ Passing this audit means the files satisfy the declared structural contract. It 
             "checks": [{"name": item["name"], "passed": item["passed"]} for item in checks],
             "privacy": "aggregate only; no lyric text, labels, titles, identifiers, embeddings, or private rows",
         }
-        (stage / "validation.json").write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8")
+        (stage / "validation.json").write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8", newline="\n")
         if OUT.exists():
             shutil.rmtree(OUT)
         stage.replace(OUT)

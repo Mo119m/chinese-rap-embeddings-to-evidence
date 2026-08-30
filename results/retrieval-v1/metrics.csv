@@ -1,4 +1,4 @@
-﻿system,task_role,aggregation,metric,estimate,ci95_lower,ci95_upper,queries,source_credit_labels,global_duplicate_components,label_stratum_component_units,bootstrap_replicates
+system,task_role,aggregation,metric,estimate,ci95_lower,ci95_upper,queries,source_credit_labels,global_duplicate_components,label_stratum_component_units,bootstrap_replicates
 BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.320392,0.294891,0.346490,5455,204,5430,5432,5000
 BGE-M3 dense (strict),primary_comparison,query_micro_descriptive,mrr,0.336691,,,5455,204,5430,5432,
 BGE-M3 dense (strict),primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.225508,0.199389,0.252060,5455,204,5430,5432,5000

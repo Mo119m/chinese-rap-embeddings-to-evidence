@@ -1,3 +1,20 @@
-# Preserve the frozen public artifact byte-for-byte so its published SHA-256
-# manifests validate identically on Windows, macOS, and Linux checkouts.
-results/repertoire-network-v1/** -text
+# Every published SHA-256 manifest in this release hashes the bytes as committed.
+# Git line-ending translation would make those manifests validate on the platform
+# that produced them and fail everywhere else, so no path here is text-converted.
+# The frozen public artifacts must check out byte-for-byte identically on Windows,
+# macOS, and Linux.
+* -text
+
+# Heavy artefacts: never diff, never count towards language statistics.
+*.tif binary
+*.tiff binary
+*.png binary
+*.pdf binary
+*.svg binary
+*.docx binary
+
+# Generated payloads. Kept in the repository because the release must be usable
+# without a build step, but they are build output, not hand-written source.
+index.html linguist-generated
+site/app/data/*.json linguist-generated
+site/public/data/*.json linguist-generated

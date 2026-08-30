@@ -1,9 +1,9 @@
 {
   "artifact": "chinese-rap-portable-results-site-v4",
-  "generated_at_utc": "2026-08-26T19:18:56.559401+00:00",
+  "generated_at_utc": "2026-08-27T19:50:43.375257+00:00",
   "status": "pass",
-  "bytes": 575614,
-  "sha256": "bfd730b8c9f0a10681f3c018e169a3b677c9f8bbf9725c1098aa645c96066e69",
+  "bytes": 582105,
+  "sha256": "2a69998af24a761b78d6731bac434f9dc51157c5c6ab7ef5a2cc38d53b058d79",
   "checks": {
     "self_contained_single_html": true,
     "global_network_precedes_local_network": true,

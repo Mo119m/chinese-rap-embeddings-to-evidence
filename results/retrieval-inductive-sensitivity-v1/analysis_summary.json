@@ -1,0 +1,353 @@
+{
+  "artifact_id": "retrieval-inductive-sensitivity-v1",
+  "claim_boundary": "Grouped cross-fitted held-out-song retrieval of corpus source-credit-label lyrical-repertoire similarity. The comparison isolates lexical vocabulary/IDF exposure within this fixed corpus; it is not artist identification, biography, influence, collaboration, genre, social relation, or external-population performance.",
+  "generated_at_utc": "2026-08-27T19:23:11Z",
+  "interpretation": {
+    "fusion_robustness": "The inductive fusion advantage over inductive TF-IDF remains materially larger than the exposure effect.",
+    "scope": "Sensitivity within the fixed corpus; not external-population or causal evidence.",
+    "tfidf_exposure": "Matched transductive vocabulary/IDF exposure has a small positive advantage on several metrics."
+  },
+  "lineage": {
+    "builder_code_sha256": "5225003d28781375906e9b9ff60dc97b5f9a84aae5fa9490e518b16adb88fb63",
+    "clean_embedding_contract_sha256": "d65a446dc8ac3cb9fb5f513c63e9d10a3f6a94a6c1cebd28953b045170600c5b",
+    "clean_text_validation_sha256": "4cba2f7d9b9bf16a7e82513b09d63015010ca48454a6daea2f20c41bd2b94fc8",
+    "encoder_benchmark_results_sha256": "4658998ff8434ca213ffdb83dffb2b243700565b4486e32aed4609ce98321b19",
+    "encoder_benchmark_summary_sha256": "bb935704718ac0099a648c6f1f19bab2b29d37441de1d3e94bc9bf79c1ef493f",
+    "graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_graph_validation_sha256": "79885d99cb9a4f5fc18e9d23b89d3b490f136f7c73f5932febc136607b867ea6",
+    "private_query_audit_sha256": "42b81abb1befead35cb6a26feca5db944c6551eba5f799bcd17928cc811d0e14",
+    "private_retrieval_manifest_sha256": "f8574b9033adfaaca6f2504ac4de18cf8ce10b906fb58b0223ac86f613611098",
+    "source_retrieval_manifest_sha256": "facd87827a50767e7507d7dc039d4b16dbb97870af5fb26c44e05bcd54fd3f3c",
+    "source_retrieval_validation_sha256": "397cbb179e413a5bb6c8d6d7a8065283374ad01e8b48e1d1386301c2efe65a4c"
+  },
+  "macro_metrics": {
+    "BGE-M3 dense cross-fitted": {
+      "mrr": {
+        "ci95_lower": 0.285722,
+        "ci95_upper": 0.339092,
+        "estimate": 0.312232
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.317376,
+        "ci95_upper": 0.37272,
+        "estimate": 0.345064
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.191234,
+        "ci95_upper": 0.244768,
+        "estimate": 0.217793
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.470785,
+        "ci95_upper": 0.532875,
+        "estimate": 0.502429
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.365787,
+        "ci95_upper": 0.428417,
+        "estimate": 0.396982
+      }
+    },
+    "TF-IDF inductive train-only": {
+      "mrr": {
+        "ci95_lower": 0.368823,
+        "ci95_upper": 0.440378,
+        "estimate": 0.404763
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.392493,
+        "ci95_upper": 0.465665,
+        "estimate": 0.429369
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.287708,
+        "ci95_upper": 0.361386,
+        "estimate": 0.324455
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.512561,
+        "ci95_upper": 0.590359,
+        "estimate": 0.551857
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.437173,
+        "ci95_upper": 0.515559,
+        "estimate": 0.477023
+      }
+    },
+    "TF-IDF matched transductive": {
+      "mrr": {
+        "ci95_lower": 0.372824,
+        "ci95_upper": 0.444381,
+        "estimate": 0.408726
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.39668,
+        "ci95_upper": 0.469753,
+        "estimate": 0.433682
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.290202,
+        "ci95_upper": 0.364075,
+        "estimate": 0.326963
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.518036,
+        "ci95_upper": 0.594509,
+        "estimate": 0.556526
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.447025,
+        "ci95_upper": 0.52421,
+        "estimate": 0.48593
+      }
+    },
+    "fusion inductive train-only": {
+      "mrr": {
+        "ci95_lower": 0.406116,
+        "ci95_upper": 0.473561,
+        "estimate": 0.439712
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.435001,
+        "ci95_upper": 0.502978,
+        "estimate": 0.468971
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.319775,
+        "ci95_upper": 0.390183,
+        "estimate": 0.354809
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.569925,
+        "ci95_upper": 0.639237,
+        "estimate": 0.604679
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.484306,
+        "ci95_upper": 0.556132,
+        "estimate": 0.520352
+      }
+    },
+    "fusion matched transductive": {
+      "mrr": {
+        "ci95_lower": 0.41009,
+        "ci95_upper": 0.47711,
+        "estimate": 0.443394
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.438178,
+        "ci95_upper": 0.506342,
+        "estimate": 0.471992
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.323671,
+        "ci95_upper": 0.394744,
+        "estimate": 0.358863
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.570719,
+        "ci95_upper": 0.640307,
+        "estimate": 0.605413
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.487813,
+        "ci95_upper": 0.559938,
+        "estimate": 0.523908
+      }
+    }
+  },
+  "paired_deltas": {
+    "TF-IDF matched transductive minus inductive train-only": {
+      "mrr": {
+        "ci95_lower": 0.00102,
+        "ci95_upper": 0.006942,
+        "estimate_delta": 0.003963,
+        "interval_direction": "left_higher"
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.001758,
+        "ci95_upper": 0.007017,
+        "estimate_delta": 0.004313,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_1": {
+        "ci95_lower": -0.002307,
+        "ci95_upper": 0.007292,
+        "estimate_delta": 0.002508,
+        "interval_direction": "interval_includes_zero"
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.000676,
+        "ci95_upper": 0.009091,
+        "estimate_delta": 0.004669,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.004476,
+        "ci95_upper": 0.013749,
+        "estimate_delta": 0.008907,
+        "interval_direction": "left_higher"
+      }
+    },
+    "fusion matched transductive minus inductive train-only": {
+      "mrr": {
+        "ci95_lower": 0.001413,
+        "ci95_upper": 0.006416,
+        "estimate_delta": 0.003681,
+        "interval_direction": "left_higher"
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.000981,
+        "ci95_upper": 0.005352,
+        "estimate_delta": 0.00302,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.000139,
+        "ci95_upper": 0.008223,
+        "estimate_delta": 0.004055,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_10": {
+        "ci95_lower": -0.002466,
+        "ci95_upper": 0.003938,
+        "estimate_delta": 0.000734,
+        "interval_direction": "interval_includes_zero"
+      },
+      "recall_at_5": {
+        "ci95_lower": -0.000254,
+        "ci95_upper": 0.007959,
+        "estimate_delta": 0.003556,
+        "interval_direction": "interval_includes_zero"
+      }
+    },
+    "inductive fusion minus inductive TF-IDF": {
+      "mrr": {
+        "ci95_lower": 0.024373,
+        "ci95_upper": 0.046082,
+        "estimate_delta": 0.034949,
+        "interval_direction": "left_higher"
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.029242,
+        "ci95_upper": 0.050867,
+        "estimate_delta": 0.039603,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.01739,
+        "ci95_upper": 0.04431,
+        "estimate_delta": 0.030354,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.03779,
+        "ci95_upper": 0.069343,
+        "estimate_delta": 0.052822,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.028701,
+        "ci95_upper": 0.058755,
+        "estimate_delta": 0.043329,
+        "interval_direction": "left_higher"
+      }
+    },
+    "matched-transductive fusion minus matched-transductive TF-IDF": {
+      "mrr": {
+        "ci95_lower": 0.024254,
+        "ci95_upper": 0.045845,
+        "estimate_delta": 0.034667,
+        "interval_direction": "left_higher"
+      },
+      "ndcg_at_10": {
+        "ci95_lower": 0.02777,
+        "ci95_upper": 0.049624,
+        "estimate_delta": 0.03831,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_1": {
+        "ci95_lower": 0.018554,
+        "ci95_upper": 0.046044,
+        "estimate_delta": 0.031901,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_10": {
+        "ci95_lower": 0.034482,
+        "ci95_upper": 0.064733,
+        "estimate_delta": 0.048887,
+        "interval_direction": "left_higher"
+      },
+      "recall_at_5": {
+        "ci95_lower": 0.023387,
+        "ci95_upper": 0.052969,
+        "estimate_delta": 0.037978,
+        "interval_direction": "left_higher"
+      }
+    }
+  },
+  "population": {
+    "fold_query_counts": [
+      910,
+      909,
+      909,
+      909,
+      909,
+      909
+    ],
+    "folds": 6,
+    "global_exact_near_duplicate_components": 5430,
+    "minimum_test_components_per_label": 1,
+    "minimum_training_components_per_label": 5,
+    "queries": 5455,
+    "source_credit_labels": 204,
+    "within_label_component_units": 5432
+  },
+  "representations": {
+    "dense": "frozen 1024-dimensional normalized BGE-M3 song vectors",
+    "fusion": "equal-weight per-query candidate-label z-score average; no tuned weight",
+    "tfidf": {
+      "analyzer": "character",
+      "inductive_features_by_fold": [
+        150000,
+        150000,
+        150000,
+        150000,
+        150000,
+        150000
+      ],
+      "matched_transductive_features": 150000,
+      "maximum_features": 150000,
+      "min_df": 3,
+      "ngram_range": [
+        2,
+        5
+      ],
+      "norm": "l2",
+      "sublinear_tf": true
+    }
+  },
+  "runtime_seconds": 607.863,
+  "split": {
+    "assignment": "deterministic greedy label-component balancing with SHA-256 tie-break",
+    "component_crosses_folds": false,
+    "randomized": false,
+    "stratification_labels_used_only_for_fold_balance": true,
+    "unit": "global exact/near-duplicate component"
+  },
+  "task": "grouped cross-fitted inductive-versus-matched-transductive lexical retrieval sensitivity",
+  "uncertainty": {
+    "algorithm": "literal_occurrence_wise_two_stage_paired_bootstrap_v1",
+    "independent_inner_resample_occurrences": 1020000,
+    "outer_label_occurrences_per_replicate": 204,
+    "random_seed": 20260827,
+    "repeated_outer_label_occurrences": 374210,
+    "repeated_outer_occurrences_reuse_inner_draw": false,
+    "replicates": 5000,
+    "same_component_draw_applied_to_all_systems_and_metrics": true,
+    "total_inner_component_draws": 27140169,
+    "total_outer_label_occurrences": 1020000
+  },
+  "version": "1.0.0"
+}

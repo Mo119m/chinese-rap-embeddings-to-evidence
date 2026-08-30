@@ -1,4 +1,4 @@
-﻿artist_label_id,source_artist_label,profile_status,characteristic_terms,top_written_finals,analysed_unique_written_lines,short_line_percentile,repeated_line_percentile,chinese_english_mixing_percentile,reference_status
+artist_label_id,source_artist_label,profile_status,characteristic_terms,top_written_finals,analysed_unique_written_lines,short_line_percentile,repeated_line_percentile,chinese_english_mixing_percentile,reference_status
 ALBL-4ee2de733107bf496cb129ee93841693210261129915ba651cc3fbb0b18de05c,404 Rapper,ready,重新 | 开心 | 改变,i | ing | ou | ang | ai,854,38.7,91.9,67.4,awaiting human context validation
 ALBL-b6fb9745908a9283df198b367153a16c8346bc5114b5856f9a7ffb412793e6ef,Ansr J,ready,成都 | 集团 | 妹儿 | 肯定 | 点儿 | 晓得 | 敌人,i | e | u | ou | ai,1277,93.4,54.2,66.4,awaiting human context validation
 ALBL-0c1cbb0aa0ebc67715d27ebbaf942ec5de9ebbfedcb37cbdbf03fba067fee404,APMOZART,ready,超市 | 废物 | 娃儿 | 老子 | 席卷 | 晓得 | 全国 | 注定,i | e | u | ou | ian,1527,50.5,67.9,99.3,awaiting human context validation

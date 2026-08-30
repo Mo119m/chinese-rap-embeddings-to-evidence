@@ -1,0 +1,25 @@
+{
+  "rule": "mutual top-5 under both the primary and sensitivity centroids",
+  "null": "permutation of the label column of the label-song incidence, preserving label song counts and song label counts",
+  "replicates": 200,
+  "seed": 20260827,
+  "observed": {
+    "edges": 86,
+    "connected_labels": 93,
+    "published_edges": 86,
+    "published_connected_labels": 93
+  },
+  "null_edges": {
+    "mean": 44.99,
+    "sd": 6.654420074857261,
+    "min": 28,
+    "max": 68,
+    "p95": 55.0
+  },
+  "null_connected_labels": {
+    "mean": 52.165,
+    "max": 71
+  },
+  "p_value_one_sided": 0.004975124378109453,
+  "claim_boundary": "Tests whether the reciprocal top-five rule recovers more structure than a label assignment carrying no information. Not evidence about artists, influence, or collaboration."
+}

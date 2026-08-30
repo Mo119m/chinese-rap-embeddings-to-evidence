@@ -123,7 +123,7 @@ def atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def atomic_write_csv(path: Path, columns: tuple[str, ...], rows: Iterable[dict[str, Any]]) -> None:
     buffer = io.StringIO(newline="")
-    writer = csv.DictWriter(buffer, fieldnames=columns, extrasaction="raise")
+    writer = csv.DictWriter(buffer, fieldnames=columns, extrasaction="raise", lineterminator="\n")
     writer.writeheader()
     for row in rows:
         writer.writerow({column: row.get(column, "") for column in columns})

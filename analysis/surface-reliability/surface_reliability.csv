@@ -1,0 +1,23 @@
+entity,entity_type,lexicon_candidate_occurrences,strict_agreement_occurrences,strict_agreement_rate,occurrences_rejected_by_span_disagreement,released_claims_carried,released_claim_song_units,released_claims
+伦敦,PLACE,22,12,0.5455,10,1,5,co-mention 伦敦~巴黎
+黄浦江,PLACE,9,5,0.5556,4,0,0,
+湖南,PLACE,25,15,0.6,10,1,5,label-link 泰格西->湖南
+昆明,PLACE,15,9,0.6,6,0,0,
+加勒比,PLACE,29,18,0.6207,11,0,0,
+中文,LANGUAGE_OR_DIALECT_REFERENCE,267,173,0.6479,94,1,6,co-mention 中文~英文
+加州,PLACE,29,19,0.6552,10,0,0,
+太平洋,PLACE,18,12,0.6667,6,0,0,
+台北,PLACE,34,23,0.6765,11,1,6,label-link 国蛋->台北
+香港,PLACE,32,23,0.7188,9,0,0,
+天津,PLACE,61,44,0.7213,17,1,10,label-link 黑麦->天津
+非洲,PLACE,8,6,0.75,2,0,0,
+加拿大,PLACE,14,11,0.7857,3,0,0,
+上海,PLACE,174,142,0.8161,32,4,27,label-link GALI->上海; label-link 法老->上海; co-mention 上海~巴黎; co-mention 上海~新疆
+日本,PLACE,11,9,0.8182,2,0,0,
+杭州,PLACE,66,55,0.8333,11,1,10,label-link Tangoz->杭州
+英文,LANGUAGE_OR_DIALECT_REFERENCE,42,36,0.8571,6,1,6,co-mention 中文~英文
+巴黎,PLACE,130,113,0.8692,17,2,12,co-mention 伦敦~巴黎; co-mention 上海~巴黎
+新疆,PLACE,57,51,0.8947,6,1,5,co-mention 上海~新疆
+潘玮柏,PERSON_REFERENCE,25,24,0.96,1,0,0,
+深圳,PLACE,23,23,1.0,0,0,0,
+万妮达,PERSON_REFERENCE,7,7,1.0,0,0,0,

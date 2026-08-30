@@ -1,0 +1,157 @@
+name: Release integrity
+
+# Two properties have to hold together. The release must rebuild to exactly the bytes
+# that are committed, and those bytes must check out identically on every platform.
+# Testing only the first lets a line-ending regression through; testing only the
+# second lets a stale generated artifact through.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # every core.autocrlf mode, and every platform the release claims to support
+          - name: Ubuntu / core.autocrlf=input
+            os: ubuntu-latest
+            autocrlf: input
+          - name: Ubuntu / core.autocrlf=false
+            os: ubuntu-latest
+            autocrlf: "false"
+          - name: macOS / core.autocrlf=input
+            os: macos-latest
+            autocrlf: input
+          - name: Windows / core.autocrlf=true
+            os: windows-latest
+            autocrlf: "true"
+
+    steps:
+      - name: Configure checkout line endings
+        shell: bash
+        run: git config --global core.autocrlf "${{ matrix.autocrlf }}"
+
+      - name: Check out committed bytes
+        uses: actions/checkout@v4
+
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check source syntax
+        run: python -m compileall -q src tools tests
+
+      - name: Check the logic behind the reported numbers
+        run: |
+          python -m pip install --quiet numpy
+          python tests/test_tools.py
+
+      - name: Try to bypass the compound resolution gate
+        run: python tests/test_compound_resolution_gate.py
+
+      - name: Self-test the metadata-block detector
+        run: python tools/detect_metadata_blocks.py --self-test
+
+      - name: Self-test the agreement statistics
+        run: python tools/multi_tagger_agreement.py --self-test
+
+      - name: Check UTF-8 and LF contract
+        run: python src/normalize_public_text_v1.py
+
+      - name: Confirm no path was line-ending translated
+        shell: bash
+        run: |
+          # .gitattributes sets "* -text". If that regresses, the checkout on one
+          # platform stops matching the manifests. Assert both halves directly:
+          # every path carries -text, and its worktree eol equals its index eol.
+          git ls-files --eol | awk '
+            { index_eol = substr($1, 3); worktree_eol = substr($2, 3)
+              if (index_eol != worktree_eol || $3 != "attr/-text") { print; bad = 1 } }
+            END { exit bad ? 1 : 0 }' || {
+            echo "::error::the paths above are not byte-frozen; published checksums"
+            echo "::error::will not validate identically across platforms"
+            exit 1
+          }
+          echo "all $(git ls-files | wc -l) tracked paths are byte-frozen"
+
+      - name: Validate committed release
+        run: python src/validate_public_release_integrity_v1.py
+
+      - name: Verify published checksums independently
+        run: python tools/verify_release_integrity.py
+
+      - name: Verify the frozen compound resolution table
+        run: python tools/verify_compound_resolution.py
+
+      - name: Confirm the manuscript derivatives match their source
+        run: python tools/check_manuscript_derivatives.py
+
+      - name: Prove release rebuild is idempotent
+        run: python src/build_chinese_rap_release_v4.py --reuse-generated-at
+
+      - name: Validate rebuilt release
+        run: python src/validate_public_release_integrity_v1.py
+
+      - name: Reject stale or untracked generated artifacts
+        shell: bash
+        run: |
+          git diff --check
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - name: Build desktop release outside the checkout
+        run: python src/build_chinese_rap_release_v4.py --reuse-generated-at --desktop "${{ runner.temp }}/Chinese_Rap_Research_Release_V4"
+
+      - name: Validate desktop directory and ZIP
+        run: python src/validate_public_release_integrity_v1.py --desktop "${{ runner.temp }}/Chinese_Rap_Research_Release_V4"
+
+      - name: Run the packaged gate from inside the desktop package
+        run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tools/verify_compound_resolution.py"
+
+      - name: Attack the release boundary with real packages
+        if: runner.os == 'Linux'
+        run: python tests/test_release_boundary.py
+
+      - name: Run the packaged adversarial suite from inside the desktop package
+        run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_compound_resolution_gate.py"
+
+      - name: Run the packaged tool tests from inside the desktop package
+        run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_tools.py"
+
+      - name: Compare the built ZIP against its committed checksum
+        shell: bash
+        run: |
+          expected=$(cat validation/desktop_zip.sha256)
+          actual=$(python -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())"             "${{ runner.temp }}/Chinese_Rap_Research_Release_V4.zip")
+          echo "expected $expected"; echo "actual   $actual"
+          test "$expected" = "$actual"
+
+      - name: Prove the desktop ZIP is byte-identical when rebuilt
+        shell: bash
+        run: |
+          # the archive is a published checksum target, so two builds of the same tree must
+          # not differ; shutil.make_archive stamped member mtimes and they did
+          python src/build_chinese_rap_release_v4.py --reuse-generated-at             --desktop "${{ runner.temp }}/rebuild/Chinese_Rap_Research_Release_V4"
+          first=$(python -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())"             "${{ runner.temp }}/Chinese_Rap_Research_Release_V4.zip")
+          second=$(python -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())"             "${{ runner.temp }}/rebuild/Chinese_Rap_Research_Release_V4.zip")
+          echo "$first"
+          echo "$second"
+          test "$first" = "$second"
+
+      - name: Confirm desktop build did not alter the release
+        shell: bash
+        run: |
+          git diff --check
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"

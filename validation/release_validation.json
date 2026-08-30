@@ -1,15 +1,20 @@
 {
   "artifact": "Chinese_Rap_Research_Release_V4",
-  "generated_at_utc": "2026-08-26T19:18:56.559401+00:00",
+  "generated_at_utc": "2026-08-27T19:50:43.375257+00:00",
   "status": "pass_for_public_release_author_actions_required_before_journal_submission",
   "public_release_ready": true,
   "journal_submission_ready": false,
-  "central_question": "How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?",
+  "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
   "checks": {
     "global_network_204_nodes": true,
     "global_network_86_released_edges": true,
     "global_network_16_repeatable_edges": true,
     "global_network_93_connected_labels": true,
+    "graph_alignment_primary_null_degree_preserving": true,
+    "graph_alignment_primary_null_10000_replicates": true,
+    "graph_alignment_observed_exceeds_null_maximum": true,
+    "projection_fidelity_matches_released_graph": true,
+    "projection_fidelity_reports_k5_k10_k15": true,
     "global_before_local_in_application": true,
     "edge_rule_and_repeatability_explained": true,
     "portable_global_network_present": true,
@@ -17,6 +22,9 @@
     "four_primary_co_mentions": true,
     "six_primary_label_reference_links": true,
     "human_gold_not_overclaimed": true,
+    "ner_released_claim_audit_package_passes": true,
+    "ner_released_claim_audit_covers_every_released_occurrence": true,
+    "ner_released_claim_audit_metrics_remain_withheld": true,
     "rhyme_held_out_events": true,
     "journal_figures_pass": true,
     "journal_figures_600_dpi": true,
@@ -33,7 +41,11 @@
       "released_reciprocal_edges": 86,
       "repeatable_edges_at_50pct_gate": 16,
       "bootstrap_replicates": 250,
-      "pca_2d_variance": 0.26195958910407646
+      "pca_2d_variance": 0.26195958910407646,
+      "degree_preserving_null_replicates": 10000,
+      "degree_preserving_null_mean_edges": 4.5243,
+      "degree_preserving_null_p_add_one": 9.999000099990002e-05,
+      "pca_trustworthiness_at_5": 0.78488896
     },
     "held_out_retrieval": {
       "fusion_mrr": 0.447084,
@@ -43,7 +55,9 @@
     "cultural_reference": {
       "released_label_reference_edges": 6,
       "released_same_song_reference_pairs": 4,
-      "human_gold_complete": false
+      "human_gold_complete": false,
+      "released_claim_occurrences_queued_for_dual_review": 157,
+      "released_claim_audit_status": "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION"
     },
     "written_rhyme": {
       "held_out_events": 34395,
@@ -64,19 +78,19 @@
     "partial_or_human_required": [
       "NER occurrence accuracy cannot be reported until the planned dual human review is completed.",
       "The 204 source-credit labels are not globally verified artist identities; only four title-field corrections have approved external evidence.",
-      "Authors must supply names, affiliations, funding, conflicts, CRediT roles, corpus provenance, rights, ethics determination, exact AI disclosure, licence, and archival DOI."
+      "Authors must supply affiliations, funding, conflicts, CRediT roles, corpus provenance, corpus-rights documentation, ethics determination, exact AI disclosure, and an archival DOI."
     ]
   },
   "artifact_hashes": {
-    "portable_site_sha256": "bfd730b8c9f0a10681f3c018e169a3b677c9f8bbf9725c1098aa645c96066e69",
-    "application_data_sha256": "9d0cca83d51c0eb24b328edfdc315fa658e46fe0fd49083f951f93189e1e139c",
-    "manuscript_markdown_sha256": "3d88c063842bf70918f32eac7b4b9fcb48045a3c29acd4a11356835a89e357bd",
-    "review_manuscript_docx_sha256": "50f841f6bbe79b89c8cb0cf4910b2dc9010c6d7bcc47c4bceb680a9c0e9d4131",
-    "review_manuscript_pdf_sha256": "6eb78be869002a67428aed072c452b3a7ad5d63aa374407e478bea4c34e8cae5",
-    "dsh_manuscript_docx_sha256": "f40ecf0653e83bf2b12d5c6dade5e67cdb067ee3043837fa554d2c3871a83326",
-    "dsh_manuscript_pdf_sha256": "52b6791bb300b8c4024b9c1643e16b70f6d28c1858baa5ef623f97caecb140a0",
-    "supplement_docx_sha256": "14a7a4fb98c43554c3aa129f534c2f0f5f489ee3d2ec376a17800b7ab7cb3da0",
-    "supplement_pdf_sha256": "1285e31ffe585ebae141b4dcab44d76204608a8203e529a232747d7031cffd56",
-    "journal_figure_validation_sha256": "6a7525b254f40d604ef8a1946bab2a7e46f60a75aaaf343fd77002e8ecf2a0ea"
+    "portable_site_sha256": "2a69998af24a761b78d6731bac434f9dc51157c5c6ab7ef5a2cc38d53b058d79",
+    "application_data_sha256": "fb65ce00d1d188a4c3b2ec7f5b0a2ed2283c456fb590306e5062bde82e314c27",
+    "manuscript_markdown_sha256": "826e9f5d688cad6ffa70b35bd92975cea153c15c98cc93917c634e36b0dbc22c",
+    "review_manuscript_docx_sha256": "c3ecec13a370e7af2d0d1e34cd4c81c32d18471f44c229b4c2aefab2d6bc80c6",
+    "review_manuscript_pdf_sha256": "5dea4687c837d98e34b3164f5da9066b6d0c40e1f4d02fe3bf3b45cfaec7c2b1",
+    "dsh_manuscript_docx_sha256": "c7969a855f9b431233fa343daa340743afe6b4a4af81ffb95c7cad3336139e43",
+    "dsh_manuscript_pdf_sha256": "26c64ed49a78e861f40013552da37d17cad2e6f27e7a7ab58704cf9f49260e0a",
+    "supplement_docx_sha256": "1c06c240f6557b137fdc093146b60ed2c19a9523b0f4dcdc3bd37f5eb5819fd6",
+    "supplement_pdf_sha256": "f6d26157bfc4086c3ef85aef37507e472aa5a2fda0a39b941c7f49e823b201ba",
+    "journal_figure_validation_sha256": "6cea21ec443946ce74f8a3ca3f45ce630b3b850782a29ec07f25bbb39372c2d5"
   }
 }

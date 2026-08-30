@@ -1,0 +1,10 @@
+{
+  "taggers": [
+    "hf:shibing624/bert4ner-base-chinese",
+    "hf:uer/roberta-base-finetuned-cluener2020-chinese"
+  ],
+  "candidate_source": "pipeline occurrence table, LEXICON_WITH_TRANSFORMER_CHECK, cross_label_shared_cleaned_text == False",
+  "surfaces": 22,
+  "surfaces_reproducing_published_count": 13,
+  "statistic": "Krippendorff alpha, nominal, over methods (not over annotators)"
+}

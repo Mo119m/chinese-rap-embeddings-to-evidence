@@ -1,0 +1,49 @@
+{
+  "note": "Source hashes the manuscript derivatives were last built from. Checked by tools/check_manuscript_derivatives.py; update only by rebuilding the derivatives and rerunning that script with --record.",
+  "sources": {
+    "paper/manuscript.md": "826e9f5d688cad6ffa70b35bd92975cea153c15c98cc93917c634e36b0dbc22c",
+    "paper/supplementary_methods.md": "2a38c0ea1c221cfea014896e30cef4bd0be1db55e8c6c2bbc8194f9936384a03"
+  },
+  "derivatives": {
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": {
+      "built_from": "paper/manuscript.md",
+      "sha256": "c3ecec13a370e7af2d0d1e34cd4c81c32d18471f44c229b4c2aefab2d6bc80c6"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": {
+      "built_from": "paper/manuscript.md",
+      "sha256": "5dea4687c837d98e34b3164f5da9066b6d0c40e1f4d02fe3bf3b45cfaec7c2b1"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx": {
+      "built_from": "paper/manuscript.md",
+      "sha256": "c7969a855f9b431233fa343daa340743afe6b4a4af81ffb95c7cad3336139e43"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf": {
+      "built_from": "paper/manuscript.md",
+      "sha256": "26c64ed49a78e861f40013552da37d17cad2e6f27e7a7ab58704cf9f49260e0a"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx": {
+      "built_from": "paper/supplementary_methods.md",
+      "sha256": "1c06c240f6557b137fdc093146b60ed2c19a9523b0f4dcdc3bd37f5eb5819fd6"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf": {
+      "built_from": "paper/supplementary_methods.md",
+      "sha256": "f6d26157bfc4086c3ef85aef37507e472aa5a2fda0a39b941c7f49e823b201ba"
+    },
+    "submission/dsh/manuscript.docx": {
+      "built_from": "paper/manuscript.md",
+      "sha256": "c7969a855f9b431233fa343daa340743afe6b4a4af81ffb95c7cad3336139e43"
+    },
+    "submission/dsh/manuscript_preview.pdf": {
+      "built_from": "paper/manuscript.md",
+      "sha256": "26c64ed49a78e861f40013552da37d17cad2e6f27e7a7ab58704cf9f49260e0a"
+    },
+    "submission/dsh/supplementary_methods.docx": {
+      "built_from": "paper/supplementary_methods.md",
+      "sha256": "1c06c240f6557b137fdc093146b60ed2c19a9523b0f4dcdc3bd37f5eb5819fd6"
+    },
+    "submission/dsh/supplementary_methods_preview.pdf": {
+      "built_from": "paper/supplementary_methods.md",
+      "sha256": "f6d26157bfc4086c3ef85aef37507e472aa5a2fda0a39b941c7f49e823b201ba"
+    }
+  }
+}

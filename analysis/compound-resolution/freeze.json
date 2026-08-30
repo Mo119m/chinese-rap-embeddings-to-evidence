@@ -1,0 +1,93 @@
+{
+  "protocol": "NER-CR-001",
+  "title": "Compound resolution for lexicon candidates",
+  "status": "post-release protocol amendment, frozen before affected outcomes were recomputed",
+  "estimand": "does the short surface, at this occurrence, refer to what its release schema type says? A place name inside a larger proper name does not; a place name inside a fuller co-referential form of the same place does; a place name used as an external locative modifier on a name that stands without it does.",
+  "adjudication": {
+    "method": "blinded AI per-occurrence contextual adjudication under frozen instructions, folded from raw ballots by tools/rekey_blinded_ballots.py",
+    "model": "claude-opus-5",
+    "unit": "one verdict per flagged occurrence, adjudicated from the occurrence context alone",
+    "blinded": true,
+    "rulings": "AI-assisted repeated rulings from separate sessions; independence between sessions is procedural, not demonstrated",
+    "external_verification": "consulted for institutional referents",
+    "independent_human_review_status": "pending",
+    "is_human_gold": false
+  },
+  "blinded_provenance": {
+    "blinded_prompt_v2_sha256": "bcb893375ea121e1c8464b78b82a3f5ac575582521549a6b0c0bf1d72fddaad6",
+    "blinded_input_v2_sha256": "9b8cb99d4501536eabf7164a700db15d4739a25ad9379fd53fc7ae094cbaa4ad",
+    "batch_manifest_sha256": "9d2f7472197127c9a3e8fbcef18b7142f1df9ec9b838a1ab3ccf6ab90a662b1d",
+    "blind_id_map_sha256": "033526905e44549b409712d0101e06b95b51c9836f7f913690dd44993a0c572e",
+    "ballots_v2_manifest_sha256": "eeee21561d0c0eb616b37882996aea237aedf61769536aa5c2e7dc104833bea1"
+  },
+  "candidate_frame": {
+    "definition": "candidate_source == LEXICON_WITH_TRANSFORMER_CHECK, cross_label_shared_cleaned_text == False, source_credit_label in the 204-label graph universe, candidate_surface in the released inventory",
+    "size": 1098,
+    "reproduces_published_lexicon_candidate_counts": "22 of 22 surfaces"
+  },
+  "flag_rule": "any strictly containing entity span proposed by a reference tagger; the winning span is the longest, then leftmost, then shortest, then by label, then by model name",
+  "reference_models": {
+    "shibing624/bert4ner-base-chinese": "5d660ed2aa9da482bf2d99c6bc8cf2ce66758f6a",
+    "uer/roberta-base-finetuned-cluener2020-chinese": "cddd8fc233e373855a8c0a7f4b7eb83acb686a2b"
+  },
+  "combinations_flagged_by_both_models": 20,
+  "combinations_with_the_same_winning_span_from_both_models": 0,
+  "inputs": {
+    "private_candidate_table": "all_candidate_occurrences_private.csv",
+    "private_candidate_table_sha256": "3ac7a41cc971e34b2314c87d3c50c11c95af039e278b851cc144a8c553daa5e4",
+    "graph_label_universe_sha256": "7a09b319c2bd1449c671c1d85c2bc1ef54fa4b18ac03130e2d3883332a4342b3",
+    "released_inventory_sha256": "6ab77221ca632d3117c6e4287305354fb8fa1266ffdde71e24d1f6e4b6535cb4"
+  },
+  "totals": {
+    "flagged_occurrences": 91,
+    "flagged_strict_occurrences": 39,
+    "resolution_rows": 63
+  },
+  "action_counts": {
+    "DROP_SHORT": {
+      "rows": 30,
+      "occurrences": 49,
+      "strict_occurrences": 18
+    },
+    "RETAIN_SHORT": {
+      "rows": 33,
+      "occurrences": 42,
+      "strict_occurrences": 21
+    }
+  },
+  "occurrence_ledger": {
+    "rows": 91,
+    "identity": "the full 64-character sha256 hex digest of (song_lyric_content_sha256, chunk_id, candidate_start_char, candidate_end_char), not truncated",
+    "every_occurrence_appears_exactly_once": true,
+    "adjudicated_independently_per_occurrence": true,
+    "blinded_from": [
+      "strict_high_consistency",
+      "source_credit_label",
+      "song_id",
+      "occurrence and label counts",
+      "any prior decision"
+    ],
+    "batch_constraint": "no two occurrences of one combination share a batch; records carry random blind identifiers only",
+    "combinations_not_folded": 0,
+    "combinations_with_mixed_span_relation": 1,
+    "combinations_with_mixed_text_region": 0,
+    "occurrences_sharing_content_and_char_span_across_chunks": 2,
+    "occurrences_in_production_credit_regions": 21,
+    "three_vote_occurrences": 4
+  },
+  "downstream_consulted": false,
+  "combination_id": "frozen opaque UUID4 from a private map; not derived from content",
+  "public_name_allowlist_sha256": "537068f6380f9c58e9a11326e0093876f3c02ab3308a52a9b9d79d6d42a165e4",
+  "private_flag_table_sha256": "e711face34cb4e2ce1ecc96712255a51d73be133ad301bfb297f7ac83c090a8b",
+  "private_occurrence_ledger_sha256": "1a1cde4820915b1bfadef6a4f90cb78aeb1f0e4e54ee9a856ce21ca2e7146d0d",
+  "private_fold_state_sha256": "83b0bc299dd0caa2abbc0635046af81d39bcbf13d365b54c5f91d4a8508132aa",
+  "private_adjudication_sha256": "f4c3da5d6e053c7220f6b3566c56c5d05d7c75c828fac225e77ac556a6980919",
+  "public_table_sha256": "d7878ca17c11a97a0ea8207f009a33e8a90a53a812902e80cb57ba8d76e67646",
+  "derivation": {
+    "flag_stage_and_ledger": "tools/build_compound_resolution_table.py",
+    "public_table_and_freeze": "tools/publish_compound_resolution.py",
+    "offline_gate": "tools/verify_compound_resolution.py",
+    "adversarial_tests": "tests/test_compound_resolution_gate.py",
+    "protocol": "methods/NER_CR_001_COMPOUND_RESOLUTION.md"
+  }
+}

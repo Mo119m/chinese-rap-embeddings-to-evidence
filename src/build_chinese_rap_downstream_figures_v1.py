@@ -12,7 +12,6 @@ import csv
 import hashlib
 import json
 import math
-import shutil
 import textwrap
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,17 +25,17 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = ROOT / "outputs" / "chinese-rap-downstream-figures-v1"
+OUTPUT_DIR = ROOT / "figures"
 
-INPUT_AUDIT = ROOT / "outputs" / "chinese-rap-downstream-input-audit-v1" / "analysis_summary.json"
-RESEARCH_CONTRACT = ROOT / "work" / "downstream_v1" / "RESEARCH_CONTRACT.md"
-RETRIEVAL_METRICS = ROOT / "outputs" / "chinese-rap-downstream-retrieval-v1" / "metrics.csv"
-RETRIEVAL_UNCERTAINTY = ROOT / "outputs" / "chinese-rap-downstream-retrieval-v1" / "uncertainty.csv"
-RETRIEVAL_SUMMARY = ROOT / "outputs" / "chinese-rap-downstream-retrieval-v1" / "analysis_summary.json"
-RHYME_METRICS = ROOT / "outputs" / "chinese-rap-written-rhyme-v1" / "model_metrics.csv"
-RHYME_DELTAS = ROOT / "outputs" / "chinese-rap-written-rhyme-v1" / "paired_model_deltas.csv"
-RHYME_STRATIFIED = ROOT / "outputs" / "chinese-rap-written-rhyme-v1" / "stratified_metrics.csv"
-RHYME_SUMMARY = ROOT / "outputs" / "chinese-rap-written-rhyme-v1" / "analysis_summary.json"
+INPUT_AUDIT = ROOT / "results" / "input-audit-v1" / "analysis_summary.json"
+RESEARCH_CONTRACT = ROOT / "methods" / "RESEARCH_CONTRACT.md"
+RETRIEVAL_METRICS = ROOT / "results" / "retrieval-v1" / "metrics.csv"
+RETRIEVAL_UNCERTAINTY = ROOT / "results" / "retrieval-v1" / "uncertainty.csv"
+RETRIEVAL_SUMMARY = ROOT / "results" / "retrieval-v1" / "analysis_summary.json"
+RHYME_METRICS = ROOT / "results" / "written-rhyme-v1" / "model_metrics.csv"
+RHYME_DELTAS = ROOT / "results" / "written-rhyme-v1" / "paired_model_deltas.csv"
+RHYME_STRATIFIED = ROOT / "results" / "written-rhyme-v1" / "stratified_metrics.csv"
+RHYME_SUMMARY = ROOT / "results" / "written-rhyme-v1" / "analysis_summary.json"
 
 SOURCE_PATHS = [
     INPUT_AUDIT,
@@ -164,7 +163,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -368,8 +367,8 @@ def build_figure_1(audit: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str
         "OUTPUT\nNext written-ending family\nprobabilities and abstention",
     ]
     branch_bounds = [
-        "Not identity or authorship",
-        "Not identity or social relations",
+        "Not person verification or authorship",
+        "Not biography or social relations",
         "Not performed rhyme or flow",
     ]
 
@@ -627,7 +626,7 @@ def build_figure_2(metrics: list[dict[str, Any]], deltas: list[dict[str, Any]]) 
     fig.text(
         0.04,
         0.055,
-        "Bounded interpretation: retrieval consistency within this corpus; not identity, authorship, influence, collaboration, or a human semantic-similarity benchmark.",
+        "Bounded interpretation: retrieval consistency within this corpus; not verified personal identity, authorship, influence, collaboration, or a human similarity judgement.",
         fontsize=6.4,
         color=MUTED,
     )
@@ -985,15 +984,15 @@ def caption_markdown() -> str:
 
 ## Figure 1 — Research design and bounded evidence flow
 
-**Caption.** Figure 1. Study design. A frozen cleaned corpus (7,211 songs; 22,128 canonical chunks; 21,553 eligible clean-text chunks) enters shared song-aware partition or holdout rules, duplicate controls, task-specific fitting boundaries, a prohibition on using test outcomes for fitting or selection, and aggregate-only public release. The retrieval TF-IDF representation is transductively fit on the fixed unlabeled evaluation corpus, while labelled outcomes remain unused. The branches then use distinct task methods. BGE-M3 is evaluated only in held-out-song retrieval alongside character TF-IDF and untuned fusion; cultural-reference extraction aggregates duplicate-controlled song units and awaits a future gold split; written-rhyme prediction uses a fixed song-level split and dictionary-estimated terminal-Han pinyin-final families. Every output is paired with its permitted interpretation.
+**Caption.** Fig. 1 Study design. A frozen cleaned corpus (7,211 songs; 22,128 canonical chunks; 21,553 eligible clean-text chunks) enters shared song-aware partition or holdout rules, duplicate controls, task-specific fitting boundaries, a prohibition on using test outcomes for fitting or selection, and aggregate-only public release. The retrieval TF-IDF representation is transductively fit on the fixed unlabeled evaluation corpus, while labelled outcomes remain unused. The branches then use distinct task methods. BGE-M3 is evaluated only in held-out-song retrieval alongside character TF-IDF and untuned fusion; cultural-reference extraction aggregates duplicate-controlled song units and awaits a future gold split; written-rhyme prediction uses a fixed song-level split and dictionary-estimated terminal-Han pinyin-final families. Every output is paired with its permitted interpretation.
 
-**Alt text.** A top-to-bottom research pipeline begins with a frozen Chinese-rap lyric corpus and a shared evidence-control block. Three side-by-side branches follow: repertoire retrieval using BGE-M3, character TF-IDF, and fusion; provisional cultural-reference extraction using lexicon and contextual Chinese NER evidence; and written-rhyme prediction using terminal-Han pinyin-final families and Markov or hierarchical context models. The branches converge on one question about lyrical identity. Each branch states a boundary: retrieval is not identity or authorship, NER is not identity or a social relation, and written rhyme is not performed rhyme or flow.
+**Alt text.** A top-to-bottom research pipeline begins with a frozen Chinese-rap lyric corpus and a shared evidence-control block. Three side-by-side branches follow: repertoire retrieval using BGE-M3, character TF-IDF, and fusion; provisional cultural-reference extraction using lexicon and contextual Chinese NER evidence; and written-rhyme prediction using terminal-Han pinyin-final families and Markov or hierarchical context models. The branches converge on lyrical identity, explicitly defined as a corpus-relative source-label repertoire. Retrieval is not verified-person identity or authorship, NER is not biography or a social relation, and written rhyme is not performed rhyme or flow.
 
 **Takeaway.** The corpus and leakage controls are shared, but the downstream methods and valid claims are task-specific; BGE-M3 is a tested retrieval representation rather than a universal analytical engine.
 
 ## Figure 2 — Held-out-song retrieval benchmark
 
-**Caption.** Figure 2. Strict held-out-song source-credit-label lyrical-repertoire retrieval. Panel A shows duplicate-component-adjusted macro MRR, Recall@1/5/10, and nDCG@10 for BGE-M3 dense representations, character 2–5-gram TF-IDF, and their untuned per-query z-score fusion. Panel B shows paired fusion-minus-baseline differences. Whiskers are 95% intervals from 5,000 literal occurrence-wise paired two-stage bootstrap replicates over 5,455 queries and 204 source-credit labels. Fusion is higher than both single representations on every requested metric, including MRR 0.447 (95% CI 0.414–0.481), but the result measures corpus-internal repertoire consistency rather than identity or authorship.
+**Caption.** Fig. 2 Strict held-out-song source-credit-label lyrical-repertoire retrieval. Panel A shows duplicate-component-adjusted macro MRR, Recall@1/5/10, and nDCG@10 for BGE-M3 dense representations, character 2–5-gram TF-IDF, and their untuned per-query z-score fusion. Panel B shows paired fusion-minus-baseline differences. Whiskers are 95% intervals from 5,000 literal occurrence-wise paired two-stage bootstrap replicates over 5,455 queries and 204 source-credit labels. Fusion is higher than both single representations on every requested metric, including MRR 0.447 (95% CI 0.414–0.481), but the result measures corpus-internal repertoire consistency rather than verified personal identity or authorship.
 
 **Alt text.** Two dot-and-whisker panels compare five retrieval metrics. In the model panel, fusion is highest on all metrics, character TF-IDF is second, and BGE-M3 dense is lowest. In the paired-difference panel, all ten fusion-minus-baseline intervals lie to the right of zero; gains over TF-IDF are smaller than gains over BGE-M3.
 
@@ -1001,7 +1000,7 @@ def caption_markdown() -> str:
 
 ## Figure 4 — Written-rhyme next-family benchmark
 
-**Caption.** Figure 4. Prediction of the next dictionary-estimated written line-ending family on the strict terminal-Han population. Panel A compares global frequency, first-order Markov, flat multinomial context, hierarchical context without source-credit labels, and hierarchical context with source-credit labels across 34,395 leakage-safe events in 787 held-out songs. Whiskers are 95% song-cluster bootstrap intervals from 2,000 replicates. Panel B descriptively separates continuation from family-switch events: top-3 accuracy is near ceiling for continuation but only 0.400 for switches under the hierarchical model (0.302 for Markov). Adding source-credit labels has no supported benefit: all four paired intervals include zero (MRR difference +0.0005, 95% CI −0.0001 to +0.0011). The task concerns written dictionary finals, not audio, flow, delivery, beat, or performed rhyme.
+**Caption.** Fig. 4 Prediction of the next dictionary-estimated written line-ending family on the strict terminal-Han population. Panel A compares global frequency, first-order Markov, flat multinomial context, hierarchical context without source-credit labels, and hierarchical context with source-credit labels across 34,395 leakage-safe events in 787 held-out songs. Whiskers are 95% song-cluster bootstrap intervals from 2,000 replicates. Panel B descriptively separates continuation from family-switch events: top-3 accuracy is near ceiling for continuation but only 0.400 for switches under the hierarchical model (0.302 for Markov). Adding source-credit labels has no supported benefit: all four paired intervals include zero (MRR difference +0.0005, 95% CI −0.0001 to +0.0011). The task concerns written dictionary finals, not audio, flow, delivery, beat, or performed rhyme.
 
 **Alt text.** Four aligned dot-and-whisker panels show Top-1, Top-3, Top-5, and MRR for five models. Context models dominate the global baseline; the flat and two hierarchical models are nearly overlapping. A grouped bar panel shows nearly perfect Top-3 accuracy when the next line continues the same rhyme family, but much lower accuracy when it switches. A callout states that adding the source-credit label has no supported gain and that the task is restricted to written endings.
 
@@ -1014,12 +1013,10 @@ def main() -> None:
         if not source.is_file():
             raise FileNotFoundError(source)
 
-    expected_output = (ROOT / "outputs" / "chinese-rap-downstream-figures-v1").resolve()
+    expected_output = (ROOT / "figures").resolve()
     if OUTPUT_DIR.resolve() != expected_output:
         raise RuntimeError(f"Refusing to clean unexpected output path: {OUTPUT_DIR}")
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=False)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     setup_matplotlib()
     audit = read_json(INPUT_AUDIT)
@@ -1089,7 +1086,7 @@ def main() -> None:
     if validation["status"] != "pass":
         raise AssertionError("Publication-figure validation failed; inspect validation.json")
 
-    generated_files = sorted(path for path in OUTPUT_DIR.iterdir() if path.is_file())
+    generated_files = sorted(path for path in OUTPUT_DIR.iterdir() if path.is_file() and path.name != "manifest.json")
     builder_path = Path(__file__).resolve()
     manifest = {
         "artifact_id": "chinese-rap-downstream-figures-v1",

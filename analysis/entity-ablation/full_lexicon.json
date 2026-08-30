@@ -1,0 +1,73 @@
+{
+  "arms_reported": {
+    "tfidf": "character 2-5 gram TF-IDF (strict)"
+  },
+  "estimator": "label-balanced macro over duplicate groups, as in the released evaluation",
+  "masked_surfaces": 605,
+  "control_surfaces_matched": 605,
+  "occurrences_replaced": {
+    "entities": 52106,
+    "control_per_draw": [
+      49764,
+      50615,
+      49623
+    ]
+  },
+  "control_matching": [
+    {
+      "surfaces": 605,
+      "controls_matched": 605,
+      "entity_corpus_occurrences": 53338,
+      "control_corpus_occurrences": 53413,
+      "occurrence_gap_fraction": 0.0014061269638906595,
+      "occurrences_replaced": 49764
+    },
+    {
+      "surfaces": 605,
+      "controls_matched": 605,
+      "entity_corpus_occurrences": 53338,
+      "control_corpus_occurrences": 53393,
+      "occurrence_gap_fraction": 0.001031159773519817,
+      "occurrences_replaced": 50615
+    },
+    {
+      "surfaces": 605,
+      "controls_matched": 605,
+      "entity_corpus_occurrences": 53338,
+      "control_corpus_occurrences": 53306,
+      "occurrence_gap_fraction": -0.0005999475045933481,
+      "occurrences_replaced": 49623
+    }
+  ],
+  "control_draws": 3,
+  "baseline": {
+    "tfidf": {
+      "mrr": 0.4157713930201988,
+      "recall_at_10": 0.561545743486093
+    }
+  },
+  "entities_masked": {
+    "tfidf": {
+      "mrr": 0.40883619530700105,
+      "recall_at_10": 0.5552114645014479
+    }
+  },
+  "frequency_matched_control": {
+    "tfidf": {
+      "mrr": 0.4149107732220408,
+      "recall_at_10": 0.5610204341083481
+    }
+  },
+  "adjusted_mrr_difference": {
+    "tfidf": 0.006074577915039736
+  },
+  "control_drop_range": {
+    "tfidf": [
+      -0.0007636989146330708,
+      0.0020192245447348545
+    ]
+  },
+  "dense_and_fusion_reported": false,
+  "estimator_note": "The reported difference is entity drop minus the mean control drop over independent draws. It is an adjusted difference, not an attributable effect: controls match on surface length and corpus frequency, and the residual occurrence gap is recorded above.",
+  "claim_boundary": "Measures how much label-identifying signal the masked strings carry in a fixed-corpus held-out retrieval task. Not an accuracy estimate for the entity extraction, and not evidence about what any reference means."
+}

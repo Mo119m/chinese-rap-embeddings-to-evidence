@@ -1,0 +1,73 @@
+{
+  "arms_reported": {
+    "tfidf": "character 2-5 gram TF-IDF (strict)"
+  },
+  "estimator": "label-balanced macro over duplicate groups, as in the released evaluation",
+  "masked_surfaces": 22,
+  "control_surfaces_matched": 22,
+  "occurrences_replaced": {
+    "entities": 1088,
+    "control_per_draw": [
+      1087,
+      1087,
+      1088
+    ]
+  },
+  "control_matching": [
+    {
+      "surfaces": 22,
+      "controls_matched": 22,
+      "entity_corpus_occurrences": 1088,
+      "control_corpus_occurrences": 1088,
+      "occurrence_gap_fraction": 0.0,
+      "occurrences_replaced": 1087
+    },
+    {
+      "surfaces": 22,
+      "controls_matched": 22,
+      "entity_corpus_occurrences": 1088,
+      "control_corpus_occurrences": 1087,
+      "occurrence_gap_fraction": -0.0009191176470588235,
+      "occurrences_replaced": 1087
+    },
+    {
+      "surfaces": 22,
+      "controls_matched": 22,
+      "entity_corpus_occurrences": 1088,
+      "control_corpus_occurrences": 1088,
+      "occurrence_gap_fraction": 0.0,
+      "occurrences_replaced": 1088
+    }
+  ],
+  "control_draws": 3,
+  "baseline": {
+    "tfidf": {
+      "mrr": 0.4157713930201988,
+      "recall_at_10": 0.561545743486093
+    }
+  },
+  "entities_masked": {
+    "tfidf": {
+      "mrr": 0.41577206179221887,
+      "recall_at_10": 0.5611396196613843
+    }
+  },
+  "frequency_matched_control": {
+    "tfidf": {
+      "mrr": 0.41586351738503774,
+      "recall_at_10": 0.5616435814760814
+    }
+  },
+  "adjusted_mrr_difference": {
+    "tfidf": 9.145559281886761e-05
+  },
+  "control_drop_range": {
+    "tfidf": [
+      -0.00034169448944310066,
+      0.00014260840015700715
+    ]
+  },
+  "dense_and_fusion_reported": false,
+  "estimator_note": "The reported difference is entity drop minus the mean control drop over independent draws. It is an adjusted difference, not an attributable effect: controls match on surface length and corpus frequency, and the residual occurrence gap is recorded above.",
+  "claim_boundary": "Measures how much label-identifying signal the masked strings carry in a fixed-corpus held-out retrieval task. Not an accuracy estimate for the entity extraction, and not evidence about what any reference means."
+}

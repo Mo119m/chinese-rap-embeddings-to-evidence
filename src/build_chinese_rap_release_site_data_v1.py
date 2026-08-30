@@ -14,7 +14,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from pypinyin import Style, lazy_pinyin
+try:
+    from pypinyin import Style, lazy_pinyin
+except ModuleNotFoundError:  # Integrity-only rebuilds may reuse the frozen map.
+    Style = None
+    lazy_pinyin = None
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,9 +26,12 @@ REPERTOIRE_DIR = ROOT / "results/repertoire-network-v1"
 REPERTOIRE_GRAPH_DIR = REPERTOIRE_DIR / "graph"
 REPERTOIRE_PROFILE_DIR = REPERTOIRE_DIR / "profiles"
 REPERTOIRE_BOOTSTRAP_DIR = REPERTOIRE_DIR / "bootstrap"
+REPERTOIRE_ROBUSTNESS_DIR = REPERTOIRE_DIR / "robustness"
 RETRIEVAL_DIR = ROOT / "results/retrieval-v1"
+RETRIEVAL_INDUCTIVE_DIR = ROOT / "results/retrieval-inductive-sensitivity-v1"
 NER_DIR = ROOT / "results/ner-v1"
 NER_CO_MENTION_PATH = NER_DIR / "entity_co_mentions_provisional.csv"
+NER_RELEASED_CLAIM_AUDIT_PATH = NER_DIR / "released_claim_audit_status.json"
 RHYME_DIR = ROOT / "results/written-rhyme-v1"
 SITE_DATA_DIR = ROOT / "site/app/data"
 PUBLIC_DATA_DIR = ROOT / "site/public/data"
@@ -139,6 +146,7 @@ def load_repertoire_source() -> dict[str, Any]:
         "graph": REPERTOIRE_GRAPH_DIR,
         "profiles": REPERTOIRE_PROFILE_DIR,
         "bootstrap": REPERTOIRE_BOOTSTRAP_DIR,
+        "robustness": REPERTOIRE_ROBUSTNESS_DIR,
     }
     component_manifests: dict[str, dict[str, Any]] = {}
     for name, directory in component_dirs.items():
@@ -154,6 +162,7 @@ def load_repertoire_source() -> dict[str, Any]:
 
     graph_summary = read_json(REPERTOIRE_GRAPH_DIR / "analysis_summary.json")
     bootstrap_summary = read_json(REPERTOIRE_BOOTSTRAP_DIR / "analysis_summary.json")
+    robustness_summary = read_json(REPERTOIRE_ROBUSTNESS_DIR / "analysis_summary.json")
     expected_counts = root_manifest["expected_counts"]
 
     eligible_node_rows = [
@@ -272,6 +281,8 @@ def load_repertoire_source() -> dict[str, Any]:
             "bootstrapReplicates": bootstrap_summary["counts"]["replicates"],
             "repeatabilityGate": 0.50,
             "pcaVariance2d": pca_variance,
+            "alignmentNull": robustness_summary["graph_alignment_null"],
+            "projectionFidelity": robustness_summary["projection_fidelity"],
             "edgeRule": "Both source-label profiles rank each other among their five closest matches in both duplicate-controlled text representations.",
             "layoutMeaning": "The global position is an approximate two-dimensional PCA summary of BGE-M3 repertoire profiles; only a released line represents the stricter reciprocal match rule.",
             "claimBoundary": root_manifest["claim_boundary"],
@@ -281,6 +292,7 @@ def load_repertoire_source() -> dict[str, Any]:
 
 def compact_retrieval() -> dict[str, Any]:
     summary = read_json(RETRIEVAL_DIR / "analysis_summary.json")
+    inductive = read_json(RETRIEVAL_INDUCTIVE_DIR / "analysis_summary.json")
     systems = []
     display_names = {
         "BGE-M3 dense (strict)": "BGE-M3",
@@ -298,12 +310,34 @@ def compact_retrieval() -> dict[str, Any]:
                 "ndcg10": values["ndcg_at_10"],
             }
         )
+    inductive_metrics = inductive["macro_metrics"]
+    inductive_deltas = inductive["paired_deltas"]
+    tfidf_exposure = inductive_deltas[
+        "TF-IDF matched transductive minus inductive train-only"
+    ]["mrr"]
+    fusion_exposure = inductive_deltas[
+        "fusion matched transductive minus inductive train-only"
+    ]["mrr"]
+    inductive_fusion_gain = inductive_deltas[
+        "inductive fusion minus inductive TF-IDF"
+    ]["mrr"]
     return {
         "systems": systems,
         "queries": summary["population"]["length_qualified_song_queries"],
         "labels": summary["population"]["eligible_source_credit_labels"],
         "groups": summary["population"]["global_strict_duplicate_components"],
         "fusionMrrCi": summary["headline"]["fusion_macro_mrr_ci"],
+        "inductiveSanity": {
+            "folds": inductive["population"]["folds"],
+            "queries": inductive["population"]["queries"],
+            "inductiveTfidfMrr": inductive_metrics["TF-IDF inductive train-only"]["mrr"]["estimate"],
+            "inductiveFusionMrr": inductive_metrics["fusion inductive train-only"]["mrr"]["estimate"],
+            "inductiveFusionGainMrr": inductive_fusion_gain,
+            "tfidfExposureEffectMrr": tfidf_exposure,
+            "fusionExposureEffectMrr": fusion_exposure,
+            "interpretation": inductive["interpretation"]["fusion_robustness"],
+            "claimBoundary": inductive["claim_boundary"],
+        },
         "claimBoundary": summary["claim_boundary"],
     }
 
@@ -417,6 +451,7 @@ def compact_rhyme(label_id_by_name: dict[str, str]) -> tuple[dict[str, Any], dic
 
 def compact_ner(label_id_by_name: dict[str, str]) -> dict[str, Any]:
     summary = read_json(NER_DIR / "summary.json")
+    released_claim_audit = read_json(NER_RELEASED_CLAIM_AUDIT_PATH)
     ner_manifest = read_json(NER_DIR / "manifest.json")
     primary_co_mention_manifest = ner_manifest["files"][NER_CO_MENTION_PATH.name]
     if NER_CO_MENTION_PATH.stat().st_size != integer(primary_co_mention_manifest["bytes"]):
@@ -547,12 +582,25 @@ def compact_ner(label_id_by_name: dict[str, str]) -> dict[str, Any]:
         "coMentions": compact_co_mentions,
         "status": summary["status"],
         "humanGoldAvailable": summary["human_gold_available"],
+        "releasedClaimAudit": {
+            "status": released_claim_audit["status"],
+            "releasedClaims": released_claim_audit["scope"]["released_claims_total"],
+            "uniqueSupportingOccurrences": released_claim_audit["scope"]["unique_contributing_occurrence_rows"],
+            "coverage": released_claim_audit["validation"]["released_claim_occurrence_coverage"],
+            "occurrenceDecisionsCompleted": released_claim_audit["review_progress"]["occurrence_tasks_adjudicated"],
+            "coMentionDecisionsCompleted": released_claim_audit["review_progress"]["co_mention_tasks_adjudicated"],
+            "metrics": released_claim_audit["targeted_audit_metrics"],
+            "evidenceBoundary": released_claim_audit["evidence_boundary"],
+            "nextAction": released_claim_audit["next_action"],
+        },
         "counts": summary["counts"],
         "claimBoundary": summary["claim_boundary"],
     }
 
 
 def pinyin_family(character: str) -> str | None:
+    if lazy_pinyin is None or Style is None:
+        raise RuntimeError("pypinyin is required to recompute the character-to-family map")
     token = lazy_pinyin(
         character,
         style=Style.FINALS,
@@ -565,6 +613,14 @@ def pinyin_family(character: str) -> str | None:
 
 
 def build_character_map() -> dict[str, str]:
+    if lazy_pinyin is None:
+        frozen_path = SITE_DATA_DIR / "characterToRhymeFamily.json"
+        if not frozen_path.is_file():
+            raise RuntimeError("pypinyin is unavailable and no frozen character map can be reused")
+        frozen = read_json(frozen_path)
+        if not isinstance(frozen, dict) or len(frozen) < 20_000:
+            raise RuntimeError("Frozen character-to-family map is invalid")
+        return {str(key): str(value) for key, value in frozen.items()}
     mapping: dict[str, str] = {}
     for codepoint in range(0x4E00, 0xA000):
         character = chr(codepoint)
@@ -578,21 +634,29 @@ def main() -> None:
     for path in (
         REPERTOIRE_DIR / "manifest.json",
         RETRIEVAL_DIR / "validation.json",
+        RETRIEVAL_INDUCTIVE_DIR / "validation.json",
         NER_DIR / "validation.json",
         NER_DIR / "reconciliation_validation.json",
         NER_CO_MENTION_PATH,
+        NER_RELEASED_CLAIM_AUDIT_PATH,
         RHYME_DIR / "validation.json",
     ):
         if not path.exists():
             raise FileNotFoundError(path)
     validations = {
         "retrieval": read_json(RETRIEVAL_DIR / "validation.json"),
+        "retrievalInductive": read_json(RETRIEVAL_INDUCTIVE_DIR / "validation.json"),
         "ner": read_json(NER_DIR / "validation.json"),
         "nerReconciliation": read_json(NER_DIR / "reconciliation_validation.json"),
         "rhyme": read_json(RHYME_DIR / "validation.json"),
     }
     if any(str(value.get("status", "")).lower() not in {"pass", "passed"} for value in validations.values()):
         raise RuntimeError("All public downstream artifacts must pass validation before site data can be built")
+    released_claim_audit = read_json(NER_RELEASED_CLAIM_AUDIT_PATH)
+    if released_claim_audit.get("validation", {}).get("package_generation") != "pass":
+        raise RuntimeError("The released-claim NER audit package must pass generation validation")
+    if released_claim_audit.get("status") != "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION":
+        raise RuntimeError("The public site must not imply that the released-claim NER audit is complete")
 
     repertoire = load_repertoire_source()
     old_nodes = sorted(repertoire["nodes"], key=lambda row: row["label"].casefold())
@@ -694,6 +758,7 @@ def main() -> None:
     payload = {
         "artifact": "chinese-rap-results-site-data-v1",
         "question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
+        "constructDefinition": "Here, lyrical identity means a corpus-relative writing profile attached to a source-credit label—not a verified person or an authorship claim.",
         "labels": nodes,
         "lyricalEdges": edges,
         "repertoireGraph": repertoire["metadata"],
@@ -705,8 +770,11 @@ def main() -> None:
             "repertoireGraph": repertoire["componentArtifacts"]["graph"],
             "repertoireProfiles": repertoire["componentArtifacts"]["profiles"],
             "repertoireBootstrap": repertoire["componentArtifacts"]["bootstrap"],
+            "repertoireRobustness": repertoire["componentArtifacts"]["robustness"],
             "retrieval": validations["retrieval"]["artifact_id"],
+            "retrievalInductive": validations["retrievalInductive"]["artifact_id"],
             "ner": validations["ner"]["artifact_id"],
+            "nerReleasedClaimAudit": released_claim_audit["artifact_id"],
             "nerReconciliation": validations["nerReconciliation"]["validation_mode"],
             "rhyme": validations["rhyme"]["artifact_id"],
         },
@@ -718,9 +786,9 @@ def main() -> None:
     PUBLIC_DATA_DIR.mkdir(parents=True, exist_ok=True)
     encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     characters_encoded = json.dumps(character_map, ensure_ascii=False, separators=(",", ":"))
-    (SITE_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8")
-    (SITE_DATA_DIR / "characterToRhymeFamily.json").write_text(characters_encoded, encoding="utf-8")
-    (PUBLIC_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8")
+    (SITE_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8", newline="\n")
+    (SITE_DATA_DIR / "characterToRhymeFamily.json").write_text(characters_encoded, encoding="utf-8", newline="\n")
+    (PUBLIC_DATA_DIR / "researchData.json").write_text(encoded, encoding="utf-8", newline="\n")
 
     manifest = {
         "artifact": "chinese-rap-results-site-data-v1",
@@ -729,16 +797,23 @@ def main() -> None:
         "connectedLyricalLabels": repertoire["metadata"]["connectedLabels"],
         "repeatableLyricalEdges": repertoire["metadata"]["repeatableEdges"],
         "repertoireBootstrapReplicates": repertoire["metadata"]["bootstrapReplicates"],
+        "repertoireNullReplicates": repertoire["metadata"]["alignmentNull"]["null_replicates"],
+        "retrievalInductiveFolds": payload["retrieval"]["inductiveSanity"]["folds"],
+        "retrievalInductiveQueries": payload["retrieval"]["inductiveSanity"]["queries"],
         "nerEntities": len(payload["ner"]["entities"]),
         "nerLinks": len(payload["ner"]["links"]),
         "nerCoMentions": len(payload["ner"]["coMentions"]),
+        "nerReleasedClaimAuditOccurrences": payload["ner"]["releasedClaimAudit"]["uniqueSupportingOccurrences"],
+        "nerReleasedClaimAuditStatus": payload["ner"]["releasedClaimAudit"]["status"],
         "rhymeContexts": len(rhyme["contexts"]),
         "dictionaryCharacters": len(character_map),
         "researchDataSha256": hashlib.sha256(encoded.encode("utf-8")).hexdigest(),
         "status": "pass",
     }
     (PUBLIC_DATA_DIR / "manifest.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
 

@@ -10,14 +10,49 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
+import subprocess
+import zipfile
 from datetime import datetime, timezone
+import sys
 from pathlib import Path
 
 
+
+# Windows consoles default to a legacy code page; the Han text these tools print
+# must not depend on the caller exporting PYTHONIOENCODING.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 ROOT = Path(__file__).resolve().parents[1]
 SUBMISSION = ROOT / "submission" / "dsh"
+
+# Explicit allowlists, not directory copies. The desktop manifest is generated after the
+# copy, so anything that happened to be sitting in a copied directory would be packaged
+# and would still validate against its own manifest.
+PUBLISHABLE_COMPOUND_RESOLUTION_FILES = (
+    "resolution_table.csv",
+    "freeze.json",
+    "public_name_allowlist.json",
+)
+PUBLISHABLE_TOOLS = (
+    "audit_released_claim_occurrences.py",
+    "audit_surface_collocations.py",
+    "build_compound_resolution_table.py",
+    "check_manuscript_derivatives.py",
+    "entity_ablation_retrieval.py",
+    "multi_tagger_agreement.py",
+    "null_baseline_reciprocal_edges.py",
+    "publish_compound_resolution.py",
+    "summarise_surface_reliability.py",
+    "verify_compound_resolution.py",
+)
+PUBLISHABLE_TESTS = (
+    "test_compound_resolution_gate.py",
+    "test_tools.py",
+)
 
 
 def sha256(path: Path) -> str:
@@ -33,9 +68,70 @@ def write_text(path: Path, text: str) -> None:
     path.write_text(text.rstrip() + "\n", encoding="utf-8", newline="\n")
 
 
+def head_blobs() -> dict[str, str]:
+    """Every committed path in HEAD, mapped to its git blob sha1.
+
+    The desktop package is built from committed bytes only. Merely checking that a path
+    is tracked, as an earlier version did, still packaged working-tree bytes, so an
+    unstaged edit to a tracked file reached the package and validated.
+    """
+    result = subprocess.run(["git", "-C", str(ROOT), "ls-tree", "-r", "-z", "HEAD"],
+                            capture_output=True, check=True)
+    blobs: dict[str, str] = {}
+    for record in result.stdout.decode("utf-8").split(chr(0)):
+        if not record:
+            continue
+        meta, path = record.split(chr(9), 1)
+        mode, kind, sha = meta.split()
+        if kind == "blob":
+            if mode == "120000":
+                raise RuntimeError(f"Refusing to package a repository holding a symlink: {path}")
+            blobs[path] = sha
+    return blobs
+
+
+def refuse_dirty_tree() -> None:
+    """A package is a statement about a commit, so the tree must equal HEAD."""
+    status = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain",
+                             "--untracked-files=no"], capture_output=True, check=True)
+    if status.stdout.strip():
+        raise RuntimeError("Refusing to build a desktop package from a modified working tree; "
+                           "commit or restore these first:\n"
+                           + status.stdout.decode("utf-8", "replace"))
+    diff = subprocess.run(["git", "-C", str(ROOT), "diff-index", "--quiet", "HEAD", "--"])
+    if diff.returncode != 0:
+        raise RuntimeError("Refusing to build: the working tree differs from HEAD")
+
+
+def git_blob_sha1(payload: bytes) -> str:
+    header = f"blob {len(payload)}".encode("ascii") + b"\x00"
+    return hashlib.sha1(header + payload).hexdigest()
+
+
+HEAD_BLOBS: dict[str, str] = {}
+PROVENANCE: dict[str, dict[str, str]] = {}
+
+
 def copy_file(source: Path, target: Path) -> None:
     if not source.is_file():
         raise FileNotFoundError(source)
+    if source.is_symlink():
+        raise RuntimeError(f"Refusing to package a symlink: {source}")
+    if HEAD_BLOBS:
+        if not source.resolve().is_relative_to(ROOT.resolve()):
+            raise RuntimeError(f"Refusing to package a path outside the repository: {source}")
+        relative = source.relative_to(ROOT).as_posix()
+        expected = HEAD_BLOBS.get(relative)
+        if expected is None:
+            raise RuntimeError(f"Refusing to package a file not committed in HEAD: {source}")
+        payload = source.read_bytes()
+        if git_blob_sha1(payload) != expected:
+            raise RuntimeError(f"Refusing to package {relative}: working bytes differ from the "
+                               "committed blob")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+        PROVENANCE[str(target.resolve())] = {"source": relative, "git_blob_sha1": expected}
+        return
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, target)
 
@@ -68,10 +164,15 @@ def manuscript_word_count(markdown: str) -> int:
     return len(body.split())
 
 
-def build_validation() -> dict:
+def build_validation(generated_at_utc: str) -> dict:
     data_path = ROOT / "site" / "app" / "data" / "researchData.json"
     data = json.loads(data_path.read_text(encoding="utf-8"))
     graph = data["repertoireGraph"]
+    alignment_null = graph["alignmentNull"]
+    projection_fidelity = graph["projectionFidelity"]
+    ner_claim_audit = json.loads(
+        (ROOT / "results" / "ner-v1" / "released_claim_audit_status.json").read_text(encoding="utf-8")
+    )
     page_source = (ROOT / "site" / "app" / "page.tsx").read_text(encoding="utf-8")
     portable_source = (ROOT / "index.html").read_text(encoding="utf-8")
     figure_validation = json.loads((ROOT / "figures" / "journal_figure_validation.json").read_text(encoding="utf-8"))
@@ -82,6 +183,11 @@ def build_validation() -> dict:
         "global_network_86_released_edges": graph["retainedEdges"] == 86,
         "global_network_16_repeatable_edges": graph["repeatableEdges"] == 16,
         "global_network_93_connected_labels": graph["connectedLabels"] == 93,
+        "graph_alignment_primary_null_degree_preserving": alignment_null["null_model"] == "degree-preserving double-edge swaps of the sensitivity layer",
+        "graph_alignment_primary_null_10000_replicates": alignment_null["null_replicates"] >= 10_000,
+        "graph_alignment_observed_exceeds_null_maximum": alignment_null["observed_intersection_edges"] == graph["retainedEdges"] and alignment_null["observed_intersection_edges"] > alignment_null["null_maximum"],
+        "projection_fidelity_matches_released_graph": projection_fidelity["population"] == graph["eligibleLabels"] and projection_fidelity["released_edges"] == graph["retainedEdges"],
+        "projection_fidelity_reports_k5_k10_k15": [row["k"] for row in projection_fidelity["neighbourhood_fidelity"]] == [5, 10, 15],
         "global_before_local_in_application": page_source.index("<GlobalRepertoireGraph") < page_source.index("FOCUSED VIEW"),
         "edge_rule_and_repeatability_explained": all(term in page_source for term in ("Why there is a line", "Returned in", "repeated song samples")),
         "portable_global_network_present": all(term in portable_source for term in ("overview-canvas", "The full repertoire landscape", "FOCUSED VIEW")),
@@ -89,6 +195,9 @@ def build_validation() -> dict:
         "four_primary_co_mentions": len(data["ner"]["coMentions"]) == 4,
         "six_primary_label_reference_links": len(data["ner"]["links"]) == 6,
         "human_gold_not_overclaimed": data["ner"]["humanGoldAvailable"] is False,
+        "ner_released_claim_audit_package_passes": ner_claim_audit["validation"]["package_generation"] == "pass",
+        "ner_released_claim_audit_covers_every_released_occurrence": ner_claim_audit["validation"]["released_claim_occurrence_coverage"] == 1.0,
+        "ner_released_claim_audit_metrics_remain_withheld": ner_claim_audit["status"] == "PENDING_DUAL_HUMAN_REVIEW_AND_ADJUDICATION" and ner_claim_audit["global_ner_benchmark"]["precision_recall_f1"] == "WITHHELD",
         "rhyme_held_out_events": data["rhyme"]["testEvents"] == 34395,
         "journal_figures_pass": figure_validation["status"] == "pass",
         "journal_figures_600_dpi": all(check["passed"] for check in figure_validation["checks"] if check["name"] == "all_rasters_exact_600dpi"),
@@ -107,11 +216,11 @@ def build_validation() -> dict:
     rhyme = next(row for row in data["rhyme"]["metrics"] if row["model"] == "hierarchical_sgd_context")
     return {
         "artifact": "Chinese_Rap_Research_Release_V4",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": generated_at_utc,
         "status": "pass_for_public_release_author_actions_required_before_journal_submission",
         "public_release_ready": True,
         "journal_submission_ready": False,
-        "central_question": "How do Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme?",
+        "central_question": "How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?",
         "checks": assertions,
         "headline_results": {
             "global_repertoire_map": {
@@ -121,6 +230,10 @@ def build_validation() -> dict:
                 "repeatable_edges_at_50pct_gate": graph["repeatableEdges"],
                 "bootstrap_replicates": graph["bootstrapReplicates"],
                 "pca_2d_variance": graph["pcaVariance2d"],
+                "degree_preserving_null_replicates": alignment_null["null_replicates"],
+                "degree_preserving_null_mean_edges": alignment_null["null_mean"],
+                "degree_preserving_null_p_add_one": alignment_null["monte_carlo_p_add_one"],
+                "pca_trustworthiness_at_5": projection_fidelity["neighbourhood_fidelity"][0]["trustworthiness"],
             },
             "held_out_retrieval": {
                 "fusion_mrr": fusion["mrr"]["estimate"],
@@ -131,6 +244,8 @@ def build_validation() -> dict:
                 "released_label_reference_edges": len(data["ner"]["links"]),
                 "released_same_song_reference_pairs": len(data["ner"]["coMentions"]),
                 "human_gold_complete": data["ner"]["humanGoldAvailable"],
+                "released_claim_occurrences_queued_for_dual_review": ner_claim_audit["scope"]["unique_contributing_occurrence_rows"],
+                "released_claim_audit_status": ner_claim_audit["status"],
             },
             "written_rhyme": {
                 "held_out_events": data["rhyme"]["testEvents"],
@@ -151,7 +266,7 @@ def build_validation() -> dict:
             "partial_or_human_required": [
                 "NER occurrence accuracy cannot be reported until the planned dual human review is completed.",
                 "The 204 source-credit labels are not globally verified artist identities; only four title-field corrections have approved external evidence.",
-                "Authors must supply names, affiliations, funding, conflicts, CRediT roles, corpus provenance, rights, ethics determination, exact AI disclosure, licence, and archival DOI.",
+                "Authors must supply affiliations, funding, conflicts, CRediT roles, corpus provenance, corpus-rights documentation, ethics determination, exact AI disclosure, and an archival DOI.",
             ],
         },
         "artifact_hashes": {
@@ -181,8 +296,10 @@ def build_submission(validation: dict) -> None:
         ROOT / "validation" / "dsh_submission_style_lint.json": SUBMISSION / "dsh_submission_style_lint.json",
         ROOT / "validation" / "dsh_submission_a11y.json": SUBMISSION / "dsh_submission_a11y.json",
     }
+    # The four 600-dpi TIFFs total about 130 MB and are byte-identical to the
+    # canonical copies under figures/. Do not ship a second copy in every clone.
     for number in range(1, 5):
-        for suffix in ("tif", "pdf", "svg"):
+        for suffix in ("pdf", "svg"):
             files[ROOT / "figures" / f"fig{number}.{suffix}"] = SUBMISSION / f"fig{number}.{suffix}"
     for source, target in files.items():
         copy_file(source, target)
@@ -195,15 +312,22 @@ Prepared for *Digital Scholarship in the Humanities* technical requirements chec
 
 - `manuscript.docx` — double-spaced English manuscript, under 9,000 words excluding references, with structured abstract, keywords, data-availability statement, AI-disclosure placeholder, and figure legends/alt text collected at the end. Figures are not embedded.
 - `supplementary_methods.docx` — reproducibility and public/private-boundary supplement.
-- `fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. PDF and SVG companions are included for editorial flexibility.
+- `fig1.pdf`–`fig4.pdf` and `fig1.svg`–`fig4.svg` — vector submission artwork.
+- `fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload the canonical files from the release-root Figures directory (`figures/` in the repository; `Figures/` in the desktop package). They are not duplicated here because the four files total about 130 MB. Their checksums are recorded in `journal_figure_validation.json`.
 - PDF files are previews for author checking; upload policy should follow the journal portal.
 
 ## Stop before submission
 
-The computational release is complete, but the responsible authors must still enter factual author names, affiliations, corresponding-author email, funding, conflict of interest, CRediT roles, corpus acquisition/provenance, rights/licence basis, ethics determination, exact AI-tool/model disclosure, repository licence, and archival DOI. NER precision/recall/F1 must remain unreported until dual human review is complete.
+This is a reproducible frozen-snapshot release; publication completion remains pending repaired-corpus and metadata-cleaned downstream reruns (see Methods/NER_CR_001_COMPOUND_RESOLUTION.md). Its repository licences are fixed. Before submission, the responsible authors must still enter factual affiliations, corresponding-author email, funding, conflict of interest, CRediT roles, corpus acquisition/provenance, corpus-rights basis, ethics determination, exact AI-tool/model disclosure, and archival DOI. NER precision/recall/F1 must remain unreported until dual human review is complete.
 """
     write_text(SUBMISSION / "README_BEFORE_SUBMISSION.md", readme)
-    manifest_files = sorted(path for path in SUBMISSION.rglob("*") if path.is_file() and path.name != "MANIFEST.json")
+    # Path ordering differs by platform: Path comparison is case-insensitive on
+    # Windows and case-sensitive elsewhere, so a bare sorted() here would emit a
+    # different manifest order per platform and break the rebuild-idempotence
+    # guarantee. Order on the posix string instead.
+    manifest_files = sorted((path for path in SUBMISSION.rglob("*")
+                             if path.is_file() and path.name != "MANIFEST.json"),
+                            key=lambda item: item.as_posix())
     manifest = {
         "artifact": "chinese-rap-dsh-upload-bundle-v1",
         "generated_at_utc": validation["generated_at_utc"],
@@ -258,6 +382,13 @@ def write_release_manifests(validation: dict) -> None:
     )
 
     selected = [
+        ROOT / ".gitattributes",
+        ROOT / ".python-version",
+        ROOT / ".github" / "workflows" / "release-integrity.yml",
+        ROOT / "README.md",
+        ROOT / "LICENSE",
+        ROOT / "LICENSE-CODE",
+        ROOT / "requirements.txt",
         ROOT / "index.html",
         ROOT / "site" / "app" / "data" / "researchData.json",
         ROOT / "paper" / "manuscript.md",
@@ -268,13 +399,44 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.docx",
         ROOT / "paper" / "Chinese_Rap_Evidence_Grounded_Supplement.pdf",
         ROOT / "figures" / "journal_figure_validation.json",
+        ROOT / "figures" / "manifest.json",
+        ROOT / "methods" / "NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
+        ROOT / "methods" / "NER_CR_001_COMPOUND_RESOLUTION.md",
+        ROOT / "analysis" / "compound-resolution" / "resolution_table.csv",
+        ROOT / "analysis" / "compound-resolution" / "freeze.json",
+        ROOT / "analysis" / "compound-resolution" / "public_name_allowlist.json",
+        ROOT / "tests" / "test_compound_resolution_gate.py",
+        ROOT / "tests" / "test_release_boundary.py",
+        ROOT / "tools" / "build_compound_resolution_table.py",
+        ROOT / "tools" / "publish_compound_resolution.py",
+        ROOT / "tools" / "verify_compound_resolution.py",
+        ROOT / "tools" / "rekey_blinded_ballots.py",
+        ROOT / "tools" / "detect_metadata_blocks.py",
+        ROOT / "methods" / "METADATA_BLOCK_AUDIT_PROTOCOL.md",
+        ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
+        ROOT / "src" / "build_ner_released_claim_audit_v1.py",
+        ROOT / "src" / "build_repertoire_robustness_inference_v1.py",
+        ROOT / "src" / "build_retrieval_inductive_sensitivity_v1.py",
+        ROOT / "src" / "build_chinese_rap_release_v4.py",
+        ROOT / "src" / "normalize_public_text_v1.py",
+        ROOT / "src" / "restore_committed_bytes_v1.py",
+        ROOT / "src" / "update_public_result_manifests_v1.py",
+        ROOT / "src" / "validate_public_release_integrity_v1.py",
         ROOT / "submission" / "dsh" / "MANIFEST.json",
         ROOT / "validation" / "release_validation.json",
         ROOT / "validation" / "standalone_site_validation.json",
         ROOT / "validation" / "portable_site_manifest.json",
     ]
+    robustness_dir = ROOT / "results" / "repertoire-network-v1" / "robustness"
+    selected.extend(sorted((path for path in robustness_dir.iterdir() if path.is_file()),
+                           key=lambda item: item.as_posix()))
+    retrieval_sensitivity_dir = ROOT / "results" / "retrieval-inductive-sensitivity-v1"
+    selected.extend(sorted((path for path in retrieval_sensitivity_dir.iterdir() if path.is_file()),
+                           key=lambda item: item.as_posix()))
     for number in range(1, 5):
         selected.extend(ROOT / "figures" / f"fig{number}.{suffix}" for suffix in ("tif", "pdf", "svg"))
+    if len(selected) != len(set(selected)):
+        raise RuntimeError("Core release manifest contains duplicate paths")
     manifest = {
         "artifact": "chinese-rap-public-release-core-manifest-v4",
         "generated_at_utc": validation["generated_at_utc"],
@@ -301,7 +463,7 @@ README_FIRST = """# Chinese Rap Research Release V4
 
 Double-click `START_HERE.html`.
 
-The release has one theme: **how Chinese rap lyrics form recognizable lyrical repertoires through language, cultural reference, and dictionary-estimated written rhyme**.
+The release has one theme: **how Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme**.
 
 The interactive result now starts with the complete 204-label map. Selecting a node opens the smaller focused network below it; every released line states its reciprocal-match rule, auxiliary writing signal, and return count across 250 song-level resamples. The same application includes statistically screened cultural references and an evaluated written-ending task.
 
@@ -310,37 +472,143 @@ The interactive result now starts with the complete 204-label map. Selecting a n
 - `Website/` — self-contained interactive result.
 - `Paper/` — readable manuscript, DSH manuscript, supplement, and Markdown sources.
 - `Figures/` — four publication figures, a visual gallery, source tables, and journal formats.
-- `Results/` — aggregate outputs for the audit, retrieval, repertoire network, NER, and written rhyme.
+- `Results/` — aggregate outputs for the audit, retrieval, repertoire network, NER, and written rhyme, plus the frozen NER-CR-001 compound resolution table.
 - `Submission_DSH/` — technically prepared upload bundle plus the remaining author checklist.
 - `Validation/RELEASE_READINESS_V4.md` — a plain-language Done / Partial / Human required audit.
-- `Reproducibility/` — deterministic builders and application source.
+- `Reproducibility/` — deterministic builders, audit and verification tools, and application source.
 
-The computational/public release is ready to share. Journal submission still requires author identity, provenance, rights, ethics, contribution, disclosure, licence, and DOI facts; NER precision/recall/F1 remains pending human annotation.
+This is a reproducible frozen-snapshot release; publication completion remains pending repaired-corpus and metadata-cleaned downstream reruns. Journal submission additionally requires affiliations, provenance, corpus-rights documentation, ethics, contribution, disclosure, and DOI facts; NER precision/recall/F1 remains pending human annotation.
 """
 
 
+DESKTOP_PROJECT_README = README_FIRST + """
+
+## Licence
+
+Copyright © 2026 Moshi Fu. The manuscript, figures, methods, documentation, and aggregate result data are released under [CC BY 4.0](LICENSE). The build and validation code is released under the [MIT Licence](LICENSE-CODE). Neither licence covers the underlying lyric corpus, which is not redistributed.
+"""
+
+
+def write_deterministic_archive(target: Path, archive: Path) -> None:
+    """Write the desktop ZIP byte-identically for an identical tree.
+
+    `shutil.make_archive` stamps every member with its filesystem mtime, so two builds of
+    the same tree produced different archive bytes and the ZIP could not be checksummed.
+    Member order, timestamps, permissions, host system, and compression are all pinned.
+    """
+    members = sorted((path for path in target.rglob("*") if path.is_file()),
+                     key=lambda item: item.relative_to(target).as_posix())
+    with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as package:
+        for path in members:
+            record = zipfile.ZipInfo(f"{target.name}/{path.relative_to(target).as_posix()}",
+                                     date_time=(1980, 1, 1, 0, 0, 0))
+            record.compress_type = zipfile.ZIP_DEFLATED
+            record.create_system = 3
+            record.external_attr = 0o100644 << 16
+            package.writestr(record, path.read_bytes())
+
+
+def discard_package(target: Path, archive: Path) -> None:
+    """Leave nothing a later step could mistake for a verified package."""
+    if archive.is_file():
+        archive.unlink()
+    if target.is_dir():
+        shutil.rmtree(target, ignore_errors=True)
+
+
 def copy_tree(source: Path, target: Path, ignore=None) -> None:
+    """Copy only tracked, regular files under `source`."""
     if not source.is_dir():
         raise FileNotFoundError(source)
-    shutil.copytree(source, target, dirs_exist_ok=True, ignore=ignore)
+    for path in sorted(source.rglob("*"), key=lambda item: item.as_posix()):
+        if path.is_symlink():
+            raise RuntimeError(f"Refusing to package a symlink: {path}")
+        if not path.is_file():
+            continue
+        if path.relative_to(ROOT).as_posix() not in HEAD_BLOBS:
+            continue
+        if ignore and ignore(str(path.parent), [path.name]):
+            continue
+        copy_file(path, target / path.relative_to(source))
+
+
+def remove_previous_generated_files(target: Path) -> None:
+    """Remove only files declared by the previous desktop-package manifest."""
+    manifest_path = target / "Validation" / "RELEASE_PACKAGE_MANIFEST.json"
+    if not manifest_path.is_file():
+        return
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    root = target.resolve()
+    declared: list[Path] = []
+    for record in manifest.get("files", []):
+        candidate = (target / record["path"]).resolve()
+        if root not in candidate.parents:
+            raise RuntimeError(f"Refusing to remove escaped desktop-package path: {candidate}")
+        declared.append(candidate)
+    declared.append(manifest_path.resolve())
+    for path in declared:
+        if path.is_file():
+            path.unlink()
+    for directory in sorted((path for path in target.rglob("*") if path.is_dir()),
+                            key=lambda item: (len(item.parts), item.as_posix()), reverse=True):
+        try:
+            directory.rmdir()
+        except OSError:
+            pass
 
 
 def build_desktop_release(target: Path, validation: dict) -> Path:
+    global HEAD_BLOBS
+    refuse_dirty_tree()
+    HEAD_BLOBS = head_blobs()
+    PROVENANCE.clear()
     safe_prepare_onedrive_dir(target, target.parent, "Chinese_Rap_Research_Release_V4")
+    remove_previous_generated_files(target)
+    undeclared = sorted(path.relative_to(target).as_posix() for path in target.rglob("*") if path.is_file())
+    if undeclared:
+        raise RuntimeError(
+            "Desktop target contains files not declared by its previous release manifest; "
+            f"refusing to package them: {undeclared}"
+        )
     write_text(target / "START_HERE.html", START_HERE)
     write_text(target / "README_FIRST.md", README_FIRST)
-    copy_file(ROOT / "README.md", target / "PROJECT_README.md")
+    write_text(target / "PROJECT_README.md", DESKTOP_PROJECT_README)
+    copy_file(ROOT / "LICENSE", target / "LICENSE")
+    copy_file(ROOT / "LICENSE-CODE", target / "LICENSE-CODE")
     copy_file(ROOT / "index.html", target / "Website" / "index.html")
 
-    for path in (ROOT / "paper").iterdir():
+    for path in sorted((ROOT / "paper").iterdir(), key=lambda item: item.as_posix()):
         if path.is_file() and path.suffix.lower() in {".md", ".docx", ".pdf"}:
             copy_file(path, target / "Paper" / path.name)
     copy_tree(ROOT / "figures", target / "Figures")
-    for name in ("input-audit-v1", "retrieval-v1", "repertoire-network-v1", "ner-v1", "written-rhyme-v1"):
+    for name in (
+        "input-audit-v1",
+        "retrieval-v1",
+        "retrieval-inductive-sensitivity-v1",
+        "repertoire-network-v1",
+        "ner-v1",
+        "written-rhyme-v1",
+    ):
         copy_tree(ROOT / "results" / name, target / "Results" / name)
     copy_tree(ROOT / "methods", target / "Methods")
+    for name in PUBLISHABLE_COMPOUND_RESOLUTION_FILES:
+        copy_file(ROOT / "analysis" / "compound-resolution" / name,
+                  target / "Results" / "compound-resolution-ner-cr-001" / name)
+    unexpected = sorted(path.name for path in (ROOT / "analysis" / "compound-resolution").iterdir()
+                        if path.is_file() and path.name not in PUBLISHABLE_COMPOUND_RESOLUTION_FILES)
+    if unexpected:
+        raise RuntimeError(
+            "analysis/compound-resolution holds files outside the publishable allowlist; "
+            f"refusing to build until they are removed or explicitly allowed: {unexpected}"
+        )
     copy_tree(SUBMISSION, target / "Submission_DSH")
     copy_tree(ROOT / "src", target / "Reproducibility" / "src", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    for name in PUBLISHABLE_TOOLS:
+        copy_file(ROOT / "tools" / name, target / "Reproducibility" / "tools" / name)
+    for name in PUBLISHABLE_TESTS:
+        copy_file(ROOT / "tests" / name, target / "Reproducibility" / "tests" / name)
+    copy_file(ROOT / ".python-version", target / "Reproducibility" / ".python-version")
+    copy_file(ROOT / "requirements.txt", target / "Reproducibility" / "requirements.txt")
     copy_tree(
         ROOT / "site",
         target / "Reproducibility" / "site",
@@ -354,7 +622,26 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
     ):
         copy_file(ROOT / "validation" / name, target / "Validation" / name)
 
-    manifest_files = sorted(path for path in target.rglob("*") if path.is_file() and path.name != "RELEASE_PACKAGE_MANIFEST.json")
+    # Every packaged file is either copied from a committed blob (recorded here with its
+    # git blob sha1, so a validator can bind it to HEAD without trusting the package) or
+    # generated by this builder and named in generated_by_builder.
+    resolved_root = target.resolve()
+    # no commit id in here: the binding is by blob sha, and embedding the commit would
+    # change the package (and its pinned ZIP checksum) on every commit that touches
+    # nothing packaged
+    provenance = {
+        "artifact": "Chinese_Rap_Research_Release_V4",
+        "files": {str(Path(packaged).resolve().relative_to(resolved_root).as_posix()): record
+                  for packaged, record in sorted(PROVENANCE.items())},
+        "generated_by_builder": ["START_HERE.html", "README_FIRST.md", "PROJECT_README.md",
+                                 "Validation/RELEASE_PACKAGE_MANIFEST.json",
+                                 "Validation/SOURCE_PROVENANCE.json"],
+    }
+    write_text(target / "Validation" / "SOURCE_PROVENANCE.json",
+               json.dumps(provenance, ensure_ascii=False, indent=2))
+    manifest_files = sorted((path for path in target.rglob("*")
+                             if path.is_file() and path.name != "RELEASE_PACKAGE_MANIFEST.json"),
+                            key=lambda item: item.as_posix())
     manifest = {
         "artifact": "Chinese_Rap_Research_Release_V4",
         "generated_at_utc": validation["generated_at_utc"],
@@ -369,16 +656,76 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
         if archive.parent.resolve() != target.parent.resolve() or archive.name != "Chinese_Rap_Research_Release_V4.zip":
             raise RuntimeError(f"Refusing to replace unexpected archive: {archive}")
         archive.unlink()
-    shutil.make_archive(str(target), "zip", root_dir=target.parent, base_dir=target.name)
+    write_deterministic_archive(target, archive)
+    # The archive checksum is pinned in a committed file, not in anything the build
+    # generates, so the expectation cannot be regenerated around a tampered package.
+    # The repository-side contract: the exact generated-file set and the full
+    # package-path -> repository-path mapping, committed so a validator never has to trust
+    # what the package says about itself.
+    contract = {
+        "artifact": "Chinese_Rap_Research_Release_V4",
+        "generated_by_builder": sorted(provenance["generated_by_builder"]),
+        "package_to_repository": {packaged: record["source"]
+                                  for packaged, record in sorted(provenance["files"].items())},
+    }
+    contract_path = ROOT / "validation" / "desktop_package_contract.json"
+    if os.environ.get("RECORD_DESKTOP_ZIP_SHA") == "1":
+        write_text(contract_path, json.dumps(contract, ensure_ascii=False, indent=2))
+    elif contract_path.is_file():
+        committed = json.loads(contract_path.read_text(encoding="utf-8"))
+        if committed != contract:
+            missing = sorted(set(committed["package_to_repository"]) - set(contract["package_to_repository"]))
+            extra = sorted(set(contract["package_to_repository"]) - set(committed["package_to_repository"]))
+            remapped = sorted(k for k in set(committed["package_to_repository"]) & set(contract["package_to_repository"])
+                              if committed["package_to_repository"][k] != contract["package_to_repository"][k])
+            discard_package(target, archive)
+            raise RuntimeError("Desktop package does not match the committed contract; "
+                               f"missing={missing[:5]} extra={extra[:5]} remapped={remapped[:5]}")
+
+    digest = sha256(archive)
+    pin = ROOT / "validation" / "desktop_zip.sha256"
+    if os.environ.get("RECORD_DESKTOP_ZIP_SHA") == "1":
+        write_text(pin, digest)
+    elif pin.is_file():
+        expected = pin.read_text(encoding="utf-8").strip()
+        if digest != expected:
+            discard_package(target, archive)
+            raise RuntimeError(f"Desktop ZIP sha256 {digest} does not match the committed "
+                               f"expectation {expected}; the package and archive have been "
+                               "removed so neither can be mistaken for a verified build. If "
+                               "the change is intentional, rebuild with "
+                               "RECORD_DESKTOP_ZIP_SHA=1 and commit the update")
     return archive
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--desktop", type=Path, help="Build the complete V4 release at this exact directory")
+    timestamp = parser.add_mutually_exclusive_group()
+    timestamp.add_argument("--generated-at-utc", help="Use this ISO-8601 timestamp in generated manifests")
+    timestamp.add_argument(
+        "--reuse-generated-at",
+        action="store_true",
+        help="Reuse generated_at_utc from validation/release_validation.json for an idempotent rebuild",
+    )
     args = parser.parse_args()
 
-    validation = build_validation()
+    # Before anything is written. The core build dirties the tree on its way to the
+    # desktop step, so checking inside build_desktop_release was checking after the fact.
+    if args.desktop:
+        refuse_dirty_tree()
+
+    if args.generated_at_utc:
+        generated_at_utc = args.generated_at_utc
+    elif args.reuse_generated_at:
+        existing_path = ROOT / "validation" / "release_validation.json"
+        if not existing_path.is_file():
+            raise FileNotFoundError(f"Cannot reuse a missing validation timestamp: {existing_path}")
+        generated_at_utc = json.loads(existing_path.read_text(encoding="utf-8"))["generated_at_utc"]
+    else:
+        generated_at_utc = datetime.now(timezone.utc).isoformat()
+
+    validation = build_validation(generated_at_utc)
     write_text(ROOT / "validation" / "release_validation.json", json.dumps(validation, ensure_ascii=False, indent=2))
     readiness = """# Release Readiness V4
 
@@ -388,6 +735,7 @@ def main() -> None:
 - **Global → local network:** the application first shows all 204 eligible source-credit labels, 86 released reciprocal edges, 93 connected labels, and a 16-edge ≥50% repeatability view; clicking any node opens its focused network below.
 - **Useful relationship explanation:** every local edge states the mutual-top-five rule, its auxiliary vocabulary/written-ending/writing-form signal when gated, and its return count across 250 song-level resamples.
 - **Meaningful downstream evaluation:** retrieval uses held-out songs and paired uncertainty; cultural-reference links use shared-text exclusion, support, conservative intervals, and BH-FDR; written-ending prediction uses song-held-out evaluation, baselines, ablation, calibration, and switch diagnostics.
+- **Released-claim audit prepared:** a private, blinded dual-review package covers all 157 occurrences supporting the 10 released cultural-reference claims; the public protocol and aggregate status expose coverage and hashes without lyric contexts or locators.
 - **No Command-F-style output:** the release does not expose a generic word-occurrence search. Search is limited to choosing a source label or supplying a written ending to an evaluated model/table.
 - **Academic presentation:** the manuscript is English, double-spaced, under 9,000 words before references, uses a structured abstract and Oxford HUMSOC citations, and separates upload figures. The four figures are 6.5 inches wide, 600 dpi, and at least 7 pt at print size.
 - **Claim boundaries:** source-credit labels are not verified people; textual proximity is not friendship/collaboration/influence; cultural references are not biography/residence/preference; dictionary pinyin is not audio rhyme/flow/beat.
@@ -403,7 +751,7 @@ def main() -> None:
 
 - Complete author names, affiliations, corresponding-author email, funding, conflict of interest, and CRediT roles.
 - Supply documented corpus acquisition, sampling, dates, temporal coverage, lyric origin, custody, rights/licence basis, ethics determination, and access policy.
-- Choose a repository licence, mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
+- Mint an archival DOI, finalize the exact AI-tool/model disclosure, and inspect the journal portal upload preview.
 - Complete dual human NER review before reporting precision, recall, or F1.
 
 The computational and public-share package passes its V4 checks. It is **not** marked journal-submission-ready until the author-owned facts above are supplied.

@@ -1,4 +1,4 @@
-﻿name,passed,value,expected,downstream_risk_if_failed
+name,passed,value,expected,downstream_risk_if_failed
 song_primary_key_unique,True,0,0,Mixed song grain or train/test leakage.
 chunk_composite_key_unique,True,0,0,Duplicated lyric evidence and inflated metrics.
 clean_sidecar_composite_key_unique,True,0,0,Ambiguous cleaned text joins.

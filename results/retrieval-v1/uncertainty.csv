@@ -1,4 +1,4 @@
-﻿comparison,metric,estimate_delta,ci95_lower,ci95_upper,interval_direction,paired_two_stage_bootstrap_replicates
+comparison,metric,estimate_delta,ci95_lower,ci95_upper,interval_direction,paired_two_stage_bootstrap_replicates
 strict fusion minus strict BGE-M3,mrr,0.126692,0.106008,0.146863,left_higher,5000
 strict fusion minus strict BGE-M3,recall_at_1,0.136564,0.113772,0.159721,left_higher,5000
 strict fusion minus strict BGE-M3,recall_at_5,0.121379,0.097244,0.144924,left_higher,5000

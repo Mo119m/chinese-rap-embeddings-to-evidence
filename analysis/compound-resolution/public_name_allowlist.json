@@ -1,0 +1,75 @@
+{
+  "protocol": "NER-CR-001",
+  "role": "disclosure-safety gate for verbatim publication only. A ruling that a string is a complete, conventional public name says the STRING is safe to print; it does not validate what any occurrence refers to, and it does not establish entity boundaries in any context. Contextual reference is decided per occurrence in the adjudication ledger, never here.",
+  "rule": "a containing span is published verbatim only if it appears here with publish_verbatim true; everything else is structurally generalised. Contiguous Han text is not evidence that a string is a complete name.",
+  "adjudication": {
+    "method": "AI-assisted repeated rulings, three per span, unanimity required for verbatim publication; external sources consulted",
+    "model": "claude-opus-5",
+    "sessions": "separate model invocations without shared conversational state; independence between sessions is procedural, not demonstrated",
+    "ballots_manifest_sha256": "eca2710e54ef38719658cbf1f237ccdd5ba6bf341a8c4c30cdbd5ecd82b5ff12",
+    "independent_human_review_status": "pending",
+    "private_rulings_sha256": "3503eff4f098af32758753d9d6358b3ef85c8a5cf05313cea523122d90735b24"
+  },
+  "disclosure": "A ruling that withholds a string cannot itself print that string. Withheld rulings appear here only as opaque identifiers; the strings and their reasons live in the private rulings file whose hash is recorded above. Approved strings appear in full because they are published in the resolution table itself.",
+  "approved": {
+    "385ae236-3d26-435b-80fb-ec915388f7da": {
+      "span": "上海上港",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "9662bf21-5bf0-4665-b4b1-b49b2212d7e4": {
+      "span": "上海路",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "2572197f-d1b3-413c-8ebd-953af94a1795": {
+      "span": "伦敦大桥",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "611aa12b-1074-4352-9198-a822df297428": {
+      "span": "伦敦桥",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "3302c8dc-c78d-4a5f-8c9a-ad262cae9e40": {
+      "span": "加州旅馆",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "65d68ffc-1e10-4c53-9119-b40dbbc4efbc": {
+      "span": "台北车站",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "9f56afd8-bf83-49fe-ad35-a4543213ce74": {
+      "span": "巴黎世家",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "bbbef798-60a7-4046-a67b-65a77d59dbcf": {
+      "span": "巴黎圣母院",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "61757b06-8f8b-4d70-86fa-ef305273e6e3": {
+      "span": "巴黎铁塔",
+      "opinions": 3,
+      "unanimous": true
+    },
+    "a0a56398-dbf2-4f6e-8d9f-e82922590ad6": {
+      "span": "湖南卫视",
+      "opinions": 3,
+      "unanimous": true
+    }
+  },
+  "withheld": {
+    "count": 4,
+    "ids": [
+      "0fcb8a4b-ec29-485b-95c9-9da45beb9385",
+      "2351a797-940a-484c-9dce-4690e222e368",
+      "6fa6f530-d84c-44ee-a040-e41cc543cb1f",
+      "91306f21-d5da-4812-a2dd-f04f80104702"
+    ]
+  }
+}

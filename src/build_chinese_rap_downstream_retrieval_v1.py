@@ -105,8 +105,8 @@ def atomic_write_json(path: Path, payload: Any) -> None:
 
 def atomic_write_csv(path: Path, rows: Iterable[dict[str, Any]], fields: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile("w", encoding="utf-8-sig", newline="", dir=path.parent, delete=False) as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="raise")
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", newline="", dir=path.parent, delete=False) as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="raise", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
         temporary = Path(handle.name)

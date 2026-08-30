@@ -37,6 +37,27 @@ FIGURE_DIR = ROOT / "figures"
 DPI = 600
 MIN_FONT_PT = 7.0
 
+PUBLIC_LINEAGE_PATHS = [
+    "src/build_chinese_rap_downstream_figures_v1.py",
+    "src/build_chinese_rap_figure_3_v1.py",
+    "src/build_chinese_rap_journal_figures_v1.py",
+    "results/input-audit-v1/analysis_summary.json",
+    "results/retrieval-v1/analysis_summary.json",
+    "results/retrieval-v1/metrics.csv",
+    "results/retrieval-v1/uncertainty.csv",
+    "results/ner-v1/entity_co_mentions_provisional.csv",
+    "results/ner-v1/reconciliation_validation.json",
+    "results/ner-v1/release_sensitivity_summary.csv",
+    "results/ner-v1/source_label_entity_links_provisional.csv",
+    "results/ner-v1/summary.json",
+    "results/ner-v1/validation.json",
+    "results/written-rhyme-v1/analysis_summary.json",
+    "results/written-rhyme-v1/model_metrics.csv",
+    "results/written-rhyme-v1/paired_model_deltas.csv",
+    "results/written-rhyme-v1/stratified_metrics.csv",
+    "methods/RESEARCH_CONTRACT.md",
+]
+
 ARIAL = Path("C:/Windows/Fonts/arial.ttf")
 ARIAL_BOLD = Path("C:/Windows/Fonts/arialbd.ttf")
 CJK = Path("C:/Windows/Fonts/msyh.ttc")
@@ -806,13 +827,12 @@ def update_primary_validation(journal_validation: dict[str, Any]) -> None:
         "figure_3_image_dimensions_and_tiff_600dpi",
         "figures_1_2_4_unchanged",
     }
-    checks = [check for check in original.get("checks", []) if check.get("name") not in stale_names]
     raster_details = [
         item
         for item in journal_validation["raster_audit"]
         if item["path"].endswith(".png") or item["path"].endswith(".tiff")
     ]
-    checks.extend(
+    journal_checks = (
         [
             {
                 "name": "journal_descriptive_rasters_exact_600dpi",
@@ -841,6 +861,11 @@ def update_primary_validation(journal_validation: dict[str, Any]) -> None:
             },
         ]
     )
+    # Replace, never append: re-running the builder must not stack a second copy of
+    # these checks on top of the previous run's now-stale hashes.
+    replaced_names = stale_names | {check["name"] for check in journal_checks}
+    checks = [check for check in original.get("checks", []) if check.get("name") not in replaced_names]
+    checks.extend(journal_checks)
     original["generated_at_utc"] = journal_validation["generated_at_utc"]
     original["status"] = "pass" if all(check.get("passed") for check in checks) else "fail"
     original["confidence"] = "ready_to_share" if original["status"] == "pass" else "needs_revision"
@@ -875,9 +900,23 @@ def update_manifest(exports: list[dict[str, Any]], validation_path: Path) -> Non
         }
         for item in exports
     }
-    manifest.setdefault("lineage", {})["journal_builder"] = {
-        "path": "src/build_chinese_rap_journal_figures_v1.py",
-        "sha256": sha256(Path(__file__).resolve()),
+    if "historical_render_lineage" not in manifest:
+        manifest["historical_render_lineage"] = {
+            "status": "historical_build_workspace_not_fully_public",
+            "note": "Preserved for provenance only. These original paths are not presented as public, checkout-verifiable lineage.",
+            "records": manifest.get("lineage", {}),
+        }
+    manifest["lineage"] = {
+        "status": "public_checkout_verifiable",
+        "note": "Published sources are value-equivalent promotions of the aggregate inputs used for the historical render; paths, bytes, and hashes below resolve in this repository.",
+        "public_files": [
+            {
+                "path": relative,
+                "bytes": (ROOT / relative).stat().st_size,
+                "sha256": sha256(ROOT / relative),
+            }
+            for relative in PUBLIC_LINEAGE_PATHS
+        ],
     }
     manifest["files"] = [
         {"path": f"figures/{file.name}", "bytes": file.stat().st_size, "sha256": sha256(file)}

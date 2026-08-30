@@ -1,4 +1,4 @@
-﻿aggregate_example_category,category_rank,source_credit_label,queries,within_label_component_units,strict_fusion_mrr,strict_fusion_recall_at_1,strict_fusion_recall_at_5,strict_fusion_recall_at_10,median_true_label_rank,fusion_mrr_lift_over_better_single_system,most_common_incorrect_top1_source_credit_label,share_of_incorrect_group_weight_for_common_top1
+aggregate_example_category,category_rank,source_credit_label,queries,within_label_component_units,strict_fusion_mrr,strict_fusion_recall_at_1,strict_fusion_recall_at_5,strict_fusion_recall_at_10,median_true_label_rank,fusion_mrr_lift_over_better_single_system,most_common_incorrect_top1_source_credit_label,share_of_incorrect_group_weight_for_common_top1
 highest_strict_fusion_mrr,1,neverkilltheape,15,15,1.000000,1.000000,1.000000,1.000000,1.000000,0.000000,,0.000000
 highest_strict_fusion_mrr,2,APMOZART,45,45,0.969136,0.955556,0.977778,1.000000,1.000000,-0.019753,G Sauce,0.500000
 highest_strict_fusion_mrr,3,离合,28,28,0.967033,0.964286,0.964286,0.964286,1.000000,-0.032967,MULA SAKEE,1.000000

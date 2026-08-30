@@ -1,0 +1,100 @@
+{
+  "artifact_id": "retrieval-inductive-sensitivity-v1",
+  "checks": [
+    {
+      "name": "all_frozen_input_contracts_and_hashes_pass",
+      "passed": true
+    },
+    {
+      "detail": {
+        "global_components": 5430,
+        "queries": 5455,
+        "source_credit_labels": 204,
+        "within_label_component_units": 5432
+      },
+      "name": "frozen_query_population_and_duplicate_units_reconciled",
+      "passed": true
+    },
+    {
+      "name": "global_duplicate_components_never_cross_folds",
+      "passed": true
+    },
+    {
+      "detail": {
+        "fold_query_counts": [
+          910,
+          909,
+          909,
+          909,
+          909,
+          909
+        ],
+        "minimum_test_components_per_label": 1,
+        "minimum_training_components_per_label": 5
+      },
+      "name": "six_folds_cover_all_labels_and_retain_five_training_components",
+      "passed": true
+    },
+    {
+      "name": "inductive_and_matched_systems_use_identical_fold_profiles",
+      "passed": true
+    },
+    {
+      "name": "all_tfidf_fits_reach_prespecified_feature_cap",
+      "passed": true
+    },
+    {
+      "name": "every_query_has_exactly_one_valid_out_of_fold_rank",
+      "passed": true
+    },
+    {
+      "detail": {
+        "algorithm": "literal_occurrence_wise_two_stage_paired_bootstrap_v1",
+        "independent_inner_resample_occurrences": 1020000,
+        "outer_label_occurrences_per_replicate": 204,
+        "random_seed": 20260827,
+        "repeated_outer_label_occurrences": 374210,
+        "repeated_outer_occurrences_reuse_inner_draw": false,
+        "replicates": 5000,
+        "same_component_draw_applied_to_all_systems_and_metrics": true,
+        "total_inner_component_draws": 27140169,
+        "total_outer_label_occurrences": 1020000
+      },
+      "name": "paired_two_stage_bootstrap_is_complete",
+      "passed": true
+    },
+    {
+      "detail": {
+        "maximum_absolute_difference": 4.987274674905784e-07,
+        "passed": true,
+        "tolerance": 5.1e-07
+      },
+      "name": "point_estimates_reproduce_independent_read_only_run",
+      "passed": true
+    },
+    {
+      "name": "all_system_metric_and_paired_comparison_rows_present",
+      "passed": true
+    },
+    {
+      "name": "macro_intervals_are_ordered_and_bounded",
+      "passed": true
+    },
+    {
+      "detail": {},
+      "name": "public_csv_headers_exclude_private_query_label_text_and_vector_fields",
+      "passed": true
+    },
+    {
+      "name": "public_payloads_are_utf8_without_bom_and_lf_only",
+      "passed": true
+    },
+    {
+      "name": "claim_boundary_present_in_public_documents",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-27T19:23:11Z",
+  "status": "pass",
+  "version": "1.0.0"
+}

@@ -208,6 +208,7 @@ def write_json(path: Path, payload: Any) -> None:
     path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True, default=convert) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
 
 
@@ -218,7 +219,7 @@ def write_csv(path: Path, rows: Iterable[dict[str, Any]], columns: list[str] | N
             if column not in df.columns:
                 df[column] = ""
         df = df[columns]
-    df.to_csv(path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
+    df.to_csv(path, index=False, encoding="utf-8", quoting=csv.QUOTE_MINIMAL, lineterminator="\n")
     return df
 
 
@@ -2381,7 +2382,12 @@ def main() -> None:
         "transformer_surface", "transformer_label", "transformer_schema_type", "transformer_confidence",
         "span_iou", "strict_high_consistency",
     ]
-    private_union[private_candidates_columns].to_csv(args.private_output / "all_candidate_occurrences_private.csv", index=False, encoding="utf-8-sig")
+    private_union[private_candidates_columns].to_csv(
+        args.private_output / "all_candidate_occurrences_private.csv",
+        index=False,
+        encoding="utf-8-sig",
+        lineterminator="\n",
+    )
     task_columns = [
         "task_id", "candidate_id", "stratum", "source_credit_label", "song_id", "chunk_id",
         "analysis_text_sha256", "candidate_surface", "candidate_schema_type", "candidate_start_char",
@@ -2390,12 +2396,33 @@ def main() -> None:
         "transformer_label", "transformer_schema_type", "transformer_confidence", "span_iou",
         "agreement_state", "selection_rank_sha256",
     ]
-    tasks[task_columns].to_csv(args.private_output / "annotation_tasks_private.csv", index=False, encoding="utf-8-sig")
-    r1.to_csv(args.private_output / "reviewer_R1_private.csv", index=False, encoding="utf-8-sig")
-    r2.to_csv(args.private_output / "reviewer_R2_private.csv", index=False, encoding="utf-8-sig")
-    adjudication.to_csv(args.private_output / "agreement_adjudication_private.csv", index=False, encoding="utf-8-sig")
-    sampling_summary.to_csv(args.private_output / "sampling_summary_private.csv", index=False, encoding="utf-8-sig")
-    shared_hash_audit.to_csv(args.private_output / "shared_text_hash_audit_private.csv", index=False, encoding="utf-8-sig")
+    tasks[task_columns].to_csv(
+        args.private_output / "annotation_tasks_private.csv", index=False, encoding="utf-8-sig", lineterminator="\n"
+    )
+    r1.to_csv(
+        args.private_output / "reviewer_R1_private.csv", index=False, encoding="utf-8-sig", lineterminator="\n"
+    )
+    r2.to_csv(
+        args.private_output / "reviewer_R2_private.csv", index=False, encoding="utf-8-sig", lineterminator="\n"
+    )
+    adjudication.to_csv(
+        args.private_output / "agreement_adjudication_private.csv",
+        index=False,
+        encoding="utf-8-sig",
+        lineterminator="\n",
+    )
+    sampling_summary.to_csv(
+        args.private_output / "sampling_summary_private.csv",
+        index=False,
+        encoding="utf-8-sig",
+        lineterminator="\n",
+    )
+    shared_hash_audit.to_csv(
+        args.private_output / "shared_text_hash_audit_private.csv",
+        index=False,
+        encoding="utf-8-sig",
+        lineterminator="\n",
+    )
 
     private_validation = validate_private(
         args.private_output,
@@ -2437,7 +2464,12 @@ def main() -> None:
 
     # Public outputs: aggregates and method only.
     for filename, frame in public_frames.items():
-        frame.to_csv(args.public_output / filename, index=False, encoding="utf-8-sig")
+        frame.to_csv(
+            args.public_output / filename,
+            index=False,
+            encoding="utf-8",
+            lineterminator="\n",
+        )
 
     exact_unique_line_spans = int(agreement_by_type["exact_span_type_agreements_on_unique_line_frame"].sum())
     strict_unique_line_spans = int(agreement_by_type["strict_high_consistency_spans_on_unique_line_frame"].sum())
@@ -2502,10 +2534,11 @@ def main() -> None:
         "exact_span_type_agreement_unique_line_spans": exact_unique_line_spans,
     }
     write_json(args.public_output / "summary.json", summary)
-    (args.public_output / "SCHEMA_AND_ANNOTATION.md").write_text(schema_document(len(tasks)), encoding="utf-8")
+    (args.public_output / "SCHEMA_AND_ANNOTATION.md").write_text(schema_document(len(tasks)), encoding="utf-8", newline="\n")
     (args.public_output / "METHOD.md").write_text(
         method_document(chunks, lexicon, tasks, model_provenance, existing_audit, public_diagnostics),
         encoding="utf-8",
+        newline="\n",
     )
     readme = """# Chinese Rap NER + Grounded Cultural Network v1.1
 
@@ -2515,7 +2548,7 @@ Start with `summary.json`, `release_sensitivity_summary.csv`, and `source_label_
 
 **Evidence boundary:** there is no completed human occurrence gold. Occurrence counts are repeated corpus spans, not independent samples. Shared exact cleaned text is excluded from label associations and co-mentions. Every released result remains provisional; co-mention is a text pattern, never collaboration, influence, identity, or a social relationship.
 """
-    (args.public_output / "README.md").write_text(readme, encoding="utf-8")
+    (args.public_output / "README.md").write_text(readme, encoding="utf-8", newline="\n")
 
     manifest = {
         "artifact_id": ARTIFACT_ID,

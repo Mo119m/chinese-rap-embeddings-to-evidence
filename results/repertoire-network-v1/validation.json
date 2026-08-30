@@ -55,8 +55,20 @@
       "name": "site_rebuild_preserves_non_repertoire_downstream_payloads",
       "passed": true,
       "evidence": "Retrieval, provisional NER, and written-rhyme payloads matched the pre-refactor release exactly."
+    },
+    {
+      "name": "graph_null_and_projection_fidelity_component_pass",
+      "passed": true,
+      "observed": {
+        "null_replicates": 10000,
+        "released_edges": 86,
+        "pca_population": 204
+      }
     }
   ],
-  "validated_with": "src/build_chinese_rap_release_site_data_v1.py",
+  "validated_with": [
+    "src/build_chinese_rap_release_site_data_v1.py",
+    "src/build_repertoire_robustness_inference_v1.py"
+  ],
   "status": "pass"
 }

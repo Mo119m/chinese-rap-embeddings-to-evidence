@@ -1,5 +1,5 @@
 model,model_short,transition_type,eligible_event_count,song_count,top1_accuracy,top3_accuracy,mrr,source
-first_order_markov,First-order Markov,continuation,16926,783,0.992024,1.0,0.996012,outputs/chinese-rap-written-rhyme-v1/stratified_metrics.csv
-first_order_markov,First-order Markov,switch,17469,781,0.015513,0.302307,0.232701,outputs/chinese-rap-written-rhyme-v1/stratified_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,continuation,16926,783,0.985289,0.999941,0.992551,outputs/chinese-rap-written-rhyme-v1/stratified_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,switch,17469,781,0.026447,0.400366,0.275106,outputs/chinese-rap-written-rhyme-v1/stratified_metrics.csv
+first_order_markov,First-order Markov,continuation,16926,783,0.992024,1.0,0.996012,results/written-rhyme-v1/stratified_metrics.csv
+first_order_markov,First-order Markov,switch,17469,781,0.015513,0.302307,0.232701,results/written-rhyme-v1/stratified_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,continuation,16926,783,0.985289,0.999941,0.992551,results/written-rhyme-v1/stratified_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,switch,17469,781,0.026447,0.400366,0.275106,results/written-rhyme-v1/stratified_metrics.csv
