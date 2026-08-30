@@ -1,0 +1,72 @@
+{
+  "artifact_id": "chinese-rap-corpus-reconciliation-v1",
+  "files": [
+    {
+      "bytes": 7775,
+      "path": "analysis_summary.json",
+      "sha256": "b44e5c7627f035f187088d690f655332151b1f40c7cd1ba9e7ec11c1923c6460"
+    },
+    {
+      "bytes": 268,
+      "path": "lost_song_classification.csv",
+      "sha256": "6eb5efb0fa7104ec288e60e856ecb190acaa375560771429c5892cffc5b8f63a"
+    },
+    {
+      "bytes": 2573,
+      "path": "METHOD.md",
+      "sha256": "b20fe51d8cef443d9fe2802cb354433c5caab23ed820b7b0a8871d4a2f90317d"
+    },
+    {
+      "bytes": 1532,
+      "path": "README.md",
+      "sha256": "67832eaeb9fa4dbf14b7fe6800cdc22c9311adc0648acce74d82c6a9f55e892d"
+    },
+    {
+      "bytes": 253,
+      "path": "stage_counts.csv",
+      "sha256": "391467ac4d2c1dc671b2022ed5a2613a4a37ab7777c00b61c8a7d4154a657ca6"
+    },
+    {
+      "bytes": 1455,
+      "path": "task_aligned_family_distribution_sensitivity.csv",
+      "sha256": "fd02673f9ff7ceb2d18e95a86b9a8ca5f85993895c4dfb1928b29446650d265b"
+    },
+    {
+      "bytes": 701,
+      "path": "task_aligned_written_rhyme_sensitivity.csv",
+      "sha256": "322860c48c58b6b6f0f73bedabcea57731fbcb59ea969493661a96983778c395"
+    },
+    {
+      "bytes": 53,
+      "path": "title_exclusion_counts.csv",
+      "sha256": "54743f696229c99c9d21bbc59128584f9627fe0daefc03f5be89a426ad767d9e"
+    },
+    {
+      "bytes": 1361,
+      "path": "validation.json",
+      "sha256": "4b4132dd5dd653f82910c07f7d601399b87677c1229a8e3ba8af93350bd2f459"
+    },
+    {
+      "bytes": 415,
+      "path": "written_rhyme_sensitivity.csv",
+      "sha256": "2ea4b8c755cfc1074261518c24f593a1fdfbf7ff0ebac6262f531a796d8be3bc"
+    }
+  ],
+  "generated_at_utc": "2026-08-28T22:08:31+00:00",
+  "software": [
+    {
+      "path": "src/build_corpus_reconciliation_v1.py",
+      "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
+    },
+    {
+      "path": "src/build_canonical_lyric_text_sidecar_v1.py",
+      "sha256": "c86786b8631fdba98fb7cc5354aaaa66d5bfa851fb00726354279c50a8574c49"
+    },
+    {
+      "path": "src/build_chinese_rap_written_rhyme_v1.py",
+      "sha256": "1583f279c3aa224a5b551df7e4bdb8a82a7deccb95db1e0c94b9256fc1d87a2e"
+    }
+  ],
+  "status": "pass_with_release_action",
+  "version": "1.0.0"
+}

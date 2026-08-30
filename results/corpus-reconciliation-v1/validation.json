@@ -1,0 +1,52 @@
+{
+  "artifact_id": "chinese-rap-corpus-reconciliation-v1",
+  "checks": [
+    {
+      "name": "drive_live_sheet_keys_and_row_count_match_local_export",
+      "passed": true
+    },
+    {
+      "name": "drive_live_substantive_mismatches_all_adjudicated",
+      "passed": true
+    },
+    {
+      "name": "frozen_snapshot_content_exactly_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "source_only_metadata_count_reconciles",
+      "passed": true
+    },
+    {
+      "name": "frozen_ids_all_join_source_metadata",
+      "passed": true
+    },
+    {
+      "name": "all_dedup_lost_songs_reconciled_to_retained_exact_chunks",
+      "passed": true
+    },
+    {
+      "name": "expected_reconstructed_counts",
+      "passed": true
+    },
+    {
+      "name": "task_aligned_released_population_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "task_aligned_counterfactual_expected_counts",
+      "passed": true
+    },
+    {
+      "name": "task_aligned_family_totals_and_headline_deltas_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "legacy_full_source_written_ending_sensitivity_reconstructed",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-28T22:08:31+00:00",
+  "privacy": "aggregate only; no lyric text, labels, titles, song/chunk identifiers, or row-level hashes",
+  "status": "pass_with_release_action"
+}

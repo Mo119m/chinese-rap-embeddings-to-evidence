@@ -1,0 +1,4 @@
+category,songs,cleaned_chunk_rows,songs_with_exact_title_match,median_related_retained_songs
+exact_sequence_duplicate_of_retained_song,136,289,131,1.0
+chunk_multiset_subset_of_one_retained_song,33,44,13,1.0
+chunks_distributed_across_multiple_retained_songs,8,20,8,2.0

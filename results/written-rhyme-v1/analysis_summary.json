@@ -111,6 +111,8 @@
   },
   "central_result": "written-line ending families can be profiled and predicted under strict song-held-out, duplicate-filtered evaluation",
   "claim_boundary": "All results concern pypinyin-derived endings of written lyric lines attached to unverified source-credit labels. They do not measure performed rhyme, flow, cadence, beat alignment, pronunciation variants, audio style, or real-world identity.",
+  "repaired_population_predictive_metrics_retrained": false,
+  "repaired_population_predictive_claim": "WITHHELD pending duplicate-aware corpus reconstruction, splitting, fitting, and evaluation under PD-002",
   "generated_at_utc": "2026-08-25T22:18:25+00:00",
   "leakage_control": {
     "counts": {
@@ -478,9 +480,14 @@
       }
     },
     "prediction_events_before_leakage_filter": 238881,
+    "retained_repeat_line_occurrences_definition": "additional within-source-label/song occurrences beyond each normalised written line's first occurrence; not all occurrences belonging to repeated groups",
     "retained_strict_han_ending_written_line_occurrences": 283806,
+    "songs_with_at_least_one_adjacent_prediction_event": 5347,
+    "songs_with_at_least_one_retained_strict_han_ending_line": 5452,
     "strict_terminal_han_primary": true,
-    "unique_songs": 5619
+    "unique_songs": 5619,
+    "unique_songs_definition": "fixed task universe before written-line eligibility filtering",
+    "upstream_repeat_scope": "repeats retained only within chunks surviving the legacy source-label + exact-cleaned-chunk deduplication"
   },
   "primary_test_metrics": [
     {

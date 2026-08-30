@@ -19,8 +19,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9746,
-      "sha256": "ec91a9df6232e8e3078a0654b150c65111039fdb868aa32ad9c9be7acc3d9018"
+      "bytes": 11401,
+      "sha256": "68fedc51f80382e3b0ee668853ed584c185f9dacb42dba04ed5b006f1c143a80"
     },
     {
       "path": "LICENSE",
@@ -49,38 +49,38 @@
     },
     {
       "path": "paper/manuscript.md",
-      "bytes": 71705,
-      "sha256": "826e9f5d688cad6ffa70b35bd92975cea153c15c98cc93917c634e36b0dbc22c"
+      "bytes": 69130,
+      "sha256": "c666b3e8a49f6ed51f59e48d97418387fdb7b421d5ca51ca22aa8c559b6a9f85"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx",
-      "bytes": 1408046,
-      "sha256": "c3ecec13a370e7af2d0d1e34cd4c81c32d18471f44c229b4c2aefab2d6bc80c6"
+      "bytes": 1407235,
+      "sha256": "4a048ce7deb186a0ce0387c75f3d526065d7c10cf36aef2d90b3ddb504565f17"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf",
-      "bytes": 946352,
-      "sha256": "5dea4687c837d98e34b3164f5da9066b6d0c40e1f4d02fe3bf3b45cfaec7c2b1"
+      "bytes": 943213,
+      "sha256": "b62c5604445b3723be75e2692de757297587d5d46b1fc278ee1945fd5ab96e85"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
-      "bytes": 72163,
-      "sha256": "c7969a855f9b431233fa343daa340743afe6b4a4af81ffb95c7cad3336139e43"
+      "bytes": 71364,
+      "sha256": "f8ba2334ad11cb8415cb86281b2580395a6d46b5e29179769cb5a56e98d22584"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf",
-      "bytes": 434230,
-      "sha256": "26c64ed49a78e861f40013552da37d17cad2e6f27e7a7ab58704cf9f49260e0a"
+      "bytes": 431680,
+      "sha256": "693fdeed65720426f8710912ffe6224d1269c4b8c41932e667bbbe7b4fe3abc0"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx",
-      "bytes": 44629,
-      "sha256": "1c06c240f6557b137fdc093146b60ed2c19a9523b0f4dcdc3bd37f5eb5819fd6"
+      "bytes": 45529,
+      "sha256": "ab84c2f94de01634c7e2245b4080efcdbb4dca61b6aecaae2cd1158d6581542f"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf",
-      "bytes": 213622,
-      "sha256": "f6d26157bfc4086c3ef85aef37507e472aa5a2fda0a39b941c7f49e823b201ba"
+      "bytes": 218262,
+      "sha256": "cb48a6f5f4583cafa852be1de31cb6a1a79f24342bcb83837145d44f67034322"
     },
     {
       "path": "figures/journal_figure_validation.json",
@@ -90,7 +90,7 @@
     {
       "path": "figures/manifest.json",
       "bytes": 15110,
-      "sha256": "e18b27966939c7a2f5735e34cce4b28742c70350170d855b89f70a6da416612a"
+      "sha256": "ffe6226d9cd59b2c3ca86acdd513625750d4519c4e788e27e57881f1dbb66a7c"
     },
     {
       "path": "methods/NER_RELEASED_CLAIM_AUDIT_PROTOCOL.md",
@@ -158,6 +158,16 @@
       "sha256": "c2ae2447d05b717ee7371554db782506d5b2cabb6ad0a0d7525bdcaceede3a60"
     },
     {
+      "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
+      "bytes": 8353,
+      "sha256": "0e3676259f0caa7f3564dd2147be8c442eda4834a6a205851b29741bfac34270"
+    },
+    {
+      "path": "src/build_corpus_reconciliation_v1.py",
+      "bytes": 52018,
+      "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
+    },
+    {
       "path": "results/ner-v1/released_claim_audit_status.json",
       "bytes": 3796,
       "sha256": "c6515f94b6a2278315044b14451a634efddb0788f110b0afd8803e89a57e95b3"
@@ -179,8 +189,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 48394,
-      "sha256": "0a755649533e1feca5c11ec58c6f04fe2161bc93dbf9e82d2aaec0f03e4f932d"
+      "bytes": 48818,
+      "sha256": "2603732826732a088789fe0de334d1c677b6ee3c1a1676fef948c1964a8622d7"
     },
     {
       "path": "src/normalize_public_text_v1.py",
@@ -194,23 +204,23 @@
     },
     {
       "path": "src/update_public_result_manifests_v1.py",
-      "bytes": 6887,
-      "sha256": "bc0555dab605b96dbf44d713855d657a1d77932b02024e12b0033c25621e1ad7"
+      "bytes": 8201,
+      "sha256": "92bd85fe4ac8f2b06279efd17fabffa73e39585efb001a7ee4b59b0e28f71202"
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 48136,
-      "sha256": "01f07da28042a63aac92ea11095a525a81e67a1f1dace92039dbab39f278c98f"
+      "bytes": 68515,
+      "sha256": "d1b67bc2a9fbc11b6050f75b7669953e640f23feddd1cdb00583a82554a93f08"
     },
     {
       "path": "submission/dsh/MANIFEST.json",
       "bytes": 2882,
-      "sha256": "d72313fe21acb5fd6863ac66f03574c523a45822b3923506fc7b8661cb8f77ac"
+      "sha256": "bb41b257aa11ebda43b5946805683b9e5572f1979d41a56032a75fd57cba0bc1"
     },
     {
       "path": "validation/release_validation.json",
       "bytes": 4982,
-      "sha256": "747eaea5b3564d39298ed16940d4e352b471a0daaabe89d2f2fea03c34da829f"
+      "sha256": "70f6fcd7209c7ddb03da374a64dd77f752ee87f435a6fb4b7fae6eb862f7d101"
     },
     {
       "path": "validation/standalone_site_validation.json",
@@ -261,6 +271,61 @@
       "path": "results/repertoire-network-v1/robustness/validation.json",
       "bytes": 596,
       "sha256": "29429f0db1120e5aa25a2da0391a68e51dc99c13f51f385b1499411ebbccf5cb"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/METHOD.md",
+      "bytes": 2573,
+      "sha256": "b20fe51d8cef443d9fe2802cb354433c5caab23ed820b7b0a8871d4a2f90317d"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/README.md",
+      "bytes": 1532,
+      "sha256": "67832eaeb9fa4dbf14b7fe6800cdc22c9311adc0648acce74d82c6a9f55e892d"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/analysis_summary.json",
+      "bytes": 7775,
+      "sha256": "b44e5c7627f035f187088d690f655332151b1f40c7cd1ba9e7ec11c1923c6460"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/lost_song_classification.csv",
+      "bytes": 268,
+      "sha256": "6eb5efb0fa7104ec288e60e856ecb190acaa375560771429c5892cffc5b8f63a"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/manifest.json",
+      "bytes": 2261,
+      "sha256": "7026c27f27abfe40287abe34c3ae6f73859b06a608053d9b2d3da44c5d618a9e"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/stage_counts.csv",
+      "bytes": 253,
+      "sha256": "391467ac4d2c1dc671b2022ed5a2613a4a37ab7777c00b61c8a7d4154a657ca6"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/task_aligned_family_distribution_sensitivity.csv",
+      "bytes": 1455,
+      "sha256": "fd02673f9ff7ceb2d18e95a86b9a8ca5f85993895c4dfb1928b29446650d265b"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/task_aligned_written_rhyme_sensitivity.csv",
+      "bytes": 701,
+      "sha256": "322860c48c58b6b6f0f73bedabcea57731fbcb59ea969493661a96983778c395"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/title_exclusion_counts.csv",
+      "bytes": 53,
+      "sha256": "54743f696229c99c9d21bbc59128584f9627fe0daefc03f5be89a426ad767d9e"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/validation.json",
+      "bytes": 1361,
+      "sha256": "4b4132dd5dd653f82910c07f7d601399b87677c1229a8e3ba8af93350bd2f459"
+    },
+    {
+      "path": "results/corpus-reconciliation-v1/written_rhyme_sensitivity.csv",
+      "bytes": 415,
+      "sha256": "2ea4b8c755cfc1074261518c24f593a1fdfbf7ff0ebac6262f531a796d8be3bc"
     },
     {
       "path": "results/retrieval-inductive-sensitivity-v1/METHOD.md",

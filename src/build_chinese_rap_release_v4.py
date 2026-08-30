@@ -413,6 +413,8 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "tools" / "rekey_blinded_ballots.py",
         ROOT / "tools" / "detect_metadata_blocks.py",
         ROOT / "methods" / "METADATA_BLOCK_AUDIT_PROTOCOL.md",
+        ROOT / "methods" / "PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
+        ROOT / "src" / "build_corpus_reconciliation_v1.py",
         ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
         ROOT / "src" / "build_ner_released_claim_audit_v1.py",
         ROOT / "src" / "build_repertoire_robustness_inference_v1.py",
@@ -429,6 +431,9 @@ def write_release_manifests(validation: dict) -> None:
     ]
     robustness_dir = ROOT / "results" / "repertoire-network-v1" / "robustness"
     selected.extend(sorted((path for path in robustness_dir.iterdir() if path.is_file()),
+                           key=lambda item: item.as_posix()))
+    corpus_reconciliation_dir = ROOT / "results" / "corpus-reconciliation-v1"
+    selected.extend(sorted((path for path in corpus_reconciliation_dir.iterdir() if path.is_file()),
                            key=lambda item: item.as_posix()))
     retrieval_sensitivity_dir = ROOT / "results" / "retrieval-inductive-sensitivity-v1"
     selected.extend(sorted((path for path in retrieval_sensitivity_dir.iterdir() if path.is_file()),
@@ -586,6 +591,7 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
         "retrieval-v1",
         "retrieval-inductive-sensitivity-v1",
         "repertoire-network-v1",
+        "corpus-reconciliation-v1",
         "ner-v1",
         "written-rhyme-v1",
     ):

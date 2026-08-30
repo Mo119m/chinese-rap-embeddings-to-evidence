@@ -74,13 +74,30 @@ def claims_in(path: Path):
     except (UnicodeDecodeError, json.JSONDecodeError):
         return
 
-    def walk(node, key_hint):
+    # Sections recording a PAST state, and fingerprints of inputs that live outside the
+    # repository, are not live claims about current files. Treating them as such produced
+    # two false failures once the merged tree gained more same-named files: a historical
+    # render-lineage entry, which is meant to differ from the current file, and a private
+    # corpus manifest recorded under the bare name "manifest.json", which resolved to an
+    # unrelated public manifest sitting beside it. Bare names are still resolved normally
+    # everywhere else, because a manifest naming its own siblings is the common case.
+    RECORDED_PAST = ("historical", "legacy", "superseded", "previous", "input_fingerprints")
+
+    def walk(node, key_hint, ancestry=()):
         if isinstance(node, dict):
             digest = node.get("sha256")
             if isinstance(digest, str) and HEX.match(digest):
-                target = resolve(node.get("path") or node.get("file") or key_hint, manifest_dir)
+                hint = node.get("path") or node.get("file") or key_hint
+                recorded_past = any(any(mark in str(part).lower() for mark in RECORDED_PAST)
+                                    for part in ancestry)
+                if recorded_past:
+                    yield rel, str(hint), "EXTERNAL"
+                    for key, value in node.items():
+                        yield from walk(value, key, ancestry + (key_hint,))
+                    return
+                target = resolve(hint, manifest_dir)
                 if target is None:
-                    yield rel, str(node.get("path") or node.get("file") or key_hint), "EXTERNAL"
+                    yield rel, str(hint), "EXTERNAL"
                 elif sha256(target) != digest:
                     yield rel, target, "BAD_SHA"
                 elif isinstance(node.get("bytes"), int) and node["bytes"] != (ROOT / target).stat().st_size:
@@ -88,10 +105,10 @@ def claims_in(path: Path):
                 else:
                     yield rel, target, "OK"
             for key, value in node.items():
-                yield from walk(value, key)
+                yield from walk(value, key, ancestry + (key_hint,))
         elif isinstance(node, list):
             for value in node:
-                yield from walk(value, key_hint)
+                yield from walk(value, key_hint, ancestry)
 
     yield from walk(document, None)
 

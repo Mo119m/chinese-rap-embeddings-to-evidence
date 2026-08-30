@@ -1,0 +1,197 @@
+{
+  "artifact_id": "chinese-rap-corpus-reconciliation-v1",
+  "checks": [
+    {
+      "name": "drive_live_sheet_keys_and_row_count_match_local_export",
+      "passed": true
+    },
+    {
+      "name": "drive_live_substantive_mismatches_all_adjudicated",
+      "passed": true
+    },
+    {
+      "name": "frozen_snapshot_content_exactly_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "source_only_metadata_count_reconciles",
+      "passed": true
+    },
+    {
+      "name": "frozen_ids_all_join_source_metadata",
+      "passed": true
+    },
+    {
+      "name": "all_dedup_lost_songs_reconciled_to_retained_exact_chunks",
+      "passed": true
+    },
+    {
+      "name": "expected_reconstructed_counts",
+      "passed": true
+    },
+    {
+      "name": "task_aligned_released_population_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "task_aligned_counterfactual_expected_counts",
+      "passed": true
+    },
+    {
+      "name": "task_aligned_family_totals_and_headline_deltas_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "legacy_full_source_written_ending_sensitivity_reconstructed",
+      "passed": true
+    }
+  ],
+  "drive_lineage": {
+    "adjudication": {
+      "control_character_import_side_effects": "remove DEL only in corpus v2 and retain the preceding character from the source CSV",
+      "leading_apostrophe_escapes": "retain the local leading apostrophe",
+      "title_type_coercions": "retain the local string title"
+    },
+    "artist_exact_mismatches": 7,
+    "artist_normalisation_equivalent_mismatches": 7,
+    "chunk_id_exact_mismatches": 0,
+    "comparison_scope": "live native Google Sheet versus the local raw chunk export, row aligned",
+    "drive_control_character_import_side_effects": 2,
+    "drive_leading_apostrophe_escape_semantics": 2,
+    "drive_native_sheet_title_type_coercions": 29,
+    "live_sheet_rows": 26833,
+    "local_canonical_content_bound_to_current_raw_export": true,
+    "local_export_rows": 26833,
+    "remote_drive_object_byte_identity_verified": false,
+    "row_count_match": true,
+    "song_id_exact_mismatches": 0,
+    "text_exact_mismatches": 23836,
+    "text_newline_only_mismatches": 23832,
+    "title_exact_mismatches": 161,
+    "title_normalisation_equivalent_mismatches": 132,
+    "unresolved_substantive_mismatches": 0
+  },
+  "duplicate_geometry": {
+    "cross_song_groups_also_repeated_within_a_song": 31,
+    "duplicate_groups": 1864,
+    "groups_crossing_songs": 378,
+    "groups_within_one_song_only": 1486,
+    "rows_in_duplicate_groups": 4758,
+    "rows_removed_by_keep_first": 2894,
+    "songs_removed_entirely_by_deduplication": 177
+  },
+  "frozen_snapshot_content_exactly_reconstructed": true,
+  "generated_at_utc": "2026-08-28T22:08:31+00:00",
+  "input_fingerprints": {
+    "canonical_registry": {
+      "file": "canonical_song_registry.csv",
+      "sha256": "1d21a6855099686ba1028dc9e0647013e2cdd8b86055d483cdbc477e8f4a6a6a"
+    },
+    "corpus_manifest": {
+      "file": "manifest.json",
+      "sha256": "265708db6d66a5359f7a085657a02944fed0d9af1f070f70b9ad73e22ae7d07e"
+    },
+    "drive_live_comparison_summary": {
+      "file": "drive_live_comparison_summary.json",
+      "sha256": "7f488df03b79037997e34cd81d5bddccd0226dccf9919eec28290cb3717b84e7"
+    },
+    "frozen_snapshot": {
+      "file": "lyrics_chunks_cleaned_v1.csv",
+      "sha256": "98fd4984398d32429bf1330117dd7459749b710c75caff02132aa847915316dc"
+    },
+    "graph_nodes": {
+      "file": "artist_repertoire_nodes.csv",
+      "sha256": "543b93a8a3eceb49a7e33619f2994a77659e6d814eda7ea09ace7b230a5a0a69"
+    },
+    "private_clean_sidecar": {
+      "file": "cleaned_analysis_chunks_v1.csv",
+      "sha256": "d605f5ccdf0004940e0cfe453e2ff527d08dd6d34f843a6afda3aa03926e5730"
+    },
+    "private_membership": {
+      "file": "artist_chunk_membership_v2.csv",
+      "sha256": "e46e940d35c40054c8dcc852b6d1ad2b324fe24f6f700138b5d1b18ae05bf863"
+    },
+    "raw_chunks": {
+      "file": "lyrics_chunks_enriched.csv",
+      "sha256": "6896e533406137d8f6fcf382ce7902083da8ce2244a776e81b9611c7937c9262"
+    },
+    "source_metadata": {
+      "file": "drive_credit_rows.ndjson",
+      "sha256": "c1f6878fbe8066522ff0d9e083390412bd614378f791cb8959c688291dae2305"
+    }
+  },
+  "interpretation": {
+    "high_confidence_ingestion_duplicate_records": 131,
+    "high_confidence_ingestion_duplicate_rule": "same source-credit label + same normalized title + exact cleaned chunk sequence",
+    "manual_review_queue_records": 46,
+    "primary_action": "Preserve song identity and within-song sequence; control exact-text duplicate components by grouped splitting or weighting instead of deleting source rows.",
+    "rhyme_claim_action": "Qualify repeat-retention wording and run duplicate-aware sequence sensitivity before submission."
+  },
+  "lost_song_diagnostics": {
+    "conservative_manual_review_queue": 46,
+    "exact_cleaned_sequence_and_title_lost_songs": 131,
+    "exact_cleaned_sequence_lost_songs": 136,
+    "exact_raw_sequence_and_title_lost_songs": 130,
+    "exact_raw_sequence_lost_songs": 134,
+    "lost_songs": 177
+  },
+  "privacy": "aggregate only; no lyric text, labels, titles, song/chunk identifiers, or row-level hashes",
+  "software_fingerprints": [
+    {
+      "path": "src/build_corpus_reconciliation_v1.py",
+      "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
+    },
+    {
+      "path": "src/build_canonical_lyric_text_sidecar_v1.py",
+      "sha256": "c86786b8631fdba98fb7cc5354aaaa66d5bfa851fb00726354279c50a8574c49"
+    },
+    {
+      "path": "src/build_chinese_rap_written_rhyme_v1.py",
+      "sha256": "1583f279c3aa224a5b551df7e4bdb8a82a7deccb95db1e0c94b9256fc1d87a2e"
+    }
+  ],
+  "source_metadata_reconciliation": {
+    "frozen_clean_song_ids": 7214,
+    "frozen_ids_absent_from_metadata": 0,
+    "manifest_source_only_metadata_rows": 625,
+    "metadata_ids_absent_from_raw_chunk_export": 118,
+    "nonblank_source_metadata_song_ids": 7839,
+    "raw_chunk_export_song_ids": 7721,
+    "raw_export_ids_removed_by_cleaning": 507,
+    "reconciled_source_only_metadata_rows": 625
+  },
+  "status": "pass_with_release_action",
+  "task_aligned_frame_diagnostics": {
+    "added_rows_entering_task_counterfactual": 1955,
+    "added_rows_in_fixed_204_label_universe_before_shared_text_exclusion": 2452,
+    "added_rows_shared_text_excluded": 497,
+    "counterfactual_all_label_rows": 23860,
+    "counterfactual_shared_text_hashes": 2179,
+    "current_all_label_rows": 21346,
+    "current_shared_text_hashes": 2179,
+    "fixed_graph_eligible_labels": 204,
+    "removed_artist_text_rows": 2894,
+    "removed_rows_comparison_eligible": 2516,
+    "removed_rows_joining_canonical_registry": 2541,
+    "removed_rows_nonempty_after_current_header_cleaning": 2514
+  },
+  "task_aligned_written_rhyme_sensitivity": {
+    "adjacent_transitions_restored": 4938,
+    "family_distribution_total_variation": 0.0017890317967706243,
+    "largest_absolute_family_share_change": 0.0006287956105475584,
+    "largest_absolute_family_share_change_family": "AI",
+    "permitted_claim": "aggregate family shares and switch rate are insensitive to the restored-chunk counterfactual",
+    "predictive_metrics_retrained": false,
+    "repeat_excess_restored": 6472,
+    "strict_han_lines_restored": 7033,
+    "switch_rate_counterfactual_minus_released": -0.0013899941300251628,
+    "withheld_claim": "top-k, MRR, calibration, abstention, and paired model differences are unchanged"
+  },
+  "version": "1.0.0",
+  "written_rhyme_sensitivity": {
+    "adjacent_transitions_removed_by_chunk_dedup": 13112,
+    "global_family_distribution_total_variation": 0.0017671763323308868,
+    "strict_han_lines_removed_by_chunk_dedup": 16623,
+    "switch_rate_absolute_difference": 0.0017874646921119952
+  }
+}

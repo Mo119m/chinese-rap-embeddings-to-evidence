@@ -36,12 +36,20 @@ BGE-M3 is a frozen representation, not the finding. It is evaluated inside a dow
 
 The retrieval TF–IDF vocabulary and IDF are estimated transductively on the fixed unlabeled evaluation corpus. Source labels and outcomes are not used for fitting, but the estimand is fixed-corpus retrieval rather than prospective performance. The original contract and formal amendment are both retained.
 
+## Corpus-lineage audit — not a fourth downstream task
+
+PD-002 reconstructs the historical raw-to-frozen cleaner as release lineage rather than adding another research task. The legacy cleaner produced **7,214 songs and 22,132 chunks** after artist-level exact-text keep-first deduplication; subsequent canonical identity and eligibility gates withheld three songs and four chunks, yielding the **7,211-song, 22,128-chunk** downstream input used by the current analyses.
+
+The reconstruction shows that the legacy chunk rule removed 2,894 chunks and erased 177 song records. Of those records, 131 meet the conservative same-label, same-normalized-title, exact-sequence duplicate rule; 46 remain a review queue. Aggregate written-ending family shares are insensitive to a task-aligned restored-chunk counterfactual, but predictive metrics have not been retrained on a duplicate-aware repaired population. The frozen-snapshot results therefore remain reproducible while repaired-corpus predictive robustness is withheld.
+
+See [`results/corpus-reconciliation-v1/`](results/corpus-reconciliation-v1/) for aggregate evidence and [`methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md`](methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md) for the replacement rule. The live-Drive comparison is retained publicly only as aggregate row-count, mismatch-class, and adjudication evidence; it does not verify remote-object byte identity, acquisition provenance, rights, or universal metadata accuracy.
+
 ## Repository map
 
 - `paper/` — final English manuscript and supplementary methods in Markdown, DOCX, and PDF.
 - `figures/` — visual gallery plus four publication figures in PNG, 600-DPI TIFF, PDF, and SVG, with source tables and alt text.
-- `results/` — aggregate input-audit, retrieval, reproducible repertoire-network, NER/cultural-reference, and written-ending outputs.
-- `methods/` — frozen research contract, protocol amendment, journal-format contract, pipeline explanation, public-release boundary, and author-owned provenance actions.
+- `results/` — aggregate input-audit, corpus-lineage reconciliation, retrieval, reproducible repertoire-network, NER/cultural-reference, and written-ending outputs.
+- `methods/` — frozen research contract, protocol amendments, journal-format contract, pipeline explanation, public-release boundary, and author-owned provenance actions.
 - `src/` — deterministic builders and validators.
 - `tools/` — standalone checks that need no build step: release-integrity verification, per-surface extraction reliability, a collocation audit, multi-tagger agreement, the entity-ablation retrieval experiment, and the compound resolution flag stage, publisher, and offline gate.
 - `tests/` — checks for the logic behind every number the tools report; runnable with `python tests/test_tools.py` and run in CI.
@@ -95,6 +103,8 @@ Every published SHA-256 manifest hashes the bytes as committed, and `.gitattribu
 
 ```
 python tools/verify_release_integrity.py
+python src/validate_public_release_integrity_v1.py
+python tools/check_manuscript_derivatives.py
 ```
 
 It runs on every push against Linux, macOS, and Windows, together with the tool tests,
@@ -115,4 +125,4 @@ The restore helper reads every tracked file from its staged Git blob, writes tho
 
 ## Submission status
 
-The technical and analytical release passes the included validations. Before journal submission, the authors must complete the factual items in [`methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md`](methods/DATA_PROVENANCE_AND_AUTHOR_ACTIONS.md), including authorship, funding, rights, acquisition provenance, ethics determination, and an archival DOI.
+This is a reproducible frozen-snapshot release that passes the included validations and is shareable with the disclosed PD-002 boundary. Publication completion remains pending the repaired-corpus and metadata-cleaned downstream reruns. Before journal submission the authors must supply the author-owned facts listed in `validation/RELEASE_READINESS_V4.md`.
