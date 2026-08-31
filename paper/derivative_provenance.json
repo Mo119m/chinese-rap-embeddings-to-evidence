@@ -1,8 +1,9 @@
 {
-  "note": "Source hashes the manuscript derivatives were last built from. Checked by tools/check_manuscript_derivatives.py; update only by rebuilding the derivatives and rerunning that script with --record.",
-  "sources": {
-    "paper/manuscript.md": "c666b3e8a49f6ed51f59e48d97418387fdb7b421d5ca51ca22aa8c559b6a9f85",
-    "paper/supplementary_methods.md": "efd20f70690bc2c77525820cb21194bdd80f4d4621bd49e79b7eefd2738e6bc8"
+  "build_commands": {
+    "note": "Recovered by rebuilding each derivative under candidate flags and comparing every zip member against the committed file until the content matched. They were recorded nowhere before, so the DOCX derivatives were unreproducible in practice even though the builder is tracked. The PDF step is still outside the tracked pipeline: the PDFs are exported from the DOCX by hand.",
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": "python src/build_chinese_rap_paper_docx_v1.py",
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx": "python src/build_chinese_rap_paper_docx_v1.py --submission-mode --no-title-page --output paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
+    "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx": "python src/build_chinese_rap_paper_docx_v1.py --source paper/supplementary_methods.md --no-title-page --output paper/Chinese_Rap_Evidence_Grounded_Supplement.docx"
   },
   "derivatives": {
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": {
@@ -45,5 +46,10 @@
       "built_from": "paper/supplementary_methods.md",
       "sha256": "cb48a6f5f4583cafa852be1de31cb6a1a79f24342bcb83837145d44f67034322"
     }
+  },
+  "note": "Source hashes the manuscript derivatives were last built from. Checked by tools/check_manuscript_derivatives.py; update only by rebuilding the derivatives and rerunning that script with --record.",
+  "sources": {
+    "paper/manuscript.md": "c666b3e8a49f6ed51f59e48d97418387fdb7b421d5ca51ca22aa8c559b6a9f85",
+    "paper/supplementary_methods.md": "efd20f70690bc2c77525820cb21194bdd80f4d4621bd49e79b7eefd2738e6bc8"
   }
 }

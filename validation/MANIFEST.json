@@ -119,8 +119,8 @@
     },
     {
       "path": "tests/test_compound_resolution_gate.py",
-      "bytes": 22303,
-      "sha256": "0ded9934aee6ca6b2454812a44c0c015e10f1122668f7a9d7a625982018ccbae"
+      "bytes": 23475,
+      "sha256": "61d7e3ab7f67bdbde8c13a88b31d419a01e070288986a8e0967753f49f04bf23"
     },
     {
       "path": "tests/test_release_boundary.py",

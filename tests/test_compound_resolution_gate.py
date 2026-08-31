@@ -416,6 +416,24 @@ def test_release_packaging() -> None:
           and "shutil.make_archive(" not in builder)
     check("archive members carry a fixed timestamp", "date_time=(1980, 1, 1, 0, 0, 0)" in builder)
 
+    # The DOCX derivatives are checksum targets in four published manifests, so a builder
+    # that stamps wall-clock time into its zip members makes them unreproducible: a rebuild
+    # changes the hash with no content change, and a reviewer cannot tell an edit from a
+    # clock tick. This assertion exists because the fix was written, verified, then reverted
+    # by a concurrent process, and the derivatives were committed without it -- with nothing
+    # in the suite to notice.
+    docx_builder = (SRC / "build_chinese_rap_paper_docx_v1.py").read_text(encoding="utf-8")
+    check("the manuscript DOCX is rewritten deterministically",
+          "rewrite_deterministically(docx_path)" in docx_builder)
+    check("DOCX members carry a fixed timestamp",
+          "date_time=(1980, 1, 1, 0, 0, 0)" in docx_builder)
+
+    # --record rebuilt the provenance document from a fixed literal, silently dropping every
+    # field it did not itself write.
+    recorder = (TOOLS / "check_manuscript_derivatives.py").read_text(encoding="utf-8")
+    check("recording provenance preserves fields it does not own",
+          "preserved" in recorder and "**preserved," in recorder)
+
     validator = (SRC / "validate_public_release_integrity_v1.py").read_text(encoding="utf-8")
     check("the validator requires the packaged tools",
           "Reproducibility/tools/verify_compound_resolution.py" in validator)

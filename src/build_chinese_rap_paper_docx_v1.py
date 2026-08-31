@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
+import zipfile
 from pathlib import Path
 
 from docx import Document
@@ -395,6 +397,33 @@ def add_math_block(doc: Document, latex: str):
     set_run_font(run, name="Cambria Math", size=11.5, italic=True)
 
 
+def rewrite_deterministically(docx_path: Path) -> None:
+    """Rewrite a saved DOCX so identical content yields identical bytes.
+
+    python-docx stamps every zip member with the build time, so the file's SHA-256 changed
+    on every rebuild even when not one byte of content moved. The DOCX is a checksum target
+    in the published manifests, so that made a content edit indistinguishable from a clock
+    tick. Member order, timestamps, permissions, and host system are pinned here, exactly as
+    the release archive pins them.
+
+    Member *order* is preserved rather than sorted: an OPC package expects
+    ``[Content_Types].xml`` to come first, and reordering members is a correctness risk for
+    a document format, not a cosmetic one.
+    """
+    with zipfile.ZipFile(docx_path) as original:
+        members = [(info.filename, original.read(info.filename), info.compress_type)
+                   for info in original.infolist()]
+    temporary = docx_path.with_suffix(docx_path.suffix + ".deterministic")
+    with zipfile.ZipFile(temporary, "w") as rewritten:
+        for name, payload, compress_type in members:
+            record = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            record.compress_type = compress_type
+            record.external_attr = 0o600 << 16
+            record.create_system = 0
+            rewritten.writestr(record, payload)
+    shutil.move(str(temporary), str(docx_path))
+
+
 def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_page: bool, submission_mode: bool = False):
     docx_path.parent.mkdir(parents=True, exist_ok=True)
     raw = source.read_text(encoding="utf-8")
@@ -587,6 +616,7 @@ def build_docx(source: Path, docx_path: Path, figures: Path, *, include_title_pa
             sect_pr.remove(ln_num)
 
     doc.save(docx_path)
+    rewrite_deterministically(docx_path)
     print(docx_path)
 
 

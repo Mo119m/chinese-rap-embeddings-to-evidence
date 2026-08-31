@@ -69,15 +69,34 @@ def main() -> int:
     current = {source: sha256(source) for source in sources}
 
     if args.record:
-        PROVENANCE.write_text(json.dumps({
+        # Merge rather than rewrite. An earlier version built the document from a fixed dict
+        # literal, so every key this tool does not itself write was silently dropped -- which
+        # is exactly what happened to a build_commands block added minutes before a --record
+        # run. The tool reported success while deleting data. It now owns three keys and
+        # leaves everything else in the file alone.
+        existing = {}
+        if PROVENANCE.is_file():
+            try:
+                existing = json.loads(PROVENANCE.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                existing = {}
+        preserved = {k: v for k, v in existing.items()
+                     if k not in ("note", "sources", "derivatives")}
+        document = {
             "note": "Source hashes the manuscript derivatives were last built from. "
                     "Checked by tools/check_manuscript_derivatives.py; update only by "
                     "rebuilding the derivatives and rerunning that script with --record.",
             "sources": current,
             "derivatives": {name: {"built_from": source, "sha256": sha256(name)}
                             for name, source in DERIVATIVES.items()},
-        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
-        print(f"recorded {len(sources)} source hash(es) and {len(DERIVATIVES)} derivative(s)")
+            **preserved,
+        }
+        PROVENANCE.write_text(
+            json.dumps(document, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8", newline="\n")
+        kept = f", kept {len(preserved)} other field(s)" if preserved else ""
+        print(f"recorded {len(sources)} source hash(es) and "
+              f"{len(DERIVATIVES)} derivative(s){kept}")
         return 0
 
     if not PROVENANCE.is_file():
