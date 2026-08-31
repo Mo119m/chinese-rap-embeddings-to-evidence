@@ -25,6 +25,11 @@ origin/codex/release-integrity-publication`) produces **26 conflicts**. This bra
 rewrites removed the merge commit `2666d85`/`978a28c` from this branch, so the branches
 diverge again over every file both sides regenerated.
 
+**Status, 31 August 2026.** Steps 1 and 2 are done and step 3 is partly done; the branch
+reconciliation this brief opens with is finished, not pending. `merge/pd002-integration`
+carries both branches' work and is local, unpushed, unmerged, untagged. The sequencing below
+is kept because steps 4 through 9 still stand.
+
 The order of work is not negotiable, and merging is the LAST step, not the first:
 
 1. agree the scientific boundary between the two branches

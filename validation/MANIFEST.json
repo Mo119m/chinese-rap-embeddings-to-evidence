@@ -20,7 +20,7 @@
     {
       "path": "README.md",
       "bytes": 12866,
-      "sha256": "9ab649be373e1951e1573d94785957ce92ffd2729e25620469026b421b5b7879"
+      "sha256": "fc23ff0e10b39902fb897454606095de05d400af338203229b483151762bc5fa"
     },
     {
       "path": "LICENSE",
@@ -164,8 +164,8 @@
     },
     {
       "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
-      "bytes": 7807,
-      "sha256": "d4bd054a14d7be6c43200a48bb9088a2b97227776efea7e7ce3c7b6a44f20d6a"
+      "bytes": 8115,
+      "sha256": "99c3f86bbfd51a096a5fa7b82025472109e98b96b5022513a0818c84881233ee"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
@@ -189,8 +189,8 @@
     },
     {
       "path": "tools/build_duplicate_review_sheet.py",
-      "bytes": 22362,
-      "sha256": "d37265af741833d8291f792399a54fdda2c6da8b40946370b1516dccba3b3dc5"
+      "bytes": 22748,
+      "sha256": "eebe7500f63fd683cb9c00e6506ae66e2872a6f4c5f8358380444aedabc05e26"
     },
     {
       "path": "tools/build_metadata_gold_sheet.py",

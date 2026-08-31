@@ -92,7 +92,7 @@ Numbers corrected since the first draft of this file:
 | observed graph 87 edges / 94 labels | **86 / 93** — the run used the wrong centroid weight |
 | "one edge from float32/float64 at the rank-five boundary" | a real bug, not float noise |
 | observed nearly 3 sd above the null | about **6.1 sd** |
-| median retention 0.82 | **0.74** (the tool also computed 0.75; both wrong) |
+| median retention 0.82 | **0.74**, which is what `analysis/surface-reliability/surface_reliability.csv` yields today (the tool also computed 0.75; both earlier figures wrong). The top-level `README.md` carried 0.82 until 31 August 2026 -- it is the value of one row, 上海, not the median. |
 | alpha negative for 12 of 20 surfaces | **15 of 19** |
 | alpha above 0.25 for three surfaces | **two** (台北 0.64, 上海 0.26) |
 | ablation control replaced ~51,000 | **46,619**, matching 559 of 605 surfaces |

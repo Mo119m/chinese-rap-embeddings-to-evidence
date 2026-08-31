@@ -235,8 +235,11 @@ function collect() {{
     const picked = card.querySelector("input[type=radio]:checked");
     const note = card.querySelector(".note").value.trim();
     const mixed = card.querySelector(".mixed").checked;
-    if (picked || mixed) out.push({{review_id: id, ruling: picked ? picked.value : "",
-                                   mixed_in_content: mixed, note: note}});
+    // a note alone is still the rater's work: an earlier version pushed a card only when a
+    // radio or the checkbox was set, so a note typed while thinking about a card was thrown
+    // away on save without a word
+    if (picked || mixed || note) out.push({{review_id: id, ruling: picked ? picked.value : "",
+                                            mixed_in_content: mixed, note: note}});
   }});
   return out;
 }}
@@ -252,7 +255,9 @@ function payload() {{
 
 function refresh() {{
   const done = collect().filter(r => r.ruling).length;
-  document.getElementById("count").textContent = done + " / " + TOTAL;
+  const partial = collect().filter(r => !r.ruling).length;
+  document.getElementById("count").textContent =
+    done + " / " + TOTAL + (partial ? "   (" + partial + " 条只写了备注/勾选，还没选选项)" : "");
   document.getElementById("save").disabled = done === 0;
   document.getElementById("copy").disabled = done === 0;
   document.querySelectorAll(".card").forEach(card => {{
