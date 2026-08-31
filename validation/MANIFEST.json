@@ -164,8 +164,8 @@
     },
     {
       "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
-      "bytes": 6203,
-      "sha256": "31c8aa079eb4e4f596ac2b1af334d656856a96aa01bc712b660728ce1ae0853b"
+      "bytes": 7807,
+      "sha256": "d4bd054a14d7be6c43200a48bb9088a2b97227776efea7e7ce3c7b6a44f20d6a"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
@@ -189,8 +189,8 @@
     },
     {
       "path": "tools/build_duplicate_review_sheet.py",
-      "bytes": 19752,
-      "sha256": "c73c747b9a7c3916379a1f2f8214c966c4251b5c5c78716f5eab0d9ce056c927"
+      "bytes": 22362,
+      "sha256": "d37265af741833d8291f792399a54fdda2c6da8b40946370b1516dccba3b3dc5"
     },
     {
       "path": "tools/build_metadata_gold_sheet.py",

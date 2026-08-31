@@ -82,6 +82,13 @@ INSTRUCTIONS = """背景：这批语料以前用过一条清洗规则——同�
 卡片故意没告诉你哪一条是被旧规则删掉的、机器把它归成了哪一类，左右顺序也是打乱的。
 这样你的判断才独立于机器的判断。
 
+如果你发现某一条记录里混进了不属于它的内容（比如不重合的那部分其实是另一首歌），
+请勾上"有记录混进了别的歌"。这个勾选和上面三选一是分开的两件事：
+三选一回答"这两条是不是同一首"，勾选框记录"有记录被别的歌污染了"。
+两者可以同时成立，也可以只成立一个。
+
+段落下面如果写着"这段还出现在卡片外的 N 首歌里"，说明它并不是这两条记录独有的。
+
 理由不是"歌词一样"的时候，请在备注里写一句。
 """
 
@@ -113,7 +120,9 @@ def render_card(index: int, item: dict[str, Any]) -> str:
           <dt>段落数</dt><dd>{side["chunk_rows"]}</dd>
         </dl>
         {"".join(
-            f'<pre class="para{" shared" if para in item["shared"] else ""}">'
+            f'<pre class="para{" shared" if para in item["shared"] else ""}'
+            f'{" elsewhere" if item["off_card"].get(para) else ""}"'
+            f' data-elsewhere="{item["off_card"].get(para, 0)}">'
             f'{html.escape(para)}</pre>'
             for para in side["paragraphs"])}
       </div>"""
@@ -138,6 +147,8 @@ def render_card(index: int, item: dict[str, Any]) -> str:
     <div class="sides">{sides}</div>
     <div class="ruling">
       {options}
+      <label class="mix"><input type="checkbox" class="mixed" data-review-id="{item['review_id']}">
+        有记录混进了别的歌</label>
       <input class="note" type="text" placeholder="备注（可选）" data-review-id="{item['review_id']}">
     </div>
   </section>"""
@@ -152,10 +163,10 @@ def render_sheet(items: list[dict[str, Any]], instructions_sha: str, generated_a
 <title>PD-002 重复记录人工裁决 ({len(items)} 条)</title>
 <style>
  :root {{ color-scheme: light dark; --line:#c8c8c8; --bg:#fff; --fg:#1a1a1a; --muted:#666;
-          --panel:#f6f6f6; --shared:#b4541f; --sharedbg:#fdf3ec; }}
+          --panel:#f6f6f6; --shared:#b4541f; --sharedbg:#fdf3ec; --elsewhere:#6a4ba8; }}
  @media (prefers-color-scheme: dark) {{
    :root {{ --line:#3a3a3a; --bg:#151515; --fg:#e8e8e8; --muted:#999; --panel:#1e1e1e;
-            --shared:#e0863f; --sharedbg:#251d16; }}
+            --shared:#e0863f; --sharedbg:#251d16; --elsewhere:#b39ae0; }}
  }}
  body {{ background:var(--bg); color:var(--fg); margin:0 auto; padding:2rem 1.25rem 6rem; max-width:70rem;
         font:15px/1.65 "Segoe UI", system-ui, sans-serif; }}
@@ -184,6 +195,10 @@ def render_sheet(items: list[dict[str, Any]], instructions_sha: str, generated_a
         font:13px/1.6 ui-monospace, Consolas, monospace; margin:0; }}
  .ruling {{ display:flex; flex-wrap:wrap; gap:.6rem 1.1rem; align-items:center;
         padding:.75rem .9rem; border-top:1px solid var(--line); background:var(--panel); }}
+ .para.elsewhere::after {{ content:"这段还出现在卡片外的 " attr(data-elsewhere) " 首歌里";
+        display:block; margin-top:.35rem; font-size:.72rem; color:var(--elsewhere);
+        font-family:"Segoe UI", system-ui, sans-serif; }}
+ .mix {{ cursor:pointer; user-select:none; color:var(--elsewhere); }}
  .opt {{ cursor:pointer; user-select:none; }}
  .note {{ flex:1 1 16rem; min-width:12rem; padding:.35rem .5rem; border:1px solid var(--line);
         border-radius:5px; background:var(--bg); color:var(--fg); font:inherit; font-size:.9rem; }}
@@ -219,7 +234,9 @@ function collect() {{
     const id = card.dataset.reviewId;
     const picked = card.querySelector("input[type=radio]:checked");
     const note = card.querySelector(".note").value.trim();
-    if (picked) out.push({{review_id: id, ruling: picked.value, note: note}});
+    const mixed = card.querySelector(".mixed").checked;
+    if (picked || mixed) out.push({{review_id: id, ruling: picked ? picked.value : "",
+                                   mixed_in_content: mixed, note: note}});
   }});
   return out;
 }}
@@ -234,7 +251,7 @@ function payload() {{
 }}
 
 function refresh() {{
-  const done = collect().length;
+  const done = collect().filter(r => r.ruling).length;
   document.getElementById("count").textContent = done + " / " + TOTAL;
   document.getElementById("save").disabled = done === 0;
   document.getElementById("copy").disabled = done === 0;
@@ -252,6 +269,7 @@ try {{
       if (!card) return;
       const radio = card.querySelector('input[value="' + r.ruling + '"]');
       if (radio) radio.checked = true;
+      if (r.mixed_in_content) card.querySelector(".mixed").checked = true;
       if (r.note) card.querySelector(".note").value = r.note;
     }});
   }}
@@ -290,8 +308,10 @@ def build(args: argparse.Namespace) -> None:
     manifest = json.loads((private_dir / "private_manifest.json").read_text(encoding="utf-8"))
 
     by_song: dict[str, list[dict[str, str]]] = defaultdict(list)
+    owners: dict[str, set[str]] = defaultdict(set)
     for row in chunks:
         by_song[row["song_id"]].append(row)
+        owners[row["cleaned_text"]].add(row["song_id"])
     for rows in by_song.values():
         rows.sort(key=lambda row: int(row["within_song_order"]))
 
@@ -362,6 +382,22 @@ def build(args: argparse.Namespace) -> None:
             return "  标出来的这段只有一行，内容和标题重复。"
         return "  标出来的这段只有一行。"
 
+    def off_card_note(off_card: dict[str, int], shared: set[str]) -> str:
+        """Say when paragraphs on this card also belong to songs that are not shown.
+
+        The card renders only the records the automatic rule related. Ownership is a property
+        of the whole corpus, so a paragraph can look unique here and not be. Asserting
+        nothing about what that means: it is a count, and it is the rater who decides whether
+        a record carrying someone else's paragraph is still the same recording.
+        """
+        if not off_card:
+            return ""
+        outside = sum(1 for para in off_card if para not in shared)
+        if not outside:
+            return ""
+        return (f"  注意：其中 {outside} 段在本卡之外的歌里也有，"
+                "所以它们并不是这两条记录独有的。")
+
     shuffler = random.Random(SHUFFLE_SEED)
     items: list[dict[str, Any]] = []
     key: list[dict[str, Any]] = []
@@ -374,9 +410,14 @@ def build(args: argparse.Namespace) -> None:
         shared = {para for i, first in enumerate(paragraph_sets)
                   for j, second in enumerate(paragraph_sets) if i < j
                   for para in first & second}
+        on_card = {side["song_id"] for side in sides}
+        off_card = {para: len(owners[para] - on_card)
+                    for side in sides for para in side["paragraphs"]
+                    if owners[para] - on_card}
         items.append({"review_id": review_id, "sides": sides, "total": len(queue),
-                      "shared": shared,
-                      "structure": structure_note(sides) + shared_shape_note(shared, sides)})
+                      "shared": shared, "off_card": off_card,
+                      "structure": structure_note(sides) + shared_shape_note(shared, sides)
+                      + off_card_note(off_card, shared)})
         key.append(
             {
                 "review_id": review_id,

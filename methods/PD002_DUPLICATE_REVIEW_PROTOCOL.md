@@ -32,6 +32,18 @@ The paragraphs the records have in common are marked in both panels, and where t
 
 Changing the instruction text or the structural readout changes the frozen instruction hash. Rulings are only ever scored against the hash they were collected under; a sheet regenerated with different wording invalidates nothing already returned, it simply belongs to a different frozen question.
 
+## A second fact the pair question cannot carry
+
+A reviewer working the queue observed that on some cards the portion of a record which is *not* shared with the other record is itself another song's content. Checking that against the corpus confirmed it: on 29 of the 46 cards at least one paragraph also belongs to a song that is not displayed on the card, because the card renders only the records the automatic rule related while paragraph ownership is a property of the whole corpus. A card can therefore present a paragraph as unique to one of two records when it is not.
+
+Two changes follow, and neither moves a judgement from the rater to the tool.
+
+Every paragraph now states how many songs off the card also carry it, and the structural line says when some of the apparently unique paragraphs are not unique. This is a count over the corpus, not a claim about what it means.
+
+A checkbox records "one of these records has another song's content mixed into it", alongside and independent of the three-way ruling. It is a separate fact with a separate consequence: a contaminated record is not merged with its neighbour and not left as a distinct work, it is split and the foreign paragraph removed. Folding that into `same` or `different` would have destroyed the distinction, and the three-way question alone could not express it. The ruling still gates completion; the checkbox is additional information and never a substitute for the ruling.
+
+This was found by a human reading the cards, after the automatic classifier, the detector, and two of my own structural hypotheses had all missed it.
+
 ## Recording
 
 The instruction text is frozen and hashed. The sheet, the key file, and any returned rulings all carry that hash, so a ruling can be tied to the exact question that was asked. The key file also carries the content digest of the repaired corpus and the digest of the review queue it was generated from; a ruling collected against one corpus state cannot be silently reused against another.
