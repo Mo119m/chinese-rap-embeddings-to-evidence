@@ -154,8 +154,8 @@
     },
     {
       "path": "methods/METADATA_BLOCK_AUDIT_PROTOCOL.md",
-      "bytes": 16385,
-      "sha256": "f159b8bc422f7ab7cb678d2f5ec5ee1858778dc33aba13470382416b0ec65a25"
+      "bytes": 17168,
+      "sha256": "143f0cc68deaf584c57b1f83a3197702f0122770d4ec804175f70cbaee67d594"
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
@@ -174,13 +174,13 @@
     },
     {
       "path": "src/build_repaired_corpus_v2.py",
-      "bytes": 26464,
-      "sha256": "9fcdf391a9c0dd0d297976a3e11b5a4cb55dee530ccf2aace94d91c57e199e85"
+      "bytes": 30190,
+      "sha256": "cbe907f3913498d6e6c33045108bad46fd1069f8426db6d8e7c1bf8ccbf2c55f"
     },
     {
       "path": "src/duplicate_control_v2.py",
-      "bytes": 11611,
-      "sha256": "9a55371f5fe715e802410160e90ba4f620007ee30c0f1c7fae4a772e3d162d33"
+      "bytes": 13000,
+      "sha256": "b9a231151109740f067f4b0bf158f82ab1d2e749d879c51fba221ee863682b49"
     },
     {
       "path": "tests/test_repaired_corpus_v2.py",
@@ -264,8 +264,8 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 81595,
-      "sha256": "ded4304d6759e031c43c409ffc9d2d35cd28a36d0e9fd62a16050b04c75732fa"
+      "bytes": 81653,
+      "sha256": "bfdb4011a5a57c45e697e4f38537c9c7149818b309075cadf3ac32b05cdd71ad"
     },
     {
       "path": "submission/dsh/MANIFEST.json",
@@ -394,8 +394,8 @@
     },
     {
       "path": "results/repaired-corpus-v2/analysis_summary.json",
-      "bytes": 4918,
-      "sha256": "0ab6475c3aae98dc87c3c4e411c3d590d823411a86864b3c8c5cc3654a95dbd5"
+      "bytes": 6567,
+      "sha256": "eb76541382c3def0acc4c2baab5162bca433633860083f5a695287f278923a7a"
     },
     {
       "path": "results/repaired-corpus-v2/corpus_stage_counts.csv",
@@ -410,7 +410,7 @@
     {
       "path": "results/repaired-corpus-v2/manifest.json",
       "bytes": 2066,
-      "sha256": "00f2fd2da8d616c7aa5e62b658dfc6df22fd1617cd62af35a3182884d05ae4f1"
+      "sha256": "9b51c40e50af270a14e3e1c3067efb09baba86f612e28a003ced9a8ab12cdac4"
     },
     {
       "path": "results/repaired-corpus-v2/review_queue_by_reason.csv",
@@ -424,8 +424,8 @@
     },
     {
       "path": "results/repaired-corpus-v2/validation.json",
-      "bytes": 1492,
-      "sha256": "079c23f1d1fd4d7f3a670640829c81f486935f00ff3380a8ad8305ec03415795"
+      "bytes": 1590,
+      "sha256": "1eeb1ec7daefcbe574fc5cae4ed4331c0d147db407224a368e0c5a77db88f635"
     },
     {
       "path": "results/retrieval-inductive-sensitivity-v1/METHOD.md",

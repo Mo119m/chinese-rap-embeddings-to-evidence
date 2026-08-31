@@ -46,6 +46,10 @@
       "passed": true
     },
     {
+      "name": "stray_title_sensitivity_is_published_both_ways",
+      "passed": true
+    },
+    {
       "name": "duplicate_group_members_share_one_text_component",
       "passed": true
     }
@@ -109,7 +113,7 @@
   "software_fingerprints": [
     {
       "path": "src/build_repaired_corpus_v2.py",
-      "sha256": "9fcdf391a9c0dd0d297976a3e11b5a4cb55dee530ccf2aace94d91c57e199e85"
+      "sha256": "cbe907f3913498d6e6c33045108bad46fd1069f8426db6d8e7c1bf8ccbf2c55f"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
@@ -125,6 +129,31 @@
     }
   ],
   "status": "pass_pending_author_review",
+  "stray_title_sensitivity": {
+    "as_published": {
+      "largest_text_component_songs": 27,
+      "multi_song_components": 799,
+      "song_records_in_multi_song_components": 2165,
+      "text_components": 6025
+    },
+    "chunks_flagged": 1195,
+    "consequence_if_ignored": "the leakage unit is coarser than the text warrants, and the component weighting penalises genuinely distinct songs for carrying an export artefact",
+    "if_stray_titles_were_not_treated_as_shared_text": {
+      "largest_text_component_songs": 25,
+      "multi_song_components": 776,
+      "song_records_in_multi_song_components": 1999,
+      "text_components": 6152
+    },
+    "songs_down_weighted_only_by_a_stray_title": 81,
+    "status": "reported, not applied",
+    "their_weights": {
+      "max": 0.5,
+      "median": 0.5,
+      "min": 0.1111111111111111
+    },
+    "what_it_is": "a chunk whose whole content is one line, and that line is a different song's title under the same source-credit label -- a scrape bleeding a neighbouring title into a record, not text the two songs share",
+    "why_not_applied": "the detection rule is a heuristic written after inspecting the review queue, it has not been adjudicated, and the corpus is not altered on the strength of one. Whether these chunks should be excluded from component linking is a cleaning-policy decision, and it belongs with the author alongside the duplicate review queue"
+  },
   "version": "2.0.0",
-  "withheld_claim": "that the duplicate groups establish real-world work identity, reissue status, authorship, or performer identity; and that any downstream predictive metric is stable under the repair, since no model has been retrained on this population"
+  "withheld_claim": "that the duplicate groups establish real-world work identity, reissue status, authorship, or performer identity; that any downstream predictive metric is stable under the repair, since no model has been retrained on this population; and that the published component structure is entirely text reuse -- see stray_title_sensitivity, part of it is a scrape artefact"
 }

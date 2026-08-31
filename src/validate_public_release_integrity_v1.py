@@ -723,6 +723,7 @@ def verify_repaired_corpus_claims() -> int:
         "component_weights_total_one_per_label_component",
         "duplicate_groups_have_exactly_one_representative",
         "duplicate_group_members_share_one_text_component",
+        "stray_title_sensitivity_is_published_both_ways",
     }
     if set(validation_check_index) != required_checks or set(summary_check_index) != required_checks:
         raise AssertionError("Repaired corpus validation check set is incomplete or unexpected")

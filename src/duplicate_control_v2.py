@@ -156,6 +156,37 @@ def assign_text_components(
     return component_of, membership, shared_texts
 
 
+def stray_title_chunks(rows, records):
+    """Chunks that are one line, and that line is another same-label song's title.
+
+    A scrape that appends a neighbouring title to a record produces these. They are not text
+    reuse, but ``assign_text_components`` cannot tell the difference: two songs sharing such
+    a line are unioned exactly as if they shared a verse, and the weighting rule then divides
+    weight between songs that have nothing in common but an export artefact.
+
+    This identifies the shape so it can be *reported*. It does not remove anything. The rule
+    is a heuristic, it has not been adjudicated, and a corpus is not quietly altered on the
+    strength of one.
+    """
+    titles = defaultdict(set)
+    for song_id, record in records.items():
+        titles[record["label"]].add(normalise_title(record["title"]))
+    flagged = []
+    for index, row in enumerate(rows):
+        song_id = str(row["song_id"])
+        record = records.get(song_id)
+        if record is None:
+            continue
+        lines = [line for line in str(row["text"]).split(chr(10)) if line.strip()]
+        if len(lines) != 1:
+            continue
+        normalised = normalise_title(lines[0])
+        others = titles[record["label"]] - {normalise_title(record["title"])}
+        if len(normalised) >= 6 and normalised in others:
+            flagged.append(index)
+    return flagged
+
+
 def component_weights(
     records: Mapping[str, Mapping[str, Any]], component_of: Mapping[str, str]
 ) -> dict[str, float]:

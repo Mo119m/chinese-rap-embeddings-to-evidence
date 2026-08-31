@@ -46,6 +46,10 @@
       "passed": true
     },
     {
+      "name": "stray_title_sensitivity_is_published_both_ways",
+      "passed": true
+    },
+    {
       "name": "duplicate_group_members_share_one_text_component",
       "passed": true
     }

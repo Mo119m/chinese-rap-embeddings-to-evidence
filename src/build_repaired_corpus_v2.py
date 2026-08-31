@@ -49,6 +49,7 @@ from duplicate_control_v2 import (
     component_weights,
     corpus_content_sha256,
     normalise_title,
+    stray_title_chunks,
     strip_del,
 )
 
@@ -221,6 +222,21 @@ def build(args: argparse.Namespace) -> None:
         ]
     )
 
+    # What the component structure looks like if the scrape artefact is not treated as text
+    # reuse. Reported, not applied: a chunk that is only a neighbouring title unions two songs
+    # exactly as a shared verse does, and the weighting rule then divides weight between songs
+    # that have nothing in common but an export error.
+    stray = set(stray_title_chunks(chunk_rows, records))
+    without_stray = [row for index, row in enumerate(chunk_rows) if index not in stray]
+    stray_records = build_song_records(without_stray)
+    stray_component_of, stray_membership, _ = assign_text_components(
+        ((row["song_id"], row["text"]) for row in without_stray), stray_records)
+    stray_weights = component_weights(stray_records, stray_component_of)
+    stray_multi = {k: v for k, v in stray_membership.items() if len(v) > 1}
+    penalised = sorted(song for song, weight in weights.items()
+                       if weight < 1 and stray_weights.get(song, 1.0) == 1.0)
+    penalised_weights = sorted(weights[song] for song in penalised)
+
     multi_song_components = {k: v for k, v in component_membership.items() if len(v) > 1}
     component_sizes = Counter(len(v) for v in component_membership.values())
     group_sizes = Counter(len(v) for v in group_membership.values())
@@ -339,6 +355,10 @@ def build(args: argparse.Namespace) -> None:
             ),
         },
         {
+            "name": "stray_title_sensitivity_is_published_both_ways",
+            "passed": len(stray) > 0 and len(stray_membership) != len(component_membership),
+        },
+        {
             "name": "duplicate_group_members_share_one_text_component",
             "passed": all(
                 len({component_of[song_id] for song_id in members}) == 1
@@ -409,6 +429,46 @@ def build(args: argparse.Namespace) -> None:
             "del_control_correction": "DEL controls removed while preserving the preceding character, unlike the destructive live-sheet import",
         },
         "corpus_geometry": geometry,
+        "stray_title_sensitivity": {
+            "what_it_is": (
+                "a chunk whose whole content is one line, and that line is a different song's "
+                "title under the same source-credit label -- a scrape bleeding a neighbouring "
+                "title into a record, not text the two songs share"
+            ),
+            "chunks_flagged": len(stray),
+            "as_published": {
+                "text_components": len(component_membership),
+                "multi_song_components": len(multi_song_components),
+                "song_records_in_multi_song_components": sum(
+                    len(v) for v in multi_song_components.values()),
+                "largest_text_component_songs": max(
+                    len(v) for v in component_membership.values()),
+            },
+            "if_stray_titles_were_not_treated_as_shared_text": {
+                "text_components": len(stray_membership),
+                "multi_song_components": len(stray_multi),
+                "song_records_in_multi_song_components": sum(
+                    len(v) for v in stray_multi.values()),
+                "largest_text_component_songs": max(
+                    len(v) for v in stray_membership.values()),
+            },
+            "songs_down_weighted_only_by_a_stray_title": len(penalised),
+            "their_weights": ({"min": penalised_weights[0],
+                               "median": penalised_weights[len(penalised_weights) // 2],
+                               "max": penalised_weights[-1]} if penalised else None),
+            "status": "reported, not applied",
+            "why_not_applied": (
+                "the detection rule is a heuristic written after inspecting the review queue, "
+                "it has not been adjudicated, and the corpus is not altered on the strength of "
+                "one. Whether these chunks should be excluded from component linking is a "
+                "cleaning-policy decision, and it belongs with the author alongside the "
+                "duplicate review queue"
+            ),
+            "consequence_if_ignored": (
+                "the leakage unit is coarser than the text warrants, and the component "
+                "weighting penalises genuinely distinct songs for carrying an export artefact"
+            ),
+        },
         "review_queue": queue_diagnostics,
         "independent_human_review_status": "pending",
         "permitted_claim": (
@@ -417,8 +477,10 @@ def build(args: argparse.Namespace) -> None:
         ),
         "withheld_claim": (
             "that the duplicate groups establish real-world work identity, reissue status, "
-            "authorship, or performer identity; and that any downstream predictive metric is "
-            "stable under the repair, since no model has been retrained on this population"
+            "authorship, or performer identity; that any downstream predictive metric is "
+            "stable under the repair, since no model has been retrained on this population; "
+            "and that the published component structure is entirely text reuse -- see "
+            "stray_title_sensitivity, part of it is a scrape artefact"
         ),
         "checks": checks,
     }

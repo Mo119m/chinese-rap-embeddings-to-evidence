@@ -2,9 +2,9 @@
   "artifact_id": "chinese-rap-repaired-corpus-v2",
   "files": [
     {
-      "bytes": 4918,
+      "bytes": 6567,
       "path": "analysis_summary.json",
-      "sha256": "0ab6475c3aae98dc87c3c4e411c3d590d823411a86864b3c8c5cc3654a95dbd5"
+      "sha256": "eb76541382c3def0acc4c2baab5162bca433633860083f5a695287f278923a7a"
     },
     {
       "bytes": 200,
@@ -37,16 +37,16 @@
       "sha256": "731863b6abbfdfa1dc04e64196f8e1982fab75362df1722299c90eb45ae942b5"
     },
     {
-      "bytes": 1492,
+      "bytes": 1590,
       "path": "validation.json",
-      "sha256": "079c23f1d1fd4d7f3a670640829c81f486935f00ff3380a8ad8305ec03415795"
+      "sha256": "1eeb1ec7daefcbe574fc5cae4ed4331c0d147db407224a368e0c5a77db88f635"
     }
   ],
   "generated_at_utc": "2026-08-30T23:09:50+00:00",
   "software": [
     {
       "path": "src/build_repaired_corpus_v2.py",
-      "sha256": "9fcdf391a9c0dd0d297976a3e11b5a4cb55dee530ccf2aace94d91c57e199e85"
+      "sha256": "cbe907f3913498d6e6c33045108bad46fd1069f8426db6d8e7c1bf8ccbf2c55f"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
