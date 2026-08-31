@@ -14,8 +14,8 @@
     },
     {
       "path": ".github/workflows/release-integrity.yml",
-      "bytes": 7277,
-      "sha256": "0f670052eed0b2e4e6f84d87fb124eb4f0c6de4a6c30608bf27c4bf088709b61"
+      "bytes": 7402,
+      "sha256": "9e81cd012cf6d71e032dcef4e7537329e2ac018300505accefbb9a9e115b8947"
     },
     {
       "path": "README.md",
@@ -203,6 +203,11 @@
       "sha256": "1e636146cc9ffe81c126dc8414aa0fd8887b9d121b9201cba910e70343562198"
     },
     {
+      "path": "tools/build_ner_reviewer_sheet.py",
+      "bytes": 26132,
+      "sha256": "07c0a223886ad34a7370a0fad984223e29defd8d3fd7ae992eeb795b4cdc9d17"
+    },
+    {
       "path": "src/gold_set_statistics.py",
       "bytes": 12320,
       "sha256": "e34bfe6063798d7bc8edbf6b250da3715427a2031c0da0487e06e54ba0185687"
@@ -234,8 +239,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 49675,
-      "sha256": "425efbf84b159e59237d4521807704410f08c57cfb497eef9281b7ed281bd9ea"
+      "bytes": 49731,
+      "sha256": "1acc625fa82ffe2aac8c289e9b8ea9d0e55752a0f82b5f39252d5f32ced66acc"
     },
     {
       "path": "src/normalize_public_text_v1.py",
@@ -254,8 +259,8 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 81516,
-      "sha256": "004a574a22d3a47dde798e659c2b2a3be5eb72412a2d93b874b5cb330316cd0b"
+      "bytes": 81557,
+      "sha256": "ca1bd5617241d1e2490a14ce7376b2226fd177261acc3183be72ea8597932c07"
     },
     {
       "path": "submission/dsh/MANIFEST.json",

@@ -69,6 +69,9 @@ jobs:
       - name: Self-test the gold-set scorer
         run: python tools/score_metadata_gold_set.py --self-test
 
+      - name: Self-test the NER reviewer sheet round trip
+        run: python tools/build_ner_reviewer_sheet.py --self-test
+
       - name: Self-test the metadata-block detector
         run: python tools/detect_metadata_blocks.py --self-test
 
