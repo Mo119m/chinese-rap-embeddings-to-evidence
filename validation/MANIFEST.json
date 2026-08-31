@@ -159,8 +159,8 @@
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
-      "bytes": 10520,
-      "sha256": "bd7f311dfc730a3468aaf5dd651fe6d8c5c34682480ed0e8cfb937c2e2355d26"
+      "bytes": 12241,
+      "sha256": "cd4ba210445bb177c2809f7b0a4f237f68f95fe1c5fb9d5125a7341376b0ab41"
     },
     {
       "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
@@ -209,8 +209,8 @@
     },
     {
       "path": "tools/colab_embed_corpus_v2.py",
-      "bytes": 12911,
-      "sha256": "f64f6f8671d280a29ccf2d1e6422be568619394cb4cca05b8c66e16c98229d25"
+      "bytes": 13754,
+      "sha256": "c8aa95d5cd3da9e17a205043930ed8ccceb6252e4bf2eaee080709e8486b7dc3"
     },
     {
       "path": "src/gold_set_statistics.py",

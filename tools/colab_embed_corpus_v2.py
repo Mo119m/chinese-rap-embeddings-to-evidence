@@ -178,8 +178,19 @@ def main() -> int:
 
     recovered = next((t for t in trials if t.get("matches")), None)
     if recovered:
-        print(f"\n  historical configuration recovered: device={recovered['device']} "
-              f"use_fp16={recovered['use_fp16']}")
+        print(f"{chr(10)}  historical configuration identified: device={recovered['device']} "
+              f"use_fp16={recovered['use_fp16']} -- the only one inside tolerance")
+    elif passing:
+        spread = ranked[-1]["max_abs_difference"] - ranked[0]["max_abs_difference"]
+        print(f"{chr(10)}  {len(passing)} configurations are ALL inside tolerance, so this "
+              "test does not identify which one was used.")
+        print(f"  closest: device={best['device']} use_fp16={best['use_fp16']} "
+              f"(max abs difference {best['max_abs_difference']:.3e}), "
+              f"spread across configurations {spread:.3e}")
+        print("  The useful finding is the bound, not the identity:")
+        print("  every candidate reproduces the stored vectors this closely, so the")
+        print("  unrecorded device state is not a material threat to comparability.")
+        print("  Re-embedding the whole corpus in one run removes the question entirely.")
     else:
         best = max((t for t in trials if "min_cosine_to_stored" in t),
                    key=lambda t: t["min_cosine_to_stored"], default=None)

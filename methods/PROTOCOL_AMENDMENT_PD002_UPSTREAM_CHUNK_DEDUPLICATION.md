@@ -75,6 +75,22 @@ Ten of the forty-six queued records overlap in nothing but such a line. Corpus-w
 
 This does not decide any queued record. Whether a shared title header means one recording or two is the judgement the queue exists to collect, and it stays with the rater.
 
+## The unrecorded embedding configuration, measured
+
+`requirements.txt` records that the historical BGE device/CUDA/use_fp16 state was not captured. That gap was measured on 31 August 2026 rather than left as an open caveat: 64 already-embedded chunks, spanning 1 to 1,494 characters, were re-embedded on a Tesla T4 under each candidate configuration and compared against the stored vectors. The BGE-M3 weights on that machine matched the SHA-256 the existing contract pins, so the comparison is against the same model.
+
+| configuration | 1 − min cosine | max absolute difference |
+| --- | ---: | ---: |
+| cuda, fp16 | 1.311e-05 | 6.527e-04 |
+| cuda, fp32 | 2.164e-05 | 7.472e-04 |
+| cpu, fp32 | 2.163e-05 | 7.468e-04 |
+
+**The test does not identify the historical configuration.** All three fall inside the 1e-4 cosine tolerance, and the tolerance is roughly five times the spread between them. The two fp32 runs agree with each other to 3e-07, as they should, since device does not change fp32 arithmetic.
+
+What the measurement does establish is a bound, and the bound is the useful part. Every candidate reproduces the published vectors to a cosine of at least 0.99997, so not knowing which one was used is not a material threat to comparability. The fp16 run is systematically the closest of the three, which is weak evidence that the original used fp16 -- one sample of 64, a gap of 9.5e-05 -- and is recorded as weak evidence, not as a recovered fact.
+
+The practical consequence is that corpus v2 should be embedded in a single run rather than by topping up the 2,898 restored chunks, which removes the question rather than answering it: with one run there is no precision boundary inside the vector set at all.
+
 ## Downstream consequences
 
 - **Retrieval:** V1 remains an internally valid frozen-corpus benchmark. V2 must rebuild the song universe, keep duplicate components together, and rerun paired metrics and intervals.
