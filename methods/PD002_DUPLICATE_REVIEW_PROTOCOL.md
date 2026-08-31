@@ -28,6 +28,8 @@ The rater is not shown the automatic reason code, nor whether the v2 primary rul
 
 Each card does carry a plain structural readout of how the paragraph sets line up -- identical sequence, same set reordered, one contained in the other, or a multi-way overlap with counts. This is a diff of the two panels the rater is already reading, and stating it saves the labour of doing that diff by hand. It is recorded here because it is not costless: the queue's reason codes partition it almost exactly, so a rater who knows this protocol can infer the category. What the readout does not supply is the thing being asked. It says how the text overlaps; it does not say whether that overlap means one recording or two, which is the entire question and the reason these 46 records could not be resolved automatically.
 
+The paragraphs the records have in common are marked in both panels, and where the whole overlap is a single line the readout says so, including when that line restates a title. This was added after inspecting the queue: ten of the forty-six cards overlap in nothing but one title-restating line, which is a header artefact of the source export rather than a shared verse, and a rater skimming two long panels would not reliably notice that the common text is one line long. Marking it is a description of the panels. Whether a shared header means one recording or two is still the rater's call, and it is the call that decides the record.
+
 Changing the instruction text or the structural readout changes the frozen instruction hash. Rulings are only ever scored against the hash they were collected under; a sheet regenerated with different wording invalidates nothing already returned, it simply belongs to a different frozen question.
 
 ## Recording

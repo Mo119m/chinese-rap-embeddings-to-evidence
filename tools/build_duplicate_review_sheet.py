@@ -26,6 +26,7 @@ import html
 import json
 import random
 import sys
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -85,6 +86,12 @@ INSTRUCTIONS = """背景：这批语料以前用过一条清洗规则——同�
 """
 
 
+def title_normalise(value: str) -> str:
+    """NFKC, case-fold, alphanumerics only -- the same shape the duplicate rule uses."""
+    text = unicodedata.normalize("NFKC", str(value)).casefold()
+    return "".join(character for character in text if character.isalnum())
+
+
 def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
@@ -105,7 +112,10 @@ def render_card(index: int, item: dict[str, Any]) -> str:
           <dt>标题</dt><dd>{html.escape(side["title"])}</dd>
           <dt>段落数</dt><dd>{side["chunk_rows"]}</dd>
         </dl>
-        <pre>{html.escape(side["text"])}</pre>
+        {"".join(
+            f'<pre class="para{" shared" if para in item["shared"] else ""}">'
+            f'{html.escape(para)}</pre>'
+            for para in side["paragraphs"])}
       </div>"""
         for position, side in enumerate(item["sides"])
     )
@@ -141,9 +151,11 @@ def render_sheet(items: list[dict[str, Any]], instructions_sha: str, generated_a
 <meta charset="utf-8">
 <title>PD-002 重复记录人工裁决 ({len(items)} 条)</title>
 <style>
- :root {{ color-scheme: light dark; --line:#c8c8c8; --bg:#fff; --fg:#1a1a1a; --muted:#666; --panel:#f6f6f6; }}
+ :root {{ color-scheme: light dark; --line:#c8c8c8; --bg:#fff; --fg:#1a1a1a; --muted:#666;
+          --panel:#f6f6f6; --shared:#b4541f; --sharedbg:#fdf3ec; }}
  @media (prefers-color-scheme: dark) {{
-   :root {{ --line:#3a3a3a; --bg:#151515; --fg:#e8e8e8; --muted:#999; --panel:#1e1e1e; }}
+   :root {{ --line:#3a3a3a; --bg:#151515; --fg:#e8e8e8; --muted:#999; --panel:#1e1e1e;
+            --shared:#e0863f; --sharedbg:#251d16; }}
  }}
  body {{ background:var(--bg); color:var(--fg); margin:0 auto; padding:2rem 1.25rem 6rem; max-width:70rem;
         font:15px/1.65 "Segoe UI", system-ui, sans-serif; }}
@@ -164,8 +176,11 @@ def render_sheet(items: list[dict[str, Any]], instructions_sha: str, generated_a
  .side-head {{ font-weight:600; margin-bottom:.5rem; }}
  dl {{ display:grid; grid-template-columns:auto 1fr; gap:.15rem .7rem; margin:0 0 .7rem; font-size:.88rem; }}
  dt {{ color:var(--muted); }} dd {{ margin:0; overflow-wrap:anywhere; }}
+ .para.shared {{ border-left:4px solid var(--shared); background:var(--sharedbg); }}
+ .para.shared::before {{ content:"两边共有"; display:block; font-size:.72rem; color:var(--shared);
+        font-family:"Segoe UI", system-ui, sans-serif; margin-bottom:.3rem; letter-spacing:.04em; }}
  pre {{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:.7rem;
-        max-height:22rem; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere;
+        max-height:18rem; overflow:auto; margin-bottom:.4rem; white-space:pre-wrap; overflow-wrap:anywhere;
         font:13px/1.6 ui-monospace, Consolas, monospace; margin:0; }}
  .ruling {{ display:flex; flex-wrap:wrap; gap:.6rem 1.1rem; align-items:center;
         padding:.75rem .9rem; border-top:1px solid var(--line); background:var(--panel); }}
@@ -323,6 +338,30 @@ def build(args: argparse.Namespace) -> None:
             pairs.append(f"{letter} 独有 {only} 段" if only else f"{letter} 没有独有的段")
         return f"{counts} —— 合计 {len(union)} 个不同的段；" + "，".join(pairs) + "。"
 
+    def shared_shape_note(shared: set[str], sides: list[dict[str, Any]]) -> str:
+        """Say what the shared text physically is, when that is not a verse.
+
+        A lone line that restates a title is a header artefact of the source export, not a
+        shared verse, and a reader skimming two long panels will not notice that the marked
+        paragraph is only one line long. Stating the shape is a description of the panels;
+        it is still the rater who decides what the overlap means.
+        """
+        if not shared:
+            return ""
+        titles = {title_normalise(side["title"]) for side in sides}
+        singles = [t for t in shared
+                   if len([l for l in t.split(chr(10)) if l.strip()]) == 1]
+        if len(singles) != len(shared):
+            return ""
+        restates = sum(
+            1 for t in singles
+            for line in [title_normalise(t)]
+            if any(ti and (line.startswith(ti[:8]) or ti.startswith(line[:8]))
+                   for ti in titles if len(ti) >= 4))
+        if restates == len(singles):
+            return "  标出来的这段只有一行，内容和标题重复。"
+        return "  标出来的这段只有一行。"
+
     shuffler = random.Random(SHUFFLE_SEED)
     items: list[dict[str, Any]] = []
     key: list[dict[str, Any]] = []
@@ -331,8 +370,13 @@ def build(args: argparse.Namespace) -> None:
         sides = [side_for(row["song_id"])] + [side_for(s) for s in related]
         shuffler.shuffle(sides)
         review_id = f"DR-{position:03d}"
+        paragraph_sets = [set(side["paragraphs"]) for side in sides]
+        shared = {para for i, first in enumerate(paragraph_sets)
+                  for j, second in enumerate(paragraph_sets) if i < j
+                  for para in first & second}
         items.append({"review_id": review_id, "sides": sides, "total": len(queue),
-                      "structure": structure_note(sides)})
+                      "shared": shared,
+                      "structure": structure_note(sides) + shared_shape_note(shared, sides)})
         key.append(
             {
                 "review_id": review_id,
