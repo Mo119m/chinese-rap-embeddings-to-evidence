@@ -1,0 +1,50 @@
+{
+  "artifact_id": "chinese-rap-metadata-block-gold-v1",
+  "checks_computed_from_the_labels": [
+    {
+      "name": "all_sampled_chunks_labelled",
+      "passed": true
+    },
+    {
+      "detail": "labels submitted as plain arrays; indices verified against recorded line counts",
+      "name": "line_index_verification_exercised_or_not_applicable",
+      "passed": true
+    },
+    {
+      "name": "both_strata_contribute_scored_lines",
+      "passed": true
+    },
+    {
+      "name": "every_cross_stratum_interval_carries_measured_coverage",
+      "passed": true
+    },
+    {
+      "name": "no_interval_is_published_as_a_calibrated_95_percent_interval",
+      "passed": true
+    },
+    {
+      "name": "no_accuracy_metric_is_published",
+      "passed": true
+    },
+    {
+      "name": "frame_is_declared_and_smaller_than_the_corpus",
+      "passed": true
+    },
+    {
+      "name": "independent_human_review_still_pending",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-08-30T00:00:00+00:00",
+  "preconditions_enforced_by_abort": [
+    "labels_collected_against_the_recorded_instruction_sha",
+    "key_instruction_text_hashes_to_its_recorded_digest",
+    "detector_file_unchanged_since_the_labels_were_collected",
+    "sample_drawn_from_the_present_corpus_state",
+    "every_labelled_chunk_matches_its_recorded_line_count",
+    "detector_reproduces_the_output_recorded_at_draw_time"
+  ],
+  "privacy": "aggregate only; no lyric text, titles, source-credit labels, or identifiers",
+  "status": "single_rater_estimate_unvalidated",
+  "version": "2.0.0"
+}

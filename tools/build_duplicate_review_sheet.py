@@ -41,26 +41,47 @@ PROTOCOL_ID = "PD-002-DUPREV-001"
 # seed only; nothing about the ruling depends on its value.
 SHUFFLE_SEED = "pd002-duplicate-review-presentation-v1"
 
-INSTRUCTIONS = """\
-你要判断的问题只有一个：下面两条(有时更多)歌曲记录，是不是同一首录音作品(the same recorded work)？
+INSTRUCTIONS = """背景：这批语料以前用过一条清洗规则——同一个署名标签下，一段歌词文本如果之前出现过，
+就只保留第一次那条、后面的删掉。结果有 177 首歌被整首删光了。其中 131 首能自动确认
+是同一首歌被导入了两次，剩下这 46 条自动判不了，所以来问你。
 
-判断依据只能是你在卡片上看到的东西：署名标签、标题、以及歌词内容本身。
+你要判断的问题只有一个：下面这两条（有时三四条）记录，是不是同一首录音作品？
 
-请不要用来判断的东西：
+注意问的不是"文字一不一样"——机器已经比对过了，每张卡片上面那行灰字就是比对结果。
+问的是：文字这样重合，意味着它们是同一首歌吗？
+
+三个选项：
+
+  same        = 同一首录音被重复收录了。比如同一首歌换了个标题又存了一遍、
+                重发版、抓取时抓重了、其中一条是另一条的残缺版本。
+
+  different   = 不是同一首录音。歌词重合不一定就是同一首：
+                翻唱、remix、Live 版、feat. 版本、
+                同一段 hook 被这位歌手用在两首不同的歌里、
+                串烧或合辑里包含了另一首歌的一段、
+                或者抓取时把别的歌的词错挂到了这首上。
+
+  cannot_tell = 看不出来。这是一个正当答案。
+                这 46 条之所以在这里，就是因为机器判不了。
+                你判不了就选这个，不要为了填满而猜。
+
+判断依据只能是卡片上有的东西：署名标签、标题、歌词内容、以及那行结构比对。
+
+不要用来判断的：
   - 歌手的籍贯、生平、居住地、社会关系；
   - 你对这位歌手的既有印象；
   - 任何本页面之外的资料。
 
-三个选项的含义：
-  same          = 同一首录音的重复导入记录(重发、换标题、抓取重复，都算同一首)。
-  different     = 不是同一首录音。歌词相同或部分相同也可能是不同作品
-                  (例如翻唱、remix、同一段 hook 被用在两首不同的歌里)。
-  cannot_tell   = 看不出来。这是一个正当答案，不要为了填满而猜。
+你的答案会怎么用：
+  选 same 的，两条记录会合成一个"作品单位"来计数，
+  免得同一首歌在统计里被算了两三遍。记录本身不会被删掉。
+  选 different 的，就继续当成两首不同的歌。
+  选 cannot_tell 的，会在论文里作为敏感性区间两头都报一遍。
 
-说明：卡片没有告诉你哪一条被旧的清洗规则删掉了，也没有告诉你自动规则怎么分类的。
-这是故意的——你的判断需要独立于那个自动分类。
+卡片故意没告诉你哪一条是被旧规则删掉的、机器把它归成了哪一类，左右顺序也是打乱的。
+这样你的判断才独立于机器的判断。
 
-每条都可以写备注。如果你的理由不是"歌词一样"，请写下来。
+理由不是"歌词一样"的时候，请在备注里写一句。
 """
 
 
@@ -103,6 +124,7 @@ def render_card(index: int, item: dict[str, Any]) -> str:
       <span class="num">{index} / {item['total']}</span>
       <span class="rid">{item['review_id']}</span>
     </header>
+    <p class="structure">{html.escape(item["structure"])}</p>
     <div class="sides">{sides}</div>
     <div class="ruling">
       {options}
@@ -135,6 +157,8 @@ def render_sheet(items: list[dict[str, Any]], instructions_sha: str, generated_a
         background:var(--panel); padding:.5rem .9rem; border-bottom:1px solid var(--line); }}
  .num {{ font-weight:600; }}
  .rid {{ color:var(--muted); font-family:ui-monospace, Consolas, monospace; font-size:.8rem; }}
+ .structure {{ margin:0; padding:.5rem .9rem; background:var(--panel); color:var(--muted);
+        font-size:.87rem; border-bottom:1px solid var(--line); }}
  .sides {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(19rem,1fr)); gap:1px; background:var(--line); }}
  .side {{ background:var(--bg); padding:.9rem; }}
  .side-head {{ font-weight:600; margin-bottom:.5rem; }}
@@ -263,8 +287,41 @@ def build(args: argparse.Namespace) -> None:
             "label": rows[0]["source_credit_label"],
             "title": rows[0]["song_title"],
             "chunk_rows": len(rows),
+            "paragraphs": [row["cleaned_text"] for row in rows],
             "text": "\n\n———\n\n".join(row["cleaned_text"] for row in rows),
         }
+
+    def structure_note(sides: list[dict[str, Any]]) -> str:
+        """Describe how the paragraph sets line up, without saying what it means.
+
+        The rater could work this out by diffing the panels by hand; stating it saves that
+        labour without supplying a verdict. The automatic classification stays withheld.
+        """
+        letters = [chr(65 + i) for i in range(len(sides))]
+        sets = [set(side["paragraphs"]) for side in sides]
+        seqs = [side["paragraphs"] for side in sides]
+        counts = " / ".join(f"{letter} {len(seq)} 段" for letter, seq in zip(letters, seqs))
+        if len(sides) == 2:
+            if seqs[0] == seqs[1]:
+                return f"{counts} —— 两边逐段完全相同，顺序也一样。"
+            if sets[0] == sets[1]:
+                return f"{counts} —— 段落内容相同，但顺序不同。"
+            for a, b in ((0, 1), (1, 0)):
+                if sets[a] < sets[b]:
+                    shared = len(sets[a])
+                    return (f"{counts} —— {letters[a]} 的 {shared} 段全部出现在 "
+                            f"{letters[b]} 里面，{letters[b]} 还多出 {len(sets[b]) - shared} 段。")
+            shared = len(sets[0] & sets[1])
+            return (f"{counts} —— 共有 {shared} 段相同，"
+                    f"{letters[0]} 另有 {len(sets[0] - sets[1])} 段，"
+                    f"{letters[1]} 另有 {len(sets[1] - sets[0])} 段。")
+        union = set().union(*sets)
+        pairs = []
+        for i, letter in enumerate(letters):
+            others = set().union(*(sets[j] for j in range(len(sets)) if j != i))
+            only = len(sets[i] - others)
+            pairs.append(f"{letter} 独有 {only} 段" if only else f"{letter} 没有独有的段")
+        return f"{counts} —— 合计 {len(union)} 个不同的段；" + "，".join(pairs) + "。"
 
     shuffler = random.Random(SHUFFLE_SEED)
     items: list[dict[str, Any]] = []
@@ -274,7 +331,8 @@ def build(args: argparse.Namespace) -> None:
         sides = [side_for(row["song_id"])] + [side_for(s) for s in related]
         shuffler.shuffle(sides)
         review_id = f"DR-{position:03d}"
-        items.append({"review_id": review_id, "sides": sides, "total": len(queue)})
+        items.append({"review_id": review_id, "sides": sides, "total": len(queue),
+                      "structure": structure_note(sides)})
         key.append(
             {
                 "review_id": review_id,

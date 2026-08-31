@@ -1,12 +1,12 @@
-# MB-001 — pilot-informed metadata-block CANDIDATE detector (pre-specified, not yet executed)
+# MB-001 — pilot-informed metadata-block CANDIDATE detector
 
-Status: **pre-specified, not executed, and not a source of truth.**
+Status: **executed once against a single-rater gold set; still not a source of truth.** See the amendment at the end of this file, which supersedes the original status line and the prohibitions that went with it. Everything the amendment does not change stands.
 
 This is a **candidate detector**, not a metadata ground truth. Its rules were written from
 a pilot look at a handful of real credit blocks, so they are informed by data they were
 then measured against — which means any figure computed from them is a candidate count,
-not an accuracy. **No recall, precision or F-measure is claimed anywhere**, and none may be
-claimed until an independently constructed gold set exists. An earlier revision of this
+not an accuracy. **No VALIDATED recall, precision or F-measure is claimed anywhere**, and none may be
+claimed until an independently constructed, multi-rater gold set exists. A single-rater stratified estimate is now published under the amendment below and is not a validated figure. An earlier revision of this
 file said the detector "implements exactly" the rules and reported a recall figure; both
 claims are withdrawn. This protocol is step 2 of the
 sequencing declared in `NER_CR_001_COMPOUND_RESOLUTION.md`. It runs only after the
@@ -145,3 +145,23 @@ The sample is stratified by detector output -- half from chunks where at least o
 Every sampled chunk requires an affirmative answer, including "no metadata line here". A chunk left untouched is an unread chunk, not a negative, and is excluded rather than counted as clean; recall is estimated from the affirmative negatives, so the distinction is not cosmetic.
 
 Labels collected this way are author labels from a single rater. They license a stratified precision and recall estimate attributed to one rater. They do not establish inter-rater reliability, they are not an independent human review, and no F-measure may be reported as validated until a genuine second independent labelling exists.
+
+## Amendment MB-001-A, 30 August 2026: single-rater execution
+
+This amendment records that the protocol was executed, and reconciles the result with the prohibitions written above. It is recorded after the fact and does not pretend the execution was anticipated in this form.
+
+**What changed.** The original status line said "pre-specified, not executed", and the paragraph beneath it said no recall, precision or F-measure is claimed anywhere. A gold set has now been collected under `MB-001-GOLD-001` and scored, and the artifact in `results/metadata-block-gold-v1/` publishes line precision and recall, a chunk-level detection rate and flag precision, and a share of lines labelled metadata. Those sentences and this artifact could not both stand, and leaving the contradiction in a file that ships inside the public package would have handed a reader "not executed" and a precision figure in the same download.
+
+**What is now permitted.** Single-rater stratified estimates over the declared frame, each published with its measured interval coverage, its bootstrap bias and spread, and the count of clusters actually carrying signal.
+
+**What remains forbidden, unchanged.** A validated precision, recall or F-measure. Any inter-rater reliability figure. Any accuracy statement — the original text made a two-reviewer scheme a precondition for that, and one rater does not meet it, so no accuracy metric appears in the artifact at all. Any claim that detector output is metadata truth. `independent_human_review_status` stays `pending`.
+
+**The eligibility filter was never specified here and should have been.** The sample was drawn only from chunks of 2 to 14 lines. That filter existed only as a command-line default in `tools/build_metadata_gold_sheet.py`. It matters more than a default should: those chunks are about half the corpus's chunks but only ~13.5% of its lines, and short chunks are where whole credit blocks live, so the frame is enriched in the very shape being counted. Every rate is a rate over that frame. A corpus-wide contamination rate is **not** estimated and may not be quoted from this artifact.
+
+**The intervals are not 95% intervals.** Most of the recall denominator rests on four chunks out of forty. A percentile bootstrap on a combined ratio in that situation undercovers: measured coverage is about 0.80 for recall, F1 and the metadata line share, and about 0.90 for the detection rate, against a nominal 0.95. Only precision, which is a within-stratum quantity, holds up at about 0.94. The tool measures this by simulation on every run and publishes the measured figure; the word "95%" does not appear on any interval.
+
+**Recall, F1 and the detection rate are biased upward** by roughly a fifth to a quarter of their own size, as combined-ratio estimators on few informative clusters. The bias is published beside each interval and is deliberately not subtracted.
+
+**The labels are not adjudicated.** Two false-positive lines match categories the frozen instruction text itself names as non-lyric. They are reported as conflicts and the labels stand exactly as returned; only the rater may revise their own labels. Published precision is therefore a lower bound, with the bound published alongside. The false negatives have not been adjudicated at all.
+
+**Not deviations.** The `results/metadata-audit-v1/summary.json` artifact and the 40-block precision worksheet named elsewhere in this file are a different, still-unproduced deliverable. They are not superseded by this amendment and are not recorded as deviations from it.

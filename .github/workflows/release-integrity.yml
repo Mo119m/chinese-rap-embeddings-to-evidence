@@ -63,6 +63,12 @@ jobs:
       - name: Check the PD-002 duplicate-control rules
         run: python tests/test_repaired_corpus_v2.py
 
+      - name: Check the gold-set estimators
+        run: python tests/test_gold_set_statistics.py
+
+      - name: Self-test the gold-set scorer
+        run: python tools/score_metadata_gold_set.py --self-test
+
       - name: Self-test the metadata-block detector
         run: python tools/detect_metadata_blocks.py --self-test
 
@@ -131,6 +137,9 @@ jobs:
 
       - name: Run the packaged duplicate-control tests from inside the desktop package
         run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_repaired_corpus_v2.py"
+
+      - name: Run the packaged gold-set estimator tests from inside the desktop package
+        run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_gold_set_statistics.py"
 
       - name: Run the packaged tool tests from inside the desktop package
         run: python "${{ runner.temp }}/Chinese_Rap_Research_Release_V4/Reproducibility/tests/test_tools.py"

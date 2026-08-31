@@ -1,0 +1,8 @@
+metric,nominal,achieved_coverage,misses_above_truth,misses_below_truth
+precision,0.95,0.9440,0.0340,0.0220
+recall,0.95,0.7960,0.1980,0.0060
+f1,0.95,0.7960,0.1980,0.0060
+detection_rate,0.95,0.8960,0.0920,0.0120
+flag_precision,0.95,0.9660,0.0200,0.0140
+metadata_line_share,0.95,0.7640,0.0080,0.2280
+chunks_containing_metadata,0.95,0.8900,0.0120,0.0980

@@ -1,0 +1,353 @@
+{
+  "artifact_id": "chinese-rap-metadata-block-gold-v1",
+  "attribution": {
+    "independent_human_review_status": "pending",
+    "inter_rater_reliability_estimable": false,
+    "permitted_claim": "single-rater stratified estimates, over the eligible line-count frame, of the metadata-block candidate detector's line precision and recall, its chunk-level detection rate and flag precision, and the share of lines the rater called metadata; each with measured interval coverage below its nominal level",
+    "rater_role": "author",
+    "raters": 1,
+    "withheld_claim": "any validated precision, recall or F-measure; any inter-rater reliability; any corpus-wide contamination rate; any accuracy statement; and any claim that the detector's output is metadata truth"
+  },
+  "bootstrap_percentile_interval": {
+    "chunks_containing_metadata": {
+      "bias": -3.943456250000054,
+      "draws_used": 4000,
+      "high": 2661.1,
+      "low": 501.95,
+      "mean": 1436.85654375,
+      "median": 1432.925,
+      "relative_bias": -0.002736990734314307,
+      "sd": 580.844629247232
+    },
+    "detection_rate": {
+      "bias": 0.03802110447726295,
+      "draws_used": 4000,
+      "high": 0.43642913222186297,
+      "low": 0.07922734475213158,
+      "mean": 0.19106108226737956,
+      "median": 0.15764405404938997,
+      "relative_bias": 0.2484390355140157,
+      "sd": 0.12579157958156859
+    },
+    "f1": {
+      "bias": 0.03555216212213522,
+      "draws_used": 4000,
+      "high": 0.48443454366582617,
+      "low": 0.08946772031869916,
+      "mean": 0.2262239450762508,
+      "median": 0.19858122127600958,
+      "relative_bias": 0.18645738541549542,
+      "sd": 0.10568289086840806
+    },
+    "flag_precision": {
+      "bias": -0.0013812500000000005,
+      "draws_used": 4000,
+      "high": 0.825,
+      "low": 0.55,
+      "mean": 0.69861875,
+      "median": 0.7,
+      "relative_bias": -0.0019732142857142865,
+      "sd": 0.07187777822239672
+    },
+    "metadata_line_share": {
+      "bias": 0.0003474688615451582,
+      "draws_used": 4000,
+      "high": 0.11433724422186804,
+      "low": 0.016570767440221283,
+      "mean": 0.05480066269083898,
+      "median": 0.05114627215359516,
+      "relative_bias": 0.006381055675713785,
+      "sd": 0.026302227431261056
+    },
+    "precision": {
+      "bias": -0.0058702876614703525,
+      "draws_used": 4000,
+      "high": 0.9054054054054054,
+      "low": 0.676923076923077,
+      "mean": 0.8057239152370804,
+      "median": 0.8113207547169812,
+      "relative_bias": -0.007233033011454541,
+      "sd": 0.05977200273559661
+    },
+    "recall": {
+      "bias": 0.029315555792057732,
+      "draws_used": 4000,
+      "high": 0.3411472889882616,
+      "low": 0.04737871216805656,
+      "mean": 0.13734090868100107,
+      "median": 0.11323359493380307,
+      "relative_bias": 0.27137662602404006,
+      "sd": 0.07919930058915231
+    }
+  },
+  "checks_computed_from_the_labels": [
+    {
+      "name": "all_sampled_chunks_labelled",
+      "passed": true
+    },
+    {
+      "detail": "labels submitted as plain arrays; indices verified against recorded line counts",
+      "name": "line_index_verification_exercised_or_not_applicable",
+      "passed": true
+    },
+    {
+      "name": "both_strata_contribute_scored_lines",
+      "passed": true
+    },
+    {
+      "name": "every_cross_stratum_interval_carries_measured_coverage",
+      "passed": true
+    },
+    {
+      "name": "no_interval_is_published_as_a_calibrated_95_percent_interval",
+      "passed": true
+    },
+    {
+      "name": "no_accuracy_metric_is_published",
+      "passed": true
+    },
+    {
+      "name": "frame_is_declared_and_smaller_than_the_corpus",
+      "passed": true
+    },
+    {
+      "name": "independent_human_review_still_pending",
+      "passed": true
+    }
+  ],
+  "coverage": {
+    "abstained_lines": 0,
+    "informative_chunks_per_stratum": {
+      "detector_negative": {
+        "containing_metadata": 4,
+        "flagged": 0,
+        "sampled": 40,
+        "with_a_missed_line": 4
+      },
+      "detector_positive": {
+        "containing_metadata": 28,
+        "flagged": 40,
+        "sampled": 40,
+        "with_a_missed_line": 19
+      }
+    },
+    "labelled_chunks": 80,
+    "note": "informative_chunks_per_stratum is the honest measure of support: the missed lines in the detector-negative stratum come from a handful of chunks, and a confusion count alone cannot show that",
+    "sampled_chunks": 80,
+    "scored_lines": 538,
+    "unlabelled_chunks": 0,
+    "weighted_scored_lines": 74970.35000000002
+  },
+  "design": {
+    "abstentions": "lines marked unsure are excluded from every rate and counted separately",
+    "bias": "recall, F1 and detection rate are combined-ratio estimators on few informative clusters and are biased upward; the bias is published and deliberately not subtracted",
+    "frame": "chunks inside the eligible line-count band; see frame_coverage",
+    "interval_method": "stratified percentile bootstrap over chunks, 4000 draws, fixed seed; NOT a calibrated 95 percent interval, see interval_coverage",
+    "sampling": "stratified by detector output; not a uniform sample of anything",
+    "sampling_unit": "chunk",
+    "unit_of_analysis": "line",
+    "weighting": "inverse sampling probability per stratum, recorded in the key at draw time",
+    "weighting_effect": "weighting moves recall, F1, detection rate and metadata line share. It leaves both precisions bit-identical, because every detector firing lies in one stratum whose common weight cancels"
+  },
+  "frame_coverage": {
+    "corpus_chunks": 25026,
+    "corpus_lines": 549646,
+    "detector_fired_chunks_in_frame": 315,
+    "detector_fired_lines_in_frame": 614,
+    "eligible_chunk_filter": "2 to 14 lines",
+    "frame_chunks": 12518,
+    "frame_lines": 74104,
+    "frame_share_of_corpus_chunks": 0.5001997922160952,
+    "frame_share_of_corpus_lines": 0.13482132135956598,
+    "note": "every rate in this artifact describes the frame, not the corpus. The frame is about half the corpus's chunks but a small minority of its lines, and short chunks are where whole-credit blocks live, so the frame is enriched in the very shape being counted. A corpus-wide rate is not estimated here."
+  },
+  "generated_at_utc": "2026-08-30T00:00:00+00:00",
+  "headline_two_significant_figures": {
+    "detection_rate": 0.15,
+    "f1": 0.19,
+    "flag_precision": 0.7,
+    "metadata_line_share": 0.054,
+    "precision": 0.81,
+    "recall": 0.11
+  },
+  "input_fingerprints": {
+    "detector": {
+      "file": "tools/detect_metadata_blocks.py",
+      "sha256": "fcdc79edc56925bcebeafd5c42a484e3f4e906469684cfe0a32012552c0b9ca1"
+    },
+    "gold_key": {
+      "file": "mb001_gold_key.json",
+      "sha256": "0a6cb0046bdd50ad2345ddc0290c6d61852959995129a741edcd5747b569d864"
+    },
+    "gold_labels": {
+      "file": "mb001_gold_labels.json",
+      "sha256": "3d9d62e2d400e92add2c12f06a6b5452d3777b90c31a34e0473769c3022080a0"
+    }
+  },
+  "interval_coverage": {
+    "inner_draws": 399,
+    "measured": {
+      "chunks_containing_metadata": {
+        "achieved_coverage": 0.89,
+        "misses_entirely_above_truth": 0.012,
+        "misses_entirely_below_truth": 0.098,
+        "simulated_intervals": 500
+      },
+      "detection_rate": {
+        "achieved_coverage": 0.896,
+        "misses_entirely_above_truth": 0.092,
+        "misses_entirely_below_truth": 0.012,
+        "simulated_intervals": 500
+      },
+      "f1": {
+        "achieved_coverage": 0.796,
+        "misses_entirely_above_truth": 0.198,
+        "misses_entirely_below_truth": 0.006,
+        "simulated_intervals": 500
+      },
+      "flag_precision": {
+        "achieved_coverage": 0.966,
+        "misses_entirely_above_truth": 0.02,
+        "misses_entirely_below_truth": 0.014,
+        "simulated_intervals": 500
+      },
+      "metadata_line_share": {
+        "achieved_coverage": 0.764,
+        "misses_entirely_above_truth": 0.008,
+        "misses_entirely_below_truth": 0.228,
+        "simulated_intervals": 500
+      },
+      "precision": {
+        "achieved_coverage": 0.944,
+        "misses_entirely_above_truth": 0.034,
+        "misses_entirely_below_truth": 0.022,
+        "simulated_intervals": 500
+      },
+      "recall": {
+        "achieved_coverage": 0.796,
+        "misses_entirely_above_truth": 0.198,
+        "misses_entirely_below_truth": 0.006,
+        "simulated_intervals": 500
+      }
+    },
+    "method": "plug-in simulation: the observed chunks are treated as the population, a sample of the same stratum sizes is redrawn, this tool's own interval is rebuilt from it, and the share containing the population value is counted",
+    "nominal": 0.95,
+    "note": "the nominal level is not achieved for the cross-stratum metrics; the intervals are reported as percentile intervals with their measured coverage, never as 95 percent intervals",
+    "outer_draws": 500
+  },
+  "label_instruction_conflicts": {
+    "by_category": {
+      "copyright_notice": 1,
+      "structure_marker": 1
+    },
+    "false_positive_lines_matching_an_instruction_non_lyric_category": 2,
+    "note": "reported, never applied: the labels stand exactly as returned. These lines match a category the frozen instructions name as non-lyric but were labelled lyric, so the published precision is a lower bound pending the rater's own re-ruling. The false negatives have not been adjudicated at all",
+    "precision_upper_bound_if_all_were_rater_slips": 0.8405797101449275
+  },
+  "per_stratum": {
+    "detector_negative": {
+      "population_chunks": 12203,
+      "sample_cells": {
+        "abstained": 0,
+        "fn": 10,
+        "fp": 0,
+        "tn": 228,
+        "tp": 0
+      },
+      "sample_line_rates": {
+        "f1": null,
+        "precision": null,
+        "recall": 0.0
+      },
+      "sampled_chunks": 40,
+      "weight_per_chunk": 305.075
+    },
+    "detector_positive": {
+      "population_chunks": 315,
+      "sample_cells": {
+        "abstained": 0,
+        "fn": 75,
+        "fp": 13,
+        "tn": 156,
+        "tp": 56
+      },
+      "sample_line_rates": {
+        "f1": 0.5599999999999999,
+        "precision": 0.8115942028985508,
+        "recall": 0.42748091603053434
+      },
+      "sampled_chunks": 40,
+      "weight_per_chunk": 7.875
+    }
+  },
+  "preconditions_enforced_by_abort": [
+    "labels_collected_against_the_recorded_instruction_sha",
+    "key_instruction_text_hashes_to_its_recorded_digest",
+    "detector_file_unchanged_since_the_labels_were_collected",
+    "sample_drawn_from_the_present_corpus_state",
+    "every_labelled_chunk_matches_its_recorded_line_count",
+    "detector_reproduces_the_output_recorded_at_draw_time"
+  ],
+  "privacy": "aggregate only; no lyric text, titles, source-credit labels, or identifiers",
+  "protocol_id": "MB-001-GOLD-001",
+  "recall_leave_one_out": {
+    "largest_movers": [
+      {
+        "index": 14,
+        "ratio_to_point": 1.7879943231189717,
+        "stratum": "detector_negative",
+        "value": 0.1931487177183543
+      },
+      {
+        "index": 18,
+        "ratio_to_point": 1.1549082883668718,
+        "stratum": "detector_negative",
+        "value": 0.12475937540519685
+      },
+      {
+        "index": 24,
+        "ratio_to_point": 0.9207148348898572,
+        "stratum": "detector_positive",
+        "value": 0.09946054494906202
+      },
+      {
+        "index": 26,
+        "ratio_to_point": 0.9207148348898572,
+        "stratum": "detector_positive",
+        "value": 0.09946054494906202
+      },
+      {
+        "index": 39,
+        "ratio_to_point": 0.9299643106014167,
+        "stratum": "detector_positive",
+        "value": 0.10045972282684096
+      }
+    ],
+    "note": "each row drops one chunk and reweights the rest; a single chunk moving recall by most of its own size is what a short informative-cluster count looks like",
+    "point": 0.10802535288894334
+  },
+  "status": "single_rater_estimate_unvalidated",
+  "unweighted_sample": {
+    "caveat": "sample rates are not frame rates under a stratified design. Precision is identical weighted and unweighted here by construction; recall differs by a factor of about 3.7",
+    "cells": {
+      "abstained": 0,
+      "fn": 85,
+      "fp": 13,
+      "tn": 384,
+      "tp": 56
+    },
+    "f1": 0.5333333333333333,
+    "precision": 0.8115942028985508,
+    "recall": 0.3971631205673759
+  },
+  "version": "2.0.0",
+  "weighted_estimate": {
+    "chunks_containing_metadata": 1440.8,
+    "detection_rate": 0.1530399777901166,
+    "f1": 0.19067178295411558,
+    "flag_precision": 0.7,
+    "metadata_line_share": 0.054453193829293825,
+    "precision": 0.8115942028985508,
+    "recall": 0.10802535288894334
+  }
+}

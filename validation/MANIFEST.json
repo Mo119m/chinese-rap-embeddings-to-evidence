@@ -14,8 +14,8 @@
     },
     {
       "path": ".github/workflows/release-integrity.yml",
-      "bytes": 6856,
-      "sha256": "1903e4c8b071913fe24a7134b0d22c6ee2119935f46483ce6fd3e865cd58b0b3"
+      "bytes": 7277,
+      "sha256": "0f670052eed0b2e4e6f84d87fb124eb4f0c6de4a6c30608bf27c4bf088709b61"
     },
     {
       "path": "README.md",
@@ -154,8 +154,8 @@
     },
     {
       "path": "methods/METADATA_BLOCK_AUDIT_PROTOCOL.md",
-      "bytes": 10076,
-      "sha256": "6931b49b22a42e5bee7d0c4eabc0a53dba74b23bc70d180a0622b68dfa66764f"
+      "bytes": 13933,
+      "sha256": "486c452de1ffaaeed9a96282239a11dcd79aef93cbde95d4fc8ddebd4f5b81f6"
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
@@ -164,8 +164,8 @@
     },
     {
       "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
-      "bytes": 4516,
-      "sha256": "d298f043c072d8941ca4dde54770684a339927a1f118289806d9067eb5c6d518"
+      "bytes": 5562,
+      "sha256": "d30a250681e8b6606f90cc1594983e1fcde2ea50af90ce7da2bf4039228f64c8"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
@@ -189,13 +189,28 @@
     },
     {
       "path": "tools/build_duplicate_review_sheet.py",
-      "bytes": 14004,
-      "sha256": "4af8847c30b4d9313bd4e43bc401616b907c18a58d15cb7166d2f4856d4265d8"
+      "bytes": 17390,
+      "sha256": "1f0dce2c5020d3a97c6589e5a1d8ffd740ea875a77e3045e3b7d68ff67f35b73"
     },
     {
       "path": "tools/build_metadata_gold_sheet.py",
       "bytes": 15472,
       "sha256": "61e9c71242a95b1add948814442a51dee8320ea261e7f73fa6035326ecc92eaa"
+    },
+    {
+      "path": "tools/score_metadata_gold_set.py",
+      "bytes": 30574,
+      "sha256": "1e636146cc9ffe81c126dc8414aa0fd8887b9d121b9201cba910e70343562198"
+    },
+    {
+      "path": "src/gold_set_statistics.py",
+      "bytes": 12320,
+      "sha256": "e34bfe6063798d7bc8edbf6b250da3715427a2031c0da0487e06e54ba0185687"
+    },
+    {
+      "path": "tests/test_gold_set_statistics.py",
+      "bytes": 11966,
+      "sha256": "95a9a4154fcdf2ba9e2602e4638b1f4d6e947ccaeabba4f3e8940fb6d90a2f15"
     },
     {
       "path": "results/ner-v1/released_claim_audit_status.json",
@@ -219,8 +234,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 49446,
-      "sha256": "d86711a39b79c61f0f1b828067cebd7d54235ee6a38c082154dc523c4e9c45fc"
+      "bytes": 49675,
+      "sha256": "425efbf84b159e59237d4521807704410f08c57cfb497eef9281b7ed281bd9ea"
     },
     {
       "path": "src/normalize_public_text_v1.py",
@@ -239,8 +254,8 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 81401,
-      "sha256": "f1fc2af853c7b4c3717a69eb9f7e756cba06fd8fc88f4d79ea909116713a6235"
+      "bytes": 81516,
+      "sha256": "004a574a22d3a47dde798e659c2b2a3be5eb72412a2d93b874b5cb330316cd0b"
     },
     {
       "path": "submission/dsh/MANIFEST.json",

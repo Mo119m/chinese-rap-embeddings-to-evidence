@@ -1,0 +1,6 @@
+kind,detector_rule,instruction_conflict,lines
+false_negative,,,85
+false_positive,bracketed_annotation,structure_marker,1
+false_positive,copyright,copyright_notice,1
+false_positive,name_list,,4
+false_positive,organisation,,7

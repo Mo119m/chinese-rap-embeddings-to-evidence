@@ -137,6 +137,9 @@ CORE_REQUIRED_PATHS = {
     "tests/test_repaired_corpus_v2.py",
     "tools/build_duplicate_review_sheet.py",
     "tools/build_metadata_gold_sheet.py",
+    "tools/score_metadata_gold_set.py",
+    "src/gold_set_statistics.py",
+    "tests/test_gold_set_statistics.py",
 } | {f"results/corpus-reconciliation-v1/{name}" for name in CORPUS_RECONCILIATION_FILES} | {
     f"results/repaired-corpus-v2/{name}" for name in REPAIRED_CORPUS_FILES
 }

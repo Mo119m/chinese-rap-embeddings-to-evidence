@@ -24,7 +24,11 @@ Biographical evidence is inadmissible. An artist's birthplace, hometown, residen
 
 The rater is not told which record the legacy cleaner erased and which it retained. The sides of each comparison are shuffled under a fixed presentation seed, so the queued record appears first in roughly half the cards and the ordering is reproducible without being informative.
 
-The rater is not shown the automatic reason code that put the record in the queue. A ruling that merely ratifies the classifier would add nothing; withholding the code makes the ruling independent of it. The mapping from review ID to reason code is written to a separate key file at generation time, so the rulings can be analysed against the automatic classification afterwards without having been anchored to it beforehand.
+The rater is not shown the automatic reason code, nor whether the v2 primary rule groups the record. A ruling that merely ratifies the classifier would add nothing; withholding the verdict makes the ruling independent of it. The mapping from review ID to reason code is written to a separate key file at generation time, so the rulings can be analysed against the automatic classification afterwards without having been anchored to it beforehand.
+
+Each card does carry a plain structural readout of how the paragraph sets line up -- identical sequence, same set reordered, one contained in the other, or a multi-way overlap with counts. This is a diff of the two panels the rater is already reading, and stating it saves the labour of doing that diff by hand. It is recorded here because it is not costless: the queue's reason codes partition it almost exactly, so a rater who knows this protocol can infer the category. What the readout does not supply is the thing being asked. It says how the text overlaps; it does not say whether that overlap means one recording or two, which is the entire question and the reason these 46 records could not be resolved automatically.
+
+Changing the instruction text or the structural readout changes the frozen instruction hash. Rulings are only ever scored against the hash they were collected under; a sheet regenerated with different wording invalidates nothing already returned, it simply belongs to a different frozen question.
 
 ## Recording
 

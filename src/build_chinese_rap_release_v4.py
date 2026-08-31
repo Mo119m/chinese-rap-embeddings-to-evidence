@@ -51,6 +51,7 @@ PUBLISHABLE_TOOLS = (
 )
 PUBLISHABLE_TESTS = (
     "test_compound_resolution_gate.py",
+    "test_gold_set_statistics.py",
     "test_repaired_corpus_v2.py",
     "test_tools.py",
 )
@@ -422,6 +423,9 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "tests" / "test_repaired_corpus_v2.py",
         ROOT / "tools" / "build_duplicate_review_sheet.py",
         ROOT / "tools" / "build_metadata_gold_sheet.py",
+        ROOT / "tools" / "score_metadata_gold_set.py",
+        ROOT / "src" / "gold_set_statistics.py",
+        ROOT / "tests" / "test_gold_set_statistics.py",
         ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
         ROOT / "src" / "build_ner_released_claim_audit_v1.py",
         ROOT / "src" / "build_repertoire_robustness_inference_v1.py",
@@ -603,6 +607,7 @@ def build_desktop_release(target: Path, validation: dict) -> Path:
         "repertoire-network-v1",
         "corpus-reconciliation-v1",
         "repaired-corpus-v2",
+        "metadata-block-gold-v1",
         "ner-v1",
         "written-rhyme-v1",
     ):
