@@ -165,3 +165,21 @@ This amendment records that the protocol was executed, and reconciles the result
 **The labels are not adjudicated.** Two false-positive lines match categories the frozen instruction text itself names as non-lyric. They are reported as conflicts and the labels stand exactly as returned; only the rater may revise their own labels. Published precision is therefore a lower bound, with the bound published alongside. The false negatives have not been adjudicated at all.
 
 **Not deviations.** The `results/metadata-audit-v1/summary.json` artifact and the 40-block precision worksheet named elsewhere in this file are a different, still-unproduced deliverable. They are not superseded by this amendment and are not recorded as deviations from it.
+
+## Finding MB-001-F1, 31 August 2026: stray song titles are a metadata class of their own
+
+Found while inspecting a PD-002 duplicate-review card, not by any rule in this protocol, and recorded because it changes what the detector's recall figure means.
+
+**The shape.** A chunk whose entire content is one line, and that line is the title of a *different* song under the same source-credit label. It is a scrape artefact: a neighbouring title bleeding into a song's text.
+
+**The size.** Over corpus v2 (7,391 song records), 1,232 records carry at least one such line. Of the 1,291 occurrences, 1,195 sit alone as a whole chunk, 23 sit at a chunk boundary, and 73 sit mid-chunk. The 94% at a boundary or alone is what distinguishes this from a lyrical shout-out: a song naming another song has no reason to do it in a paragraph by itself. The 73 mid-chunk cases are not claimed as artefacts.
+
+Separately, 65 song records consist of exactly one line in total, and for 35 of them that line is the record's own title. Those records carry no lyrics at all.
+
+**The detector sees essentially none of it.** Of the 1,195 whole-chunk cases, MB-001 flags 13 and misses 1,182 — 99%. There is no rule that could catch them: a bare song title is not a role-prefixed credit, not an organisation term, not a bracketed annotation, and not a sample attribution. This is not a tuning failure, it is a missing rule family.
+
+**What it means for the measured recall.** The 0.11 line recall published in `results/metadata-block-gold-v1/` is measured against what one rater labelled metadata in an 80-chunk sample, and stands as measured. This finding says something narrower and worse: an entire contamination class exists that the rule set has no expression for. Adding a title-collision rule is the obvious response, but the resulting detector may not then be scored on the same 80 chunks — that would be fitting to the test set. A fresh sample is required.
+
+**What it means for the corpus.** Those 1,195 chunks are currently in the NER candidate frame as lyric text. A title such as a place name or a language name inside a stray title line is indistinguishable, downstream, from the same string sung in a verse.
+
+**What it does not license.** No line is reclassified on the strength of this finding. The rule that would catch the class is not written here, no count in any published artifact changes, and the gold-set labels stand exactly as the rater returned them.

@@ -154,13 +154,13 @@
     },
     {
       "path": "methods/METADATA_BLOCK_AUDIT_PROTOCOL.md",
-      "bytes": 13933,
-      "sha256": "486c452de1ffaaeed9a96282239a11dcd79aef93cbde95d4fc8ddebd4f5b81f6"
+      "bytes": 16385,
+      "sha256": "f159b8bc422f7ab7cb678d2f5ec5ee1858778dc33aba13470382416b0ec65a25"
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
-      "bytes": 9499,
-      "sha256": "ad2138a2150e33b91c743bca0c0a32e0dbacd225a1b30681a1c0cc32ed8916c2"
+      "bytes": 10520,
+      "sha256": "bd7f311dfc730a3468aaf5dd651fe6d8c5c34682480ed0e8cfb937c2e2355d26"
     },
     {
       "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",

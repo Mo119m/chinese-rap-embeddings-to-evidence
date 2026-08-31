@@ -67,6 +67,14 @@ The replacement rule above is implemented in `src/build_repaired_corpus_v2.py`, 
 
 Rules 1 through 4 are implemented. Rule 5 -- the sensitivities -- is not yet reported, because two of its three strata depend on the 46-record review queue, which is generated under `methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md` but not yet adjudicated. The queue is reproduced at the size published above and is not narrowed by the automatic rule: 12 of the 46 are additionally grouped by the v2 primary stratum, because their exact-sequence twin was itself erased by the legacy rule, and those 12 remain in the queue as a declared sub-stratum.
 
+## Why some records were erased: stray titles
+
+Inspecting the review queue showed a mechanism the reconciliation counts do not name. Where a scrape has bled a neighbouring song's title into a record as a paragraph of its own, two songs under one label come to share that paragraph verbatim. If one of them has no other content, the keep-first rule deletes its only paragraph and the song record disappears — not because it duplicates another recording, but because both records carry the same scrape artefact.
+
+Ten of the forty-six queued records overlap in nothing but such a line. Corpus-wide the shape is common: 1,232 of 7,391 song records carry at least one line that is another same-label title, 1,195 of those occurrences standing alone as a whole chunk. It is recorded in `methods/METADATA_BLOCK_AUDIT_PROTOCOL.md` as finding MB-001-F1.
+
+This does not decide any queued record. Whether a shared title header means one recording or two is the judgement the queue exists to collect, and it stays with the rater.
+
 ## Downstream consequences
 
 - **Retrieval:** V1 remains an internally valid frozen-corpus benchmark. V2 must rebuild the song universe, keep duplicate components together, and rerun paired metrics and intervals.
