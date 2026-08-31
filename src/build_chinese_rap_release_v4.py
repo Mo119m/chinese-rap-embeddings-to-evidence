@@ -425,6 +425,7 @@ def write_release_manifests(validation: dict) -> None:
         ROOT / "tools" / "build_metadata_gold_sheet.py",
         ROOT / "tools" / "score_metadata_gold_set.py",
         ROOT / "tools" / "build_ner_reviewer_sheet.py",
+        ROOT / "tools" / "colab_embed_corpus_v2.py",
         ROOT / "src" / "gold_set_statistics.py",
         ROOT / "tests" / "test_gold_set_statistics.py",
         ROOT / "results" / "ner-v1" / "released_claim_audit_status.json",
