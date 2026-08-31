@@ -1800,6 +1800,15 @@ def build() -> None:
         "abstention": {"operating_points": abstention_rows, "recommended": abstention},
         "auxiliary_MuChin_agreement": auxiliary,
         "public_privacy": "no lyric text, full written lines, song/chunk IDs, memberships, or content hashes",
+        # These two live in the builder, not only in the committed JSON. They were present in
+        # the published artifact and absent from this dict, so a rebuild silently dropped a
+        # withholding statement -- a safeguard that existed only as bytes on disk. Verified by
+        # rebuilding: every other value reproduced, and only these two vanished.
+        "repaired_population_predictive_metrics_retrained": False,
+        "repaired_population_predictive_claim": (
+            "WITHHELD pending duplicate-aware corpus reconstruction, splitting, fitting, and "
+            "evaluation under PD-002"
+        ),
     }
 
     atomic_write_json(PUBLIC_DIR / "analysis_summary.json", analysis_summary)

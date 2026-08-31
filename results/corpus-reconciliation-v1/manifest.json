@@ -4,7 +4,7 @@
     {
       "bytes": 7775,
       "path": "analysis_summary.json",
-      "sha256": "b44e5c7627f035f187088d690f655332151b1f40c7cd1ba9e7ec11c1923c6460"
+      "sha256": "9f886d3b1c9e950bcf4cdf4889739f4493ba459616ac51bce032fa648ff71dd7"
     },
     {
       "bytes": 268,
@@ -64,7 +64,7 @@
     },
     {
       "path": "src/build_chinese_rap_written_rhyme_v1.py",
-      "sha256": "1583f279c3aa224a5b551df7e4bdb8a82a7deccb95db1e0c94b9256fc1d87a2e"
+      "sha256": "e4f4a3c18c6cf7131ace698ab4e05301a438e44c214fd5050d30b432bfedcca6"
     }
   ],
   "status": "pass_with_release_action",
