@@ -168,6 +168,11 @@
       "sha256": "99c3f86bbfd51a096a5fa7b82025472109e98b96b5022513a0818c84881233ee"
     },
     {
+      "path": "methods/MODEL_REPRODUCIBILITY_VERIFICATION.md",
+      "bytes": 4287,
+      "sha256": "0f0f682ed338f6958e106bbffce545e4d16ddcec5468bd5e8c81d592fff7f9c2"
+    },
+    {
       "path": "src/build_corpus_reconciliation_v1.py",
       "bytes": 52018,
       "sha256": "6b34fd620859059002c3caee4ca690cecf923d3cd82ddee3d88ebd29a600f705"
@@ -213,6 +218,11 @@
       "sha256": "c8aa95d5cd3da9e17a205043930ed8ccceb6252e4bf2eaee080709e8486b7dc3"
     },
     {
+      "path": "tools/verify_model_reproducibility.py",
+      "bytes": 10320,
+      "sha256": "008e1ce4b1dda8747998b2fa3dafab2d3a25bba7a52d74dbb188bb3580ccec9a"
+    },
+    {
       "path": "src/gold_set_statistics.py",
       "bytes": 12320,
       "sha256": "e34bfe6063798d7bc8edbf6b250da3715427a2031c0da0487e06e54ba0185687"
@@ -244,8 +254,8 @@
     },
     {
       "path": "src/build_chinese_rap_release_v4.py",
-      "bytes": 49784,
-      "sha256": "cbd629cc0e1f6bef8cd61725f0698aea2c404afd07d786f85a7700d6b9e69f59"
+      "bytes": 49912,
+      "sha256": "f2f28e0188c39f230ed621e438be7c59da106ff348cba5c2b381a84f894a50ea"
     },
     {
       "path": "src/normalize_public_text_v1.py",
@@ -264,8 +274,8 @@
     },
     {
       "path": "src/validate_public_release_integrity_v1.py",
-      "bytes": 81653,
-      "sha256": "bfdb4011a5a57c45e697e4f38537c9c7149818b309075cadf3ac32b05cdd71ad"
+      "bytes": 81751,
+      "sha256": "dd3d88d744a5ee63c31063925e0bcd4e68993dd63b57cdf10ac51d0ea4d8dadf"
     },
     {
       "path": "submission/dsh/MANIFEST.json",

@@ -140,6 +140,8 @@ CORE_REQUIRED_PATHS = {
     "tools/score_metadata_gold_set.py",
     "tools/build_ner_reviewer_sheet.py",
     "tools/colab_embed_corpus_v2.py",
+    "tools/verify_model_reproducibility.py",
+    "methods/MODEL_REPRODUCIBILITY_VERIFICATION.md",
     "src/gold_set_statistics.py",
     "tests/test_gold_set_statistics.py",
 } | {f"results/corpus-reconciliation-v1/{name}" for name in CORPUS_RECONCILIATION_FILES} | {
