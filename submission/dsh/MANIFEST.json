@@ -72,7 +72,7 @@
     {
       "path": "manuscript.docx",
       "bytes": 71364,
-      "sha256": "f8ba2334ad11cb8415cb86281b2580395a6d46b5e29179769cb5a56e98d22584"
+      "sha256": "33a58ba355d9e1ad8d5af872b2ae8ad649bd4b98b8fd010d2ddfb98c72ccc4db"
     },
     {
       "path": "manuscript_preview.pdf",
@@ -82,7 +82,7 @@
     {
       "path": "supplementary_methods.docx",
       "bytes": 45529,
-      "sha256": "ab84c2f94de01634c7e2245b4080efcdbb4dca61b6aecaae2cd1158d6581542f"
+      "sha256": "c1152643001f823061d340c2d99dda402c13be0cb1c8521b1ba53c55427307ed"
     },
     {
       "path": "supplementary_methods_preview.pdf",

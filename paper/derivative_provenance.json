@@ -7,7 +7,7 @@
   "derivatives": {
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": {
       "built_from": "paper/manuscript.md",
-      "sha256": "4a048ce7deb186a0ce0387c75f3d526065d7c10cf36aef2d90b3ddb504565f17"
+      "sha256": "d8ffec04a02f7aa4567081fe2c3d85e963629fae5b479b554355aa55e5aa727a"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": {
       "built_from": "paper/manuscript.md",
@@ -15,7 +15,7 @@
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx": {
       "built_from": "paper/manuscript.md",
-      "sha256": "f8ba2334ad11cb8415cb86281b2580395a6d46b5e29179769cb5a56e98d22584"
+      "sha256": "33a58ba355d9e1ad8d5af872b2ae8ad649bd4b98b8fd010d2ddfb98c72ccc4db"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf": {
       "built_from": "paper/manuscript.md",
@@ -23,7 +23,7 @@
     },
     "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx": {
       "built_from": "paper/supplementary_methods.md",
-      "sha256": "ab84c2f94de01634c7e2245b4080efcdbb4dca61b6aecaae2cd1158d6581542f"
+      "sha256": "c1152643001f823061d340c2d99dda402c13be0cb1c8521b1ba53c55427307ed"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf": {
       "built_from": "paper/supplementary_methods.md",
@@ -31,7 +31,7 @@
     },
     "submission/dsh/manuscript.docx": {
       "built_from": "paper/manuscript.md",
-      "sha256": "f8ba2334ad11cb8415cb86281b2580395a6d46b5e29179769cb5a56e98d22584"
+      "sha256": "33a58ba355d9e1ad8d5af872b2ae8ad649bd4b98b8fd010d2ddfb98c72ccc4db"
     },
     "submission/dsh/manuscript_preview.pdf": {
       "built_from": "paper/manuscript.md",
@@ -39,7 +39,7 @@
     },
     "submission/dsh/supplementary_methods.docx": {
       "built_from": "paper/supplementary_methods.md",
-      "sha256": "ab84c2f94de01634c7e2245b4080efcdbb4dca61b6aecaae2cd1158d6581542f"
+      "sha256": "c1152643001f823061d340c2d99dda402c13be0cb1c8521b1ba53c55427307ed"
     },
     "submission/dsh/supplementary_methods_preview.pdf": {
       "built_from": "paper/supplementary_methods.md",

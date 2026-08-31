@@ -55,7 +55,7 @@
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx",
       "bytes": 1407235,
-      "sha256": "4a048ce7deb186a0ce0387c75f3d526065d7c10cf36aef2d90b3ddb504565f17"
+      "sha256": "d8ffec04a02f7aa4567081fe2c3d85e963629fae5b479b554355aa55e5aa727a"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf",
@@ -65,7 +65,7 @@
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
       "bytes": 71364,
-      "sha256": "f8ba2334ad11cb8415cb86281b2580395a6d46b5e29179769cb5a56e98d22584"
+      "sha256": "33a58ba355d9e1ad8d5af872b2ae8ad649bd4b98b8fd010d2ddfb98c72ccc4db"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf",
@@ -75,7 +75,7 @@
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx",
       "bytes": 45529,
-      "sha256": "ab84c2f94de01634c7e2245b4080efcdbb4dca61b6aecaae2cd1158d6581542f"
+      "sha256": "c1152643001f823061d340c2d99dda402c13be0cb1c8521b1ba53c55427307ed"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf",
@@ -265,12 +265,12 @@
     {
       "path": "submission/dsh/MANIFEST.json",
       "bytes": 2882,
-      "sha256": "82d38def67682423c84e53d7771709038bbca412b956dc897a35c5fdf6fa1511"
+      "sha256": "ea82c82f1914e0d83344838270627920ba9015e7e4987cabe4354020cb3b409b"
     },
     {
       "path": "validation/release_validation.json",
       "bytes": 4982,
-      "sha256": "3ab54eca17f1518f59ff75acff6c275d6c9f389967722aa1802d0d44eb6ca7f6"
+      "sha256": "c4504e440a2a1eb5d7ca5f8b655d70545e8a6895528ec4bdb859f7e0e60a8c76"
     },
     {
       "path": "validation/standalone_site_validation.json",
