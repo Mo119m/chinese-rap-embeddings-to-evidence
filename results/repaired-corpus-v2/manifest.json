@@ -2,9 +2,9 @@
   "artifact_id": "chinese-rap-repaired-corpus-v2",
   "files": [
     {
-      "bytes": 6567,
+      "bytes": 6885,
       "path": "analysis_summary.json",
-      "sha256": "2c88e492b3dacab5b175f565f2ab926b9f3d265872ca98cd88a17a2ed31c6773"
+      "sha256": "ccc5bbd6bbe220691421953eb156c9b008dabbccac07fa0540ab2b4813b4b52c"
     },
     {
       "bytes": 200,
@@ -46,7 +46,7 @@
   "software": [
     {
       "path": "src/build_repaired_corpus_v2.py",
-      "sha256": "cbe907f3913498d6e6c33045108bad46fd1069f8426db6d8e7c1bf8ccbf2c55f"
+      "sha256": "fff2d48573e1891bf9b6213a6ce889bcde39e6d3a2b191fd4e1a3e35f0c045a8"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",

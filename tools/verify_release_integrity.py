@@ -120,12 +120,41 @@ def claims_in(path: Path):
                     yield rel, f"{key} -> {target}", "OK" if holder[key] == sha256(target) else "BAD_SHA"
 
 
+# A provenance table states a file's SHA-256 in prose, not in JSON. Scanning only *.json
+# left four such claims unchecked, two of which had gone stale against files that are in
+# this repository -- and the run still printed "all in-repository claims verified".
+MARKDOWN_ROW = re.compile(
+    r"^\|\s*`([^`]+)`\s*\|.*?\|\s*`([0-9a-f]{64})`\s*\|\s*$", re.M)
+PRIVATE_PREFIXES = ("outputs/", "work/")
+
+
+def markdown_claims_in(path: Path):
+    """Checksum claims written as a table row: | `target` | note | `sha256` |"""
+    rel = path.relative_to(ROOT).as_posix()
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    for target, claimed in MARKDOWN_ROW.findall(text):
+        target = target.strip()
+        if target.startswith(PRIVATE_PREFIXES):
+            # names a private build input; this tool verifies a repository checkout
+            yield rel, target, "EXTERNAL"
+            continue
+        resolved = ROOT / target
+        if not resolved.is_file():
+            yield rel, target, "EXTERNAL"
+            continue
+        yield rel, target, "OK" if claimed == sha256(resolved) else "BAD_SHA"
+
+
 def main() -> int:
     results = set()
     for path in sorted(ROOT.rglob("*.json")):
         if ".git" in path.parts or "node_modules" in path.parts:
             continue
         results.update(claims_in(path))
+    for path in sorted(ROOT.rglob("*.md")):
+        if ".git" in path.parts or "node_modules" in path.parts:
+            continue
+        results.update(markdown_claims_in(path))
 
     tally = Counter(kind for _, _, kind in results)
     print(f"checksum claims: {len(results)}")

@@ -49,38 +49,38 @@
     },
     {
       "path": "paper/manuscript.md",
-      "bytes": 69130,
-      "sha256": "c666b3e8a49f6ed51f59e48d97418387fdb7b421d5ca51ca22aa8c559b6a9f85"
+      "bytes": 69172,
+      "sha256": "d50000cece01040c1703aa4e9d69f44dfefa99fe604fde3a7f59433542c48db3"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx",
-      "bytes": 1407235,
-      "sha256": "d8ffec04a02f7aa4567081fe2c3d85e963629fae5b479b554355aa55e5aa727a"
+      "bytes": 1407259,
+      "sha256": "58db934435bd7c26d68287a3989c86e0030ff187fc10b0e2a7b79147a1669253"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf",
-      "bytes": 943213,
-      "sha256": "b62c5604445b3723be75e2692de757297587d5d46b1fc278ee1945fd5ab96e85"
+      "bytes": 943858,
+      "sha256": "a6f197999819f3bf1fc0ea86b8b796acc1f3383dcf486e834cb178ed33600389"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
-      "bytes": 71364,
-      "sha256": "33a58ba355d9e1ad8d5af872b2ae8ad649bd4b98b8fd010d2ddfb98c72ccc4db"
+      "bytes": 71441,
+      "sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf",
-      "bytes": 431680,
-      "sha256": "693fdeed65720426f8710912ffe6224d1269c4b8c41932e667bbbe7b4fe3abc0"
+      "bytes": 433633,
+      "sha256": "fe84991dd6e746dfdcd87e3953c38cf940b201837f0d468470fc356317a04eea"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx",
-      "bytes": 45529,
-      "sha256": "c1152643001f823061d340c2d99dda402c13be0cb1c8521b1ba53c55427307ed"
+      "bytes": 45550,
+      "sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe"
     },
     {
       "path": "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf",
-      "bytes": 218262,
-      "sha256": "cb48a6f5f4583cafa852be1de31cb6a1a79f24342bcb83837145d44f67034322"
+      "bytes": 218746,
+      "sha256": "945b9fcbbf9c91118a88a8fa0bd366e87c9decf1b0f46d952bde3df2efd94283"
     },
     {
       "path": "figures/journal_figure_validation.json",
@@ -159,8 +159,8 @@
     },
     {
       "path": "methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md",
-      "bytes": 12241,
-      "sha256": "cd4ba210445bb177c2809f7b0a4f237f68f95fe1c5fb9d5125a7341376b0ab41"
+      "bytes": 12684,
+      "sha256": "77e31615a662a8c5151322d1f07175785c223897fd56f83a658a858d8fa7d723"
     },
     {
       "path": "methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md",
@@ -179,13 +179,13 @@
     },
     {
       "path": "src/build_repaired_corpus_v2.py",
-      "bytes": 30190,
-      "sha256": "cbe907f3913498d6e6c33045108bad46fd1069f8426db6d8e7c1bf8ccbf2c55f"
+      "bytes": 30951,
+      "sha256": "fff2d48573e1891bf9b6213a6ce889bcde39e6d3a2b191fd4e1a3e35f0c045a8"
     },
     {
       "path": "src/duplicate_control_v2.py",
-      "bytes": 13000,
-      "sha256": "b9a231151109740f067f4b0bf158f82ab1d2e749d879c51fba221ee863682b49"
+      "bytes": 14331,
+      "sha256": "2719e3758d3ca95fcccf05c19b37717024cb2fabe4cf83c6184202de3d4318c6"
     },
     {
       "path": "tests/test_repaired_corpus_v2.py",
@@ -280,12 +280,12 @@
     {
       "path": "submission/dsh/MANIFEST.json",
       "bytes": 2882,
-      "sha256": "ea82c82f1914e0d83344838270627920ba9015e7e4987cabe4354020cb3b409b"
+      "sha256": "1363a3b983071a96f95ed86bc6a33bfc50b66145660603ff77fde4ffa7795002"
     },
     {
       "path": "validation/release_validation.json",
       "bytes": 4982,
-      "sha256": "c4504e440a2a1eb5d7ca5f8b655d70545e8a6895528ec4bdb859f7e0e60a8c76"
+      "sha256": "bcee915da45bfb706b65c8525ba2cc9acf42754de6adbe3a213d52c3cc5772eb"
     },
     {
       "path": "validation/standalone_site_validation.json",
@@ -404,8 +404,8 @@
     },
     {
       "path": "results/repaired-corpus-v2/analysis_summary.json",
-      "bytes": 6567,
-      "sha256": "2c88e492b3dacab5b175f565f2ab926b9f3d265872ca98cd88a17a2ed31c6773"
+      "bytes": 6885,
+      "sha256": "ccc5bbd6bbe220691421953eb156c9b008dabbccac07fa0540ab2b4813b4b52c"
     },
     {
       "path": "results/repaired-corpus-v2/corpus_stage_counts.csv",
@@ -420,7 +420,7 @@
     {
       "path": "results/repaired-corpus-v2/manifest.json",
       "bytes": 2066,
-      "sha256": "9678ae816e3ff7f1434e2d19ef5e67d07040a4ee66d3b37b520ee7a0a5c06d32"
+      "sha256": "fdbcfd13141c308d7fa2ccf09b96ee3d6dbbbc066457467854a7c9641cc68e39"
     },
     {
       "path": "results/repaired-corpus-v2/review_queue_by_reason.csv",

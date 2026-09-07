@@ -113,7 +113,7 @@
   "software_fingerprints": [
     {
       "path": "src/build_repaired_corpus_v2.py",
-      "sha256": "cbe907f3913498d6e6c33045108bad46fd1069f8426db6d8e7c1bf8ccbf2c55f"
+      "sha256": "fff2d48573e1891bf9b6213a6ce889bcde39e6d3a2b191fd4e1a3e35f0c045a8"
     },
     {
       "path": "src/build_corpus_reconciliation_v1.py",
@@ -136,7 +136,6 @@
       "song_records_in_multi_song_components": 2165,
       "text_components": 6025
     },
-    "chunks_flagged": 1195,
     "consequence_if_ignored": "the leakage unit is coarser than the text warrants, and the component weighting penalises genuinely distinct songs for carrying an export artefact",
     "if_stray_titles_were_not_treated_as_shared_text": {
       "largest_text_component_songs": 25,
@@ -144,6 +143,8 @@
       "song_records_in_multi_song_components": 1999,
       "text_components": 6152
     },
+    "line_occurrences_anywhere_in_a_chunk": 1291,
+    "song_records_carrying_at_least_one": 1232,
     "songs_down_weighted_only_by_a_stray_title": 81,
     "status": "reported, not applied",
     "their_weights": {
@@ -152,7 +153,9 @@
       "min": 0.1111111111111111
     },
     "what_it_is": "a chunk whose whole content is one line, and that line is a different song's title under the same source-credit label -- a scrape bleeding a neighbouring title into a record, not text the two songs share",
-    "why_not_applied": "the detection rule is a heuristic written after inspecting the review queue, it has not been adjudicated, and the corpus is not altered on the strength of one. Whether these chunks should be excluded from component linking is a cleaning-policy decision, and it belongs with the author alongside the duplicate review queue"
+    "whole_chunk_occurrences": 1195,
+    "why_not_applied": "the detection rule is a heuristic written after inspecting the review queue, it has not been adjudicated, and the corpus is not altered on the strength of one. Whether these chunks should be excluded from component linking is a cleaning-policy decision, and it belongs with the author alongside the duplicate review queue",
+    "why_three_counts": "only the whole-chunk case unions two songs into one text component, so it is the one the weighting rule reacts to; the line-level counts describe how widespread the scrape artefact is"
   },
   "version": "2.0.0",
   "withheld_claim": "that the duplicate groups establish real-world work identity, reissue status, authorship, or performer identity; that any downstream predictive metric is stable under the repair, since no model has been retrained on this population; and that the published component structure is entirely text reuse -- see stray_title_sensitivity, part of it is a scrape artefact"

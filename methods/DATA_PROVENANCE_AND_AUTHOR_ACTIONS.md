@@ -22,8 +22,8 @@
 | `outputs/chinese-rap-downstream-input-audit-v1/input_manifest.json` | Exact private input files and hashes used by the downstream audit | `52abc68a887b7faa52bc3d81c4396d57b7601eed53b1d79466aead05af92c1e0` |
 | `outputs/chinese-rap-corpus-quality-v1/manifest.json` | Private-content classification, four approved title overrides, and missing track-level URL/stable-ID limitation | `265708db6d66a5359f7a085657a02944fed0d9af1f070f70b9ad73e22ae7d07e` |
 | `work/data-drop/canonical-corpus-evidence-v1/approved_identity_overrides.csv` | Four approved, evidence-backed title-field decisions | `8a315bea65ef2316ba83f73b3f73e4de63e4c0cb98f6d0274004310255c4ec62` |
-| `results/corpus-reconciliation-v1/analysis_summary.json` | Aggregate reconstruction of the legacy 7,214-song/22,132-chunk cleaner output, duplicate-loss diagnostics, task-aligned rhyme sensitivity, Drive-comparison boundary, and outstanding release action | `b44e5c7627f035f187088d690f655332151b1f40c7cd1ba9e7ec11c1923c6460` |
-| `methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md` | Post-freeze amendment separating legacy chunk deletion from duplicate-aware song/component control | `0e3676259f0caa7f3564dd2147be8c442eda4834a6a205851b29741bfac34270` |
+| `results/corpus-reconciliation-v1/analysis_summary.json` | Aggregate reconstruction of the legacy 7,214-song/22,132-chunk cleaner output, duplicate-loss diagnostics, task-aligned rhyme sensitivity, Drive-comparison boundary, and outstanding release action | `9f886d3b1c9e950bcf4cdf4889739f4493ba459616ac51bce032fa648ff71dd7` |
+| `methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md` | Post-freeze amendment separating legacy chunk deletion from duplicate-aware song/component control | `77e31615a662a8c5151322d1f07175785c223897fd56f83a658a858d8fa7d723` |
 
 Passing these local audits establishes structural lineage and the stated exception counts. It does **not** establish original acquisition provenance, legal permission, ethical approval, representativeness, or universal metadata accuracy.
 

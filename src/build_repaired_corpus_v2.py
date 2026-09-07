@@ -50,6 +50,7 @@ from duplicate_control_v2 import (
     corpus_content_sha256,
     normalise_title,
     stray_title_chunks,
+    stray_title_lines,
     strip_del,
 )
 
@@ -227,6 +228,9 @@ def build(args: argparse.Namespace) -> None:
     # exactly as a shared verse does, and the weighting rule then divides weight between songs
     # that have nothing in common but an export error.
     stray = set(stray_title_chunks(chunk_rows, records))
+    # the wider shape: the same bled title inside a multi-line chunk, which does not union
+    # two components but is still not this song's text. The amendment states both counts.
+    stray_lines = stray_title_lines(chunk_rows, records)
     without_stray = [row for index, row in enumerate(chunk_rows) if index not in stray]
     stray_records = build_song_records(without_stray)
     stray_component_of, stray_membership, _ = assign_text_components(
@@ -435,7 +439,15 @@ def build(args: argparse.Namespace) -> None:
                 "title under the same source-credit label -- a scrape bleeding a neighbouring "
                 "title into a record, not text the two songs share"
             ),
-            "chunks_flagged": len(stray),
+            "whole_chunk_occurrences": len(stray),
+            "line_occurrences_anywhere_in_a_chunk": len(stray_lines),
+            "song_records_carrying_at_least_one": len(
+                {chunk_rows[index]["song_id"] for index, _ in stray_lines}),
+            "why_three_counts": (
+                "only the whole-chunk case unions two songs into one text component, so it is "
+                "the one the weighting rule reacts to; the line-level counts describe how "
+                "widespread the scrape artefact is"
+            ),
             "as_published": {
                 "text_components": len(component_membership),
                 "multi_song_components": len(multi_song_components),

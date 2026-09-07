@@ -187,6 +187,35 @@ def stray_title_chunks(rows, records):
     return flagged
 
 
+def stray_title_lines(rows, records):
+    """Every line that is another same-label song's title, wherever it sits.
+
+    ``stray_title_chunks`` counts only the case where such a line is the whole chunk, because
+    that is the case that unions two songs into one text component. The shape is wider than
+    that: the same bled title can sit inside a multi-line chunk, where it does not affect the
+    component structure but is still not this song's text.
+
+    Reported separately so the two counts cannot be confused. Returns (row index, line index)
+    pairs, so a caller can count occurrences and the song records carrying them.
+    """
+    titles = defaultdict(set)
+    for song_id, record in records.items():
+        titles[record["label"]].add(normalise_title(record["title"]))
+    flagged = []
+    for index, row in enumerate(rows):
+        record = records.get(str(row["song_id"]))
+        if record is None:
+            continue
+        others = titles[record["label"]] - {normalise_title(record["title"])}
+        for line_index, line in enumerate(str(row["text"]).split(chr(10))):
+            if not line.strip():
+                continue
+            normalised = normalise_title(line)
+            if len(normalised) >= 6 and normalised in others:
+                flagged.append((index, line_index))
+    return flagged
+
+
 def component_weights(
     records: Mapping[str, Mapping[str, Any]], component_of: Mapping[str, str]
 ) -> dict[str, float]:
