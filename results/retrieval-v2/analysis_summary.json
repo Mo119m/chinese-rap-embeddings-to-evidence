@@ -1,0 +1,225 @@
+{
+  "artifact_id": "chinese-rap-downstream-retrieval-v2",
+  "bootstrap": {
+    "design": "paired two-stage cluster resample: labels drawn with replacement, then components within each drawn label, applied to every system at once so system differences stay comparable",
+    "replicates": 5000,
+    "within_label_component_units": 6902
+  },
+  "claim_boundary": "Held-out-song retrieval of corpus source-credit-label lyrical repertoire similarity; not artist identification, biography, influence, collaboration, genre, social relation, or a human semantic-similarity gold standard.",
+  "corpus": {
+    "chunks": 25026,
+    "content_sha256": "8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b",
+    "eligible_labels": 226,
+    "minimum_songs_per_label": 5,
+    "queries_after_length_filter": 7236,
+    "song_records": 7391
+  },
+  "duplicate_control": "Represented, not enacted by deletion. v1 removed chunks whose exact cleaned text occurred under more than one source-credit label; every chunk is retained here and the grouping carries the control, per PD-002's replacement rule.",
+  "embeddings": {
+    "configuration": {
+      "batch_size": 8,
+      "block_size": 512,
+      "blocks_retried_at_batch_size_2_after_oom": [],
+      "corpus_content_sha256": "8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b",
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "max_length": 2048,
+      "order": "corpus source order, not length-sorted",
+      "single_configuration_enforced_by": "run_config.json pinned to the checkpoint directory; a resume under any different device, precision, GPU, weights or corpus is refused rather than merged",
+      "use_fp16": true,
+      "weights_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38"
+    },
+    "contract_version": "chinese-rap-repaired-corpus-embeddings-v2/1.0.0",
+    "sha256": "247e961918c5d8c3f13967e8a882e2df2222ca1d452c72bd681665db41e51da1"
+  },
+  "leakage_unit": {
+    "ablations": "each half of the union is scored alone, because neither half contains the other: 404 of 799 multi-song components would be split by the document rule, and 44 near-duplicate pairs share no component",
+    "groups": 5888,
+    "labels": 226,
+    "largest_group_songs": 27,
+    "median_groups_in_a_label": 33,
+    "minimum_groups_in_a_label": 5,
+    "multi_song_groups": 798,
+    "rule": "connected components of (shares a corpus v2 exact-text component) union (whole-song trigram Jaccard >= 0.80)",
+    "songs": 7236,
+    "text_components_split_across_groups": 0
+  },
+  "metrics": {
+    "BGE-M3 dense": {
+      "mrr": {
+        "interval_high": 0.32635697973421257,
+        "interval_low": 0.27741374382233747,
+        "point": 0.30120716938655073
+      },
+      "ndcg_at_10": {
+        "interval_high": 0.3570008670486635,
+        "interval_low": 0.3065326703793985,
+        "point": 0.33085785267109774
+      },
+      "recall_at_1": {
+        "interval_high": 0.23669671488634383,
+        "interval_low": 0.18728425431427329,
+        "point": 0.211233860726786
+      },
+      "recall_at_10": {
+        "interval_high": 0.5076681697603371,
+        "interval_low": 0.44889784619379414,
+        "point": 0.4773836493551348
+      },
+      "recall_at_5": {
+        "interval_high": 0.4106789149135597,
+        "interval_low": 0.35252584909830964,
+        "point": 0.3806446159816646
+      }
+    },
+    "character 2-5 gram TF-IDF": {
+      "mrr": {
+        "interval_high": 0.4318055529220942,
+        "interval_low": 0.36625606395813065,
+        "point": 0.39815660102625505
+      },
+      "ndcg_at_10": {
+        "interval_high": 0.46062294135100257,
+        "interval_low": 0.3928723749062968,
+        "point": 0.4262498761220239
+      },
+      "recall_at_1": {
+        "interval_high": 0.3493785039374387,
+        "interval_low": 0.28301668855518036,
+        "point": 0.3151439910238114
+      },
+      "recall_at_10": {
+        "interval_high": 0.5928265795051532,
+        "interval_low": 0.5172840831683171,
+        "point": 0.5552415102995695
+      },
+      "recall_at_5": {
+        "interval_high": 0.5159045523554937,
+        "interval_low": 0.44062237558017925,
+        "point": 0.47809932975067115
+      }
+    },
+    "equal-weight z-score fusion": {
+      "mrr": {
+        "interval_high": 0.4581310685176015,
+        "interval_low": 0.3961359984080161,
+        "point": 0.4266071103522329
+      },
+      "ndcg_at_10": {
+        "interval_high": 0.4890269436249294,
+        "interval_low": 0.4257151632254441,
+        "point": 0.4570041737977254
+      },
+      "recall_at_1": {
+        "interval_high": 0.3737737210145197,
+        "interval_low": 0.3099496605253161,
+        "point": 0.3407311946459281
+      },
+      "recall_at_10": {
+        "interval_high": 0.6265003155512797,
+        "interval_low": 0.5583613464853988,
+        "point": 0.5922437239549281
+      },
+      "recall_at_5": {
+        "interval_high": 0.5469890856185712,
+        "interval_low": 0.47837065297122244,
+        "point": 0.5127211629146756
+      }
+    },
+    "fusion, component half of the guard removed": {
+      "mrr": {
+        "interval_high": 0.4569841269539523,
+        "interval_low": 0.3955990013743602,
+        "point": 0.4259396658949601
+      },
+      "ndcg_at_10": {
+        "interval_high": 0.48883885039534036,
+        "interval_low": 0.42596922330664594,
+        "point": 0.45707191307136075
+      },
+      "recall_at_1": {
+        "interval_high": 0.3695970696694496,
+        "interval_low": 0.3071185131979619,
+        "point": 0.33757887200869396
+      },
+      "recall_at_10": {
+        "interval_high": 0.6282695419265518,
+        "interval_low": 0.5606461479970648,
+        "point": 0.594467366122555
+      },
+      "recall_at_5": {
+        "interval_high": 0.5487475777108544,
+        "interval_low": 0.48145736585769794,
+        "point": 0.5151876602090438
+      }
+    },
+    "fusion, near-duplicate half of the guard removed": {
+      "mrr": {
+        "interval_high": 0.45938637150555284,
+        "interval_low": 0.39806756941779353,
+        "point": 0.4284750143583485
+      },
+      "ndcg_at_10": {
+        "interval_high": 0.49042396657836307,
+        "interval_low": 0.4275682484146944,
+        "point": 0.4584895035260932
+      },
+      "recall_at_1": {
+        "interval_high": 0.37527016165148275,
+        "interval_low": 0.3122259869410264,
+        "point": 0.34271779211720155
+      },
+      "recall_at_10": {
+        "interval_high": 0.6265608454535613,
+        "interval_low": 0.5584419459648119,
+        "point": 0.5926152261224471
+      },
+      "recall_at_5": {
+        "interval_high": 0.5488511181837485,
+        "interval_low": 0.48049843064346653,
+        "point": 0.5148796328132212
+      }
+    },
+    "raw-score equal fusion (score-scale ablation)": {
+      "mrr": {
+        "interval_high": 0.45376553067296066,
+        "interval_low": 0.3914870008145798,
+        "point": 0.42209205575272013
+      },
+      "ndcg_at_10": {
+        "interval_high": 0.4851621239620018,
+        "interval_low": 0.42126246325625866,
+        "point": 0.4527485307196911
+      },
+      "recall_at_1": {
+        "interval_high": 0.3692543828325952,
+        "interval_low": 0.30495939358828633,
+        "point": 0.33617342824641916
+      },
+      "recall_at_10": {
+        "interval_high": 0.6232580473499509,
+        "interval_low": 0.5547358037146268,
+        "point": 0.5886280856639832
+      },
+      "recall_at_5": {
+        "interval_high": 0.5421813269018697,
+        "interval_low": 0.47301631930979315,
+        "point": 0.5073001605979615
+      }
+    }
+  },
+  "not_comparable_to": "results/retrieval-v1. The corpus population differs (25,026 chunks over 7,391 song records against 22,132 over 7,214), and the v1 vectors were produced under a device and precision that were never recorded and that the configuration probe established cannot be identified. These numbers replace the v1 numbers; no difference between them may be reported as an effect.",
+  "privacy": "aggregate only; no lyric text, song or chunk identifiers, or vectors",
+  "reused_from_v1_builder": [
+    "fit_tfidf",
+    "score_leave_group_out",
+    "rank_system",
+    "metrics_from_ranks",
+    "component_metric_values",
+    "run_bootstrap",
+    "zscore_rows",
+    "l2_normalize_dense"
+  ],
+  "seed": 20260825,
+  "version": "2.0.0"
+}
