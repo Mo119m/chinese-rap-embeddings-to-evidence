@@ -1,0 +1,26 @@
+{
+  "how_this_is_verified": "The converter writes a creation timestamp and a document id, so PDF bytes differ between two conversions of one DOCX and cannot be pinned. The extracted text and page count do reproduce, and are what is recorded here.",
+  "pdfs": {
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": {
+      "pages": 38,
+      "source_docx": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx",
+      "source_docx_sha256": "58db934435bd7c26d68287a3989c86e0030ff187fc10b0e2a7b79147a1669253",
+      "text_characters": 68223,
+      "text_sha256": "2dbbd81eac70bf254ca36db2bd645122851179788947e4f245c91453f1edcf63"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf": {
+      "pages": 36,
+      "source_docx": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
+      "source_docx_sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e",
+      "text_characters": 68269,
+      "text_sha256": "572b5281f1ef0c8f7f65acd8c97001f351a51ed65a8dc31963137a1c1b8d9f17"
+    },
+    "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf": {
+      "pages": 7,
+      "source_docx": "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx",
+      "source_docx_sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe",
+      "text_characters": 13522,
+      "text_sha256": "2f457588e509ffb49a61154e62d8e78f8b6bb5a093932358e6a0df4ab2ed6e59"
+    }
+  }
+}

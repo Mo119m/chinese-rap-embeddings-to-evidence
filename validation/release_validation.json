@@ -86,11 +86,11 @@
     "application_data_sha256": "fb65ce00d1d188a4c3b2ec7f5b0a2ed2283c456fb590306e5062bde82e314c27",
     "manuscript_markdown_sha256": "d50000cece01040c1703aa4e9d69f44dfefa99fe604fde3a7f59433542c48db3",
     "review_manuscript_docx_sha256": "58db934435bd7c26d68287a3989c86e0030ff187fc10b0e2a7b79147a1669253",
-    "review_manuscript_pdf_sha256": "a6f197999819f3bf1fc0ea86b8b796acc1f3383dcf486e834cb178ed33600389",
+    "review_manuscript_pdf_sha256": "1a155b98e8a111c106397d002d7768a4f688ecab6da2e31a17562c48c97a6757",
     "dsh_manuscript_docx_sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e",
-    "dsh_manuscript_pdf_sha256": "fe84991dd6e746dfdcd87e3953c38cf940b201837f0d468470fc356317a04eea",
+    "dsh_manuscript_pdf_sha256": "5538464774371345e6db95d3106bb1ef30d0062c48ac56cc9a7f58d9a8574846",
     "supplement_docx_sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe",
-    "supplement_pdf_sha256": "945b9fcbbf9c91118a88a8fa0bd366e87c9decf1b0f46d952bde3df2efd94283",
+    "supplement_pdf_sha256": "cbfc8a7ffab307102214671354853013bee4fc55afcbd8c265e0c07923e4e8d6",
     "journal_figure_validation_sha256": "6cea21ec443946ce74f8a3ca3f45ce630b3b850782a29ec07f25bbb39372c2d5"
   }
 }
