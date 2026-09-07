@@ -204,8 +204,8 @@
     },
     {
       "path": "tools/score_metadata_gold_set.py",
-      "bytes": 30574,
-      "sha256": "1e636146cc9ffe81c126dc8414aa0fd8887b9d121b9201cba910e70343562198"
+      "bytes": 30588,
+      "sha256": "d9de619df84ccbea6019d5e80054f17cbf9c5eae9458e222be99cd052b7a02a8"
     },
     {
       "path": "tools/build_ner_reviewer_sheet.py",
@@ -214,8 +214,8 @@
     },
     {
       "path": "tools/colab_embed_corpus_v2.py",
-      "bytes": 13754,
-      "sha256": "c8aa95d5cd3da9e17a205043930ed8ccceb6252e4bf2eaee080709e8486b7dc3"
+      "bytes": 14542,
+      "sha256": "02f615febbf0db1bc1c525066ba9a546b16e1808e9e92c9e1aae405ef023796e"
     },
     {
       "path": "tools/verify_model_reproducibility.py",

@@ -488,9 +488,6 @@ def build(args: argparse.Namespace) -> None:
     ]
     checks = [
         {"name": "all_sampled_chunks_labelled", "passed": not missing},
-        {"name": "line_index_verification_exercised_or_not_applicable",
-         "passed": True, "detail": "index form present" if index_form_seen
-         else "labels submitted as plain arrays; indices verified against recorded line counts"},
         {"name": "both_strata_contribute_scored_lines",
          "passed": all(sum(v for k, v in st["sample_cells"].items() if k != "abstained") > 0
                        for st in summary["per_stratum"].values())},
@@ -509,6 +506,10 @@ def build(args: argparse.Namespace) -> None:
         {"name": "independent_human_review_still_pending",
          "passed": summary["attribution"]["independent_human_review_status"] == "pending"},
     ]
+    summary["label_form_observed"] = (
+        "index form present" if index_form_seen
+        else "labels submitted as plain arrays; the line count of every chunk is checked "
+             "against its recorded count before scoring, and a mismatch aborts")
     summary["checks_computed_from_the_labels"] = checks
     summary["status"] = ("single_rater_estimate_unvalidated"
                          if all(c["passed"] for c in checks) else "fail")

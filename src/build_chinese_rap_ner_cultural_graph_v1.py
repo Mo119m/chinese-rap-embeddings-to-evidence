@@ -145,6 +145,30 @@ REVIEW_FIELDS = [
 ]
 
 
+
+def _numeric_accuracy_keys(node, path=""):
+    """Field names anywhere in the summary that publish an accuracy number.
+
+    The guarantee is that this artifact ships no precision, recall or F-measure while human
+    occurrence gold is incomplete. Asserting that from a flag the same builder just wrote is
+    circular -- it restates an intention rather than checking the output. This reads the
+    structure that is actually about to be published.
+    """
+    names = ("precision", "recall", "f1", "f_measure", "fmeasure", "accuracy")
+    found = []
+    if isinstance(node, dict):
+        for key, value in node.items():
+            here = f"{path}/{key}"
+            if (isinstance(value, (int, float)) and not isinstance(value, bool)
+                    and any(n in key.lower() for n in names)):
+                found.append(here)
+            found.extend(_numeric_accuracy_keys(value, here))
+    elif isinstance(node, list):
+        for index, value in enumerate(node):
+            found.extend(_numeric_accuracy_keys(value, f"{path}[{index}]"))
+    return found
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--chunks", type=Path, default=DEFAULT_CHUNKS)
@@ -1983,7 +2007,11 @@ def validate_public(
     released_status_frames = [entities, source_links, co_mentions, network_edges]
     eligible_label_ids = set(graph_universe["source_label_id"])
     checks = [
-        {"name": "no_completed_human_gold_claim", "passed": summary["human_gold_available"] is False},
+        # not `human_gold_available is False`, which read back a literal this builder had
+        # just written a few lines earlier and so could never fail
+        {"name": "no_accuracy_metric_is_published_without_human_gold",
+         "passed": not _numeric_accuracy_keys(summary),
+         "detail": _numeric_accuracy_keys(summary)},
         {"name": "two_reproducible_baselines_reported", "passed": summary["baseline_count"] >= 2},
         {"name": "audit_package_has_600_plus_occurrences", "passed": summary["private_audit_tasks"] >= 600},
         {"name": "public_columns_exclude_private_occurrence_fields", "passed": not bool(public_columns & forbidden_exact), "detail": sorted(public_columns & forbidden_exact)},

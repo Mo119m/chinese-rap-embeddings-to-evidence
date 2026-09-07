@@ -176,8 +176,21 @@ def main() -> int:
                   f"max abs diff {trial['max_abs_difference']:.2e}  "
                   f"{'MATCH' if trial['matches'] else 'no match'}")
 
-    recovered = next((t for t in trials if t.get("matches")), None)
-    if recovered:
+    # Which configurations are inside tolerance, not which one is first in the list.
+    #
+    # This previously took `next(... if matches)` and announced it as "the only one inside
+    # tolerance". When every candidate matches -- which is what the 31 August run found --
+    # that sentence is false, and it names whichever configuration happens to be listed
+    # first. The branch meant to handle the all-match case referred to names that were never
+    # bound, so it could only have raised NameError. The finding this tool exists to produce
+    # had no code path that could report it.
+    passing = [t for t in trials if t.get("matches")]
+    ranked = sorted((t for t in trials if "max_abs_difference" in t),
+                    key=lambda t: t["max_abs_difference"])
+    best = ranked[0] if ranked else None
+
+    if len(passing) == 1:
+        recovered = passing[0]
         print(f"{chr(10)}  historical configuration identified: device={recovered['device']} "
               f"use_fp16={recovered['use_fp16']} -- the only one inside tolerance")
     elif passing:
