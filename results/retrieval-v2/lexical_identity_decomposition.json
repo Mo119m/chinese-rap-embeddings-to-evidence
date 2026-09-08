@@ -1,0 +1,157 @@
+{
+  "analysis": "lexical identity decomposition and topic control",
+  "correct_label_score_share_by_script": {
+    "all_queries": {
+      "han": 0.487,
+      "latin": 0.4919,
+      "mixed": 0.0077,
+      "other": 0.0133
+    },
+    "queries_where_dense_beats_lexical": {
+      "han": 0.4791,
+      "latin": 0.5054,
+      "mixed": 0.0049,
+      "other": 0.0106
+    },
+    "queries_where_lexical_beats_dense": {
+      "han": 0.5,
+      "latin": 0.4788,
+      "mixed": 0.0073,
+      "other": 0.0139
+    },
+    "reading": "share of the correct label's lexical score contributed by Han, Latin, mixed-script and other n-grams; compare against the corpus-wide TF-IDF mass split, han 56.3% / latin 41.1%"
+  },
+  "feature_inventory_by_script": {
+    "han": 94714,
+    "latin": 48319,
+    "mixed": 5003,
+    "other": 1964
+  },
+  "head_to_head": {
+    "dense_ranks_better": 2156,
+    "lexical_ranks_better": 3842,
+    "tied": 1238
+  },
+  "labels": 226,
+  "latin_share_vs_advantage": {
+    "by_latin_share_quartile": [
+      {
+        "latin_share_quartile": 1,
+        "latin_share_range": [
+          0.0,
+          0.071
+        ],
+        "mrr_dense": 0.3326,
+        "mrr_fusion": 0.4818,
+        "mrr_lexical": 0.4764,
+        "queries": 1807
+      },
+      {
+        "latin_share_quartile": 2,
+        "latin_share_range": [
+          0.071,
+          0.241
+        ],
+        "mrr_dense": 0.28,
+        "mrr_fusion": 0.4935,
+        "mrr_lexical": 0.4836,
+        "queries": 1810
+      },
+      {
+        "latin_share_quartile": 3,
+        "latin_share_range": [
+          0.241,
+          0.453
+        ],
+        "mrr_dense": 0.2886,
+        "mrr_fusion": 0.4553,
+        "mrr_lexical": 0.4224,
+        "queries": 1808
+      },
+      {
+        "latin_share_quartile": 4,
+        "latin_share_range": [
+          0.453,
+          1.0
+        ],
+        "mrr_dense": 0.3713,
+        "mrr_fusion": 0.4717,
+        "mrr_lexical": 0.4187,
+        "queries": 1811
+      }
+    ],
+    "reading": "positive means songs with more Latin script are the ones where the lexical system pulls ahead of the dense one",
+    "spearman_latin_share_vs_rank_dense_minus_rank_lexical": -0.1048
+  },
+  "original": {
+    "dense": {
+      "mrr": 0.3181,
+      "recall_at_10": 0.5142
+    },
+    "fusion": {
+      "mrr": 0.4756,
+      "recall_at_10": 0.661
+    },
+    "lexical": {
+      "mrr": 0.4503,
+      "recall_at_10": 0.6302
+    }
+  },
+  "privacy": "aggregate only; per-query rows are private",
+  "queries": 7236,
+  "topic_neutralisation": {
+    "arms": [
+      {
+        "arm": "reference_core",
+        "characters_removed": 24501,
+        "documents_touched": 2578,
+        "fusion_mrr_neutralised_lexical_plus_original_dense": 0.4733,
+        "lexical_mrr_neutralised": 0.449,
+        "lexical_recall_at_10_neutralised": 0.6295,
+        "lexical_still_beats_original_dense": true,
+        "lexicon": "chinese_rap_ner_reference_core_v1.csv",
+        "surfaces_removed": 90
+      },
+      {
+        "arm": "places",
+        "characters_removed": 11534,
+        "documents_touched": 2583,
+        "fusion_mrr_neutralised_lexical_plus_original_dense": 0.4742,
+        "lexical_mrr_neutralised": 0.4484,
+        "lexical_recall_at_10_neutralised": 0.6295,
+        "lexical_still_beats_original_dense": true,
+        "lexicon": "lexicon_arm_places.csv",
+        "surfaces_removed": 212
+      },
+      {
+        "arm": "named_entities",
+        "characters_removed": 42742,
+        "documents_touched": 4962,
+        "fusion_mrr_neutralised_lexical_plus_original_dense": 0.4708,
+        "lexical_mrr_neutralised": 0.4442,
+        "lexical_recall_at_10_neutralised": 0.6241,
+        "lexical_still_beats_original_dense": true,
+        "lexicon": "lexicon_arm_named_entities.csv",
+        "surfaces_removed": 459
+      },
+      {
+        "arm": "everything",
+        "characters_removed": 168004,
+        "documents_touched": 6315,
+        "fusion_mrr_neutralised_lexical_plus_original_dense": 0.4711,
+        "lexical_mrr_neutralised": 0.4444,
+        "lexical_recall_at_10_neutralised": 0.6265,
+        "lexical_still_beats_original_dense": true,
+        "lexicon": "lexicon_arm_everything.csv",
+        "surfaces_removed": 605
+      }
+    ],
+    "dense_mrr_original": 0.3181,
+    "lexical_mrr_original": 0.4503,
+    "reading": "each arm strips one lexicon, refits TF-IDF and reruns the lexical system against the UNCHANGED original dense system. Places is the geography confound; named_entities widens it to brands, people and organisations; everything additionally removes curated hip-hop slang, English words and language names, which is no longer a topic control but the sharpest test of the claim -- if the lexical system still wins there, identity is diffuse in the character surface rather than a lexicon that could be listed. The dense arm is not neutralised because that needs re-embedding, a separate GPU run"
+  },
+  "verification": {
+    "lexical_profile_recomputation_max_gap": 3.4373696722322933e-06,
+    "tfidf_refit_byte_identical_to_builder": true
+  }
+}
