@@ -298,9 +298,9 @@ def build_submission(validation: dict) -> None:
         ROOT / "validation" / "dsh_submission_style_lint.json": SUBMISSION / "dsh_submission_style_lint.json",
         ROOT / "validation" / "dsh_submission_a11y.json": SUBMISSION / "dsh_submission_a11y.json",
     }
-    # The four 600-dpi TIFFs total about 130 MB and are byte-identical to the
+    # The five 600-dpi TIFFs total about 160 MB and are byte-identical to the
     # canonical copies under figures/. Do not ship a second copy in every clone.
-    for number in range(1, 5):
+    for number in range(1, 6):
         for suffix in ("pdf", "svg"):
             files[ROOT / "figures" / f"fig{number}.{suffix}"] = SUBMISSION / f"fig{number}.{suffix}"
     for source, target in files.items():
@@ -314,8 +314,8 @@ Prepared for *Digital Scholarship in the Humanities* technical requirements chec
 
 - `manuscript.docx` — double-spaced English manuscript, under 9,000 words excluding references, with structured abstract, keywords, data-availability statement, AI-disclosure placeholder, and figure legends/alt text collected at the end. Figures are not embedded.
 - `supplementary_methods.docx` — reproducibility and public/private-boundary supplement.
-- `fig1.pdf`–`fig4.pdf` and `fig1.svg`–`fig4.svg` — vector submission artwork.
-- `fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload the canonical files from the release-root Figures directory (`figures/` in the repository; `Figures/` in the desktop package). They are not duplicated here because the four files total about 130 MB. Their checksums are recorded in `journal_figure_validation.json`.
+- `fig1.pdf`–`fig5.pdf` and `fig1.svg`–`fig5.svg` — vector submission artwork.
+- `fig1.tif`–`fig5.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload the canonical files from the release-root Figures directory (`figures/` in the repository; `Figures/` in the desktop package). They are not duplicated here because the five files total about 160 MB. Their checksums are recorded in `journal_figure_validation.json`.
 - PDF files are previews for author checking; upload policy should follow the journal portal.
 
 ## Stop before submission
@@ -456,7 +456,7 @@ def write_release_manifests(validation: dict) -> None:
     retrieval_sensitivity_dir = ROOT / "results" / "retrieval-inductive-sensitivity-v1"
     selected.extend(sorted((path for path in retrieval_sensitivity_dir.iterdir() if path.is_file()),
                            key=lambda item: item.as_posix()))
-    for number in range(1, 5):
+    for number in range(1, 6):
         selected.extend(ROOT / "figures" / f"fig{number}.{suffix}" for suffix in ("tif", "pdf", "svg"))
     if len(selected) != len(set(selected)):
         raise RuntimeError("Core release manifest contains duplicate paths")
@@ -477,7 +477,7 @@ START_HERE = """<!doctype html>
 </style></head><body><main><div class="eyebrow">CHINESE RAP RESEARCH RELEASE · V4</div><h1>One corpus. Three tested questions.</h1><p class="lead">Explore the result first: a full 204-label lyrical-repertoire landscape, focused artist-label neighbourhoods with evidence for every line, a provisional cultural-reference network, and an evaluated written-ending tool. Then read the paper for the complete methods and limitations.</p><section class="grid">
 <a class="card primary" href="Website/index.html"><div><span class="num">01 · USE THE RESULT</span><h2>Open Verseprint</h2><p>Start with the large network, click a label, and inspect its local neighbours, wording, writing habits, written-ending fingerprint, and evidence strength.</p></div><div class="open">Open the interactive result →</div></a>
 <a class="card" href="Paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf"><div><span class="num">02 · READ THE STUDY</span><h2>Read the paper</h2><p>The English journal manuscript explains why BGE-M3 was chosen and what the downstream retrieval, network, NER, statistical, and rhyme models do after vectorization.</p></div><div class="open">Open the readable PDF →</div></a>
-<a class="card orange" href="Figures/index.html"><div><span class="num">03 · SEE THE EVIDENCE</span><h2>View four figures</h2><p>Four questions, four publication figures, direct takeaways, claim boundaries, source tables, and submission formats.</p></div><div class="open">Open the figure gallery →</div></a>
+<a class="card orange" href="Figures/index.html"><div><span class="num">03 · SEE THE EVIDENCE</span><h2>View five figures</h2><p>Five publication figures, direct takeaways, claim boundaries, source tables, and submission formats.</p></div><div class="open">Open the figure gallery →</div></a>
 <a class="card" href="Submission_DSH/README_BEFORE_SUBMISSION.md"><div><span class="num">04 · PREPARE SUBMISSION</span><h2>Open the DSH bundle</h2><p>Separate manuscript, supplement, figure files, alt text, validation, and a short list of author-owned facts still required before submission.</p></div><div class="open">Open submission checklist →</div></a>
 </section><section class="facts"><div class="fact"><b>204 labels</b><span>whole-corpus overview</span></div><div class="fact"><b>86 lines</b><span>reciprocal BGE-M3 matches</span></div><div class="fact"><b>0.447 MRR</b><span>held-out fusion retrieval</span></div><div class="fact"><b>69.5% Top-3</b><span>written-ending prediction</span></div></section><p class="foot">This release contains aggregate evidence and software, not full lyrics, private row-level data, embeddings, or verified-person claims. Read <a href="Validation/RELEASE_READINESS_V4.md">release readiness</a> for what is complete and what still requires the authors.</p></main></body></html>"""
 
@@ -763,7 +763,7 @@ def main() -> None:
 - **Meaningful downstream evaluation:** retrieval uses held-out songs and paired uncertainty; cultural-reference links use shared-text exclusion, support, conservative intervals, and BH-FDR; written-ending prediction uses song-held-out evaluation, baselines, ablation, calibration, and switch diagnostics.
 - **Released-claim audit prepared:** a private, blinded dual-review package covers all 157 occurrences supporting the 10 released cultural-reference claims; the public protocol and aggregate status expose coverage and hashes without lyric contexts or locators.
 - **No Command-F-style output:** the release does not expose a generic word-occurrence search. Search is limited to choosing a source label or supplying a written ending to an evaluated model/table.
-- **Academic presentation:** the manuscript is English, double-spaced, under 9,000 words before references, uses a structured abstract and Oxford HUMSOC citations, and separates upload figures. The four figures are 6.5 inches wide, 600 dpi, and at least 7 pt at print size.
+- **Academic presentation:** the manuscript is English, double-spaced, under 9,000 words before references, uses a structured abstract and Oxford HUMSOC citations, and separates upload figures. The five figures are 6.5 inches wide, 600 dpi, and at least 7 pt at print size.
 - **Claim boundaries:** source-credit labels are not verified people; textual proximity is not friendship/collaboration/influence; cultural references are not biography/residence/preference; dictionary pinyin is not audio rhyme/flow/beat.
 
 ## Partial by design

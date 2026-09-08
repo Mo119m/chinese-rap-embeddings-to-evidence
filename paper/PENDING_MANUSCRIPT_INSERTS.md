@@ -1,3 +1,5 @@
+> **Superseded (2026-09-08).** These inserts were drafted for the three-task manuscript. The manuscript was rewritten around one question (`paper/manuscript.md`, corpus v2 results) and no longer has the sections these passages targeted. Kept as history; do not paste.
+
 # Pending manuscript inserts
 
 **Not yet in `manuscript.md`, and not all of them are ready.** An independent review

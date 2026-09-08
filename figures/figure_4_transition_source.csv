@@ -1,5 +1,5 @@
 model,model_short,transition_type,eligible_event_count,song_count,top1_accuracy,top3_accuracy,mrr,source
-first_order_markov,First-order Markov,continuation,16926,783,0.992024,1.0,0.996012,results/written-rhyme-v1/stratified_metrics.csv
-first_order_markov,First-order Markov,switch,17469,781,0.015513,0.302307,0.232701,results/written-rhyme-v1/stratified_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,continuation,16926,783,0.985289,0.999941,0.992551,results/written-rhyme-v1/stratified_metrics.csv
-hierarchical_sgd_context,Hierarchical + label,switch,17469,781,0.026447,0.400366,0.275106,results/written-rhyme-v1/stratified_metrics.csv
+first_order_markov,First-order Markov,continuation,25404,1045,0.989883,1.0,0.994942,results/written-rhyme-v2/stratified_metrics.csv
+first_order_markov,First-order Markov,switch,26112,1057,0.012102,0.307215,0.232528,results/written-rhyme-v2/stratified_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,continuation,25404,1045,0.982916,0.999961,0.991356,results/written-rhyme-v2/stratified_metrics.csv
+hierarchical_sgd_context,Hierarchical + label,switch,26112,1057,0.027382,0.403608,0.277457,results/written-rhyme-v2/stratified_metrics.csv

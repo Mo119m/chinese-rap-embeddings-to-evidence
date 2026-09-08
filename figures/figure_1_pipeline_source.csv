@@ -1,10 +1,9 @@
 component,branch,item,value,unit,source
-frozen_corpus,shared,songs,7211,songs,results/input-audit-v1/analysis_summary.json
-frozen_corpus,shared,canonical_chunks,22128,chunks,results/input-audit-v1/analysis_summary.json
-frozen_corpus,shared,eligible_clean_text_chunks,21553,chunks,results/input-audit-v1/analysis_summary.json
-evidence_control,shared,exact_song_content_groups_spanning_songs,405,groups,results/input-audit-v1/analysis_summary.json
-evidence_control,shared,songs_in_spanning_exact_groups,921,songs,results/input-audit-v1/analysis_summary.json
-evidence_control,shared,task-specific fitting boundaries; no test-outcome fitting or selection,,design rule,methods/RESEARCH_CONTRACT.md
-task_method,retrieval,BGE-M3 dense + character 2-5 gram TF-IDF + untuned z-score fusion,,method,results/retrieval-v1/analysis_summary.json
-task_method,ner,lexicon/rule baseline + contextual Chinese NER candidate evidence + agreement gates,,method,methods/RESEARCH_CONTRACT.md
-task_method,written_rhyme,terminal-Han dictionary pinyin-final families + Markov/hierarchical context prediction,,method,results/written-rhyme-v1/analysis_summary.json
+corpus,,songs,7391,song records,results/retrieval-v2/analysis_summary.json
+corpus,,canonical_chunks,25026,lyric chunks,results/retrieval-v2/analysis_summary.json
+corpus,,eligible_clean_text_chunks,25026,"lyric chunks retained; the duplicate control is a grouping, not a deletion",results/retrieval-v2/analysis_summary.json
+controls,,exact_song_content_groups_spanning_songs,798,leakage groups holding more than one song,results/retrieval-v2/analysis_summary.json
+controls,,songs_in_spanning_exact_groups,2146,query songs inside a multi-song leakage group,results/retrieval-v2/analysis_summary.json
+controls,,leakage_groups,5888,leakage groups over the query population,results/retrieval-v2/analysis_summary.json
+controls,,query_songs,7236,query songs after the length filter,results/retrieval-v2/analysis_summary.json
+controls,,eligible_labels,226,source-credit labels with at least five query songs,results/retrieval-v2/analysis_summary.json

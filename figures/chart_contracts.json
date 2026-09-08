@@ -74,5 +74,24 @@
       "fig4.pdf",
       "fig4.svg"
     ]
+  },
+  "figure_5": {
+    "analytical_question": "Where in the lyric text does a source-credit label's identity live: in what the songs mean, in the characters they are written with, or in a semantic space whose geometry has been corrected for within-author variation?",
+    "takeaway": "Under one protocol, the same songs cluster by label in the character n-gram space and in the whitened BGE-M3 space, while raw BGE-M3 cosine barely separates them; neighbour purity over every song measures the same ordering without any projection. The whitening is label-free in effect: the same step lifts the lexical space too.",
+    "family": "small-multiple t-SNE layouts plus a neighbour-purity curve",
+    "renderer": "Matplotlib static figure",
+    "data_sufficiency": "442 songs from the twelve largest labels, at most one per leakage group, laid out in three spaces with one seed; purity curves over all 7,236 songs for k = 1..20 with own-group neighbours excluded.",
+    "palette_policy": "twelve label colours paired with twelve marker shapes in the layouts; the purity panel uses the project's three system roots",
+    "print_size_inches": [
+      6.5,
+      5.3
+    ],
+    "journal_artwork_policy": "Caption, source, figure number, and claim-boundary prose remain outside the canvas; panel labels, axes, concise legends, and evidence-bearing annotations remain.",
+    "minimum_visible_font_pt": 7.0,
+    "journal_submission_files": [
+      "fig5.tif",
+      "fig5.pdf",
+      "fig5.svg"
+    ]
   }
 }

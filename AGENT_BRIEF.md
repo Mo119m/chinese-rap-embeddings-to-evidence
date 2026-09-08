@@ -1,3 +1,5 @@
+> **Historical (2026-09-08).** The branch reconciliation this brief describes is done, and the manuscript was rewritten around one question on corpus v2. For the current state read `README.md` and `results/retrieval-v2/README.md`.
+
 # Brief for the next agent
 
 Repository: `Mo119m/chinese-rap-embeddings-to-evidence` (public). It is the release

@@ -1,5 +1,5 @@
 released_model,reference_model,metric,metric_label,estimate_delta,ci95_lower,ci95_upper,bootstrap_replicates,source
-hierarchical_sgd_context,hierarchical_sgd_no_source_label,top1_accuracy,Top-1,0.000407,-0.000633,0.001431,2000,results/written-rhyme-v1/paired_model_deltas.csv
-hierarchical_sgd_context,hierarchical_sgd_no_source_label,top3_accuracy,Top-3,0.000669,-0.000571,0.001992,2000,results/written-rhyme-v1/paired_model_deltas.csv
-hierarchical_sgd_context,hierarchical_sgd_no_source_label,top5_accuracy,Top-5,-0.000436,-0.001966,0.001085,2000,results/written-rhyme-v1/paired_model_deltas.csv
-hierarchical_sgd_context,hierarchical_sgd_no_source_label,mrr,MRR,0.000475,-0.000105,0.00108,2000,results/written-rhyme-v1/paired_model_deltas.csv
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,top1_accuracy,Top-1,0.000349,-0.000358,0.00108,2000,results/written-rhyme-v2/paired_model_deltas.csv
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,top3_accuracy,Top-3,0.000194,-0.000819,0.001188,2000,results/written-rhyme-v2/paired_model_deltas.csv
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,top5_accuracy,Top-5,0.001456,0.000357,0.002544,2000,results/written-rhyme-v2/paired_model_deltas.csv
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,mrr,MRR,0.000386,-6.9e-05,0.000802,2000,results/written-rhyme-v2/paired_model_deltas.csv

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build strict journal variants of the four public Chinese-rap figures.
+"""Build strict journal variants of the five public Chinese-rap figures.
 
 This builder is deliberately aggregate-only.  It reads the frozen source
 tables already released with the figures and writes a compact, 6.5-inch-wide
@@ -9,8 +9,8 @@ remain in the manuscript rather than being duplicated inside the artwork.
 Outputs
 -------
 * Descriptive PNG and TIFF filenames are retained for manuscript compatibility.
-* ``fig1.tif`` ... ``fig4.tif`` are uncompressed 600-dpi RGB submission files.
-* ``fig1.pdf``/``.svg`` ... ``fig4.pdf``/``.svg`` are vector alternatives.
+* ``fig1.tif`` ... ``fig5.tif`` are uncompressed 600-dpi RGB submission files.
+* ``fig1.pdf``/``.svg`` ... ``fig5.pdf``/``.svg`` are vector alternatives.
 * ``journal_figure_validation.json`` records typography and image QA.
 """
 
@@ -41,21 +41,26 @@ PUBLIC_LINEAGE_PATHS = [
     "src/build_chinese_rap_downstream_figures_v1.py",
     "src/build_chinese_rap_figure_3_v1.py",
     "src/build_chinese_rap_journal_figures_v1.py",
-    "results/input-audit-v1/analysis_summary.json",
-    "results/retrieval-v1/analysis_summary.json",
-    "results/retrieval-v1/metrics.csv",
-    "results/retrieval-v1/uncertainty.csv",
+    "src/build_downstream_figure_sources_v2.py",
+    "results/retrieval-v2/analysis_summary.json",
+    "results/retrieval-v2/metrics.csv",
+    "results/retrieval-v2/uncertainty.csv",
     "results/ner-v1/entity_co_mentions_provisional.csv",
     "results/ner-v1/reconciliation_validation.json",
     "results/ner-v1/release_sensitivity_summary.csv",
     "results/ner-v1/source_label_entity_links_provisional.csv",
     "results/ner-v1/summary.json",
     "results/ner-v1/validation.json",
-    "results/written-rhyme-v1/analysis_summary.json",
-    "results/written-rhyme-v1/model_metrics.csv",
-    "results/written-rhyme-v1/paired_model_deltas.csv",
-    "results/written-rhyme-v1/stratified_metrics.csv",
+    "results/written-rhyme-v2/analysis_summary.json",
+    "results/written-rhyme-v2/model_metrics.csv",
+    "results/written-rhyme-v2/paired_model_deltas.csv",
+    "results/written-rhyme-v2/stratified_metrics.csv",
     "methods/RESEARCH_CONTRACT.md",
+    "src/build_identity_spaces_figure_v2.py",
+    "results/retrieval-v2/knn_author_purity.json",
+    "results/retrieval-v2/identity_probe.json",
+    "figures/figure_5_author_purity_source.csv",
+    "figures/figure_5_layout_source.csv",
 ]
 
 ARIAL = Path("C:/Windows/Fonts/arial.ttf")
@@ -82,7 +87,13 @@ FIGURE_SPECS = {
     2: {"stem": "figure_2_retrieval_benchmark", "size": (6.5, 3.55)},
     3: {"stem": "figure_3_cultural_reference_evidence", "size": (6.5, 5.55)},
     4: {"stem": "figure_4_written_rhyme_benchmark", "size": (6.5, 5.05)},
+    5: {"stem": "figure_5_identity_spaces", "size": (6.5, 5.3)},
 }
+FIGURE_5_PALETTE = ["#0072B2", "#C75500", "#009E73", "#8E5A82", "#D55E00", "#56B4E9",
+                    "#E69F00", "#333333", "#CC79A7", "#7A9A01", "#6A3D9A", "#B15928"]
+FIGURE_5_MARKERS = ["o", "s", "^", "D", "v", "P", "X", "<", ">", "h", "*", "p"]
+FIGURE_5_SPACES = {"semantic": "Semantic (BGE-M3)", "lexical": "Lexical (character n-grams)",
+                   "semantic_whitened": "Semantic, whitened"}
 
 METRIC_ORDER_RETRIEVAL = ["mrr", "recall_at_1", "recall_at_5", "recall_at_10", "ndcg_at_10"]
 METRIC_ORDER_RHYME = ["top1_accuracy", "top3_accuracy", "top5_accuracy", "mrr"]
@@ -313,9 +324,11 @@ def build_figure_1() -> mpl.figure.Figure:
     rows = read_csv("figure_1_pipeline_source.csv")
     songs = value_from_pipeline(rows, "songs")
     chunks = value_from_pipeline(rows, "canonical_chunks")
-    clean = value_from_pipeline(rows, "eligible_clean_text_chunks")
+    queries = value_from_pipeline(rows, "query_songs")
+    labels = value_from_pipeline(rows, "eligible_labels")
     duplicate_groups = value_from_pipeline(rows, "exact_song_content_groups_spanning_songs")
     grouped_songs = value_from_pipeline(rows, "songs_in_spanning_exact_groups")
+    leakage_groups = value_from_pipeline(rows, "leakage_groups")
 
     fig = plt.figure(figsize=FIGURE_SPECS[1]["size"])
     ax = fig.add_axes([0, 0, 1, 1])
@@ -328,7 +341,7 @@ def build_figure_1() -> mpl.figure.Figure:
     ax.text(
         0.078,
         0.855,
-        f"{songs:,} songs   |   {chunks:,} chunks   |   {clean:,} analysis-eligible chunks",
+        f"{songs:,} song records   |   {chunks:,} chunks   |   {queries:,} query songs across {labels} labels",
         transform=ax.transAxes,
         fontsize=10.0,
         fontweight="bold",
@@ -340,7 +353,7 @@ def build_figure_1() -> mpl.figure.Figure:
     ax.text(
         0.078,
         0.670,
-        "Song-aware holdout  |  exact-content grouping  |  task-specific fitting boundaries",
+        "One protocol: leave-group-out label profiles  |  one query set  |  no test-outcome tuning",
         transform=ax.transAxes,
         fontsize=7.6,
         fontweight="bold",
@@ -350,7 +363,7 @@ def build_figure_1() -> mpl.figure.Figure:
     ax.text(
         0.078,
         0.635,
-        f"{duplicate_groups:,} cross-song content groups ({grouped_songs:,} songs); no test-outcome tuning",
+        f"{leakage_groups:,} leakage groups (exact text or near-duplicate); {duplicate_groups:,} hold more than one song ({grouped_songs:,} songs)",
         transform=ax.transAxes,
         fontsize=7.3,
         color="#E1E5EA",
@@ -362,25 +375,25 @@ def build_figure_1() -> mpl.figure.Figure:
             "x": 0.045,
             "color": BLUE,
             "fill": BLUE_LIGHT,
-            "title": "1  REPERTOIRE RETRIEVAL",
-            "method": "BGE-M3 dense\nCharacter 2-5-gram TF-IDF\nUntuned z-score fusion",
-            "output": "Held-out-song\nsource-label ranking",
+            "title": "1  SEMANTIC SPACE",
+            "method": "BGE-M3 dense song vectors\nWithin-author whitening probe\nTotal / permuted-label controls",
+            "output": "Label ranking before and\nafter geometry correction",
         },
         {
             "x": 0.355,
             "color": ORANGE,
             "fill": ORANGE_LIGHT,
-            "title": "2  CULTURAL REFERENCES",
-            "method": "Lexicon/rule baseline\nContextual Chinese NER\nAgreement + BH-FDR gates",
-            "output": "Typed references and\nsame-song co-mentions",
+            "title": "2  LEXICAL SPACE",
+            "method": "Character 2-5-gram TF-IDF\nScript-class decomposition\nNamed-reference neutralisation",
+            "output": "Label ranking and where\nin the characters it lives",
         },
         {
             "x": 0.665,
             "color": PURPLE,
             "fill": PURPLE_LIGHT,
-            "title": "3  WRITTEN RHYME",
-            "method": "Terminal-Han pinyin finals\nMarkov baseline\nHierarchical context model",
-            "output": "Next written-ending\nfamily probabilities",
+            "title": "3  RHYME FORM",
+            "method": "Terminal-Han pinyin families\nRhyme-token TF-IDF\nNext-ending context model",
+            "output": "Label ranking and\nnext-family predictability",
         },
     ]
 
@@ -802,11 +815,78 @@ def verify_raster(number: int, name: str, expected_pixels: tuple[int, int], requ
         return detail
 
 
+def build_figure_5(font_regular: FontProperties) -> mpl.figure.Figure:
+    """The same songs in three spaces, and neighbour purity over every song.
+
+    Both tables are written by src/build_identity_spaces_figure_v2.py. The layout table
+    carries a label and two t-SNE coordinates per point and no song identifier.
+    """
+    layout_rows = read_csv("figure_5_layout_source.csv")
+    purity_rows = read_csv("figure_5_author_purity_source.csv")
+    labels: list[str] = []
+    for row in layout_rows:
+        if row["label"] not in labels:
+            labels.append(row["label"])
+    if len(labels) > len(FIGURE_5_PALETTE):
+        raise AssertionError(f"Figure 5 layout carries {len(labels)} labels; the palette has {len(FIGURE_5_PALETTE)}")
+    purity: dict[str, list[float]] = {}
+    for row in sorted(purity_rows, key=lambda item: (item["space"], int(item["k"]))):
+        purity.setdefault(row["space"], []).append(float(row["purity"]))
+    chance = purity.pop("chance")[0]
+    k_max = len(next(iter(purity.values())))
+
+    fig = plt.figure(figsize=FIGURE_SPECS[5]["size"])
+    grid = fig.add_gridspec(2, 3, height_ratios=[1.0, 0.95], left=0.085, right=0.975,
+                            top=0.93, bottom=0.10, hspace=0.42, wspace=0.14)
+    for column, (space, letter) in enumerate(zip(FIGURE_5_SPACES, "ABC")):
+        ax = fig.add_subplot(grid[0, column])
+        for position, label in enumerate(labels):
+            xs = [float(r["x"]) for r in layout_rows if r["space"] == space and r["label"] == label]
+            ys = [float(r["y"]) for r in layout_rows if r["space"] == space and r["label"] == label]
+            ax.scatter(xs, ys, s=9, marker=FIGURE_5_MARKERS[position], color=FIGURE_5_PALETTE[position],
+                       alpha=0.85, linewidths=0.0, zorder=3)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for spine in ax.spines.values():
+            spine.set_color(GRID)
+        ax.set_aspect("equal", adjustable="datalim")
+        panel_title(ax, letter, FIGURE_5_SPACES[space], pad=5.0)
+        ax.text(0.02, 0.02, f"purity@10 = {purity[space][9]:.2f}", transform=ax.transAxes,
+                fontsize=7.0, color=MUTED, ha="left", va="bottom", zorder=5,
+                bbox={"facecolor": PAPER, "edgecolor": "none", "pad": 1.5, "alpha": 0.9})
+
+    ax = fig.add_subplot(grid[1, 0:2])
+    ks = list(range(1, k_max + 1))
+    for space, colour in (("lexical", ORANGE), ("semantic_whitened", PURPLE), ("semantic", BLUE)):
+        ax.plot(ks, purity[space], "-", color=colour, marker="o", markersize=2.6,
+                label=FIGURE_5_SPACES[space], zorder=3)
+    ax.axhline(chance, color=GRAY, linestyle=":", linewidth=0.9, zorder=2)
+    ax.text(1.0, chance + 0.012, "chance", fontsize=7.0, color=GRAY, ha="left", va="bottom")
+    ax.set_xlim(0.5, k_max + 0.5)
+    ax.set_ylim(0.0, max(0.5, max(max(v) for v in purity.values()) + 0.05))
+    ax.set_xticks([1, 5, 10, 15, 20])
+    ax.set_xlabel("k nearest neighbours (own leakage group excluded)")
+    ax.set_ylabel("Same-label share of the k nearest")
+    style_axis(ax, grid_axis="y")
+    panel_title(ax, "D", "Neighbour purity over all 7,236 songs", pad=5.0)
+    ax.legend(loc="upper right", fontsize=7.3)
+
+    legend_ax = fig.add_subplot(grid[1, 2])
+    legend_ax.axis("off")
+    handles = [mpl.lines.Line2D([], [], linestyle="", marker=FIGURE_5_MARKERS[i], color=FIGURE_5_PALETTE[i],
+                                markersize=5.0, label=label) for i, label in enumerate(labels)]
+    # label strings carry CJK characters; the regular font stack falls back to YaHei
+    legend_ax.legend(handles=handles, loc="center left", prop=font_regular, fontsize=7.3, ncol=1,
+                     title="Labels in A-C (up to 40 songs each)", title_fontsize=7.3,
+                     handletextpad=0.5, borderaxespad=0.0)
+    return fig
+
+
 def update_chart_contracts(exports: list[dict[str, Any]]) -> None:
     path = FIGURE_DIR / "chart_contracts.json"
     contracts = json.loads(path.read_text(encoding="utf-8"))
     by_number = {item["number"]: item for item in exports}
-    for number in range(1, 5):
+    for number in range(1, 6):
         contract = contracts[f"figure_{number}"]
         contract["print_size_inches"] = by_number[number]["print_size_inches"]
         contract["journal_artwork_policy"] = (
@@ -934,6 +1014,7 @@ def main() -> None:
         build_figure_2(),
         build_figure_3(font_regular),
         build_figure_4(),
+        build_figure_5(font_regular),
     ]
     exports = [export_figure(figure, number) for number, figure in enumerate(figures, start=1)]
 
@@ -989,7 +1070,7 @@ def main() -> None:
             {"name": "no_text_outside_fixed_canvas", "passed": all(not item["text_outside_canvas"] for item in exports)},
             {"name": "all_rasters_exact_600dpi", "passed": all(min(item["dpi"]) >= 599.0 for item in raster_audits)},
             {"name": "submission_tiffs_uncompressed_rgb", "passed": all(item["mode"] == "RGB" and item["compression"] == "raw" for item in raster_audits if item["path"].endswith(".tif"))},
-            {"name": "vector_pdf_and_svg_present", "passed": len(vector_audits) == 8},
+            {"name": "vector_pdf_and_svg_present", "passed": len(vector_audits) == 2 * len(exports)},
         ],
         "claim_boundary": (
             "The visual refactor changes only presentation. All numerical claims remain frozen corpus-internal aggregate results; "

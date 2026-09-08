@@ -22,10 +22,10 @@
 <body>
 <main>
   <div class="eyebrow">PUBLICATION FIGURE SET · DSH-READY ARTWORK</div>
-  <h1>Four figures, four research questions.</h1>
+  <h1>Five figures, five research questions.</h1>
   <p class="summary">Each chart answers one question. The clean artwork is 6.5 inches wide, 600 dpi, and uses redundant shapes or line styles so that meaning does not depend on colour.</p>
   <section class="facts" aria-label="Figure validation summary">
-    <div class="fact"><b>4</b><span>separate analytical figures</span></div>
+    <div class="fact"><b>5</b><span>separate analytical figures</span></div>
     <div class="fact"><b>600 dpi</b><span>submission raster resolution</span></div>
     <div class="fact"><b>≥7 pt</b><span>minimum visible figure text</span></div>
     <div class="fact"><b>3 formats</b><span>TIFF · PDF · SVG</span></div>
@@ -33,12 +33,12 @@
 
   <section class="figure-list">
     <article class="figure-card">
-      <header class="figure-head"><div class="number">01</div><div><h2>How does evidence move through the study?</h2><p class="result">One frozen corpus feeds three task-specific pipelines with shared leakage controls and different valid claims.</p></div><nav class="formats" aria-label="Figure 1 downloads"><a href="fig1.tif">TIFF</a><a href="fig1.pdf">PDF</a><a href="fig1.svg">SVG</a><a href="figure_1_pipeline_source.csv">DATA</a></nav></header>
-      <figure><img src="figure_1_research_design.png" alt="A frozen Chinese-rap corpus passes through shared evidence controls before branching into repertoire retrieval, cultural-reference extraction, and written-rhyme prediction."><figcaption><p><b>Read it as:</b> corpus → controls → three distinct downstream tasks.</p><p class="boundary"><b>Boundary:</b> the shared input does not make the three tasks interchangeable.</p></figcaption></figure>
+      <header class="figure-head"><div class="number">01</div><div><h2>How does evidence move through the study?</h2><p class="result">One corpus enters one leave-group-out protocol and is scored in three representation spaces — semantic, lexical, rhyme form — each with its own controls.</p></div><nav class="formats" aria-label="Figure 1 downloads"><a href="fig1.tif">TIFF</a><a href="fig1.pdf">PDF</a><a href="fig1.svg">SVG</a><a href="figure_1_pipeline_source.csv">DATA</a></nav></header>
+      <figure><img src="figure_1_research_design.png" alt="A Chinese-rap corpus of 7,391 song records passes through one shared protocol over 5,888 leakage groups before branching into the semantic space with its whitening probe, the lexical space with its decomposition and neutralisation, and the rhyme-form space with its next-ending model."><figcaption><p><b>Read it as:</b> corpus → one protocol → three spaces answering one question on one scale.</p><p class="boundary"><b>Boundary:</b> a label is a corpus credit string; nothing here resolves it to a person.</p></figcaption></figure>
     </article>
 
     <article class="figure-card">
-      <header class="figure-head"><div class="number">02</div><div><h2>Does BGE-M3 alone capture lyrical repertoire?</h2><p class="result">No. Untuned dense–lexical fusion reaches MRR 0.447 and improves on character TF–IDF by 0.031 on held-out songs.</p></div><nav class="formats" aria-label="Figure 2 downloads"><a href="fig2.tif">TIFF</a><a href="fig2.pdf">PDF</a><a href="fig2.svg">SVG</a><a href="figure_2_retrieval_benchmark_source.csv">DATA</a></nav></header>
+      <header class="figure-head"><div class="number">02</div><div><h2>Does BGE-M3 alone capture lyrical repertoire?</h2><p class="result">No. On corpus v2, character TF–IDF reaches macro MRR 0.398 against 0.301 for BGE-M3; their untuned fusion reaches 0.427, +0.029 over TF–IDF, on 7,236 held-out songs.</p></div><nav class="formats" aria-label="Figure 2 downloads"><a href="fig2.tif">TIFF</a><a href="fig2.pdf">PDF</a><a href="fig2.svg">SVG</a><a href="figure_2_retrieval_benchmark_source.csv">DATA</a></nav></header>
       <figure><img src="figure_2_retrieval_benchmark.png" alt="Dot-and-whisker panels show fusion above BGE-M3 and character TF-IDF on five held-out retrieval metrics, with every paired fusion advantage above zero."><figcaption><p><b>Read it as:</b> filled blue circles are fusion; right-hand intervals quantify its gain over each single representation.</p><p class="boundary"><b>Boundary:</b> this is corpus-internal repertoire retrieval, not artist identification or authorship attribution.</p></figcaption></figure>
     </article>
 
@@ -48,8 +48,13 @@
     </article>
 
     <article class="figure-card">
-      <header class="figure-head"><div class="number">04</div><div><h2>How predictable is the next written rhyme family?</h2><p class="result">Full context reaches Top-3 0.695, but true family switches remain difficult and source-label conditioning adds no supported benefit.</p></div><nav class="formats" aria-label="Figure 4 downloads"><a href="fig4.tif">TIFF</a><a href="fig4.pdf">PDF</a><a href="fig4.svg">SVG</a><a href="figure_4_rhyme_benchmark_source.csv">DATA</a></nav></header>
+      <header class="figure-head"><div class="number">04</div><div><h2>How predictable is the next written rhyme family?</h2><p class="result">Full context reaches Top-3 0.698 on corpus v2, but true family switches remain difficult (Top-3 0.404) and source-label conditioning adds no supported benefit.</p></div><nav class="formats" aria-label="Figure 4 downloads"><a href="fig4.tif">TIFF</a><a href="fig4.pdf">PDF</a><a href="fig4.svg">SVG</a><a href="figure_4_rhyme_benchmark_source.csv">DATA</a></nav></header>
       <figure><img src="figure_4_written_rhyme_benchmark.png" alt="Held-out model comparisons show context models above global and Markov baselines, while a transition panel reveals strong continuation performance but weaker rhyme-family switching."><figcaption><p><b>Read it as:</b> context helps ranked next-family prediction; the lower panels expose where that performance comes from.</p><p class="boundary"><b>Boundary:</b> dictionary-estimated written endings do not measure performed rhyme, flow, delivery, voice, or beat.</p></figcaption></figure>
+    </article>
+
+    <article class="figure-card">
+      <header class="figure-head"><div class="number">05</div><div><h2>Where in the text does a source label's identity live?</h2><p class="result">The same songs cluster by label in the character n-gram space and, after whitening, in the BGE-M3 space; raw cosine on BGE-M3 barely separates them. Neighbour purity over all 7,236 songs measures the same thing without any projection, and the same whitening lifts the character space too.</p></div><nav class="formats" aria-label="Figure 5 downloads"><a href="fig5.tif">TIFF</a><a href="fig5.pdf">PDF</a><a href="fig5.svg">SVG</a><a href="figure_5_author_purity_source.csv">PURITY DATA</a><a href="figure_5_layout_source.csv">LAYOUT DATA</a></nav></header>
+      <figure><img src="figure_5_identity_spaces.png" alt="Three t-SNE panels show the same songs coloured by source label in the semantic, lexical, and whitened semantic spaces; a fourth panel plots the share of same-label neighbours against k for the three spaces, with the whitened semantic curve highest and the raw semantic curve lowest."><figcaption><p><b>Read it as:</b> the top row is a picture and the bottom row is the measurement; only the bottom row supports a claim.</p><p class="boundary"><b>Boundary:</b> a label is a corpus credit string, not a verified person; cluster sizes and distances in a t-SNE layout carry no meaning.</p></figcaption></figure>
     </article>
   </section>
   <p class="foot">Full legends and journal alt text: <a href="figure_captions_and_alt_text.md">figure_captions_and_alt_text.md</a>. Validation record: <a href="journal_figure_validation.json">journal_figure_validation.json</a>.</p>

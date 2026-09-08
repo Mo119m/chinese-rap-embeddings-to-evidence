@@ -1,66 +1,60 @@
-# Language, Reference, and Written Rhyme
+# Where Does a Lyrical Identity Live?
 
-This repository is the public, copyright-safe research release for an evidence-grounded study of Chinese rap lyrics.
+This repository is the public, copyright-safe research release for a study of Chinese rap lyrics that asks one representational question of one corpus.
 
 The central question is:
 
-> How do Chinese rap lyrics form recognizable lyrical identities through language, cultural reference, and dictionary-estimated written rhyme?
+> Where, in the text of a song, does the identity of its source-credit label live — in what the lyrics mean, in the characters they are written with, or in how their lines rhyme — and has a multilingual semantic embedding discarded that identity or merely hidden it?
+
+"Identity" means the corpus-relative profile attached to a credit string. It never means a verified person, biography, hometown, belief, affiliation, influence, or collaboration.
 
 ## See the result first
 
-Open [`index.html`](index.html). It is a self-contained results interface that works without a server and supports three research-backed actions:
+Read [`paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf`](paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf) for the scholarly account, and view the five figures with their source tables in [`figures/index.html`](figures/index.html). The exact computational environment, protocol amendments, leakage groups, label audit, and the whitening probe's details are in [`paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf`](paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf).
 
-1. start with a 204-label corpus overview, then inspect one label's evidence-graded lyrical-repertoire neighbours;
-2. explore statistically screened, provisional cultural-reference links and co-mentions;
-3. enter a Chinese line-final character to inspect its dictionary-estimated ending family and possible next-family transitions.
-
-For the scholarly account, read [`paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf`](paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf). View the four questions and figures in [`figures/index.html`](figures/index.html). The exact computational environment, protocol amendment, and public/private boundary are in [`paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf`](paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf).
+[`index.html`](index.html) is a self-contained companion interface built on the earlier corpus snapshot: a 204-label repertoire overview, the provisional cultural-reference links, and a written-ending lookup. It is an interface, not evidence; the article does not cite its repertoire graph.
 
 ## Main results
 
-- **Explainable repertoire retrieval:** 5,455 held-out songs across 204 source-credit labels. Untuned dense–lexical fusion reaches macro MRR **0.447** (95% CI 0.414–0.481) and Recall@10 **0.611** (0.577–0.646). Fusion improves over character TF–IDF by **0.031 MRR** (0.021–0.042).
-- **Descriptive repertoire companion:** a separate BGE-M3-only map retains 86 reciprocal top-five matches under both duplicate-controlled text treatments, connecting 93 of 204 labels. Sixteen matches reappear in at least half of 250 within-label song resamples. Global PCA position is approximate (26.2% of profile variation); only a line defines a released match.
-- **Extraction reliability:** inter-method retention across the twenty-two released surfaces ranges 0.55–1.00 (median 0.74). The two lowest-agreement surfaces both carry a released claim on five song units each, so the cultural-reference edges are not uniformly secure; see [`analysis/surface-reliability/`](analysis/surface-reliability/).
-- **Cultural-reference evidence:** the provisional entity inventory contracts from 33 corpus-wide surfaces to 22 after shared-text exclusion and the fixed comparison universe. Six source-label-to-place associations and four same-song reference co-mentions survive uncertainty and BH-FDR screening. Human occurrence gold remains incomplete, so precision, recall, F1, biography, and social-relation claims are withheld.
-- **Written-ending continuation:** 34,395 leakage-safe adjacent-line events from 787 held-out songs. The hierarchical context model reaches Top-3 **0.695** (0.685–0.705), improving on first-order Markov by **0.050** (0.044–0.055). Switch Top-1 remains only **0.026**, and source-credit-label conditioning has no supported benefit.
+One held-out-song retrieval protocol scores the same **7,236 songs and 226 source-credit labels** in three representation spaces. Label profiles are leave-group-out over **5,888 leakage groups** (exact shared text ∪ near-duplicate songs); nothing is tuned on outcomes.
 
-## What happens after BGE-M3
+- **Three spaces, one scale** ([`results/retrieval-v2/`](results/retrieval-v2/)): character 2–5-gram TF–IDF reaches macro MRR **0.398** (95% CI 0.366–0.432) against **0.301** (0.277–0.326) for frozen BGE-M3; their untuned fusion reaches **0.427** (0.396–0.458). A rhyme-form space built from written line endings, with no lexical content, carries identity at plain MRR **0.097** against a chance level of 0.027 — real, small, and redundant with the character surface (`identity_spaces.json`).
+- **Not code-switching, not names** (`lexical_identity_decomposition.json`): the songs with the most Latin script are where BGE-M3 does best, and the lexical margin is widest on Han-dominant songs. Stripping a 605-entry catalogue of places, people, brands, slang, and English words — 168,004 characters — moves the lexical system from 0.450 to **0.444**. Whatever the surface carries is diffuse in the characters, not a lexicon.
+- **Present but hidden** (`identity_probe.json`): whitening the BGE-M3 song vectors by within-author covariance, fitted on four folds of leakage groups and applied to the fifth, lifts the semantic system from **0.318 to 0.449**, level with the raw lexical one; fused with it, they reach **0.544**. Whitening by the total covariance with no labels already gives 0.432 and permuted labels give 0.431, so almost all of the recovery is the embedding's anisotropy and only +0.017 (interval +0.014 to +0.020) is author structure. The same correction lifts a 1,024-dimensional lexical space from 0.393 to **0.518**, so the surface keeps its lead under equal treatment; and on 34 held-out labels the label-free whitening transfers in full (+0.156) while the label-fitted one falls short of it (−0.027).
+- **Written-ending continuation** ([`results/written-rhyme-v2/`](results/written-rhyme-v2/)): 51,516 leakage-safe adjacent-line events from 1,064 held-out songs, partitioned by leakage group. The hierarchical context model reaches Top-3 **0.698** (0.690–0.705), +0.049 over first-order Markov; family switches remain hard (Top-3 0.404) and the source-credit label adds nothing (+0.0002, interval crossing zero).
+- **Cultural-reference evidence** ([`results/ner-v1/`](results/ner-v1/), earlier snapshot): the provisional entity inventory contracts from 33 corpus-wide surfaces to 22 after shared-text exclusion and the fixed comparison universe; six source-label-to-place associations and four same-song co-mentions survive uncertainty and BH-FDR screening. Human occurrence gold remains incomplete, so precision, recall, F1, biography, and social-relation claims are withheld. In the article this layer is the lexicon the neutralisation arms remove.
+- **Label identity** ([`results/label-identity-v1/`](results/label-identity-v1/)): among 511 label pairs sharing a passage of at least thirty characters, none shows the near-total overlap that one artist filed twice would produce; the 45 pairs at or above 10% mutual involvement were reviewed by the author and are collaborations. No merging is applied.
 
-BGE-M3 is a frozen representation, not the finding. It is evaluated inside a downstream task with:
+## One protocol
 
-- full-song holdout and duplicate-component removal;
-- a strong character 2–5-gram TF–IDF baseline;
-- per-query score standardization and untuned equal-weight fusion;
-- label-balanced estimation and paired two-stage bootstrap uncertainty;
-- explicit explanations and claim boundaries.
+BGE-M3 is a frozen representation, not the finding. Every space is evaluated inside the same task:
 
-The retrieval TF–IDF vocabulary and IDF are estimated transductively on the fixed unlabeled evaluation corpus. Source labels and outcomes are not used for fitting, but the estimand is fixed-corpus retrieval rather than prospective performance. The original contract and formal amendment are both retained.
+- one query set, one candidate set, one leakage unit;
+- leave-group-out label profiles with each (group, label) component weighted one;
+- a strong character 2–5-gram TF–IDF comparison and a rhyme-form space that keeps no word;
+- per-query score standardisation and untuned equal-weight fusion;
+- a macro (per-label) headline with paired two-stage bootstrap intervals, and paired leakage-group bootstrap intervals for every contrast between spaces ([`identity_estimands.json`](results/retrieval-v2/identity_estimands.json) reconciles the two averages);
+- controls before conclusions: script-class decomposition, four neutralisation arms, total-covariance and permuted-label whitening, a matched-dimension lexical control, and a held-out-author transfer test.
 
-## Corpus-lineage audit — not a fourth downstream task
+The retrieval TF–IDF vocabulary and IDF are estimated transductively on the fixed unlabelled query corpus; labels and outcomes never enter them (amendment PD-001). The estimand is fixed-corpus retrieval, not prospective performance.
 
-PD-002 reconstructs the historical raw-to-frozen cleaner as release lineage rather than adding another research task. The legacy cleaner produced **7,214 songs and 22,132 chunks** after artist-level exact-text keep-first deduplication; subsequent canonical identity and eligibility gates withheld three songs and four chunks, yielding the **7,211-song, 22,128-chunk** downstream input used by the current analyses.
+## Corpus lineage
 
-The reconstruction shows that the legacy chunk rule removed 2,894 chunks and erased 177 song records. Of those records, 131 meet the conservative same-label, same-normalized-title, exact-sequence duplicate rule; 46 remain a review queue. Aggregate written-ending family shares are insensitive to a task-aligned restored-chunk counterfactual, but predictive metrics have not been retrained on a duplicate-aware repaired population. The frozen-snapshot results therefore remain reproducible while repaired-corpus predictive robustness is withheld.
+Amendment PD-002 replaced the legacy cleaner, which deleted chunks whose text recurred under a label, with representation: corpus v2 retains all **25,026 cleaned chunks across 7,391 song records** and carries duplicate structure as **6,025 exact-text components**, of which 799 span more than one song. The reconstruction of the legacy cleaner, the 46-record review queue, and the live-Drive comparison are in [`results/corpus-reconciliation-v1/`](results/corpus-reconciliation-v1/) and [`methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md`](methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md). The retrieval and written-rhyme results above are built on corpus v2 with a single recorded BGE-M3 run (Tesla T4, half precision; contract in [`results/retrieval-v2/analysis_summary.json`](results/retrieval-v2/analysis_summary.json)); the earlier snapshot's vectors, whose device and precision were never recorded, were bounded by a configuration probe ([`results/embedding-configuration-probe-v1/`](results/embedding-configuration-probe-v1/)) and replaced. The v1 results remain in the repository as frozen history and are not comparable point to point.
 
-See [`results/corpus-reconciliation-v1/`](results/corpus-reconciliation-v1/) for aggregate evidence and [`methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md`](methods/PROTOCOL_AMENDMENT_PD002_UPSTREAM_CHUNK_DEDUPLICATION.md) for the replacement rule. The live-Drive comparison is retained publicly only as aggregate row-count, mismatch-class, and adjudication evidence; it does not verify remote-object byte identity, acquisition provenance, rights, or universal metadata accuracy.
-
-### The repaired corpus
-
-The replacement rule is implemented in [`src/build_repaired_corpus_v2.py`](src/build_repaired_corpus_v2.py), with its decision rules isolated in [`src/duplicate_control_v2.py`](src/duplicate_control_v2.py) so they can be tested without any dependency. Corpus v2 retains all **25,026 cleaned chunks across 7,391 song records** in original `(song ID, chunk ID, source order)` — restoring the 2,894 chunks and 177 song records the legacy rule deleted — and deletes nothing for being a duplicate. Duplicate structure is carried as **84 duplicate groups** over 227 records and **6,025 exact-text components**, of which 799 span more than one song; each component carries total weight one inside a source-label aggregate. Aggregate counts and gates are published in [`results/repaired-corpus-v2/`](results/repaired-corpus-v2/); the corpus itself carries lyric text and is never published.
-
-The 46-record review queue is reproduced, not narrowed, and is adjudicated under [`methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md`](methods/PD002_DUPLICATE_REVIEW_PROTOCOL.md). `independent_human_review_status` remains `pending`. The duplicate groups establish that two ingestion records carry identical cleaned content under one label and title, and nothing more: not work identity, reissue status, authorship, or performer identity. No downstream model has been retrained on this population, so every predictive metric remains a frozen-snapshot result.
+The `results/retrieval-v1/` and `results/written-rhyme-v1/` artifacts are superseded by their v2 counterparts; the NER and cultural-reference layer has not been rebuilt on corpus v2.
 
 ## Repository map
 
-- `paper/` — final English manuscript and supplementary methods in Markdown, DOCX, and PDF.
-- `figures/` — visual gallery plus four publication figures in PNG, 600-DPI TIFF, PDF, and SVG, with source tables and alt text.
-- `results/` — aggregate input-audit, corpus-lineage reconciliation, retrieval, reproducible repertoire-network, NER/cultural-reference, and written-ending outputs.
-- `methods/` — frozen research contract, protocol amendments, journal-format contract, pipeline explanation, public-release boundary, and author-owned provenance actions.
-- `src/` — deterministic builders and validators.
-- `tools/` — standalone checks that need no build step: release-integrity verification, per-surface extraction reliability, a collocation audit, multi-tagger agreement, the entity-ablation retrieval experiment, and the compound resolution flag stage, publisher, and offline gate.
+- `paper/` — manuscript and supplementary methods in Markdown, DOCX, and PDF.
+- `figures/` — gallery plus five publication figures in PNG, 600-DPI TIFF, PDF, and SVG, with source tables and alt text.
+- `results/` — aggregate outputs: `retrieval-v2/` (three spaces, decomposition, probe, purity, estimands), `written-rhyme-v2/`, `label-identity-v1/`, `embedding-configuration-probe-v1/`, `repaired-corpus-v2/`, `corpus-reconciliation-v1/`, `ner-v1/`, and the frozen v1 history.
+- `methods/` — frozen research contract, protocol amendments PD-001 and PD-002, journal-format contract, public-release boundary, and author-owned provenance actions.
+- `src/` — deterministic builders and validators; `leakage_groups_v2.py` carries the leakage unit and its tests.
+- `tools/` — standalone checks that need no build step, including release-integrity verification, the prose-number check, and the compound-resolution gate.
 - `tests/` — checks for the logic behind every number the tools report; runnable with `python tests/test_tools.py` and run in CI.
-- `analysis/` — post-hoc analysis derived from the released tables, kept separate from `results/` so that `results/` remains exactly what the builders emit.
-- `site/` — source for the richer local results application.
+- `analysis/` — post-hoc analysis derived from the released tables.
+- `site/` — source for the companion interface.
 - `validation/` — independent numerical, manuscript, accessibility, render, and release checks.
 - `submission/dsh/` — technically prepared DSH upload bundle and the remaining author checklist.
 
@@ -85,15 +79,15 @@ python tools/verify_compound_resolution.py
 
 ## Evidence boundary
 
-The public release contains no full lyrics, full written lines, song/chunk identifiers, row-level lyric-content hashes, embeddings, private membership rows, or reviewer contexts. Short Chinese entity and ending tokens are retained only where needed to interpret aggregate results. File-level SHA-256 checksums and deterministic aggregate join keys are retained as non-content integrity metadata.
+The public release contains no full lyrics, full written lines, song/chunk identifiers, per-song ranks or layout coordinates, row-level lyric-content hashes, embeddings, private membership rows, or reviewer contexts. Short Chinese entity and ending tokens are retained only where needed to interpret aggregate results. File-level SHA-256 checksums and deterministic aggregate join keys are retained as non-content integrity metadata.
 
 Source-credit labels are corpus provenance, not verified natural-person identities. The outputs do not establish authorship, biography, hometown, preference, collaboration, influence, friendship, performed rhyme, flow, voice, or beat.
 
 ## Reproduction
 
-The pipeline order and expected private inputs are documented in [`methods/METHODS_AND_LIMITS.md`](methods/METHODS_AND_LIMITS.md). Researchers must supply a lawfully accessible copy of the frozen corpus and private derived sidecars; the copyrighted lyric text is not redistributed here.
+The pipeline order and expected private inputs are documented in [`methods/METHODS_AND_LIMITS.md`](methods/METHODS_AND_LIMITS.md). Researchers must supply a lawfully accessible copy of the corpus and private derived sidecars; the copyrighted lyric text is not redistributed here. Every v2 builder refuses a corpus or vector file whose digest differs from the published contract.
 
-The frozen analysis artifacts record CPython 3.12.13. Cross-platform integrity checks run on Python 3.12, while the source syntax requires Python 3.10 or newer. The historical BGE-M3 device, CUDA, and half-precision state was not retained, so the release does not claim CPU/GPU or fp32/fp16 invariance.
+The analysis artifacts record CPython 3.12.13. Cross-platform integrity checks run on Python 3.12, while the source syntax requires Python 3.10 or newer.
 
 ## Licence
 
@@ -131,4 +125,4 @@ The restore helper reads every tracked file from its staged Git blob, writes tho
 
 ## Submission status
 
-This is a reproducible frozen-snapshot release that passes the included validations and is shareable with the disclosed PD-002 boundary. Publication completion remains pending the repaired-corpus and metadata-cleaned downstream reruns. Before journal submission the authors must supply the author-owned facts listed in `validation/RELEASE_READINESS_V4.md`.
+This is a reproducible release that passes the included validations. The retrieval and written-rhyme results are built on the repaired corpus v2 with a recorded embedding run; the cultural-reference layer remains provisional pending independent dual human review of its 800-occurrence package. Before journal submission the authors must supply the author-owned facts listed in `validation/RELEASE_READINESS_V4.md`.

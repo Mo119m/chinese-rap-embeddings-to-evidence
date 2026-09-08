@@ -1343,8 +1343,8 @@ def verify_desktop_package(target: Path) -> int:
     if "../../figures" in submission_readme or stale_licence_action:
         raise AssertionError("Desktop submission README contains a stale repository-relative path or licence action")
 
-    tiffs = sorted(path.relative_to(target).as_posix() for path in target.rglob("fig[1-4].tif"))
-    expected = [f"Figures/fig{number}.tif" for number in range(1, 5)]
+    tiffs = sorted(path.relative_to(target).as_posix() for path in target.rglob("fig[1-5].tif"))
+    expected = [f"Figures/fig{number}.tif" for number in range(1, 6)]
     if tiffs != expected:
         raise AssertionError(f"Desktop release TIFF set is not canonical and unique: {tiffs}")
     archive = target.with_suffix(".zip")

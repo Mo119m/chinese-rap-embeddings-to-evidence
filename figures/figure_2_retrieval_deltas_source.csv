@@ -1,11 +1,11 @@
 comparison,comparison_short,metric,metric_label,estimate_delta,ci95_lower,ci95_upper,interval_direction,bootstrap_replicates,source
-strict fusion minus strict BGE-M3,Fusion - BGE-M3,mrr,MRR,0.126692,0.106008,0.146863,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict BGE-M3,Fusion - BGE-M3,recall_at_1,Recall@1,0.136564,0.113772,0.159721,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict BGE-M3,Fusion - BGE-M3,recall_at_5,Recall@5,0.121379,0.097244,0.144924,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict BGE-M3,Fusion - BGE-M3,recall_at_10,Recall@10,0.103421,0.078619,0.127059,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict BGE-M3,Fusion - BGE-M3,ndcg_at_10,nDCG@10,0.123653,0.102529,0.144154,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict TF-IDF,Fusion - TF-IDF,mrr,MRR,0.031312,0.020975,0.04178,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict TF-IDF,Fusion - TF-IDF,recall_at_1,Recall@1,0.025129,0.012573,0.037931,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict TF-IDF,Fusion - TF-IDF,recall_at_5,Recall@5,0.035901,0.021074,0.050738,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict TF-IDF,Fusion - TF-IDF,recall_at_10,Recall@10,0.04964,0.033269,0.066239,left_higher,5000,results/retrieval-v1/uncertainty.csv
-strict fusion minus strict TF-IDF,Fusion - TF-IDF,ndcg_at_10,nDCG@10,0.035959,0.024951,0.046982,left_higher,5000,results/retrieval-v1/uncertainty.csv
+strict fusion minus strict BGE-M3,Fusion - BGE-M3,mrr,MRR,0.125400,0.106088,0.144916,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict BGE-M3,Fusion - BGE-M3,recall_at_1,Recall@1,0.129497,0.108152,0.151811,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict BGE-M3,Fusion - BGE-M3,recall_at_5,Recall@5,0.132077,0.109001,0.154930,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict BGE-M3,Fusion - BGE-M3,recall_at_10,Recall@10,0.114860,0.093101,0.137296,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict BGE-M3,Fusion - BGE-M3,ndcg_at_10,nDCG@10,0.126146,0.106863,0.145595,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict TF-IDF,Fusion - TF-IDF,mrr,MRR,0.028451,0.018817,0.038457,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict TF-IDF,Fusion - TF-IDF,recall_at_1,Recall@1,0.025587,0.013934,0.037836,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict TF-IDF,Fusion - TF-IDF,recall_at_5,Recall@5,0.034622,0.020106,0.049734,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict TF-IDF,Fusion - TF-IDF,recall_at_10,Recall@10,0.037002,0.023756,0.051374,left_higher,5000,results/retrieval-v2/uncertainty.csv
+strict fusion minus strict TF-IDF,Fusion - TF-IDF,ndcg_at_10,nDCG@10,0.030754,0.020976,0.040810,left_higher,5000,results/retrieval-v2/uncertainty.csv

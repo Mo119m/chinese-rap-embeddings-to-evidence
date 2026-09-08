@@ -36,6 +36,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import sys
 from collections import defaultdict
@@ -349,6 +350,48 @@ def build(private_root: Path, out_dir: Path) -> int:
     (out_dir / "analysis_summary.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8", newline="")
+
+    # The tables v1 published, in v1's shape, so the figure pipeline can read v2 without
+    # a second code path. Differences come from the same replicate tensor as the
+    # intervals above, so they are paired: one component draw indexes every system.
+    primary = ("BGE-M3 dense", "character 2-5 gram TF-IDF", "equal-weight z-score fusion")
+    metric_lines = []
+    for name in primary:
+        for metric_offset, metric in enumerate(metrics):
+            entry = summary[name][metric]
+            metric_lines.append({
+                "system": name, "task_role": "primary_comparison",
+                "aggregation": "source_credit_label_macro_duplicate_group_adjusted",
+                "metric": metric, "estimate": f"{entry['point']:.6f}",
+                "ci95_lower": f"{entry['interval_low']:.6f}",
+                "ci95_upper": f"{entry['interval_high']:.6f}",
+                "queries": len(songs), "source_credit_labels": len(eligible_labels),
+                "global_duplicate_components": audit["groups"],
+                "label_stratum_component_units": int(label_group_counts.sum()),
+                "bootstrap_replicates": v1.BOOTSTRAP_REPLICATES,
+            })
+    difference_lines = []
+    for left, right in (("equal-weight z-score fusion", "BGE-M3 dense"),
+                        ("equal-weight z-score fusion", "character 2-5 gram TF-IDF"),
+                        ("character 2-5 gram TF-IDF", "BGE-M3 dense")):
+        l, r = systems.index(left), systems.index(right)
+        for metric_offset, metric in enumerate(metrics):
+            draws = outcome.replicates[:, l, metric_offset] - outcome.replicates[:, r, metric_offset]
+            low, high = np.quantile(draws, [0.025, 0.975])
+            point = float(outcome.point_macro[l, metric_offset] - outcome.point_macro[r, metric_offset])
+            direction = "left_higher" if low > 0 else ("right_higher" if high < 0 else "inconclusive")
+            difference_lines.append({
+                "comparison": f"{left} minus {right}", "metric": metric,
+                "estimate_delta": f"{point:.6f}", "ci95_lower": f"{float(low):.6f}",
+                "ci95_upper": f"{float(high):.6f}", "interval_direction": direction,
+                "paired_two_stage_bootstrap_replicates": v1.BOOTSTRAP_REPLICATES,
+            })
+    for filename, lines in (("metrics.csv", metric_lines), ("uncertainty.csv", difference_lines)):
+        buffer = io.StringIO()
+        writer = csv.DictWriter(buffer, fieldnames=list(lines[0]), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(lines)
+        (out_dir / filename).write_text(buffer.getvalue(), encoding="utf-8", newline="")
     print(f"\nwrote {out_dir}")
     return 0
 

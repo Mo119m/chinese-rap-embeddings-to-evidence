@@ -1,8 +1,8 @@
 {
   "artifact_id": "chinese-rap-downstream-figures-v1",
-  "generated_at_utc": "2026-08-27T19:42:50.142236Z",
-  "status": "pass",
-  "confidence": "ready_to_share",
+  "generated_at_utc": "2026-09-08T21:20:13.097607Z",
+  "status": "fail",
+  "confidence": "needs_revision",
   "claim_boundary": "Figures report corpus-internal aggregate evidence. They do not establish performer identity, authorship, biography, residence, preference, social relations, performed rhyme, flow, delivery, or audio properties.",
   "checks": [
     {
@@ -165,8 +165,8 @@
       "detail": [
         {
           "path": "figures/figure_1_research_design.png",
-          "bytes": 373161,
-          "sha256": "1a641cdb341f841919a6c13b48e53c10aaaddc5a7d166fc2795b1e126a009bbd",
+          "bytes": 399122,
+          "sha256": "029113fd0dcd8ae30b109932007cdb3dcd0696fe139503f5c9bc081ec9f4e98e",
           "pixels": [
             3900,
             2610
@@ -180,8 +180,8 @@
         },
         {
           "path": "figures/figure_1_research_design.tiff",
-          "bytes": 975206,
-          "sha256": "24a0c50ce9c3bc61a3b675f1719f6e9fa523b318b8db1f3ec57025548d7584d7",
+          "bytes": 1016912,
+          "sha256": "69a6d36250763d02b530bfbaf4df4916e518a99a3184009a02bf23bd414e77a7",
           "pixels": [
             3900,
             2610
@@ -195,8 +195,8 @@
         },
         {
           "path": "figures/figure_2_retrieval_benchmark.png",
-          "bytes": 356768,
-          "sha256": "5a0180cf9d8643198dcdd347615861a6e2e701dbdff83f46363c6ec1b511ea28",
+          "bytes": 360172,
+          "sha256": "6b1ea9cd6a702af3a14a7e35fca5343e044be14fe1d9a4bd0ddcbeb2adce0353",
           "pixels": [
             3900,
             2130
@@ -210,8 +210,8 @@
         },
         {
           "path": "figures/figure_2_retrieval_benchmark.tiff",
-          "bytes": 559380,
-          "sha256": "09830bdcb74dfa686ff165ec76cfcbe23444e37ff993bbb4fed129b27c9143ec",
+          "bytes": 560604,
+          "sha256": "3f7c79b01db2be339fcc758988a36933b27af10a0933ce780e780437db2edf2c",
           "pixels": [
             3900,
             2130
@@ -255,8 +255,8 @@
         },
         {
           "path": "figures/figure_4_written_rhyme_benchmark.png",
-          "bytes": 354479,
-          "sha256": "d665a31a94a2720b0c070f67b65df5c82a9da0e3632e8e10d8592fd6abf4897e",
+          "bytes": 354105,
+          "sha256": "ba3a877854cec1670bd722992dda7dc59bafdf28c524f0dd6f8dd628ea00bae2",
           "pixels": [
             3900,
             3030
@@ -270,11 +270,41 @@
         },
         {
           "path": "figures/figure_4_written_rhyme_benchmark.tiff",
-          "bytes": 752650,
-          "sha256": "e19998352a294c20c5d3a7ce34c69a9e9653dc3434e40a13e2326f687799ae11",
+          "bytes": 751584,
+          "sha256": "5fa56ac145939a30fd13740549b20396aae851965e90bf10dc1e5432d61caa43",
           "pixels": [
             3900,
             3030
+          ],
+          "mode": "RGB",
+          "dpi": [
+            600.0,
+            600.0
+          ],
+          "compression": "tiff_lzw"
+        },
+        {
+          "path": "figures/figure_5_identity_spaces.png",
+          "bytes": 752481,
+          "sha256": "d132b4dcaddb50e08efa862ed4da4b45dfc5688b07cfb78e03897d87d0172c24",
+          "pixels": [
+            3900,
+            3180
+          ],
+          "mode": "RGBA",
+          "dpi": [
+            599.999,
+            599.999
+          ],
+          "compression": ""
+        },
+        {
+          "path": "figures/figure_5_identity_spaces.tiff",
+          "bytes": 1078804,
+          "sha256": "d2dfed95748a0f6b606248e76c7518c20694557e94277ac6a925295fa6458cc7",
+          "pixels": [
+            3900,
+            3180
           ],
           "mode": "RGB",
           "dpi": [
@@ -292,7 +322,7 @@
         {
           "path": "figures/fig1.tif",
           "bytes": 30537192,
-          "sha256": "6bc40a7ce8c6df471902d8b0d097f0e5305783016ee5d79f786fb9fbc46de41f",
+          "sha256": "c1ed5dea269391d1aaea87ec3ddf4098ac20d666fb73cd31d67d0de7f3896965",
           "pixels": [
             3900,
             2610
@@ -307,7 +337,7 @@
         {
           "path": "figures/fig2.tif",
           "bytes": 24921192,
-          "sha256": "9c16df9350cd2d2ae07749e6c99e40cbe7e36e11d1d9ddfea0a1865b1693a955",
+          "sha256": "c4a652e8d1b1e8177c1aa01a1c825cc92c25d6aedca4db11fa9d25e2bc774cc3",
           "pixels": [
             3900,
             2130
@@ -337,10 +367,25 @@
         {
           "path": "figures/fig4.tif",
           "bytes": 35451192,
-          "sha256": "e5858372c5c67b697ff54425fd4a7b0ed4a823aefbeedf023469f8b9943bf8dc",
+          "sha256": "5ffcce47339fbce8ec91373e9284fa789814c779bd86d810122bf4471442ec74",
           "pixels": [
             3900,
             3030
+          ],
+          "mode": "RGB",
+          "dpi": [
+            600.0,
+            600.0
+          ],
+          "compression": "raw"
+        },
+        {
+          "path": "figures/fig5.tif",
+          "bytes": 37206192,
+          "sha256": "c3968da796b723baf716708c702dbfaf13315b9fea017d3a9a401bdd315e2234",
+          "pixels": [
+            3900,
+            3180
           ],
           "mode": "RGB",
           "dpi": [
@@ -446,59 +491,94 @@
             "fig4.pdf",
             "fig4.svg"
           ]
+        },
+        {
+          "number": 5,
+          "print_size_inches": [
+            6.5,
+            5.3
+          ],
+          "pixels_at_600_dpi": [
+            3900,
+            3180
+          ],
+          "minimum_visible_font_pt": 7.0,
+          "visible_text_elements": 37,
+          "font_policy": "Arial/Helvetica-style sans serif with Microsoft YaHei CJK fallback",
+          "internal_figure_label_count": 0,
+          "text_outside_canvas": [],
+          "files": [
+            "figure_5_identity_spaces.png",
+            "figure_5_identity_spaces.tiff",
+            "fig5.tif",
+            "fig5.pdf",
+            "fig5.svg"
+          ]
         }
       ]
     },
     {
       "name": "journal_vector_pdf_and_svg_present",
-      "passed": true,
+      "passed": false,
       "detail": [
         {
           "path": "figures/fig1.pdf",
-          "bytes": 57693,
-          "sha256": "424e38cd10b41ed68654e35b79a6cb764beb6d92ed15ba16b8d5d3088fb0cb68",
+          "bytes": 60599,
+          "sha256": "af0386f48a5e0e28db4de28dfdb0ac438c3e72e875028c03318403b6f48e8e56",
           "format": "PDF"
         },
         {
           "path": "figures/fig1.svg",
-          "bytes": 12801,
-          "sha256": "a325f7966f01a068a4ef71546c3aafa1a47d25f9501fce55ea8bea6c3d4c7bf7",
+          "bytes": 12905,
+          "sha256": "e26e77be9bc072b14cc919b433151ce372cde3606fd4a5c0e1196924a89beb9a",
           "format": "SVG"
         },
         {
           "path": "figures/fig2.pdf",
-          "bytes": 48279,
-          "sha256": "44c7c9975f148f82a554df4a7193206efe49cfae7a8110de9f352c97f99335cf",
+          "bytes": 48248,
+          "sha256": "872c82313bd95b64dcbb19456f0bab802ea780e01e5d5ed99db98df37dc93ec5",
           "format": "PDF"
         },
         {
           "path": "figures/fig2.svg",
-          "bytes": 47545,
-          "sha256": "c60dabd1361921d019e8ec553e41840933015873538655b4f2290b2d2a6e45ba",
+          "bytes": 47560,
+          "sha256": "ca61cf5b1147c5848b733133d29ce14d0bc243396bb2e322c0cc8e509f4572f5",
           "format": "SVG"
         },
         {
           "path": "figures/fig3.pdf",
           "bytes": 81069,
-          "sha256": "ebb39ea1b5ca3c4e906ba0ff1af99076e5a368ab26d8553324a0fdca0a48bdc7",
+          "sha256": "7828417beaeea568c8a1d03199da8bb11ff53652542f06a5fb0c5d7c026815b8",
           "format": "PDF"
         },
         {
           "path": "figures/fig3.svg",
           "bytes": 37977,
-          "sha256": "771499e296743cb10978f21b05987a7312374c8016f4a775f05403878cd1e056",
+          "sha256": "16527d7e0847ac14aa59aef7b5001f5236a5a13c30c1fc05439ec6b88fcf2a7e",
           "format": "SVG"
         },
         {
           "path": "figures/fig4.pdf",
-          "bytes": 57192,
-          "sha256": "d9ee88dcd13c55d3b813c5ec074f24a06ba4ed2bba84b6e4f5fc5838fdfcba2c",
+          "bytes": 56950,
+          "sha256": "396ada17e0736cb1ac56deb9bb1f0eae11e6c75ae264698ce192d3a9e5e3d7ea",
           "format": "PDF"
         },
         {
           "path": "figures/fig4.svg",
-          "bytes": 57966,
-          "sha256": "02d50020e0501e1d354ac06e0ee94360771697d0d19691b18b8e5b76c1989ee8",
+          "bytes": 57971,
+          "sha256": "c1097babf1b0808b71894da22ee8ebad3b0cc50d309835a1e1e7093dbaebb340",
+          "format": "SVG"
+        },
+        {
+          "path": "figures/fig5.pdf",
+          "bytes": 101758,
+          "sha256": "57cc541c24d3c8c82c79bfa29f1e133f4cf9dea0c8602b6e03b0b47118231915",
+          "format": "PDF"
+        },
+        {
+          "path": "figures/fig5.svg",
+          "bytes": 187506,
+          "sha256": "4be6e738de64877ad73a3f38fa19359a4c804a298dca3df617ab31b263b804a0",
           "format": "SVG"
         }
       ]

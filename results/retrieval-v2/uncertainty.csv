@@ -1,0 +1,16 @@
+comparison,metric,estimate_delta,ci95_lower,ci95_upper,interval_direction,paired_two_stage_bootstrap_replicates
+equal-weight z-score fusion minus BGE-M3 dense,mrr,0.125400,0.106088,0.144916,left_higher,5000
+equal-weight z-score fusion minus BGE-M3 dense,recall_at_1,0.129497,0.108152,0.151811,left_higher,5000
+equal-weight z-score fusion minus BGE-M3 dense,recall_at_5,0.132077,0.109001,0.154930,left_higher,5000
+equal-weight z-score fusion minus BGE-M3 dense,recall_at_10,0.114860,0.093101,0.137296,left_higher,5000
+equal-weight z-score fusion minus BGE-M3 dense,ndcg_at_10,0.126146,0.106863,0.145595,left_higher,5000
+equal-weight z-score fusion minus character 2-5 gram TF-IDF,mrr,0.028451,0.018817,0.038457,left_higher,5000
+equal-weight z-score fusion minus character 2-5 gram TF-IDF,recall_at_1,0.025587,0.013934,0.037836,left_higher,5000
+equal-weight z-score fusion minus character 2-5 gram TF-IDF,recall_at_5,0.034622,0.020106,0.049734,left_higher,5000
+equal-weight z-score fusion minus character 2-5 gram TF-IDF,recall_at_10,0.037002,0.023756,0.051374,left_higher,5000
+equal-weight z-score fusion minus character 2-5 gram TF-IDF,ndcg_at_10,0.030754,0.020976,0.040810,left_higher,5000
+character 2-5 gram TF-IDF minus BGE-M3 dense,mrr,0.096949,0.072810,0.120954,left_higher,5000
+character 2-5 gram TF-IDF minus BGE-M3 dense,recall_at_1,0.103910,0.078171,0.129653,left_higher,5000
+character 2-5 gram TF-IDF minus BGE-M3 dense,recall_at_5,0.097455,0.068611,0.126071,left_higher,5000
+character 2-5 gram TF-IDF minus BGE-M3 dense,recall_at_10,0.077858,0.049768,0.107427,left_higher,5000
+character 2-5 gram TF-IDF minus BGE-M3 dense,ndcg_at_10,0.095392,0.071008,0.120326,left_higher,5000

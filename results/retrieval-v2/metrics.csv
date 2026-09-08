@@ -1,0 +1,16 @@
+system,task_role,aggregation,metric,estimate,ci95_lower,ci95_upper,queries,source_credit_labels,global_duplicate_components,label_stratum_component_units,bootstrap_replicates
+BGE-M3 dense,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.301207,0.277414,0.326357,7236,226,5888,6902,5000
+BGE-M3 dense,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.211234,0.187284,0.236697,7236,226,5888,6902,5000
+BGE-M3 dense,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.380645,0.352526,0.410679,7236,226,5888,6902,5000
+BGE-M3 dense,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.477384,0.448898,0.507668,7236,226,5888,6902,5000
+BGE-M3 dense,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.330858,0.306533,0.357001,7236,226,5888,6902,5000
+character 2-5 gram TF-IDF,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.398157,0.366256,0.431806,7236,226,5888,6902,5000
+character 2-5 gram TF-IDF,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.315144,0.283017,0.349379,7236,226,5888,6902,5000
+character 2-5 gram TF-IDF,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.478099,0.440622,0.515905,7236,226,5888,6902,5000
+character 2-5 gram TF-IDF,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.555242,0.517284,0.592827,7236,226,5888,6902,5000
+character 2-5 gram TF-IDF,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.426250,0.392872,0.460623,7236,226,5888,6902,5000
+equal-weight z-score fusion,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,mrr,0.426607,0.396136,0.458131,7236,226,5888,6902,5000
+equal-weight z-score fusion,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_1,0.340731,0.309950,0.373774,7236,226,5888,6902,5000
+equal-weight z-score fusion,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_5,0.512721,0.478371,0.546989,7236,226,5888,6902,5000
+equal-weight z-score fusion,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,recall_at_10,0.592244,0.558361,0.626500,7236,226,5888,6902,5000
+equal-weight z-score fusion,primary_comparison,source_credit_label_macro_duplicate_group_adjusted,ndcg_at_10,0.457004,0.425715,0.489027,7236,226,5888,6902,5000

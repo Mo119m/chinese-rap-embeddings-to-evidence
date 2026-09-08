@@ -1,3 +1,5 @@
+> **Superseded (2026-09-08).** This delta compared two branches' versions of the three-task manuscript. Both were replaced by the rewritten `paper/manuscript.md`. Kept as history.
+
 # Manuscript content on fix/release-integrity not present in the Codex branch
 
 Recorded during the PD-002 integration merge. The manuscript prose was taken from
