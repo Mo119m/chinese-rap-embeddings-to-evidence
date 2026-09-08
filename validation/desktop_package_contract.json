@@ -108,6 +108,7 @@
     "Reproducibility/src/build_repaired_corpus_v2.py": "src/build_repaired_corpus_v2.py",
     "Reproducibility/src/build_repertoire_robustness_inference_v1.py": "src/build_repertoire_robustness_inference_v1.py",
     "Reproducibility/src/build_retrieval_inductive_sensitivity_v1.py": "src/build_retrieval_inductive_sensitivity_v1.py",
+    "Reproducibility/src/build_written_rhyme_v2.py": "src/build_written_rhyme_v2.py",
     "Reproducibility/src/canonical_semantic_embeddings_v1.py": "src/canonical_semantic_embeddings_v1.py",
     "Reproducibility/src/duplicate_control_v2.py": "src/duplicate_control_v2.py",
     "Reproducibility/src/gold_set_statistics.py": "src/gold_set_statistics.py",
