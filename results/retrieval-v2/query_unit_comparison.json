@@ -1,0 +1,29 @@
+{
+  "analysis": "query representation unit",
+  "design": "One variable. Label profiles are the ones the main result builds -- weighted song centroids, leave-group-out, normalised -- and only the query side changes.",
+  "labels": 226,
+  "metrics": {
+    "best-matching chunk": {
+      "mrr": 0.279528,
+      "ndcg_at_10": 0.309333,
+      "recall_at_1": 0.188087,
+      "recall_at_10": 0.460061,
+      "recall_at_5": 0.358071
+    },
+    "song centroid": {
+      "mrr": 0.318107,
+      "ndcg_at_10": 0.352216,
+      "recall_at_1": 0.21932,
+      "recall_at_10": 0.514234,
+      "recall_at_5": 0.407822
+    }
+  },
+  "privacy": "aggregate only",
+  "queries": 7236,
+  "question": "The task summarises a song as the mean of its chunk vectors. Over corpus v2 the median pair of chunks inside one song has cosine 0.572 and 58.8% of songs average below 0.6 internally, so the mean is a summary of things that are not alike.",
+  "verification": {
+    "centroid_arm_matches_builder": true,
+    "max_absolute_difference": 6.936374589150418e-07,
+    "why": "The profile arithmetic is recomputed here because the builder returns scores rather than profile vectors. A subtly different profile would produce plausible numbers and a meaningless comparison, so the centroid arm is required to reproduce score_leave_group_out's dense output."
+  }
+}

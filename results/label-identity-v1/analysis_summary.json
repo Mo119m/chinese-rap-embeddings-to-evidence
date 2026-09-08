@@ -1,0 +1,29 @@
+{
+  "artifact_id": "chinese-rap-label-identity-v1",
+  "author_adjudication": {
+    "consequence": "no label normalisation is applied. Source-credit labels remain the strings the corpus carries, and no identity merging is performed.",
+    "decided_by": "author",
+    "decided_on": "2026-09-08",
+    "determination": "all reviewed pairs are collaborations; no pair names one person twice",
+    "not_evidence_of": "that the labels are verified distinct people. The determination is that the corpus contains no detectable split of one credit across two strings, which is a narrower statement.",
+    "reviewed": "every candidate pair at or above a 10% mutual involvement share"
+  },
+  "labels": 241,
+  "privacy": "aggregate only; label strings and counts, no lyric text or song identifiers",
+  "question": "Whether any two source-credit labels name one artist, which would make a correct retrieval count as wrong and would hide duplicate records from PD-002's within-label control.",
+  "reviewed_by_author": 45,
+  "shared_passage_evidence": {
+    "candidate_pairs": 511,
+    "highest_mutual_share": 0.4848,
+    "minimum_passage_characters": 30,
+    "pairs_above_30_percent_mutual_share": 3,
+    "pairs_above_50_percent_mutual_share": 0,
+    "reading": "One artist split across two strings would show near-total mutual overlap, because the same songs were filed twice. Partial overlap with both sides retaining songs the other lacks is collaboration."
+  },
+  "string_similarity": {
+    "normalised_identical_groups": 0,
+    "substring_candidate_pairs": 12,
+    "verdict": "unusable. No pair is identical after normalisation, and every substring candidate is a common stage-name particle -- applying such a rule would merge distinct artists."
+  },
+  "version": "1.0.0"
+}
