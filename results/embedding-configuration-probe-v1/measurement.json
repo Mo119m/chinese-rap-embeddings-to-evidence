@@ -1,0 +1,55 @@
+{
+  "environment": {
+    "gpu": "Tesla T4",
+    "torch": "2.11.0+cu128"
+  },
+  "inputs": {
+    "recovery_contract_json_sha256": "b17b6caa71e481800b8e78b0fae075c77bcfbba1a6f85219802d893f96a2d19d",
+    "recovery_reference_vectors_npy_sha256": "753bf98a6fb0e94971adf444f8b1ac318bb0bce4a8f693561c1a4a7bef8ba733",
+    "recovery_sample_csv_sha256": "a24b0ae5d0278b0718653e347778bf26e2d3106f14604939b369df8020b396bb",
+    "sample_character_lengths": {
+      "max": 1494,
+      "min": 1
+    },
+    "sample_chunks": 64
+  },
+  "interpretation": "A configuration counts as recovered only if its minimum cosine against the stored vectors is at least 1 - 1e-4. If more than one candidate clears that bar the test has not identified the configuration, it has only bounded how far apart they are.",
+  "match_tolerance_cosine": 0.0001,
+  "measured_at_utc": "2026-09-08T15:50:50.288922+00:00",
+  "measurement_id": "embedding-configuration-probe-v1",
+  "model": {
+    "contract_pinned_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+    "name": "BAAI/bge-m3",
+    "weights_file": "pytorch_model.bin",
+    "weights_match_pin": true,
+    "weights_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38"
+  },
+  "question": "Can the historical BGE-M3 device/precision state, which requirements.txt records as never captured, be recovered by re-embedding already-embedded chunks under each candidate configuration and comparing against the stored vectors?",
+  "recovered_configuration": null,
+  "trials": [
+    {
+      "device": "cuda",
+      "match": true,
+      "max_abs_diff": 0.0006526708602905273,
+      "mean_cosine": 0.9999977930465476,
+      "min_cosine": 0.9999868906868356,
+      "use_fp16": true
+    },
+    {
+      "device": "cuda",
+      "match": true,
+      "max_abs_diff": 0.0007471553981304169,
+      "mean_cosine": 0.9999984051797199,
+      "min_cosine": 0.9999783593576917,
+      "use_fp16": false
+    },
+    {
+      "device": "cpu",
+      "match": true,
+      "max_abs_diff": 0.0007468461990356445,
+      "mean_cosine": 0.9999984053068345,
+      "min_cosine": 0.9999783718019937,
+      "use_fp16": false
+    }
+  ]
+}
