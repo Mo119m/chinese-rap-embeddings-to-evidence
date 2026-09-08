@@ -33,6 +33,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import re
 import sys
@@ -163,14 +164,20 @@ def build(private_root: Path, out_dir: Path) -> int:
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8", newline="")
 
-    with (out_dir / "reviewed_pairs.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle)
-        writer.writerow(["label_a", "label_b", "songs_involved_a", "songs_total_a",
-                         "songs_involved_b", "songs_total_b", "mutual_minimum_share"])
-        for pair in reviewed:
-            writer.writerow([*pair["labels"], pair["songs_involved"][0],
-                             pair["songs_total"][0], pair["songs_involved"][1],
-                             pair["songs_total"][1], pair["mutual_minimum_share"]])
+    # csv.writer terminates rows with a carriage return and a line feed, while the
+    # repository's text contract is line feed only -- the release validator refuses
+    # the package otherwise, which is how this was caught. Built in memory and
+    # written with an explicit terminator so the platform cannot decide it.
+    buffer = io.StringIO()
+    writer = csv.writer(buffer, lineterminator="\n")
+    writer.writerow(["label_a", "label_b", "songs_involved_a", "songs_total_a",
+                     "songs_involved_b", "songs_total_b", "mutual_minimum_share"])
+    for pair in reviewed:
+        writer.writerow([*pair["labels"], pair["songs_involved"][0],
+                         pair["songs_total"][0], pair["songs_involved"][1],
+                         pair["songs_total"][1], pair["mutual_minimum_share"]])
+    (out_dir / "reviewed_pairs.csv").write_text(buffer.getvalue(), encoding="utf-8",
+                                                newline="")
 
     print(f"{len(labels)} labels, {len(pairs)} candidate pairs, {len(reviewed)} reviewed")
     print(f"  highest mutual share {payload['shared_passage_evidence']['highest_mutual_share']:.0%}"
