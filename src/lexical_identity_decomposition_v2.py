@@ -123,9 +123,16 @@ def lexical_profiles(lexical, label_index, group_ids, label_count):
 
 
 def neutralise(text: str, surfaces: list[str]) -> str:
+    # Latin surfaces are matched as whole words, case-insensitively. Without the boundary
+    # `ICE` strips the middle of `nice` and `not` the front of `nothing`, and the everything
+    # arm carries 44 Latin surfaces of three letters or fewer -- that would over-strip the
+    # English vocabulary and make the arm harder in a way nobody asked for. A Han character
+    # counts as a boundary, so `GAI的歌` still loses the name. Han surfaces are plain
+    # substrings, because Chinese has no word boundary to respect.
     for surface in surfaces:
         if LATIN.fullmatch(surface.replace(" ", "")):
-            text = re.sub(re.escape(surface), " ", text, flags=re.IGNORECASE)
+            text = re.sub(r"(?<![A-Za-z0-9])" + re.escape(surface) + r"(?![A-Za-z0-9])",
+                          " ", text, flags=re.IGNORECASE)
         else:
             text = text.replace(surface, " ")
     return text
@@ -143,7 +150,7 @@ def evaluate(dense, lexical, label_index, group_ids, label_count):
     return profiles, out
 
 
-def build(private_root: Path, out_dir: Path, lexicon_path: Path) -> int:
+def build(private_root: Path, out_dir: Path, lexicons: list[tuple[str, Path]]) -> int:
     print("loading", flush=True)
     rows, vectors, _ = load(private_root)
     chunks_by_song, label_by_song, components_by_song, documents, centroids_by_song = build_songs(
@@ -238,17 +245,33 @@ def build(private_root: Path, out_dir: Path, lexicon_path: Path) -> int:
         })
 
     # ---------------------------------------------------------------- topic control
-    print("topic-neutralised arm", flush=True)
-    surfaces = sorted({r["entity"].strip() for r in csv.DictReader(lexicon_path.open(encoding="utf-8"))
-                       if r.get("entity", "").strip()}, key=len, reverse=True)
-    neutral_docs = [neutralise(d, surfaces) for d in corpus_docs]
-    removed = sum(len(a) - len(b) for a, b in zip(corpus_docs, neutral_docs))
-    touched = sum(1 for a, b in zip(corpus_docs, neutral_docs) if a != b)
-    lexical_n = v1.fit_tfidf(neutral_docs)
-    _, neutral = evaluate(dense, lexical_n, label_index, group_ids, len(eligible))
-    for name in ("dense", "lexical", "fusion"):
-        print(f"  {name:8s} MRR {neutral[name]['mrr']:.4f}  (dense unchanged by construction)",
-              flush=True)
+    # Several lexicons, because "topic" is not one thing. Place names are the geography
+    # confound proper. All named entities widen that to brands, people and organisations.
+    # The full catalogue additionally strips curated hip-hop slang and English words -- which
+    # is no longer a topic control at all but the sharpest test of the claim itself: if the
+    # lexical system still wins with its flagged slang removed, identity is diffuse in the
+    # character surface and not a lexicon that could be listed.
+    arms = []
+    for arm_name, path in lexicons:
+        print(f"neutralised arm: {arm_name}", flush=True)
+        surfaces = sorted({r["entity"].strip()
+                           for r in csv.DictReader(path.open(encoding="utf-8-sig"))
+                           if r.get("entity", "").strip()}, key=len, reverse=True)
+        neutral_docs = [neutralise(d, surfaces) for d in corpus_docs]
+        removed = sum(len(a) - len(b) for a, b in zip(corpus_docs, neutral_docs))
+        touched = sum(1 for a, b in zip(corpus_docs, neutral_docs) if a != b)
+        lexical_n = v1.fit_tfidf(neutral_docs)
+        _, neutral = evaluate(dense, lexical_n, label_index, group_ids, len(eligible))
+        print(f"  lexical MRR {neutral['lexical']['mrr']:.4f}  fusion {neutral['fusion']['mrr']:.4f}"
+              f"  ({len(surfaces)} surfaces, {removed:,} chars removed)", flush=True)
+        arms.append({
+            "arm": arm_name, "lexicon": path.name, "surfaces_removed": len(surfaces),
+            "characters_removed": int(removed), "documents_touched": int(touched),
+            "lexical_mrr_neutralised": round(neutral["lexical"]["mrr"], 4),
+            "lexical_recall_at_10_neutralised": round(neutral["lexical"]["recall_at_10"], 4),
+            "fusion_mrr_neutralised_lexical_plus_original_dense": round(neutral["fusion"]["mrr"], 4),
+            "lexical_still_beats_original_dense": bool(neutral["lexical"]["mrr"] > original["dense"]["mrr"]),
+        })
 
     # ---------------------------------------------------------------- write
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -291,16 +314,18 @@ def build(private_root: Path, out_dir: Path, lexicon_path: Path) -> int:
             "by_latin_share_quartile": by_quartile,
         },
         "topic_neutralisation": {
-            "lexicon": str(lexicon_path.name), "surfaces_removed": len(surfaces),
-            "characters_removed": int(removed), "documents_touched": int(touched),
             "lexical_mrr_original": round(original["lexical"]["mrr"], 4),
-            "lexical_mrr_neutralised": round(neutral["lexical"]["mrr"], 4),
             "dense_mrr_original": round(original["dense"]["mrr"], 4),
-            "fusion_mrr_neutralised_lexical_plus_original_dense": round(neutral["fusion"]["mrr"], 4),
-            "reading": ("if the neutralised lexical system still beats the original dense "
-                        "system, the lexical advantage is not carried by named places and "
-                        "references; the dense arm is unchanged here because neutralising "
-                        "it needs re-embedding, which is a separate GPU run"),
+            "arms": arms,
+            "reading": ("each arm strips one lexicon, refits TF-IDF and reruns the lexical "
+                        "system against the UNCHANGED original dense system. Places is the "
+                        "geography confound; named_entities widens it to brands, people and "
+                        "organisations; everything additionally removes curated hip-hop slang, "
+                        "English words and language names, which is no longer a topic control "
+                        "but the sharpest test of the claim -- if the lexical system still wins "
+                        "there, identity is diffuse in the character surface rather than a "
+                        "lexicon that could be listed. The dense arm is not neutralised because "
+                        "that needs re-embedding, a separate GPU run"),
         },
         "privacy": "aggregate only; per-query rows are private",
     }
@@ -316,12 +341,25 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--private-root", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
-    parser.add_argument("--lexicon", type=Path,
-                        help="entity surfaces to strip; defaults to the private reference core")
+    parser.add_argument("--lexicon", action="append", metavar="NAME=PATH",
+                        help="a neutralisation arm; repeatable. Defaults to the four arms "
+                             "reference_core, places, named_entities, everything")
     args = parser.parse_args()
     root = args.private_root.resolve()
-    lexicon = args.lexicon or (root / "work" / "chinese_rap_ner_reference_core_v1.csv")
-    return build(root, args.out_dir, lexicon)
+    work = root / "work"
+    if args.lexicon:
+        lexicons = [(item.split("=", 1)[0], Path(item.split("=", 1)[1])) for item in args.lexicon]
+    else:
+        lexicons = [
+            ("reference_core", work / "chinese_rap_ner_reference_core_v1.csv"),
+            ("places", work / "lexicon_arm_places.csv"),
+            ("named_entities", work / "lexicon_arm_named_entities.csv"),
+            ("everything", work / "lexicon_arm_everything.csv"),
+        ]
+    for name, path in lexicons:
+        if not path.is_file():
+            raise SystemExit(f"lexicon arm {name}: missing {path}")
+    return build(root, args.out_dir, lexicons)
 
 
 if __name__ == "__main__":
