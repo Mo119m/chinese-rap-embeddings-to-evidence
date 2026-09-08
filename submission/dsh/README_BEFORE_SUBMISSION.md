@@ -6,8 +6,8 @@ Prepared for *Digital Scholarship in the Humanities* technical requirements chec
 
 - `manuscript.docx` — double-spaced English manuscript, under 9,000 words excluding references, with structured abstract, keywords, data-availability statement, AI-disclosure placeholder, and figure legends/alt text collected at the end. Figures are not embedded.
 - `supplementary_methods.docx` — reproducibility and public/private-boundary supplement.
-- `fig1.pdf`–`fig4.pdf` and `fig1.svg`–`fig4.svg` — vector submission artwork.
-- `fig1.tif`–`fig4.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload the canonical files from the release-root Figures directory (`figures/` in the repository; `Figures/` in the desktop package). They are not duplicated here because the four files total about 130 MB. Their checksums are recorded in `journal_figure_validation.json`.
+- `fig1.pdf`–`fig5.pdf` and `fig1.svg`–`fig5.svg` — vector submission artwork.
+- `fig1.tif`–`fig5.tif` — 600-dpi, 6.5-inch-wide, uncompressed RGB submission artwork. Upload the canonical files from the release-root Figures directory (`figures/` in the repository; `Figures/` in the desktop package). They are not duplicated here because the five files total about 160 MB. Their checksums are recorded in `journal_figure_validation.json`.
 - PDF files are previews for author checking; upload policy should follow the journal portal.
 
 ## Stop before submission

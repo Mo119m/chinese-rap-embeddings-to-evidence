@@ -8,48 +8,48 @@
   "derivatives": {
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx": {
       "built_from": "paper/manuscript.md",
-      "sha256": "58db934435bd7c26d68287a3989c86e0030ff187fc10b0e2a7b79147a1669253"
+      "sha256": "e62328f6029413d09c6b130b7a3f720a63977f02a749f91548482f43d836f8c2"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": {
       "built_from": "paper/manuscript.md",
-      "sha256": "1a155b98e8a111c106397d002d7768a4f688ecab6da2e31a17562c48c97a6757"
+      "sha256": "5743fb2dec10e61c124adeaf7dbdafbca2445209a1c77d8cfd6f56a454e78c8c"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx": {
       "built_from": "paper/manuscript.md",
-      "sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e"
+      "sha256": "240d08403fbdbb3aa073f6b6c552bd42803fa39e9f2f7fea674080c02bf8fe92"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf": {
       "built_from": "paper/manuscript.md",
-      "sha256": "5538464774371345e6db95d3106bb1ef30d0062c48ac56cc9a7f58d9a8574846"
+      "sha256": "7c3210defc122830121ee59d65a89ac05ed70b9ad35723c691bb41e3c523d3f8"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx": {
       "built_from": "paper/supplementary_methods.md",
-      "sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe"
+      "sha256": "c518ef38c26cab97a1c24873af52cbac2350c9b57a87461d0117cbfe7b3ca651"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf": {
       "built_from": "paper/supplementary_methods.md",
-      "sha256": "cbfc8a7ffab307102214671354853013bee4fc55afcbd8c265e0c07923e4e8d6"
+      "sha256": "f7d59f976258f2e4e9ffbaeecbbe8e257547033c8d671b05315ebec69df381a0"
     },
     "submission/dsh/manuscript.docx": {
       "built_from": "paper/manuscript.md",
-      "sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e"
+      "sha256": "240d08403fbdbb3aa073f6b6c552bd42803fa39e9f2f7fea674080c02bf8fe92"
     },
     "submission/dsh/manuscript_preview.pdf": {
       "built_from": "paper/manuscript.md",
-      "sha256": "5538464774371345e6db95d3106bb1ef30d0062c48ac56cc9a7f58d9a8574846"
+      "sha256": "7c3210defc122830121ee59d65a89ac05ed70b9ad35723c691bb41e3c523d3f8"
     },
     "submission/dsh/supplementary_methods.docx": {
       "built_from": "paper/supplementary_methods.md",
-      "sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe"
+      "sha256": "c518ef38c26cab97a1c24873af52cbac2350c9b57a87461d0117cbfe7b3ca651"
     },
     "submission/dsh/supplementary_methods_preview.pdf": {
       "built_from": "paper/supplementary_methods.md",
-      "sha256": "cbfc8a7ffab307102214671354853013bee4fc55afcbd8c265e0c07923e4e8d6"
+      "sha256": "f7d59f976258f2e4e9ffbaeecbbe8e257547033c8d671b05315ebec69df381a0"
     }
   },
   "note": "Source hashes the manuscript derivatives were last built from. Checked by tools/check_manuscript_derivatives.py; update only by rebuilding the derivatives and rerunning that script with --record.",
   "sources": {
-    "paper/manuscript.md": "d50000cece01040c1703aa4e9d69f44dfefa99fe604fde3a7f59433542c48db3",
-    "paper/supplementary_methods.md": "429f0f235def9196a71d0706b71ee83a9a35ee66faf3a51cf10a9bab5e551802"
+    "paper/manuscript.md": "c88a2a25516732969e57577cbbfd7837984ea1ac803cddd9bf8139b2720ebcbe",
+    "paper/supplementary_methods.md": "252d17be94af8fe0c803561726a9d600e12993c97baf94ce9c022ca882579227"
   }
 }

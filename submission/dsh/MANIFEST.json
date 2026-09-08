@@ -1,13 +1,13 @@
 {
   "artifact": "chinese-rap-dsh-upload-bundle-v1",
-  "generated_at_utc": "2026-08-30T23:16:47.302181+00:00",
+  "generated_at_utc": "2026-09-08T21:33:16.279488+00:00",
   "journal_submission_ready": false,
   "reason": "Technical package passes; author-owned factual fields and NER human gold remain outstanding.",
   "files": [
     {
       "path": "README_BEFORE_SUBMISSION.md",
       "bytes": 1661,
-      "sha256": "480169702634a25afbb3c8649812039cb182530c14f12303e10db3620043de46"
+      "sha256": "9608894f54e4e4b677e4ba29c40ae2aa421967e3c47b532da14546bceaacbdf6"
     },
     {
       "path": "dsh_submission_a11y.json",
@@ -21,73 +21,83 @@
     },
     {
       "path": "fig1.pdf",
-      "bytes": 57693,
-      "sha256": "424e38cd10b41ed68654e35b79a6cb764beb6d92ed15ba16b8d5d3088fb0cb68"
+      "bytes": 60599,
+      "sha256": "8faa3ec2388e5a3233021d568a096d2d27353ffb5794443b1483748b66351a3a"
     },
     {
       "path": "fig1.svg",
-      "bytes": 12801,
-      "sha256": "a325f7966f01a068a4ef71546c3aafa1a47d25f9501fce55ea8bea6c3d4c7bf7"
+      "bytes": 12905,
+      "sha256": "9ba36ffa1efe3edb6dea6b81072ff66e5e0b18aec9ff2b4c95e06cd442944716"
     },
     {
       "path": "fig2.pdf",
-      "bytes": 48279,
-      "sha256": "44c7c9975f148f82a554df4a7193206efe49cfae7a8110de9f352c97f99335cf"
+      "bytes": 48248,
+      "sha256": "7fe13d6f8c62ef9059a495a5aa39658051a61daf97ea0add227ff09f5764edc1"
     },
     {
       "path": "fig2.svg",
-      "bytes": 47545,
-      "sha256": "c60dabd1361921d019e8ec553e41840933015873538655b4f2290b2d2a6e45ba"
+      "bytes": 47560,
+      "sha256": "7c13ddc6f2ad3fd501f327378717b89feb99fac0fff2f7f76beee8aa7af1bf9c"
     },
     {
       "path": "fig3.pdf",
       "bytes": 81069,
-      "sha256": "ebb39ea1b5ca3c4e906ba0ff1af99076e5a368ab26d8553324a0fdca0a48bdc7"
+      "sha256": "aa18ba20c79ea903f53aa16b3a0b3a1c980cf1d8d94fe5d1768d3fc912764a71"
     },
     {
       "path": "fig3.svg",
       "bytes": 37977,
-      "sha256": "771499e296743cb10978f21b05987a7312374c8016f4a775f05403878cd1e056"
+      "sha256": "63f21ded4e4f32cb18367547b9e8e3965e1f28ea0d1656c6f0342b8f45e164f2"
     },
     {
       "path": "fig4.pdf",
-      "bytes": 57192,
-      "sha256": "d9ee88dcd13c55d3b813c5ec074f24a06ba4ed2bba84b6e4f5fc5838fdfcba2c"
+      "bytes": 56950,
+      "sha256": "5119326dbe148fb9bff47c95d7f6649a4e87c8950be8c045d2b758891c4b85c4"
     },
     {
       "path": "fig4.svg",
-      "bytes": 57966,
-      "sha256": "02d50020e0501e1d354ac06e0ee94360771697d0d19691b18b8e5b76c1989ee8"
+      "bytes": 57971,
+      "sha256": "bb62465f3c1513fc9cb5d993f0737b14fc73296ee9ac252434022793e66f26c2"
+    },
+    {
+      "path": "fig5.pdf",
+      "bytes": 101758,
+      "sha256": "8047e027c1056373c26bb248543c1e012855a474bb55ad2ac58d3435cb22f5ce"
+    },
+    {
+      "path": "fig5.svg",
+      "bytes": 187506,
+      "sha256": "7b3be21ffb9dbc4fcb3075607675a2f7a82bf74838661701e29d54e452e82ff8"
     },
     {
       "path": "figure_legends_and_alt_text.md",
-      "bytes": 7343,
-      "sha256": "8a659948988d3a6e315d019a6c073b580b8afdd3906c1852218a41e64ead4b69"
+      "bytes": 7431,
+      "sha256": "9ead2226f06c50e7959a6a49f3e2d02dfa59feef78ddd038bac092905f242b10"
     },
     {
       "path": "journal_figure_validation.json",
-      "bytes": 9279,
-      "sha256": "6cea21ec443946ce74f8a3ca3f45ce630b3b850782a29ec07f25bbb39372c2d5"
+      "bytes": 11172,
+      "sha256": "bb247c14216aae35e3c9a02520a68ce0514eaae89f0002532d502f8229d1bac1"
     },
     {
       "path": "manuscript.docx",
-      "bytes": 71441,
-      "sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e"
+      "bytes": 67006,
+      "sha256": "240d08403fbdbb3aa073f6b6c552bd42803fa39e9f2f7fea674080c02bf8fe92"
     },
     {
       "path": "manuscript_preview.pdf",
-      "bytes": 433633,
-      "sha256": "5538464774371345e6db95d3106bb1ef30d0062c48ac56cc9a7f58d9a8574846"
+      "bytes": 357638,
+      "sha256": "7c3210defc122830121ee59d65a89ac05ed70b9ad35723c691bb41e3c523d3f8"
     },
     {
       "path": "supplementary_methods.docx",
-      "bytes": 45550,
-      "sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe"
+      "bytes": 48874,
+      "sha256": "c518ef38c26cab97a1c24873af52cbac2350c9b57a87461d0117cbfe7b3ca651"
     },
     {
       "path": "supplementary_methods_preview.pdf",
-      "bytes": 218746,
-      "sha256": "cbfc8a7ffab307102214671354853013bee4fc55afcbd8c265e0c07923e4e8d6"
+      "bytes": 241249,
+      "sha256": "f7d59f976258f2e4e9ffbaeecbbe8e257547033c8d671b05315ebec69df381a0"
     }
   ]
 }

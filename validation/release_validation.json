@@ -1,6 +1,6 @@
 {
   "artifact": "Chinese_Rap_Research_Release_V4",
-  "generated_at_utc": "2026-08-30T23:16:47.302181+00:00",
+  "generated_at_utc": "2026-09-08T21:33:16.279488+00:00",
   "status": "pass_for_public_release_author_actions_required_before_journal_submission",
   "public_release_ready": true,
   "journal_submission_ready": false,
@@ -84,13 +84,13 @@
   "artifact_hashes": {
     "portable_site_sha256": "2a69998af24a761b78d6731bac434f9dc51157c5c6ab7ef5a2cc38d53b058d79",
     "application_data_sha256": "fb65ce00d1d188a4c3b2ec7f5b0a2ed2283c456fb590306e5062bde82e314c27",
-    "manuscript_markdown_sha256": "d50000cece01040c1703aa4e9d69f44dfefa99fe604fde3a7f59433542c48db3",
-    "review_manuscript_docx_sha256": "58db934435bd7c26d68287a3989c86e0030ff187fc10b0e2a7b79147a1669253",
-    "review_manuscript_pdf_sha256": "1a155b98e8a111c106397d002d7768a4f688ecab6da2e31a17562c48c97a6757",
-    "dsh_manuscript_docx_sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e",
-    "dsh_manuscript_pdf_sha256": "5538464774371345e6db95d3106bb1ef30d0062c48ac56cc9a7f58d9a8574846",
-    "supplement_docx_sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe",
-    "supplement_pdf_sha256": "cbfc8a7ffab307102214671354853013bee4fc55afcbd8c265e0c07923e4e8d6",
-    "journal_figure_validation_sha256": "6cea21ec443946ce74f8a3ca3f45ce630b3b850782a29ec07f25bbb39372c2d5"
+    "manuscript_markdown_sha256": "c88a2a25516732969e57577cbbfd7837984ea1ac803cddd9bf8139b2720ebcbe",
+    "review_manuscript_docx_sha256": "e62328f6029413d09c6b130b7a3f720a63977f02a749f91548482f43d836f8c2",
+    "review_manuscript_pdf_sha256": "5743fb2dec10e61c124adeaf7dbdafbca2445209a1c77d8cfd6f56a454e78c8c",
+    "dsh_manuscript_docx_sha256": "240d08403fbdbb3aa073f6b6c552bd42803fa39e9f2f7fea674080c02bf8fe92",
+    "dsh_manuscript_pdf_sha256": "7c3210defc122830121ee59d65a89ac05ed70b9ad35723c691bb41e3c523d3f8",
+    "supplement_docx_sha256": "c518ef38c26cab97a1c24873af52cbac2350c9b57a87461d0117cbfe7b3ca651",
+    "supplement_pdf_sha256": "f7d59f976258f2e4e9ffbaeecbbe8e257547033c8d671b05315ebec69df381a0",
+    "journal_figure_validation_sha256": "bb247c14216aae35e3c9a02520a68ce0514eaae89f0002532d502f8229d1bac1"
   }
 }

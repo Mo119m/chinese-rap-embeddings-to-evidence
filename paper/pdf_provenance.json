@@ -2,25 +2,25 @@
   "how_this_is_verified": "The converter writes a creation timestamp and a document id, so PDF bytes differ between two conversions of one DOCX and cannot be pinned. The extracted text and page count do reproduce, and are what is recorded here.",
   "pdfs": {
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript.pdf": {
-      "pages": 38,
+      "pages": 34,
       "source_docx": "paper/Chinese_Rap_Evidence_Grounded_Manuscript.docx",
-      "source_docx_sha256": "58db934435bd7c26d68287a3989c86e0030ff187fc10b0e2a7b79147a1669253",
-      "text_characters": 68223,
-      "text_sha256": "2dbbd81eac70bf254ca36db2bd645122851179788947e4f245c91453f1edcf63"
+      "source_docx_sha256": "e62328f6029413d09c6b130b7a3f720a63977f02a749f91548482f43d836f8c2",
+      "text_characters": 58664,
+      "text_sha256": "f562b4eb326ec3016f9af30fbba03032b519bf019862d53318093a0e915d0d4b"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.pdf": {
-      "pages": 36,
+      "pages": 30,
       "source_docx": "paper/Chinese_Rap_Evidence_Grounded_Manuscript_DSH_Submission.docx",
-      "source_docx_sha256": "8d210a8a07226363c6558a089590e3ed608059971ac1fa37524c58fa74d73f3e",
-      "text_characters": 68269,
-      "text_sha256": "572b5281f1ef0c8f7f65acd8c97001f351a51ed65a8dc31963137a1c1b8d9f17"
+      "source_docx_sha256": "240d08403fbdbb3aa073f6b6c552bd42803fa39e9f2f7fea674080c02bf8fe92",
+      "text_characters": 58734,
+      "text_sha256": "9aa2c074be4b61a0a73fc14ebeca88d6bdd8163364c29ab09f701f3e71003461"
     },
     "paper/Chinese_Rap_Evidence_Grounded_Supplement.pdf": {
-      "pages": 7,
+      "pages": 11,
       "source_docx": "paper/Chinese_Rap_Evidence_Grounded_Supplement.docx",
-      "source_docx_sha256": "fb23c2cd19a12dc22dfc161df1eef875191f62348999ecc5d93f4303e2c907fe",
-      "text_characters": 13522,
-      "text_sha256": "2f457588e509ffb49a61154e62d8e78f8b6bb5a093932358e6a0df4ab2ed6e59"
+      "source_docx_sha256": "c518ef38c26cab97a1c24873af52cbac2350c9b57a87461d0117cbfe7b3ca651",
+      "text_characters": 20943,
+      "text_sha256": "430e01bb82edf5c97d1dbecfbd0a4ba818cb0b29d353e1e34f1dbeb57eba8ee3"
     }
   }
 }

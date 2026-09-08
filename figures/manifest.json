@@ -1,7 +1,7 @@
 {
   "artifact_id": "chinese-rap-downstream-figures-v1",
   "version": "1.2.0-journal",
-  "generated_at_utc": "2026-09-08T21:20:13.100259Z",
+  "generated_at_utc": "2026-09-08T21:33:15.924966Z",
   "status": "pass",
   "renderer": {
     "matplotlib": "3.11.1",
@@ -215,8 +215,8 @@
       },
       {
         "path": "results/retrieval-v2/identity_probe.json",
-        "bytes": 11755,
-        "sha256": "7a99d1a039d2633acc14d96cbe983e7d9b6ec019d57b0fac57fcdfe7c6fad723"
+        "bytes": 12473,
+        "sha256": "d5e49acef068abf6a1d192c598b1c4c5ba97d57c819d7dd5babc80149f3cffd4"
       },
       {
         "path": "figures/figure_5_author_purity_source.csv",
@@ -239,12 +239,12 @@
     {
       "path": "figures/fig1.pdf",
       "bytes": 60599,
-      "sha256": "af0386f48a5e0e28db4de28dfdb0ac438c3e72e875028c03318403b6f48e8e56"
+      "sha256": "8faa3ec2388e5a3233021d568a096d2d27353ffb5794443b1483748b66351a3a"
     },
     {
       "path": "figures/fig1.svg",
       "bytes": 12905,
-      "sha256": "e26e77be9bc072b14cc919b433151ce372cde3606fd4a5c0e1196924a89beb9a"
+      "sha256": "9ba36ffa1efe3edb6dea6b81072ff66e5e0b18aec9ff2b4c95e06cd442944716"
     },
     {
       "path": "figures/fig1.tif",
@@ -254,12 +254,12 @@
     {
       "path": "figures/fig2.pdf",
       "bytes": 48248,
-      "sha256": "872c82313bd95b64dcbb19456f0bab802ea780e01e5d5ed99db98df37dc93ec5"
+      "sha256": "7fe13d6f8c62ef9059a495a5aa39658051a61daf97ea0add227ff09f5764edc1"
     },
     {
       "path": "figures/fig2.svg",
       "bytes": 47560,
-      "sha256": "ca61cf5b1147c5848b733133d29ce14d0bc243396bb2e322c0cc8e509f4572f5"
+      "sha256": "7c13ddc6f2ad3fd501f327378717b89feb99fac0fff2f7f76beee8aa7af1bf9c"
     },
     {
       "path": "figures/fig2.tif",
@@ -269,12 +269,12 @@
     {
       "path": "figures/fig3.pdf",
       "bytes": 81069,
-      "sha256": "7828417beaeea568c8a1d03199da8bb11ff53652542f06a5fb0c5d7c026815b8"
+      "sha256": "aa18ba20c79ea903f53aa16b3a0b3a1c980cf1d8d94fe5d1768d3fc912764a71"
     },
     {
       "path": "figures/fig3.svg",
       "bytes": 37977,
-      "sha256": "16527d7e0847ac14aa59aef7b5001f5236a5a13c30c1fc05439ec6b88fcf2a7e"
+      "sha256": "63f21ded4e4f32cb18367547b9e8e3965e1f28ea0d1656c6f0342b8f45e164f2"
     },
     {
       "path": "figures/fig3.tif",
@@ -284,12 +284,12 @@
     {
       "path": "figures/fig4.pdf",
       "bytes": 56950,
-      "sha256": "396ada17e0736cb1ac56deb9bb1f0eae11e6c75ae264698ce192d3a9e5e3d7ea"
+      "sha256": "5119326dbe148fb9bff47c95d7f6649a4e87c8950be8c045d2b758891c4b85c4"
     },
     {
       "path": "figures/fig4.svg",
       "bytes": 57971,
-      "sha256": "c1097babf1b0808b71894da22ee8ebad3b0cc50d309835a1e1e7093dbaebb340"
+      "sha256": "bb62465f3c1513fc9cb5d993f0737b14fc73296ee9ac252434022793e66f26c2"
     },
     {
       "path": "figures/fig4.tif",
@@ -299,12 +299,12 @@
     {
       "path": "figures/fig5.pdf",
       "bytes": 101758,
-      "sha256": "57cc541c24d3c8c82c79bfa29f1e133f4cf9dea0c8602b6e03b0b47118231915"
+      "sha256": "8047e027c1056373c26bb248543c1e012855a474bb55ad2ac58d3435cb22f5ce"
     },
     {
       "path": "figures/fig5.svg",
       "bytes": 187506,
-      "sha256": "4be6e738de64877ad73a3f38fa19359a4c804a298dca3df617ab31b263b804a0"
+      "sha256": "7b3be21ffb9dbc4fcb3075607675a2f7a82bf74838661701e29d54e452e82ff8"
     },
     {
       "path": "figures/fig5.tif",
@@ -429,12 +429,12 @@
     {
       "path": "figures/journal_figure_validation.json",
       "bytes": 11172,
-      "sha256": "758a8f9b6bb4252be0a3985872dfefe83d4d1278ce28a335930191e44ef520ea"
+      "sha256": "bb247c14216aae35e3c9a02520a68ce0514eaae89f0002532d502f8229d1bac1"
     },
     {
       "path": "figures/validation.json",
       "bytes": 15519,
-      "sha256": "73b9b66b4a4af89ae1a2e3a9e731074a0bfb6aea8ab8f4aecd214625820f03a1"
+      "sha256": "a97ddd68cf47b4c472e34b2054125bf2e68cb23bdfbfdc42a76a7f36b7138cfc"
     }
   ],
   "privacy": "Aggregate-only figures and source tables; no lyric text, song/chunk IDs, content hashes, embeddings, or private audit rows.",
