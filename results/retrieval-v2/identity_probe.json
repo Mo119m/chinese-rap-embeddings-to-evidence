@@ -127,6 +127,16 @@
     }
   },
   "labels": 226,
+  "lexical_matched_dimension": {
+    "design": "the same transforms on a 1024-dimensional truncated SVD of the TF-IDF rows, fitted fold-wise on the training songs; systems named lexical_svd_* above",
+    "variance_kept_by_fold": [
+      0.4378,
+      0.437,
+      0.4371,
+      0.4377,
+      0.4388
+    ]
+  },
   "method": "within-class covariance normalisation from speaker recognition: whiten the song vectors by the covariance of songs within an author, fitted with Ledoit-Wolf shrinkage on the builder's per-(group, label) weights, then score with the unchanged leave-group-out cosine protocol",
   "paired_contrasts": {
     "contrasts": [
@@ -219,6 +229,76 @@
         "minus": "lexical_character_ngrams",
         "mrr_difference": 0.09,
         "system": "fusion_lexical_within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.0624,
+          -0.0517
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_character_ngrams",
+        "mrr_difference": -0.0572,
+        "system": "lexical_svd_none"
+      },
+      {
+        "ci95": [
+          0.1056,
+          0.1198
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_svd_none",
+        "mrr_difference": 0.1128,
+        "system": "lexical_svd_total_whitening"
+      },
+      {
+        "ci95": [
+          0.0049,
+          0.0106
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_svd_total_whitening",
+        "mrr_difference": 0.0077,
+        "system": "lexical_svd_within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.0057,
+          0.0115
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_svd_within_author_whitening_permuted_labels",
+        "mrr_difference": 0.0085,
+        "system": "lexical_svd_within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.0805,
+          -0.0604
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_svd_within_author_whitening",
+        "mrr_difference": -0.0702,
+        "system": "within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.0368,
+          0.0468
+        ],
+        "excludes_zero": true,
+        "minus": "fusion_lexical_within_author_whitening",
+        "mrr_difference": 0.0419,
+        "system": "fusion_whitened_lexical_svd_whitened_semantic"
+      },
+      {
+        "ci95": [
+          0.0622,
+          0.0747
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_svd_within_author_whitening",
+        "mrr_difference": 0.0685,
+        "system": "fusion_whitened_lexical_svd_whitened_semantic"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
@@ -245,11 +325,47 @@
       "recall_at_1": 0.4433,
       "recall_at_10": 0.7367
     },
+    "fusion_whitened_lexical_svd_whitened_semantic": {
+      "mrr": 0.5871,
+      "mrr_component_weighted": 0.5832,
+      "recall_at_1": 0.482,
+      "recall_at_10": 0.783
+    },
     "lexical_character_ngrams": {
       "mrr": 0.4503,
       "mrr_component_weighted": 0.4513,
       "recall_at_1": 0.3571,
       "recall_at_10": 0.6302
+    },
+    "lexical_svd_centred": {
+      "mrr": 0.3647,
+      "mrr_component_weighted": 0.3665,
+      "recall_at_1": 0.2727,
+      "recall_at_10": 0.5455
+    },
+    "lexical_svd_none": {
+      "mrr": 0.3933,
+      "mrr_component_weighted": 0.3941,
+      "recall_at_1": 0.2982,
+      "recall_at_10": 0.5753
+    },
+    "lexical_svd_total_whitening": {
+      "mrr": 0.5114,
+      "mrr_component_weighted": 0.5069,
+      "recall_at_1": 0.404,
+      "recall_at_10": 0.7242
+    },
+    "lexical_svd_within_author_whitening": {
+      "mrr": 0.5183,
+      "mrr_component_weighted": 0.5146,
+      "recall_at_1": 0.4055,
+      "recall_at_10": 0.7373
+    },
+    "lexical_svd_within_author_whitening_permuted_labels": {
+      "mrr": 0.5106,
+      "mrr_component_weighted": 0.5061,
+      "recall_at_1": 0.4037,
+      "recall_at_10": 0.7188
     },
     "none": {
       "mrr": 0.3181,
@@ -274,6 +390,75 @@
       "mrr_component_weighted": 0.4259,
       "recall_at_1": 0.3371,
       "recall_at_10": 0.6057
+    }
+  },
+  "unseen_author_transfer": {
+    "contrasts": [
+      {
+        "ci95": [
+          0.1063,
+          0.1507
+        ],
+        "excludes_zero": true,
+        "minus": "unseen_authors_none",
+        "mrr_difference": 0.1287,
+        "system": "unseen_authors_within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.1314,
+          0.1795
+        ],
+        "excludes_zero": true,
+        "minus": "unseen_authors_none",
+        "mrr_difference": 0.1556,
+        "system": "unseen_authors_total_whitening"
+      },
+      {
+        "ci95": [
+          -0.035,
+          -0.0191
+        ],
+        "excludes_zero": true,
+        "minus": "unseen_authors_total_whitening",
+        "mrr_difference": -0.0269,
+        "system": "unseen_authors_within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.0163,
+          -0.0003
+        ],
+        "excludes_zero": true,
+        "minus": "unseen_authors_within_author_whitening",
+        "mrr_difference": -0.0084,
+        "system": "seen_authors_within_author_whitening"
+      }
+    ],
+    "design": "34 labels (15%, seed 20260825) held out whole; transforms fitted on the other labels' songs only; the held-out labels' queries scored against the usual leave-group-out profiles of all labels",
+    "held_out_labels": 34,
+    "queries": 1050,
+    "systems": {
+      "seen_authors_within_author_whitening": {
+        "mrr": 0.4208,
+        "mrr_component_weighted": 0.4173,
+        "recall_at_10": 0.6048
+      },
+      "unseen_authors_none": {
+        "mrr": 0.2966,
+        "mrr_component_weighted": 0.2971,
+        "recall_at_10": 0.479
+      },
+      "unseen_authors_total_whitening": {
+        "mrr": 0.4552,
+        "mrr_component_weighted": 0.4527,
+        "recall_at_10": 0.6286
+      },
+      "unseen_authors_within_author_whitening": {
+        "mrr": 0.4287,
+        "mrr_component_weighted": 0.4257,
+        "recall_at_10": 0.6257
+      }
     }
   },
   "verification": {

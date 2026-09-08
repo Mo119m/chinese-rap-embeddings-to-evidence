@@ -1,0 +1,574 @@
+{
+  "analysis": "the identity experiments' ranks under micro, component and macro averaging",
+  "definitions": {
+    "component": "each (leakage group, label) component weight one -- the retrieval builder's per-query weighting",
+    "macro": "component-weighted mean within each label, then the plain mean over labels -- the retrieval builder's headline estimand",
+    "micro": "each query weight one; the number the experiments print"
+  },
+  "tables": {
+    "identity_probe": {
+      "paired_contrasts": {
+        "contrasts": [
+          {
+            "ci95": [
+              0.0601,
+              0.0734
+            ],
+            "excludes_zero": true,
+            "minus": "fusion_lexical_none",
+            "mrr_difference": 0.0667,
+            "system": "fusion_lexical_within_author_whitening"
+          },
+          {
+            "ci95": [
+              -0.017,
+              0.0033
+            ],
+            "excludes_zero": false,
+            "minus": "lexical_character_ngrams",
+            "mrr_difference": -0.0068,
+            "system": "within_author_whitening"
+          }
+        ],
+        "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one; all queries"
+      },
+      "queries": 7236,
+      "systems": {
+        "centred": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3116,
+              "macro": 0.309,
+              "micro": 0.3136
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.4983,
+              "macro": 0.4882,
+              "micro": 0.5028
+            }
+          }
+        },
+        "fusion_lexical_none": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4746,
+              "macro": 0.4266,
+              "micro": 0.4756
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.6587,
+              "macro": 0.5922,
+              "micro": 0.661
+            }
+          }
+        },
+        "fusion_lexical_within_author_whitening": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.5413,
+              "macro": 0.506,
+              "micro": 0.5436
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.7327,
+              "macro": 0.6884,
+              "micro": 0.7367
+            }
+          }
+        },
+        "fusion_whitened_lexical_svd_whitened_semantic": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.5832,
+              "macro": 0.5644,
+              "micro": 0.5871
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.7785,
+              "macro": 0.756,
+              "micro": 0.783
+            }
+          }
+        },
+        "lexical_character_ngrams": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4513,
+              "macro": 0.3982,
+              "micro": 0.4503
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.6294,
+              "macro": 0.5552,
+              "micro": 0.6302
+            }
+          }
+        },
+        "lexical_svd_centred": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3665,
+              "macro": 0.3437,
+              "micro": 0.3647
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5494,
+              "macro": 0.5199,
+              "micro": 0.5455
+            }
+          }
+        },
+        "lexical_svd_none": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3941,
+              "macro": 0.3571,
+              "micro": 0.3933
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5769,
+              "macro": 0.5221,
+              "micro": 0.5753
+            }
+          }
+        },
+        "lexical_svd_total_whitening": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.5069,
+              "macro": 0.4806,
+              "micro": 0.5114
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.7194,
+              "macro": 0.691,
+              "micro": 0.7242
+            }
+          }
+        },
+        "lexical_svd_within_author_whitening": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.5146,
+              "macro": 0.487,
+              "micro": 0.5183
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.7334,
+              "macro": 0.7043,
+              "micro": 0.7373
+            }
+          }
+        },
+        "lexical_svd_within_author_whitening_permuted_labels": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.5061,
+              "macro": 0.48,
+              "micro": 0.5106
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.714,
+              "macro": 0.6851,
+              "micro": 0.7188
+            }
+          }
+        },
+        "none": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3163,
+              "macro": 0.3012,
+              "micro": 0.3181
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5103,
+              "macro": 0.4774,
+              "micro": 0.5142
+            }
+          }
+        },
+        "total_whitening": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4271,
+              "macro": 0.4245,
+              "micro": 0.4316
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5992,
+              "macro": 0.5898,
+              "micro": 0.6059
+            }
+          }
+        },
+        "within_author_whitening": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4445,
+              "macro": 0.4397,
+              "micro": 0.4494
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.6268,
+              "macro": 0.618,
+              "micro": 0.6336
+            }
+          }
+        },
+        "within_author_whitening_permuted_labels": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4259,
+              "macro": 0.4233,
+              "micro": 0.4306
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5993,
+              "macro": 0.5903,
+              "micro": 0.6057
+            }
+          }
+        }
+      }
+    },
+    "identity_spaces": {
+      "paired_contrasts": {
+        "contrasts": [
+          {
+            "ci95": [
+              0.0179,
+              0.0291
+            ],
+            "excludes_zero": true,
+            "minus": "lexical_character_ngrams",
+            "mrr_difference": 0.0233,
+            "system": "fusion_dense_lexical"
+          },
+          {
+            "ci95": [
+              0.1505,
+              0.1667
+            ],
+            "excludes_zero": true,
+            "minus": "dense_semantic",
+            "mrr_difference": 0.1583,
+            "system": "fusion_dense_lexical"
+          },
+          {
+            "ci95": [
+              0.1253,
+              0.1449
+            ],
+            "excludes_zero": true,
+            "minus": "dense_semantic",
+            "mrr_difference": 0.135,
+            "system": "lexical_character_ngrams"
+          }
+        ],
+        "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one; all queries"
+      },
+      "queries": 7236,
+      "systems": {
+        "dense_semantic": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3163,
+              "macro": 0.3012,
+              "micro": 0.3181
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5103,
+              "macro": 0.4774,
+              "micro": 0.5142
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3118,
+              "macro": 0.296,
+              "micro": 0.3133
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.5061,
+              "macro": 0.472,
+              "micro": 0.5099
+            }
+          }
+        },
+        "fusion_all_three": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4338,
+              "macro": 0.3799,
+              "micro": 0.4336
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.6306,
+              "macro": 0.5497,
+              "micro": 0.6314
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4399,
+              "macro": 0.3853,
+              "micro": 0.44
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.6396,
+              "macro": 0.5575,
+              "micro": 0.6409
+            }
+          }
+        },
+        "fusion_dense_lexical": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4746,
+              "macro": 0.4266,
+              "micro": 0.4756
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.6587,
+              "macro": 0.5922,
+              "micro": 0.661
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4712,
+              "macro": 0.421,
+              "micro": 0.472
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.6557,
+              "macro": 0.5874,
+              "micro": 0.658
+            }
+          }
+        },
+        "fusion_dense_phonological": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.2662,
+              "macro": 0.2364,
+              "micro": 0.2658
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.4583,
+              "macro": 0.4026,
+              "micro": 0.4596
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.2699,
+              "macro": 0.2387,
+              "micro": 0.2698
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.4648,
+              "macro": 0.4071,
+              "micro": 0.4665
+            }
+          }
+        },
+        "fusion_lexical_phonological": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3867,
+              "macro": 0.3347,
+              "micro": 0.3855
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.5712,
+              "macro": 0.4902,
+              "micro": 0.5688
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.3922,
+              "macro": 0.3393,
+              "micro": 0.3912
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.5794,
+              "macro": 0.4958,
+              "micro": 0.5774
+            }
+          }
+        },
+        "label_frequency_prior": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.0192,
+              "macro": 0.0147,
+              "micro": 0.0188
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.0142,
+              "macro": 0.0088,
+              "micro": 0.0135
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.0194,
+              "macro": 0.0147,
+              "micro": 0.0189
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.0144,
+              "macro": 0.0088,
+              "micro": 0.0137
+            }
+          }
+        },
+        "lexical_character_ngrams": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4513,
+              "macro": 0.3982,
+              "micro": 0.4503
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.6294,
+              "macro": 0.5552,
+              "micro": 0.6302
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.4481,
+              "macro": 0.3934,
+              "micro": 0.4469
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.6267,
+              "macro": 0.5506,
+              "micro": 0.6274
+            }
+          }
+        },
+        "phonological_strict": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.0967,
+              "macro": 0.0884,
+              "micro": 0.0967
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.1942,
+              "macro": 0.1713,
+              "micro": 0.1929
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.098,
+              "macro": 0.089,
+              "micro": 0.0981
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.197,
+              "macro": 0.1723,
+              "micro": 0.1958
+            }
+          }
+        },
+        "phonological_with_finals": {
+          "all_queries": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.1135,
+              "macro": 0.1015,
+              "micro": 0.1128
+            },
+            "queries": 7236,
+            "recall_at_10": {
+              "component": 0.2278,
+              "macro": 0.1973,
+              "micro": 0.2265
+            }
+          },
+          "covered_subset": {
+            "labels": 226,
+            "mrr": {
+              "component": 0.1151,
+              "macro": 0.1021,
+              "micro": 0.1144
+            },
+            "queries": 7129,
+            "recall_at_10": {
+              "component": 0.2311,
+              "macro": 0.1983,
+              "micro": 0.2299
+            }
+          }
+        }
+      }
+    }
+  }
+}

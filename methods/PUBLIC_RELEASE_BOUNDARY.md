@@ -8,12 +8,14 @@ This repository separates research integrity metadata from private lyric-level r
 - song IDs, chunk IDs, line IDs, and private membership rows;
 - row-level hashes or fingerprints of lyric content;
 - dense embeddings and row maps;
+- per-query ranks and any table that ties a layout coordinate or a rank to a song identifier;
 - reviewer contexts, ratings, and adjudication records;
 - credentials, personal email addresses, and private storage paths.
 
 ## Retained
 
 - aggregate metrics, confidence intervals, support counts, short entity surfaces, and short characteristic tokens;
+- figure-source tables, including the Figure 5 layout table, which carries a source-credit label and two t-SNE coordinates per point and no song identifier;
 - file-level SHA-256 checksums for reproducibility and integrity verification;
 - `ALBL-*` and `ENT-*` deterministic aggregate join keys in detailed result tables.
 

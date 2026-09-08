@@ -39,6 +39,7 @@ from pathlib import Path
 
 import numpy as np
 from sklearn.covariance import ledoit_wolf
+from sklearn.decomposition import TruncatedSVD
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
@@ -60,6 +61,12 @@ OUT_DIR = ROOT / "results" / "retrieval-v2"
 SEED = 20260825
 FOLDS = 5
 EXPECTED_DENSE_MRR = 0.3181
+SVD_COMPONENTS = 1024          # the dense system's own width
+HELD_OUT_LABEL_SHARE = 0.15
+
+
+def unit_rows(matrix: np.ndarray) -> np.ndarray:
+    return matrix / np.maximum(np.linalg.norm(matrix, axis=1, keepdims=True), 1e-12)
 
 
 # ------------------------------------------------------------------ scoring
@@ -225,6 +232,35 @@ def build(private_root: Path, out_dir: Path) -> int:
         ranks[f"fusion_lexical_{name}"] = v1.rank_system(fused.astype(np.float32), label_index)[0].astype(np.int64)
     ranks["lexical_character_ngrams"] = lexical_ranks
 
+    # "Level with the lexical system" is only fair if the lexical space could not have
+    # gained as much from the same step. TF-IDF rows are sparse and 150,000-dimensional, so
+    # the transforms are applied to a 1,024-dimensional truncated SVD of them -- the dense
+    # system's own width -- fitted fold-wise on the training songs like everything else.
+    print("the same transforms on a 1,024-dimensional lexical space", flush=True)
+    svd_scores = {name: np.zeros((len(songs), label_count)) for name in TRANSFORMS}
+    svd_variance = []
+    for k in range(FOLDS):
+        train_mask = fold != k
+        queries = np.flatnonzero(~train_mask)
+        svd = TruncatedSVD(n_components=SVD_COMPONENTS, random_state=SEED + k)
+        svd.fit(lexical[train_mask])
+        svd_variance.append(round(float(svd.explained_variance_ratio_.sum()), 4))
+        reduced = unit_rows(svd.transform(lexical))
+        for name in TRANSFORMS:
+            mean, matrix, _ = fit_transform(name, reduced[train_mask], label_index[train_mask],
+                                            weights[train_mask], np.random.default_rng(SEED + k))
+            svd_scores[name][queries] = dense_leave_group_out(
+                unit_rows((reduced - mean) @ matrix.T), label_index, group_ids, weights,
+                label_count, queries)
+        print(f"  fold {k}: {svd_variance[-1]:.3f} of variance kept", flush=True)
+    for name, s in svd_scores.items():
+        ranks[f"lexical_svd_{name}"] = v1.rank_system(s.astype(np.float32), label_index)[0].astype(np.int64)
+    # both spaces given the same treatment, then fused: the fair best system
+    both = (v1.zscore_rows(scores["within_author_whitening"])
+            + v1.zscore_rows(svd_scores["within_author_whitening"])) / 2.0
+    ranks["fusion_whitened_lexical_svd_whitened_semantic"] = v1.rank_system(
+        both.astype(np.float32), label_index)[0].astype(np.int64)
+
     rr = {name: 1.0 / r for name, r in ranks.items()}
     all_mask = np.ones(len(songs), dtype=bool)
     report = {}
@@ -247,9 +283,54 @@ def build(private_root: Path, out_dir: Path) -> int:
         ("lexical_character_ngrams", "within_author_whitening"),
         ("fusion_lexical_within_author_whitening", "fusion_lexical_none"),
         ("fusion_lexical_within_author_whitening", "lexical_character_ngrams"),
+        ("lexical_svd_none", "lexical_character_ngrams"),
+        ("lexical_svd_total_whitening", "lexical_svd_none"),
+        ("lexical_svd_within_author_whitening", "lexical_svd_total_whitening"),
+        ("lexical_svd_within_author_whitening", "lexical_svd_within_author_whitening_permuted_labels"),
+        ("within_author_whitening", "lexical_svd_within_author_whitening"),
+        ("fusion_whitened_lexical_svd_whitened_semantic", "fusion_lexical_within_author_whitening"),
+        ("fusion_whitened_lexical_svd_whitened_semantic", "lexical_svd_within_author_whitening"),
     ]
     contrasts = paired_group_bootstrap(rr, weights, group_ids, all_mask, pairs)
     for c in contrasts:
+        print(f"  {c['system']} - {c['minus']}: {c['mrr_difference']:+.4f} "
+              f"[{c['ci95'][0]:+.4f}, {c['ci95'][1]:+.4f}]", flush=True)
+
+    # Does the identity metric transfer to authors it never saw? A deterministic 15% of
+    # labels is held out whole; the transforms are fitted on the other labels' songs only
+    # and the held-out labels' queries are scored in them, against the usual profiles.
+    # The fold-wise within-author space, where those authors were seen, is the comparison.
+    print("transfer to held-out authors", flush=True)
+    held = np.zeros(label_count, dtype=bool)
+    held[np.random.default_rng(SEED).permutation(label_count)[
+        :int(round(HELD_OUT_LABEL_SHARE * label_count))]] = True
+    unseen = held[label_index]
+    unseen_queries = np.flatnonzero(unseen)
+    transfer_rr = {}
+    for name in ("none", "total_whitening", "within_author_whitening"):
+        mean, matrix, _ = fit_transform(name, dense[~unseen], label_index[~unseen],
+                                        weights[~unseen], np.random.default_rng(SEED))
+        scored = dense_leave_group_out(unit_rows((dense - mean) @ matrix.T), label_index,
+                                       group_ids, weights, label_count, unseen_queries)
+        transfer_ranks = v1.rank_system(scored.astype(np.float32),
+                                        label_index[unseen_queries])[0].astype(np.int64)
+        full = np.ones(len(songs))
+        full[unseen_queries] = 1.0 / transfer_ranks
+        transfer_rr[f"unseen_authors_{name}"] = full
+    transfer_rr["seen_authors_within_author_whitening"] = rr["within_author_whitening"]
+    transfer_report = {name: {"mrr": round(float(np.mean(values[unseen])), 4),
+                              "mrr_component_weighted": round(weighted_mean(values, weights, unseen), 4),
+                              "recall_at_10": round(float(np.mean(values[unseen] >= 0.1)), 4)}
+                       for name, values in transfer_rr.items()}
+    for name, values in transfer_report.items():
+        print(f"  {name:42s} MRR {values['mrr']:.4f}  R@10 {values['recall_at_10']:.4f}", flush=True)
+    transfer_contrasts = paired_group_bootstrap(transfer_rr, weights, group_ids, unseen, [
+        ("unseen_authors_within_author_whitening", "unseen_authors_none"),
+        ("unseen_authors_total_whitening", "unseen_authors_none"),
+        ("unseen_authors_within_author_whitening", "unseen_authors_total_whitening"),
+        ("seen_authors_within_author_whitening", "unseen_authors_within_author_whitening"),
+    ])
+    for c in transfer_contrasts:
         print(f"  {c['system']} - {c['minus']}: {c['mrr_difference']:+.4f} "
               f"[{c['ci95'][0]:+.4f}, {c['ci95'][1]:+.4f}]", flush=True)
 
@@ -309,6 +390,22 @@ def build(private_root: Path, out_dir: Path) -> int:
             "contrasts": contrasts,
         },
         "fold_diagnostics": diagnostics,
+        "lexical_matched_dimension": {
+            "design": (f"the same transforms on a {SVD_COMPONENTS}-dimensional truncated SVD of "
+                       "the TF-IDF rows, fitted fold-wise on the training songs; systems "
+                       "named lexical_svd_* above"),
+            "variance_kept_by_fold": svd_variance,
+        },
+        "unseen_author_transfer": {
+            "design": (f"{int(held.sum())} labels ({HELD_OUT_LABEL_SHARE:.0%}, seed {SEED}) held "
+                       "out whole; transforms fitted on the other labels' songs only; the "
+                       "held-out labels' queries scored against the usual leave-group-out "
+                       "profiles of all labels"),
+            "held_out_labels": int(held.sum()),
+            "queries": int(unseen.sum()),
+            "systems": transfer_report,
+            "contrasts": transfer_contrasts,
+        },
         "privacy": "aggregate only; per-query ranks are private",
     }
     (out_dir / "identity_probe.json").write_text(

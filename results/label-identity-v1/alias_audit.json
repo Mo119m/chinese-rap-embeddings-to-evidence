@@ -1,0 +1,40 @@
+{
+  "artifact_id": "chinese-rap-label-alias-audit-v1",
+  "artist_list": {
+    "columns_not_read": [
+      "region -- the evidence boundary forbids using an artist's place to validate any label-to-place edge"
+    ],
+    "columns_read": [
+      "artist"
+    ],
+    "completeness": "partial; the author will supply a complete list",
+    "entries": 229,
+    "file": "artist_list_2025_partial.csv"
+  },
+  "consequence": "no label is merged here; every pair above is a candidate for the author's ruling, recorded as a decision if and when it is made",
+  "corpus_labels": 241,
+  "entries_dismissed_as_particle_matches": [
+    {
+      "entry": "Ice Paper",
+      "labels": [
+        "Ice Paper",
+        "ICE"
+      ],
+      "why": "every other label reached is itself a separate whole entry of the list"
+    }
+  ],
+  "entries_mapping_to_more_than_one_label": [],
+  "labels_matched_by_the_list": 183,
+  "labels_reached_by_more_than_one_entry": [
+    {
+      "entries": [
+        "ICE",
+        "Ice Paper"
+      ],
+      "label": "ICE"
+    }
+  ],
+  "list_entries_matching_a_label": 183,
+  "privacy": "label strings and counts only; no lyric text, song identifiers, or regions",
+  "question": "whether an author-supplied artist list, which writes alternative names on one line, maps any single entry to more than one corpus label -- the split the shared-text audit cannot see"
+}
