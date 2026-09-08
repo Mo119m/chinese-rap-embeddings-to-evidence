@@ -1,0 +1,283 @@
+{
+  "analysis": "linear identity probe on the frozen semantic embedding",
+  "design": {
+    "controls": {
+      "centred": "mean subtraction and re-normalisation only, which every whitening also does, so its effect can be separated from the whitening's",
+      "total_whitening": "the same whitening from the total covariance, no labels used",
+      "within_author_whitening_permuted_labels": "labels permuted across the training songs before fitting; class sizes kept"
+    },
+    "fold_sizes": [
+      1408,
+      1492,
+      1507,
+      1382,
+      1447
+    ],
+    "folds": 5,
+    "rule": "a fold's transform is fitted on the other folds and applied to every song; only that fold's queries are scored in it, against profiles built from all other songs as in the original protocol",
+    "seed": 20260825,
+    "unit_dealt_into_folds": "leakage group"
+  },
+  "fold_diagnostics": {
+    "centred": [],
+    "none": [],
+    "total_whitening": [
+      {
+        "fold": 0,
+        "labels_seen": 226,
+        "shrinkage": 0.0239
+      },
+      {
+        "fold": 1,
+        "labels_seen": 226,
+        "shrinkage": 0.0244
+      },
+      {
+        "fold": 2,
+        "labels_seen": 226,
+        "shrinkage": 0.0247
+      },
+      {
+        "fold": 3,
+        "labels_seen": 226,
+        "shrinkage": 0.0237
+      },
+      {
+        "fold": 4,
+        "labels_seen": 226,
+        "shrinkage": 0.0241
+      }
+    ],
+    "within_author_whitening": [
+      {
+        "fold": 0,
+        "labels_seen": 226,
+        "shrinkage": 0.0303,
+        "within_author_share_of_variance": 0.8968
+      },
+      {
+        "fold": 1,
+        "labels_seen": 226,
+        "shrinkage": 0.0311,
+        "within_author_share_of_variance": 0.8953
+      },
+      {
+        "fold": 2,
+        "labels_seen": 226,
+        "shrinkage": 0.0313,
+        "within_author_share_of_variance": 0.8955
+      },
+      {
+        "fold": 3,
+        "labels_seen": 226,
+        "shrinkage": 0.0302,
+        "within_author_share_of_variance": 0.897
+      },
+      {
+        "fold": 4,
+        "labels_seen": 226,
+        "shrinkage": 0.0306,
+        "within_author_share_of_variance": 0.8962
+      }
+    ],
+    "within_author_whitening_permuted_labels": [
+      {
+        "fold": 0,
+        "labels_seen": 226,
+        "shrinkage": 0.0239,
+        "within_author_share_of_variance": 0.9599
+      },
+      {
+        "fold": 1,
+        "labels_seen": 226,
+        "shrinkage": 0.0244,
+        "within_author_share_of_variance": 0.9596
+      },
+      {
+        "fold": 2,
+        "labels_seen": 226,
+        "shrinkage": 0.0246,
+        "within_author_share_of_variance": 0.9595
+      },
+      {
+        "fold": 3,
+        "labels_seen": 226,
+        "shrinkage": 0.0236,
+        "within_author_share_of_variance": 0.9607
+      },
+      {
+        "fold": 4,
+        "labels_seen": 226,
+        "shrinkage": 0.024,
+        "within_author_share_of_variance": 0.9602
+      }
+    ]
+  },
+  "groups": 5888,
+  "head_to_head": {
+    "within_author_whitening_vs_lexical_character_ngrams": {
+      "first_better": 2705,
+      "second_better": 2772,
+      "tied": 1759
+    },
+    "within_author_whitening_vs_none": {
+      "first_better": 3694,
+      "second_better": 2083,
+      "tied": 1459
+    }
+  },
+  "labels": 226,
+  "method": "within-class covariance normalisation from speaker recognition: whiten the song vectors by the covariance of songs within an author, fitted with Ledoit-Wolf shrinkage on the builder's per-(group, label) weights, then score with the unchanged leave-group-out cosine protocol",
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          0.1194,
+          0.1369
+        ],
+        "excludes_zero": true,
+        "minus": "none",
+        "mrr_difference": 0.1282,
+        "system": "within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.1243,
+          0.1415
+        ],
+        "excludes_zero": true,
+        "minus": "centred",
+        "mrr_difference": 0.1329,
+        "system": "within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.0144,
+          0.0202
+        ],
+        "excludes_zero": true,
+        "minus": "total_whitening",
+        "mrr_difference": 0.0174,
+        "system": "within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.0155,
+          0.0214
+        ],
+        "excludes_zero": true,
+        "minus": "within_author_whitening_permuted_labels",
+        "mrr_difference": 0.0185,
+        "system": "within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.0078,
+          -0.0014
+        ],
+        "excludes_zero": true,
+        "minus": "none",
+        "mrr_difference": -0.0047,
+        "system": "centred"
+      },
+      {
+        "ci95": [
+          0.1068,
+          0.1242
+        ],
+        "excludes_zero": true,
+        "minus": "centred",
+        "mrr_difference": 0.1155,
+        "system": "total_whitening"
+      },
+      {
+        "ci95": [
+          -0.0033,
+          0.017
+        ],
+        "excludes_zero": false,
+        "minus": "within_author_whitening",
+        "mrr_difference": 0.0068,
+        "system": "lexical_character_ngrams"
+      },
+      {
+        "ci95": [
+          0.0601,
+          0.0734
+        ],
+        "excludes_zero": true,
+        "minus": "fusion_lexical_none",
+        "mrr_difference": 0.0667,
+        "system": "fusion_lexical_within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.0827,
+          0.098
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_character_ngrams",
+        "mrr_difference": 0.09,
+        "system": "fusion_lexical_within_author_whitening"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only; per-query ranks are private",
+  "queries": 7236,
+  "question": "whether the identity information the character n-gram system uses is absent from BGE-M3's song vectors or present but misaligned with cosine",
+  "systems": {
+    "centred": {
+      "mrr": 0.3136,
+      "mrr_component_weighted": 0.3116,
+      "recall_at_1": 0.2184,
+      "recall_at_10": 0.5028
+    },
+    "fusion_lexical_none": {
+      "mrr": 0.4756,
+      "mrr_component_weighted": 0.4746,
+      "recall_at_1": 0.3803,
+      "recall_at_10": 0.661
+    },
+    "fusion_lexical_within_author_whitening": {
+      "mrr": 0.5436,
+      "mrr_component_weighted": 0.5413,
+      "recall_at_1": 0.4433,
+      "recall_at_10": 0.7367
+    },
+    "lexical_character_ngrams": {
+      "mrr": 0.4503,
+      "mrr_component_weighted": 0.4513,
+      "recall_at_1": 0.3571,
+      "recall_at_10": 0.6302
+    },
+    "none": {
+      "mrr": 0.3181,
+      "mrr_component_weighted": 0.3163,
+      "recall_at_1": 0.2193,
+      "recall_at_10": 0.5142
+    },
+    "total_whitening": {
+      "mrr": 0.4316,
+      "mrr_component_weighted": 0.4271,
+      "recall_at_1": 0.3382,
+      "recall_at_10": 0.6059
+    },
+    "within_author_whitening": {
+      "mrr": 0.4494,
+      "mrr_component_weighted": 0.4445,
+      "recall_at_1": 0.3516,
+      "recall_at_10": 0.6336
+    },
+    "within_author_whitening_permuted_labels": {
+      "mrr": 0.4306,
+      "mrr_component_weighted": 0.4259,
+      "recall_at_1": 0.3371,
+      "recall_at_10": 0.6057
+    }
+  },
+  "verification": {
+    "dense_scorer_reproduces_builder_max_gap": 6.936374585819749e-07,
+    "untransformed_space_reproduces_builder_mrr": 0.3181
+  }
+}
