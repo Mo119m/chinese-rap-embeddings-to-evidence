@@ -189,10 +189,24 @@ def main() -> int:
                     key=lambda t: t["max_abs_difference"])
     best = ranked[0] if ranked else None
 
-    if len(passing) == 1:
+    attempted = [t for t in trials if "min_cosine_to_stored" in t]
+    if len(attempted) < 2:
+        # One candidate cannot discriminate. On a CPU-only runtime the CUDA candidates are
+        # never constructed, so `passing` has length one and "the only one inside tolerance"
+        # becomes trivially true -- a conclusion drawn from the only thing that was tried.
+        print(f"{chr(10)}  only {len(attempted)} configuration could be run here, so this "
+              "test discriminates nothing.")
+        if attempted:
+            print(f"  {attempted[0]['device']} use_fp16={attempted[0]['use_fp16']} reproduces "
+                  f"the stored vectors to min cosine "
+                  f"{attempted[0]['min_cosine_to_stored']:.8f}, which is a bound and not an "
+                  "identification.")
+        print("  Rerun on a machine with CUDA to compare the fp16 and fp32 candidates.")
+    elif len(passing) == 1:
         recovered = passing[0]
         print(f"{chr(10)}  historical configuration identified: device={recovered['device']} "
-              f"use_fp16={recovered['use_fp16']} -- the only one inside tolerance")
+              f"use_fp16={recovered['use_fp16']} -- the only one inside tolerance, "
+              f"out of {len(attempted)} attempted")
     elif passing:
         spread = ranked[-1]["max_abs_difference"] - ranked[0]["max_abs_difference"]
         print(f"{chr(10)}  {len(passing)} configurations are ALL inside tolerance, so this "

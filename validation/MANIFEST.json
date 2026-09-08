@@ -214,8 +214,8 @@
     },
     {
       "path": "tools/colab_embed_corpus_v2.py",
-      "bytes": 14542,
-      "sha256": "02f615febbf0db1bc1c525066ba9a546b16e1808e9e92c9e1aae405ef023796e"
+      "bytes": 15496,
+      "sha256": "c9f7eaffd01be1743fed3f154abdb6d8a162c805d4dfd1955b37d63c6014b4e9"
     },
     {
       "path": "tools/verify_model_reproducibility.py",
