@@ -297,6 +297,33 @@ def build(private_root: Path, out_dir: Path) -> int:
     (out_dir / "analysis_summary.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True, default=str) + "\n",
         encoding="utf-8", newline="")
+
+    # the same tables v1 published, so the figure pipeline can read v2 in v1's shape
+    wr.atomic_write_csv(out_dir / "model_metrics.csv", metric_rows, [
+        "model", "evaluation_split", "candidate_event_count_before_leakage_filter",
+        "leakage_excluded_event_count", "leakage_safe_event_count", "predicted_event_count",
+        "song_count", "model_coverage_on_leakage_safe_events", "end_to_end_event_coverage",
+        "reported_label_share", "top1_accuracy", "top1_accuracy_ci95_low",
+        "top1_accuracy_ci95_high", "top3_accuracy", "top3_accuracy_ci95_low",
+        "top3_accuracy_ci95_high", "top5_accuracy", "top5_accuracy_ci95_low",
+        "top5_accuracy_ci95_high", "mrr", "mrr_ci95_low", "mrr_ci95_high",
+        "negative_log_likelihood", "ece_10_bins",
+    ])
+    wr.atomic_write_csv(out_dir / "paired_model_deltas.csv", paired, [
+        "released_model", "reference_model", "metric",
+        "paired_difference_released_minus_reference", "song_cluster_bootstrap_ci95_low",
+        "song_cluster_bootstrap_ci95_high", "bootstrap_replicates",
+    ])
+    wr.atomic_write_csv(out_dir / "stratified_metrics.csv", stratified_rows, [
+        "model", "stratum_dimension", "stratum_value", "eligible_event_count", "song_count",
+        "top1_accuracy", "top3_accuracy", "mrr",
+    ])
+    wr.atomic_write_csv(out_dir / "per_label_metrics.csv", per_label_rows, [
+        "model", "artist_label_id", "candidate_event_count_before_leakage_filter",
+        "leakage_excluded_event_count", "leakage_safe_event_count", "predicted_event_count",
+        "end_to_end_event_coverage", "metric_status", "top1_accuracy", "top3_accuracy",
+        "top5_accuracy", "mrr",
+    ])
     print(f"\nwrote {out_dir}")
     return 0
 

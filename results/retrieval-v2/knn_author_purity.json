@@ -1,0 +1,97 @@
+{
+  "analysis": "neighbour purity by space, and the figure 5 layout set",
+  "layout_set": {
+    "caution": "cluster sizes and the distances between clusters in a t-SNE layout carry no meaning; the measurement is panel D",
+    "labels_shown": 12,
+    "rule": "the labels with the most songs; songs drawn with seed 20260825, at most one per leakage group",
+    "songs": 442,
+    "songs_per_label_at_most": 40,
+    "tsne": {
+      "init": "random",
+      "metric": "precomputed cosine distance",
+      "perplexity": 30.0,
+      "seed": 20260825
+    },
+    "whitening_for_panel_c": "fitted on songs by every label not shown, so the transform never saw the authors it is drawn on"
+  },
+  "privacy": "purity curves and label-tagged layout coordinates are public; the table tying coordinates to song identifiers is private",
+  "purity": {
+    "chance": 0.0053,
+    "curves": {
+      "lexical": [
+        0.1972,
+        0.1759,
+        0.1629,
+        0.153,
+        0.1452,
+        0.1393,
+        0.1334,
+        0.1283,
+        0.1243,
+        0.1205,
+        0.1165,
+        0.1132,
+        0.1103,
+        0.1074,
+        0.1048,
+        0.1023,
+        0.0999,
+        0.0976,
+        0.0956,
+        0.0937
+      ],
+      "semantic": [
+        0.102,
+        0.0798,
+        0.0682,
+        0.0601,
+        0.0552,
+        0.0513,
+        0.0483,
+        0.0453,
+        0.043,
+        0.0411,
+        0.0394,
+        0.038,
+        0.0366,
+        0.0355,
+        0.0348,
+        0.034,
+        0.0331,
+        0.0322,
+        0.0315,
+        0.031
+      ],
+      "semantic_whitened": [
+        0.2812,
+        0.2383,
+        0.2126,
+        0.1966,
+        0.1829,
+        0.1724,
+        0.1625,
+        0.1532,
+        0.1458,
+        0.1389,
+        0.1329,
+        0.1277,
+        0.1228,
+        0.1183,
+        0.1142,
+        0.1108,
+        0.1075,
+        0.1044,
+        0.1015,
+        0.0987
+      ]
+    },
+    "definition": "for each song, the share of its k nearest neighbours by cosine that carry its label; neighbours from the song's own leakage group are excluded; averaged over all songs",
+    "k_max": 20,
+    "whitened_space": "fold-wise as in the probe experiment: each song's neighbours are found in the space fitted on the other four folds"
+  },
+  "renderer": "src/build_chinese_rap_journal_figures_v1.py",
+  "sources": [
+    "figures/figure_5_author_purity_source.csv",
+    "figures/figure_5_layout_source.csv"
+  ]
+}

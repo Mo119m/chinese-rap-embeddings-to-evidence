@@ -1,0 +1,1327 @@
+space,label,x,y
+semantic,周士爵,-1.8781,-2.923
+semantic,周士爵,-1.6819,-1.1272
+semantic,周士爵,-0.5784,-5.2287
+semantic,周士爵,1.6018,-2.4573
+semantic,周士爵,-4.7301,-0.3782
+semantic,周士爵,-2.6261,-4.1888
+semantic,周士爵,-3.6878,-3.9459
+semantic,周士爵,-2.4228,-1.6473
+semantic,周士爵,-2.4792,-4.0601
+semantic,周士爵,-0.9173,-3.4789
+semantic,周士爵,-1.9519,-4.2053
+semantic,周士爵,-0.507,-1.0354
+semantic,周士爵,-2.1548,-1.6154
+semantic,周士爵,3.9481,-2.5383
+semantic,周士爵,-4.816,-1.0965
+semantic,周士爵,0.3264,-0.7283
+semantic,周士爵,-3.6421,-2.4701
+semantic,周士爵,2.4797,-2.0089
+semantic,周士爵,-0.2903,-0.1906
+semantic,HAS,-2.9338,-0.2036
+semantic,HAS,0.664,0.9858
+semantic,HAS,-1.7803,-0.8044
+semantic,HAS,-3.2621,0.6102
+semantic,HAS,-1.1951,1.388
+semantic,HAS,-0.0511,5.6801
+semantic,HAS,0.0179,-2.9291
+semantic,HAS,3.8924,2.0801
+semantic,HAS,2.2855,4.2063
+semantic,HAS,4.0958,3.3639
+semantic,HAS,-1.2775,-2.7182
+semantic,HAS,-0.6582,2.6871
+semantic,HAS,1.5631,1.5671
+semantic,HAS,0.652,0.0102
+semantic,HAS,1.282,1.3428
+semantic,HAS,-2.5345,2.071
+semantic,HAS,-3.118,0.5041
+semantic,HAS,-4.0088,1.3805
+semantic,HAS,2.9564,2.7744
+semantic,HAS,-2.9564,2.6364
+semantic,HAS,-1.8094,0.9041
+semantic,HAS,2.2336,2.7285
+semantic,HAS,1.1988,-2.8666
+semantic,HAS,-2.3339,-0.9538
+semantic,HAS,-2.8129,1.4393
+semantic,HAS,1.4619,-3.5042
+semantic,HAS,3.5183,3.0565
+semantic,HAS,-0.6,4.9408
+semantic,HAS,-2.7886,4.5415
+semantic,HAS,-1.7234,-2.2741
+semantic,HAS,-2.4868,2.513
+semantic,HAS,1.7634,3.0938
+semantic,HAS,0.9558,1.8125
+semantic,HAS,0.0873,5.7712
+semantic,HAS,0.5213,1.5209
+semantic,HAS,0.4321,2.2356
+semantic,HAS,-0.6736,2.9749
+semantic,滇声气,0.0142,1.1595
+semantic,滇声气,3.5983,2.2509
+semantic,滇声气,3.0246,2.1737
+semantic,滇声气,4.1948,3.1678
+semantic,滇声气,2.4117,1.2946
+semantic,滇声气,4.5456,1.4219
+semantic,滇声气,3.8784,1.7548
+semantic,滇声气,4.7504,1.4035
+semantic,滇声气,4.394,1.7272
+semantic,滇声气,5.1908,3.2536
+semantic,滇声气,5.377,-1.549
+semantic,滇声气,5.713,2.1419
+semantic,滇声气,4.5915,2.394
+semantic,滇声气,1.667,1.7233
+semantic,滇声气,-2.1886,-3.0318
+semantic,滇声气,2.5595,0.7144
+semantic,滇声气,2.9134,1.1903
+semantic,滇声气,3.7609,2.8544
+semantic,滇声气,0.0005,-3.0327
+semantic,滇声气,5.2024,-0.6792
+semantic,滇声气,2.2293,1.7955
+semantic,滇声气,-2.0548,-3.1078
+semantic,滇声气,0.5972,0.0766
+semantic,滇声气,3.3176,0.7896
+semantic,滇声气,-1.7311,0.3469
+semantic,滇声气,4.7421,2.0483
+semantic,Kc,5.2456,2.5426
+semantic,Kc,3.1517,1.3131
+semantic,Kc,3.5926,1.3061
+semantic,Kc,6.141,0.3374
+semantic,Kc,-1.516,-1.1599
+semantic,Kc,3.8158,3.8701
+semantic,Kc,3.6786,4.616
+semantic,Kc,0.6099,1.9102
+semantic,Kc,0.7372,-0.4819
+semantic,Kc,5.1012,-2.8781
+semantic,Kc,-3.0149,-2.3052
+semantic,Kc,-3.3544,1.8484
+semantic,Kc,-2.9777,-0.8725
+semantic,Kc,2.6306,1.6077
+semantic,Kc,-4.1033,-1.5634
+semantic,Kc,-4.5937,-2.5002
+semantic,Kc,-3.7073,0.4065
+semantic,Kc,2.7429,1.0628
+semantic,Kc,5.4117,2.7501
+semantic,Kc,2.2402,2.0694
+semantic,Kc,-2.4281,-1.0921
+semantic,Kc,-2.651,3.3847
+semantic,Kc,3.3823,1.6362
+semantic,Kc,6.4236,1.2207
+semantic,Kc,4.0352,-3.4335
+semantic,Kc,4.395,0.991
+semantic,Kc,0.362,-2.0116
+semantic,Kc,-4.1894,-1.2837
+semantic,Kc,-4.8233,-1.9794
+semantic,Kc,-0.7962,1.7072
+semantic,Kc,0.7728,-2.311
+semantic,Kc,-1.1911,3.8863
+semantic,Kc,-0.7997,1.5826
+semantic,Kc,-4.0698,0.5725
+semantic,Kc,4.0095,2.6992
+semantic,Kc,-3.7574,2.6026
+semantic,Kc,-4.3606,-3.7143
+semantic,Kc,2.9791,1.4962
+semantic,Kc,-0.0647,-1.2672
+semantic,Kc,-3.9095,-1.6382
+semantic,Tangoz,2.7164,-2.4026
+semantic,Tangoz,-0.9142,-0.3103
+semantic,Tangoz,-0.6904,-0.216
+semantic,Tangoz,4.2138,-1.4271
+semantic,Tangoz,2.8079,0.1435
+semantic,Tangoz,4.0499,0.8715
+semantic,Tangoz,3.1445,-0.0714
+semantic,Tangoz,4.4783,2.0891
+semantic,Tangoz,-3.1338,-4.1701
+semantic,Tangoz,2.0945,-5.2981
+semantic,Tangoz,3.876,0.6478
+semantic,Tangoz,-3.0334,-3.0173
+semantic,Tangoz,3.8125,1.5069
+semantic,Tangoz,0.6483,-1.4839
+semantic,Tangoz,-0.2512,-1.0635
+semantic,Tangoz,6.3759,-0.7242
+semantic,Tangoz,2.3137,1.66
+semantic,Tangoz,-2.7876,-1.6481
+semantic,Tangoz,2.356,-2.938
+semantic,Tangoz,2.6491,0.7151
+semantic,Tangoz,3.4594,1.3097
+semantic,Tangoz,4.8684,5.0926
+semantic,Tangoz,3.2031,-0.1478
+semantic,Tangoz,-1.6466,2.5343
+semantic,Tangoz,-4.3651,0.4947
+semantic,Tangoz,-0.7294,1.4061
+semantic,Tangoz,-0.7258,0.4324
+semantic,Tangoz,2.4291,-3.9649
+semantic,Tangoz,6.3937,-0.7165
+semantic,Tangoz,3.8526,6.2475
+semantic,Tangoz,0.2157,-0.846
+semantic,Tangoz,-0.0585,-0.511
+semantic,Tangoz,2.0257,-0.1695
+semantic,Tangoz,-0.0284,0.8438
+semantic,Tangoz,-0.007,0.7098
+semantic,Tangoz,-0.7723,1.0936
+semantic,Tangoz,-1.3473,1.718
+semantic,Tangoz,2.0696,-5.3132
+semantic,Tangoz,-1.1018,0.6445
+semantic,Tangoz,-4.7041,1.4593
+semantic,Tizzy T,-1.9509,-0.9314
+semantic,Tizzy T,2.1563,-1.9157
+semantic,Tizzy T,-0.4329,1.5887
+semantic,Tizzy T,-3.4905,0.4582
+semantic,Tizzy T,-2.023,-1.4829
+semantic,Tizzy T,1.6833,0.9196
+semantic,Tizzy T,5.1745,-1.5633
+semantic,Tizzy T,-2.6835,-0.8926
+semantic,Tizzy T,1.8403,0.3659
+semantic,Tizzy T,-1.963,1.6165
+semantic,Tizzy T,-0.0637,0.3671
+semantic,Tizzy T,-2.1519,-1.0663
+semantic,Tizzy T,4.1789,1.9791
+semantic,Tizzy T,1.2062,2.1323
+semantic,Tizzy T,-1.014,0.5142
+semantic,Tizzy T,-1.6705,0.8316
+semantic,Tizzy T,1.9046,-1.9642
+semantic,Tizzy T,-0.1893,1.0512
+semantic,Tizzy T,-0.0845,1.6684
+semantic,Tizzy T,-1.0057,-0.1216
+semantic,Tizzy T,3.6639,-0.7854
+semantic,Tizzy T,-1.6807,3.7825
+semantic,Tizzy T,1.7506,0.7532
+semantic,Tizzy T,1.2999,-2.0074
+semantic,Tizzy T,0.4418,4.9755
+semantic,Tizzy T,5.4299,1.1457
+semantic,Tizzy T,2.5016,4.8416
+semantic,Tizzy T,-1.0547,-1.804
+semantic,Tizzy T,3.0058,0.9017
+semantic,Tizzy T,4.3043,0.0394
+semantic,Tizzy T,0.0307,1.6985
+semantic,Tizzy T,-3.2392,0.077
+semantic,Tizzy T,1.9296,0.6449
+semantic,Tizzy T,4.2045,-1.2316
+semantic,Tizzy T,3.9473,-0.3514
+semantic,Tizzy T,2.7231,-1.1319
+semantic,Tizzy T,-0.3554,-1.7423
+semantic,Tizzy T,1.0322,0.8153
+semantic,Tizzy T,2.8369,0.2591
+semantic,Tizzy T,4.6087,3.859
+semantic,河南说唱之神,-2.7093,-0.8371
+semantic,河南说唱之神,-0.99,-2.3233
+semantic,河南说唱之神,-2.9404,-0.1079
+semantic,河南说唱之神,-1.9544,-0.1019
+semantic,河南说唱之神,-1.9428,-0.0714
+semantic,河南说唱之神,-6.0468,-0.2786
+semantic,河南说唱之神,0.0213,-2.4439
+semantic,河南说唱之神,-2.3068,-1.016
+semantic,河南说唱之神,-2.8784,-0.4594
+semantic,河南说唱之神,-6.3711,-0.0376
+semantic,河南说唱之神,-1.9373,-1.8507
+semantic,河南说唱之神,-2.809,-0.5393
+semantic,河南说唱之神,-2.66,-0.0992
+semantic,河南说唱之神,0.7753,-4.0939
+semantic,河南说唱之神,-3.7458,-0.3981
+semantic,河南说唱之神,-3.3004,1.3687
+semantic,河南说唱之神,-3.1633,-0.7413
+semantic,河南说唱之神,-3.5731,-0.9861
+semantic,河南说唱之神,-2.8913,0.5572
+semantic,河南说唱之神,-6.481,0.0218
+semantic,河南说唱之神,1.2632,-4.3144
+semantic,河南说唱之神,0.3106,0.9338
+semantic,河南说唱之神,-2.6047,0.2347
+semantic,河南说唱之神,-2.4702,0.3947
+semantic,河南说唱之神,-2.7794,-0.0081
+semantic,河南说唱之神,-2.4884,1.1858
+semantic,河南说唱之神,-2.1593,0.4236
+semantic,河南说唱之神,-6.4498,0.0038
+semantic,河南说唱之神,-1.764,-0.124
+semantic,河南说唱之神,-3.5201,-0.2311
+semantic,河南说唱之神,1.2568,-1.6441
+semantic,河南说唱之神,-2.8927,-1.3883
+semantic,河南说唱之神,-6.2822,-0.0436
+semantic,河南说唱之神,-1.777,-0.2994
+semantic,河南说唱之神,-1.2564,-0.1728
+semantic,河南说唱之神,-6.4269,0.0108
+semantic,河南说唱之神,-2.1779,-0.5624
+semantic,河南说唱之神,-6.4513,0.004
+semantic,河南说唱之神,-0.7969,2.2585
+semantic,河南说唱之神,-1.8821,-0.3443
+semantic,法老,-0.9389,-0.842
+semantic,法老,-1.2111,-2.2308
+semantic,法老,0.1791,-1.2242
+semantic,法老,-0.8124,-0.6976
+semantic,法老,2.63,-0.4861
+semantic,法老,3.7921,-1.6519
+semantic,法老,3.3337,0.149
+semantic,法老,3.7648,-1.0498
+semantic,法老,1.4893,-0.1558
+semantic,法老,-2.3517,-2.0359
+semantic,法老,5.0879,-2.9029
+semantic,法老,4.5111,0.5605
+semantic,法老,1.6289,-1.235
+semantic,法老,-1.1088,-0.666
+semantic,法老,5.6014,-0.1068
+semantic,法老,3.2354,-0.9736
+semantic,法老,0.2715,-0.9857
+semantic,法老,2.1711,-0.3739
+semantic,法老,0.8166,-1.2161
+semantic,法老,-3.9656,-2.6263
+semantic,法老,-1.3337,-2.015
+semantic,法老,1.1471,-0.4583
+semantic,法老,-2.0158,1.7894
+semantic,法老,-1.1668,-1.9708
+semantic,法老,-0.4162,-2.5504
+semantic,法老,4.7916,0.7507
+semantic,法老,-1.1288,-0.9356
+semantic,法老,0.8852,-1.093
+semantic,法老,-0.1886,-0.895
+semantic,法老,3.0942,-1.1951
+semantic,法老,-0.391,-1.2707
+semantic,法老,5.1387,0.2805
+semantic,法老,4.24,4.7009
+semantic,法老,-0.3233,-2.3088
+semantic,法老,-1.038,-0.8004
+semantic,法老,-3.6707,3.5158
+semantic,法老,-3.7752,-2.66
+semantic,法老,3.1636,-1.4559
+semantic,法老,-2.1206,-2.1586
+semantic,法老,-1.9839,4.4284
+semantic,APMOZART,-0.965,2.5941
+semantic,APMOZART,2.0061,4.0528
+semantic,APMOZART,0.4128,2.6949
+semantic,APMOZART,2.8809,2.2328
+semantic,APMOZART,0.2474,3.3684
+semantic,APMOZART,2.4675,6.61
+semantic,APMOZART,2.8294,5.7791
+semantic,APMOZART,2.8438,4.0312
+semantic,APMOZART,2.3692,3.8
+semantic,APMOZART,3.1025,2.6264
+semantic,APMOZART,3.077,2.5694
+semantic,APMOZART,2.6919,3.1184
+semantic,APMOZART,-0.2473,3.1361
+semantic,APMOZART,2.4501,6.6638
+semantic,APMOZART,2.4579,6.6872
+semantic,APMOZART,1.1537,3.8169
+semantic,APMOZART,-0.2018,2.4987
+semantic,APMOZART,1.5522,5.4428
+semantic,APMOZART,1.741,2.5604
+semantic,APMOZART,0.348,3.1449
+semantic,APMOZART,2.3526,2.5296
+semantic,APMOZART,0.2722,2.9533
+semantic,APMOZART,0.9109,4.0454
+semantic,APMOZART,2.6369,1.9368
+semantic,APMOZART,-1.0901,2.9769
+semantic,APMOZART,5.1989,0.3656
+semantic,APMOZART,2.3426,3.831
+semantic,APMOZART,2.5076,3.4154
+semantic,APMOZART,0.5842,3.8827
+semantic,APMOZART,-1.4486,3.1006
+semantic,APMOZART,0.2079,4.2813
+semantic,APMOZART,0.7153,3.7798
+semantic,APMOZART,1.9457,4.6159
+semantic,APMOZART,2.9115,5.7105
+semantic,APMOZART,-1.5352,3.0911
+semantic,APMOZART,2.9274,5.7428
+semantic,APMOZART,1.6337,5.0567
+semantic,APMOZART,2.0672,2.7583
+semantic,APMOZART,-1.1931,3.51
+semantic,APMOZART,1.5345,4.9891
+semantic,Bridge,5.1745,-1.5633
+semantic,Bridge,5.6845,4.3343
+semantic,Bridge,1.7267,0.7158
+semantic,Bridge,3.9893,1.045
+semantic,Bridge,1.5198,-0.9345
+semantic,Bridge,2.1805,1.3452
+semantic,Bridge,1.8882,-0.9956
+semantic,Bridge,2.8923,0.1119
+semantic,Bridge,3.7301,0.8644
+semantic,Bridge,0.3684,0.8279
+semantic,Bridge,0.3867,-1.0998
+semantic,Bridge,3.1557,1.7509
+semantic,Bridge,2.0497,1.0292
+semantic,Bridge,-4.174,2.1025
+semantic,Bridge,-1.3877,5.3595
+semantic,Bridge,2.3361,0.9614
+semantic,Bridge,2.1007,1.5885
+semantic,Bridge,2.2242,1.3749
+semantic,Bridge,4.388,-0.487
+semantic,Bridge,3.262,0.8919
+semantic,Bridge,-1.3781,-1.6045
+semantic,Bridge,1.9363,0.3438
+semantic,Bridge,2.1353,0.5411
+semantic,Bridge,0.661,5.1862
+semantic,Bridge,1.6248,0.2195
+semantic,Bridge,1.4867,0.5238
+semantic,Bridge,3.4034,0.1779
+semantic,Bridge,-4.137,-0.7686
+semantic,Bridge,3.2817,1.7685
+semantic,Bridge,2.2462,-0.6603
+semantic,Bridge,-0.4537,-1.9859
+semantic,Bridge,1.0843,1.5887
+semantic,Bridge,0.8723,1.1732
+semantic,Bridge,2.5129,-1.0019
+semantic,Bridge,4.3797,-0.4723
+semantic,Bridge,4.4117,-0.6597
+semantic,Bridge,0.8111,-3.3201
+semantic,Bridge,6.6526,1.9869
+semantic,Bridge,3.7665,1.4034
+semantic,Bridge,0.2182,-0.2374
+semantic,Jony J,-2.0855,0.9196
+semantic,Jony J,-1.8627,-3.8362
+semantic,Jony J,-0.5365,-4.3315
+semantic,Jony J,-0.24,-3.7296
+semantic,Jony J,-1.174,-3.5317
+semantic,Jony J,-2.501,-2.3458
+semantic,Jony J,-2.5931,-2.7658
+semantic,Jony J,-3.6181,-1.3829
+semantic,Jony J,-1.5115,-3.0579
+semantic,Jony J,-1.8105,-2.9401
+semantic,Jony J,0.0243,-5.096
+semantic,Jony J,5.6845,4.3344
+semantic,Jony J,-1.6648,-3.5299
+semantic,Jony J,-2.7781,-2.1855
+semantic,Jony J,-1.3422,2.3403
+semantic,Jony J,0.2045,-3.4297
+semantic,Jony J,-1.4965,-4.7095
+semantic,Jony J,-3.4242,-0.6849
+semantic,Jony J,0.3721,-4.5132
+semantic,Jony J,-0.5341,-3.4992
+semantic,Jony J,0.4427,-1.7661
+semantic,Jony J,-1.2351,-4.2052
+semantic,Jony J,-0.832,-2.9598
+semantic,Jony J,-0.279,-2.3368
+semantic,Jony J,-1.1085,-3.5443
+semantic,Jony J,-1.0443,-4.2363
+semantic,Jony J,-3.7941,-1.4369
+semantic,Jony J,-1.7008,-3.3364
+semantic,Jony J,-1.7325,-2.6013
+semantic,Jony J,-1.3847,1.9799
+semantic,Jony J,-1.6692,-2.828
+semantic,Jony J,-1.3897,-2.249
+semantic,Jony J,3.3033,-3.6469
+semantic,Jony J,-2.4968,-2.6781
+semantic,Jony J,-3.0547,-3.582
+semantic,Jony J,3.2052,-2.8446
+semantic,Jony J,-2.1702,-3.8506
+semantic,Jony J,-0.2124,-0.199
+semantic,Jony J,-4.6154,3.0745
+semantic,Jony J,-1.3225,-3.302
+semantic,MULA SAKEE,0.3313,2.8843
+semantic,MULA SAKEE,-1.9332,2.1455
+semantic,MULA SAKEE,-1.1458,2.1283
+semantic,MULA SAKEE,1.0268,2.6065
+semantic,MULA SAKEE,2.5389,1.8663
+semantic,MULA SAKEE,3.8573,1.6779
+semantic,MULA SAKEE,-0.3401,2.6511
+semantic,MULA SAKEE,3.4854,3.6508
+semantic,MULA SAKEE,0.3182,3.8969
+semantic,MULA SAKEE,0.1445,2.2791
+semantic,MULA SAKEE,2.8455,4.172
+semantic,MULA SAKEE,0.6438,2.6472
+semantic,MULA SAKEE,0.0441,2.2247
+semantic,MULA SAKEE,1.0589,3.0218
+semantic,MULA SAKEE,3.5179,0.8919
+semantic,MULA SAKEE,3.6055,1.9298
+semantic,MULA SAKEE,3.0397,4.1339
+semantic,MULA SAKEE,2.8647,3.4842
+semantic,MULA SAKEE,1.5775,2.6045
+semantic,MULA SAKEE,-0.2686,3.7287
+semantic,MULA SAKEE,1.6378,1.9539
+semantic,MULA SAKEE,1.3789,3.3621
+semantic,MULA SAKEE,1.8127,3.3036
+semantic,MULA SAKEE,1.0948,3.0924
+semantic,MULA SAKEE,1.2454,3.822
+semantic,MULA SAKEE,1.7707,4.0391
+semantic,MULA SAKEE,1.8737,4.4124
+semantic,MULA SAKEE,2.2431,-3.9222
+semantic,MULA SAKEE,1.1369,4.2576
+semantic,MULA SAKEE,1.1134,4.492
+semantic,MULA SAKEE,1.875,3.2082
+semantic,MULA SAKEE,-0.5894,3.9707
+semantic,MULA SAKEE,5.305,1.7231
+semantic,MULA SAKEE,0.9651,2.8142
+semantic,MULA SAKEE,2.4582,3.6875
+semantic,MULA SAKEE,2.5154,1.9918
+semantic,MULA SAKEE,1.4171,2.7626
+semantic,MULA SAKEE,-2.669,-0.0533
+semantic,MULA SAKEE,1.165,2.9306
+semantic,MULA SAKEE,-0.3829,1.9653
+lexical,周士爵,19.3307,7.0753
+lexical,周士爵,19.8578,9.9688
+lexical,周士爵,21.2881,7.9508
+lexical,周士爵,5.5421,-11.2234
+lexical,周士爵,20.9154,14.1695
+lexical,周士爵,20.9732,14.781
+lexical,周士爵,19.1625,10.27
+lexical,周士爵,5.4091,-11.1819
+lexical,周士爵,21.2421,7.9878
+lexical,周士爵,18.8274,9.1802
+lexical,周士爵,20.1494,14.8096
+lexical,周士爵,20.2349,15.5828
+lexical,周士爵,21.1977,15.9171
+lexical,周士爵,21.9822,15.1102
+lexical,周士爵,21.0157,14.4724
+lexical,周士爵,-9.8516,-6.9083
+lexical,周士爵,19.1495,5.8548
+lexical,周士爵,20.4938,15.0889
+lexical,周士爵,-15.3641,4.808
+lexical,HAS,-2.7081,3.2849
+lexical,HAS,-13.6987,-10.1114
+lexical,HAS,-18.884,-11.9706
+lexical,HAS,-7.8577,3.9797
+lexical,HAS,3.9229,-3.4362
+lexical,HAS,-6.4727,-12.0692
+lexical,HAS,-3.5657,2.3874
+lexical,HAS,3.6543,3.0276
+lexical,HAS,-5.8715,-5.8544
+lexical,HAS,-2.8233,-3.0512
+lexical,HAS,10.5751,7.9559
+lexical,HAS,-11.4097,-9.6979
+lexical,HAS,2.0514,-9.3007
+lexical,HAS,-18.8697,-11.9751
+lexical,HAS,-5.5263,-11.8845
+lexical,HAS,1.1999,-9.803
+lexical,HAS,-11.2519,-14.6919
+lexical,HAS,-2.2434,3.7207
+lexical,HAS,-8.1947,-7.3243
+lexical,HAS,-8.2225,-18.0317
+lexical,HAS,-11.0116,-13.5879
+lexical,HAS,-7.0831,-7.387
+lexical,HAS,-14.9641,-11.3883
+lexical,HAS,-3.8315,10.1412
+lexical,HAS,-0.9192,-9.9395
+lexical,HAS,-14.0032,-11.374
+lexical,HAS,-14.1445,-11.0371
+lexical,HAS,-16.292,-3.2559
+lexical,HAS,17.8706,1.0642
+lexical,HAS,18.2268,2.1502
+lexical,HAS,13.65,2.6795
+lexical,HAS,-15.6638,1.9665
+lexical,HAS,-15.0734,-9.9367
+lexical,HAS,-15.4684,-4.8869
+lexical,HAS,-13.3352,-12.102
+lexical,HAS,-12.0903,-12.6805
+lexical,HAS,-8.0995,-9.6081
+lexical,滇声气,-0.1777,-1.0526
+lexical,滇声气,-0.3256,-3.9066
+lexical,滇声气,-9.6951,-8.6189
+lexical,滇声气,-2.4313,-4.5209
+lexical,滇声气,-14.7004,7.8289
+lexical,滇声气,6.0731,-4.513
+lexical,滇声气,3.4313,-1.4289
+lexical,滇声气,0.148,-2.1489
+lexical,滇声气,0.8302,-4.934
+lexical,滇声气,-12.8855,5.3583
+lexical,滇声气,-1.9348,-12.5626
+lexical,滇声气,-0.5599,5.4065
+lexical,滇声气,-12.9295,7.968
+lexical,滇声气,-12.1962,4.0118
+lexical,滇声气,9.0785,8.5138
+lexical,滇声气,-0.7062,0.3404
+lexical,滇声气,0.1094,-3.4902
+lexical,滇声气,-1.9979,-4.5929
+lexical,滇声气,1.1579,-2.1449
+lexical,滇声气,-0.7708,0.3945
+lexical,滇声气,-17.9024,3.6155
+lexical,滇声气,9.6648,8.419
+lexical,滇声气,2.0496,7.1829
+lexical,滇声气,-1.2572,-5.0703
+lexical,滇声气,8.8643,8.3059
+lexical,滇声气,-12.5762,8.5298
+lexical,Kc,3.2096,2.5846
+lexical,Kc,2.6823,-0.1179
+lexical,Kc,3.2101,0.373
+lexical,Kc,2.3787,10.7974
+lexical,Kc,17.8222,11.7592
+lexical,Kc,-3.166,-7.5064
+lexical,Kc,1.946,-12.7118
+lexical,Kc,-3.0057,5.4683
+lexical,Kc,5.8467,10.7598
+lexical,Kc,5.7374,2.6299
+lexical,Kc,0.97,-18.6741
+lexical,Kc,16.9056,16.2558
+lexical,Kc,4.9316,8.7945
+lexical,Kc,2.6067,0.0726
+lexical,Kc,9.0419,11.4202
+lexical,Kc,2.2328,11.5931
+lexical,Kc,1.3723,11.1614
+lexical,Kc,-2.3658,-1.566
+lexical,Kc,2.2926,1.4549
+lexical,Kc,-11.8502,-9.8101
+lexical,Kc,5.7158,10.8603
+lexical,Kc,-2.1724,13.1226
+lexical,Kc,2.5867,11.4399
+lexical,Kc,1.2249,0.6818
+lexical,Kc,-2.432,0.4233
+lexical,Kc,1.4608,-0.4536
+lexical,Kc,21.9085,3.2484
+lexical,Kc,2.7136,11.6655
+lexical,Kc,-1.1352,7.5073
+lexical,Kc,1.8974,9.9637
+lexical,Kc,-7.0804,-16.741
+lexical,Kc,-10.4812,5.982
+lexical,Kc,-4.9329,6.2275
+lexical,Kc,7.5807,9.7827
+lexical,Kc,-1.1651,-1.6409
+lexical,Kc,7.3633,10.8362
+lexical,Kc,1.9713,5.3998
+lexical,Kc,5.3899,-1.9335
+lexical,Kc,-0.87,8.9471
+lexical,Kc,7.9593,11.5397
+lexical,Tangoz,8.7309,-6.1168
+lexical,Tangoz,0.9037,-6.9714
+lexical,Tangoz,0.9143,-6.9716
+lexical,Tangoz,-3.2285,-9.4309
+lexical,Tangoz,6.4941,-5.5392
+lexical,Tangoz,7.3567,-7.0778
+lexical,Tangoz,6.1442,-5.5855
+lexical,Tangoz,1.6934,-3.5363
+lexical,Tangoz,6.4344,4.49
+lexical,Tangoz,18.9493,-4.5241
+lexical,Tangoz,3.2188,-7.6017
+lexical,Tangoz,-1.0957,9.0703
+lexical,Tangoz,2.8982,-5.5378
+lexical,Tangoz,-11.0361,12.2838
+lexical,Tangoz,8.1294,-5.678
+lexical,Tangoz,6.9734,-6.282
+lexical,Tangoz,4.7612,-6.5776
+lexical,Tangoz,11.1761,5.754
+lexical,Tangoz,18.9767,-3.6711
+lexical,Tangoz,5.6046,-8.0083
+lexical,Tangoz,5.636,-8.0537
+lexical,Tangoz,-0.301,3.4413
+lexical,Tangoz,2.3447,-8.8103
+lexical,Tangoz,-3.1996,6.8936
+lexical,Tangoz,12.6303,7.3977
+lexical,Tangoz,-4.6548,-16.4372
+lexical,Tangoz,-3.9454,-16.4835
+lexical,Tangoz,8.9084,-2.4667
+lexical,Tangoz,4.4818,-4.7249
+lexical,Tangoz,-6.9568,-5.7227
+lexical,Tangoz,-10.9458,12.1458
+lexical,Tangoz,-2.4677,7.2581
+lexical,Tangoz,-2.2464,1.5016
+lexical,Tangoz,-13.4064,-7.5328
+lexical,Tangoz,-3.5811,7.8752
+lexical,Tangoz,-4.145,0.0821
+lexical,Tangoz,-10.3904,-13.3642
+lexical,Tangoz,18.954,-4.6734
+lexical,Tangoz,4.2935,5.6061
+lexical,Tangoz,-5.8774,-16.3257
+lexical,Tizzy T,14.4259,5.1096
+lexical,Tizzy T,7.3589,14.3575
+lexical,Tizzy T,2.3056,7.2485
+lexical,Tizzy T,-0.8183,5.506
+lexical,Tizzy T,13.7769,7.8726
+lexical,Tizzy T,12.4138,-2.577
+lexical,Tizzy T,-1.705,-13.2674
+lexical,Tizzy T,4.8832,8.5411
+lexical,Tizzy T,11.6282,-3.4745
+lexical,Tizzy T,-7.5154,5.5979
+lexical,Tizzy T,-5.3411,2.7816
+lexical,Tizzy T,12.9316,7.3756
+lexical,Tizzy T,4.0619,-0.4283
+lexical,Tizzy T,-4.4482,-5.5895
+lexical,Tizzy T,0.1267,2.5991
+lexical,Tizzy T,2.8128,7.536
+lexical,Tizzy T,-8.779,-14.5345
+lexical,Tizzy T,-4.247,2.0605
+lexical,Tizzy T,13.8446,-6.9361
+lexical,Tizzy T,6.354,6.7959
+lexical,Tizzy T,15.2736,-8.7981
+lexical,Tizzy T,-7.0549,11.3582
+lexical,Tizzy T,12.3856,-2.4689
+lexical,Tizzy T,14.8709,-9.5182
+lexical,Tizzy T,-5.0107,-11.5799
+lexical,Tizzy T,-13.4935,-2.7213
+lexical,Tizzy T,-2.9609,-6.9104
+lexical,Tizzy T,15.6249,10.4713
+lexical,Tizzy T,-4.8241,-7.5218
+lexical,Tizzy T,15.5986,-9.7598
+lexical,Tizzy T,13.8403,-6.8223
+lexical,Tizzy T,-9.0139,-13.5539
+lexical,Tizzy T,13.1073,-5.956
+lexical,Tizzy T,14.0792,-7.721
+lexical,Tizzy T,13.8448,-8.9631
+lexical,Tizzy T,14.5086,-9.5941
+lexical,Tizzy T,14.2227,-1.4106
+lexical,Tizzy T,-5.9382,8.1759
+lexical,Tizzy T,-5.0447,-9.2022
+lexical,Tizzy T,-1.5451,-8.4339
+lexical,河南说唱之神,0.9588,17.5014
+lexical,河南说唱之神,5.9356,20.4293
+lexical,河南说唱之神,-2.2302,14.1707
+lexical,河南说唱之神,-1.6136,15.0272
+lexical,河南说唱之神,-3.9643,-4.3593
+lexical,河南说唱之神,2.3253,16.9997
+lexical,河南说唱之神,4.0537,18.4754
+lexical,河南说唱之神,-6.0065,12.8037
+lexical,河南说唱之神,6.6632,14.1389
+lexical,河南说唱之神,1.8482,17.1698
+lexical,河南说唱之神,1.2243,16.1562
+lexical,河南说唱之神,7.3748,17.2655
+lexical,河南说唱之神,4.9226,16.4636
+lexical,河南说唱之神,-6.066,4.2835
+lexical,河南说唱之神,3.1796,-10.1623
+lexical,河南说唱之神,-3.1229,13.8732
+lexical,河南说唱之神,-0.6164,14.8701
+lexical,河南说唱之神,-2.0314,15.885
+lexical,河南说唱之神,5.5576,20.7929
+lexical,河南说唱之神,1.787,19.0639
+lexical,河南说唱之神,4.1493,16.5008
+lexical,河南说唱之神,-8.1008,-9.7732
+lexical,河南说唱之神,19.2688,16.9945
+lexical,河南说唱之神,5.2171,21.3232
+lexical,河南说唱之神,-6.6319,13.7463
+lexical,河南说唱之神,-0.6102,11.4999
+lexical,河南说唱之神,-6.8731,11.8342
+lexical,河南说唱之神,2.2919,17.0011
+lexical,河南说唱之神,-1.0736,15.6806
+lexical,河南说唱之神,-4.4513,16.3686
+lexical,河南说唱之神,3.2567,18.8127
+lexical,河南说唱之神,-5.2507,16.4046
+lexical,河南说唱之神,0.005,18.2891
+lexical,河南说唱之神,1.6076,14.6502
+lexical,河南说唱之神,-0.9495,-9.8178
+lexical,河南说唱之神,0.6406,5.6413
+lexical,河南说唱之神,0.0908,17.7936
+lexical,河南说唱之神,1.9933,19.1124
+lexical,河南说唱之神,-15.2786,-6.8095
+lexical,河南说唱之神,-6.7198,14.4136
+lexical,法老,10.4884,2.0376
+lexical,法老,18.724,5.383
+lexical,法老,16.5499,4.7952
+lexical,法老,-4.8239,7.332
+lexical,法老,7.5767,2.1445
+lexical,法老,10.955,2.2584
+lexical,法老,4.9516,0.9976
+lexical,法老,3.6439,0.9493
+lexical,法老,7.6971,-4.0321
+lexical,法老,12.6847,0.8995
+lexical,法老,-3.6499,-1.0789
+lexical,法老,5.6196,0.0869
+lexical,法老,9.2231,-12.545
+lexical,法老,9.8248,0.921
+lexical,法老,18.2369,2.3627
+lexical,法老,9.6854,-9.2242
+lexical,法老,16.2983,4.4337
+lexical,法老,6.4695,-1.443
+lexical,法老,16.3324,4.3793
+lexical,法老,3.8181,-3.4408
+lexical,法老,14.0003,3.0697
+lexical,法老,10.3949,3.5996
+lexical,法老,-4.9497,0.4466
+lexical,法老,6.2224,0.8764
+lexical,法老,10.4573,0.8007
+lexical,法老,2.095,-1.6189
+lexical,法老,12.8118,4.3056
+lexical,法老,7.3784,20.0993
+lexical,法老,-3.2825,-15.9416
+lexical,法老,9.6793,-9.1904
+lexical,法老,11.9168,5.5782
+lexical,法老,9.5642,0.4652
+lexical,法老,8.9901,0.0299
+lexical,法老,10.4759,0.8237
+lexical,法老,16.6639,7.5648
+lexical,法老,15.8821,6.7184
+lexical,法老,17.1586,7.8198
+lexical,法老,18.0369,-0.3364
+lexical,法老,14.7554,0.6552
+lexical,法老,1.077,2.8212
+lexical,APMOZART,-5.9331,-1.3506
+lexical,APMOZART,-15.8777,-2.7085
+lexical,APMOZART,-15.4055,-1.9681
+lexical,APMOZART,-13.2337,0.1534
+lexical,APMOZART,-7.651,2.1057
+lexical,APMOZART,-9.1319,2.9675
+lexical,APMOZART,-11.1335,-1.3642
+lexical,APMOZART,-11.8236,1.8855
+lexical,APMOZART,-11.9214,0.4892
+lexical,APMOZART,-9.5606,1.8741
+lexical,APMOZART,-14.4577,-1.5055
+lexical,APMOZART,-10.489,-1.3717
+lexical,APMOZART,-10.3242,-0.0635
+lexical,APMOZART,-14.8889,0.0321
+lexical,APMOZART,-13.3488,1.4309
+lexical,APMOZART,-9.1673,-1.1571
+lexical,APMOZART,-8.3365,1.6361
+lexical,APMOZART,-11.1156,-2.4908
+lexical,APMOZART,-12.8279,-2.3188
+lexical,APMOZART,-8.1616,-0.4615
+lexical,APMOZART,-12.0047,-0.524
+lexical,APMOZART,-9.0882,0.7339
+lexical,APMOZART,-9.9245,-0.0301
+lexical,APMOZART,-13.5776,-4.3744
+lexical,APMOZART,-7.2021,1.2332
+lexical,APMOZART,-17.2771,-0.0327
+lexical,APMOZART,-11.2946,0.0477
+lexical,APMOZART,-13.0239,-1.5064
+lexical,APMOZART,-8.8085,0.0516
+lexical,APMOZART,-6.6796,2.6198
+lexical,APMOZART,-17.0169,-0.0621
+lexical,APMOZART,-9.5302,-0.3754
+lexical,APMOZART,-12.5075,-3.9358
+lexical,APMOZART,-10.8306,-4.2968
+lexical,APMOZART,-6.7898,1.4405
+lexical,APMOZART,-10.8902,2.8084
+lexical,APMOZART,-10.1892,0.9441
+lexical,APMOZART,-7.1154,-12.0262
+lexical,APMOZART,-7.7235,0.8949
+lexical,APMOZART,-10.8616,1.4103
+lexical,Bridge,-1.7053,-13.2674
+lexical,Bridge,22.0358,2.4781
+lexical,Bridge,11.2614,-18.1249
+lexical,Bridge,-19.1754,-8.6144
+lexical,Bridge,9.6592,-6.3824
+lexical,Bridge,-1.4867,-6.5809
+lexical,Bridge,13.6658,-18.2958
+lexical,Bridge,11.8748,-14.1885
+lexical,Bridge,8.2009,-14.3519
+lexical,Bridge,7.394,-14.5075
+lexical,Bridge,13.8135,-18.2571
+lexical,Bridge,-8.7955,8.7049
+lexical,Bridge,8.7971,-13.6976
+lexical,Bridge,2.7092,-15.331
+lexical,Bridge,6.3966,7.7738
+lexical,Bridge,12.0375,-14.2922
+lexical,Bridge,-6.4588,-7.9707
+lexical,Bridge,7.8675,-15.9931
+lexical,Bridge,14.6143,-10.046
+lexical,Bridge,7.2344,-14.2085
+lexical,Bridge,16.3003,13.7358
+lexical,Bridge,6.6102,-15.0024
+lexical,Bridge,2.3412,-13.5309
+lexical,Bridge,-18.0508,-5.6906
+lexical,Bridge,14.9632,-10.6363
+lexical,Bridge,7.3414,-16.8101
+lexical,Bridge,11.1628,-13.7415
+lexical,Bridge,2.8077,-15.0962
+lexical,Bridge,6.6319,-16.1353
+lexical,Bridge,13.0821,-18.3012
+lexical,Bridge,12.0618,-18.2208
+lexical,Bridge,-4.8714,-1.9902
+lexical,Bridge,-3.8074,-9.3425
+lexical,Bridge,-10.0686,4.3443
+lexical,Bridge,13.5424,-10.515
+lexical,Bridge,14.0749,-10.1394
+lexical,Bridge,15.2699,-2.6183
+lexical,Bridge,-8.7633,7.9266
+lexical,Bridge,1.5328,-18.7195
+lexical,Bridge,-3.0273,-17.0224
+lexical,Jony J,-7.7413,5.5991
+lexical,Jony J,15.4402,13.5208
+lexical,Jony J,12.1618,16.5154
+lexical,Jony J,12.5095,17.2463
+lexical,Jony J,14.111,18.3596
+lexical,Jony J,15.4849,10.635
+lexical,Jony J,12.2567,13.3726
+lexical,Jony J,10.131,11.2869
+lexical,Jony J,10.8349,15.506
+lexical,Jony J,17.49,11.9496
+lexical,Jony J,12.2818,13.5703
+lexical,Jony J,22.0354,2.4782
+lexical,Jony J,13.6379,14.8195
+lexical,Jony J,-11.5233,-15.2383
+lexical,Jony J,-4.3542,4.5087
+lexical,Jony J,14.2053,12.3488
+lexical,Jony J,8.5274,14.752
+lexical,Jony J,9.6863,12.8547
+lexical,Jony J,10.8116,13.061
+lexical,Jony J,14.2612,12.1294
+lexical,Jony J,7.9786,4.8744
+lexical,Jony J,12.3872,10.9688
+lexical,Jony J,10.0232,6.1517
+lexical,Jony J,5.8501,-2.4002
+lexical,Jony J,12.5379,10.8725
+lexical,Jony J,14.9503,16.0098
+lexical,Jony J,9.6144,13.4605
+lexical,Jony J,10.7535,16.3881
+lexical,Jony J,13.7945,10.8177
+lexical,Jony J,-3.539,5.8789
+lexical,Jony J,12.9361,10.4095
+lexical,Jony J,7.8961,16.9412
+lexical,Jony J,8.334,4.8733
+lexical,Jony J,10.6011,10.9978
+lexical,Jony J,10.8506,20.1438
+lexical,Jony J,10.8525,20.1699
+lexical,Jony J,13.7352,14.951
+lexical,Jony J,14.7695,0.5037
+lexical,Jony J,3.9653,3.6595
+lexical,Jony J,10.2498,15.1444
+lexical,MULA SAKEE,-7.0424,-1.5186
+lexical,MULA SAKEE,-3.9259,-1.4635
+lexical,MULA SAKEE,-5.8218,1.3986
+lexical,MULA SAKEE,-9.7506,-3.2531
+lexical,MULA SAKEE,-19.2473,-5.3423
+lexical,MULA SAKEE,-11.4476,-7.1143
+lexical,MULA SAKEE,-5.8552,-2.2611
+lexical,MULA SAKEE,-13.9423,3.067
+lexical,MULA SAKEE,-9.5007,-1.7811
+lexical,MULA SAKEE,-8.2286,-6.2969
+lexical,MULA SAKEE,-10.568,-4.4763
+lexical,MULA SAKEE,-6.7349,-0.3938
+lexical,MULA SAKEE,-6.9169,-4.7374
+lexical,MULA SAKEE,-6.1972,-2.9629
+lexical,MULA SAKEE,-18.7844,-4.207
+lexical,MULA SAKEE,-11.7931,-5.8564
+lexical,MULA SAKEE,-10.7246,-5.3763
+lexical,MULA SAKEE,-12.597,-5.5994
+lexical,MULA SAKEE,-8.0631,-4.6743
+lexical,MULA SAKEE,-5.2613,-0.4556
+lexical,MULA SAKEE,-7.467,-1.8295
+lexical,MULA SAKEE,-9.482,-2.8887
+lexical,MULA SAKEE,-5.9331,-4.366
+lexical,MULA SAKEE,-7.2841,-2.7675
+lexical,MULA SAKEE,-8.7461,-2.7073
+lexical,MULA SAKEE,-7.6235,-3.737
+lexical,MULA SAKEE,-8.1335,-1.8354
+lexical,MULA SAKEE,-5.5928,-3.7884
+lexical,MULA SAKEE,-9.285,-4.0343
+lexical,MULA SAKEE,-8.4579,-3.7564
+lexical,MULA SAKEE,-7.8739,-3.6577
+lexical,MULA SAKEE,-4.6465,-3.1194
+lexical,MULA SAKEE,-11.4098,-3.0879
+lexical,MULA SAKEE,-6.8478,-2.812
+lexical,MULA SAKEE,-9.3702,-5.354
+lexical,MULA SAKEE,-18.7791,-5.159
+lexical,MULA SAKEE,-6.507,-3.886
+lexical,MULA SAKEE,-6.3564,0.1231
+lexical,MULA SAKEE,-8.0599,-2.7806
+lexical,MULA SAKEE,-7.2458,-0.858
+semantic_whitened,周士爵,16.9929,1.194
+semantic_whitened,周士爵,0.7518,-14.5319
+semantic_whitened,周士爵,-15.1609,-17.4737
+semantic_whitened,周士爵,-12.2083,-17.1549
+semantic_whitened,周士爵,-12.26,-19.2966
+semantic_whitened,周士爵,-7.2343,-14.7175
+semantic_whitened,周士爵,-25.6692,-11.152
+semantic_whitened,周士爵,-8.9863,-15.3883
+semantic_whitened,周士爵,5.7398,-13.1907
+semantic_whitened,周士爵,-9.5806,-15.0785
+semantic_whitened,周士爵,-11.0903,-20.0261
+semantic_whitened,周士爵,8.4615,0.0376
+semantic_whitened,周士爵,8.9278,-0.3822
+semantic_whitened,周士爵,-8.4452,-18.6249
+semantic_whitened,周士爵,-12.4523,-18.766
+semantic_whitened,周士爵,9.8863,-3.2083
+semantic_whitened,周士爵,-3.4777,-14.2081
+semantic_whitened,周士爵,-11.4248,-18.2719
+semantic_whitened,周士爵,-4.764,-6.5004
+semantic_whitened,HAS,10.9539,-5.0142
+semantic_whitened,HAS,12.0659,-13.8388
+semantic_whitened,HAS,-19.4013,5.0635
+semantic_whitened,HAS,10.8021,18.446
+semantic_whitened,HAS,-18.0273,12.4529
+semantic_whitened,HAS,-15.8273,12.5302
+semantic_whitened,HAS,3.6146,-0.3464
+semantic_whitened,HAS,-14.7685,7.9951
+semantic_whitened,HAS,-17.5671,14.2585
+semantic_whitened,HAS,-18.0748,14.1352
+semantic_whitened,HAS,-2.2113,1.5247
+semantic_whitened,HAS,9.3582,-6.8417
+semantic_whitened,HAS,-18.1545,10.7812
+semantic_whitened,HAS,-18.9824,5.7165
+semantic_whitened,HAS,-17.7992,7.9606
+semantic_whitened,HAS,-4.5342,11.0121
+semantic_whitened,HAS,10.7272,-5.9657
+semantic_whitened,HAS,13.4328,-3.4869
+semantic_whitened,HAS,3.2382,24.0412
+semantic_whitened,HAS,-17.6004,10.0007
+semantic_whitened,HAS,-14.6742,10.5395
+semantic_whitened,HAS,-1.993,7.6829
+semantic_whitened,HAS,20.3852,-0.75
+semantic_whitened,HAS,-18.679,-9.8847
+semantic_whitened,HAS,7.9615,17.8496
+semantic_whitened,HAS,-23.3485,2.1402
+semantic_whitened,HAS,12.7636,7.7
+semantic_whitened,HAS,-17.0039,15.2822
+semantic_whitened,HAS,-18.8893,8.634
+semantic_whitened,HAS,-18.3036,10.0185
+semantic_whitened,HAS,10.3308,-6.2721
+semantic_whitened,HAS,-12.6082,14.8774
+semantic_whitened,HAS,-2.1856,21.3109
+semantic_whitened,HAS,-16.3654,12.9274
+semantic_whitened,HAS,-23.1408,2.5259
+semantic_whitened,HAS,-14.6036,10.6739
+semantic_whitened,HAS,6.7111,11.9953
+semantic_whitened,滇声气,-10.2701,-5.0731
+semantic_whitened,滇声气,10.1186,11.2839
+semantic_whitened,滇声气,8.9236,11.3731
+semantic_whitened,滇声气,10.4407,8.3822
+semantic_whitened,滇声气,10.6924,6.7395
+semantic_whitened,滇声气,19.6664,-3.9943
+semantic_whitened,滇声气,-3.8415,8.581
+semantic_whitened,滇声气,19.4393,-4.3271
+semantic_whitened,滇声气,18.2929,-3.3149
+semantic_whitened,滇声气,16.6546,11.1826
+semantic_whitened,滇声气,-13.9073,4.5195
+semantic_whitened,滇声气,6.4799,-7.7198
+semantic_whitened,滇声气,16.2981,-2.0359
+semantic_whitened,滇声气,-7.3026,6.4625
+semantic_whitened,滇声气,-0.6869,0.351
+semantic_whitened,滇声气,24.08,8.6967
+semantic_whitened,滇声气,19.1215,-6.285
+semantic_whitened,滇声气,10.3274,8.4257
+semantic_whitened,滇声气,-12.7418,7.1135
+semantic_whitened,滇声气,8.0504,7.9772
+semantic_whitened,滇声气,-10.3344,8.0101
+semantic_whitened,滇声气,-1.244,0.8447
+semantic_whitened,滇声气,17.7323,-4.8242
+semantic_whitened,滇声气,19.3078,-5.3651
+semantic_whitened,滇声气,17.0447,-5.0204
+semantic_whitened,滇声气,17.009,-2.3614
+semantic_whitened,Kc,23.8596,-7.266
+semantic_whitened,Kc,-11.973,-23.9809
+semantic_whitened,Kc,-11.5064,-24.7039
+semantic_whitened,Kc,21.9551,-12.8267
+semantic_whitened,Kc,-0.2999,-14.94
+semantic_whitened,Kc,13.2266,11.2791
+semantic_whitened,Kc,-3.1171,4.2949
+semantic_whitened,Kc,0.5427,-7.6659
+semantic_whitened,Kc,21.9122,-12.2067
+semantic_whitened,Kc,16.831,-8.9442
+semantic_whitened,Kc,13.2796,4.0206
+semantic_whitened,Kc,0.6964,-13.1187
+semantic_whitened,Kc,5.0736,7.185
+semantic_whitened,Kc,-12.3855,-23.7125
+semantic_whitened,Kc,7.5641,-17.5321
+semantic_whitened,Kc,15.9391,-13.552
+semantic_whitened,Kc,16.2146,-11.6889
+semantic_whitened,Kc,-13.2483,-13.7174
+semantic_whitened,Kc,24.0898,-7.1589
+semantic_whitened,Kc,13.119,10.4324
+semantic_whitened,Kc,-3.4019,-11.7908
+semantic_whitened,Kc,15.3384,7.3
+semantic_whitened,Kc,21.049,11.3426
+semantic_whitened,Kc,-5.952,-19.7058
+semantic_whitened,Kc,-16.2068,16.6398
+semantic_whitened,Kc,20.4651,14.6658
+semantic_whitened,Kc,1.019,-18.0393
+semantic_whitened,Kc,12.3642,-15.7442
+semantic_whitened,Kc,10.4064,1.8474
+semantic_whitened,Kc,6.916,4.0969
+semantic_whitened,Kc,-1.3081,-12.6069
+semantic_whitened,Kc,4.4592,11.2348
+semantic_whitened,Kc,5.4852,2.1585
+semantic_whitened,Kc,16.4993,-13.1377
+semantic_whitened,Kc,1.5072,6.4414
+semantic_whitened,Kc,7.7863,0.752
+semantic_whitened,Kc,12.4543,-1.2049
+semantic_whitened,Kc,-13.3992,-23.2723
+semantic_whitened,Kc,22.0183,-11.4622
+semantic_whitened,Kc,5.5594,-17.3733
+semantic_whitened,Tangoz,-15.7478,-5.0212
+semantic_whitened,Tangoz,-12.5114,-2.3108
+semantic_whitened,Tangoz,-12.9175,-1.8923
+semantic_whitened,Tangoz,-13.6322,-0.844
+semantic_whitened,Tangoz,-15.3219,-2.4529
+semantic_whitened,Tangoz,-16.228,-5.0086
+semantic_whitened,Tangoz,-15.3942,-2.2117
+semantic_whitened,Tangoz,-7.568,2.0287
+semantic_whitened,Tangoz,-4.699,-15.1204
+semantic_whitened,Tangoz,-15.5613,-8.7343
+semantic_whitened,Tangoz,-11.8322,1.2491
+semantic_whitened,Tangoz,-5.8429,-1.4299
+semantic_whitened,Tangoz,-12.9963,-4.3014
+semantic_whitened,Tangoz,-4.8299,0.8003
+semantic_whitened,Tangoz,-14.5659,-12.6353
+semantic_whitened,Tangoz,-17.5908,-0.7627
+semantic_whitened,Tangoz,-18.8011,-0.3544
+semantic_whitened,Tangoz,-11.6579,10.0951
+semantic_whitened,Tangoz,-15.2792,-7.5732
+semantic_whitened,Tangoz,-18.5302,-3.6081
+semantic_whitened,Tangoz,-18.0275,-3.4992
+semantic_whitened,Tangoz,-9.8359,0.6543
+semantic_whitened,Tangoz,-11.5429,0.5018
+semantic_whitened,Tangoz,-7.4268,2.6562
+semantic_whitened,Tangoz,-2.6085,1.8206
+semantic_whitened,Tangoz,-7.9405,0.1266
+semantic_whitened,Tangoz,-13.3385,14.1155
+semantic_whitened,Tangoz,8.1085,-23.3948
+semantic_whitened,Tangoz,-16.9716,-0.467
+semantic_whitened,Tangoz,-5.7272,4.4285
+semantic_whitened,Tangoz,-5.3984,1.8965
+semantic_whitened,Tangoz,-6.388,2.6312
+semantic_whitened,Tangoz,1.904,0.3958
+semantic_whitened,Tangoz,4.2813,-23.3482
+semantic_whitened,Tangoz,-9.051,2.128
+semantic_whitened,Tangoz,-9.7639,1.8169
+semantic_whitened,Tangoz,1.4935,25.1601
+semantic_whitened,Tangoz,-15.6161,-9.0508
+semantic_whitened,Tangoz,-10.0107,3.4213
+semantic_whitened,Tangoz,-10.1167,4.1127
+semantic_whitened,Tizzy T,5.2263,-14.5026
+semantic_whitened,Tizzy T,-5.3454,-9.3681
+semantic_whitened,Tizzy T,-2.8872,-3.5124
+semantic_whitened,Tizzy T,-3.1174,-1.9315
+semantic_whitened,Tizzy T,-15.1733,-12.5053
+semantic_whitened,Tizzy T,0.8765,-3.2647
+semantic_whitened,Tizzy T,-14.2934,3.5519
+semantic_whitened,Tizzy T,3.4288,-3.9596
+semantic_whitened,Tizzy T,-1.6102,-6.8288
+semantic_whitened,Tizzy T,-1.4288,-4.9717
+semantic_whitened,Tizzy T,-5.7018,-8.9923
+semantic_whitened,Tizzy T,24.7735,-1.7066
+semantic_whitened,Tizzy T,-1.4505,-4.2754
+semantic_whitened,Tizzy T,6.2865,-9.8876
+semantic_whitened,Tizzy T,1.8505,-5.2812
+semantic_whitened,Tizzy T,3.6148,-3.1998
+semantic_whitened,Tizzy T,-4.9678,-10.4242
+semantic_whitened,Tizzy T,3.185,-9.3256
+semantic_whitened,Tizzy T,4.0758,-10.8151
+semantic_whitened,Tizzy T,-6.837,-12.3617
+semantic_whitened,Tizzy T,-2.9762,-18.9596
+semantic_whitened,Tizzy T,-3.1666,-3.9975
+semantic_whitened,Tizzy T,0.7485,-3.1199
+semantic_whitened,Tizzy T,-4.5586,-24.107
+semantic_whitened,Tizzy T,8.5918,15.7073
+semantic_whitened,Tizzy T,4.4986,-6.9798
+semantic_whitened,Tizzy T,-4.76,-24.4915
+semantic_whitened,Tizzy T,-17.2189,-17.986
+semantic_whitened,Tizzy T,-21.9018,8.1259
+semantic_whitened,Tizzy T,-8.1917,-21.8946
+semantic_whitened,Tizzy T,4.7383,-10.5955
+semantic_whitened,Tizzy T,13.0109,-4.5689
+semantic_whitened,Tizzy T,-6.57,-4.4916
+semantic_whitened,Tizzy T,3.26,-11.0532
+semantic_whitened,Tizzy T,-3.1183,-19.1957
+semantic_whitened,Tizzy T,-2.023,-17.564
+semantic_whitened,Tizzy T,5.1729,-7.6575
+semantic_whitened,Tizzy T,-11.7675,-4.8496
+semantic_whitened,Tizzy T,10.9017,14.0737
+semantic_whitened,Tizzy T,-21.0442,8.2303
+semantic_whitened,河南说唱之神,20.1471,1.895
+semantic_whitened,河南说唱之神,19.2458,-17.1522
+semantic_whitened,河南说唱之神,4.7347,4.9626
+semantic_whitened,河南说唱之神,17.1244,-18.9388
+semantic_whitened,河南说唱之神,18.1758,-17.7668
+semantic_whitened,河南说唱之神,19.9979,5.3048
+semantic_whitened,河南说唱之神,22.9501,6.3345
+semantic_whitened,河南说唱之神,22.5809,7.784
+semantic_whitened,河南说唱之神,24.6823,-0.1505
+semantic_whitened,河南说唱之神,19.6132,4.2921
+semantic_whitened,河南说唱之神,18.0236,2.5103
+semantic_whitened,河南说唱之神,6.4523,4.3868
+semantic_whitened,河南说唱之神,14.9207,21.1136
+semantic_whitened,河南说唱之神,15.4416,14.8808
+semantic_whitened,河南说唱之神,4.3028,2.8813
+semantic_whitened,河南说唱之神,20.0946,9.103
+semantic_whitened,河南说唱之神,11.0561,1.9711
+semantic_whitened,河南说唱之神,22.3721,1.7037
+semantic_whitened,河南说唱之神,18.6545,7.7674
+semantic_whitened,河南说唱之神,20.664,3.6383
+semantic_whitened,河南说唱之神,15.4516,20.8113
+semantic_whitened,河南说唱之神,13.4929,0.072
+semantic_whitened,河南说唱之神,13.0454,0.1032
+semantic_whitened,河南说唱之神,1.8207,0.9606
+semantic_whitened,河南说唱之神,25.5599,0.2239
+semantic_whitened,河南说唱之神,16.8341,10.9102
+semantic_whitened,河南说唱之神,20.8749,9.0813
+semantic_whitened,河南说唱之神,21.1978,4.6635
+semantic_whitened,河南说唱之神,14.3764,0.6669
+semantic_whitened,河南说唱之神,9.0423,3.8533
+semantic_whitened,河南说唱之神,16.2995,6.97
+semantic_whitened,河南说唱之神,9.4716,3.6749
+semantic_whitened,河南说唱之神,18.9188,4.0399
+semantic_whitened,河南说唱之神,23.5148,0.7121
+semantic_whitened,河南说唱之神,21.8817,8.3107
+semantic_whitened,河南说唱之神,19.7533,3.2066
+semantic_whitened,河南说唱之神,19.0146,5.7467
+semantic_whitened,河南说唱之神,20.5504,4.3915
+semantic_whitened,河南说唱之神,20.187,15.3803
+semantic_whitened,河南说唱之神,2.7393,4.4123
+semantic_whitened,法老,-5.3385,-16.4179
+semantic_whitened,法老,21.4618,6.3261
+semantic_whitened,法老,-9.1449,-7.1108
+semantic_whitened,法老,0.3736,3.6716
+semantic_whitened,法老,-7.5207,-19.7597
+semantic_whitened,法老,16.4171,-20.3672
+semantic_whitened,法老,15.4669,-21.6364
+semantic_whitened,法老,15.8926,-20.8773
+semantic_whitened,法老,14.3603,-19.6157
+semantic_whitened,法老,-24.6798,-8.5581
+semantic_whitened,法老,-1.4832,-21.9274
+semantic_whitened,法老,-9.6753,-11.8518
+semantic_whitened,法老,-16.4576,-13.3603
+semantic_whitened,法老,-11.6653,-9.0813
+semantic_whitened,法老,-10.3661,-10.0016
+semantic_whitened,法老,-2.8851,-28.1229
+semantic_whitened,法老,-8.9445,-6.9701
+semantic_whitened,法老,-5.1089,-28.049
+semantic_whitened,法老,-8.3343,-6.232
+semantic_whitened,法老,-4.3093,-14.8163
+semantic_whitened,法老,-8.0694,-17.3171
+semantic_whitened,法老,7.9669,16.335
+semantic_whitened,法老,13.832,16.1258
+semantic_whitened,法老,-18.8395,-11.1605
+semantic_whitened,法老,-11.5468,-10.1166
+semantic_whitened,法老,2.8734,-7.1552
+semantic_whitened,法老,23.1769,4.9449
+semantic_whitened,法老,19.9073,-17.0493
+semantic_whitened,法老,14.3966,4.1309
+semantic_whitened,法老,-2.7416,-28.0823
+semantic_whitened,法老,-3.7738,-11.6588
+semantic_whitened,法老,-10.7021,-10.2872
+semantic_whitened,法老,20.5986,7.3293
+semantic_whitened,法老,-12.0224,-11.2105
+semantic_whitened,法老,-2.1437,4.011
+semantic_whitened,法老,6.5747,-1.7966
+semantic_whitened,法老,19.671,-9.5509
+semantic_whitened,法老,-16.6035,0.8147
+semantic_whitened,法老,11.5213,4.3774
+semantic_whitened,法老,15.2594,-9.5161
+semantic_whitened,APMOZART,6.6818,15.2666
+semantic_whitened,APMOZART,-10.5981,21.9783
+semantic_whitened,APMOZART,-2.727,13.5048
+semantic_whitened,APMOZART,-0.9284,7.2379
+semantic_whitened,APMOZART,-8.1652,10.1995
+semantic_whitened,APMOZART,2.7451,16.772
+semantic_whitened,APMOZART,3.2297,21.1023
+semantic_whitened,APMOZART,3.9109,22.4893
+semantic_whitened,APMOZART,-0.8679,9.6678
+semantic_whitened,APMOZART,15.2768,4.0526
+semantic_whitened,APMOZART,5.7504,8.4254
+semantic_whitened,APMOZART,-9.598,11.5232
+semantic_whitened,APMOZART,-1.3268,11.5377
+semantic_whitened,APMOZART,2.3918,17.2016
+semantic_whitened,APMOZART,2.2937,18.036
+semantic_whitened,APMOZART,-7.4103,19.3806
+semantic_whitened,APMOZART,-4.1192,15.5106
+semantic_whitened,APMOZART,4.5185,13.0803
+semantic_whitened,APMOZART,7.078,8.6912
+semantic_whitened,APMOZART,-6.5084,8.1682
+semantic_whitened,APMOZART,-8.3451,10.8166
+semantic_whitened,APMOZART,-0.7405,13.2022
+semantic_whitened,APMOZART,0.6896,12.1374
+semantic_whitened,APMOZART,-1.7686,15.5023
+semantic_whitened,APMOZART,2.0692,9.8431
+semantic_whitened,APMOZART,1.5561,4.1543
+semantic_whitened,APMOZART,1.2411,14.0781
+semantic_whitened,APMOZART,0.7957,14.1079
+semantic_whitened,APMOZART,-0.0928,11.96
+semantic_whitened,APMOZART,2.2824,8.3984
+semantic_whitened,APMOZART,4.2536,16.6142
+semantic_whitened,APMOZART,0.8917,11.3285
+semantic_whitened,APMOZART,6.2275,12.4794
+semantic_whitened,APMOZART,2.302,20.276
+semantic_whitened,APMOZART,2.9654,9.5763
+semantic_whitened,APMOZART,2.6128,20.561
+semantic_whitened,APMOZART,3.3346,13.7436
+semantic_whitened,APMOZART,1.0376,9.4138
+semantic_whitened,APMOZART,2.8863,11.0945
+semantic_whitened,APMOZART,2.7362,13.6065
+semantic_whitened,Bridge,-14.2932,3.5535
+semantic_whitened,Bridge,13.9249,-8.163
+semantic_whitened,Bridge,-20.4949,-13.0613
+semantic_whitened,Bridge,-8.8899,-22.535
+semantic_whitened,Bridge,-12.8553,18.381
+semantic_whitened,Bridge,-22.7958,-3.7213
+semantic_whitened,Bridge,-24.4805,0.2372
+semantic_whitened,Bridge,-26.0525,-4.4579
+semantic_whitened,Bridge,-24.9573,-5.1394
+semantic_whitened,Bridge,4.8,-25.7824
+semantic_whitened,Bridge,-20.6212,-7.1636
+semantic_whitened,Bridge,11.5404,17.4159
+semantic_whitened,Bridge,-25.675,-8.2254
+semantic_whitened,Bridge,14.9353,15.4054
+semantic_whitened,Bridge,-26.7077,-1.8844
+semantic_whitened,Bridge,-26.8965,-2.3453
+semantic_whitened,Bridge,-21.9293,-2.7795
+semantic_whitened,Bridge,-25.1365,5.926
+semantic_whitened,Bridge,-3.6331,-22.6033
+semantic_whitened,Bridge,-23.7192,-4.3427
+semantic_whitened,Bridge,-17.5108,-18.1144
+semantic_whitened,Bridge,0.38,-10.8312
+semantic_whitened,Bridge,0.3322,-10.5545
+semantic_whitened,Bridge,5.1414,-25.9617
+semantic_whitened,Bridge,10.3136,-9.6031
+semantic_whitened,Bridge,10.3648,-9.3382
+semantic_whitened,Bridge,-24.9501,-6.0207
+semantic_whitened,Bridge,7.434,19.479
+semantic_whitened,Bridge,-0.3261,6.3692
+semantic_whitened,Bridge,-20.5173,-7.2121
+semantic_whitened,Bridge,-20.3015,-12.7999
+semantic_whitened,Bridge,-22.2042,15.2483
+semantic_whitened,Bridge,-21.5471,11.9906
+semantic_whitened,Bridge,-17.5924,3.0074
+semantic_whitened,Bridge,-4.0038,-21.3181
+semantic_whitened,Bridge,-3.5755,-21.7627
+semantic_whitened,Bridge,-2.0914,-8.8341
+semantic_whitened,Bridge,-26.1224,-0.641
+semantic_whitened,Bridge,17.4722,-13.3436
+semantic_whitened,Bridge,-25.1619,6.0101
+semantic_whitened,Jony J,-1.4369,-7.8755
+semantic_whitened,Jony J,1.7741,-19.2292
+semantic_whitened,Jony J,-8.9756,-2.1405
+semantic_whitened,Jony J,-12.3467,-13.8276
+semantic_whitened,Jony J,6.671,-2.5695
+semantic_whitened,Jony J,4.1327,-17.1896
+semantic_whitened,Jony J,4.8496,-17.2781
+semantic_whitened,Jony J,9.9266,-17.1865
+semantic_whitened,Jony J,8.316,-15.0651
+semantic_whitened,Jony J,-6.1263,-3.3387
+semantic_whitened,Jony J,4.7897,-5.959
+semantic_whitened,Jony J,13.9249,-8.163
+semantic_whitened,Jony J,-9.9421,5.6122
+semantic_whitened,Jony J,5.2552,17.21
+semantic_whitened,Jony J,13.9416,21.5423
+semantic_whitened,Jony J,9.9461,-22.133
+semantic_whitened,Jony J,4.1781,-0.5637
+semantic_whitened,Jony J,10.4802,-17.5614
+semantic_whitened,Jony J,12.6156,-12.9407
+semantic_whitened,Jony J,7.9005,-11.8464
+semantic_whitened,Jony J,3.4336,-12.6191
+semantic_whitened,Jony J,9.8915,-11.1558
+semantic_whitened,Jony J,7.5743,-20.4968
+semantic_whitened,Jony J,-8.3432,-8.9725
+semantic_whitened,Jony J,8.1698,-11.8786
+semantic_whitened,Jony J,-16.7186,6.546
+semantic_whitened,Jony J,11.9643,-15.3585
+semantic_whitened,Jony J,6.8462,-3.3683
+semantic_whitened,Jony J,10.8637,-20.8179
+semantic_whitened,Jony J,5.8122,1.0973
+semantic_whitened,Jony J,-5.8462,-2.4284
+semantic_whitened,Jony J,1.8316,-25.2137
+semantic_whitened,Jony J,10.4959,-24.0595
+semantic_whitened,Jony J,8.7922,-14.6596
+semantic_whitened,Jony J,2.4517,-20.595
+semantic_whitened,Jony J,6.2578,-20.8651
+semantic_whitened,Jony J,2.1531,-19.9313
+semantic_whitened,Jony J,-4.1649,-6.3446
+semantic_whitened,Jony J,-8.9884,-2.0115
+semantic_whitened,Jony J,1.6396,-15.008
+semantic_whitened,MULA SAKEE,-4.818,12.5775
+semantic_whitened,MULA SAKEE,7.6457,-5.874
+semantic_whitened,MULA SAKEE,-7.3909,13.7571
+semantic_whitened,MULA SAKEE,-7.0421,17.425
+semantic_whitened,MULA SAKEE,-14.1825,22.3766
+semantic_whitened,MULA SAKEE,19.7258,16.9088
+semantic_whitened,MULA SAKEE,-1.4843,18.4631
+semantic_whitened,MULA SAKEE,-0.5442,-2.2009
+semantic_whitened,MULA SAKEE,-3.0313,9.2432
+semantic_whitened,MULA SAKEE,-4.5772,7.4584
+semantic_whitened,MULA SAKEE,0.0099,24.2642
+semantic_whitened,MULA SAKEE,-5.8284,13.6536
+semantic_whitened,MULA SAKEE,-6.7822,16.0733
+semantic_whitened,MULA SAKEE,-5.0863,17.442
+semantic_whitened,MULA SAKEE,-16.2147,20.4501
+semantic_whitened,MULA SAKEE,-5.5908,22.662
+semantic_whitened,MULA SAKEE,1.0427,24.7712
+semantic_whitened,MULA SAKEE,-10.2507,13.0241
+semantic_whitened,MULA SAKEE,-5.0819,22.0628
+semantic_whitened,MULA SAKEE,-0.6727,18.0049
+semantic_whitened,MULA SAKEE,-9.3616,18.9837
+semantic_whitened,MULA SAKEE,-8.3459,19.0219
+semantic_whitened,MULA SAKEE,-5.0375,18.3581
+semantic_whitened,MULA SAKEE,-4.5692,19.9942
+semantic_whitened,MULA SAKEE,-7.6439,21.5352
+semantic_whitened,MULA SAKEE,-10.3503,21.9438
+semantic_whitened,MULA SAKEE,-8.3421,22.9775
+semantic_whitened,MULA SAKEE,10.1489,-22.868
+semantic_whitened,MULA SAKEE,-6.9562,21.808
+semantic_whitened,MULA SAKEE,-9.4975,16.3344
+semantic_whitened,MULA SAKEE,-9.0318,15.9547
+semantic_whitened,MULA SAKEE,-6.8742,7.9148
+semantic_whitened,MULA SAKEE,-19.8317,1.0143
+semantic_whitened,MULA SAKEE,-3.5981,17.9532
+semantic_whitened,MULA SAKEE,-9.0675,14.8274
+semantic_whitened,MULA SAKEE,-14.7114,21.9863
+semantic_whitened,MULA SAKEE,-4.2683,19.4063
+semantic_whitened,MULA SAKEE,-6.8563,12.2782
+semantic_whitened,MULA SAKEE,-4.5346,16.3339
+semantic_whitened,MULA SAKEE,-5.5383,13.3897

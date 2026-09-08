@@ -1,0 +1,13 @@
+released_model,reference_model,metric,paired_difference_released_minus_reference,song_cluster_bootstrap_ci95_low,song_cluster_bootstrap_ci95_high,bootstrap_replicates
+hierarchical_sgd_context,first_order_markov,top1_accuracy,0.004309,0.002625,0.005872,2000
+hierarchical_sgd_context,first_order_markov,top3_accuracy,0.048839,0.044444,0.0536,2000
+hierarchical_sgd_context,first_order_markov,top5_accuracy,0.045093,0.040912,0.049048,2000
+hierarchical_sgd_context,first_order_markov,mrr,0.021006,0.019184,0.022936,2000
+hierarchical_sgd_context,flat_sgd_logistic_context,top1_accuracy,0.002601,0.001288,0.003908,2000
+hierarchical_sgd_context,flat_sgd_logistic_context,top3_accuracy,0.001281,-0.0,0.002511,2000
+hierarchical_sgd_context,flat_sgd_logistic_context,top5_accuracy,0.001941,0.000485,0.003389,2000
+hierarchical_sgd_context,flat_sgd_logistic_context,mrr,0.001948,0.001227,0.002634,2000
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,top1_accuracy,0.000349,-0.000358,0.00108,2000
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,top3_accuracy,0.000194,-0.000819,0.001188,2000
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,top5_accuracy,0.001456,0.000357,0.002544,2000
+hierarchical_sgd_context,hierarchical_sgd_no_source_label,mrr,0.000386,-6.9e-05,0.000802,2000
