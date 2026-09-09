@@ -60,7 +60,8 @@ for _stream in (sys.stdout, sys.stderr):
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 SEED = 20260825
 FOLDS = 5
-EXPECTED_DENSE_MRR = 0.3181
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_DENSE_MRR = expected(0.3181, 0.2995)
 SVD_COMPONENTS = 1024          # the dense system's own width
 HELD_OUT_LABEL_SHARE = 0.15
 

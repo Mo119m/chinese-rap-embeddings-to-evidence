@@ -47,7 +47,8 @@ for _stream in (sys.stdout, sys.stderr):
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 LADDER = (50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000)
-EXPECTED_UNIGRAM_MRR = 0.5332
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_UNIGRAM_MRR = expected(0.5332, None)  # no v3 unigram arm has been published yet
 
 
 def fit_unigrams(documents):
@@ -107,7 +108,7 @@ def build(private_root: Path, out_dir: Path) -> int:
         # unigram-plus-bigram fit, where 150,000 features were shared and the IDF came from
         # that fit; a unigram-only fit keeps every unigram (49,866) and lands close but not
         # on it. The check is a sanity bound on that gap, not a byte-identity claim.
-        if variant == "original" and abs(full - EXPECTED_UNIGRAM_MRR) > 5e-3:
+        if variant == "original" and EXPECTED_UNIGRAM_MRR is not None and abs(full - EXPECTED_UNIGRAM_MRR) > 5e-3:
             raise SystemExit(f"unigrams give {full:.4f}, more than 0.005 from the anatomy's "
                              f"masked unigram arm {EXPECTED_UNIGRAM_MRR}")
         rr[f"{variant}_all"] = 1.0 / ranks

@@ -67,7 +67,8 @@ OUT_DIR = ROOT / "results" / "retrieval-v2"
 SEED = 20260825
 REPLICATES = 2000
 MINIMUM_ENDINGS = 4
-EXPECTED_DENSE_LEXICAL_FUSION_MRR = 0.4756  # the decomposition experiment's plain mean
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_DENSE_LEXICAL_FUSION_MRR = expected(0.4756, 0.4465)  # the decomposition's / three_spaces_v3's plain mean
 
 
 # ------------------------------------------------------------------ phonological documents

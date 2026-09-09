@@ -94,7 +94,31 @@ def corpus_content_sha256(rows) -> str:
     return digest.hexdigest()
 
 
+def corpus_version() -> str:
+    """Which corpus the downstream experiments read: v2 (default) or the cleaned v3.
+
+    Set CHINESE_RAP_CORPUS=v3 to rerun any experiment on corpus v3 with its own recorded
+    vectors; pass --out-dir results/retrieval-v3 so the v2 results are not overwritten.
+    """
+    import os
+    version = os.environ.get("CHINESE_RAP_CORPUS", "v2")
+    if version not in ("v2", "v3"):
+        raise SystemExit(f"CHINESE_RAP_CORPUS must be v2 or v3, not {version!r}")
+    return version
+
+
+def expected(v2_value, v3_value):
+    """A self-check value keyed to the corpus in use; None means the check is skipped."""
+    return v2_value if corpus_version() == "v2" else v3_value
+
+
 def load(private_root: Path):
+    if corpus_version() == "v3":
+        from corpus_v3 import load_v3
+        rows, vectors, state = load_v3(private_root)
+        return rows, vectors, {"contract_version": state["contract"].get("contract_version"),
+                               "configuration": state["contract"].get("configuration"),
+                               "corpus": "v3", "embeddings_sha256": state["sha256"]}
     corpus_path = private_root / "work" / "private-repaired-corpus-v2" / "repaired_lyric_chunks_v2.csv"
     embed_dir = private_root / "work" / "private-repaired-corpus-v2-embeddings"
     vectors_path = embed_dir / "repaired_corpus_v2_bge_m3_embeddings.npy"

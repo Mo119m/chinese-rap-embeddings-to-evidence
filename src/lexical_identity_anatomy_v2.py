@@ -59,7 +59,8 @@ for _stream in (sys.stdout, sys.stderr):
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 FUNCTION_CHARACTERS = 100
-EXPECTED_LEXICAL_MRR = 0.4503
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_LEXICAL_MRR = expected(0.4503, 0.4267)
 
 
 def has_digit_or_punct(feature: str) -> bool:

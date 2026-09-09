@@ -56,7 +56,8 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
-EXPECTED_WORD_MRR = 0.5188
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_WORD_MRR = expected(0.5188, 0.4973)
 
 POS_GROUPS = {
     "content": {"n", "nz", "nt", "ng", "nl", "v", "vd", "vn", "vg", "vi", "vl", "a", "ad",

@@ -47,7 +47,8 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
-EXPECTED_CHUNK_DENSE_MRR = 0.1903
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_CHUNK_DENSE_MRR = expected(0.1903, None)  # no v3 chunk-level dense number has been published yet
 MIN_CHUNK_CHARACTERS = 20
 
 
@@ -143,7 +144,7 @@ def build(private_root: Path, out_dir: Path) -> int:
     ranks["semantic"] = v1.rank_system(scores_by_space["semantic"].astype(np.float32), chunk_label)[0].astype(np.int64)
     mrr = float(np.mean(1.0 / ranks["semantic"]))
     print(f"  MRR {mrr:.4f}", flush=True)
-    if abs(mrr - EXPECTED_CHUNK_DENSE_MRR) > 5e-4:
+    if EXPECTED_CHUNK_DENSE_MRR is not None and abs(mrr - EXPECTED_CHUNK_DENSE_MRR) > 5e-4:
         raise SystemExit(f"chunk-level dense gives {mrr:.4f}, not the representation study's {EXPECTED_CHUNK_DENSE_MRR}")
     empty = {}
     for name, matrix in spaces.items():

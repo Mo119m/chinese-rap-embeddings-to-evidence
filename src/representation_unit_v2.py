@@ -66,8 +66,9 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
-EXPECTED_DENSE_MRR = 0.3181
-EXPECTED_LEXICAL_MRR = 0.4503
+from build_downstream_retrieval_v2 import expected  # noqa: E402
+EXPECTED_DENSE_MRR = expected(0.3181, 0.2995)
+EXPECTED_LEXICAL_MRR = expected(0.4503, 0.4267)
 
 
 def tfidf(documents, **kwargs):
