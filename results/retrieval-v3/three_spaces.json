@@ -1,0 +1,101 @@
+{
+  "analysis": "the three spaces on corpus v3",
+  "corpus": {
+    "chunks": 24308,
+    "content_sha256": "cd77392cf8d2c4059a6488d7ecbd87a29fe133a6f305b07d5210c34afd827744",
+    "groups": 5885,
+    "labels": 226,
+    "queries": 7234,
+    "song_records": 7370
+  },
+  "not_comparable_to": "results/retrieval-v2 point to point: the population differs (24,308 chunks, 7,370 songs); the v2 numbers are quoted only so the reader can see the direction",
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          0.1165,
+          0.1371
+        ],
+        "excludes_zero": true,
+        "minus": "semantic",
+        "mrr_difference": 0.1267,
+        "system": "lexical_char_2_5"
+      },
+      {
+        "ci95": [
+          0.0651,
+          0.0791
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_char_2_5",
+        "mrr_difference": 0.0718,
+        "system": "lexical_words"
+      },
+      {
+        "ci95": [
+          -0.01,
+          -0.0059
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_words",
+        "mrr_difference": -0.0079,
+        "system": "lexical_words_neutralised"
+      },
+      {
+        "ci95": [
+          0.0161,
+          0.0273
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_char_2_5",
+        "mrr_difference": 0.0216,
+        "system": "fusion_semantic_char"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "semantic_caveat": "the semantic column uses the v2 vectors of the same chunks, computed on the uncleaned text; it is an interim companion, not a v3 semantic result",
+  "semantic_vectors": {
+    "vectors": "v2-interim",
+    "warning": "computed on the uncleaned text"
+  },
+  "systems": {
+    "fusion_semantic_char": {
+      "mrr": 0.4508,
+      "recall_at_1": 0.3528,
+      "recall_at_10": 0.646,
+      "v2_mrr_for_reference": null
+    },
+    "lexical_char_2_5": {
+      "mrr": 0.4267,
+      "recall_at_1": 0.3337,
+      "recall_at_10": 0.6077,
+      "v2_mrr_for_reference": 0.4503
+    },
+    "lexical_words": {
+      "mrr": 0.4973,
+      "recall_at_1": 0.405,
+      "recall_at_10": 0.6713,
+      "v2_mrr_for_reference": 0.5188
+    },
+    "lexical_words_neutralised": {
+      "mrr": 0.4893,
+      "recall_at_1": 0.3966,
+      "recall_at_10": 0.6634,
+      "v2_mrr_for_reference": 0.5113
+    },
+    "rhyme_form_strict": {
+      "mrr": 0.0963,
+      "recall_at_1": 0.04,
+      "recall_at_10": 0.193,
+      "v2_mrr_for_reference": 0.0967
+    },
+    "semantic": {
+      "mrr": 0.3059,
+      "recall_at_1": 0.2068,
+      "recall_at_10": 0.5011,
+      "v2_mrr_for_reference": 0.3181
+    }
+  }
+}
