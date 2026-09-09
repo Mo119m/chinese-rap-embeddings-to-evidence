@@ -1,0 +1,190 @@
+{
+  "analysis": "how much of a label's lexical advantage a listener could judge",
+  "definition": "a label's advantage is the sum over words of the label's songs' mean TF-IDF weight times (label profile minus mean rival profile), positive terms only; the recognisable part is the share in English tokens and names; everything else -- Han content words, function words, adverbs, numerals, punctuation -- is ordinary vocabulary no listener can be asked to attribute",
+  "labels": {
+    "APMOZART": {
+      "ordinary_share": 0.244,
+      "recognisable_share": 0.756,
+      "recognisable_words_offered": 6,
+      "songs": 48
+    },
+    "AR": {
+      "ordinary_share": 0.694,
+      "recognisable_share": 0.306,
+      "recognisable_words_offered": 6,
+      "songs": 47
+    },
+    "Bridge": {
+      "ordinary_share": 0.813,
+      "recognisable_share": 0.187,
+      "recognisable_words_offered": 1,
+      "songs": 48
+    },
+    "GALI": {
+      "ordinary_share": 0.586,
+      "recognisable_share": 0.414,
+      "recognisable_words_offered": 4,
+      "songs": 47
+    },
+    "HAS": {
+      "ordinary_share": 0.527,
+      "recognisable_share": 0.473,
+      "recognisable_words_offered": 5,
+      "songs": 86
+    },
+    "Jony J": {
+      "ordinary_share": 0.957,
+      "recognisable_share": 0.043,
+      "recognisable_words_offered": 1,
+      "songs": 48
+    },
+    "Kc": {
+      "ordinary_share": 0.857,
+      "recognisable_share": 0.143,
+      "recognisable_words_offered": 1,
+      "songs": 49
+    },
+    "MULA SAKEE": {
+      "ordinary_share": 0.238,
+      "recognisable_share": 0.762,
+      "recognisable_words_offered": 6,
+      "songs": 48
+    },
+    "Mercy(lago)": {
+      "ordinary_share": 0.641,
+      "recognisable_share": 0.359,
+      "recognisable_words_offered": 6,
+      "songs": 48
+    },
+    "OG Three": {
+      "ordinary_share": 0.81,
+      "recognisable_share": 0.19,
+      "recognisable_words_offered": 1,
+      "songs": 47
+    },
+    "TOYOKI": {
+      "ordinary_share": 0.687,
+      "recognisable_share": 0.313,
+      "recognisable_words_offered": 1,
+      "songs": 48
+    },
+    "TY": {
+      "ordinary_share": 0.939,
+      "recognisable_share": 0.061,
+      "recognisable_words_offered": 1,
+      "songs": 48
+    },
+    "Tangoz": {
+      "ordinary_share": 0.707,
+      "recognisable_share": 0.293,
+      "recognisable_words_offered": 2,
+      "songs": 49
+    },
+    "Tizzy T": {
+      "ordinary_share": 0.784,
+      "recognisable_share": 0.216,
+      "recognisable_words_offered": 0,
+      "songs": 49
+    },
+    "YoungChigga": {
+      "ordinary_share": 0.677,
+      "recognisable_share": 0.323,
+      "recognisable_words_offered": 4,
+      "songs": 48
+    },
+    "乃万": {
+      "ordinary_share": 0.574,
+      "recognisable_share": 0.426,
+      "recognisable_words_offered": 2,
+      "songs": 47
+    },
+    "功夫胖": {
+      "ordinary_share": 0.832,
+      "recognisable_share": 0.168,
+      "recognisable_words_offered": 0,
+      "songs": 47
+    },
+    "周士爵": {
+      "ordinary_share": 0.845,
+      "recognisable_share": 0.155,
+      "recognisable_words_offered": 1,
+      "songs": 100
+    },
+    "大D": {
+      "ordinary_share": 0.794,
+      "recognisable_share": 0.206,
+      "recognisable_words_offered": 0,
+      "songs": 48
+    },
+    "李尔新": {
+      "ordinary_share": 0.851,
+      "recognisable_share": 0.149,
+      "recognisable_words_offered": 2,
+      "songs": 47
+    },
+    "河南说唱之神": {
+      "ordinary_share": 0.88,
+      "recognisable_share": 0.12,
+      "recognisable_words_offered": 0,
+      "songs": 49
+    },
+    "法老": {
+      "ordinary_share": 0.878,
+      "recognisable_share": 0.122,
+      "recognisable_words_offered": 1,
+      "songs": 49
+    },
+    "滇声气": {
+      "ordinary_share": 0.667,
+      "recognisable_share": 0.333,
+      "recognisable_words_offered": 6,
+      "songs": 52
+    },
+    "王晨宇IceCraz": {
+      "ordinary_share": 0.792,
+      "recognisable_share": 0.208,
+      "recognisable_words_offered": 0,
+      "songs": 48
+    },
+    "艾福杰尼": {
+      "ordinary_share": 0.665,
+      "recognisable_share": 0.335,
+      "recognisable_words_offered": 2,
+      "songs": 48
+    },
+    "辛巴": {
+      "ordinary_share": 0.84,
+      "recognisable_share": 0.16,
+      "recognisable_words_offered": 0,
+      "songs": 48
+    },
+    "连麻Swimming": {
+      "ordinary_share": 0.911,
+      "recognisable_share": 0.089,
+      "recognisable_words_offered": 2,
+      "songs": 47
+    },
+    "那奇沃夫": {
+      "ordinary_share": 0.441,
+      "recognisable_share": 0.559,
+      "recognisable_words_offered": 5,
+      "songs": 48
+    },
+    "马思唯": {
+      "ordinary_share": 0.635,
+      "recognisable_share": 0.365,
+      "recognisable_words_offered": 4,
+      "songs": 48
+    },
+    "默示船政": {
+      "ordinary_share": 0.807,
+      "recognisable_share": 0.193,
+      "recognisable_words_offered": 1,
+      "songs": 48
+    }
+  },
+  "max_ordinary_share": 0.957,
+  "mean_ordinary_share": 0.719,
+  "min_ordinary_share": 0.238,
+  "privacy": "label strings and shares only; the words themselves stay private"
+}

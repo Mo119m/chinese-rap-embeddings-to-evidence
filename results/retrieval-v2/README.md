@@ -18,6 +18,8 @@ Every file here scores the same 7,236 query songs against the same 226 source-cr
 | `word_space_probe.json` | `src/word_space_probe_v2.py` | The word space reduced fold-wise to 1,024 dimensions and given the probe's transforms; fused with the chunk-whitened semantic space, the best system tried. |
 | `common_word_curve.json` | `src/common_word_curve_v2.py` | Only the K most common words, for a ladder of K, original and neutralised. |
 | `chunk_level_replication.json` | `src/chunk_level_replication_v2.py` | The three spaces scored with every passage as its own query: the song-level ordering replicates at passage grain. |
+| `label_permutation_null.json` | `src/label_permutation_null_v2.py` | Labels shuffled at leakage-group level ten times and the protocol rerun: every space falls to chance. |
+| `recognisable_word_share.json` | `tools/build_discriminative_word_sheet.py` | For the thirty largest labels, how much of the lexical advantage sits in ordinary words no listener could attribute (mean 72%) against English tokens and names. |
 
 All numbers are aggregate. Per-query ranks, coordinates, and any table that names a song are private.
 
