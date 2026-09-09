@@ -1,0 +1,60 @@
+{
+  "artifact_id": "chinese-rap-cleaned-corpus-v3",
+  "chunks": {
+    "after": 24308,
+    "before": 25026,
+    "touched": 4734,
+    "touched_share": 0.1892
+  },
+  "content_sha256": "cd77392cf8d2c4059a6488d7ecbd87a29fe133a6f305b07d5210c34afd827744",
+  "derived_from": {
+    "chunks": 25026,
+    "corpus_v2_content_sha256": "8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b",
+    "songs": 7391
+  },
+  "detector": {
+    "protocol": "MB-001",
+    "scope": "classified over the whole song in source order, so a block straddling two chunks is seen whole",
+    "version": "MB-001.1"
+  },
+  "file_sha256": "61dbe1af35a7f22a16be237a810769fcc2471190c62d8a5791fb04e9297893fc",
+  "kept_on_purpose": [
+    "bracketed short spans such as (yeah) -- backing vocals and ad-libs",
+    "a song's mention of its own artist -- a lyric, controlled elsewhere"
+  ],
+  "lines": {
+    "after": 542814,
+    "before": 549646,
+    "removed": 6832,
+    "removed_share": 0.0124
+  },
+  "metadata_block_by_detector_rule": {
+    "bracketed_annotation": 54,
+    "contact": 96,
+    "copyright": 19,
+    "name_extension": 252,
+    "name_list": 771,
+    "organisation": 877,
+    "role_prefix": 86,
+    "sample_attribution": 7
+  },
+  "privacy": "aggregate counts only; the v3 table is private",
+  "removed_by_rule": {
+    "chunks_dropped_empty": 718,
+    "credit_tag_line": 674,
+    "digits_only": 365,
+    "empty_after_cleaning": 159,
+    "html": 220,
+    "metadata_block": 2162,
+    "role_line": 431,
+    "section_header": 18,
+    "stray_title": 3023
+  },
+  "songs": {
+    "after": 7370,
+    "before": 7391,
+    "touched": 3324,
+    "touched_share": 0.4497
+  },
+  "version": "chinese-rap-cleaned-corpus-v3/1.0.0"
+}
