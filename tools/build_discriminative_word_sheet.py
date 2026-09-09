@@ -84,32 +84,49 @@ def build(private_root: Path, out: Path) -> int:
 
     matrix, features = fit_unigrams([" ".join(segment(documents[s])) for s in songs])
     label_count = len(eligible)
-    # weighted label means, then keyness across labels
-    sums = np.zeros((label_count, matrix.shape[1]))
-    mass = np.zeros(label_count)
     dense = matrix.toarray().astype(np.float64)
-    np.add.at(sums, label_index, dense * weights[:, None])
-    np.add.at(mass, label_index, weights)
-    means = sums / mass[:, None]
-    mu, sd = means.mean(axis=0), means.std(axis=0) + 1e-9
-    keyness = (means - mu) / sd
     presence = (dense > 0).astype(np.float64)
     label_share = np.zeros((label_count, matrix.shape[1]))
     np.add.at(label_share, label_index, presence)
     label_share /= np.bincount(label_index, minlength=label_count)[:, None]
     corpus_share = presence.mean(axis=0)
 
+    # Neither keyness nor raw contribution. A word used by one label only saturates any
+    # z-score, so keyness lists collaborators' names and one-off ad-lib spellings; raw
+    # contribution to the label's own score is dominated by the words everyone uses (的,
+    # 我, 你), because the profile dot product is mass before it is difference. What the
+    # retrieval actually rewards is the word's contribution to the label's profile OVER
+    # its contribution to a typical rival's: the mean over the label's songs of
+    # x(song, word) x (profile(label, word) - mean profile(other labels, word)). A word
+    # must also appear in at least 15% of the label's songs and in at least 2% of all
+    # songs, so it is a habit and not a rarity.
+    sums = np.zeros((label_count, matrix.shape[1]))
+    mass = np.zeros(label_count)
+    np.add.at(sums, label_index, dense * weights[:, None])
+    np.add.at(mass, label_index, weights)
+    profile = sums / np.linalg.norm(sums, axis=1, keepdims=True)
+    others = (profile.sum(axis=0)[None, :] - profile) / (label_count - 1)
+    advantage = profile - others
+    contribution = np.zeros((label_count, matrix.shape[1]))
+    np.add.at(contribution, label_index, dense * advantage[label_index])
+    contribution /= np.bincount(label_index, minlength=label_count)[:, None]
+    eligible_word = (label_share >= 0.15) & (corpus_share[None, :] >= 0.02) & (contribution > 0)
+
     counts = Counter(label_index.tolist())
     shown = [l for l, _ in sorted(counts.items(), key=lambda item: (-item[1], eligible[item[0]]))][:LABELS_SHOWN]
     entries = []
     for l in shown:
-        top = np.argsort(-keyness[l])[:WORDS_PER_LABEL]
+        ranked = np.argsort(-np.where(eligible_word[l], contribution[l], -1.0))[:WORDS_PER_LABEL]
         words = []
-        for f in top:
+        for f in ranked:
+            if not eligible_word[l, f]:
+                continue
             word = features[f]
             pairs = list(posseg.cut(word))
             tag = pairs[0].flag if len(pairs) == 1 else "x"
-            words.append({"word": word, "keyness": round(float(keyness[l, f]), 2),
+            positive = contribution[l][contribution[l] > 0].sum()
+            words.append({"word": word,
+                          "score_share_percent": round(float(100 * contribution[l, f] / positive), 1),
                           "share_of_label_songs": round(float(label_share[l, f]), 2),
                           "share_of_all_songs": round(float(corpus_share[f]), 3),
                           "pos": POS_LABEL.get(pos_group(tag, word), "其他")})
@@ -131,12 +148,12 @@ def build(private_root: Path, out: Path) -> int:
             name = f"{e['label']}::{i}"
             rows_html.append(
                 f'<tr data-key="{name}"><td class="w">{w["word"]}</td>'
-                f'<td class="m">{w["pos"]}</td><td class="m">{w["keyness"]}</td>'
+                f'<td class="m">{w["pos"]}</td><td class="m">{w["score_share_percent"]}%</td>'
                 f'<td class="m">{int(w["share_of_label_songs"]*100)}% / {round(w["share_of_all_songs"]*100,1)}%</td>'
                 f'<td class="opts">{radios.replace("{name}", name)}</td></tr>')
         blocks.append(
             f'<section class="label"><h2>{e["label"]} <span class="n">{e["songs"]} 首</span></h2>'
-            f'<table><thead><tr><th>词</th><th>词性</th><th>分辨力 z</th><th>他的歌里出现 / 全语料出现</th><th>这个词对他来说是什么</th></tr></thead>'
+            f'<table><thead><tr><th>词</th><th>词性</th><th>占他被认出的分数</th><th>他的歌里出现 / 全语料出现</th><th>这个词对他来说是什么</th></tr></thead>'
             f'<tbody>{"".join(rows_html)}</tbody></table></section>')
     html = f"""<!doctype html><html lang="zh"><head><meta charset="utf-8"><title>歌手高分辨力词标注</title>
 <style>body{{font-family:Arial,"Microsoft YaHei",sans-serif;margin:0;background:#f5f2ea;color:#131820}}main{{max-width:1180px;margin:auto;padding:36px 16px 80px}}
@@ -147,7 +164,7 @@ td{{padding:6px 4px;border-bottom:1px solid #ece8de;vertical-align:top}}.w{{font
 .opt input{{margin:0 3px 0 0}}.bar{{position:sticky;top:0;background:#f5f2ea;padding:10px 0;border-bottom:1px solid #cbc7bd;display:flex;gap:12px;align-items:center}}
 button{{padding:8px 14px;font-weight:700;border:1px solid #0679b8;background:#0679b8;color:#fff;cursor:pointer}}#done{{color:#5b626a}}</style></head><body><main>
 <h1>歌手高分辨力词标注</h1>
-<p>每个歌手 20 个词，是统计上他用得比别人明显多的词（分辨力 z 越大越突出；"他的歌里出现 / 全语料出现"是含这个词的歌所占比例）。请凭你对这个歌手的了解，判断这个词对他来说是什么。不用查资料，凭印象；拿不准选"不确定"。<br>
+<p>每个歌手 20 个词，是模型把他和别的歌手分开时最依赖的词——他用得比别人多、而且用得够多的词（"占他被认出的分数"是这个词在"他比别人多的那部分得分"里的比例；"他的歌里出现 / 全语料出现"是含这个词的歌所占比例）。只列了在他至少 15% 的歌里、在全语料至少 2% 的歌里出现的词。请凭你对这个歌手的了解，判断这个词对他来说是什么。不用查资料，凭印象；拿不准选"不确定"。<br>
 答案自动保存在浏览器里；全部做完点右上角导出，把下载的 json 发我。这个文件只有单个词和比例，没有歌词。</p>
 <div class="bar"><button id="export">导出 JSON</button><span id="done"></span></div>
 {"".join(blocks)}
