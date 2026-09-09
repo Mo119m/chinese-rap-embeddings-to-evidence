@@ -1,0 +1,97 @@
+{
+  "analysis": "label-permutation null for the retrieval protocol",
+  "design": "10 group-level permutations with seed 20260825: every song in a leakage group takes the same permuted label, labels are swapped among groups whose true labels fall in the same size quartile, and the full leave-group-out protocol is rerun unchanged; spaces are fitted once, without labels",
+  "labels": 226,
+  "permutations": [
+    {
+      "agreement_with_true_labels": 0.014372581536760642,
+      "lexical_char_2_5": 0.037622431023951186,
+      "lexical_words": 0.037816515442288264,
+      "semantic": 0.031210124502360107
+    },
+    {
+      "agreement_with_true_labels": 0.013266998341625208,
+      "lexical_char_2_5": 0.046816767191353546,
+      "lexical_words": 0.04409091766243878,
+      "semantic": 0.03431687401390505
+    },
+    {
+      "agreement_with_true_labels": 0.014372581536760642,
+      "lexical_char_2_5": 0.03609227594406255,
+      "lexical_words": 0.03776145894881646,
+      "semantic": 0.03200577284435833
+    },
+    {
+      "agreement_with_true_labels": 0.015063571033720288,
+      "lexical_char_2_5": 0.0358887728050534,
+      "lexical_words": 0.03841591879455729,
+      "semantic": 0.031175704019767554
+    },
+    {
+      "agreement_with_true_labels": 0.014234383637368711,
+      "lexical_char_2_5": 0.03720301914854794,
+      "lexical_words": 0.035644219519620005,
+      "semantic": 0.031195947841603035
+    },
+    {
+      "agreement_with_true_labels": 0.017689331122166942,
+      "lexical_char_2_5": 0.03583868211060247,
+      "lexical_words": 0.037315734575319906,
+      "semantic": 0.030900229342398604
+    },
+    {
+      "agreement_with_true_labels": 0.014372581536760642,
+      "lexical_char_2_5": 0.03568754366930756,
+      "lexical_words": 0.03636466761115033,
+      "semantic": 0.031384814290935426
+    },
+    {
+      "agreement_with_true_labels": 0.015339966832504145,
+      "lexical_char_2_5": 0.03794465731633718,
+      "lexical_words": 0.039279669047474236,
+      "semantic": 0.03379554018966854
+    },
+    {
+      "agreement_with_true_labels": 0.01644555002763958,
+      "lexical_char_2_5": 0.03909381228152914,
+      "lexical_words": 0.04129786413827582,
+      "semantic": 0.033098869775479885
+    },
+    {
+      "agreement_with_true_labels": 0.015616362631288004,
+      "lexical_char_2_5": 0.03507170758242714,
+      "lexical_words": 0.03732109529214299,
+      "semantic": 0.030417838393654584
+    }
+  ],
+  "permutations_scored": 10,
+  "privacy": "aggregate only",
+  "queries": 7236,
+  "question": "whether any retrieval number survives when the labels are shuffled; a correct protocol must fall to chance in every space",
+  "summary": {
+    "lexical_char_2_5": {
+      "chance": 0.0265,
+      "null_max": 0.0468,
+      "null_mean": 0.0377,
+      "null_min": 0.0351,
+      "observed": 0.4503,
+      "observed_over_null_max": 9.6
+    },
+    "lexical_words": {
+      "chance": 0.0265,
+      "null_max": 0.0441,
+      "null_mean": 0.0385,
+      "null_min": 0.0356,
+      "observed": 0.5188,
+      "observed_over_null_max": 11.8
+    },
+    "semantic": {
+      "chance": 0.0265,
+      "null_max": 0.0343,
+      "null_mean": 0.032,
+      "null_min": 0.0304,
+      "observed": 0.3181,
+      "observed_over_null_max": 9.3
+    }
+  }
+}
