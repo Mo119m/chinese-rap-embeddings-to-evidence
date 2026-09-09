@@ -1,0 +1,472 @@
+{
+  "analysis": "anatomy of the word-level identity signal",
+  "arms": {
+    "neutralised_words": {
+      "ci95": [
+        -0.0092,
+        -0.0049
+      ],
+      "class": "the 605-surface catalogue",
+      "defined": true,
+      "difference_from_full": -0.007,
+      "features_kept": 150000,
+      "kind": "neutralise",
+      "mrr": 0.5113,
+      "recall_at_10": 0.6863
+    },
+    "only_df_commonest_quartile": {
+      "ci95": [
+        -0.0098,
+        -0.003
+      ],
+      "class": "df_commonest_quartile",
+      "defined": true,
+      "difference_from_full": -0.0064,
+      "features_kept": 39151,
+      "kind": "only",
+      "mrr": 0.5151,
+      "recall_at_10": 0.6973
+    },
+    "only_df_rarest_quartile": {
+      "class": "df_rarest_quartile",
+      "defined": false,
+      "features_kept": 14743,
+      "kind": "only",
+      "why": "A lexical label repertoire sum is empty."
+    },
+    "only_df_second_quartile": {
+      "ci95": [
+        -0.28,
+        -0.2594
+      ],
+      "class": "df_second_quartile",
+      "defined": true,
+      "difference_from_full": -0.2699,
+      "features_kept": 45021,
+      "kind": "only",
+      "mrr": 0.2521,
+      "recall_at_10": 0.3962
+    },
+    "only_df_third_quartile": {
+      "ci95": [
+        -0.1614,
+        -0.1412
+      ],
+      "class": "df_third_quartile",
+      "defined": true,
+      "difference_from_full": -0.1511,
+      "features_kept": 51085,
+      "kind": "only",
+      "mrr": 0.3703,
+      "recall_at_10": 0.5397
+    },
+    "only_pos_adverb": {
+      "ci95": [
+        -0.3682,
+        -0.3481
+      ],
+      "class": "pos_adverb",
+      "defined": true,
+      "difference_from_full": -0.3579,
+      "features_kept": 6341,
+      "kind": "only",
+      "mrr": 0.1635,
+      "recall_at_10": 0.298
+    },
+    "only_pos_content": {
+      "ci95": [
+        -0.1308,
+        -0.1145
+      ],
+      "class": "pos_content",
+      "defined": true,
+      "difference_from_full": -0.1231,
+      "features_kept": 90996,
+      "kind": "only",
+      "mrr": 0.394,
+      "recall_at_10": 0.5717
+    },
+    "only_pos_english": {
+      "ci95": [
+        -0.1727,
+        -0.1515
+      ],
+      "class": "pos_english",
+      "defined": true,
+      "difference_from_full": -0.1622,
+      "features_kept": 26061,
+      "kind": "only",
+      "mrr": 0.3643,
+      "recall_at_10": 0.5152
+    },
+    "only_pos_function": {
+      "ci95": [
+        -0.2657,
+        -0.247
+      ],
+      "class": "pos_function",
+      "defined": true,
+      "difference_from_full": -0.2562,
+      "features_kept": 9589,
+      "kind": "only",
+      "mrr": 0.2632,
+      "recall_at_10": 0.4388
+    },
+    "only_pos_numeral": {
+      "ci95": [
+        -0.4019,
+        -0.3807
+      ],
+      "class": "pos_numeral",
+      "defined": true,
+      "difference_from_full": -0.3915,
+      "features_kept": 5166,
+      "kind": "only",
+      "mrr": 0.1299,
+      "recall_at_10": 0.2265
+    },
+    "only_pos_person_or_place_name": {
+      "ci95": [
+        -0.2756,
+        -0.2534
+      ],
+      "class": "pos_person_or_place_name",
+      "defined": true,
+      "difference_from_full": -0.2645,
+      "features_kept": 7221,
+      "kind": "only",
+      "mrr": 0.2628,
+      "recall_at_10": 0.3894
+    },
+    "only_pos_punctuation_or_symbol": {
+      "ci95": [
+        -0.3521,
+        -0.3316
+      ],
+      "class": "pos_punctuation_or_symbol",
+      "defined": true,
+      "difference_from_full": -0.3418,
+      "features_kept": 4626,
+      "kind": "only",
+      "mrr": 0.1817,
+      "recall_at_10": 0.3206
+    },
+    "only_word_bigram": {
+      "ci95": [
+        -0.0862,
+        -0.074
+      ],
+      "class": "word_bigram",
+      "defined": true,
+      "difference_from_full": -0.0802,
+      "features_kept": 109764,
+      "kind": "only",
+      "mrr": 0.4387,
+      "recall_at_10": 0.6231
+    },
+    "only_word_unigram": {
+      "ci95": [
+        0.0074,
+        0.0157
+      ],
+      "class": "word_unigram",
+      "defined": true,
+      "difference_from_full": 0.0114,
+      "features_kept": 40236,
+      "kind": "only",
+      "mrr": 0.5332,
+      "recall_at_10": 0.7083
+    },
+    "remove_df_commonest_quartile": {
+      "ci95": [
+        -0.1035,
+        -0.0835
+      ],
+      "class": "df_commonest_quartile",
+      "defined": true,
+      "difference_from_full": -0.0935,
+      "features_kept": 110849,
+      "kind": "remove",
+      "mrr": 0.4271,
+      "recall_at_10": 0.6114
+    },
+    "remove_df_rarest_quartile": {
+      "ci95": [
+        0.0,
+        0.0026
+      ],
+      "class": "df_rarest_quartile",
+      "defined": true,
+      "difference_from_full": 0.0013,
+      "features_kept": 135257,
+      "kind": "remove",
+      "mrr": 0.5201,
+      "recall_at_10": 0.6969
+    },
+    "remove_df_second_quartile": {
+      "ci95": [
+        -0.0014,
+        0.0021
+      ],
+      "class": "df_second_quartile",
+      "defined": true,
+      "difference_from_full": 0.0003,
+      "features_kept": 104979,
+      "kind": "remove",
+      "mrr": 0.5191,
+      "recall_at_10": 0.6994
+    },
+    "remove_df_third_quartile": {
+      "ci95": [
+        -0.0114,
+        -0.0062
+      ],
+      "class": "df_third_quartile",
+      "defined": true,
+      "difference_from_full": -0.0088,
+      "features_kept": 98915,
+      "kind": "remove",
+      "mrr": 0.5128,
+      "recall_at_10": 0.6942
+    },
+    "remove_pos_adverb": {
+      "ci95": [
+        -0.0038,
+        0.0003
+      ],
+      "class": "pos_adverb",
+      "defined": true,
+      "difference_from_full": -0.0018,
+      "features_kept": 143659,
+      "kind": "remove",
+      "mrr": 0.5172,
+      "recall_at_10": 0.695
+    },
+    "remove_pos_content": {
+      "ci95": [
+        -0.0345,
+        -0.024
+      ],
+      "class": "pos_content",
+      "defined": true,
+      "difference_from_full": -0.0292,
+      "features_kept": 59004,
+      "kind": "remove",
+      "mrr": 0.4929,
+      "recall_at_10": 0.6744
+    },
+    "remove_pos_english": {
+      "ci95": [
+        -0.0427,
+        -0.0325
+      ],
+      "class": "pos_english",
+      "defined": true,
+      "difference_from_full": -0.0378,
+      "features_kept": 123939,
+      "kind": "remove",
+      "mrr": 0.4793,
+      "recall_at_10": 0.6646
+    },
+    "remove_pos_function": {
+      "ci95": [
+        -0.0064,
+        -0.0
+      ],
+      "class": "pos_function",
+      "defined": true,
+      "difference_from_full": -0.0033,
+      "features_kept": 140411,
+      "kind": "remove",
+      "mrr": 0.5161,
+      "recall_at_10": 0.699
+    },
+    "remove_pos_numeral": {
+      "ci95": [
+        -0.0026,
+        0.0005
+      ],
+      "class": "pos_numeral",
+      "defined": true,
+      "difference_from_full": -0.001,
+      "features_kept": 144834,
+      "kind": "remove",
+      "mrr": 0.5179,
+      "recall_at_10": 0.6938
+    },
+    "remove_pos_person_or_place_name": {
+      "ci95": [
+        -0.0163,
+        -0.0114
+      ],
+      "class": "pos_person_or_place_name",
+      "defined": true,
+      "difference_from_full": -0.0139,
+      "features_kept": 142779,
+      "kind": "remove",
+      "mrr": 0.504,
+      "recall_at_10": 0.6806
+    },
+    "remove_pos_punctuation_or_symbol": {
+      "ci95": [
+        -0.0112,
+        -0.0036
+      ],
+      "class": "pos_punctuation_or_symbol",
+      "defined": true,
+      "difference_from_full": -0.0073,
+      "features_kept": 145374,
+      "kind": "remove",
+      "mrr": 0.5113,
+      "recall_at_10": 0.6852
+    },
+    "remove_word_bigram": {
+      "ci95": [
+        0.0074,
+        0.0157
+      ],
+      "class": "word_bigram",
+      "defined": true,
+      "difference_from_full": 0.0114,
+      "features_kept": 40236,
+      "kind": "remove",
+      "mrr": 0.5332,
+      "recall_at_10": 0.7083
+    },
+    "remove_word_unigram": {
+      "ci95": [
+        -0.0862,
+        -0.074
+      ],
+      "class": "word_unigram",
+      "defined": true,
+      "difference_from_full": -0.0802,
+      "features_kept": 109764,
+      "kind": "remove",
+      "mrr": 0.4387,
+      "recall_at_10": 0.6231
+    }
+  },
+  "bootstrap": {
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one; difference of each arm from the full model"
+  },
+  "classes": {
+    "correct_label_score_share": {
+      "df_commonest_quartile": 0.9568,
+      "df_rarest_quartile": 0.0042,
+      "df_second_quartile": 0.0109,
+      "df_third_quartile": 0.0281,
+      "pos_adverb": 0.0822,
+      "pos_content": 0.372,
+      "pos_english": 0.1637,
+      "pos_function": 0.2585,
+      "pos_numeral": 0.0202,
+      "pos_person_or_place_name": 0.0221,
+      "pos_punctuation_or_symbol": 0.0813,
+      "word_bigram": 0.2217,
+      "word_unigram": 0.7783
+    },
+    "definitions": {
+      "df_*": "document-frequency quartile of the feature over the query corpus",
+      "pos_*": "jieba part-of-speech guess for the word in isolation, grouped; a description of the vocabulary, not a truth about each use; a bigram takes the class of its rarer member",
+      "pos_groups": {
+        "adverb": [
+          "d",
+          "df",
+          "dg"
+        ],
+        "content": [
+          "a",
+          "ad",
+          "ag",
+          "al",
+          "an",
+          "b",
+          "f",
+          "i",
+          "j",
+          "l",
+          "n",
+          "ng",
+          "nl",
+          "nt",
+          "nz",
+          "s",
+          "t",
+          "tg",
+          "v",
+          "vd",
+          "vg",
+          "vi",
+          "vl",
+          "vn",
+          "z"
+        ],
+        "english": [
+          "eng"
+        ],
+        "function": [
+          "c",
+          "e",
+          "h",
+          "k",
+          "o",
+          "p",
+          "q",
+          "r",
+          "rg",
+          "rr",
+          "rz",
+          "u",
+          "ud",
+          "ug",
+          "uj",
+          "ul",
+          "uv",
+          "uz",
+          "y"
+        ],
+        "numeral": [
+          "m",
+          "mq"
+        ],
+        "person_or_place_name": [
+          "nr",
+          "nrfg",
+          "nrt",
+          "ns",
+          "nsf"
+        ],
+        "punctuation_or_symbol": [
+          "w",
+          "x"
+        ]
+      }
+    },
+    "inventory": {
+      "df_commonest_quartile": 39151,
+      "df_rarest_quartile": 14743,
+      "df_second_quartile": 45021,
+      "df_third_quartile": 51085,
+      "pos_adverb": 6341,
+      "pos_content": 90996,
+      "pos_english": 26061,
+      "pos_function": 9589,
+      "pos_numeral": 5166,
+      "pos_person_or_place_name": 7221,
+      "pos_punctuation_or_symbol": 4626,
+      "word_bigram": 109764,
+      "word_unigram": 40236
+    }
+  },
+  "full_model": {
+    "features": 150000,
+    "mrr": 0.5188,
+    "reproduces_representation_study": true,
+    "tokenisation": "jieba default cut, word unigrams and bigrams, TF-IDF with the character system's settings"
+  },
+  "labels": 226,
+  "privacy": "aggregate only; no word is published",
+  "queries": 7236,
+  "question": "which vocabulary carries the identity that jieba words capture"
+}
