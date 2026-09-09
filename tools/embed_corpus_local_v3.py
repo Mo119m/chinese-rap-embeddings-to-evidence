@@ -82,6 +82,13 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
     blocks_dir = args.out / "blocks"
     blocks_dir.mkdir(exist_ok=True)
+    # a resume may only continue blocks computed over this very table: the digest is
+    # written beside the blocks and any other digest refuses the directory
+    stamp = blocks_dir / "corpus_content_sha256.txt"
+    if stamp.is_file() and stamp.read_text(encoding="utf-8").strip() != digest:
+        raise SystemExit(f"{blocks_dir} holds blocks of another corpus "
+                         f"({stamp.read_text(encoding='utf-8').strip()[:12]}...); delete it first")
+    stamp.write_text(digest + "\n", encoding="utf-8")
     n_blocks = (len(rows) + BLOCK - 1) // BLOCK
     started = time.time()
     for b in range(n_blocks):

@@ -16,7 +16,12 @@ What is removed, line by line, and counted:
   metadata_block     a line the MB-001 detector labels (credit roles, copyright marks,
                      organisations, contacts, handles, annotation lines, and the name-only
                      runs its rule 5 joins to them), classified over the whole song so a
-                     block that straddles two chunks is seen whole
+                     block that straddles two chunks is seen whole. Amendment 1.1.0: the
+                     detector's four fuzzy rules (organisation, name_list, name_extension,
+                     bracketed_annotation) are honoured only inside an anchored block or a
+                     long header/footer, or when the line alone is unmistakably a credit;
+                     see FUZZY_RULES below. The rest are lyrics and are kept, counted per
+                     rule under detector_hits_kept_as_lyric
   section_header     [Verse], Hook, 副歌, 作词 ... as the written-rhyme task defines them
   role_line          the English-form credit the detector was not written for: `mix by
                      yoken`, `Master. 荨麻疹`, `Recorded By 小老虎`; and 作词：X shapes
@@ -24,8 +29,21 @@ What is removed, line by line, and counted:
                      `深渊（Lil Andy，Prod.Vessels）` -- which is a copied title line and
                      where featured artists' names enter the text
   stray_title        a line that is the song's own title, character for character after
-                     punctuation and case are dropped (finding MB-001-F1)
-  html               tags stripped and entities unescaped; a line left empty is dropped
+                     punctuation and case are dropped (finding MB-001-F1), AND that sits
+                     next to a credit or header line -- i.e. inside the copied page header.
+                     Amendment 1.1.0 (2026-09-09): build 1.0.0 removed every title-equal
+                     line, 3,023 of them; sampling the deleted lines showed that about 2,800
+                     were hook lines repeated inside the verses (a chorus is very often the
+                     title), so a title-equal line with lyric lines on both sides is now
+                     kept and counted as title_line_kept_as_lyric
+  html               real HTML tags (br, p, span, ...) stripped and entities unescaped
+  bracket_marker     a whole line inside angle brackets -- `<RAP>`, `< Chorus >`, `<谢帝>`
+                     (a cypher's rapper marker) -- is a marker, not a lyric, and is dropped;
+                     a bracketed whole line carrying sentence punctuation is a lyric quoted
+                     in brackets, unwrapped and kept (bracket_line_kept_as_lyric). Amendment
+                     1.1.0: build 1.0.0 stripped every `<...>` span, which also cut quoted
+                     song titles out of the middle of lyric lines; an inline non-HTML span
+                     is now left alone
   url                any line carrying http(s):// or www.
   digits_only        a line of nothing but digits, dashes, dots, colons and spaces
   whitespace         runs of spaces collapsed, lines stripped; empty lines dropped
@@ -64,6 +82,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 import build_chinese_rap_written_rhyme_v1 as wr  # noqa: E402
 from build_downstream_retrieval_v2 import CORPUS_CONTENT_SHA256, corpus_content_sha256  # noqa: E402
+import detect_metadata_blocks as dm  # noqa: E402
 from detect_metadata_blocks import DETECTOR_VERSION, classify  # noqa: E402
 
 for _stream in (sys.stdout, sys.stderr):
@@ -72,8 +91,104 @@ for _stream in (sys.stdout, sys.stderr):
 
 csv.field_size_limit(10 ** 9)
 OUT_DIR = ROOT / "results" / "cleaned-corpus-v3"
-VERSION = "chinese-rap-cleaned-corpus-v3/1.0.0"
-TAG = re.compile(r"<[^>]{1,40}>")
+VERSION = "chinese-rap-cleaned-corpus-v3/1.1.0"
+# rules whose removed line marks a credit / header block; a title-equal line touching one
+# of these is a copied title, a title-equal line touching lyrics is a hook
+BLOCK_RULES = frozenset({"metadata_block", "section_header", "role_line", "credit_tag_line", "url",
+                         "bracket_marker"})
+# MB-001's four fuzzy rules hit lyric lines when applied line by line across a whole song:
+# a verse about 大学 or 唱片 (organisation), a bar written as 词、词、词 (name_list), a short
+# refrain beside a credit block (name_extension), a bracketed lyric that happens to contain
+# 说唱 (bracketed_annotation). Sampled on 2026-09-09, about half of the organisation hits
+# and a fifth of the name-list hits were lyrics. Amendment 1.1.0: a fuzzy hit is removed
+# only when it is anchored -- its block holds a line no lyric could produce (a role prefix,
+# a contact, a copyright mark, a sample attribution, or one of this file's own credit
+# rules), or the block is a header or footer of three or more hits -- or when the line by
+# itself is unmistakably a credit under the strict shapes in unmistakable_credit().
+# Otherwise it goes back through the ordinary line cleaning and is counted as kept.
+FUZZY_RULES = frozenset({"organisation", "name_list", "name_extension", "bracketed_annotation"})
+ANCHOR_RULES = frozenset({"role_prefix", "contact", "copyright", "sample_attribution",
+                          "role_line", "credit_tag_line", "url", "section_header", "bracket_marker"})
+STRICT_ORG = re.compile(r"有限公司|文化传播|传媒|工作室|影业|合唱团|乐团|基金会|协会|研究中心|艺术中心|卫生中心|出品|发行")
+SENTENCE_MARK = re.compile(r"[，。？！?!]")
+HAN = re.compile(r"[一-鿿]")
+HAN_NAME = re.compile(r"[一-鿿]{2,4}")
+LATIN_WORD = re.compile(r"[A-Za-z][A-Za-z'’.\-]*")
+ANNOTATION_ASCII = re.compile(r"hook|verse|chorus|bridge|intro|outro|skit|refrain|interlude|spoken|ad-?lib|repeat|\d", re.I)
+
+
+def short_name(token: str) -> bool:
+    """A personal-name-sized token: at most four Han characters or two Latin words."""
+    return bool(token) and len(HAN.findall(token)) <= 4 and len(LATIN_WORD.findall(token)) <= 2 \
+        and bool(dm.NAMEISH.fullmatch(token))
+
+
+def unmistakable_credit(rule: str, line: str) -> bool:
+    """Would this fuzzy hit be a credit even standing alone between lyric lines?"""
+    text = line.strip()
+    if rule == "organisation":
+        return bool(STRICT_ORG.search(text)) and not SENTENCE_MARK.search(text)
+    if rule == "name_list":
+        if SENTENCE_MARK.search(text):
+            return False
+        if dm.HANDLE.search(text) or text.endswith((":", "：")):
+            return True  # a performer marker -- 法老/小精灵/万妮达： -- names a block, it is not sung
+        if "、" in text:
+            return False  # 忠、义、孝 is a bar; a thanks list written with 、 is left with it
+        segments = [s.strip() for s in re.split(r"[/／]", text) if s.strip()]
+        if len(segments) < 3 or not all(2 <= len(s) <= 20 and dm.NAMEISH.fullmatch(s) for s in segments):
+            return False  # 上 /拳 下/脚 左/打 右/踢 is a bar of single characters
+        if " / " not in text:
+            return True
+        # bars are also written as 词 / 词 / 词; only short name-shaped segments are a list
+        return all(short_name(s) for s in segments)
+    if rule == "name_extension":
+        han = len(HAN.findall(text))
+        words = len(LATIN_WORD.findall(text))
+        if "/" in text or "@" in text or STRICT_ORG.search(text) or (han <= 4 and words <= 2):
+            return True
+        tokens = text.split()  # 孙冕峰 高端端 -- a row of Han names; To the top is not one
+        return len(tokens) >= 2 and all(HAN_NAME.fullmatch(t) for t in tokens)
+    if rule == "bracketed_annotation":
+        inner = text.strip("()（）【】[] ")
+        return len(inner) <= 6 or bool(ANNOTATION_ASCII.search(inner))
+    return True
+
+
+def gate_fuzzy_hits(entries: list[dict], counts: Counter, rule_counts: Counter,
+                    kept_as_lyric: Counter) -> None:
+    """Second pass over one song: send un-anchored fuzzy detector hits back to the lyrics."""
+    substantive = [j for j, e in enumerate(entries) if e["rule"] != "empty_after_cleaning"]
+    if not substantive:
+        return
+    blocks: list[list[int]] = []
+    current: list[int] = []
+    for j in substantive:
+        if entries[j]["rule"] is not None:
+            current.append(j)
+        elif current:
+            blocks.append(current)
+            current = []
+    if current:
+        blocks.append(current)
+    for block in blocks:
+        anchored = any(entries[j]["rule"] in ANCHOR_RULES or entries[j]["detector"] in ANCHOR_RULES
+                       for j in block)
+        header = (block[0] == substantive[0] or block[-1] == substantive[-1]) and len(block) >= 3
+        for j in block:
+            entry = entries[j]
+            if entry["detector"] not in FUZZY_RULES:
+                continue
+            if anchored or header or unmistakable_credit(entry["detector"], entry["original"]):
+                continue
+            counts["metadata_block"] -= 1
+            rule_counts[entry["detector"]] -= 1
+            kept_as_lyric[entry["detector"]] += 1
+            rule, cleaned = clean_line(entry["original"], counts)
+            entry.update({"rule": rule, "text": cleaned, "detector": None})
+HTML_TAG = re.compile(r"</?(?:br|p|div|span|i|b|u|em|strong|font|a|img|hr)\b[^<>]{0,40}>", re.I)
+BRACKET_LINE = re.compile(r"^\s*<\s*([^<>]{1,60}?)\s*>\s*$")
+SENTENCE_PUNCT = re.compile(r"[，。？！?!；;、…]")
 URL = re.compile(r"https?://|www\.", re.I)
 DIGITS_ONLY = re.compile(r"^[\d\s.:\-—–_=*]+$")
 SPACES = re.compile(r"[ \t　]{2,}")
@@ -85,7 +200,7 @@ SPACES = re.compile(r"[ \t　]{2,}")
 ROLE_LINE = re.compile(
     r"^\s*(?:(?:mix|master|mixing|mastering|mixed|mastered|prod\.?|produced|producer|beat|beats|"
     r"arranged|arrangement|composed|composer|written|lyrics|lyric|vocal|vocals|recorded|recording|"
-    r"engineer|engineered|artwork|cover|design|designed|photo|video|director|directed)\b"
+    r"engineer|engineered|artwork|cover|design|designed|photo|video|director|directed|programming)\b"
     r"[^\n]{0,40}?(?:by(?![A-Za-z])|:|：|\.|/)|"
     r"(?:作词|作曲|编曲|混音|母带|制作人|制作|监制|录音|和声|封面|出品|发行|词曲|词|曲)\s*[:：/／.．]\s*\S)",
     re.I)
@@ -96,33 +211,55 @@ def normalise_title(value: str) -> str:
     return re.sub(r"[\s\-_·．。,，、/\\()（）\[\]【】!！?？'\"“”‘’:：.]+", "", value).lower()
 
 
-def clean_line(line: str, counts: Counter, title_key: str) -> str | None:
-    if TAG.search(line) or "&" in line and html.unescape(line) != line:
-        line = html.unescape(TAG.sub("", line))
+def clean_line(line: str, counts: Counter) -> tuple[str | None, str | None]:
+    """(rule that removed the line, None) or (None, the cleaned line)."""
+    if HTML_TAG.search(line) or "&" in line and html.unescape(line) != line:
+        line = html.unescape(HTML_TAG.sub("", line))
         counts["html"] += 1
     line = SPACES.sub(" ", line).strip()
+    bracketed = BRACKET_LINE.match(line)
+    if bracketed and SENTENCE_PUNCT.search(bracketed.group(1)):
+        line = bracketed.group(1)
+        counts["bracket_line_kept_as_lyric"] += 1
+    elif bracketed:
+        counts["bracket_marker"] += 1
+        return "bracket_marker", None
     if not line:
-        counts["empty_after_cleaning"] += 1
-        return None
-    if URL.search(line):
-        counts["url"] += 1
-        return None
-    if DIGITS_ONLY.match(line):
-        counts["digits_only"] += 1
-        return None
-    if wr.is_header_line(line):
-        counts["section_header"] += 1
-        return None
-    if ROLE_LINE.match(line):
-        counts["role_line"] += 1
-        return None
-    if CREDIT_TAG.search(line):
-        counts["credit_tag_line"] += 1
-        return None
-    if title_key and len(title_key) >= 2 and normalise_title(line) == title_key:
-        counts["stray_title"] += 1
-        return None
-    return line
+        rule = "empty_after_cleaning"
+    elif URL.search(line):
+        rule = "url"
+    elif DIGITS_ONLY.match(line):
+        rule = "digits_only"
+    elif wr.is_header_line(line):
+        rule = "section_header"
+    elif ROLE_LINE.match(line):
+        rule = "role_line"
+    elif CREDIT_TAG.search(line):
+        rule = "credit_tag_line"
+    else:
+        return None, line
+    counts[rule] += 1
+    return rule, None
+
+
+def mark_stray_titles(entries: list[dict], title_key: str, counts: Counter) -> None:
+    """Second pass over one song: a surviving title-equal line is a copied title only when
+    the nearest surviving-or-removed neighbour on either side is a credit / header line."""
+    if not title_key or len(title_key) < 2:
+        return
+    substantive = [j for j, e in enumerate(entries) if e["rule"] != "empty_after_cleaning"]
+    for position, j in enumerate(substantive):
+        entry = entries[j]
+        if entry["rule"] is not None or normalise_title(entry["text"]) != title_key:
+            continue
+        before = entries[substantive[position - 1]]["rule"] if position > 0 else None
+        after = (entries[substantive[position + 1]]["rule"]
+                 if position + 1 < len(substantive) else None)
+        if before in BLOCK_RULES or after in BLOCK_RULES:
+            entry["rule"], entry["text"] = "stray_title", None
+            counts["stray_title"] += 1
+        else:
+            counts["title_line_kept_as_lyric"] += 1
 
 
 def build(private_root: Path, out_dir: Path) -> int:
@@ -139,6 +276,7 @@ def build(private_root: Path, out_dir: Path) -> int:
         by_song[row["song_id"]].append(index)
     counts: Counter = Counter()
     rule_counts: Counter = Counter()
+    kept_as_lyric: Counter = Counter()
     chunks_touched = 0
     songs_touched = set()
     kept_rows = []
@@ -150,9 +288,9 @@ def build(private_root: Path, out_dir: Path) -> int:
         cursor = 0
         song_changed = False
         title_key = normalise_title(rows[indices[0]]["song_title"])
+        # first pass: every line of the song in order, with the rule that removed it
+        entries: list[dict] = []
         for i, lines in zip(indices, chunk_lines):
-            new_lines = []
-            changed = False
             for line in lines:
                 lines_before += 1
                 verdict = labels[cursor]["rule"]
@@ -160,15 +298,20 @@ def build(private_root: Path, out_dir: Path) -> int:
                 if verdict is not None:
                     counts["metadata_block"] += 1
                     rule_counts[verdict] += 1
-                    changed = True
+                    entries.append({"chunk": i, "original": line, "rule": "metadata_block",
+                                    "text": None, "detector": verdict})
                     continue
-                cleaned = clean_line(line, counts, title_key)
-                if cleaned is None:
-                    changed = True
-                    continue
-                if cleaned != line:
-                    changed = True
-                new_lines.append(cleaned)
+                rule, cleaned = clean_line(line, counts)
+                entries.append({"chunk": i, "original": line, "rule": rule, "text": cleaned,
+                                "detector": None})
+        # second pass: fuzzy detector hits stay only when anchored; title-equal lines are
+        # copied titles only inside a credit block
+        gate_fuzzy_hits(entries, counts, rule_counts, kept_as_lyric)
+        mark_stray_titles(entries, title_key, counts)
+        for i in indices:
+            own = [e for e in entries if e["chunk"] == i]
+            new_lines = [e["text"] for e in own if e["rule"] is None]
+            changed = any(e["rule"] is not None or e["text"] != e["original"] for e in own)
             lines_after += len(new_lines)
             if changed:
                 chunks_touched += 1
@@ -210,6 +353,7 @@ def build(private_root: Path, out_dir: Path) -> int:
                   "removed_share": round((lines_before - lines_after) / lines_before, 4)},
         "removed_by_rule": dict(counts),
         "metadata_block_by_detector_rule": dict(rule_counts),
+        "detector_hits_kept_as_lyric": dict(kept_as_lyric),
         "chunks": {"before": len(rows), "after": len(kept_rows), "touched": chunks_touched,
                    "touched_share": round(chunks_touched / len(rows), 4)},
         "songs": {"before": len(by_song), "after": songs_after, "touched": len(songs_touched),
@@ -228,6 +372,7 @@ def build(private_root: Path, out_dir: Path) -> int:
     print(f"lines {lines_before:,} -> {lines_after:,} ({audit['lines']['removed_share']:.2%} removed)")
     print("  by rule: " + ", ".join(f"{k} {v:,}" for k, v in counts.most_common()))
     print("  detector rules: " + ", ".join(f"{k} {v:,}" for k, v in rule_counts.most_common()))
+    print("  detector hits kept as lyrics: " + ", ".join(f"{k} {v:,}" for k, v in kept_as_lyric.most_common()))
     print(f"chunks {len(rows):,} -> {len(kept_rows):,} ({chunks_touched:,} touched); songs {len(by_song):,} -> {songs_after:,}")
     print(f"v3 content sha256 {v3_digest}")
     print(f"wrote {table} and {out_dir / 'analysis_summary.json'}")

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Loading corpus v3, the cleaned table, for the downstream builders.
 
-Corpus v3 (PD-003) is corpus v2 with metadata lines removed from the lyric text and 718
+Corpus v3 (PD-003) is corpus v2 with metadata lines removed from the lyric text and 683
 empty chunks dropped. Its rows carry the same columns and identifiers, so leakage groups
 and components resolve exactly as before. This module loads the table, refuses any table
 whose content digest differs from the recorded one, and attaches a vector set:
 
-  * the v3 embeddings, once the recorded Colab run over the v3 text exists; or
+  * the v3 embeddings from the recorded local run over the current v3 text (the loader
+    refuses a run computed on an earlier v3 build); or
   * as an interim for lexical-only work, the v2 vectors of the same (song, chunk) --
     computed on the uncleaned text, so they must never be reported as a v3 semantic
     result. The loader marks which it returned.
@@ -27,9 +28,9 @@ from build_downstream_retrieval_v2 import corpus_content_sha256
 
 csv.field_size_limit(10 ** 9)
 
-V3_CONTENT_SHA256 = "cd77392cf8d2c4059a6488d7ecbd87a29fe133a6f305b07d5210c34afd827744"
-EXPECTED_CHUNKS = 24308
-EXPECTED_SONGS = 7370
+V3_CONTENT_SHA256 = "ea6cf62938210201ac02369a045fd0f1da7b0badca7a6b36abd6a7c249d8ef8e"  # v3/1.1.0
+EXPECTED_CHUNKS = 24343
+EXPECTED_SONGS = 7381
 
 
 def sha256_file(path: Path) -> str:
@@ -62,6 +63,9 @@ def load_v3(private_root: Path, allow_interim_v2_vectors: bool = False):
             if mapped["song_id"] != row["song_id"] or int(mapped["chunk_id"]) != int(row["chunk_id"]):
                 raise SystemExit(f"v3 row map diverges from the table at row {index}")
         contract = json.loads((embed_dir / "cleaned_lyric_chunks_v3_embedding_contract.json").read_text(encoding="utf-8"))
+        if contract.get("corpus_content_sha256") != V3_CONTENT_SHA256:
+            raise SystemExit("the v3 embedding run was computed on a different v3 build "
+                             f"({contract.get('corpus_content_sha256')}); re-embed the current table")
         return rows, vectors, {"vectors": "v3", "sha256": sha256_file(vectors_path), "contract": contract}
 
     if not allow_interim_v2_vectors:

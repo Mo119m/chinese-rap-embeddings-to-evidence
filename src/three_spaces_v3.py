@@ -137,8 +137,8 @@ def build(private_root: Path, out_dir: Path) -> int:
         "paired_contrasts": {"design": "2000 replicates, seed 20260825, leakage groups resampled with "
                                        "replacement, each (group, label) component weighted one",
                              "contrasts": contrasts},
-        "not_comparable_to": "results/retrieval-v2 point to point: the population differs (24,308 chunks, "
-                             "7,370 songs); the v2 numbers are quoted only so the reader can see the direction",
+        "not_comparable_to": "results/retrieval-v2 point to point: the population differs (24,343 chunks, "
+                             "7,381 songs); the v2 numbers are quoted only so the reader can see the direction",
         "privacy": "aggregate only",
     }
     (out_dir / "three_spaces.json").write_text(

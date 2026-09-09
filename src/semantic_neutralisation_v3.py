@@ -40,7 +40,7 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 OUT_DIR = ROOT / "results" / "retrieval-v3"
-NEUTRALISED_DIGEST = "f71b30b70bb1b1b53fdf1f2cf0d3ddf244b60b2c065439573f49e25d2438975f"
+NEUTRALISED_DIGEST = "e8b79135dd31d6f603cecdd4c52494802f50a2c105776ffdcf78e187fa0fe56e"  # of v3/1.1.0
 TRANSFORMS = ("none", "total_whitening", "within_author_whitening")
 
 
