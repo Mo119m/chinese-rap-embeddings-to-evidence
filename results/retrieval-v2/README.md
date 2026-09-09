@@ -17,6 +17,7 @@ Every file here scores the same 7,236 query songs against the same 226 source-cr
 | `word_identity_anatomy.json` | `src/word_identity_anatomy_v2.py` | The word space taken apart by part of speech, document-frequency band and bigram status, plus the arm with the 605-surface catalogue stripped before segmentation. |
 | `word_space_probe.json` | `src/word_space_probe_v2.py` | The word space reduced fold-wise to 1,024 dimensions and given the probe's transforms; fused with the chunk-whitened semantic space, the best system tried. |
 | `common_word_curve.json` | `src/common_word_curve_v2.py` | Only the K most common words, for a ladder of K, original and neutralised. |
+| `chunk_level_replication.json` | `src/chunk_level_replication_v2.py` | The three spaces scored with every passage as its own query: the song-level ordering replicates at passage grain. |
 
 All numbers are aggregate. Per-query ranks, coordinates, and any table that names a song are private.
 
