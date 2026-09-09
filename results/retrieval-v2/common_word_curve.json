@@ -1,0 +1,265 @@
+{
+  "analysis": "how many of the most common words identify a label",
+  "bootstrap": {
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one; difference from all original unigrams"
+  },
+  "design": "jieba unigrams, TF-IDF with the character system's settings; for each K only the K unigrams with the highest document frequency are kept and rows re-normalised; the neutralised variant strips the 605-surface catalogue before segmentation",
+  "labels": 226,
+  "privacy": "aggregate only; no word is published",
+  "queries": 7236,
+  "results": {
+    "neutralised": {
+      "all_unigrams_mrr": 0.5232,
+      "ci95": [
+        -0.0106,
+        -0.006
+      ],
+      "difference_from_all_original_unigrams": -0.0083,
+      "features": 49233,
+      "ladder": [
+        {
+          "ci95": [
+            -0.3659,
+            -0.3453
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.3554,
+          "empty_queries": 36,
+          "minimum_document_frequency_in_set": 2939,
+          "mrr": 0.1773,
+          "recall_at_10": 0.351,
+          "top_k_by_document_frequency": 50
+        },
+        {
+          "ci95": [
+            -0.3155,
+            -0.2961
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.3056,
+          "empty_queries": 10,
+          "minimum_document_frequency_in_set": 1875,
+          "mrr": 0.2265,
+          "recall_at_10": 0.4063,
+          "top_k_by_document_frequency": 100
+        },
+        {
+          "ci95": [
+            -0.2378,
+            -0.2195
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.2287,
+          "empty_queries": 2,
+          "minimum_document_frequency_in_set": 1140,
+          "mrr": 0.3041,
+          "recall_at_10": 0.5015,
+          "top_k_by_document_frequency": 200
+        },
+        {
+          "ci95": [
+            -0.1661,
+            -0.1491
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.1575,
+          "empty_queries": 1,
+          "minimum_document_frequency_in_set": 520,
+          "mrr": 0.3766,
+          "recall_at_10": 0.5813,
+          "top_k_by_document_frequency": 500
+        },
+        {
+          "ci95": [
+            -0.1169,
+            -0.1011
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.1089,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 266,
+          "mrr": 0.4247,
+          "recall_at_10": 0.6249,
+          "top_k_by_document_frequency": 1000
+        },
+        {
+          "ci95": [
+            -0.0862,
+            -0.0721
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0792,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 137,
+          "mrr": 0.4541,
+          "recall_at_10": 0.6502,
+          "top_k_by_document_frequency": 2000
+        },
+        {
+          "ci95": [
+            -0.0565,
+            -0.0448
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0505,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 51,
+          "mrr": 0.4837,
+          "recall_at_10": 0.674,
+          "top_k_by_document_frequency": 5000
+        },
+        {
+          "ci95": [
+            -0.0335,
+            -0.0241
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0286,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 22,
+          "mrr": 0.5048,
+          "recall_at_10": 0.6862,
+          "top_k_by_document_frequency": 10000
+        },
+        {
+          "ci95": [
+            -0.0138,
+            -0.007
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0105,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 9,
+          "mrr": 0.5218,
+          "recall_at_10": 0.6997,
+          "top_k_by_document_frequency": 20000
+        }
+      ],
+      "note": "a unigram-only fit; the word anatomy's masked unigram arm of the joint unigram-bigram fit gives 0.5332"
+    },
+    "original": {
+      "all_unigrams_mrr": 0.5316,
+      "features": 49866,
+      "ladder": [
+        {
+          "ci95": [
+            -0.3664,
+            -0.3459
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.356,
+          "empty_queries": 36,
+          "minimum_document_frequency_in_set": 2937,
+          "mrr": 0.1767,
+          "recall_at_10": 0.3501,
+          "top_k_by_document_frequency": 50
+        },
+        {
+          "ci95": [
+            -0.3155,
+            -0.2961
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.3055,
+          "empty_queries": 11,
+          "minimum_document_frequency_in_set": 1875,
+          "mrr": 0.2265,
+          "recall_at_10": 0.4049,
+          "top_k_by_document_frequency": 100
+        },
+        {
+          "ci95": [
+            -0.2355,
+            -0.2176
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.2265,
+          "empty_queries": 2,
+          "minimum_document_frequency_in_set": 1141,
+          "mrr": 0.3061,
+          "recall_at_10": 0.5035,
+          "top_k_by_document_frequency": 200
+        },
+        {
+          "ci95": [
+            -0.167,
+            -0.1508
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.1589,
+          "empty_queries": 1,
+          "minimum_document_frequency_in_set": 523,
+          "mrr": 0.3753,
+          "recall_at_10": 0.5822,
+          "top_k_by_document_frequency": 500
+        },
+        {
+          "ci95": [
+            -0.1163,
+            -0.1013
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.1088,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 272,
+          "mrr": 0.4249,
+          "recall_at_10": 0.6269,
+          "top_k_by_document_frequency": 1000
+        },
+        {
+          "ci95": [
+            -0.0824,
+            -0.0688
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0758,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 140,
+          "mrr": 0.4577,
+          "recall_at_10": 0.6526,
+          "top_k_by_document_frequency": 2000
+        },
+        {
+          "ci95": [
+            -0.0518,
+            -0.0404
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0461,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 52,
+          "mrr": 0.4881,
+          "recall_at_10": 0.6799,
+          "top_k_by_document_frequency": 5000
+        },
+        {
+          "ci95": [
+            -0.028,
+            -0.0192
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0234,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 23,
+          "mrr": 0.51,
+          "recall_at_10": 0.6949,
+          "top_k_by_document_frequency": 10000
+        },
+        {
+          "ci95": [
+            -0.0061,
+            -0.0006
+          ],
+          "defined": true,
+          "difference_from_all_original_unigrams": -0.0033,
+          "empty_queries": 0,
+          "minimum_document_frequency_in_set": 9,
+          "mrr": 0.5288,
+          "recall_at_10": 0.7061,
+          "top_k_by_document_frequency": 20000
+        }
+      ],
+      "note": "a unigram-only fit; the word anatomy's masked unigram arm of the joint unigram-bigram fit gives 0.5332"
+    }
+  }
+}

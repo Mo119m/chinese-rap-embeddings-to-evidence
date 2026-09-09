@@ -12,6 +12,11 @@ Every file here scores the same 7,236 query songs against the same 226 source-cr
 | `identity_probe.json` | `src/identity_probe_v2.py` | Within-author whitening of the BGE-M3 vectors, five-fold by leakage group, with total-covariance, permuted-label, and centring controls; the matched-dimension lexical control; transfer to held-out authors. |
 | `knn_author_purity.json` | `src/build_identity_spaces_figure_v2.py` | Same-label share of the k nearest neighbours in each space over all songs, and the figure 5 layout set description. |
 | `identity_estimands.json` | `src/identity_estimands_v2.py` | Every system of the two experiments above under micro, component-weighted, and macro averaging, so the manuscript can say which it quotes. |
+| `lexical_identity_anatomy.json` | `src/lexical_identity_anatomy_v2.py` | The character space taken apart by class of n-gram (script, length, line-boundary, function-character strings, digits and punctuation): score shares, remove-one and only-one arms with paired intervals. |
+| `representation_unit.json` | `src/representation_unit_v2.py` | The song's representation changed one choice at a time: chunk MaxSim, chunk-level queries, whitening before or after averaging, single characters, short and long n-grams, jieba words. |
+| `word_identity_anatomy.json` | `src/word_identity_anatomy_v2.py` | The word space taken apart by part of speech, document-frequency band and bigram status, plus the arm with the 605-surface catalogue stripped before segmentation. |
+| `word_space_probe.json` | `src/word_space_probe_v2.py` | The word space reduced fold-wise to 1,024 dimensions and given the probe's transforms; fused with the chunk-whitened semantic space, the best system tried. |
+| `common_word_curve.json` | `src/common_word_curve_v2.py` | Only the K most common words, for a ladder of K, original and neutralised. |
 
 All numbers are aggregate. Per-query ranks, coordinates, and any table that names a song are private.
 
