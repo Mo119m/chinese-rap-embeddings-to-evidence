@@ -46,15 +46,20 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 LABELS_SHOWN = 30
-WORDS_PER_LABEL = 20
+WORDS_PER_LABEL = 10
+# Only words a listener could recognise are put to the reviewer. The first version listed
+# 的, 和, 里 and the full-width comma, and the reviewer rightly said nobody can judge those:
+# that ordinary words carry the identity is the finding, and it is a statistical one. So
+# function words, adverbs, numerals, punctuation, and any word in more than 15% of all
+# songs are classified as "ordinary" by rule and never shown.
+MAX_CORPUS_SHARE = 0.15
+REVIEWABLE_POS = {"content", "english", "person_or_place_name"}
 CATEGORIES = [
-    ("adlib", "口头禅 / ad-lib"),
-    ("dialect", "方言或个人写法"),
-    ("habit", "个人常用词（不是主题）"),
-    ("topic", "主题词（他常唱的东西）"),
+    ("adlib", "是他的口头禅 / ad-lib"),
+    ("dialect", "是他的方言或个人写法"),
+    ("topic", "是他常唱的主题"),
     ("name", "人名 / 地名 / 品牌"),
-    ("artefact", "转写或格式痕迹"),
-    ("unsure", "不确定"),
+    ("unknown", "看不出来 / 不知道"),
 ]
 POS_LABEL = {"content": "实词", "person_or_place_name": "人名地名", "function": "虚词",
              "adverb": "副词", "english": "英文", "numeral": "数词", "punctuation_or_symbol": "标点"}
@@ -110,27 +115,39 @@ def build(private_root: Path, out: Path) -> int:
     contribution = np.zeros((label_count, matrix.shape[1]))
     np.add.at(contribution, label_index, dense * advantage[label_index])
     contribution /= np.bincount(label_index, minlength=label_count)[:, None]
-    eligible_word = (label_share >= 0.15) & (corpus_share[None, :] >= 0.02) & (contribution > 0)
+    groups_of = {}
+    for f, word in enumerate(features):
+        pairs = list(posseg.cut(word))
+        tag = pairs[0].flag if len(pairs) == 1 else "x"
+        groups_of[f] = pos_group(tag, word)
+    reviewable = np.asarray([groups_of[f] in REVIEWABLE_POS for f in range(len(features))])
+    eligible_word = ((label_share >= 0.15) & (corpus_share[None, :] >= 0.02)
+                     & (corpus_share[None, :] <= MAX_CORPUS_SHARE) & (contribution > 0)
+                     & reviewable[None, :])
 
     counts = Counter(label_index.tolist())
     shown = [l for l, _ in sorted(counts.items(), key=lambda item: (-item[1], eligible[item[0]]))][:LABELS_SHOWN]
     entries = []
+    ordinary_share = []
     for l in shown:
+        positive = contribution[l][contribution[l] > 0]
+        # how much of the label's advantage sits in words the reviewer will never see
+        ordinary = contribution[l][(contribution[l] > 0) & ~reviewable].sum() / positive.sum()
+        ordinary_share.append(float(ordinary))
         ranked = np.argsort(-np.where(eligible_word[l], contribution[l], -1.0))[:WORDS_PER_LABEL]
         words = []
         for f in ranked:
             if not eligible_word[l, f]:
                 continue
-            word = features[f]
-            pairs = list(posseg.cut(word))
-            tag = pairs[0].flag if len(pairs) == 1 else "x"
-            positive = contribution[l][contribution[l] > 0].sum()
-            words.append({"word": word,
-                          "score_share_percent": round(float(100 * contribution[l, f] / positive), 1),
+            words.append({"word": features[f],
+                          "score_share_percent": round(float(100 * contribution[l, f] / positive.sum()), 1),
                           "share_of_label_songs": round(float(label_share[l, f]), 2),
                           "share_of_all_songs": round(float(corpus_share[f]), 3),
-                          "pos": POS_LABEL.get(pos_group(tag, word), "其他")})
-        entries.append({"label": eligible[l], "songs": int(counts[l]), "words": words})
+                          "pos": POS_LABEL.get(groups_of[f], "其他")})
+        entries.append({"label": eligible[l], "songs": int(counts[l]), "words": words,
+                        "advantage_in_ordinary_words": round(float(ordinary), 3)})
+    print(f"advantage carried by ordinary words (never shown): mean {np.mean(ordinary_share):.2f}, "
+          f"min {np.min(ordinary_share):.2f}, max {np.max(ordinary_share):.2f}")
 
     out.mkdir(parents=True, exist_ok=True)
     (out / "discriminative_words_private.json").write_text(
@@ -153,7 +170,7 @@ def build(private_root: Path, out: Path) -> int:
                 f'<td class="opts">{radios.replace("{name}", name)}</td></tr>')
         blocks.append(
             f'<section class="label"><h2>{e["label"]} <span class="n">{e["songs"]} 首</span></h2>'
-            f'<table><thead><tr><th>词</th><th>词性</th><th>占他被认出的分数</th><th>他的歌里出现 / 全语料出现</th><th>这个词对他来说是什么</th></tr></thead>'
+            f'<table><thead><tr><th>词</th><th>词性</th><th>占他被认出的分数</th><th>他的歌里出现 / 全语料出现</th><th>你听他的歌，认得出这是他的吗？</th></tr></thead>'
             f'<tbody>{"".join(rows_html)}</tbody></table></section>')
     html = f"""<!doctype html><html lang="zh"><head><meta charset="utf-8"><title>歌手高分辨力词标注</title>
 <style>body{{font-family:Arial,"Microsoft YaHei",sans-serif;margin:0;background:#f5f2ea;color:#131820}}main{{max-width:1180px;margin:auto;padding:36px 16px 80px}}
@@ -164,8 +181,9 @@ td{{padding:6px 4px;border-bottom:1px solid #ece8de;vertical-align:top}}.w{{font
 .opt input{{margin:0 3px 0 0}}.bar{{position:sticky;top:0;background:#f5f2ea;padding:10px 0;border-bottom:1px solid #cbc7bd;display:flex;gap:12px;align-items:center}}
 button{{padding:8px 14px;font-weight:700;border:1px solid #0679b8;background:#0679b8;color:#fff;cursor:pointer}}#done{{color:#5b626a}}</style></head><body><main>
 <h1>歌手高分辨力词标注</h1>
-<p>每个歌手 20 个词，是模型把他和别的歌手分开时最依赖的词——他用得比别人多、而且用得够多的词（"占他被认出的分数"是这个词在"他比别人多的那部分得分"里的比例；"他的歌里出现 / 全语料出现"是含这个词的歌所占比例）。只列了在他至少 15% 的歌里、在全语料至少 2% 的歌里出现的词。请凭你对这个歌手的了解，判断这个词对他来说是什么。不用查资料，凭印象；拿不准选"不确定"。<br>
-答案自动保存在浏览器里；全部做完点右上角导出，把下载的 json 发我。这个文件只有单个词和比例，没有歌词。</p>
+<p>模型把一个歌手和别人分开时，大部分靠的是"和、里、地、逗号"这种普通词用多用少——那部分统计上成立、人判不了，所以<b>不在这张表里</b>。这里只列<b>你有可能认得出来的词</b>：英文、不常见的实词、人名地名，每个歌手最多 10 个，都是他用得比别人明显多、而且在他至少 15% 的歌里出现的词。<br>
+问题只有一个：<b>你听他的歌，认得出这是他的吗？</b>是他的口头禅 / ad-lib、他的方言或写法、他常唱的主题、还是个人名地名品牌；认不出就选"看不出来"，这是正常答案，不用查。<br>
+答案自动保存在浏览器里；做完点右上角导出，把下载的 json 发我。这个文件只有单个词和比例，没有歌词。</p>
 <div class="bar"><button id="export">导出 JSON</button><span id="done"></span></div>
 {"".join(blocks)}
 </main><script>
