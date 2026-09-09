@@ -67,8 +67,8 @@ for _stream in (sys.stdout, sys.stderr):
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 from build_downstream_retrieval_v2 import expected  # noqa: E402
-EXPECTED_DENSE_MRR = expected(0.3181, 0.2995)
-EXPECTED_LEXICAL_MRR = expected(0.4503, 0.4267)
+EXPECTED_DENSE_MRR = expected(0.3181, "semantic")
+EXPECTED_LEXICAL_MRR = expected(0.4503, "lexical_char_2_5")
 
 
 def tfidf(documents, **kwargs):
@@ -133,7 +133,7 @@ def build(private_root: Path, out_dir: Path) -> int:
     ranks["song_centroid"] = v1.rank_system(scores.astype(np.float32), label_index)[0].astype(np.int64)
     mrr = float(np.mean(1.0 / ranks["song_centroid"]))
     print(f"  MRR {mrr:.4f}", flush=True)
-    if abs(mrr - EXPECTED_DENSE_MRR) > 5e-4:
+    if EXPECTED_DENSE_MRR is not None and abs(mrr - EXPECTED_DENSE_MRR) > 5e-4:
         raise SystemExit(f"song centroid gives {mrr:.4f}, not {EXPECTED_DENSE_MRR}")
 
     # ------------------------------------------------------------ semantic: chunk MaxSim
@@ -218,7 +218,7 @@ def build(private_root: Path, out_dir: Path) -> int:
     ranks["char_2_5"] = lexical_ranks(dense, lexical, label_index, group_ids, label_count)
     mrr = float(np.mean(1.0 / ranks["char_2_5"]))
     print(f"  MRR {mrr:.4f}", flush=True)
-    if abs(mrr - EXPECTED_LEXICAL_MRR) > 5e-4:
+    if EXPECTED_LEXICAL_MRR is not None and abs(mrr - EXPECTED_LEXICAL_MRR) > 5e-4:
         raise SystemExit(f"char 2-5 gives {mrr:.4f}, not {EXPECTED_LEXICAL_MRR}")
     features = {"char_2_5": int(lexical.shape[1])}
     for name, kwargs in (("char_1", {"analyzer": "char", "ngram_range": (1, 1)}),

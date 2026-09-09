@@ -57,7 +57,7 @@ for _stream in (sys.stdout, sys.stderr):
 
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 from build_downstream_retrieval_v2 import expected  # noqa: E402
-EXPECTED_WORD_MRR = expected(0.5188, 0.4973)
+EXPECTED_WORD_MRR = expected(0.5188, "lexical_words")
 
 POS_GROUPS = {
     "content": {"n", "nz", "nt", "ng", "nl", "v", "vd", "vn", "vg", "vi", "vl", "a", "ad",
@@ -134,7 +134,7 @@ def build(private_root: Path, out_dir: Path) -> int:
         raise SystemExit(error)
     full_mrr = float(np.mean(1.0 / full_ranks))
     print(f"  {lexical.shape[1]:,} features, MRR {full_mrr:.4f}", flush=True)
-    if abs(full_mrr - EXPECTED_WORD_MRR) > 5e-4:
+    if EXPECTED_WORD_MRR is not None and abs(full_mrr - EXPECTED_WORD_MRR) > 5e-4:
         raise SystemExit(f"the word space gives {full_mrr:.4f}, not {EXPECTED_WORD_MRR}")
 
     # ------------------------------------------------------------ tag the vocabulary

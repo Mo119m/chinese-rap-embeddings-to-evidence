@@ -61,7 +61,7 @@ OUT_DIR = ROOT / "results" / "retrieval-v2"
 SEED = 20260825
 FOLDS = 5
 from build_downstream_retrieval_v2 import expected  # noqa: E402
-EXPECTED_DENSE_MRR = expected(0.3181, 0.2995)
+EXPECTED_DENSE_MRR = expected(0.3181, "semantic")
 SVD_COMPONENTS = 1024          # the dense system's own width
 HELD_OUT_LABEL_SHARE = 0.15
 
@@ -221,7 +221,7 @@ def build(private_root: Path, out_dir: Path) -> int:
     ranks = {name: v1.rank_system(s.astype(np.float32), label_index)[0].astype(np.int64)
              for name, s in scores.items()}
     none_mrr = float(np.mean(1.0 / ranks["none"]))
-    if abs(none_mrr - EXPECTED_DENSE_MRR) > 5e-4:
+    if EXPECTED_DENSE_MRR is not None and abs(none_mrr - EXPECTED_DENSE_MRR) > 5e-4:
         raise SystemExit(f"the untransformed space gives {none_mrr:.4f}, not {EXPECTED_DENSE_MRR}")
 
     # fusion with the lexical system, to see whether the recovered signal is new

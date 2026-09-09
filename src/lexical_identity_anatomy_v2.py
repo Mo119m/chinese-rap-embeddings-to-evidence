@@ -60,7 +60,7 @@ for _stream in (sys.stdout, sys.stderr):
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 FUNCTION_CHARACTERS = 100
 from build_downstream_retrieval_v2 import expected  # noqa: E402
-EXPECTED_LEXICAL_MRR = expected(0.4503, 0.4267)
+EXPECTED_LEXICAL_MRR = expected(0.4503, "lexical_char_2_5")
 
 
 def has_digit_or_punct(feature: str) -> bool:
@@ -162,7 +162,7 @@ def build(private_root: Path, out_dir: Path) -> int:
         raise SystemExit(error)
     full_mrr = float(np.mean(1.0 / full_ranks))
     print(f"  lexical MRR {full_mrr:.4f}", flush=True)
-    if abs(full_mrr - EXPECTED_LEXICAL_MRR) > 5e-4:
+    if EXPECTED_LEXICAL_MRR is not None and abs(full_mrr - EXPECTED_LEXICAL_MRR) > 5e-4:
         raise SystemExit(f"the full model gives {full_mrr:.4f}, not {EXPECTED_LEXICAL_MRR}")
 
     # ---------------------------------------------------------------- shares

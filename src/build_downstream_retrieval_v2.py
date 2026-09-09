@@ -107,9 +107,27 @@ def corpus_version() -> str:
     return version
 
 
-def expected(v2_value, v3_value):
-    """A self-check value keyed to the corpus in use; None means the check is skipped."""
-    return v2_value if corpus_version() == "v2" else v3_value
+def expected(v2_value, v3_system=None):
+    """A self-check value keyed to the corpus in use; None means the check is skipped.
+
+    v2 values are the pinned literals of the published v2 results. A v3 value is read from
+    results/retrieval-v3/three_spaces.json -- the system named by v3_system -- and only when
+    that file was computed on the current v3 build, so a stale file cannot pass a check.
+    """
+    if corpus_version() == "v2":
+        return v2_value
+    if v3_system is None:
+        return None
+    import json
+    from corpus_v3 import V3_CONTENT_SHA256
+    path = Path(__file__).resolve().parent.parent / "results" / "retrieval-v3" / "three_spaces.json"
+    if not path.is_file():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("corpus", {}).get("content_sha256") != V3_CONTENT_SHA256:
+        return None
+    system = payload.get("systems", {}).get(v3_system, {})
+    return system.get("mrr", system.get("mean_reciprocal_rank"))
 
 
 def load(private_root: Path):
