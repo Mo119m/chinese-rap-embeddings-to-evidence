@@ -1,12 +1,12 @@
 {
   "artifact_id": "chinese-rap-cleaned-corpus-v3",
   "chunks": {
-    "after": 24343,
+    "after": 24277,
     "before": 25026,
-    "touched": 3607,
-    "touched_share": 0.1441
+    "touched": 3622,
+    "touched_share": 0.1447
   },
-  "content_sha256": "ea6cf62938210201ac02369a045fd0f1da7b0badca7a6b36abd6a7c249d8ef8e",
+  "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
   "derived_from": {
     "chunks": 25026,
     "corpus_v2_content_sha256": "8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b",
@@ -21,18 +21,18 @@
     "bracketed_annotation": 15,
     "name_extension": 23,
     "name_list": 157,
-    "organisation": 653
+    "organisation": 652
   },
-  "file_sha256": "c14195fbac7403682dea0a46c3c1c6d385836fd5caafcc24e6ae99538d602101",
+  "file_sha256": "f7e0aa423c12a6e5334e57c1d3bd78f0b6bcc9478b2f96dbabe2d50c0b415a51",
   "kept_on_purpose": [
     "bracketed short spans such as (yeah) -- backing vocals and ad-libs",
     "a song's mention of its own artist -- a lyric, controlled elsewhere"
   ],
   "lines": {
-    "after": 546582,
+    "after": 545501,
     "before": 549646,
-    "removed": 3064,
-    "removed_share": 0.0056
+    "removed": 4145,
+    "removed_share": 0.0075
   },
   "metadata_block_by_detector_rule": {
     "bracketed_annotation": 39,
@@ -48,21 +48,25 @@
   "removed_by_rule": {
     "bracket_line_kept_as_lyric": 2,
     "bracket_marker": 184,
-    "chunks_dropped_empty": 683,
-    "credit_tag_line": 685,
+    "chunks_dropped_empty": 693,
+    "chunks_dropped_show_transcript": 56,
+    "credit_tag_line": 684,
     "digits_only": 365,
     "html": 43,
     "metadata_block": 1314,
     "role_line": 456,
     "section_header": 18,
-    "stray_title": 42,
-    "title_line_kept_as_lyric": 2981
+    "show_transcript_line": 1062,
+    "stray_title": 44,
+    "title_line_kept_as_lyric": 2977,
+    "track_list_line": 18
   },
   "songs": {
-    "after": 7381,
+    "after": 7379,
     "before": 7391,
-    "touched": 2618,
-    "touched_share": 0.3542
+    "dropped_as_show_transcript": 2,
+    "touched": 2630,
+    "touched_share": 0.3558
   },
-  "version": "chinese-rap-cleaned-corpus-v3/1.1.0"
+  "version": "chinese-rap-cleaned-corpus-v3/1.2.0"
 }

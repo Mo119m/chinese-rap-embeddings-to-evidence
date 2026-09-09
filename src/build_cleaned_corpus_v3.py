@@ -36,6 +36,15 @@ What is removed, line by line, and counted:
                      were hook lines repeated inside the verses (a chorus is very often the
                      title), so a title-equal line with lyric lines on both sides is now
                      kept and counted as title_line_kept_as_lyric
+  track_list_line    a numbered album-page entry -- 3.海河摇摆客(Swing Boyz), 1、小青龙 -- with
+                     the number followed by a non-digit (amendment 1.2.0, from the author's
+                     reading of the sample)
+  show_transcript    a song that is a whole television episode (three or more X战队“Y”
+                     team lines, fourteen performers) is dropped whole; see SHOW_TEAM_LINE.
+                     Lines in scripts the corpus does not model
+                     (Uyghur, Tibetan, Korean, Mongolian: about 1,300 lines over some fifty
+                     labels) are lyrics and are KEPT; like names, they are a cheap identity
+                     signal, and they get a control arm in the experiments instead
   html               real HTML tags (br, p, span, ...) stripped and entities unescaped
   bracket_marker     a whole line inside angle brackets -- `<RAP>`, `< Chorus >`, `<谢帝>`
                      (a cypher's rapper marker) -- is a marker, not a lyric, and is dropped;
@@ -91,11 +100,11 @@ for _stream in (sys.stdout, sys.stderr):
 
 csv.field_size_limit(10 ** 9)
 OUT_DIR = ROOT / "results" / "cleaned-corpus-v3"
-VERSION = "chinese-rap-cleaned-corpus-v3/1.1.0"
+VERSION = "chinese-rap-cleaned-corpus-v3/1.2.0"
 # rules whose removed line marks a credit / header block; a title-equal line touching one
 # of these is a copied title, a title-equal line touching lyrics is a hook
 BLOCK_RULES = frozenset({"metadata_block", "section_header", "role_line", "credit_tag_line", "url",
-                         "bracket_marker"})
+                         "bracket_marker", "track_list_line"})
 # MB-001's four fuzzy rules hit lyric lines when applied line by line across a whole song:
 # a verse about 大学 or 唱片 (organisation), a bar written as 词、词、词 (name_list), a short
 # refrain beside a credit block (name_extension), a bracketed lyric that happens to contain
@@ -187,6 +196,17 @@ def gate_fuzzy_hits(entries: list[dict], counts: Counter, rule_counts: Counter,
             rule, cleaned = clean_line(entry["original"], counts)
             entry.update({"rule": rule, "text": cleaned, "detector": None})
 HTML_TAG = re.compile(r"</?(?:br|p|div|span|i|b|u|em|strong|font|a|img|hr)\b[^<>]{0,40}>", re.I)
+# a track-list entry copied from an album page -- 3.海河摇摆客(Swing Boyz), 08.扎得紧(breakd&kane),
+# 1、小青龙 -- found by the author in the sample (amendment 1.2.0). The number must be
+# followed by something other than a digit, so 37.2熟悉的温度 and 21、22到我的23 stay lyrics;
+# the rest is a short title without sentence punctuation.
+TRACK_LIST = re.compile(r"^\s*\d{1,2}\s*[.、．]\s*(?!\d)[^，。？！?!]{1,30}$")
+# a whole television episode filed under one rapper -- 02 福克斯 / 吴亦凡张震岳热狗战队“梦想” /
+# ... fourteen performers' verses in one "song" (amendment 1.2.0, found by the author). The
+# labelled rapper's own verse is a fraction of it and cannot be cut out reliably, so a song
+# carrying three or more team-assignment lines is dropped whole and counted.
+SHOW_TEAM_LINE = re.compile(r"^\s*\S{2,20}战队[“\"][^”\"]{1,6}[”\"]\s*$")
+SHOW_TEAM_LINES_TO_DROP_SONG = 3
 BRACKET_LINE = re.compile(r"^\s*<\s*([^<>]{1,60}?)\s*>\s*$")
 SENTENCE_PUNCT = re.compile(r"[，。？！?!；;、…]")
 URL = re.compile(r"https?://|www\.", re.I)
@@ -236,6 +256,8 @@ def clean_line(line: str, counts: Counter) -> tuple[str | None, str | None]:
         rule = "role_line"
     elif CREDIT_TAG.search(line):
         rule = "credit_tag_line"
+    elif TRACK_LIST.match(line):
+        rule = "track_list_line"
     else:
         return None, line
     counts[rule] += 1
@@ -281,9 +303,18 @@ def build(private_root: Path, out_dir: Path) -> int:
     songs_touched = set()
     kept_rows = []
     lines_before = lines_after = 0
+    songs_dropped_show_transcript = 0
     for song, indices in by_song.items():
         indices.sort(key=lambda i: int(rows[i]["source_order"]))
         chunk_lines = [rows[i]["cleaned_text"].split("\n") for i in indices]
+        team_lines = sum(1 for lines in chunk_lines for line in lines if SHOW_TEAM_LINE.match(line))
+        if team_lines >= SHOW_TEAM_LINES_TO_DROP_SONG:
+            songs_dropped_show_transcript += 1
+            songs_touched.add(song)
+            lines_before += sum(len(lines) for lines in chunk_lines)
+            counts["show_transcript_line"] += sum(len(lines) for lines in chunk_lines)
+            counts["chunks_dropped_show_transcript"] += len(indices)
+            continue
         labels = classify("\n".join("\n".join(lines) for lines in chunk_lines))
         cursor = 0
         song_changed = False
@@ -357,7 +388,8 @@ def build(private_root: Path, out_dir: Path) -> int:
         "chunks": {"before": len(rows), "after": len(kept_rows), "touched": chunks_touched,
                    "touched_share": round(chunks_touched / len(rows), 4)},
         "songs": {"before": len(by_song), "after": songs_after, "touched": len(songs_touched),
-                  "touched_share": round(len(songs_touched) / len(by_song), 4)},
+                  "touched_share": round(len(songs_touched) / len(by_song), 4),
+                  "dropped_as_show_transcript": songs_dropped_show_transcript},
         "kept_on_purpose": ["bracketed short spans such as (yeah) -- backing vocals and ad-libs",
                             "a song's mention of its own artist -- a lyric, controlled elsewhere"],
         "privacy": "aggregate counts only; the v3 table is private",

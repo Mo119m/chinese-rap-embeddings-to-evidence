@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """The three spaces on corpus v3, and how much the cleaning moved them.
 
-Corpus v3 removed 1.22% of lines -- credits, stray titles, HTML, digits -- from corpus v2.
-Every headline number was measured on v2, so every one has to be measured again on v3
-before anything else is built on it. This file runs the song-level protocol on v3 for the
-lexical spaces (character 2-5-grams, jieba words, jieba words with the 605-surface
-catalogue stripped) and the rhyme-form space, and for the semantic space in one of two
-states: the v3 BGE-M3 vectors if the recorded Colab run over the v3 text exists, or the
-v2 vectors of the same chunks as a clearly marked interim, which were computed on the
-uncleaned text and are reported here only so the lexical numbers have a companion column.
+Corpus v3 removed credits, copied titles, HTML, digits and track lists from corpus v2 (the
+share is in results/cleaned-corpus-v3/analysis_summary.json). Every headline number was
+measured on v2, so every one has to be measured again on v3 before anything else is built
+on it. This file runs the song-level protocol on v3 for the lexical spaces (character
+2-5-grams, jieba words, jieba words with the 605-surface catalogue stripped, jieba words
+with other-script lines dropped) and the rhyme-form space, and for the semantic space in
+one of two states: the v3 BGE-M3 vectors of the recorded local run over the current v3
+text, or the v2 vectors of the same chunks as a clearly marked interim, which were computed
+on the uncleaned text and are reported here only so the lexical numbers have a companion.
 
 Queries, labels and leakage groups are rebuilt from v3 by the same rules as v2 (at least
 50 normalised characters; labels with at least five such songs; exact-text components
@@ -23,6 +24,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -48,6 +50,19 @@ for _stream in (sys.stdout, sys.stderr):
 OUT_DIR = ROOT / "results" / "retrieval-v3"
 V2_REFERENCE = {"semantic": 0.3181, "lexical_char_2_5": 0.4503, "lexical_words": 0.5188,
                 "lexical_words_neutralised": 0.5113, "rhyme_form_strict": 0.0967}
+# Lines written in a script the corpus does not model -- Uyghur (Arabic script), Tibetan,
+# Korean, Mongolian, kana, Cyrillic, Thai, Greek, Devanagari: about 1,300 lines over some
+# fifty labels, most of them a handful of rappers who rap in their own language. They are
+# lyrics and stay in the corpus; like names, they are also a cheap identity signal (only a
+# few labels use each script), so the word space gets a control arm with those lines
+# removed before segmentation, exactly as the 605-surface catalogue gets one.
+OTHER_SCRIPT = re.compile(r"[Ͱ-ϿЀ-ӿ֐-׿؀-ۿݐ-ݿऀ-ॿ"
+                          r"฀-๿ༀ-࿿ᄀ-ᇿ᠀-᢯぀-ヿ㄰-㆏"
+                          r"가-힯]")
+
+
+def drop_other_script_lines(document: str) -> str:
+    return "\n".join(line for line in document.split("\n") if not OTHER_SCRIPT.search(line))
 
 
 def build(private_root: Path, out_dir: Path) -> int:
@@ -87,6 +102,10 @@ def build(private_root: Path, out_dir: Path) -> int:
     spaces = {"lexical_char_2_5": v1.fit_tfidf(corpus_docs)}
     spaces["lexical_words"], _ = fit_words([" ".join(segment(d)) for d in corpus_docs])
     spaces["lexical_words_neutralised"], _ = fit_words([" ".join(segment(neutralise(d, surfaces))) for d in corpus_docs])
+    stripped_docs = [drop_other_script_lines(d) for d in corpus_docs]
+    other_script_songs = int(sum(1 for a, b in zip(corpus_docs, stripped_docs) if a != b))
+    spaces["lexical_words_script_neutralised"], _ = fit_words([" ".join(segment(d)) for d in stripped_docs])
+    print(f"  other-script lines removed from {other_script_songs:,} songs for the script-neutralised arm", flush=True)
     sequences = {}
     for song in songs:
         ordered = sorted(chunks_by_song[song], key=lambda i: int(rows[i]["source_order"]))
@@ -98,7 +117,7 @@ def build(private_root: Path, out_dir: Path) -> int:
     profiles = v1.score_leave_group_out(dense, spaces["lexical_char_2_5"], label_index, group_ids, label_count)
     ranks["semantic"] = v1.rank_system(profiles.dense, label_index)[0].astype(np.int64)
     ranks["lexical_char_2_5"] = v1.rank_system(profiles.lexical, label_index)[0].astype(np.int64)
-    for name in ("lexical_words", "lexical_words_neutralised", "rhyme_form_strict"):
+    for name in ("lexical_words", "lexical_words_neutralised", "lexical_words_script_neutralised", "rhyme_form_strict"):
         r, error = score_arm(dense, spaces[name], label_index, group_ids, label_count)
         if error:
             raise SystemExit(f"{name}: {error}")
@@ -118,7 +137,8 @@ def build(private_root: Path, out_dir: Path) -> int:
         ref = V2_REFERENCE.get(name)
         print(f"  {name:28s} MRR {report[name]['mrr']:.4f}" + (f"  (v2 {ref:.4f})" if ref else ""), flush=True)
     pairs = [("lexical_char_2_5", "semantic"), ("lexical_words", "lexical_char_2_5"),
-             ("lexical_words_neutralised", "lexical_words"), ("fusion_semantic_char", "lexical_char_2_5")]
+             ("lexical_words_neutralised", "lexical_words"), ("lexical_words_script_neutralised", "lexical_words"),
+             ("fusion_semantic_char", "lexical_char_2_5")]
     contrasts = paired_group_bootstrap(rr, weights, group_ids, np.ones(len(songs), dtype=bool), pairs)
     for c in contrasts:
         print(f"  {c['system']} - {c['minus']}: {c['mrr_difference']:+.4f} [{c['ci95'][0]:+.4f}, {c['ci95'][1]:+.4f}]", flush=True)
@@ -134,11 +154,14 @@ def build(private_root: Path, out_dir: Path) -> int:
                             "the semantic column uses the v2 vectors of the same chunks, computed on the "
                             "uncleaned text; it is an interim companion, not a v3 semantic result"),
         "systems": report,
+        "script_neutralised_arm": {"songs_with_other_script_lines": other_script_songs,
+                                   "rule": "every line carrying a character of a script other than Han or Latin "
+                                           "is dropped before segmentation; the lines stay in the corpus"},
         "paired_contrasts": {"design": "2000 replicates, seed 20260825, leakage groups resampled with "
                                        "replacement, each (group, label) component weighted one",
                              "contrasts": contrasts},
-        "not_comparable_to": "results/retrieval-v2 point to point: the population differs (24,343 chunks, "
-                             "7,381 songs); the v2 numbers are quoted only so the reader can see the direction",
+        "not_comparable_to": f"results/retrieval-v2 point to point: the population differs ({len(rows):,} chunks, "
+                             f"{len(chunks_by_song):,} songs); the v2 numbers are quoted only so the reader can see the direction",
         "privacy": "aggregate only",
     }
     (out_dir / "three_spaces.json").write_text(
