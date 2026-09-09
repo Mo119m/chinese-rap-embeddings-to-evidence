@@ -46,20 +46,20 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 LABELS_SHOWN = 30
-WORDS_PER_LABEL = 10
-# Only words a listener could recognise are put to the reviewer. The first version listed
-# 的, 和, 里 and the full-width comma, and the reviewer rightly said nobody can judge those:
-# that ordinary words carry the identity is the finding, and it is a statistical one. So
-# function words, adverbs, numerals, punctuation, and any word in more than 15% of all
-# songs are classified as "ordinary" by rule and never shown.
-MAX_CORPUS_SHARE = 0.15
-REVIEWABLE_POS = {"content", "english", "person_or_place_name"}
+WORDS_PER_LABEL = 6
+# Only words a listener could actually recognise are put to the reviewer. The first version
+# listed 的, 和, 里 and the full-width comma; the second listed 哥们, 记得, 快乐. The
+# reviewer said, both times and rightly, that nobody can judge whether such a word is
+# someone's: that ordinary words carry the identity is the finding, and it is statistical.
+# So the sheet is now confined to the tail a listener can speak to -- English tokens and
+# names in at most 8% of all songs and at least 20% of the label's -- and asks one thing.
+MAX_CORPUS_SHARE = 0.08
+MIN_LABEL_SHARE = 0.20
+REVIEWABLE_POS = {"english", "person_or_place_name"}
 CATEGORIES = [
-    ("adlib", "是他的口头禅 / ad-lib"),
-    ("dialect", "是他的方言或个人写法"),
-    ("topic", "是他常唱的主题"),
-    ("name", "人名 / 地名 / 品牌"),
-    ("unknown", "看不出来 / 不知道"),
+    ("his", "是他的（口头禅 / ad-lib / 他常提的名字）"),
+    ("not", "不是他的（很多人都这么用）"),
+    ("unknown", "不知道"),
 ]
 POS_LABEL = {"content": "实词", "person_or_place_name": "人名地名", "function": "虚词",
              "adverb": "副词", "english": "英文", "numeral": "数词", "punctuation_or_symbol": "标点"}
@@ -121,7 +121,7 @@ def build(private_root: Path, out: Path) -> int:
         tag = pairs[0].flag if len(pairs) == 1 else "x"
         groups_of[f] = pos_group(tag, word)
     reviewable = np.asarray([groups_of[f] in REVIEWABLE_POS for f in range(len(features))])
-    eligible_word = ((label_share >= 0.15) & (corpus_share[None, :] >= 0.02)
+    eligible_word = ((label_share >= MIN_LABEL_SHARE) & (corpus_share[None, :] >= 0.02)
                      & (corpus_share[None, :] <= MAX_CORPUS_SHARE) & (contribution > 0)
                      & reviewable[None, :])
 
@@ -148,6 +148,28 @@ def build(private_root: Path, out: Path) -> int:
                         "advantage_in_ordinary_words": round(float(ordinary), 3)})
     print(f"advantage carried by ordinary words (never shown): mean {np.mean(ordinary_share):.2f}, "
           f"min {np.min(ordinary_share):.2f}, max {np.max(ordinary_share):.2f}")
+    # The one number from this tool that is public: how much of a label's advantage sits in
+    # words a listener could not be asked about. Label strings and shares only.
+    public = ROOT / "results" / "retrieval-v2" / "recognisable_word_share.json"
+    public.write_text(json.dumps({
+        "analysis": "how much of a label's lexical advantage a listener could judge",
+        "definition": ("a label's advantage is the sum over words of the label's songs' mean "
+                       "TF-IDF weight times (label profile minus mean rival profile), positive "
+                       "terms only; the recognisable part is the share in English tokens and "
+                       "names; everything else -- Han content words, function words, adverbs, "
+                       "numerals, punctuation -- is ordinary vocabulary no listener can be "
+                       "asked to attribute"),
+        "labels": {e["label"]: {"songs": e["songs"],
+                                "ordinary_share": e["advantage_in_ordinary_words"],
+                                "recognisable_share": round(1 - e["advantage_in_ordinary_words"], 3),
+                                "recognisable_words_offered": len(e["words"])}
+                   for e in entries},
+        "mean_ordinary_share": round(float(np.mean(ordinary_share)), 3),
+        "min_ordinary_share": round(float(np.min(ordinary_share)), 3),
+        "max_ordinary_share": round(float(np.max(ordinary_share)), 3),
+        "privacy": "label strings and shares only; the words themselves stay private",
+    }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="")
+    print(f"wrote {public}")
 
     out.mkdir(parents=True, exist_ok=True)
     (out / "discriminative_words_private.json").write_text(
@@ -170,7 +192,7 @@ def build(private_root: Path, out: Path) -> int:
                 f'<td class="opts">{radios.replace("{name}", name)}</td></tr>')
         blocks.append(
             f'<section class="label"><h2>{e["label"]} <span class="n">{e["songs"]} 首</span></h2>'
-            f'<table><thead><tr><th>词</th><th>词性</th><th>占他被认出的分数</th><th>他的歌里出现 / 全语料出现</th><th>你听他的歌，认得出这是他的吗？</th></tr></thead>'
+            f'<table><thead><tr><th>词</th><th>词性</th><th>占他被认出的分数</th><th>他的歌里出现 / 全语料出现</th><th>这是他的吗？</th></tr></thead>'
             f'<tbody>{"".join(rows_html)}</tbody></table></section>')
     html = f"""<!doctype html><html lang="zh"><head><meta charset="utf-8"><title>歌手高分辨力词标注</title>
 <style>body{{font-family:Arial,"Microsoft YaHei",sans-serif;margin:0;background:#f5f2ea;color:#131820}}main{{max-width:1180px;margin:auto;padding:36px 16px 80px}}
@@ -180,9 +202,9 @@ td{{padding:6px 4px;border-bottom:1px solid #ece8de;vertical-align:top}}.w{{font
 .opts{{display:flex;flex-wrap:wrap;gap:6px}}.opt{{border:1px solid #cbc7bd;padding:3px 7px;font-size:.8rem;cursor:pointer;background:#fff}}.opt:has(input:checked){{background:#dff1fa;border-color:#0679b8}}
 .opt input{{margin:0 3px 0 0}}.bar{{position:sticky;top:0;background:#f5f2ea;padding:10px 0;border-bottom:1px solid #cbc7bd;display:flex;gap:12px;align-items:center}}
 button{{padding:8px 14px;font-weight:700;border:1px solid #0679b8;background:#0679b8;color:#fff;cursor:pointer}}#done{{color:#5b626a}}</style></head><body><main>
-<h1>歌手高分辨力词标注</h1>
-<p>模型把一个歌手和别人分开时，大部分靠的是"和、里、地、逗号"这种普通词用多用少——那部分统计上成立、人判不了，所以<b>不在这张表里</b>。这里只列<b>你有可能认得出来的词</b>：英文、不常见的实词、人名地名，每个歌手最多 10 个，都是他用得比别人明显多、而且在他至少 15% 的歌里出现的词。<br>
-问题只有一个：<b>你听他的歌，认得出这是他的吗？</b>是他的口头禅 / ad-lib、他的方言或写法、他常唱的主题、还是个人名地名品牌；认不出就选"看不出来"，这是正常答案，不用查。<br>
+<h1>有特色的词 —— 可选，15 分钟</h1>
+<p>模型分辨歌手，主要靠的是普通词用多用少的比例，那部分人判不了，也不用判。这张表只列<b>真正有特色、你可能认得出来的</b>：英文 ad-lib 和人名地名，每个歌手最多 6 个，都是他用得比别人明显多（在他至少 20% 的歌里、全语料不到 8% 的歌里）。<br>
+问题只有一个：<b>这是他的吗？</b>是他的口头禅、ad-lib 或他常提的名字 → "是他的"；很多人都这么用 → "不是他的"；不熟 → "不知道"。凭印象，不用查。<br>
 答案自动保存在浏览器里；做完点右上角导出，把下载的 json 发我。这个文件只有单个词和比例，没有歌词。</p>
 <div class="bar"><button id="export">导出 JSON</button><span id="done"></span></div>
 {"".join(blocks)}
