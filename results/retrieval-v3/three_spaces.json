@@ -13,12 +13,12 @@
     "contrasts": [
       {
         "ci95": [
-          0.1165,
-          0.1371
+          0.1229,
+          0.1432
         ],
         "excludes_zero": true,
         "minus": "semantic",
-        "mrr_difference": 0.1267,
+        "mrr_difference": 0.133,
         "system": "lexical_char_2_5"
       },
       {
@@ -34,7 +34,7 @@
       {
         "ci95": [
           -0.01,
-          -0.0059
+          -0.0058
         ],
         "excludes_zero": true,
         "minus": "lexical_words",
@@ -43,28 +43,55 @@
       },
       {
         "ci95": [
-          0.0161,
-          0.0273
+          0.0124,
+          0.0233
         ],
         "excludes_zero": true,
         "minus": "lexical_char_2_5",
-        "mrr_difference": 0.0216,
+        "mrr_difference": 0.0181,
         "system": "fusion_semantic_char"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
   },
   "privacy": "aggregate only",
-  "semantic_caveat": "the semantic column uses the v2 vectors of the same chunks, computed on the uncleaned text; it is an interim companion, not a v3 semantic result",
+  "semantic_caveat": null,
   "semantic_vectors": {
-    "vectors": "v2-interim",
-    "warning": "computed on the uncleaned text"
+    "contract": {
+      "chunks": 24308,
+      "configuration": {
+        "batch_size": 8,
+        "block_size": 512,
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "max_length": 2048,
+        "order": "corpus source order, not length-sorted",
+        "python": "3.13.13",
+        "torch": "2.11.0+cu128",
+        "use_fp16": true
+      },
+      "contract_version": "chinese-rap-cleaned-corpus-embeddings-v3/1.0.0",
+      "corpus_content_sha256": "cd77392cf8d2c4059a6488d7ecbd87a29fe133a6f305b07d5210c34afd827744",
+      "dimension": 1024,
+      "embeddings_sha256": "eb5bc9402f67fe8e74c319e3123f93362f5cec1116a529454358cee37e3865c9",
+      "generated_at_utc": "2026-09-09T20:41:17.869014+00:00",
+      "model": {
+        "id": "BAAI/bge-m3",
+        "implementation": "FlagEmbedding.BGEM3FlagModel dense vectors",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "weights_pin_matched": true,
+        "weights_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38"
+      },
+      "warning": "private; derived from copyrighted lyric text. Never commit or publish."
+    },
+    "sha256": "eb5bc9402f67fe8e74c319e3123f93362f5cec1116a529454358cee37e3865c9",
+    "vectors": "v3"
   },
   "systems": {
     "fusion_semantic_char": {
-      "mrr": 0.4508,
-      "recall_at_1": 0.3528,
-      "recall_at_10": 0.646,
+      "mrr": 0.4465,
+      "recall_at_1": 0.3479,
+      "recall_at_10": 0.6442,
       "v2_mrr_for_reference": null
     },
     "lexical_char_2_5": {
@@ -80,9 +107,9 @@
       "v2_mrr_for_reference": 0.5188
     },
     "lexical_words_neutralised": {
-      "mrr": 0.4893,
-      "recall_at_1": 0.3966,
-      "recall_at_10": 0.6634,
+      "mrr": 0.4894,
+      "recall_at_1": 0.3972,
+      "recall_at_10": 0.6626,
       "v2_mrr_for_reference": 0.5113
     },
     "rhyme_form_strict": {
@@ -92,9 +119,9 @@
       "v2_mrr_for_reference": 0.0967
     },
     "semantic": {
-      "mrr": 0.3059,
-      "recall_at_1": 0.2068,
-      "recall_at_10": 0.5011,
+      "mrr": 0.2995,
+      "recall_at_1": 0.2007,
+      "recall_at_10": 0.4938,
       "v2_mrr_for_reference": 0.3181
     }
   }
