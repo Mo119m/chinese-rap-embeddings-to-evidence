@@ -1,0 +1,78 @@
+{
+  "analysis": "what corpus v3 says about training an identity encoder on it",
+  "chunk_length": {
+    "characters": {
+      "10": 25,
+      "25": 54,
+      "50": 129,
+      "75": 518,
+      "90": 1030,
+      "99": 1498
+    },
+    "chunks_over_512_tokens": 3634,
+    "lines": {
+      "10": 2,
+      "25": 4,
+      "50": 8,
+      "75": 35,
+      "90": 66,
+      "99": 104
+    },
+    "reading": "the recorded run's max_length of 2,048 is never reached; the natural unit of encoding is the stanza",
+    "tokens_bge_m3": {
+      "10": 16,
+      "25": 36,
+      "50": 76,
+      "75": 311,
+      "90": 600,
+      "99": 931
+    }
+  },
+  "collaborations": {
+    "labels_with_any": 169,
+    "rule": "title contains feat., ft., featuring, &, /, x, × or a list separator; a candidate list for exclusion from training positives, not a truth",
+    "share": 0.082,
+    "songs_with_a_collaboration_mark_in_the_title": 593
+  },
+  "content_controlled_negatives": {
+    "nearest_rival_cosine": {
+      "10": 0.65,
+      "50": 0.725,
+      "90": 1.0
+    },
+    "nearest_same_label_other_group_cosine": {
+      "10": 0.572,
+      "50": 0.663,
+      "90": 0.73
+    },
+    "reading": "in the raw semantic space most chunks sit closer to some other label's chunk than to any of their own label's; a negative drawn from those neighbours controls for content",
+    "share_of_chunks_whose_nearest_rival_is_closer_than_nearest_own": 0.9067
+  },
+  "labels": {
+    "eligible": 226,
+    "groups_per_label": {
+      "10": 11,
+      "100": 49,
+      "25": 19,
+      "50": 33,
+      "75": 42,
+      "90": 46
+    },
+    "songs_per_label": {
+      "10": 11,
+      "100": 100,
+      "25": 20,
+      "50": 35,
+      "75": 43,
+      "90": 47
+    },
+    "with_at_least_two_leakage_groups": 226
+  },
+  "privacy": "aggregate only",
+  "self_mentions": {
+    "chunks": 1624,
+    "consequence": "mask the label string in training text",
+    "share": 0.0668
+  },
+  "vectors_used_for_neighbours": "v2-interim"
+}
