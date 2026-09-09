@@ -1,0 +1,152 @@
+{
+  "analysis": "the representation of a song, one choice at a time",
+  "chunk_query": {
+    "chunk_level_mrr": 0.1903,
+    "chunk_level_recall_at_10": 0.3387,
+    "chunks": 24635,
+    "song_level_mean_of_chunk_reciprocal_ranks": 0.2545
+  },
+  "chunks": 24635,
+  "definitions": {
+    "chunk_maxsim": "label = the set of its chunk vectors outside the query's leakage group; score = mean over the query's chunks of the best cosine to any of the label's chunks",
+    "chunk_query": "each chunk scored alone against centroid profiles built from all songs outside its leakage group; reported at chunk level and as the mean reciprocal rank of a song's chunks",
+    "whitened_centroids": "the published probe: whitening fitted on and applied to song centroids, same folds",
+    "whitened_chunks_then_mean": "within-author whitening fitted on chunk vectors of four folds, applied to every chunk, then averaged per song",
+    "word_jieba": "jieba default segmentation, word unigrams and bigrams, TF-IDF with the character system's settings"
+  },
+  "groups": 5888,
+  "labels": 226,
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          -0.0104,
+          0.0101
+        ],
+        "excludes_zero": false,
+        "minus": "song_centroid",
+        "mrr_difference": -0.0003,
+        "system": "chunk_maxsim"
+      },
+      {
+        "ci95": [
+          0.0097,
+          0.0165
+        ],
+        "excludes_zero": true,
+        "minus": "whitened_centroids",
+        "mrr_difference": 0.013,
+        "system": "whitened_chunks_then_mean"
+      },
+      {
+        "ci95": [
+          0.1194,
+          0.1369
+        ],
+        "excludes_zero": true,
+        "minus": "song_centroid",
+        "mrr_difference": 0.1282,
+        "system": "whitened_centroids"
+      },
+      {
+        "ci95": [
+          -0.0358,
+          -0.0189
+        ],
+        "excludes_zero": true,
+        "minus": "char_2_5",
+        "mrr_difference": -0.0277,
+        "system": "char_1"
+      },
+      {
+        "ci95": [
+          -0.0127,
+          -0.0048
+        ],
+        "excludes_zero": true,
+        "minus": "char_2_5",
+        "mrr_difference": -0.0086,
+        "system": "char_2_3"
+      },
+      {
+        "ci95": [
+          -0.074,
+          -0.0601
+        ],
+        "excludes_zero": true,
+        "minus": "char_2_5",
+        "mrr_difference": -0.0671,
+        "system": "char_4_5"
+      },
+      {
+        "ci95": [
+          0.0654,
+          0.0791
+        ],
+        "excludes_zero": true,
+        "minus": "char_2_5",
+        "mrr_difference": 0.0722,
+        "system": "word_jieba"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "queries": 7236,
+  "systems": {
+    "char_1": {
+      "features": 5628,
+      "mrr": 0.4222,
+      "recall_at_1": 0.3224,
+      "recall_at_10": 0.6151
+    },
+    "char_2_3": {
+      "features": 150000,
+      "mrr": 0.4402,
+      "recall_at_1": 0.3505,
+      "recall_at_10": 0.614
+    },
+    "char_2_5": {
+      "features": 150000,
+      "mrr": 0.4503,
+      "recall_at_1": 0.3571,
+      "recall_at_10": 0.6302
+    },
+    "char_4_5": {
+      "features": 150000,
+      "mrr": 0.3856,
+      "recall_at_1": 0.2967,
+      "recall_at_10": 0.5582
+    },
+    "chunk_maxsim": {
+      "mrr": 0.3177,
+      "recall_at_1": 0.2271,
+      "recall_at_10": 0.4889
+    },
+    "song_centroid": {
+      "mrr": 0.3181,
+      "recall_at_1": 0.2193,
+      "recall_at_10": 0.5142
+    },
+    "whitened_centroids": {
+      "mrr": 0.4494,
+      "recall_at_1": 0.3516,
+      "recall_at_10": 0.6336
+    },
+    "whitened_chunks_then_mean": {
+      "mrr": 0.4621,
+      "recall_at_1": 0.3637,
+      "recall_at_10": 0.6491
+    },
+    "word_jieba": {
+      "features": 150000,
+      "mrr": 0.5188,
+      "recall_at_1": 0.425,
+      "recall_at_10": 0.6978
+    }
+  },
+  "verification": {
+    "char_2_5_reproduces_builder": 0.4503,
+    "song_centroid_reproduces_builder": 0.3181
+  }
+}
