@@ -178,6 +178,34 @@ suspect is the batch: eight labels per step where LUAR saw 128 authors. The trai
 takes a cross-batch memory of recent embeddings (`--queue-size`, XBM) so every step's
 denominator holds thousands of stanzas across all labels; that run is the next test.
 
+## Identity among content rivals (`content_rival_test.json`)
+
+The retrieval version of Wegmann et al.'s style-or-content choice. For each query the
+frozen semantic space names the K labels whose leave-group-out profiles are closest to
+it in content (the true label excluded); every space then ranks the true label within
+that set. The rival set is defined once, from the frozen space, so it is the same for all
+spaces — which also means the frozen space's own row is not a test (its rank within the
+set is a function of its full rank) and is shown only as the floor.
+
+| space | all 226 labels | among 5 rivals (chance 0.408) | among 10 (0.275) | among 25 (0.148) |
+|---|---|---|---|---|
+| frozen semantic (defines the rivals) | 0.3015 | 0.3730 | 0.3311 | 0.3086 |
+| semantic, within-label whitening | 0.4196 | 0.5881 | 0.5316 | 0.4783 |
+| character 2–5-grams | 0.4275 | 0.6328 | 0.5606 | 0.4913 |
+| jieba words | **0.4977** | **0.6776** | **0.6149** | 0.5546 |
+| whitened semantic + words (fusion) | 0.5386 | 0.6557 | 0.6098 | **0.5692** |
+
+Top-1 among 5 rivals: words 53%, characters 47%, whitened semantic 41%. Contrasts among
+5 rivals: words − whitened semantic +0.097 [+0.088, +0.106]; words − characters +0.047;
+fusion − words −0.025 [−0.032, −0.019]; among 25 rivals fusion − words +0.011 [+0.004,
++0.019].
+
+Reading. With subject held roughly constant, the word space still names the label first
+more than half the time; the whitened semantic space keeps most of its identity too but
+less. The fusion that wins over all labels loses to the words alone when every candidate
+is a content rival and wins again as the candidates diversify: part of what the semantic
+component contributes to identity is content.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,676 over 512; all 226 labels have at least two

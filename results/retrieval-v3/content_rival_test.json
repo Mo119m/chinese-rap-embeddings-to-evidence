@@ -1,0 +1,276 @@
+{
+  "analysis": "identity among content rivals: the retrieval protocol's style-or-content test",
+  "corpus": {
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231,
+    "vectors_sha256": "e61ffc05deb595b2a5ba4dc4970a771388e3c127abb986f25c9df0086b5c42a4"
+  },
+  "design": {
+    "candidate_set": "the true label plus its K rivals; rank of the true label within the set, ties counted against the query",
+    "reference": "Wegmann, Schraagen and Nguyen 2022, the STEL-or-content choice",
+    "rivals": "for each query, the K labels whose leave-group-out profiles score highest in the frozen BGE-M3 space, the true label excluded; the same set for every space",
+    "spaces": {
+      "fusion_semantic_words": "z-score mean",
+      "fusion_whitened_semantic_words": "z-score mean",
+      "lexical_char_2_5": "character 2-5-gram TF-IDF",
+      "lexical_words": "jieba word TF-IDF",
+      "semantic": "frozen BGE-M3, cosine",
+      "semantic_within_author_whitening": "fold-wise within-label whitening as in identity_probe"
+    }
+  },
+  "paired_contrasts": {
+    "by_rival_count": {
+      "among_10_content_rivals": [
+        {
+          "ci95": [
+            0.2807,
+            0.3006
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2908,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.0497,
+            0.0626
+          ],
+          "excludes_zero": true,
+          "minus": "lexical_char_2_5",
+          "mrr_difference": 0.056,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.1912,
+            0.2078
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1995,
+          "system": "semantic_within_author_whitening"
+        },
+        {
+          "ci95": [
+            0.082,
+            0.1011
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_within_author_whitening",
+          "mrr_difference": 0.0913,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            -0.0155,
+            -0.0016
+          ],
+          "excludes_zero": true,
+          "minus": "lexical_words",
+          "mrr_difference": -0.0084,
+          "system": "fusion_whitened_semantic_words"
+        }
+      ],
+      "among_25_content_rivals": [
+        {
+          "ci95": [
+            0.2434,
+            0.2639
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2535,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.0586,
+            0.0721
+          ],
+          "excludes_zero": true,
+          "minus": "lexical_char_2_5",
+          "mrr_difference": 0.0653,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.1602,
+            0.1772
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1687,
+          "system": "semantic_within_author_whitening"
+        },
+        {
+          "ci95": [
+            0.0751,
+            0.0946
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_within_author_whitening",
+          "mrr_difference": 0.0848,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.0036,
+            0.0185
+          ],
+          "excludes_zero": true,
+          "minus": "lexical_words",
+          "mrr_difference": 0.0113,
+          "system": "fusion_whitened_semantic_words"
+        }
+      ],
+      "among_5_content_rivals": [
+        {
+          "ci95": [
+            0.3018,
+            0.3209
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.3113,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.0406,
+            0.0529
+          ],
+          "excludes_zero": true,
+          "minus": "lexical_char_2_5",
+          "mrr_difference": 0.0467,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            0.2061,
+            0.2222
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2139,
+          "system": "semantic_within_author_whitening"
+        },
+        {
+          "ci95": [
+            0.0881,
+            0.1062
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_within_author_whitening",
+          "mrr_difference": 0.0973,
+          "system": "lexical_words"
+        },
+        {
+          "ci95": [
+            -0.0321,
+            -0.0189
+          ],
+          "excludes_zero": true,
+          "minus": "lexical_words",
+          "mrr_difference": -0.0254,
+          "system": "fusion_whitened_semantic_words"
+        }
+      ]
+    },
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "results": {
+    "all_labels": {
+      "fusion_semantic_words": 0.4899,
+      "fusion_whitened_semantic_words": 0.5386,
+      "lexical_char_2_5": 0.4275,
+      "lexical_words": 0.4977,
+      "semantic": 0.3015,
+      "semantic_within_author_whitening": 0.4196
+    },
+    "among_10_content_rivals": {
+      "chance_mrr": 0.2745,
+      "fusion_semantic_words": {
+        "mrr": 0.5328,
+        "top1": 0.4052
+      },
+      "fusion_whitened_semantic_words": {
+        "mrr": 0.6098,
+        "top1": 0.4757
+      },
+      "lexical_char_2_5": {
+        "mrr": 0.5606,
+        "top1": 0.4176
+      },
+      "lexical_words": {
+        "mrr": 0.6149,
+        "top1": 0.484
+      },
+      "semantic": {
+        "mrr": 0.3311,
+        "top1": 0.203
+      },
+      "semantic_within_author_whitening": {
+        "mrr": 0.5316,
+        "top1": 0.3803
+      }
+    },
+    "among_25_content_rivals": {
+      "chance_mrr": 0.1482,
+      "fusion_semantic_words": {
+        "mrr": 0.5023,
+        "top1": 0.3959
+      },
+      "fusion_whitened_semantic_words": {
+        "mrr": 0.5692,
+        "top1": 0.4535
+      },
+      "lexical_char_2_5": {
+        "mrr": 0.4913,
+        "top1": 0.373
+      },
+      "lexical_words": {
+        "mrr": 0.5546,
+        "top1": 0.4432
+      },
+      "semantic": {
+        "mrr": 0.3086,
+        "top1": 0.203
+      },
+      "semantic_within_author_whitening": {
+        "mrr": 0.4783,
+        "top1": 0.3517
+      }
+    },
+    "among_5_content_rivals": {
+      "chance_mrr": 0.4083,
+      "fusion_semantic_words": {
+        "mrr": 0.5792,
+        "top1": 0.4236
+      },
+      "fusion_whitened_semantic_words": {
+        "mrr": 0.6557,
+        "top1": 0.502
+      },
+      "lexical_char_2_5": {
+        "mrr": 0.6328,
+        "top1": 0.4691
+      },
+      "lexical_words": {
+        "mrr": 0.6776,
+        "top1": 0.5315
+      },
+      "semantic": {
+        "mrr": 0.373,
+        "top1": 0.203
+      },
+      "semantic_within_author_whitening": {
+        "mrr": 0.5881,
+        "top1": 0.4107
+      }
+    }
+  }
+}
