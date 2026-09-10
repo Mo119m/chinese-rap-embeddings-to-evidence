@@ -119,6 +119,50 @@ label-specific — how far a rapper's songs scatter, and in which directions, de
 rapper — and a shared within-class covariance, which is also PLDA's assumption, cannot
 represent it.
 
+## What whitening presses, and label-specific scatter (`whitening_directions.json`)
+
+Two claims the probe and the ablation only inferred, measured directly.
+
+**The pressed directions are topic and register.** The top eight eigenvectors of the
+within-label covariance of BGE-M3 song vectors, with the jieba words (document frequency
+≥ 50 songs) whose TF-IDF weight correlates most with a song's coordinate:
+
+| direction | within-variance share | between share along it | one end | other end |
+|---|---|---|---|---|
+| 1 | 4.5% | 0.25 | 却 爱 回忆 你 离开 世界 | 你们 说唱 兄弟 老子 rapper flow |
+| 2 | 2.5% | 0.15 | 啊 儿 天下 江湖 剑 天地 | i you me my love know |
+| 3 | 2.2% | 0.30 | 人 也 自己 是 了 还 | i you me my the it like baby |
+| 4 | 2.0% | 0.22 | 江湖 天地 家乡 山河 红尘 | i me my you it 他们 |
+| 5 | 1.6% | 0.20 | the to 世界 梦想 life | 你 说 爱 你 的 给 你 |
+| 6 | 1.4% | 0.20 | 钱 他 她 买 吃 晓得 娃儿 | / @ zeus production (credit residue) |
+| 7 | 1.4% | 0.14 | baby it we money 一起 喝 每天 | 被 却 了 cypher 谁 最后 孤独 沉默 |
+| 8 | 1.2% | 0.14 | 自己 梦想 生活 说唱 努力 音乐 | like 杀 my 地狱 敌人 血 |
+
+The directions read as love song vs. braggadocio, wuxia/national register vs. English,
+Chinese vs. English, money/everyday vs. credit residue, party vs. solitude, aspiration vs.
+violence. Along them 70–86% of the variance is within-label (a rapper's songs move along
+them from song to song), against 90.5% within-label over the whole space: these axes carry
+somewhat *more* label information than average, not less — some rappers favour a register
+— and whitening gives that up for the identity that lives in the small directions.
+Direction 6's negative end is a warning: a little production-credit residue survives the
+cleaning and is systematic enough to form an axis (counted below).
+
+**Label scatter is direction-specific.** For the 175 labels with ≥ 15 songs, the leading
+SVD direction of each label's own residuals; the null reassigns the real residuals to
+random labels (the two-covariance model's assumption), 20 draws:
+
+| | observed | null (mean ± sd) |
+|---|---|---|
+| median \|cos\| between labels' leading directions | 0.273 | 0.458 ± 0.006 |
+| share of a label's residual variance in the pooled top-10 directions | 0.194 | 0.192 ± 0.0005 |
+| share in the label's own top-10 directions | 0.553 | 0.513 ± 0.0004 |
+
+Labels' leading scatter directions are far less aligned with each other than random
+reassignment would make them, and the pooled covariance explains a real label's scatter
+no better than a random one's: the directions along which a rapper's songs vary are the
+rapper's own. This is the assumption the two-covariance model and PLDA share and fail on,
+now measured rather than inferred.
+
 ## PLDA scoring against whitened cosine (`plda_scoring.json`)
 
 Whitened cosine is a heuristic reading of the two-covariance model; PLDA is its own

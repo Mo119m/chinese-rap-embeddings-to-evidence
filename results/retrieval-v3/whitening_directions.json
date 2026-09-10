@@ -1,0 +1,308 @@
+{
+  "analysis": "what within-label whitening presses, and whether label scatter has label-specific directions",
+  "corpus": {
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "labels": 226,
+    "labels_with_at_least_min_songs": 189,
+    "min_songs_for_direction": 15,
+    "songs": 7231
+  },
+  "label_scatter": {
+    "design": "per label with >= 15 songs: leading SVD direction of its residuals; |cos| between labels' leading directions; share of a label's residual variance in the pooled covariance's top 10 directions vs its own top 10; null = real residuals reassigned to random labels, 20 draws",
+    "null_mean_sd": {
+      "mean_abs_cos_between_leading_directions": [
+        0.4288,
+        0.0077
+      ],
+      "median_abs_cos_between_leading_directions": [
+        0.4582,
+        0.0063
+      ],
+      "share_of_label_variance_in_own_top_k": [
+        0.5134,
+        0.0004
+      ],
+      "share_of_label_variance_in_pooled_top_k": [
+        0.1922,
+        0.0005
+      ]
+    },
+    "observed": {
+      "mean_abs_cos_between_leading_directions": 0.2858,
+      "median_abs_cos_between_leading_directions": 0.2726,
+      "share_of_label_variance_in_own_top_k": 0.5532,
+      "share_of_label_variance_in_pooled_top_k": 0.1935
+    }
+  },
+  "overall_between_share_of_total_variance": 0.0945,
+  "pressed_directions": {
+    "design": "top eigenvectors of the Ledoit-Wolf within-label covariance of BGE-M3 song vectors; per direction, the between-label share of total variance along it, and the jieba words (document frequency >= 50 songs) whose TF-IDF weight correlates most with a song's coordinate",
+    "directions": [
+      {
+        "between_share_of_total_along_direction": 0.2493,
+        "rank": 1,
+        "within_variance_share": 0.0452,
+        "words_at_negative_end": [
+          "你们",
+          "说唱",
+          "兄弟",
+          "老子",
+          "他们",
+          "rapper",
+          "们",
+          "flow",
+          "耍",
+          "rap",
+          "拿",
+          "hiphop"
+        ],
+        "words_at_positive_end": [
+          "却",
+          "爱",
+          "回忆",
+          "你",
+          "的",
+          "离开",
+          "你 我",
+          "世界",
+          "和 你",
+          "的 爱",
+          "为 你",
+          "希望"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.1483,
+        "rank": 2,
+        "within_variance_share": 0.0246,
+        "words_at_negative_end": [
+          "i",
+          "you",
+          "me",
+          "让 我",
+          "my",
+          "love",
+          "know",
+          "t",
+          "u",
+          "音乐",
+          "让",
+          "baby"
+        ],
+        "words_at_positive_end": [
+          "啊",
+          "儿",
+          "天下",
+          "江湖",
+          "剑",
+          "天地",
+          "皆",
+          "得",
+          "若",
+          "吃",
+          "打",
+          "便"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.2983,
+        "rank": 3,
+        "within_variance_share": 0.0217,
+        "words_at_negative_end": [
+          "i",
+          "you",
+          "me",
+          "my",
+          "the",
+          "it",
+          "like",
+          "baby",
+          "on",
+          "a",
+          "t",
+          "in"
+        ],
+        "words_at_positive_end": [
+          "人",
+          "也",
+          "自己",
+          "是",
+          "了",
+          "还",
+          "他",
+          "的",
+          "不",
+          "又",
+          "有",
+          "都"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.2247,
+        "rank": 4,
+        "within_variance_share": 0.0198,
+        "words_at_negative_end": [
+          "i",
+          "me",
+          "my",
+          "t",
+          "you",
+          "it",
+          "他们",
+          "don",
+          "no",
+          "a",
+          "real",
+          "’"
+        ],
+        "words_at_positive_end": [
+          "江湖",
+          "天地",
+          "与",
+          "家乡",
+          "/",
+          "山河",
+          "天下",
+          "红尘",
+          "风",
+          "岁月",
+          "远方",
+          "月"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.2002,
+        "rank": 5,
+        "within_variance_share": 0.0163,
+        "words_at_negative_end": [
+          "你",
+          "说",
+          "爱",
+          "你 的",
+          "你 说",
+          "给 你",
+          "你 是",
+          "对 你",
+          "我",
+          "给",
+          "喜欢",
+          "说 你"
+        ],
+        "words_at_positive_end": [
+          "the",
+          "to",
+          "世界",
+          "梦想",
+          "it",
+          "i",
+          "life",
+          "my",
+          "自己",
+          "in",
+          "黑暗",
+          "中"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.2007,
+        "rank": 6,
+        "within_variance_share": 0.0142,
+        "words_at_negative_end": [
+          "/",
+          "@",
+          "刘佳",
+          "你 的",
+          "zeus",
+          "production",
+          "zeus production",
+          "flow",
+          "说唱",
+          "英雄",
+          "李雨",
+          "李雨 杭"
+        ],
+        "words_at_positive_end": [
+          "钱",
+          "他",
+          "她",
+          "买",
+          "吃",
+          "晓得",
+          "儿",
+          "娃儿",
+          "晚上",
+          "money",
+          "婆娘",
+          "喝"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.1366,
+        "rank": 7,
+        "within_variance_share": 0.0135,
+        "words_at_negative_end": [
+          "被",
+          "却",
+          "了",
+          "cypher",
+          "谁",
+          "最后",
+          "孤独",
+          "沉默",
+          "/",
+          "没有",
+          "痛苦",
+          "( live"
+        ],
+        "words_at_positive_end": [
+          "baby",
+          "it",
+          "we",
+          "money",
+          "一起",
+          "我 一起",
+          "喝",
+          "每天",
+          "烦恼",
+          "on",
+          "兄弟",
+          "be"
+        ]
+      },
+      {
+        "between_share_of_total_along_direction": 0.1383,
+        "rank": 8,
+        "within_variance_share": 0.0118,
+        "words_at_negative_end": [
+          "like",
+          "杀",
+          "my",
+          "地狱",
+          "敌人",
+          "u",
+          "血",
+          "鲜血",
+          "直接",
+          "老子",
+          "you",
+          "刀"
+        ],
+        "words_at_positive_end": [
+          "自己",
+          "梦想",
+          "生活",
+          "说唱",
+          "努力",
+          "现在",
+          "音乐",
+          "年",
+          "未来",
+          "过",
+          "也",
+          "成功"
+        ]
+      }
+    ]
+  },
+  "privacy": "aggregate only; the correlated words are common vocabulary"
+}
