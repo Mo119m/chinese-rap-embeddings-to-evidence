@@ -1,0 +1,92 @@
+{
+  "analysis": "contrastive fine-tuning of BGE-M3 for label identity on corpus v3",
+  "corpus": {
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231
+  },
+  "design": {
+    "batch_anchors": 8,
+    "collaboration_titles_excluded_from_training": 2085,
+    "device": "cuda",
+    "dry_run": false,
+    "epochs": 2,
+    "hard_negative_pool": "20 nearest other-label chunks in the frozen space (v3 vectors)",
+    "hard_negatives_per_anchor": 2,
+    "held_out_labels": 34,
+    "label_string_masked_in_all_text": true,
+    "learning_rate": 0.0002,
+    "lora_rank": 16,
+    "max_length_tokens": 512,
+    "model": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181",
+    "positive": "same label, different leakage group",
+    "queue_size": 4096,
+    "steps": 3774,
+    "tag": "_queue4096",
+    "temperature": 0.05,
+    "test_fold": 0,
+    "trainable_parameters": 7110656,
+    "unit": "chunk (stanza)"
+  },
+  "paired_contrasts": {
+    "test_fold": [
+      {
+        "ci95": [
+          -0.2865,
+          -0.2427
+        ],
+        "excludes_zero": true,
+        "minus": "frozen_masked",
+        "mrr_difference": -0.265,
+        "system": "fine_tuned"
+      }
+    ],
+    "unseen_labels": [
+      {
+        "ci95": [
+          -0.2402,
+          -0.1965
+        ],
+        "excludes_zero": true,
+        "minus": "frozen_masked",
+        "mrr_difference": -0.218,
+        "system": "fine_tuned"
+      }
+    ]
+  },
+  "privacy": "aggregate only; vectors and adapter weights are private",
+  "reading": "the frozen row is BGE-M3 on the same masked text under the same protocol, so the difference is what the corpus taught the encoder; the unseen-label row is whether what it learned is identity in general or these authors in particular",
+  "results": {
+    "fine_tuned": {
+      "test_fold": {
+        "mrr": 0.0212,
+        "queries": 1205,
+        "recall_at_1": 0.0017,
+        "recall_at_10": 0.0315
+      },
+      "unseen_labels": {
+        "mrr": 0.0317,
+        "queries": 1050,
+        "recall_at_10": 0.0533
+      }
+    },
+    "frozen_masked": {
+      "test_fold": {
+        "mrr": 0.2871,
+        "queries": 1205,
+        "recall_at_1": 0.1867,
+        "recall_at_10": 0.4888
+      },
+      "unseen_labels": {
+        "mrr": 0.248,
+        "queries": 1050,
+        "recall_at_10": 0.4286
+      }
+    }
+  },
+  "training_loss": {
+    "first_50_mean": 5.4042,
+    "last_50_mean": 8.2367
+  }
+}

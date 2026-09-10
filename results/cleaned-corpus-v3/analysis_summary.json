@@ -1,12 +1,12 @@
 {
   "artifact_id": "chinese-rap-cleaned-corpus-v3",
   "chunks": {
-    "after": 24277,
+    "after": 24237,
     "before": 25026,
-    "touched": 3622,
-    "touched_share": 0.1447
+    "touched": 3876,
+    "touched_share": 0.1549
   },
-  "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+  "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
   "derived_from": {
     "chunks": 25026,
     "corpus_v2_content_sha256": "8102da32084496fac0fb51c7b78485dec9e216696ff98e21b922fa1708b4313b",
@@ -18,28 +18,28 @@
     "version": "MB-001.1"
   },
   "detector_hits_kept_as_lyric": {
-    "bracketed_annotation": 15,
+    "bracketed_annotation": 12,
     "name_extension": 23,
-    "name_list": 157,
+    "name_list": 150,
     "organisation": 652
   },
-  "file_sha256": "f7e0aa423c12a6e5334e57c1d3bd78f0b6bcc9478b2f96dbabe2d50c0b415a51",
+  "file_sha256": "a845f68fbf171875133bba618c5b2962c86dbd25de6da861b6b4993a68314362",
   "kept_on_purpose": [
     "bracketed short spans such as (yeah) -- backing vocals and ad-libs",
     "a song's mention of its own artist -- a lyric, controlled elsewhere"
   ],
   "lines": {
-    "after": 545501,
+    "after": 544748,
     "before": 549646,
-    "removed": 4145,
-    "removed_share": 0.0075
+    "removed": 4898,
+    "removed_share": 0.0089
   },
   "metadata_block_by_detector_rule": {
-    "bracketed_annotation": 39,
+    "bracketed_annotation": 42,
     "contact": 96,
     "copyright": 19,
     "name_extension": 229,
-    "name_list": 614,
+    "name_list": 621,
     "organisation": 224,
     "role_prefix": 86,
     "sample_attribution": 7
@@ -48,12 +48,18 @@
   "removed_by_rule": {
     "bracket_line_kept_as_lyric": 2,
     "bracket_marker": 184,
-    "chunks_dropped_empty": 693,
+    "chunks_dropped_empty": 733,
     "chunks_dropped_show_transcript": 56,
     "credit_tag_line": 684,
     "digits_only": 365,
+    "feat_line": 5,
+    "handle_line": 519,
     "html": 43,
-    "metadata_block": 1314,
+    "metadata_block": 1324,
+    "pipe_credit_line": 12,
+    "production_line": 134,
+    "publisher_or_domain_line": 6,
+    "role_by_line": 67,
     "role_line": 456,
     "section_header": 18,
     "show_transcript_line": 1062,
@@ -65,8 +71,8 @@
     "after": 7379,
     "before": 7391,
     "dropped_as_show_transcript": 2,
-    "touched": 2630,
-    "touched_share": 0.3558
+    "touched": 2788,
+    "touched_share": 0.3772
   },
-  "version": "chinese-rap-cleaned-corpus-v3/1.2.0"
+  "version": "chinese-rap-cleaned-corpus-v3/1.3.0"
 }

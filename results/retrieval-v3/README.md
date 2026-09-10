@@ -360,6 +360,31 @@ less. The fusion that wins over all labels loses to the words alone when every c
 is a content rival and wins again as the candidates diversify: part of what the semantic
 component contributes to identity is content.
 
+## Contrastive fine-tuning with a cross-batch memory: collapse (`identity_encoder_fold0_queue4096.json`)
+
+The same run with a 4,096-embedding queue of recent (stale) embeddings in every
+denominator, the fix proposed for the eight-labels-per-step batch. Test-fold MRR 0.0212
+(chance 0.019), unseen labels 0.0317; the training loss rose from 5.4 to 8.24 ≈ ln(4,120),
+the value at which every column of the denominator is equally likely. The vectors
+explain it:
+
+| chunk vectors (2,000 sampled) | mean pairwise cosine | effective rank |
+|---|---|---|
+| frozen, masked text | 0.496 | 265 |
+| fine-tuned, no queue | 0.798 | 138 |
+| fine-tuned, queue | 1.000 | 4 |
+
+Reading. The queue run collapsed: every chunk maps to the same point, so the loss cannot
+distinguish anything and settles at ln(K). The mechanism is the known one for cross-batch
+memory without a momentum encoder: the queue holds vectors from an encoder that no longer
+exists, the cheapest way to be far from all of them is to move the whole space, and the
+in-batch terms tie. The no-queue run had already contracted the space by half (mean cosine
+0.50 → 0.80, effective rank 265 → 138) — which is why it lost on raw cosine yet gained
+after whitening. Both runs say the same thing: at this learning rate and temperature the
+LoRA fine-tune shrinks the representation rather than sharpening it. The next run uses a
+momentum encoder for the queue (MoCo), a collapse guard on the batch cosine, and a lower
+learning rate; the fold-0 baseline is repeated on corpus 1.3.0 for comparison.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,676 over 512; all 226 labels have at least two

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Loading corpus v3, the cleaned table, for the downstream builders.
 
-Corpus v3 (PD-003) is corpus v2 with metadata lines removed from the lyric text and 693
+Corpus v3 (PD-003) is corpus v2 with metadata lines removed from the lyric text and 733
 empty chunks dropped. Its rows carry the same columns and identifiers, so leakage groups
 and components resolve exactly as before. This module loads the table, refuses any table
 whose content digest differs from the recorded one, and attaches a vector set:
@@ -28,8 +28,8 @@ from build_downstream_retrieval_v2 import corpus_content_sha256
 
 csv.field_size_limit(10 ** 9)
 
-V3_CONTENT_SHA256 = "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25"  # v3/1.2.0
-EXPECTED_CHUNKS = 24277
+V3_CONTENT_SHA256 = "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4"  # v3/1.3.0
+EXPECTED_CHUNKS = 24237
 EXPECTED_SONGS = 7379
 
 

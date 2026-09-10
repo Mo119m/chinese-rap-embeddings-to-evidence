@@ -230,6 +230,27 @@ def build(args) -> int:
     # the vectors themselves (they carry no gradient, so they are slightly stale; XBM).
     queue_e = torch.zeros((0, 1024), device=device)
     queue_labels = torch.zeros((0,), dtype=torch.long, device=device)
+    # Momentum encoder for the queue (MoCo, He et al. 2020): the first queue run collapsed
+    # to a single point (mean pairwise cosine 1.000, loss at ln K) because the queue held
+    # vectors of an encoder that no longer existed. With --momentum m > 0 the queue is
+    # filled by an exponential moving average of the LoRA weights, which drifts slowly
+    # enough for its old entries to stay comparable. The EMA is a second copy of the
+    # trainable parameters only; encoding with it swaps the weights in and out.
+    trainable_named = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
+    ema = {n: p.detach().clone() for n, p in trainable_named} if args.momentum > 0 else None
+
+    def encode_with_ema(encoded):
+        live = {n: p.detach().clone() for n, p in trainable_named}
+        with torch.no_grad():
+            for n, p in trainable_named:
+                p.copy_(ema[n])
+            with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=device == "cuda"):
+                keys = torch.nn.functional.normalize(model(**encoded).last_hidden_state[:, 0].float(), dim=-1)
+            for n, p in trainable_named:
+                p.copy_(live[n])
+        return keys
+
+    cohesion = []   # mean pairwise cosine of the batch embeddings, every 50 steps: the collapse guard
     for epoch in range(args.epochs):
         rng.shuffle(anchors)
         for start in range(0, len(anchors), args.batch_size):
@@ -264,7 +285,8 @@ def build(args) -> int:
             logits_b = logits_b.masked_fill(same_b, float("-inf"))
             loss = (loss + torch.nn.functional.cross_entropy(logits_b, torch.arange(n, device=device))) / 2
             if args.queue_size > 0:
-                queue_e = torch.cat([queue_e, emb.detach()])[-args.queue_size:]
+                keys = encode_with_ema(enc) if ema is not None else emb.detach()
+                queue_e = torch.cat([queue_e, keys])[-args.queue_size:]
                 queue_labels = torch.cat([queue_labels, torch.cat([labels_a, labels_all])])[-args.queue_size:]
             optimiser.zero_grad(set_to_none=True)
             loss.backward()
@@ -272,10 +294,21 @@ def build(args) -> int:
             optimiser.step()
             schedule.step()
             losses.append(float(loss))
+            if ema is not None:
+                with torch.no_grad():
+                    for n, p in trainable_named:
+                        ema[n].mul_(args.momentum).add_(p.detach(), alpha=1.0 - args.momentum)
             step += 1
             if step % 50 == 0 or step == total_steps:
-                print(f"  step {step}/{total_steps}  loss {np.mean(losses[-50:]):.4f}  "
+                with torch.no_grad():
+                    sims = emb.detach() @ emb.detach().T
+                    off = sims[~torch.eye(len(sims), dtype=torch.bool, device=sims.device)]
+                    cohesion.append(round(float(off.mean()), 4))
+                print(f"  step {step}/{total_steps}  loss {np.mean(losses[-50:]):.4f}  batch cosine {cohesion[-1]:.3f}  "
                       f"{(time.time() - started) / 60:.1f} min", flush=True)
+                if len(cohesion) >= 2 and min(cohesion[-2:]) > args.collapse_guard:
+                    raise SystemExit(f"representation collapsed: batch cosine {cohesion[-2:]} above {args.collapse_guard} "
+                                     f"at step {step}; stopping rather than scoring a degenerate space")
         if step >= total_steps:
             break
 
@@ -311,7 +344,8 @@ def build(args) -> int:
                    "test_fold": args.test_fold, "held_out_labels": int(held.sum()), "epochs": args.epochs, "steps": step,
                    "batch_anchors": args.batch_size, "temperature": args.temperature, "learning_rate": args.learning_rate,
                    "lora_rank": args.lora_rank, "trainable_parameters": trainable_params,
-                   "queue_size": args.queue_size, "tag": args.tag,
+                   "queue_size": args.queue_size, "momentum": args.momentum, "collapse_guard": args.collapse_guard,
+                   "batch_cosine_every_50_steps": cohesion, "tag": args.tag,
                    "model": f"{MODEL_ID}@{MODEL_REVISION}", "device": device, "dry_run": args.dry_run},
         "training_loss": {"first_50_mean": round(float(np.mean(losses[:50])), 4) if losses else None,
                           "last_50_mean": round(float(np.mean(losses[-50:])), 4) if losses else None},
@@ -346,6 +380,10 @@ def main() -> int:
     parser.add_argument("--queue-size", type=int, default=0,
                         help="cross-batch memory of recent chunk embeddings used as extra negatives "
                              "(Wang et al. 2020, XBM); 0 keeps only in-batch and hard negatives")
+    parser.add_argument("--momentum", type=float, default=0.0,
+                        help="EMA coefficient of a momentum encoder that fills the queue (MoCo); 0 = the live encoder")
+    parser.add_argument("--collapse-guard", type=float, default=0.98,
+                        help="stop when the batch's mean pairwise cosine stays above this at two consecutive checks")
     parser.add_argument("--tag", default="", help="suffix for this run's output names, e.g. _queue4096")
     parser.add_argument("--dry-run", action="store_true", help="20 steps, to prove the pipeline")
     parser.add_argument("--allow-cpu", action="store_true")
