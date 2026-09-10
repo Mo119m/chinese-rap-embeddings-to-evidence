@@ -201,6 +201,27 @@ trade vocabulary of rap adds nothing. What remains open is only what neither NER
 saw, and by the frequency-band anatomy that lives in the rare quartile, which carries
 nothing. The finding does not rest on NER recall.
 
+## One language model per label (`ngram_language_model_attribution.json`)
+
+The generative counterpart of the TF-IDF spaces: an interpolated character n-gram model
+per label (orders 1–5, fixed interpolation weights, add-0.5 unigram floor, n-grams seen
+fewer than twice not modelled; 1.1 M five-grams), the query scored by its mean
+log-probability per character with its own leakage group subtracted from every label it
+touches.
+
+| system | MRR | R@1 | R@10 |
+|---|---|---|---|
+| n-gram LM, orders 1–3 | 0.3805 | — | — |
+| n-gram LM, orders 1–5 | 0.3952 | 0.3000 | 0.5781 |
+| character 2–5-gram TF-IDF | 0.4275 | | |
+| jieba words TF-IDF | 0.4977 | | |
+
+Orders 1–5 − character TF-IDF −0.032 [−0.039, −0.024]; − words −0.103 [−0.111, −0.095].
+Reading. Scoring a song by how well the label's own character model predicts it does not
+reach the discriminative character space and sits ten points under the word space; the
+interpolation weights are fixed, not tuned, so this is a floor for the model class rather
+than its ceiling. The word space's lead is not an artefact of TF-IDF weighting.
+
 ## Identity among content rivals (`content_rival_test.json`)
 
 The retrieval version of Wegmann et al.'s style-or-content choice. For each query the

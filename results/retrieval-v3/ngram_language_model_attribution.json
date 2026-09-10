@@ -1,0 +1,107 @@
+{
+  "analysis": "per-label character n-gram language models scored by log-likelihood, against the TF-IDF spaces",
+  "corpus": {
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231
+  },
+  "design": {
+    "leave_group_out": "the query's leakage group is subtracted from every label it touches before scoring",
+    "model": "interpolated character n-gram model per label, orders 1..N, fixed interpolation weights, add-0.5 unigram floor, n-grams seen fewer than 2 times in the corpus not modelled",
+    "reference": "Peng et al. 2003 (character n-gram LMs for attribution); authorial language models, PLOS One 2025 (per-author GPT-2 read by perplexity)",
+    "score": "mean log-probability per character",
+    "text": "the song's cleaned text, lower-cased, whitespace runs folded to one space",
+    "weights": "each song's counts enter its label's model with the builder's per-(group, label) weight"
+  },
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          -0.0394,
+          -0.0235
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_char_2_5",
+        "mrr_difference": -0.0316,
+        "system": "ngram_lm_1_to_5"
+      },
+      {
+        "ci95": [
+          -0.1112,
+          -0.0953
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_words",
+        "mrr_difference": -0.1032,
+        "system": "ngram_lm_1_to_5"
+      },
+      {
+        "ci95": [
+          0.0109,
+          0.0186
+        ],
+        "excludes_zero": true,
+        "minus": "ngram_lm_1_to_3",
+        "mrr_difference": 0.0147,
+        "system": "ngram_lm_1_to_5"
+      },
+      {
+        "ci95": [
+          -0.0547,
+          -0.0381
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_char_2_5",
+        "mrr_difference": -0.0463,
+        "system": "ngram_lm_1_to_3"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "systems": {
+    "lexical_char_2_5": {
+      "mrr": 0.4275
+    },
+    "lexical_words": {
+      "mrr": 0.4977
+    },
+    "ngram_lm_1_to_3": {
+      "lambdas": [
+        0.15,
+        0.35,
+        0.5
+      ],
+      "modelled_ngrams_by_order": {
+        "1": 6487,
+        "2": 243678,
+        "3": 720728
+      },
+      "mrr": 0.3803,
+      "orders": 3,
+      "recall_at_1": 0.2874,
+      "recall_at_10": 0.5561
+    },
+    "ngram_lm_1_to_5": {
+      "lambdas": [
+        0.08,
+        0.12,
+        0.2,
+        0.25,
+        0.35
+      ],
+      "modelled_ngrams_by_order": {
+        "1": 6487,
+        "2": 243678,
+        "3": 720728,
+        "4": 1011837,
+        "5": 1119877
+      },
+      "mrr": 0.3952,
+      "orders": 5,
+      "recall_at_1": 0.3,
+      "recall_at_10": 0.5781
+    }
+  }
+}
