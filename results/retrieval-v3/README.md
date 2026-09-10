@@ -222,6 +222,32 @@ reach the discriminative character space and sits ten points under the word spac
 interpolation weights are fixed, not tuned, so this is a floor for the model class rather
 than its ceiling. The word space's lead is not an artefact of TF-IDF weighting.
 
+## Regional variety inside the common-word signal (`dialect_marker_identity.json`)
+
+A hand-compiled catalogue of function words, particles and pronouns for seven varieties
+(Cantonese, Southwestern Mandarin, Northeastern, Beijing, Wu, Min/Taiwan, Xiang; the list
+is published in the JSON) is applied to the text only. Marker tokens are 0.55% of all word
+tokens; 28 of 226 labels lean to a variety by the rule in the file (16 Southwestern
+Mandarin, 6 Cantonese, 3 Northeastern, 3 Beijing).
+
+| | MRR |
+|---|---|
+| word space | 0.4977 |
+| word space, every marker token removed | 0.4972 (−0.0003 [−0.0018, +0.0012]) |
+| markers alone | undefined (most labels have none) |
+
+Among the word space's wrong top-1 answers whose true label leans to a variety, the wrong
+label leans to the same variety 26.5% of the time against 4.9% if wrong labels were drawn
+at random (×5.5); with every marker token removed from the space it is still 24.8%
+against 4.8% (×5.1).
+
+Reading. The marker words themselves carry no measurable identity, yet the space confuses
+rappers within a variety five times more often than chance even when those words are
+gone: the regional variety is carried by the broad distribution of ordinary words, not by
+a shortlist of dialect words. Part of the common-word identity is therefore a shared
+language variety rather than the individual, at least for the eighth of labels that lean
+to one; the lean is derived from the text alone, never from biography.
+
 ## Identity among content rivals (`content_rival_test.json`)
 
 The retrieval version of Wegmann et al.'s style-or-content choice. For each query the
