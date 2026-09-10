@@ -222,6 +222,38 @@ reach the discriminative character space and sits ten points under the word spac
 interpolation weights are fixed, not tuned, so this is a floor for the model class rather
 than its ceiling. The word space's lead is not an artefact of TF-IDF weighting.
 
+## A purpose-built style embedding as a fourth space (`style_embedding_space.json`)
+
+mStyleDistance (Patel et al. 2025): xlm-roberta-base trained by triplet loss on GPT-4-
+written sentence pairs that keep the content and change one of about forty style features,
+in nine languages including Simplified Chinese; never trained on lyrics or on this corpus.
+Chunks embedded with the pinned release, song = mean of chunk vectors, protocol unchanged.
+
+| space | MRR | R@1 | R@10 |
+|---|---|---|---|
+| style, cosine | 0.0541 | 0.0152 | 0.1112 |
+| style, within-label whitening | 0.2088 | 0.1268 | 0.3706 |
+| semantic (BGE-M3), cosine | 0.3015 | 0.2030 | 0.4947 |
+| semantic, within-label whitening | 0.4196 | 0.3218 | 0.6071 |
+| words | 0.4977 | 0.4048 | 0.6738 |
+| whitened style + words (fusion) | 0.4147 | | |
+| whitened semantic + words (fusion) | 0.5386 | | |
+| whitened style + whitened semantic + words | 0.5186 | | |
+
+Style − semantic (cosine) −0.246; whitened style − whitened semantic −0.210 [−0.221,
+−0.199]; words − whitened style +0.297; adding the style space to the semantic+words
+fusion −0.022 [−0.028, −0.017].
+
+What could make this wrong: the model does cover Chinese, so language is not the reason;
+its own authorship-verification scores in the paper are modest (ROC-AUC 0.60–0.73 on PAN
+languages), so it is a weak authorship signal by design; and its forty features are
+generic sentence-level dimensions (formality, emoji, contractions, ...) elicited from
+GPT-4 paraphrases, not lyric style. Reading, within those limits: the generic style
+dimensions a content-independent embedding encodes are not what identifies a rapper;
+even whitened, the space holds half the identity the semantic space does and adds
+nothing to the word space. What identifies a rapper is specific word usage, not style in
+the sense such embeddings measure.
+
 ## Regional variety inside the common-word signal (`dialect_marker_identity.json`)
 
 A hand-compiled catalogue of function words, particles and pronouns for seven varieties

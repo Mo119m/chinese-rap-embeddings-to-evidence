@@ -1,0 +1,140 @@
+{
+  "analysis": "a content-independent style embedding (mStyleDistance) as a fourth space under the protocol",
+  "corpus": {
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231
+  },
+  "design": {
+    "fusion": "z-score mean of score rows",
+    "reference": "Patel et al. 2025, StyleDistance / mStyleDistance: contrastive training on LLM-written parallel sentences that keep content and change one style feature",
+    "song_vector": "mean of the chunk embeddings, unit length, as for BGE-M3",
+    "whitening": "fold-wise as in identity_probe (five leakage-group folds, Ledoit-Wolf, per-(group, label) weights)"
+  },
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          -0.2547,
+          -0.2371
+        ],
+        "excludes_zero": true,
+        "minus": "semantic_cosine",
+        "mrr_difference": -0.2463,
+        "system": "style_cosine"
+      },
+      {
+        "ci95": [
+          0.145,
+          0.1607
+        ],
+        "excludes_zero": true,
+        "minus": "style_cosine",
+        "mrr_difference": 0.1531,
+        "system": "style_within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.2206,
+          -0.1994
+        ],
+        "excludes_zero": true,
+        "minus": "semantic_within_author_whitening",
+        "mrr_difference": -0.2103,
+        "system": "style_within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.2861,
+          0.3073
+        ],
+        "excludes_zero": true,
+        "minus": "style_within_author_whitening",
+        "mrr_difference": 0.2967,
+        "system": "words"
+      },
+      {
+        "ci95": [
+          -0.0935,
+          -0.0782
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0857,
+        "system": "fusion_style_words"
+      },
+      {
+        "ci95": [
+          -0.0279,
+          -0.0166
+        ],
+        "excludes_zero": true,
+        "minus": "fusion_semantic_words",
+        "mrr_difference": -0.0224,
+        "system": "fusion_style_semantic_words"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "style_model": {
+    "dimension": 768,
+    "max_seq_length": 512,
+    "model": "StyleDistance/mstyledistance",
+    "revision": "d66ed25e48225a503b21a65bc804caf06c886f96",
+    "vectors_sha256": "ecbb2930afc44de26c2ba757869b8b83c9ad4ba3eef00f4c2048e9c41da38a69"
+  },
+  "systems": {
+    "fusion_semantic_words": {
+      "mrr": 0.5386,
+      "recall_at_1": 0.4376,
+      "recall_at_10": 0.7266
+    },
+    "fusion_style_semantic_words": {
+      "mrr": 0.5186,
+      "recall_at_1": 0.4116,
+      "recall_at_10": 0.7227
+    },
+    "fusion_style_words": {
+      "mrr": 0.4147,
+      "recall_at_1": 0.3116,
+      "recall_at_10": 0.6208
+    },
+    "semantic_cosine": {
+      "mrr": 0.3015,
+      "recall_at_1": 0.203,
+      "recall_at_10": 0.4947
+    },
+    "semantic_total_whitening": {
+      "mrr": 0.4016,
+      "recall_at_1": 0.3071,
+      "recall_at_10": 0.5814
+    },
+    "semantic_within_author_whitening": {
+      "mrr": 0.4196,
+      "recall_at_1": 0.3218,
+      "recall_at_10": 0.6071
+    },
+    "style_cosine": {
+      "mrr": 0.0541,
+      "recall_at_1": 0.0152,
+      "recall_at_10": 0.1112
+    },
+    "style_total_whitening": {
+      "mrr": 0.1987,
+      "recall_at_1": 0.1206,
+      "recall_at_10": 0.3531
+    },
+    "style_within_author_whitening": {
+      "mrr": 0.2088,
+      "recall_at_1": 0.1268,
+      "recall_at_10": 0.3706
+    },
+    "words": {
+      "mrr": 0.4977,
+      "recall_at_1": 0.4048,
+      "recall_at_10": 0.6738
+    }
+  }
+}
