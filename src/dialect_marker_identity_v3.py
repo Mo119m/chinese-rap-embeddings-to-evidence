@@ -179,6 +179,43 @@ def build(private_root: Path, out_dir: Path) -> int:
         print(f"  {name}: wrong top-1 answers sharing the true label's variety {c['same_variety_share_observed']:.1%} "
               f"observed vs {c['same_variety_share_if_random']:.1%} if random (x{c['enrichment']})", flush=True)
 
+    # is the enrichment carried by a few labels? per leaning label (unnamed), the same-variety
+    # share of its wrong answers, and the enrichment with each label left out in turn
+    pred = predicted["markers_removed"]
+    wrong = np.flatnonzero(pred != label_index)
+    per_label = defaultdict(lambda: [0, 0])
+    for q in wrong:
+        l = int(label_index[q])
+        if lean[l] < 0:
+            continue
+        per_label[l][0] += 1
+        per_label[l][1] += int(lean[pred[q]] == lean[l])
+    rows_out = sorted(({"variety": varieties[lean[l]], "wrong_answers": n, "same_variety": s,
+                        "share": round(s / n, 3) if n else None} for l, (n, s) in per_label.items()),
+                      key=lambda r: -r["wrong_answers"])
+    leave_one_out = []
+    for l in per_label:
+        keep = [q for q in wrong if lean[label_index[q]] >= 0 and int(label_index[q]) != l]
+        same = [lean[pred[q]] == lean[label_index[q]] for q in keep]
+        exp = []
+        for q in keep:
+            others = np.delete(np.arange(label_count), label_index[q])
+            exp.append(float(np.mean(lean[others] == lean[label_index[q]])))
+        if same and exp and np.mean(exp) > 0:
+            leave_one_out.append(round(float(np.mean(same)) / float(np.mean(exp)), 2))
+    labels_with_share_above_random = sum(1 for r in rows_out if r["share"] is not None and r["wrong_answers"] >= 5
+                                         and r["share"] > confusion["markers_removed"]["same_variety_share_if_random"])
+    labels_with_5_or_more_wrong = sum(1 for r in rows_out if r["wrong_answers"] >= 5)
+    per_label_report = {"leaning_labels_with_wrong_answers": len(rows_out),
+                        "labels_with_at_least_5_wrong_answers": labels_with_5_or_more_wrong,
+                        "of_which_same_variety_share_above_random": labels_with_share_above_random,
+                        "same_variety_share_by_label": rows_out,
+                        "enrichment_leave_one_label_out_min_max": [min(leave_one_out), max(leave_one_out)] if leave_one_out else None}
+    print(f"  per label (markers removed): {labels_with_share_above_random} of {labels_with_5_or_more_wrong} leaning labels with >=5 "
+          f"wrong answers sit above the random share; leave-one-label-out enrichment "
+          f"{per_label_report['enrichment_leave_one_label_out_min_max']}", flush=True)
+    confusion["per_label_markers_removed"] = per_label_report
+
     pairs = [("markers_removed", "words_all"), ("markers_only", "words_all")]
     contrasts = paired_group_bootstrap(rr, weights, group_ids, np.ones(len(songs), dtype=bool),
                                        [(a, b) for a, b in pairs if a in rr and b in rr])

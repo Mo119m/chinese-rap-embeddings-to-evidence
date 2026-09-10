@@ -249,6 +249,185 @@
       "wrong_top1_queries": 4307,
       "wrong_top1_queries_with_a_leaning_true_label": 508
     },
+    "per_label_markers_removed": {
+      "enrichment_leave_one_label_out_min_max": [
+        4.81,
+        5.33
+      ],
+      "labels_with_at_least_5_wrong_answers": 27,
+      "leaning_labels_with_wrong_answers": 28,
+      "of_which_same_variety_share_above_random": 18,
+      "same_variety_share_by_label": [
+        {
+          "same_variety": 4,
+          "share": 0.111,
+          "variety": "cantonese",
+          "wrong_answers": 36
+        },
+        {
+          "same_variety": 14,
+          "share": 0.4,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 35
+        },
+        {
+          "same_variety": 1,
+          "share": 0.029,
+          "variety": "cantonese",
+          "wrong_answers": 35
+        },
+        {
+          "same_variety": 9,
+          "share": 0.273,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 33
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "northeastern",
+          "wrong_answers": 33
+        },
+        {
+          "same_variety": 18,
+          "share": 0.562,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 32
+        },
+        {
+          "same_variety": 11,
+          "share": 0.379,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 29
+        },
+        {
+          "same_variety": 9,
+          "share": 0.321,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 28
+        },
+        {
+          "same_variety": 8,
+          "share": 0.296,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 27
+        },
+        {
+          "same_variety": 11,
+          "share": 0.458,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 24
+        },
+        {
+          "same_variety": 8,
+          "share": 0.348,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 23
+        },
+        {
+          "same_variety": 6,
+          "share": 0.286,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 21
+        },
+        {
+          "same_variety": 1,
+          "share": 0.059,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 17
+        },
+        {
+          "same_variety": 6,
+          "share": 0.4,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 15
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "northeastern",
+          "wrong_answers": 14
+        },
+        {
+          "same_variety": 1,
+          "share": 0.077,
+          "variety": "cantonese",
+          "wrong_answers": 13
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "beijing_northern",
+          "wrong_answers": 12
+        },
+        {
+          "same_variety": 5,
+          "share": 0.5,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 10
+        },
+        {
+          "same_variety": 4,
+          "share": 0.4,
+          "variety": "cantonese",
+          "wrong_answers": 10
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "beijing_northern",
+          "wrong_answers": 10
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "beijing_northern",
+          "wrong_answers": 9
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 8
+        },
+        {
+          "same_variety": 3,
+          "share": 0.375,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 8
+        },
+        {
+          "same_variety": 5,
+          "share": 0.714,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 7
+        },
+        {
+          "same_variety": 2,
+          "share": 0.333,
+          "variety": "southwestern_mandarin",
+          "wrong_answers": 6
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "cantonese",
+          "wrong_answers": 5
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "cantonese",
+          "wrong_answers": 5
+        },
+        {
+          "same_variety": 0,
+          "share": 0.0,
+          "variety": "northeastern",
+          "wrong_answers": 3
+        }
+      ]
+    },
     "words_all": {
       "enrichment": 5.46,
       "same_variety_share_if_random": 0.0485,

@@ -273,12 +273,20 @@ label leans to the same variety 26.5% of the time against 4.9% if wrong labels w
 at random (×5.5); with every marker token removed from the space it is still 24.8%
 against 4.8% (×5.1).
 
+Per label (markers removed): 18 of the 27 leaning labels with at least five wrong answers
+sit above the random share; leaving any one label out moves the enrichment only between
+4.8× and 5.3×, so no single label carries it. But one variety does: the sixteen
+Southwestern Mandarin labels are confused with each other 27–71% of the time in most
+cases, while the Cantonese (6), Northeastern (3) and Beijing (3) labels are mostly at or
+near zero — too few labels of each to say anything about them.
+
 Reading. The marker words themselves carry no measurable identity, yet the space confuses
-rappers within a variety five times more often than chance even when those words are
+Southwestern Mandarin rappers with each other far above chance even when those words are
 gone: the regional variety is carried by the broad distribution of ordinary words, not by
 a shortlist of dialect words. Part of the common-word identity is therefore a shared
-language variety rather than the individual, at least for the eighth of labels that lean
-to one; the lean is derived from the text alone, never from biography.
+language variety rather than the individual, established for the largest regional scene
+in the corpus and open for the others; the lean is derived from the text alone, never
+from biography, and the catalogue is a first cut.
 
 ## Identity among content rivals (`content_rival_test.json`)
 
