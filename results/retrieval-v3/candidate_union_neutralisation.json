@@ -1,0 +1,174 @@
+{
+  "analysis": "word-space neutralisation with the union of every NER candidate surface",
+  "arms": {
+    "every_named_and_culture_candidate": "plus every proposed rap-culture term (flow, beat, hook, ...)",
+    "every_named_candidate": "plus every surface either NER arm ever proposed for a named-entity type, whatever the agreement state or gate outcome",
+    "named_candidates_in_at_most_2pct_of_songs": "the catalogue plus the proposed named surfaces found in at most 2% of songs -- the ones that could be names",
+    "named_candidates_in_over_2pct_of_songs_only": "only the proposed named surfaces found in more than 2% of songs -- ordinary words the transformer tagged as names",
+    "reviewed_605": "the screened catalogue the published neutralisation uses"
+  },
+  "corpus": {
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231
+  },
+  "culture_types": [
+    "RAP_CULTURE_CONCEPT"
+  ],
+  "minimum_surface_length": 2,
+  "named_types": [
+    "PLACE",
+    "PERSON_REFERENCE",
+    "GROUP_CREW_OR_ORGANIZATION",
+    "LANGUAGE_OR_DIALECT_REFERENCE",
+    "ETHNOCULTURAL_GROUP_REFERENCE",
+    "EVENT",
+    "WORK_OR_MEDIA",
+    "BRAND_OR_PRODUCT",
+    "OTHER_CULTURAL_REFERENCE"
+  ],
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          -0.009,
+          -0.0046
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0068,
+        "system": "reviewed_605"
+      },
+      {
+        "ci95": [
+          -0.0417,
+          -0.0321
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0367,
+        "system": "every_named_candidate"
+      },
+      {
+        "ci95": [
+          -0.0233,
+          -0.0171
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0201,
+        "system": "named_candidates_in_at_most_2pct_of_songs"
+      },
+      {
+        "ci95": [
+          -0.0226,
+          -0.0138
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0181,
+        "system": "named_candidates_in_over_2pct_of_songs_only"
+      },
+      {
+        "ci95": [
+          -0.0426,
+          -0.033
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0376,
+        "system": "every_named_and_culture_candidate"
+      },
+      {
+        "ci95": [
+          -0.0348,
+          -0.0254
+        ],
+        "excludes_zero": true,
+        "minus": "reviewed_605",
+        "mrr_difference": -0.0299,
+        "system": "every_named_candidate"
+      },
+      {
+        "ci95": [
+          -0.0161,
+          -0.0107
+        ],
+        "excludes_zero": true,
+        "minus": "reviewed_605",
+        "mrr_difference": -0.0134,
+        "system": "named_candidates_in_at_most_2pct_of_songs"
+      },
+      {
+        "ci95": [
+          -0.0028,
+          0.001
+        ],
+        "excludes_zero": false,
+        "minus": "every_named_candidate",
+        "mrr_difference": -0.0009,
+        "system": "every_named_and_culture_candidate"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only; no surface is published",
+  "question": "whether the 'not names' finding could depend on NER recall",
+  "reading": "if the word space holds under the widest strip, nothing the NER could have found is what identifies a label; only what neither arm ever saw is left open",
+  "surface_inventory": {
+    "by_type_unique_surfaces": {
+      "BRAND_OR_PRODUCT": 314,
+      "ETHNOCULTURAL_GROUP_REFERENCE": 103,
+      "EVENT": 51,
+      "GROUP_CREW_OR_ORGANIZATION": 467,
+      "LANGUAGE_OR_DIALECT_REFERENCE": 64,
+      "OTHER_CULTURAL_REFERENCE": 30,
+      "PERSON_REFERENCE": 3730,
+      "PLACE": 1030,
+      "RAP_CULTURE_CONCEPT": 2347,
+      "WORK_OR_MEDIA": 146
+    },
+    "every_named_and_culture_candidate": 8132,
+    "every_named_candidate": 5915,
+    "named_candidates_in_at_most_2pct_of_songs": 5419,
+    "named_candidates_in_over_2pct_of_songs_only": 514,
+    "reviewed_605": 605,
+    "song_share_cutoff": 0.02
+  },
+  "systems": {
+    "every_named_and_culture_candidate": {
+      "characters_removed": 1437349,
+      "mrr": 0.46,
+      "share_of_text_removed": 0.1746,
+      "surfaces": 8132
+    },
+    "every_named_candidate": {
+      "characters_removed": 1379702,
+      "mrr": 0.4608,
+      "share_of_text_removed": 0.1676,
+      "surfaces": 5915
+    },
+    "named_candidates_in_at_most_2pct_of_songs": {
+      "characters_removed": 446808,
+      "mrr": 0.4775,
+      "share_of_text_removed": 0.0543,
+      "surfaces": 5419
+    },
+    "named_candidates_in_over_2pct_of_songs_only": {
+      "characters_removed": 1165194,
+      "mrr": 0.4797,
+      "share_of_text_removed": 0.1415,
+      "surfaces": 514
+    },
+    "reviewed_605": {
+      "characters_removed": 165162,
+      "mrr": 0.4908,
+      "share_of_text_removed": 0.0201,
+      "surfaces": 605
+    },
+    "words": {
+      "mrr": 0.4977
+    }
+  }
+}

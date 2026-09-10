@@ -178,6 +178,29 @@ suspect is the batch: eight labels per step where LUAR saw 128 authors. The trai
 takes a cross-batch memory of recent embeddings (`--queue-size`, XBM) so every step's
 denominator holds thousands of stanzas across all labels; that run is the next test.
 
+## Does 'not names' depend on NER recall? (`candidate_union_neutralisation.json`)
+
+The published neutralisation strips the 605 reviewed surfaces. NER recall is unmeasured,
+so the word space is also scored with everything either NER arm ever proposed for a
+named-entity type stripped, whatever the gate decided, split by how many songs a surface
+occurs in (a surface in more than 2% of songs is an ordinary word the transformer tagged
+as a name, not a name):
+
+| stripped from the word space | surfaces | share of text | MRR | vs words |
+|---|---|---|---|---|
+| nothing | — | — | 0.4977 | — |
+| the reviewed catalogue | 605 | 2.0% | 0.4915 | −0.007 [−0.009, −0.005] |
+| + every proposed named surface in ≤ 2% of songs (could be names) | 5,419 | 5.4% | 0.4775 | −0.020 [−0.023, −0.017] |
+| only proposed named surfaces in > 2% of songs (ordinary words) | 514 | 14.2% | 0.4797 | −0.018 |
+| every proposed named surface | 5,915 | 16.8% | 0.4608 | −0.037 |
+| + every proposed rap-culture term (flow, beat, hook, ...) | 8,132 | 17.5% | 0.4600 | −0.038; terms alone −0.001 [−0.003, +0.001] |
+
+Reading. Removing every name-shaped surface the NER ever considered — nine times the
+catalogue — costs two points of fifty; the catalogue already holds a third of that. The
+trade vocabulary of rap adds nothing. What remains open is only what neither NER arm ever
+saw, and by the frequency-band anatomy that lives in the rare quartile, which carries
+nothing. The finding does not rest on NER recall.
+
 ## Identity among content rivals (`content_rival_test.json`)
 
 The retrieval version of Wegmann et al.'s style-or-content choice. For each query the
