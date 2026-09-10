@@ -1,4 +1,11 @@
-# Every headline experiment, rerun on corpus v3 (build 1.2.0)
+# Every headline experiment, rerun on corpus v3
+
+> **Build note (2026-09-10 16:00).** The numbers below were computed on build 1.2.0.
+> Build 1.3.0 (about 750 further credit lines removed; 24,237 chunks, digest `cd51bf69…`)
+> is now canonical and every file here is being recomputed on it; this page is rewritten
+> when that run completes. Until then the 1.2.0 numbers stand as reported.
+
+## (1.2.0) Corpus and protocol
 
 Corpus v3 is corpus v2 with credit blocks, copied titles, track lists, HTML remnants and two
 television-episode transcripts removed from the lyric text (`results/cleaned-corpus-v3/`):
