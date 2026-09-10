@@ -15,7 +15,11 @@ audit measured, and each decision below names the fact that forced it.
   negatives       every other label in the batch, plus --hard-negatives chunks per anchor
                   drawn from the anchor's nearest neighbours by BGE-M3 cosine among OTHER
                   labels: content-controlled negatives in the sense of Wegmann et al.
-                  2022, which force style over subject
+                  2022, which force style over subject; and, with --queue-size, a
+                  cross-batch memory of recent embeddings (XBM, Wang et al. 2020), because
+                  eight anchors give eight labels per step where LUAR saw 128 authors --
+                  the first run (fold 0, no queue) lost 0.016 on the test fold and 0.054 on
+                  unseen labels against the frozen model
   masking         the label string is removed from every chunk, train and test, because
                   7.5% of chunks name their own artist and that is the first thing a
                   model would learn
@@ -220,6 +224,12 @@ def build(args) -> int:
     step = 0
     losses = []
     started = time.time()
+    # cross-batch memory: a fixed-size queue of recent embeddings and their labels. Eight
+    # anchors give eight labels per step; LUAR saw 128 authors per batch. The queue puts the
+    # last --queue-size chunks of every label into the denominator at no memory cost beyond
+    # the vectors themselves (they carry no gradient, so they are slightly stale; XBM).
+    queue_e = torch.zeros((0, 1024), device=device)
+    queue_labels = torch.zeros((0,), dtype=torch.long, device=device)
     for epoch in range(args.epochs):
         rng.shuffle(anchors)
         for start in range(0, len(anchors), args.batch_size):
@@ -241,18 +251,21 @@ def build(args) -> int:
             anchor_e, pos_e, neg_e = emb[:n], emb[n:2 * n], emb[2 * n:]
             labels_a = torch.as_tensor(chunk_label[batch_anchor], device=device)
             labels_all = torch.as_tensor(np.concatenate([chunk_label[batch_pos], chunk_label[batch_neg]]), device=device)
-            logits = anchor_e @ torch.cat([pos_e, neg_e]).T / args.temperature
+            logits = anchor_e @ torch.cat([pos_e, neg_e, queue_e]).T / args.temperature
             # every same-label column other than the assigned positive is masked out of the denominator
-            same = labels_a[:, None] == labels_all[None, :]
+            same = labels_a[:, None] == torch.cat([labels_all, queue_labels])[None, :]
             same[torch.arange(n), torch.arange(n)] = False
             logits = logits.masked_fill(same, float("-inf"))
             loss = torch.nn.functional.cross_entropy(logits, torch.arange(n, device=device))
             # symmetric term: positives as anchors against the anchors
-            logits_b = pos_e @ torch.cat([anchor_e, neg_e]).T / args.temperature
-            same_b = labels_a[:, None] == torch.cat([labels_a, labels_all[n:]])[None, :]
+            logits_b = pos_e @ torch.cat([anchor_e, neg_e, queue_e]).T / args.temperature
+            same_b = labels_a[:, None] == torch.cat([labels_a, labels_all[n:], queue_labels])[None, :]
             same_b[torch.arange(n), torch.arange(n)] = False
             logits_b = logits_b.masked_fill(same_b, float("-inf"))
             loss = (loss + torch.nn.functional.cross_entropy(logits_b, torch.arange(n, device=device))) / 2
+            if args.queue_size > 0:
+                queue_e = torch.cat([queue_e, emb.detach()])[-args.queue_size:]
+                queue_labels = torch.cat([queue_labels, torch.cat([labels_a, labels_all])])[-args.queue_size:]
             optimiser.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -283,9 +296,9 @@ def build(args) -> int:
 
     private = args.private_root / "work" / "private-identity-encoder-v3"
     private.mkdir(parents=True, exist_ok=True)
-    np.save(private / f"fine_tuned_chunk_vectors_fold{args.test_fold}.npy", tuned.astype(np.float32))
+    np.save(private / f"fine_tuned_chunk_vectors_fold{args.test_fold}{args.tag}.npy", tuned.astype(np.float32))
     np.save(private / f"frozen_masked_chunk_vectors_fold{args.test_fold}.npy", frozen.astype(np.float32))
-    model.save_pretrained(private / f"lora_fold{args.test_fold}")
+    model.save_pretrained(private / f"lora_fold{args.test_fold}{args.tag}")
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     payload = {
@@ -298,6 +311,7 @@ def build(args) -> int:
                    "test_fold": args.test_fold, "held_out_labels": int(held.sum()), "epochs": args.epochs, "steps": step,
                    "batch_anchors": args.batch_size, "temperature": args.temperature, "learning_rate": args.learning_rate,
                    "lora_rank": args.lora_rank, "trainable_parameters": trainable_params,
+                   "queue_size": args.queue_size, "tag": args.tag,
                    "model": f"{MODEL_ID}@{MODEL_REVISION}", "device": device, "dry_run": args.dry_run},
         "training_loss": {"first_50_mean": round(float(np.mean(losses[:50])), 4) if losses else None,
                           "last_50_mean": round(float(np.mean(losses[-50:])), 4) if losses else None},
@@ -308,7 +322,7 @@ def build(args) -> int:
                     "identity in general or these authors in particular"),
         "privacy": "aggregate only; vectors and adapter weights are private",
     }
-    (args.out_dir / f"identity_encoder_fold{args.test_fold}{'_dryrun' if args.dry_run else ''}.json").write_text(
+    (args.out_dir / f"identity_encoder_fold{args.test_fold}{args.tag}{'_dryrun' if args.dry_run else ''}.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="")
     print(f"\nwrote {args.out_dir}")
     return 0
@@ -329,6 +343,10 @@ def main() -> int:
     parser.add_argument("--temperature", type=float, default=0.05)
     parser.add_argument("--learning-rate", type=float, default=2e-4)
     parser.add_argument("--lora-rank", type=int, default=16)
+    parser.add_argument("--queue-size", type=int, default=0,
+                        help="cross-batch memory of recent chunk embeddings used as extra negatives "
+                             "(Wang et al. 2020, XBM); 0 keeps only in-batch and hard negatives")
+    parser.add_argument("--tag", default="", help="suffix for this run's output names, e.g. _queue4096")
     parser.add_argument("--dry-run", action="store_true", help="20 steps, to prove the pipeline")
     parser.add_argument("--allow-cpu", action="store_true")
     args = parser.parse_args()

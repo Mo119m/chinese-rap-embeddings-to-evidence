@@ -142,6 +142,42 @@ mean of one — makes it worse: what differs between labels is not how far their
 scatter but in which directions, which no Gaussian with one shared shape represents. The
 generative route ends here; the learned encoder is the next test.
 
+## Contrastive fine-tuning, fold 0 (`identity_encoder_fold0.json`, `identity_encoder_analysis_fold0.json`)
+
+BGE-M3 with LoRA (rank 16 on the attention projections, 7.1 M trainable parameters),
+symmetric InfoNCE at temperature 0.05 over stanzas: positive = another stanza of the same
+label from a different leakage group; negatives = the other seven labels in the batch plus
+two content-controlled hard negatives per anchor (nearest other-label stanzas in the
+frozen space); label strings masked from all text; collaboration-titled songs excluded
+from training; two epochs, 3,774 steps, 4.6 h on the laptop GPU. Trained on four folds
+and 192 labels; scored on fold 0 (1,205 songs) and on 34 labels never trained on (1,050
+songs), against the frozen model on the same masked text.
+
+| space, test fold | MRR | space, unseen labels | MRR |
+|---|---|---|---|
+| frozen, masked text | 0.2871 | frozen, masked text | 0.2480 |
+| fine-tuned | 0.2698 | fine-tuned | 0.1952 |
+| frozen + within-label whitening | 0.3839 | frozen + within-label whitening | 0.3400 |
+| fine-tuned + within-label whitening | **0.4189** | fine-tuned + within-label whitening | 0.3434 |
+| words | 0.4999 | words | 0.4268 |
+| frozen + words (fusion) | 0.4843 | frozen + words | 0.4056 |
+| fine-tuned + words (fusion) | 0.5022 | fine-tuned + words | 0.4111 |
+
+Contrasts: fine-tuned − frozen −0.016 [−0.036, +0.004] on the test fold and −0.054
+[−0.073, −0.036] on unseen labels; fine-tuned + whitening − frozen + whitening +0.036
+[+0.015, +0.057] on the test fold (the whitening is fitted on the training folds, which the
+tuned model has seen, so this is a bound) and +0.005 [−0.014, +0.025] on unseen labels;
+fine-tuned + words − words +0.002 [−0.010, +0.013]. Chunk queries: 0.1775 vs 0.1800.
+Songs that could be anchors and songs that could not lose alike.
+
+Reading. The training loss fell from 3.66 to 2.65 against a chance level of about 3.2,
+and what it learned shows only after whitening and only for the labels it was trained on:
+the encoder moved those labels' identity into directions cosine does not read, learned
+nothing that transfers to unseen labels, and adds nothing to the word space. The first
+suspect is the batch: eight labels per step where LUAR saw 128 authors. The trainer now
+takes a cross-batch memory of recent embeddings (`--queue-size`, XBM) so every step's
+denominator holds thousands of stanzas across all labels; that run is the next test.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,676 over 512; all 226 labels have at least two

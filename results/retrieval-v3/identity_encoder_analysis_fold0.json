@@ -1,0 +1,368 @@
+{
+  "analysis": "what the fine-tuned identity encoder learned, read with the project's own tools",
+  "chunk_queries": {
+    "test_fold": {
+      "fine_tuned": {
+        "mrr": 0.1775,
+        "queries": 4021,
+        "recall_at_1": 0.099,
+        "recall_at_10": 0.3323
+      },
+      "frozen_masked": {
+        "mrr": 0.18,
+        "queries": 4021,
+        "recall_at_1": 0.0977,
+        "recall_at_10": 0.3337
+      }
+    },
+    "unseen_labels": {
+      "fine_tuned": {
+        "mrr": 0.1283,
+        "queries": 3281,
+        "recall_at_1": 0.0634,
+        "recall_at_10": 0.2441
+      },
+      "frozen_masked": {
+        "mrr": 0.1475,
+        "queries": 3281,
+        "recall_at_1": 0.0792,
+        "recall_at_10": 0.2746
+      }
+    }
+  },
+  "corpus": {
+    "chunks": 23898,
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231
+  },
+  "design": {
+    "chunk_queries": "each chunk scored on its own against song-mean label profiles, the chunk's song's leakage group left out; bootstrap over songs after averaging chunks",
+    "fusion": "z-score mean of the dense and word score rows",
+    "held_out_labels": 34,
+    "scopes": {
+      "test_fold": 1205,
+      "unseen_labels": 1050
+    },
+    "test_fold": 0,
+    "whitening": "fitted on the training folds' non-held songs, which the tuned model was trained on; a bound on what whitening adds, not an unseen-data result",
+    "words": "jieba word TF-IDF fitted over all query songs, the protocol's lexical scorer"
+  },
+  "paired_contrasts": {
+    "by_scope": {
+      "test_fold": [
+        {
+          "ci95": [
+            -0.0358,
+            0.0043
+          ],
+          "excludes_zero": false,
+          "minus": "frozen_masked",
+          "mrr_difference": -0.016,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.1186,
+            0.1629
+          ],
+          "excludes_zero": true,
+          "minus": "fine_tuned",
+          "mrr_difference": 0.1413,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            0.0148,
+            0.0567
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": 0.036,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.1286,
+            -0.0809
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": -0.1053,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.0088,
+            0.0336
+          ],
+          "excludes_zero": true,
+          "minus": "fusion_frozen_masked_words",
+          "mrr_difference": 0.0208,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.0101,
+            0.0134
+          ],
+          "excludes_zero": false,
+          "minus": "words",
+          "mrr_difference": 0.0017,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.268,
+            -0.212
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": -0.2409,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            -0.0244,
+            0.0082
+          ],
+          "excludes_zero": false,
+          "minus": "chunk_frozen_masked",
+          "mrr_difference": -0.0082,
+          "system": "chunk_fine_tuned"
+        }
+      ],
+      "unseen_labels": [
+        {
+          "ci95": [
+            -0.0726,
+            -0.0356
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked",
+          "mrr_difference": -0.0541,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.1263,
+            0.1697
+          ],
+          "excludes_zero": true,
+          "minus": "fine_tuned",
+          "mrr_difference": 0.1479,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0136,
+            0.0251
+          ],
+          "excludes_zero": false,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": 0.0054,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.1669,
+            -0.118
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": -0.1425,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            -0.0098,
+            0.0185
+          ],
+          "excludes_zero": false,
+          "minus": "fusion_frozen_masked_words",
+          "mrr_difference": 0.0046,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.0303,
+            -0.0032
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": -0.0163,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.2572,
+            -0.2072
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": -0.232,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            -0.0602,
+            -0.0285
+          ],
+          "excludes_zero": true,
+          "minus": "chunk_frozen_masked",
+          "mrr_difference": -0.0449,
+          "system": "chunk_fine_tuned"
+        }
+      ]
+    },
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "systems": {
+    "test_fold": {
+      "fine_tuned": {
+        "mrr": 0.2698,
+        "queries": 1205,
+        "recall_at_1": 0.1635,
+        "recall_at_10": 0.4739
+      },
+      "fine_tuned_total_whitening": {
+        "mrr": 0.3708,
+        "queries": 1205,
+        "recall_at_1": 0.2739,
+        "recall_at_10": 0.5668
+      },
+      "fine_tuned_within_author_whitening": {
+        "mrr": 0.4189,
+        "queries": 1205,
+        "recall_at_1": 0.312,
+        "recall_at_10": 0.6216
+      },
+      "frozen_masked": {
+        "mrr": 0.2871,
+        "queries": 1205,
+        "recall_at_1": 0.1867,
+        "recall_at_10": 0.4888
+      },
+      "frozen_masked_total_whitening": {
+        "mrr": 0.362,
+        "queries": 1205,
+        "recall_at_1": 0.2747,
+        "recall_at_10": 0.5295
+      },
+      "frozen_masked_within_author_whitening": {
+        "mrr": 0.3839,
+        "queries": 1205,
+        "recall_at_1": 0.2888,
+        "recall_at_10": 0.5718
+      },
+      "fusion_fine_tuned_words": {
+        "mrr": 0.5022,
+        "queries": 1205,
+        "recall_at_1": 0.4008,
+        "recall_at_10": 0.6921
+      },
+      "fusion_frozen_masked_words": {
+        "mrr": 0.4843,
+        "queries": 1205,
+        "recall_at_1": 0.3867,
+        "recall_at_10": 0.6747
+      },
+      "words": {
+        "mrr": 0.4999,
+        "queries": 1205,
+        "recall_at_1": 0.4025,
+        "recall_at_10": 0.6855
+      }
+    },
+    "unseen_labels": {
+      "fine_tuned": {
+        "mrr": 0.1952,
+        "queries": 1050,
+        "recall_at_1": 0.1105,
+        "recall_at_10": 0.36
+      },
+      "fine_tuned_total_whitening": {
+        "mrr": 0.3569,
+        "queries": 1050,
+        "recall_at_1": 0.2543,
+        "recall_at_10": 0.5629
+      },
+      "fine_tuned_within_author_whitening": {
+        "mrr": 0.3434,
+        "queries": 1050,
+        "recall_at_1": 0.2362,
+        "recall_at_10": 0.5629
+      },
+      "frozen_masked": {
+        "mrr": 0.248,
+        "queries": 1050,
+        "recall_at_1": 0.1552,
+        "recall_at_10": 0.4286
+      },
+      "frozen_masked_total_whitening": {
+        "mrr": 0.3593,
+        "queries": 1050,
+        "recall_at_1": 0.2581,
+        "recall_at_10": 0.5457
+      },
+      "frozen_masked_within_author_whitening": {
+        "mrr": 0.34,
+        "queries": 1050,
+        "recall_at_1": 0.2352,
+        "recall_at_10": 0.5371
+      },
+      "fusion_fine_tuned_words": {
+        "mrr": 0.4111,
+        "queries": 1050,
+        "recall_at_1": 0.3124,
+        "recall_at_10": 0.6124
+      },
+      "fusion_frozen_masked_words": {
+        "mrr": 0.4056,
+        "queries": 1050,
+        "recall_at_1": 0.301,
+        "recall_at_10": 0.6048
+      },
+      "words": {
+        "mrr": 0.4268,
+        "queries": 1050,
+        "recall_at_1": 0.3381,
+        "recall_at_10": 0.6076
+      }
+    }
+  },
+  "who_gained_test_fold": {
+    "collaboration_title": {
+      "fine_tuned_mrr": 0.25,
+      "frozen_mrr": 0.2917,
+      "mean_gain": -0.0417,
+      "queries": 90
+    },
+    "one_or_two_chunks": {
+      "fine_tuned_mrr": 0.2784,
+      "frozen_mrr": 0.2873,
+      "mean_gain": -0.0089,
+      "queries": 805
+    },
+    "single_artist_title": {
+      "fine_tuned_mrr": 0.2714,
+      "frozen_mrr": 0.2867,
+      "mean_gain": -0.0154,
+      "queries": 1115
+    },
+    "six_or_more_chunks": {
+      "fine_tuned_mrr": 0.2398,
+      "frozen_mrr": 0.2522,
+      "mean_gain": -0.0124,
+      "queries": 230
+    },
+    "three_to_five_chunks": {
+      "fine_tuned_mrr": 0.2692,
+      "frozen_mrr": 0.3334,
+      "mean_gain": -0.0641,
+      "queries": 170
+    }
+  }
+}
