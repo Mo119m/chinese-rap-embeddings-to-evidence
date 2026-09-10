@@ -1,0 +1,114 @@
+{
+  "analysis": "the word space under the probe's transforms, and the fair best system",
+  "design": {
+    "folds": 5,
+    "rule": "every transform fitted on four folds of leakage groups and applied to the fifth; profiles from all other songs as in the protocol",
+    "seed": 20260825,
+    "svd_components": 1024,
+    "svd_variance_kept_by_fold": [
+      0.408,
+      0.4094,
+      0.4078,
+      0.4105,
+      0.409
+    ]
+  },
+  "labels": 226,
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          -0.0606,
+          -0.0495
+        ],
+        "excludes_zero": true,
+        "minus": "words_raw",
+        "mrr_difference": -0.0547,
+        "system": "words_svd_none"
+      },
+      {
+        "ci95": [
+          0.0944,
+          0.1079
+        ],
+        "excludes_zero": true,
+        "minus": "words_svd_none",
+        "mrr_difference": 0.101,
+        "system": "words_svd_total_whitening"
+      },
+      {
+        "ci95": [
+          -0.0056,
+          0.0005
+        ],
+        "excludes_zero": false,
+        "minus": "words_svd_total_whitening",
+        "mrr_difference": -0.0026,
+        "system": "words_svd_within_author_whitening"
+      },
+      {
+        "ci95": [
+          0.0325,
+          0.0451
+        ],
+        "excludes_zero": true,
+        "minus": "words_svd_within_author_whitening",
+        "mrr_difference": 0.0389,
+        "system": "fusion_whitened_words_whitened_semantic"
+      },
+      {
+        "ci95": [
+          0.0848,
+          0.0984
+        ],
+        "excludes_zero": true,
+        "minus": "fusion_raw_words_raw_semantic",
+        "mrr_difference": 0.0917,
+        "system": "fusion_whitened_words_whitened_semantic"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "queries": 7231,
+  "systems": {
+    "fusion_raw_words_raw_semantic": {
+      "mrr": 0.4899,
+      "recall_at_1": 0.3926,
+      "recall_at_10": 0.6734
+    },
+    "fusion_whitened_words_whitened_semantic": {
+      "mrr": 0.5859,
+      "recall_at_1": 0.4785,
+      "recall_at_10": 0.7843
+    },
+    "semantic_whitened_chunks": {
+      "mrr": 0.4316,
+      "recall_at_1": 0.3316,
+      "recall_at_10": 0.6262
+    },
+    "words_raw": {
+      "mrr": 0.4977,
+      "recall_at_1": 0.4048,
+      "recall_at_10": 0.6738
+    },
+    "words_svd_none": {
+      "mrr": 0.4428,
+      "recall_at_1": 0.3444,
+      "recall_at_10": 0.6279
+    },
+    "words_svd_total_whitening": {
+      "mrr": 0.549,
+      "recall_at_1": 0.4406,
+      "recall_at_10": 0.7563
+    },
+    "words_svd_within_author_whitening": {
+      "mrr": 0.5446,
+      "recall_at_1": 0.4352,
+      "recall_at_10": 0.7556
+    }
+  },
+  "verification": {
+    "words_raw_reproduces_representation_study": 0.4977
+  }
+}

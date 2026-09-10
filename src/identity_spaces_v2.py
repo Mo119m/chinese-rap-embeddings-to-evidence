@@ -67,7 +67,7 @@ OUT_DIR = ROOT / "results" / "retrieval-v2"
 SEED = 20260825
 REPLICATES = 2000
 MINIMUM_ENDINGS = 4
-from build_downstream_retrieval_v2 import expected  # noqa: E402
+from build_downstream_retrieval_v2 import corpus_version, expected  # noqa: E402
 EXPECTED_DENSE_LEXICAL_FUSION_MRR = expected(0.4756, "fusion_semantic_char")  # the decomposition's / three_spaces_v3's plain mean
 
 
@@ -326,7 +326,7 @@ def build(private_root: Path, out_dir: Path) -> int:
                                       "tied": int((a == b).sum())}
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    private_dir = private_root / "work" / "private-identity-spaces-v2"
+    private_dir = private_root / "work" / f"private-identity-spaces-{corpus_version()}"
     private_dir.mkdir(parents=True, exist_ok=True)
     buf = io.StringIO()
     fields = ["song_id", "label", "group", "endings", "covered"] + [f"rank_{n}" for n in ranks]

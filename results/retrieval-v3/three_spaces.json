@@ -1,64 +1,78 @@
 {
   "analysis": "the three spaces on corpus v3",
   "corpus": {
-    "chunks": 24308,
-    "content_sha256": "cd77392cf8d2c4059a6488d7ecbd87a29fe133a6f305b07d5210c34afd827744",
-    "groups": 5885,
+    "chunks": 24277,
+    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "groups": 5882,
     "labels": 226,
-    "queries": 7234,
-    "song_records": 7370
+    "queries": 7231,
+    "song_records": 7379
   },
-  "not_comparable_to": "results/retrieval-v2 point to point: the population differs (24,308 chunks, 7,370 songs); the v2 numbers are quoted only so the reader can see the direction",
+  "not_comparable_to": "results/retrieval-v2 point to point: the population differs (24,277 chunks, 7,379 songs); the v2 numbers are quoted only so the reader can see the direction",
   "paired_contrasts": {
     "contrasts": [
       {
         "ci95": [
-          0.1229,
-          0.1432
+          0.1218,
+          0.1422
         ],
         "excludes_zero": true,
         "minus": "semantic",
-        "mrr_difference": 0.133,
+        "mrr_difference": 0.1319,
         "system": "lexical_char_2_5"
       },
       {
         "ci95": [
-          0.0651,
-          0.0791
+          0.0645,
+          0.0788
         ],
         "excludes_zero": true,
         "minus": "lexical_char_2_5",
-        "mrr_difference": 0.0718,
+        "mrr_difference": 0.0716,
         "system": "lexical_words"
       },
       {
         "ci95": [
-          -0.01,
-          -0.0058
+          -0.0086,
+          -0.0042
         ],
         "excludes_zero": true,
         "minus": "lexical_words",
-        "mrr_difference": -0.0079,
+        "mrr_difference": -0.0064,
         "system": "lexical_words_neutralised"
       },
       {
         "ci95": [
-          0.0124,
-          0.0233
+          0.0008,
+          0.0044
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_words",
+        "mrr_difference": 0.0026,
+        "system": "lexical_words_script_neutralised"
+      },
+      {
+        "ci95": [
+          0.0128,
+          0.0239
         ],
         "excludes_zero": true,
         "minus": "lexical_char_2_5",
-        "mrr_difference": 0.0181,
+        "mrr_difference": 0.0185,
         "system": "fusion_semantic_char"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
   },
   "privacy": "aggregate only",
+  "script_neutralised_arm": {
+    "rule": "every line carrying a character of a script other than Han or Latin is dropped before segmentation; the lines stay in the corpus",
+    "songs_with_other_script_lines": 146
+  },
   "semantic_caveat": null,
   "semantic_vectors": {
     "contract": {
-      "chunks": 24308,
+      "chunks": 24277,
       "configuration": {
         "batch_size": 8,
         "block_size": 512,
@@ -70,11 +84,11 @@
         "torch": "2.11.0+cu128",
         "use_fp16": true
       },
-      "contract_version": "chinese-rap-cleaned-corpus-embeddings-v3/1.0.0",
-      "corpus_content_sha256": "cd77392cf8d2c4059a6488d7ecbd87a29fe133a6f305b07d5210c34afd827744",
+      "contract_version": "chinese-rap-cleaned-corpus-embeddings-v3/1.2.0",
+      "corpus_content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
       "dimension": 1024,
-      "embeddings_sha256": "eb5bc9402f67fe8e74c319e3123f93362f5cec1116a529454358cee37e3865c9",
-      "generated_at_utc": "2026-09-09T20:41:17.869014+00:00",
+      "embeddings_sha256": "e61ffc05deb595b2a5ba4dc4970a771388e3c127abb986f25c9df0086b5c42a4",
+      "generated_at_utc": "2026-09-09T21:39:38.121355+00:00",
       "model": {
         "id": "BAAI/bge-m3",
         "implementation": "FlagEmbedding.BGEM3FlagModel dense vectors",
@@ -84,44 +98,50 @@
       },
       "warning": "private; derived from copyrighted lyric text. Never commit or publish."
     },
-    "sha256": "eb5bc9402f67fe8e74c319e3123f93362f5cec1116a529454358cee37e3865c9",
+    "sha256": "e61ffc05deb595b2a5ba4dc4970a771388e3c127abb986f25c9df0086b5c42a4",
     "vectors": "v3"
   },
   "systems": {
     "fusion_semantic_char": {
-      "mrr": 0.4465,
-      "recall_at_1": 0.3479,
-      "recall_at_10": 0.6442,
+      "mrr": 0.4476,
+      "recall_at_1": 0.3493,
+      "recall_at_10": 0.6438,
       "v2_mrr_for_reference": null
     },
     "lexical_char_2_5": {
-      "mrr": 0.4267,
-      "recall_at_1": 0.3337,
-      "recall_at_10": 0.6077,
+      "mrr": 0.4275,
+      "recall_at_1": 0.3343,
+      "recall_at_10": 0.6095,
       "v2_mrr_for_reference": 0.4503
     },
     "lexical_words": {
-      "mrr": 0.4973,
-      "recall_at_1": 0.405,
-      "recall_at_10": 0.6713,
+      "mrr": 0.4977,
+      "recall_at_1": 0.4048,
+      "recall_at_10": 0.6738,
       "v2_mrr_for_reference": 0.5188
     },
     "lexical_words_neutralised": {
-      "mrr": 0.4894,
-      "recall_at_1": 0.3972,
-      "recall_at_10": 0.6626,
+      "mrr": 0.4911,
+      "recall_at_1": 0.3986,
+      "recall_at_10": 0.6656,
       "v2_mrr_for_reference": 0.5113
     },
+    "lexical_words_script_neutralised": {
+      "mrr": 0.5005,
+      "recall_at_1": 0.408,
+      "recall_at_10": 0.6764,
+      "v2_mrr_for_reference": null
+    },
     "rhyme_form_strict": {
-      "mrr": 0.0963,
-      "recall_at_1": 0.04,
-      "recall_at_10": 0.193,
+      "mrr": 0.0965,
+      "recall_at_1": 0.0407,
+      "recall_at_10": 0.1926,
       "v2_mrr_for_reference": 0.0967
     },
     "semantic": {
-      "mrr": 0.2995,
-      "recall_at_1": 0.2007,
-      "recall_at_10": 0.4938,
+      "mrr": 0.3015,
+      "recall_at_1": 0.203,
+      "recall_at_10": 0.4947,
       "v2_mrr_for_reference": 0.3181
     }
   }

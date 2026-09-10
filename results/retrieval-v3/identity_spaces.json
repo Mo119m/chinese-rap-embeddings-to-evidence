@@ -1,0 +1,262 @@
+{
+  "analysis": "author identity across semantic, lexical and phonological spaces",
+  "chance_mrr": 0.0265,
+  "groups": 5882,
+  "head_to_head_covered": {
+    "dense_semantic_vs_lexical_character_ngrams": {
+      "first_better": 2207,
+      "second_better": 3821,
+      "tied": 1097
+    },
+    "dense_semantic_vs_phonological_strict": {
+      "first_better": 5087,
+      "second_better": 1846,
+      "tied": 192
+    },
+    "lexical_character_ngrams_vs_phonological_strict": {
+      "first_better": 5624,
+      "second_better": 1258,
+      "tied": 243
+    }
+  },
+  "labels": 226,
+  "paired_contrasts_covered": {
+    "contrasts": [
+      {
+        "ci95": [
+          0.1235,
+          0.1439
+        ],
+        "excludes_zero": true,
+        "minus": "dense_semantic",
+        "mrr_difference": 0.1334,
+        "system": "lexical_character_ngrams"
+      },
+      {
+        "ci95": [
+          0.0737,
+          0.0836
+        ],
+        "excludes_zero": true,
+        "minus": "label_frequency_prior",
+        "mrr_difference": 0.0786,
+        "system": "phonological_strict"
+      },
+      {
+        "ci95": [
+          -0.2062,
+          -0.1869
+        ],
+        "excludes_zero": true,
+        "minus": "dense_semantic",
+        "mrr_difference": -0.197,
+        "system": "phonological_strict"
+      },
+      {
+        "ci95": [
+          0.0133,
+          0.0194
+        ],
+        "excludes_zero": true,
+        "minus": "phonological_strict",
+        "mrr_difference": 0.0161,
+        "system": "phonological_with_finals"
+      },
+      {
+        "ci95": [
+          0.3199,
+          0.3403
+        ],
+        "excludes_zero": true,
+        "minus": "phonological_strict",
+        "mrr_difference": 0.3304,
+        "system": "lexical_character_ngrams"
+      },
+      {
+        "ci95": [
+          -0.0431,
+          -0.0279
+        ],
+        "excludes_zero": true,
+        "minus": "dense_semantic",
+        "mrr_difference": -0.0353,
+        "system": "fusion_dense_phonological"
+      },
+      {
+        "ci95": [
+          -0.0613,
+          -0.0484
+        ],
+        "excludes_zero": true,
+        "minus": "lexical_character_ngrams",
+        "mrr_difference": -0.0549,
+        "system": "fusion_lexical_phonological"
+      },
+      {
+        "ci95": [
+          -0.0348,
+          -0.0232
+        ],
+        "excludes_zero": true,
+        "minus": "fusion_dense_lexical",
+        "mrr_difference": -0.0291,
+        "system": "fusion_all_three"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one, restricted to the covered subset so every system is defined on every query"
+  },
+  "phonological_space": {
+    "covered_queries": 7125,
+    "endings_per_song_quantiles": {
+      "10": 25,
+      "25": 37,
+      "50": 51,
+      "75": 68,
+      "90": 95
+    },
+    "features_strict": 605,
+    "features_with_finals": 1997,
+    "minimum_endings_for_coverage": 4,
+    "songs_with_no_ending": 75,
+    "tokens_strict": "rhyme family of the line-final syllable (17 classes), its tone, the family pair across the last two syllables, the transition from the previous line's family, same/shift, and one token per maximal run of same-family endings",
+    "tokens_with_finals": "the strict set plus the raw pinyin final, toned final and final pair, which are closer to the syllable itself",
+    "uncovered_rank_policy": "worst rank in every system that uses the phonological space; excluded from the covered subset",
+    "weighting": "TF-IDF with the lexical system's settings (min_df 3, sublinear tf, l2 rows) over rhyme tokens instead of character n-grams"
+  },
+  "privacy": "aggregate only; per-query ranks are private",
+  "protocol": "one song, one vector per space; label profiles are leave-group-out weighted centroids; cosine ranking over every eligible label. Identical queries, labels and leakage groups in every space.",
+  "queries": 7231,
+  "systems": {
+    "dense_semantic": {
+      "all_queries": {
+        "mrr": 0.3015,
+        "mrr_component_weighted": 0.2997,
+        "recall_at_1": 0.203,
+        "recall_at_10": 0.4947
+      },
+      "covered_subset": {
+        "mrr": 0.2966,
+        "mrr_component_weighted": 0.295,
+        "recall_at_1": 0.1978,
+        "recall_at_10": 0.49
+      }
+    },
+    "fusion_all_three": {
+      "all_queries": {
+        "mrr": 0.4096,
+        "mrr_component_weighted": 0.4117,
+        "recall_at_1": 0.3088,
+        "recall_at_10": 0.6082
+      },
+      "covered_subset": {
+        "mrr": 0.4157,
+        "mrr_component_weighted": 0.4175,
+        "recall_at_1": 0.3134,
+        "recall_at_10": 0.6173
+      }
+    },
+    "fusion_dense_lexical": {
+      "all_queries": {
+        "mrr": 0.4476,
+        "mrr_component_weighted": 0.4501,
+        "recall_at_1": 0.3493,
+        "recall_at_10": 0.6438
+      },
+      "covered_subset": {
+        "mrr": 0.4439,
+        "mrr_component_weighted": 0.4466,
+        "recall_at_1": 0.3454,
+        "recall_at_10": 0.6404
+      }
+    },
+    "fusion_dense_phonological": {
+      "all_queries": {
+        "mrr": 0.256,
+        "mrr_component_weighted": 0.2561,
+        "recall_at_1": 0.161,
+        "recall_at_10": 0.4439
+      },
+      "covered_subset": {
+        "mrr": 0.2598,
+        "mrr_component_weighted": 0.2597,
+        "recall_at_1": 0.1634,
+        "recall_at_10": 0.4505
+      }
+    },
+    "fusion_lexical_phonological": {
+      "all_queries": {
+        "mrr": 0.3644,
+        "mrr_component_weighted": 0.3683,
+        "recall_at_1": 0.2712,
+        "recall_at_10": 0.5487
+      },
+      "covered_subset": {
+        "mrr": 0.3697,
+        "mrr_component_weighted": 0.3735,
+        "recall_at_1": 0.2752,
+        "recall_at_10": 0.5569
+      }
+    },
+    "label_frequency_prior": {
+      "all_queries": {
+        "mrr": 0.0188,
+        "mrr_component_weighted": 0.0192,
+        "recall_at_1": 0.0,
+        "recall_at_10": 0.0136
+      },
+      "covered_subset": {
+        "mrr": 0.0189,
+        "mrr_component_weighted": 0.0194,
+        "recall_at_1": 0.0,
+        "recall_at_10": 0.0138
+      }
+    },
+    "lexical_character_ngrams": {
+      "all_queries": {
+        "mrr": 0.4275,
+        "mrr_component_weighted": 0.4316,
+        "recall_at_1": 0.3343,
+        "recall_at_10": 0.6095
+      },
+      "covered_subset": {
+        "mrr": 0.424,
+        "mrr_component_weighted": 0.4284,
+        "recall_at_1": 0.3304,
+        "recall_at_10": 0.6066
+      }
+    },
+    "phonological_strict": {
+      "all_queries": {
+        "mrr": 0.0965,
+        "mrr_component_weighted": 0.0966,
+        "recall_at_1": 0.0407,
+        "recall_at_10": 0.1926
+      },
+      "covered_subset": {
+        "mrr": 0.0979,
+        "mrr_component_weighted": 0.0979,
+        "recall_at_1": 0.0413,
+        "recall_at_10": 0.1955
+      }
+    },
+    "phonological_with_finals": {
+      "all_queries": {
+        "mrr": 0.1118,
+        "mrr_component_weighted": 0.1125,
+        "recall_at_1": 0.0503,
+        "recall_at_10": 0.2238
+      },
+      "covered_subset": {
+        "mrr": 0.1134,
+        "mrr_component_weighted": 0.1141,
+        "recall_at_1": 0.0511,
+        "recall_at_10": 0.2271
+      }
+    }
+  },
+  "verification": {
+    "dense_lexical_fusion_reproduces_decomposition": 0.4476,
+    "dense_max_gap": 0.0,
+    "dense_scores_identical_across_calls": true
+  }
+}

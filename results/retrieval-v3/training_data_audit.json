@@ -4,28 +4,28 @@
     "characters": {
       "10": 25,
       "25": 54,
-      "50": 129,
-      "75": 518,
-      "90": 1030,
-      "99": 1498
+      "50": 130,
+      "75": 521,
+      "90": 1037,
+      "99": 1499
     },
-    "chunks_over_512_tokens": 3634,
+    "chunks_over_512_tokens": 3676,
     "lines": {
       "10": 2,
       "25": 4,
       "50": 8,
       "75": 35,
       "90": 66,
-      "99": 104
+      "99": 105
     },
     "reading": "the recorded run's max_length of 2,048 is never reached; the natural unit of encoding is the stanza",
     "tokens_bge_m3": {
       "10": 16,
       "25": 36,
       "50": 76,
-      "75": 311,
-      "90": 600,
-      "99": 931
+      "75": 312,
+      "90": 603,
+      "99": 935
     }
   },
   "collaborations": {
@@ -41,12 +41,12 @@
       "90": 1.0
     },
     "nearest_same_label_other_group_cosine": {
-      "10": 0.572,
+      "10": 0.571,
       "50": 0.663,
       "90": 0.73
     },
     "reading": "in the raw semantic space most chunks sit closer to some other label's chunk than to any of their own label's; a negative drawn from those neighbours controls for content",
-    "share_of_chunks_whose_nearest_rival_is_closer_than_nearest_own": 0.9067
+    "share_of_chunks_whose_nearest_rival_is_closer_than_nearest_own": 0.9084
   },
   "labels": {
     "eligible": 226,
@@ -70,9 +70,9 @@
   },
   "privacy": "aggregate only",
   "self_mentions": {
-    "chunks": 1624,
+    "chunks": 1636,
     "consequence": "mask the label string in training text",
-    "share": 0.0668
+    "share": 0.0674
   },
-  "vectors_used_for_neighbours": "v2-interim"
+  "vectors_used_for_neighbours": "v3"
 }

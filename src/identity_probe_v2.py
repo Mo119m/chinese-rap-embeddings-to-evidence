@@ -60,7 +60,7 @@ for _stream in (sys.stdout, sys.stderr):
 OUT_DIR = ROOT / "results" / "retrieval-v2"
 SEED = 20260825
 FOLDS = 5
-from build_downstream_retrieval_v2 import expected  # noqa: E402
+from build_downstream_retrieval_v2 import corpus_version, expected  # noqa: E402
 EXPECTED_DENSE_MRR = expected(0.3181, "semantic")
 SVD_COMPONENTS = 1024          # the dense system's own width
 HELD_OUT_LABEL_SHARE = 0.15
@@ -344,7 +344,7 @@ def build(private_root: Path, out_dir: Path) -> int:
                                       "tied": int((a == b).sum())}
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    private_dir = private_root / "work" / "private-identity-probe-v2"
+    private_dir = private_root / "work" / f"private-identity-probe-{corpus_version()}"
     private_dir.mkdir(parents=True, exist_ok=True)
     buf = io.StringIO()
     fields = ["song_id", "label", "group", "fold"] + [f"rank_{n}" for n in ranks]

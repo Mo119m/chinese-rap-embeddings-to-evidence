@@ -1,0 +1,376 @@
+{
+  "analysis": "anatomy of the lexical identity signal by feature class",
+  "arms": {
+    "only_boundary": {
+      "ci95": [
+        -0.1805,
+        -0.1631
+      ],
+      "class": "boundary",
+      "defined": true,
+      "difference_from_full": -0.1719,
+      "empty_queries": 172,
+      "features_kept": 34967,
+      "kind": "only",
+      "mrr": 0.2573,
+      "recall_at_10": 0.4035
+    },
+    "only_digit_or_punctuation": {
+      "ci95": [
+        -0.2514,
+        -0.2308
+      ],
+      "class": "digit_or_punctuation",
+      "defined": true,
+      "difference_from_full": -0.2411,
+      "empty_queries": 940,
+      "features_kept": 10208,
+      "kind": "only",
+      "mrr": 0.1901,
+      "recall_at_10": 0.3167
+    },
+    "only_function_only": {
+      "ci95": [
+        -0.1605,
+        -0.1407
+      ],
+      "class": "function_only",
+      "defined": true,
+      "difference_from_full": -0.1506,
+      "empty_queries": 99,
+      "features_kept": 14453,
+      "kind": "only",
+      "mrr": 0.2772,
+      "recall_at_10": 0.4472
+    },
+    "only_han_with_a_less_common_character": {
+      "ci95": [
+        -0.0094,
+        0.0088
+      ],
+      "class": "han_with_a_less_common_character",
+      "defined": true,
+      "difference_from_full": -0.0002,
+      "empty_queries": 68,
+      "features_kept": 80743,
+      "kind": "only",
+      "mrr": 0.4257,
+      "recall_at_10": 0.6133
+    },
+    "only_length_2": {
+      "ci95": [
+        -0.0188,
+        -0.0079
+      ],
+      "class": "length_2",
+      "defined": true,
+      "difference_from_full": -0.0133,
+      "empty_queries": 0,
+      "features_kept": 44555,
+      "kind": "only",
+      "mrr": 0.4146,
+      "recall_at_10": 0.5916
+    },
+    "only_length_3": {
+      "ci95": [
+        -0.0405,
+        -0.0313
+      ],
+      "class": "length_3",
+      "defined": true,
+      "difference_from_full": -0.0358,
+      "empty_queries": 0,
+      "features_kept": 46796,
+      "kind": "only",
+      "mrr": 0.3919,
+      "recall_at_10": 0.5613
+    },
+    "only_length_4": {
+      "ci95": [
+        -0.0948,
+        -0.0804
+      ],
+      "class": "length_4",
+      "defined": true,
+      "difference_from_full": -0.0877,
+      "empty_queries": 4,
+      "features_kept": 31331,
+      "kind": "only",
+      "mrr": 0.3416,
+      "recall_at_10": 0.5059
+    },
+    "only_length_5": {
+      "ci95": [
+        -0.1467,
+        -0.1291
+      ],
+      "class": "length_5",
+      "defined": true,
+      "difference_from_full": -0.138,
+      "empty_queries": 109,
+      "features_kept": 27318,
+      "kind": "only",
+      "mrr": 0.2928,
+      "recall_at_10": 0.4403
+    },
+    "only_script_han": {
+      "ci95": [
+        -0.0099,
+        0.0075
+      ],
+      "class": "script_han",
+      "defined": true,
+      "difference_from_full": -0.001,
+      "empty_queries": 68,
+      "features_kept": 95196,
+      "kind": "only",
+      "mrr": 0.4246,
+      "recall_at_10": 0.6042
+    },
+    "only_script_latin": {
+      "ci95": [
+        -0.1281,
+        -0.1107
+      ],
+      "class": "script_latin",
+      "defined": true,
+      "difference_from_full": -0.1194,
+      "empty_queries": 472,
+      "features_kept": 47966,
+      "kind": "only",
+      "mrr": 0.3105,
+      "recall_at_10": 0.4526
+    },
+    "only_script_mixed_or_other": {
+      "ci95": [
+        -0.2885,
+        -0.2677
+      ],
+      "class": "script_mixed_or_other",
+      "defined": true,
+      "difference_from_full": -0.278,
+      "empty_queries": 461,
+      "features_kept": 6838,
+      "kind": "only",
+      "mrr": 0.1541,
+      "recall_at_10": 0.2763
+    },
+    "remove_boundary": {
+      "ci95": [
+        0.0199,
+        0.028
+      ],
+      "class": "boundary",
+      "defined": true,
+      "difference_from_full": 0.024,
+      "empty_queries": 0,
+      "features_kept": 115033,
+      "kind": "remove",
+      "mrr": 0.4521,
+      "recall_at_10": 0.6342
+    },
+    "remove_digit_or_punctuation": {
+      "ci95": [
+        -0.0217,
+        -0.0154
+      ],
+      "class": "digit_or_punctuation",
+      "defined": true,
+      "difference_from_full": -0.0185,
+      "empty_queries": 0,
+      "features_kept": 139792,
+      "kind": "remove",
+      "mrr": 0.4092,
+      "recall_at_10": 0.5897
+    },
+    "remove_function_only": {
+      "ci95": [
+        -0.0072,
+        -0.0015
+      ],
+      "class": "function_only",
+      "defined": true,
+      "difference_from_full": -0.0044,
+      "empty_queries": 0,
+      "features_kept": 135547,
+      "kind": "remove",
+      "mrr": 0.4231,
+      "recall_at_10": 0.5987
+    },
+    "remove_han_with_a_less_common_character": {
+      "ci95": [
+        -0.0622,
+        -0.051
+      ],
+      "class": "han_with_a_less_common_character",
+      "defined": true,
+      "difference_from_full": -0.0564,
+      "empty_queries": 0,
+      "features_kept": 69257,
+      "kind": "remove",
+      "mrr": 0.3737,
+      "recall_at_10": 0.5544
+    },
+    "remove_length_2": {
+      "ci95": [
+        -0.0471,
+        -0.0372
+      ],
+      "class": "length_2",
+      "defined": true,
+      "difference_from_full": -0.0422,
+      "empty_queries": 0,
+      "features_kept": 105445,
+      "kind": "remove",
+      "mrr": 0.3858,
+      "recall_at_10": 0.5651
+    },
+    "remove_length_3": {
+      "ci95": [
+        0.0036,
+        0.0084
+      ],
+      "class": "length_3",
+      "defined": true,
+      "difference_from_full": 0.006,
+      "empty_queries": 0,
+      "features_kept": 103204,
+      "kind": "remove",
+      "mrr": 0.4339,
+      "recall_at_10": 0.6143
+    },
+    "remove_length_4": {
+      "ci95": [
+        -0.0006,
+        0.0036
+      ],
+      "class": "length_4",
+      "defined": true,
+      "difference_from_full": 0.0015,
+      "empty_queries": 0,
+      "features_kept": 118669,
+      "kind": "remove",
+      "mrr": 0.4286,
+      "recall_at_10": 0.6107
+    },
+    "remove_length_5": {
+      "ci95": [
+        -0.002,
+        0.0026
+      ],
+      "class": "length_5",
+      "defined": true,
+      "difference_from_full": 0.0004,
+      "empty_queries": 0,
+      "features_kept": 122682,
+      "kind": "remove",
+      "mrr": 0.4279,
+      "recall_at_10": 0.6077
+    },
+    "remove_script_han": {
+      "ci95": [
+        -0.1178,
+        -0.1014
+      ],
+      "class": "script_han",
+      "defined": true,
+      "difference_from_full": -0.1096,
+      "empty_queries": 281,
+      "features_kept": 54804,
+      "kind": "remove",
+      "mrr": 0.3202,
+      "recall_at_10": 0.4703
+    },
+    "remove_script_latin": {
+      "ci95": [
+        0.0046,
+        0.0209
+      ],
+      "class": "script_latin",
+      "defined": true,
+      "difference_from_full": 0.0128,
+      "empty_queries": 8,
+      "features_kept": 102034,
+      "kind": "remove",
+      "mrr": 0.439,
+      "recall_at_10": 0.6274
+    },
+    "remove_script_mixed_or_other": {
+      "ci95": [
+        -0.006,
+        -0.002
+      ],
+      "class": "script_mixed_or_other",
+      "defined": true,
+      "difference_from_full": -0.0039,
+      "empty_queries": 0,
+      "features_kept": 143162,
+      "kind": "remove",
+      "mrr": 0.4236,
+      "recall_at_10": 0.6043
+    }
+  },
+  "bootstrap": {
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one; difference of each arm from the full model"
+  },
+  "classes": {
+    "correct_label_score_share": {
+      "boundary": 0.2608,
+      "digit_or_punctuation": 0.0341,
+      "function_only": 0.1698,
+      "han_with_a_less_common_character": 0.3305,
+      "length_2": 0.5889,
+      "length_3": 0.2378,
+      "length_4": 0.1099,
+      "length_5": 0.0633,
+      "script_han": 0.5003,
+      "script_latin": 0.4817,
+      "script_mixed_or_other": 0.018
+    },
+    "definitions": {
+      "boundary": "contains a space: the analyser folds newlines and whitespace runs to one space, so the n-gram reaches across a line break or between Latin words",
+      "digit_or_punctuation": "contains a digit, punctuation or symbol",
+      "function_only": "Han n-gram made entirely of the 100 most frequent Han characters in the query corpus",
+      "han_with_a_less_common_character": "Han n-gram with at least one character outside that set",
+      "length_n": "characters in the n-gram including any space",
+      "script_*": "script of the n-gram's characters, whitespace ignored"
+    },
+    "inventory": {
+      "boundary": 34967,
+      "digit_or_punctuation": 10208,
+      "function_only": 14453,
+      "han_with_a_less_common_character": 80743,
+      "length_2": 44555,
+      "length_3": 46796,
+      "length_4": 31331,
+      "length_5": 27318,
+      "script_han": 95196,
+      "script_latin": 47966,
+      "script_mixed_or_other": 6838
+    },
+    "most_frequent_han_characters": "的我你不是在一了有们都个到人就要想来这着没会上说他得那里能天过看子为心还也像多让自起下把么只好大去开时对点出别再和爱给生头可走太以地当成手无现但后面被儿做中所道老从己最如真回小变些感眼打用听发前每她家",
+    "tfidf_mass_share": {
+      "boundary": 0.2498,
+      "digit_or_punctuation": 0.0502,
+      "function_only": 0.1194,
+      "han_with_a_less_common_character": 0.4887,
+      "length_2": 0.3719,
+      "length_3": 0.2996,
+      "length_4": 0.1852,
+      "length_5": 0.1434,
+      "script_han": 0.6081,
+      "script_latin": 0.3634,
+      "script_mixed_or_other": 0.0285
+    }
+  },
+  "full_model": {
+    "features": 150000,
+    "mrr": 0.4275,
+    "reproduces_builder": true
+  },
+  "labels": 226,
+  "privacy": "aggregate only; no n-gram is published except the hundred most common single characters",
+  "queries": 7231,
+  "question": "which classes of character n-gram carry the identity the lexical space has and the semantic space loses",
+  "reading": "share says where the score mass sits; remove says how much the model loses without a class; only says how far a class alone gets. A class whose removal costs little but which alone gets far is redundant with the rest; a class whose removal costs much is where the signal lives"
+}
