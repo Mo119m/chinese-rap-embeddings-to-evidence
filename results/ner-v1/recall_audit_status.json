@@ -1,0 +1,37 @@
+{
+  "artifact_id": "chinese-rap-ner-recall-audit-v1",
+  "design": {
+    "frame": "eligible clean-text chunks of the canonical lyric sidecar v1 (the frame the NER ran on)",
+    "frame_chunks": 21553,
+    "frame_digest_sha256": "762f734bd9af566da372bf6bf463110356dc26bdaf732c009be19eb8daac260f",
+    "independence": "each reviewer marks every mention without seeing the NER's candidates or the other reviewer",
+    "reviewers": [
+      "R1",
+      "R2"
+    ],
+    "sample_chunks": 100,
+    "sampling": "uniform without replacement, seeded; task order shuffled by the same seed; no length filter",
+    "scoring": "after adjudication, each human mention is matched to the NER candidates of its chunk by surface and line; recall reported for the lexicon arm, the transformer arm, and the strict agreement gate; precision on the same chunks as a by-product",
+    "seed": "chinese-rap-ner-recall-audit-v1-20260910",
+    "target_types": [
+      "PLACE",
+      "LANGUAGE_OR_DIALECT_REFERENCE"
+    ]
+  },
+  "generated_at_utc": "2026-09-10T16:42:19.177559+00:00",
+  "privacy": "tasks, text and candidates stay under the private root and the author's desktop; this file carries counts only",
+  "question": "recall of the NER for PLACE and LANGUAGE_OR_DIALECT_REFERENCE mentions on the NER's own input frame",
+  "sample_text_characters": 38671,
+  "status": "awaiting two independent reviewers",
+  "system_candidates_in_sample": {
+    "by_agreement_state": {
+      "EXACT_SPAN_TYPE_AGREE": 13,
+      "LEXICON_ONLY": 32,
+      "OVERLAP_TYPE_AGREE": 2,
+      "TRANSFORMER_ONLY": 1,
+      "TYPE_OR_BOUNDARY_CONFLICT": 21
+    },
+    "total": 69
+  },
+  "version": "1.0.0"
+}
