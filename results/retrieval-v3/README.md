@@ -119,6 +119,29 @@ label-specific — how far a rapper's songs scatter, and in which directions, de
 rapper — and a shared within-class covariance, which is also PLDA's assumption, cannot
 represent it.
 
+## PLDA scoring against whitened cosine (`plda_scoring.json`)
+
+Whitened cosine is a heuristic reading of the two-covariance model; PLDA is its own
+scorer, and cosine is PLDA with both covariances fixed to the identity. Fold-wise, same
+folds and enrolment rule as the probe:
+
+| scorer | MRR | R@1 | R@10 |
+|---|---|---|---|
+| cosine (reference) | 0.3015 | 0.2030 | 0.4947 |
+| within-label whitening, cosine | **0.4196** | 0.3218 | 0.6071 |
+| PLDA, simultaneously diagonalised | 0.3971 | 0.3047 | 0.5775 |
+| PLDA, both covariances diagonal | 0.2986 | 0.2009 | 0.4933 |
+| PLDA with a label-specific within scale | 0.2879 | 0.2108 | 0.4300 |
+
+PLDA − cosine +0.096 [+0.088, +0.105]; PLDA − whitened cosine −0.021 [−0.026, −0.016];
+diagonal PLDA − PLDA −0.100; label-scale PLDA − PLDA −0.110. The between-label signal
+lives in about 167 of 1,024 whitened dimensions (ψ > 0.1). The model's own scorer does
+not reach the heuristic, the independence assumption alone costs the whole gain, and the
+smallest relaxation of the shared-scatter assumption — one scale per label, normalised to a
+mean of one — makes it worse: what differs between labels is not how far their songs
+scatter but in which directions, which no Gaussian with one shared shape represents. The
+generative route ends here; the learned encoder is the next test.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,676 over 512; all 226 labels have at least two

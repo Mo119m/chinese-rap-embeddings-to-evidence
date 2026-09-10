@@ -1,0 +1,204 @@
+{
+  "analysis": "PLDA scoring of the semantic song vectors against whitened cosine",
+  "corpus": {
+    "groups": 5882,
+    "labels": 226,
+    "queries": 7231,
+    "v3_content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
+    "vectors_sha256": "e61ffc05deb595b2a5ba4dc4970a771388e3c127abb986f25c9df0086b5c42a4"
+  },
+  "design": {
+    "covariances": "within: Ledoit-Wolf of weighted within-label residuals; between: total minus within, eigenvalues floored at 1e-6 after simultaneous diagonalisation",
+    "enrolment": "each label's other songs, the query's leakage group removed, per-(group, label) weight one",
+    "folds": 5,
+    "label_scale": "s_l^2 = weighted mean squared residual per dimension of the label's training songs, shrunk towards one with 5 pseudo-songs",
+    "scoring": "posterior-predictive log-density of the query under the label's Gaussian posterior mean; the different-label denominator is label-independent and omitted",
+    "seed": 20260825,
+    "unit_dealt_into_folds": "leakage group"
+  },
+  "fold_diagnostics": [
+    {
+      "between_to_within_ratio_top": [
+        1.693,
+        1.099,
+        0.904,
+        0.89,
+        0.8
+      ],
+      "dimensions_with_psi_over_0.1": 167,
+      "dimensions_with_psi_over_1": 2,
+      "fold": 0,
+      "label_scale_quartiles": [
+        0.849,
+        0.939,
+        1.021,
+        1.088,
+        1.192
+      ]
+    },
+    {
+      "between_to_within_ratio_top": [
+        1.618,
+        1.06,
+        0.911,
+        0.842,
+        0.831
+      ],
+      "dimensions_with_psi_over_0.1": 168,
+      "dimensions_with_psi_over_1": 2,
+      "fold": 1,
+      "label_scale_quartiles": [
+        0.851,
+        0.937,
+        1.021,
+        1.09,
+        1.194
+      ]
+    },
+    {
+      "between_to_within_ratio_top": [
+        1.724,
+        1.041,
+        0.881,
+        0.856,
+        0.821
+      ],
+      "dimensions_with_psi_over_0.1": 168,
+      "dimensions_with_psi_over_1": 2,
+      "fold": 2,
+      "label_scale_quartiles": [
+        0.85,
+        0.944,
+        1.02,
+        1.08,
+        1.196
+      ]
+    },
+    {
+      "between_to_within_ratio_top": [
+        1.712,
+        1.051,
+        0.876,
+        0.845,
+        0.799
+      ],
+      "dimensions_with_psi_over_0.1": 166,
+      "dimensions_with_psi_over_1": 2,
+      "fold": 3,
+      "label_scale_quartiles": [
+        0.847,
+        0.939,
+        1.022,
+        1.085,
+        1.198
+      ]
+    },
+    {
+      "between_to_within_ratio_top": [
+        1.707,
+        1.08,
+        0.86,
+        0.845,
+        0.809
+      ],
+      "dimensions_with_psi_over_0.1": 167,
+      "dimensions_with_psi_over_1": 2,
+      "fold": 4,
+      "label_scale_quartiles": [
+        0.86,
+        0.935,
+        1.025,
+        1.081,
+        1.196
+      ]
+    }
+  ],
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          0.0877,
+          0.1052
+        ],
+        "excludes_zero": true,
+        "minus": "cosine",
+        "mrr_difference": 0.0964,
+        "system": "plda"
+      },
+      {
+        "ci95": [
+          -0.0258,
+          -0.0156
+        ],
+        "excludes_zero": true,
+        "minus": "wccn_cosine",
+        "mrr_difference": -0.0208,
+        "system": "plda"
+      },
+      {
+        "ci95": [
+          -0.1084,
+          -0.0909
+        ],
+        "excludes_zero": true,
+        "minus": "plda",
+        "mrr_difference": -0.0995,
+        "system": "plda_diagonal"
+      },
+      {
+        "ci95": [
+          -0.1168,
+          -0.1021
+        ],
+        "excludes_zero": true,
+        "minus": "plda",
+        "mrr_difference": -0.1095,
+        "system": "plda_label_scale"
+      },
+      {
+        "ci95": [
+          -0.1378,
+          -0.1225
+        ],
+        "excludes_zero": true,
+        "minus": "wccn_cosine",
+        "mrr_difference": -0.1303,
+        "system": "plda_label_scale"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "systems": {
+    "cosine": {
+      "mrr": 0.3015,
+      "mrr_component_weighted": 0.2997,
+      "recall_at_1": 0.203,
+      "recall_at_10": 0.4947
+    },
+    "plda": {
+      "mrr": 0.3971,
+      "mrr_component_weighted": 0.396,
+      "recall_at_1": 0.3047,
+      "recall_at_10": 0.5775
+    },
+    "plda_diagonal": {
+      "mrr": 0.2986,
+      "mrr_component_weighted": 0.2965,
+      "recall_at_1": 0.2009,
+      "recall_at_10": 0.4933
+    },
+    "plda_label_scale": {
+      "mrr": 0.2879,
+      "mrr_component_weighted": 0.2865,
+      "recall_at_1": 0.2108,
+      "recall_at_10": 0.43
+    },
+    "wccn_cosine": {
+      "mrr": 0.4196,
+      "mrr_component_weighted": 0.4168,
+      "recall_at_1": 0.3218,
+      "recall_at_10": 0.6071
+    }
+  }
+}
