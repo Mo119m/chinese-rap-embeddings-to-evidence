@@ -92,7 +92,7 @@ def summary(ranks: np.ndarray) -> dict:
             "recall_at_1": round(float(np.mean(ranks <= 1)), 4), "recall_at_10": round(float(np.mean(ranks <= 10)), 4)}
 
 
-def build(private_root: Path, out_dir: Path, test_fold: int, held_out_share: float) -> int:
+def build(private_root: Path, out_dir: Path, test_fold: int, held_out_share: float, tag: str = "") -> int:
     import jieba
     jieba.setLogLevel(60)
     print("loading corpus v3", flush=True)
@@ -125,7 +125,7 @@ def build(private_root: Path, out_dir: Path, test_fold: int, held_out_share: flo
           f"test fold {test_fold}, {int(held.sum())} labels held out", flush=True)
 
     private = private_root / "work" / "private-identity-encoder-v3"
-    tuned_chunks = np.load(private / f"fine_tuned_chunk_vectors_fold{test_fold}.npy").astype(np.float64)
+    tuned_chunks = np.load(private / f"fine_tuned_chunk_vectors_fold{test_fold}{tag}.npy").astype(np.float64)
     frozen_chunks = np.load(private / f"frozen_masked_chunk_vectors_fold{test_fold}.npy").astype(np.float64)
     if tuned_chunks.shape[0] != len(chunk_rows) or frozen_chunks.shape[0] != len(chunk_rows):
         raise SystemExit(f"the saved chunk vectors ({tuned_chunks.shape[0]}) do not match the {len(chunk_rows):,} "
@@ -262,9 +262,10 @@ def build(private_root: Path, out_dir: Path, test_fold: int, held_out_share: flo
                                        "each (group, label) component weighted one", "by_scope": contrasts},
         "privacy": "aggregate only",
     }
-    (out_dir / f"identity_encoder_analysis_fold{test_fold}.json").write_text(
+    payload["design"]["run_tag"] = tag
+    (out_dir / f"identity_encoder_analysis_fold{test_fold}{tag}.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="")
-    print(f"\nwrote {out_dir / f'identity_encoder_analysis_fold{test_fold}.json'}")
+    print(f"\nwrote {out_dir / f'identity_encoder_analysis_fold{test_fold}{tag}.json'}")
     return 0
 
 
@@ -274,8 +275,9 @@ def main() -> int:
     parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
     parser.add_argument("--test-fold", type=int, default=0)
     parser.add_argument("--held-out-label-share", type=float, default=0.15)
+    parser.add_argument("--tag", default="", help="the training run's --tag, e.g. _queue4096")
     args = parser.parse_args()
-    return build(args.private_root.resolve(), args.out_dir, args.test_fold, args.held_out_label_share)
+    return build(args.private_root.resolve(), args.out_dir, args.test_fold, args.held_out_label_share, args.tag)
 
 
 if __name__ == "__main__":

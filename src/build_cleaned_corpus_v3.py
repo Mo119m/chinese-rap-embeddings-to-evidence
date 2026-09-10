@@ -41,6 +41,12 @@ What is removed, line by line, and counted:
                      reading of the sample)
   show_transcript    a song that is a whole television episode (three or more X战队“Y”
                      team lines, fourteen performers) is dropped whole; see SHOW_TEAM_LINE.
+  handle_line, production_line, role_by_line, feat_line, publisher_or_domain_line,
+  pipe_credit_line   amendment 1.3.0: credit shapes on a short line without sentence
+                     punctuation -- 王子@Soulkidz, 刘佳 Zeus Production, RECORD BY UNCLEDAMN,
+                     Feat.王以太, 尼罗河畔 | WOKENDAY, SP｜..., beatshome.com -- found because
+                     the credit residue was systematic enough to form a direction of the
+                     semantic space (whitening_directions_v3).
                      Lines in scripts the corpus does not model
                      (Uyghur, Tibetan, Korean, Mongolian: about 1,300 lines over some fifty
                      labels) are lyrics and are KEPT; like names, they are a cheap identity
@@ -100,11 +106,13 @@ for _stream in (sys.stdout, sys.stderr):
 
 csv.field_size_limit(10 ** 9)
 OUT_DIR = ROOT / "results" / "cleaned-corpus-v3"
-VERSION = "chinese-rap-cleaned-corpus-v3/1.2.0"
+VERSION = "chinese-rap-cleaned-corpus-v3/1.3.0"
 # rules whose removed line marks a credit / header block; a title-equal line touching one
 # of these is a copied title, a title-equal line touching lyrics is a hook
+CREDIT_1_3_0 = frozenset({"handle_line", "production_line", "role_by_line", "feat_line",
+                          "publisher_or_domain_line", "pipe_credit_line"})
 BLOCK_RULES = frozenset({"metadata_block", "section_header", "role_line", "credit_tag_line", "url",
-                         "bracket_marker", "track_list_line"})
+                         "bracket_marker", "track_list_line"} | CREDIT_1_3_0)
 # MB-001's four fuzzy rules hit lyric lines when applied line by line across a whole song:
 # a verse about 大学 or 唱片 (organisation), a bar written as 词、词、词 (name_list), a short
 # refrain beside a credit block (name_extension), a bracketed lyric that happens to contain
@@ -117,7 +125,7 @@ BLOCK_RULES = frozenset({"metadata_block", "section_header", "role_line", "credi
 # Otherwise it goes back through the ordinary line cleaning and is counted as kept.
 FUZZY_RULES = frozenset({"organisation", "name_list", "name_extension", "bracketed_annotation"})
 ANCHOR_RULES = frozenset({"role_prefix", "contact", "copyright", "sample_attribution",
-                          "role_line", "credit_tag_line", "url", "section_header", "bracket_marker"})
+                          "role_line", "credit_tag_line", "url", "section_header", "bracket_marker"} | CREDIT_1_3_0)
 STRICT_ORG = re.compile(r"有限公司|文化传播|传媒|工作室|影业|合唱团|乐团|基金会|协会|研究中心|艺术中心|卫生中心|出品|发行")
 SENTENCE_MARK = re.compile(r"[，。？！?!]")
 HAN = re.compile(r"[一-鿿]")
@@ -201,6 +209,46 @@ HTML_TAG = re.compile(r"</?(?:br|p|div|span|i|b|u|em|strong|font|a|img|hr)\b[^<>
 # followed by something other than a digit, so 37.2熟悉的温度 and 21、22到我的23 stay lyrics;
 # the rest is a short title without sentence punctuation.
 TRACK_LIST = re.compile(r"^\s*\d{1,2}\s*[.、．]\s*(?!\d)[^，。？！?!]{1,30}$")
+# Amendment 1.3.0 (2026-09-10): the whitening-direction analysis found one axis of the
+# semantic space ending in credit residue, and a scan of short lines without sentence
+# punctuation found the shapes the earlier rules missed -- 王子@Soulkidz, 刘佳 Zeus Production,
+# RECORD BY UNCLEDAMN, 丧 prod by 524, Feat.王以太, 尼罗河畔 | WOKENDAY, SP｜ROCK MUSIC
+# PUBLISHING. All are judged on a short line (at most SHORT_LINE characters) that carries no
+# sentence punctuation, which no lyric line of that shape does in the sample read.
+SHORT_LINE = 45
+SENTENCE_PUNCT_ANY = re.compile(r"[，。？！?!；;]")
+HANDLE_LINE = re.compile(r"(?:^|[\w一-鿿（(\[【])@ ?[\w一-鿿]")   # 王子@Soulkidz, @Kito, 董海龙@ Zeus, 戴欣怡（@DD Studio）; not (&%$#@&%)
+PRODUCTION_LINE = re.compile(r"\bproduction[sz]?\b", re.I)
+ROLE_BY_LINE = re.compile(r"\b(?:mix|mixed|master|mastered|record|recorded|prod|produced|beat|cover|artwork|design|"
+                          r"photo|video|director|lyrics|arranged|additional)\b[^\n]{0,15}\bby\b", re.I)
+PROD_LINE = re.compile(r"\bprod(?:\.|\b)\s*(?:by\b)?\.?\s*\S", re.I)   # prod.PURCOLA, Prod By.玉; not producer
+FEAT_LINE = re.compile(r"^\s*(?:feat|ft)[.:：]\s*\S{1,30}$", re.I)
+PIPE_CREDIT = re.compile(r"^[^|｜]{1,25}[|｜][^|｜]{1,25}(?:[|｜][^|｜]{1,25})*$")
+LATIN_SEGMENT = re.compile(r"^[A-Za-z0-9 .'&$\-]+$")
+OP_SP_LINE = re.compile(r"^(?:OP|SP)(?:\s*[|｜/].*)?$")
+DOMAIN_LINE = re.compile(r"^\S+\.(?:com|cn|net|org)$", re.I)
+
+
+def short_credit_rule(line: str) -> str | None:
+    """The 1.3.0 credit shapes, on a short line without sentence punctuation; else None."""
+    text = line.strip()
+    if not text or len(text) > SHORT_LINE or SENTENCE_PUNCT_ANY.search(text):
+        return None
+    if HANDLE_LINE.search(text):
+        return "handle_line"
+    if PRODUCTION_LINE.search(text):
+        return "production_line"
+    if ROLE_BY_LINE.search(text) or PROD_LINE.search(text):
+        return "role_by_line"
+    if FEAT_LINE.match(text):
+        return "feat_line"
+    if OP_SP_LINE.match(text) or DOMAIN_LINE.match(text):
+        return "publisher_or_domain_line"
+    if PIPE_CREDIT.match(text):
+        segments = [s.strip() for s in re.split(r"[|｜]", text)]
+        if any(LATIN_SEGMENT.match(s) for s in segments if s):
+            return "pipe_credit_line"
+    return None
 # a whole television episode filed under one rapper -- 02 福克斯 / 吴亦凡张震岳热狗战队“梦想” /
 # ... fourteen performers' verses in one "song" (amendment 1.2.0, found by the author). The
 # labelled rapper's own verse is a fraction of it and cannot be cut out reliably, so a song
@@ -258,6 +306,8 @@ def clean_line(line: str, counts: Counter) -> tuple[str | None, str | None]:
         rule = "credit_tag_line"
     elif TRACK_LIST.match(line):
         rule = "track_list_line"
+    elif short_credit_rule(line):
+        rule = short_credit_rule(line)
     else:
         return None, line
     counts[rule] += 1
@@ -284,7 +334,7 @@ def mark_stray_titles(entries: list[dict], title_key: str, counts: Counter) -> N
             counts["title_line_kept_as_lyric"] += 1
 
 
-def build(private_root: Path, out_dir: Path) -> int:
+def build(private_root: Path, out_dir: Path, out_private: Path | None = None) -> int:
     corpus = private_root / "work" / "private-repaired-corpus-v2" / "repaired_lyric_chunks_v2.csv"
     rows = list(csv.DictReader(corpus.open(encoding="utf-8")))
     digest = corpus_content_sha256(rows)
@@ -357,7 +407,7 @@ def build(private_root: Path, out_dir: Path) -> int:
             songs_touched.add(song)
     assert cursor == len(labels) if by_song else True
 
-    out_private = private_root / "work" / "private-cleaned-corpus-v3"
+    out_private = out_private or private_root / "work" / "private-cleaned-corpus-v3"
     out_private.mkdir(parents=True, exist_ok=True)
     fields = list(rows[0].keys())
     buffer = io.StringIO()
@@ -415,8 +465,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--private-root", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
+    parser.add_argument("--out-private", type=Path, help="private output directory; default work/private-cleaned-corpus-v3 "
+                                                         "(a preview build can be sent elsewhere to read its removals first)")
     args = parser.parse_args()
-    return build(args.private_root.resolve(), args.out_dir)
+    return build(args.private_root.resolve(), args.out_dir, args.out_private)
 
 
 if __name__ == "__main__":
