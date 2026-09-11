@@ -3,311 +3,311 @@
   "arms": {
     "only_boundary": {
       "ci95": [
-        -0.1805,
-        -0.1631
+        -0.1811,
+        -0.1642
       ],
       "class": "boundary",
       "defined": true,
-      "difference_from_full": -0.1719,
-      "empty_queries": 172,
-      "features_kept": 34967,
+      "difference_from_full": -0.1725,
+      "empty_queries": 170,
+      "features_kept": 34932,
       "kind": "only",
-      "mrr": 0.2573,
-      "recall_at_10": 0.4035
+      "mrr": 0.2558,
+      "recall_at_10": 0.3992
     },
     "only_digit_or_punctuation": {
       "ci95": [
-        -0.2514,
-        -0.2308
+        -0.2565,
+        -0.236
       ],
       "class": "digit_or_punctuation",
       "defined": true,
-      "difference_from_full": -0.2411,
-      "empty_queries": 940,
-      "features_kept": 10208,
+      "difference_from_full": -0.246,
+      "empty_queries": 965,
+      "features_kept": 10112,
       "kind": "only",
-      "mrr": 0.1901,
-      "recall_at_10": 0.3167
+      "mrr": 0.1844,
+      "recall_at_10": 0.3143
     },
     "only_function_only": {
       "ci95": [
-        -0.1605,
-        -0.1407
+        -0.1598,
+        -0.1397
       ],
       "class": "function_only",
       "defined": true,
-      "difference_from_full": -0.1506,
-      "empty_queries": 99,
-      "features_kept": 14453,
+      "difference_from_full": -0.1495,
+      "empty_queries": 88,
+      "features_kept": 14485,
       "kind": "only",
-      "mrr": 0.2772,
-      "recall_at_10": 0.4472
+      "mrr": 0.2777,
+      "recall_at_10": 0.4479
     },
     "only_han_with_a_less_common_character": {
       "ci95": [
-        -0.0094,
-        0.0088
+        -0.0104,
+        0.0085
       ],
       "class": "han_with_a_less_common_character",
       "defined": true,
-      "difference_from_full": -0.0002,
-      "empty_queries": 68,
-      "features_kept": 80743,
+      "difference_from_full": -0.0013,
+      "empty_queries": 69,
+      "features_kept": 80861,
       "kind": "only",
-      "mrr": 0.4257,
-      "recall_at_10": 0.6133
+      "mrr": 0.4238,
+      "recall_at_10": 0.6115
     },
     "only_length_2": {
       "ci95": [
-        -0.0188,
-        -0.0079
+        -0.0194,
+        -0.0083
       ],
       "class": "length_2",
       "defined": true,
-      "difference_from_full": -0.0133,
+      "difference_from_full": -0.0139,
       "empty_queries": 0,
-      "features_kept": 44555,
+      "features_kept": 44540,
       "kind": "only",
-      "mrr": 0.4146,
-      "recall_at_10": 0.5916
+      "mrr": 0.4131,
+      "recall_at_10": 0.5891
     },
     "only_length_3": {
       "ci95": [
-        -0.0405,
-        -0.0313
+        -0.0425,
+        -0.0335
       ],
       "class": "length_3",
       "defined": true,
-      "difference_from_full": -0.0358,
+      "difference_from_full": -0.038,
       "empty_queries": 0,
-      "features_kept": 46796,
+      "features_kept": 46830,
       "kind": "only",
-      "mrr": 0.3919,
-      "recall_at_10": 0.5613
+      "mrr": 0.3888,
+      "recall_at_10": 0.5575
     },
     "only_length_4": {
       "ci95": [
-        -0.0948,
-        -0.0804
+        -0.0958,
+        -0.0819
       ],
       "class": "length_4",
       "defined": true,
-      "difference_from_full": -0.0877,
+      "difference_from_full": -0.0889,
       "empty_queries": 4,
-      "features_kept": 31331,
+      "features_kept": 31324,
       "kind": "only",
-      "mrr": 0.3416,
-      "recall_at_10": 0.5059
+      "mrr": 0.3401,
+      "recall_at_10": 0.501
     },
     "only_length_5": {
       "ci95": [
-        -0.1467,
-        -0.1291
+        -0.1497,
+        -0.1327
       ],
       "class": "length_5",
       "defined": true,
-      "difference_from_full": -0.138,
-      "empty_queries": 109,
-      "features_kept": 27318,
+      "difference_from_full": -0.1414,
+      "empty_queries": 114,
+      "features_kept": 27306,
       "kind": "only",
-      "mrr": 0.2928,
-      "recall_at_10": 0.4403
+      "mrr": 0.2887,
+      "recall_at_10": 0.4335
     },
     "only_script_han": {
       "ci95": [
-        -0.0099,
-        0.0075
+        -0.0106,
+        0.0076
       ],
       "class": "script_han",
       "defined": true,
-      "difference_from_full": -0.001,
-      "empty_queries": 68,
-      "features_kept": 95196,
+      "difference_from_full": -0.002,
+      "empty_queries": 69,
+      "features_kept": 95346,
       "kind": "only",
-      "mrr": 0.4246,
-      "recall_at_10": 0.6042
+      "mrr": 0.4227,
+      "recall_at_10": 0.6033
     },
     "only_script_latin": {
       "ci95": [
-        -0.1281,
-        -0.1107
+        -0.1306,
+        -0.1133
       ],
       "class": "script_latin",
       "defined": true,
-      "difference_from_full": -0.1194,
-      "empty_queries": 472,
-      "features_kept": 47966,
+      "difference_from_full": -0.1221,
+      "empty_queries": 489,
+      "features_kept": 47910,
       "kind": "only",
-      "mrr": 0.3105,
-      "recall_at_10": 0.4526
+      "mrr": 0.307,
+      "recall_at_10": 0.4456
     },
     "only_script_mixed_or_other": {
       "ci95": [
-        -0.2885,
-        -0.2677
+        -0.2924,
+        -0.2709
       ],
       "class": "script_mixed_or_other",
       "defined": true,
-      "difference_from_full": -0.278,
-      "empty_queries": 461,
-      "features_kept": 6838,
+      "difference_from_full": -0.2814,
+      "empty_queries": 471,
+      "features_kept": 6744,
       "kind": "only",
-      "mrr": 0.1541,
-      "recall_at_10": 0.2763
+      "mrr": 0.1498,
+      "recall_at_10": 0.2694
     },
     "remove_boundary": {
       "ci95": [
-        0.0199,
-        0.028
+        0.0186,
+        0.0269
       ],
       "class": "boundary",
       "defined": true,
-      "difference_from_full": 0.024,
+      "difference_from_full": 0.0226,
       "empty_queries": 0,
-      "features_kept": 115033,
+      "features_kept": 115068,
       "kind": "remove",
-      "mrr": 0.4521,
-      "recall_at_10": 0.6342
+      "mrr": 0.45,
+      "recall_at_10": 0.6307
     },
     "remove_digit_or_punctuation": {
       "ci95": [
-        -0.0217,
-        -0.0154
+        -0.0219,
+        -0.0158
       ],
       "class": "digit_or_punctuation",
       "defined": true,
-      "difference_from_full": -0.0185,
+      "difference_from_full": -0.0187,
       "empty_queries": 0,
-      "features_kept": 139792,
+      "features_kept": 139888,
       "kind": "remove",
-      "mrr": 0.4092,
-      "recall_at_10": 0.5897
+      "mrr": 0.4081,
+      "recall_at_10": 0.5866
     },
     "remove_function_only": {
       "ci95": [
-        -0.0072,
-        -0.0015
+        -0.0082,
+        -0.0027
       ],
       "class": "function_only",
       "defined": true,
-      "difference_from_full": -0.0044,
+      "difference_from_full": -0.0055,
       "empty_queries": 0,
-      "features_kept": 135547,
+      "features_kept": 135515,
       "kind": "remove",
-      "mrr": 0.4231,
-      "recall_at_10": 0.5987
+      "mrr": 0.4212,
+      "recall_at_10": 0.5956
     },
     "remove_han_with_a_less_common_character": {
       "ci95": [
-        -0.0622,
-        -0.051
+        -0.0633,
+        -0.0521
       ],
       "class": "han_with_a_less_common_character",
       "defined": true,
-      "difference_from_full": -0.0564,
+      "difference_from_full": -0.0576,
       "empty_queries": 0,
-      "features_kept": 69257,
+      "features_kept": 69139,
       "kind": "remove",
-      "mrr": 0.3737,
-      "recall_at_10": 0.5544
+      "mrr": 0.3717,
+      "recall_at_10": 0.551
     },
     "remove_length_2": {
       "ci95": [
-        -0.0471,
-        -0.0372
+        -0.0481,
+        -0.038
       ],
       "class": "length_2",
       "defined": true,
-      "difference_from_full": -0.0422,
+      "difference_from_full": -0.0431,
       "empty_queries": 0,
-      "features_kept": 105445,
+      "features_kept": 105460,
       "kind": "remove",
-      "mrr": 0.3858,
-      "recall_at_10": 0.5651
+      "mrr": 0.3842,
+      "recall_at_10": 0.5608
     },
     "remove_length_3": {
       "ci95": [
-        0.0036,
-        0.0084
+        0.0022,
+        0.007
       ],
       "class": "length_3",
       "defined": true,
-      "difference_from_full": 0.006,
+      "difference_from_full": 0.0046,
       "empty_queries": 0,
-      "features_kept": 103204,
+      "features_kept": 103170,
       "kind": "remove",
-      "mrr": 0.4339,
-      "recall_at_10": 0.6143
+      "mrr": 0.4317,
+      "recall_at_10": 0.6134
     },
     "remove_length_4": {
       "ci95": [
-        -0.0006,
-        0.0036
+        -0.0021,
+        0.002
       ],
       "class": "length_4",
       "defined": true,
-      "difference_from_full": 0.0015,
+      "difference_from_full": -0.0001,
       "empty_queries": 0,
-      "features_kept": 118669,
+      "features_kept": 118676,
       "kind": "remove",
-      "mrr": 0.4286,
-      "recall_at_10": 0.6107
+      "mrr": 0.4263,
+      "recall_at_10": 0.6098
     },
     "remove_length_5": {
       "ci95": [
-        -0.002,
-        0.0026
+        -0.003,
+        0.0015
       ],
       "class": "length_5",
       "defined": true,
-      "difference_from_full": 0.0004,
+      "difference_from_full": -0.0007,
       "empty_queries": 0,
-      "features_kept": 122682,
+      "features_kept": 122694,
       "kind": "remove",
-      "mrr": 0.4279,
-      "recall_at_10": 0.6077
+      "mrr": 0.4259,
+      "recall_at_10": 0.6057
     },
     "remove_script_han": {
       "ci95": [
-        -0.1178,
-        -0.1014
+        -0.1213,
+        -0.1048
       ],
       "class": "script_han",
       "defined": true,
-      "difference_from_full": -0.1096,
-      "empty_queries": 281,
-      "features_kept": 54804,
+      "difference_from_full": -0.1131,
+      "empty_queries": 289,
+      "features_kept": 54654,
       "kind": "remove",
-      "mrr": 0.3202,
-      "recall_at_10": 0.4703
+      "mrr": 0.3162,
+      "recall_at_10": 0.4619
     },
     "remove_script_latin": {
       "ci95": [
-        0.0046,
-        0.0209
+        0.0041,
+        0.0215
       ],
       "class": "script_latin",
       "defined": true,
-      "difference_from_full": 0.0128,
+      "difference_from_full": 0.0126,
       "empty_queries": 8,
-      "features_kept": 102034,
+      "features_kept": 102090,
       "kind": "remove",
-      "mrr": 0.439,
-      "recall_at_10": 0.6274
+      "mrr": 0.4378,
+      "recall_at_10": 0.6259
     },
     "remove_script_mixed_or_other": {
       "ci95": [
-        -0.006,
-        -0.002
+        -0.007,
+        -0.0029
       ],
       "class": "script_mixed_or_other",
       "defined": true,
-      "difference_from_full": -0.0039,
+      "difference_from_full": -0.0049,
       "empty_queries": 0,
-      "features_kept": 143162,
+      "features_kept": 143256,
       "kind": "remove",
-      "mrr": 0.4236,
-      "recall_at_10": 0.6043
+      "mrr": 0.4217,
+      "recall_at_10": 0.6007
     }
   },
   "bootstrap": {
@@ -315,17 +315,17 @@
   },
   "classes": {
     "correct_label_score_share": {
-      "boundary": 0.2608,
-      "digit_or_punctuation": 0.0341,
-      "function_only": 0.1698,
-      "han_with_a_less_common_character": 0.3305,
-      "length_2": 0.5889,
-      "length_3": 0.2378,
-      "length_4": 0.1099,
-      "length_5": 0.0633,
-      "script_han": 0.5003,
-      "script_latin": 0.4817,
-      "script_mixed_or_other": 0.018
+      "boundary": 0.2609,
+      "digit_or_punctuation": 0.0333,
+      "function_only": 0.1711,
+      "han_with_a_less_common_character": 0.3325,
+      "length_2": 0.5914,
+      "length_3": 0.2376,
+      "length_4": 0.1089,
+      "length_5": 0.0621,
+      "script_han": 0.5036,
+      "script_latin": 0.4793,
+      "script_mixed_or_other": 0.0172
     },
     "definitions": {
       "boundary": "contains a space: the analyser folds newlines and whitespace runs to one space, so the n-gram reaches across a line break or between Latin words",
@@ -336,41 +336,41 @@
       "script_*": "script of the n-gram's characters, whitespace ignored"
     },
     "inventory": {
-      "boundary": 34967,
-      "digit_or_punctuation": 10208,
-      "function_only": 14453,
-      "han_with_a_less_common_character": 80743,
-      "length_2": 44555,
-      "length_3": 46796,
-      "length_4": 31331,
-      "length_5": 27318,
-      "script_han": 95196,
-      "script_latin": 47966,
-      "script_mixed_or_other": 6838
+      "boundary": 34932,
+      "digit_or_punctuation": 10112,
+      "function_only": 14485,
+      "han_with_a_less_common_character": 80861,
+      "length_2": 44540,
+      "length_3": 46830,
+      "length_4": 31324,
+      "length_5": 27306,
+      "script_han": 95346,
+      "script_latin": 47910,
+      "script_mixed_or_other": 6744
     },
     "most_frequent_han_characters": "的我你不是在一了有们都个到人就要想来这着没会上说他得那里能天过看子为心还也像多让自起下把么只好大去开时对点出别再和爱给生头可走太以地当成手无现但后面被儿做中所道老从己最如真回小变些感眼打用听发前每她家",
     "tfidf_mass_share": {
-      "boundary": 0.2498,
-      "digit_or_punctuation": 0.0502,
-      "function_only": 0.1194,
-      "han_with_a_less_common_character": 0.4887,
-      "length_2": 0.3719,
-      "length_3": 0.2996,
-      "length_4": 0.1852,
-      "length_5": 0.1434,
-      "script_han": 0.6081,
-      "script_latin": 0.3634,
-      "script_mixed_or_other": 0.0285
+      "boundary": 0.2497,
+      "digit_or_punctuation": 0.0497,
+      "function_only": 0.1199,
+      "han_with_a_less_common_character": 0.4901,
+      "length_2": 0.3725,
+      "length_3": 0.2999,
+      "length_4": 0.1848,
+      "length_5": 0.1428,
+      "script_han": 0.61,
+      "script_latin": 0.3621,
+      "script_mixed_or_other": 0.0279
     }
   },
   "full_model": {
     "features": 150000,
-    "mrr": 0.4275,
+    "mrr": 0.4266,
     "reproduces_builder": true
   },
   "labels": 226,
   "privacy": "aggregate only; no n-gram is published except the hundred most common single characters",
-  "queries": 7231,
+  "queries": 7220,
   "question": "which classes of character n-gram carry the identity the lexical space has and the semantic space loses",
   "reading": "share says where the score mass sits; remove says how much the model loses without a class; only says how far a class alone gets. A class whose removal costs little but which alone gets far is redundant with the rest; a class whose removal costs much is where the signal lives"
 }

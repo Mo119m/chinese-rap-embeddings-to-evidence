@@ -4,94 +4,94 @@
   "labels": 226,
   "permutations": [
     {
-      "agreement_with_true_labels": 0.015212280459134283,
-      "lexical_char_2_5": 0.03817649953814639,
-      "lexical_words": 0.035611187796830146,
-      "semantic": 0.03196626073733951
+      "agreement_with_true_labels": 0.014127423822714681,
+      "lexical_char_2_5": 0.03768039498876176,
+      "lexical_words": 0.039116961235299216,
+      "semantic": 0.03272002723662961
     },
     {
-      "agreement_with_true_labels": 0.014659106624256672,
-      "lexical_char_2_5": 0.03869135249063983,
-      "lexical_words": 0.03710424103168812,
-      "semantic": 0.031621154157908206
+      "agreement_with_true_labels": 0.013988919667590027,
+      "lexical_char_2_5": 0.03704450352587905,
+      "lexical_words": 0.03781506631588284,
+      "semantic": 0.03303624789957
     },
     {
-      "agreement_with_true_labels": 0.017010095422486517,
-      "lexical_char_2_5": 0.037593447718390335,
-      "lexical_words": 0.035400057694265324,
-      "semantic": 0.03284281520248564
+      "agreement_with_true_labels": 0.014127423822714681,
+      "lexical_char_2_5": 0.03818554439759616,
+      "lexical_words": 0.03869505524505459,
+      "semantic": 0.03435053524957235
     },
     {
-      "agreement_with_true_labels": 0.01936108422071636,
-      "lexical_char_2_5": 0.036291930544438716,
-      "lexical_words": 0.038428573769639165,
-      "semantic": 0.03125570439664142
+      "agreement_with_true_labels": 0.017590027700831026,
+      "lexical_char_2_5": 0.03496346325414726,
+      "lexical_words": 0.038747626734769024,
+      "semantic": 0.03274360499303616
     },
     {
-      "agreement_with_true_labels": 0.01341446549578205,
-      "lexical_char_2_5": 0.035418191215038426,
-      "lexical_words": 0.03684990070924716,
-      "semantic": 0.03297786696130597
+      "agreement_with_true_labels": 0.01592797783933518,
+      "lexical_char_2_5": 0.0362677869048185,
+      "lexical_words": 0.03469220412385105,
+      "semantic": 0.03372819798406949
     },
     {
-      "agreement_with_true_labels": 0.017563269257364126,
-      "lexical_char_2_5": 0.03869506268867875,
-      "lexical_words": 0.036311617619806544,
-      "semantic": 0.031374409866741435
+      "agreement_with_true_labels": 0.01772853185595568,
+      "lexical_char_2_5": 0.03879863403530178,
+      "lexical_words": 0.03677347348426116,
+      "semantic": 0.0330677038972052
     },
     {
-      "agreement_with_true_labels": 0.015903747752731297,
-      "lexical_char_2_5": 0.03283666825221229,
-      "lexical_words": 0.03559693611355964,
-      "semantic": 0.03313649762930104
+      "agreement_with_true_labels": 0.015235457063711912,
+      "lexical_char_2_5": 0.036962060064072384,
+      "lexical_words": 0.03806260741981361,
+      "semantic": 0.03216329647153466
     },
     {
-      "agreement_with_true_labels": 0.01673350850504771,
-      "lexical_char_2_5": 0.03804792613603711,
-      "lexical_words": 0.03611644265746719,
-      "semantic": 0.03258705821401671
+      "agreement_with_true_labels": 0.016204986149584488,
+      "lexical_char_2_5": 0.03724215980809838,
+      "lexical_words": 0.03483156026024953,
+      "semantic": 0.032930851550443466
     },
     {
-      "agreement_with_true_labels": 0.018116443092241738,
-      "lexical_char_2_5": 0.04028165872387425,
-      "lexical_words": 0.038851657730764384,
-      "semantic": 0.034889466486783295
+      "agreement_with_true_labels": 0.018005540166204988,
+      "lexical_char_2_5": 0.04135898444627726,
+      "lexical_words": 0.03936535805723479,
+      "semantic": 0.03399261881733409
     },
     {
-      "agreement_with_true_labels": 0.01673350850504771,
-      "lexical_char_2_5": 0.0393230360316132,
-      "lexical_words": 0.04034098028711082,
-      "semantic": 0.03424866834896248
+      "agreement_with_true_labels": 0.015650969529085873,
+      "lexical_char_2_5": 0.03870166162475004,
+      "lexical_words": 0.039750263465432395,
+      "semantic": 0.03370486846540505
     }
   ],
   "permutations_scored": 10,
   "privacy": "aggregate only",
-  "queries": 7231,
+  "queries": 7220,
   "question": "whether any retrieval number survives when the labels are shuffled; a correct protocol must fall to chance in every space",
   "summary": {
     "lexical_char_2_5": {
       "chance": 0.0265,
-      "null_max": 0.0403,
-      "null_mean": 0.0375,
-      "null_min": 0.0328,
-      "observed": 0.4275,
-      "observed_over_null_max": 10.6
+      "null_max": 0.0414,
+      "null_mean": 0.0377,
+      "null_min": 0.035,
+      "observed": 0.4266,
+      "observed_over_null_max": 10.3
     },
     "lexical_words": {
       "chance": 0.0265,
-      "null_max": 0.0403,
-      "null_mean": 0.0371,
-      "null_min": 0.0354,
-      "observed": 0.4977,
-      "observed_over_null_max": 12.3
+      "null_max": 0.0398,
+      "null_mean": 0.0378,
+      "null_min": 0.0347,
+      "observed": 0.4963,
+      "observed_over_null_max": 12.5
     },
     "semantic": {
       "chance": 0.0265,
-      "null_max": 0.0349,
-      "null_mean": 0.0327,
-      "null_min": 0.0313,
-      "observed": 0.3015,
-      "observed_over_null_max": 8.6
+      "null_max": 0.0344,
+      "null_mean": 0.0332,
+      "null_min": 0.0322,
+      "observed": 0.2997,
+      "observed_over_null_max": 8.7
     }
   }
 }

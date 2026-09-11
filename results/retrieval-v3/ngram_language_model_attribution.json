@@ -1,10 +1,10 @@
 {
   "analysis": "per-label character n-gram language models scored by log-likelihood, against the TF-IDF spaces",
   "corpus": {
-    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
-    "groups": 5882,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
     "labels": 226,
-    "queries": 7231
+    "queries": 7220
   },
   "design": {
     "leave_group_out": "the query's leakage group is subtracted from every label it touches before scoring",
@@ -18,42 +18,42 @@
     "contrasts": [
       {
         "ci95": [
-          -0.0394,
-          -0.0235
+          -0.0414,
+          -0.0249
         ],
         "excludes_zero": true,
         "minus": "lexical_char_2_5",
-        "mrr_difference": -0.0316,
+        "mrr_difference": -0.0332,
         "system": "ngram_lm_1_to_5"
       },
       {
         "ci95": [
-          -0.1112,
-          -0.0953
+          -0.1122,
+          -0.0961
         ],
         "excludes_zero": true,
         "minus": "lexical_words",
-        "mrr_difference": -0.1032,
+        "mrr_difference": -0.1043,
         "system": "ngram_lm_1_to_5"
       },
       {
         "ci95": [
-          0.0109,
-          0.0186
+          0.0114,
+          0.0189
         ],
         "excludes_zero": true,
         "minus": "ngram_lm_1_to_3",
-        "mrr_difference": 0.0147,
+        "mrr_difference": 0.0152,
         "system": "ngram_lm_1_to_5"
       },
       {
         "ci95": [
-          -0.0547,
-          -0.0381
+          -0.0572,
+          -0.0398
         ],
         "excludes_zero": true,
         "minus": "lexical_char_2_5",
-        "mrr_difference": -0.0463,
+        "mrr_difference": -0.0484,
         "system": "ngram_lm_1_to_3"
       }
     ],
@@ -62,10 +62,10 @@
   "privacy": "aggregate only",
   "systems": {
     "lexical_char_2_5": {
-      "mrr": 0.4275
+      "mrr": 0.4266
     },
     "lexical_words": {
-      "mrr": 0.4977
+      "mrr": 0.4963
     },
     "ngram_lm_1_to_3": {
       "lambdas": [
@@ -74,14 +74,14 @@
         0.5
       ],
       "modelled_ngrams_by_order": {
-        "1": 6487,
-        "2": 243678,
-        "3": 720728
+        "1": 6484,
+        "2": 243429,
+        "3": 720180
       },
-      "mrr": 0.3803,
+      "mrr": 0.3773,
       "orders": 3,
-      "recall_at_1": 0.2874,
-      "recall_at_10": 0.5561
+      "recall_at_1": 0.2848,
+      "recall_at_10": 0.5529
     },
     "ngram_lm_1_to_5": {
       "lambdas": [
@@ -92,16 +92,16 @@
         0.35
       ],
       "modelled_ngrams_by_order": {
-        "1": 6487,
-        "2": 243678,
-        "3": 720728,
-        "4": 1011837,
-        "5": 1119877
+        "1": 6484,
+        "2": 243429,
+        "3": 720180,
+        "4": 1011030,
+        "5": 1118861
       },
-      "mrr": 0.3952,
+      "mrr": 0.3928,
       "orders": 5,
-      "recall_at_1": 0.3,
-      "recall_at_10": 0.5781
+      "recall_at_1": 0.2985,
+      "recall_at_10": 0.5748
     }
   }
 }

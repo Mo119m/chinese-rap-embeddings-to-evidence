@@ -6,11 +6,11 @@
     "seed": 20260825,
     "svd_components": 1024,
     "svd_variance_kept_by_fold": [
-      0.408,
-      0.4094,
-      0.4078,
-      0.4105,
-      0.409
+      0.4057,
+      0.4096,
+      0.4101,
+      0.4077,
+      0.4085
     ]
   },
   "labels": 226,
@@ -18,97 +18,97 @@
     "contrasts": [
       {
         "ci95": [
-          -0.0606,
-          -0.0495
+          -0.0608,
+          -0.0493
         ],
         "excludes_zero": true,
         "minus": "words_raw",
-        "mrr_difference": -0.0547,
+        "mrr_difference": -0.0551,
         "system": "words_svd_none"
       },
       {
         "ci95": [
-          0.0944,
-          0.1079
+          0.0956,
+          0.1088
         ],
         "excludes_zero": true,
         "minus": "words_svd_none",
-        "mrr_difference": 0.101,
+        "mrr_difference": 0.1021,
         "system": "words_svd_total_whitening"
       },
       {
         "ci95": [
-          -0.0056,
-          0.0005
+          -0.0067,
+          -0.001
         ],
-        "excludes_zero": false,
+        "excludes_zero": true,
         "minus": "words_svd_total_whitening",
-        "mrr_difference": -0.0026,
+        "mrr_difference": -0.0038,
         "system": "words_svd_within_author_whitening"
       },
       {
         "ci95": [
-          0.0325,
-          0.0451
+          0.0329,
+          0.0461
         ],
         "excludes_zero": true,
         "minus": "words_svd_within_author_whitening",
-        "mrr_difference": 0.0389,
+        "mrr_difference": 0.0394,
         "system": "fusion_whitened_words_whitened_semantic"
       },
       {
         "ci95": [
-          0.0848,
-          0.0984
+          0.0837,
+          0.0978
         ],
         "excludes_zero": true,
         "minus": "fusion_raw_words_raw_semantic",
-        "mrr_difference": 0.0917,
+        "mrr_difference": 0.0908,
         "system": "fusion_whitened_words_whitened_semantic"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
   },
   "privacy": "aggregate only",
-  "queries": 7231,
+  "queries": 7220,
   "systems": {
     "fusion_raw_words_raw_semantic": {
-      "mrr": 0.4899,
-      "recall_at_1": 0.3926,
-      "recall_at_10": 0.6734
+      "mrr": 0.4894,
+      "recall_at_1": 0.3932,
+      "recall_at_10": 0.6716
     },
     "fusion_whitened_words_whitened_semantic": {
-      "mrr": 0.5859,
-      "recall_at_1": 0.4785,
-      "recall_at_10": 0.7843
+      "mrr": 0.5854,
+      "recall_at_1": 0.4794,
+      "recall_at_10": 0.7803
     },
     "semantic_whitened_chunks": {
-      "mrr": 0.4316,
-      "recall_at_1": 0.3316,
-      "recall_at_10": 0.6262
+      "mrr": 0.4271,
+      "recall_at_1": 0.3266,
+      "recall_at_10": 0.6208
     },
     "words_raw": {
-      "mrr": 0.4977,
-      "recall_at_1": 0.4048,
-      "recall_at_10": 0.6738
+      "mrr": 0.4963,
+      "recall_at_1": 0.4029,
+      "recall_at_10": 0.6715
     },
     "words_svd_none": {
-      "mrr": 0.4428,
-      "recall_at_1": 0.3444,
-      "recall_at_10": 0.6279
+      "mrr": 0.4411,
+      "recall_at_1": 0.3407,
+      "recall_at_10": 0.6332
     },
     "words_svd_total_whitening": {
-      "mrr": 0.549,
-      "recall_at_1": 0.4406,
-      "recall_at_10": 0.7563
+      "mrr": 0.5479,
+      "recall_at_1": 0.4395,
+      "recall_at_10": 0.7525
     },
     "words_svd_within_author_whitening": {
-      "mrr": 0.5446,
-      "recall_at_1": 0.4352,
-      "recall_at_10": 0.7556
+      "mrr": 0.5426,
+      "recall_at_1": 0.4334,
+      "recall_at_10": 0.7526
     }
   },
   "verification": {
-    "words_raw_reproduces_representation_study": 0.4977
+    "words_raw_reproduces_representation_study": 0.4963
   }
 }

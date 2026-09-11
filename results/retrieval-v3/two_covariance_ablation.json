@@ -8,33 +8,33 @@
   },
   "corpus": {
     "labels": 226,
-    "songs": 7231,
-    "v3_content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
-    "vectors_sha256": "e61ffc05deb595b2a5ba4dc4970a771388e3c127abb986f25c9df0086b5c42a4"
+    "songs": 7220,
+    "v3_content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "vectors_sha256": "e1168331c5bbe39d0e073ba97e145b802a7a67c4b1fb7b4bc746e6a79f7073d1"
   },
   "folds": [
     {
       "fold": 0,
       "predicted_mrr": {
         "gaussian_means+gaussian_residuals": {
-          "none": 0.6471801155500123,
-          "total_whitening": 0.9983566127322178,
-          "within_author_whitening": 0.9995851196238418
+          "none": 0.6422732515633301,
+          "total_whitening": 0.9983269852262235,
+          "within_author_whitening": 0.9995498614958449
         },
         "gaussian_means+real_residuals": {
-          "none": 0.6139978955631988,
-          "total_whitening": 0.9691536440326374,
-          "within_author_whitening": 0.9908772415064767
+          "none": 0.6222722898000969,
+          "total_whitening": 0.9697965738143988,
+          "within_author_whitening": 0.9913374425599241
         },
         "real_means+gaussian_residuals": {
-          "none": 0.6253635823369089,
-          "total_whitening": 0.9907756681923464,
-          "within_author_whitening": 0.9912634479412933
+          "none": 0.6278496883088905,
+          "total_whitening": 0.9915609297009003,
+          "within_author_whitening": 0.9915598738749708
         },
         "real_means+real_residuals": {
-          "none": 0.6012828494559906,
-          "total_whitening": 0.9440879296041578,
-          "within_author_whitening": 0.9482601338435925
+          "none": 0.5989672666876612,
+          "total_whitening": 0.9395069995414236,
+          "within_author_whitening": 0.9448757902172561
         }
       }
     },
@@ -42,24 +42,24 @@
       "fold": 1,
       "predicted_mrr": {
         "gaussian_means+gaussian_residuals": {
-          "none": 0.6332404751181597,
-          "total_whitening": 0.9981418388001158,
-          "within_author_whitening": 0.9996081685336283
+          "none": 0.6268291379274545,
+          "total_whitening": 0.9981663588796552,
+          "within_author_whitening": 0.9997460757156047
         },
         "gaussian_means+real_residuals": {
-          "none": 0.6115311960004878,
-          "total_whitening": 0.9711715760844511,
-          "within_author_whitening": 0.9909801933035235
+          "none": 0.613525316669143,
+          "total_whitening": 0.9730835202321323,
+          "within_author_whitening": 0.9928716528162512
         },
         "real_means+gaussian_residuals": {
-          "none": 0.6283763339731816,
-          "total_whitening": 0.9931778519733159,
-          "within_author_whitening": 0.9932868593859467
+          "none": 0.6280839711381203,
+          "total_whitening": 0.9943610971207923,
+          "within_author_whitening": 0.9946854526667546
         },
         "real_means+real_residuals": {
-          "none": 0.5927334242806683,
-          "total_whitening": 0.9411388840496155,
-          "within_author_whitening": 0.9443037369223862
+          "none": 0.5919735322703821,
+          "total_whitening": 0.9457693954568409,
+          "within_author_whitening": 0.9510310535690413
         }
       }
     },
@@ -67,24 +67,24 @@
       "fold": 2,
       "predicted_mrr": {
         "gaussian_means+gaussian_residuals": {
-          "none": 0.6380336304153181,
-          "total_whitening": 0.9985214124371917,
-          "within_author_whitening": 0.9996509736518033
+          "none": 0.6446133519017714,
+          "total_whitening": 0.9988342566943674,
+          "within_author_whitening": 0.9998384118190212
         },
         "gaussian_means+real_residuals": {
-          "none": 0.6327967473544363,
-          "total_whitening": 0.9714497594631739,
-          "within_author_whitening": 0.9935651511330572
+          "none": 0.6343973880591717,
+          "total_whitening": 0.9737198858389995,
+          "within_author_whitening": 0.9932710064635272
         },
         "real_means+gaussian_residuals": {
-          "none": 0.6392052598597395,
-          "total_whitening": 0.993678836491034,
-          "within_author_whitening": 0.9946703237603529
+          "none": 0.6319138059632068,
+          "total_whitening": 0.9931104821325273,
+          "within_author_whitening": 0.9930633864119065
         },
         "real_means+real_residuals": {
-          "none": 0.6027853967319683,
-          "total_whitening": 0.9459668386159311,
-          "within_author_whitening": 0.9513107735777491
+          "none": 0.5973186709583058,
+          "total_whitening": 0.9459735175423407,
+          "within_author_whitening": 0.9506497311157059
         }
       }
     },
@@ -92,24 +92,24 @@
       "fold": 3,
       "predicted_mrr": {
         "gaussian_means+gaussian_residuals": {
-          "none": 0.6228019882643315,
-          "total_whitening": 0.9986852921226574,
-          "within_author_whitening": 0.999596644078735
+          "none": 0.630782088603224,
+          "total_whitening": 0.9992118454029811,
+          "within_author_whitening": 0.999792243767313
         },
         "gaussian_means+real_residuals": {
-          "none": 0.6190002917331144,
-          "total_whitening": 0.9707686043116828,
-          "within_author_whitening": 0.993177522703176
+          "none": 0.6185903746999034,
+          "total_whitening": 0.9702279162819328,
+          "within_author_whitening": 0.9925957987072946
         },
         "real_means+gaussian_residuals": {
-          "none": 0.6240782951175073,
-          "total_whitening": 0.9929639708138154,
-          "within_author_whitening": 0.9936287283300145
+          "none": 0.623881997135747,
+          "total_whitening": 0.9930086503073905,
+          "within_author_whitening": 0.9938876502318695
         },
         "real_means+real_residuals": {
-          "none": 0.5997990885130743,
-          "total_whitening": 0.94339827350127,
-          "within_author_whitening": 0.9466761953019042
+          "none": 0.587521286281209,
+          "total_whitening": 0.9435550878728723,
+          "within_author_whitening": 0.9485529340167194
         }
       }
     },
@@ -117,90 +117,90 @@
       "fold": 4,
       "predicted_mrr": {
         "gaussian_means+gaussian_residuals": {
-          "none": 0.6371151904903671,
-          "total_whitening": 0.9989997451061741,
-          "within_author_whitening": 0.9997003641727746
+          "none": 0.6139457556341827,
+          "total_whitening": 0.9988688827331487,
+          "within_author_whitening": 0.9999307479224376
         },
         "gaussian_means+real_residuals": {
-          "none": 0.6332982163638972,
-          "total_whitening": 0.973490364199891,
-          "within_author_whitening": 0.992661227123957
+          "none": 0.616156701675137,
+          "total_whitening": 0.9702180391169312,
+          "within_author_whitening": 0.9935518621114189
         },
         "real_means+gaussian_residuals": {
-          "none": 0.6226393943895427,
-          "total_whitening": 0.99279913643418,
-          "within_author_whitening": 0.9934665944467495
+          "none": 0.6329844964878215,
+          "total_whitening": 0.990891875059301,
+          "within_author_whitening": 0.9918190816744364
         },
         "real_means+real_residuals": {
-          "none": 0.6023339217100471,
-          "total_whitening": 0.9439546909144719,
-          "within_author_whitening": 0.9491380995270499
+          "none": 0.5974486720534162,
+          "total_whitening": 0.943111616962385,
+          "within_author_whitening": 0.9493440584016358
         }
       }
     }
   ],
   "observed_mrr": {
-    "none": 0.3015,
-    "total_whitening": 0.4016,
-    "within_author_whitening": 0.4196
+    "none": 0.2997,
+    "total_whitening": 0.3996,
+    "within_author_whitening": 0.4164
   },
   "privacy": "aggregate only",
   "reading": "the arm whose prediction meets the observed value names the assumption that was carrying the error; if only the both-real arm meets it, author means and residuals are entangled -- the content of a song depends on who wrote it -- and no two-covariance model separates them",
   "summary": {
     "gaussian_means+gaussian_residuals": {
       "none": {
-        "observed": 0.3015,
-        "predicted": 0.6357
+        "observed": 0.2997,
+        "predicted": 0.6317
       },
       "total_whitening": {
-        "observed": 0.4016,
-        "predicted": 0.9985
+        "observed": 0.3996,
+        "predicted": 0.9987
       },
       "within_author_whitening": {
-        "observed": 0.4196,
-        "predicted": 0.9996
+        "observed": 0.4164,
+        "predicted": 0.9998
       }
     },
     "gaussian_means+real_residuals": {
       "none": {
-        "observed": 0.3015,
-        "predicted": 0.6221
+        "observed": 0.2997,
+        "predicted": 0.621
       },
       "total_whitening": {
-        "observed": 0.4016,
-        "predicted": 0.9712
+        "observed": 0.3996,
+        "predicted": 0.9714
       },
       "within_author_whitening": {
-        "observed": 0.4196,
-        "predicted": 0.9923
+        "observed": 0.4164,
+        "predicted": 0.9927
       }
     },
     "real_means+gaussian_residuals": {
       "none": {
-        "observed": 0.3015,
-        "predicted": 0.6279
+        "observed": 0.2997,
+        "predicted": 0.6289
       },
       "total_whitening": {
-        "observed": 0.4016,
-        "predicted": 0.9927
+        "observed": 0.3996,
+        "predicted": 0.9926
       },
       "within_author_whitening": {
-        "observed": 0.4196,
-        "predicted": 0.9933
+        "observed": 0.4164,
+        "predicted": 0.993
       }
     },
     "real_means+real_residuals": {
       "none": {
-        "observed": 0.3015,
-        "predicted": 0.5998
+        "observed": 0.2997,
+        "predicted": 0.5946
       },
       "total_whitening": {
-        "observed": 0.4016,
-        "predicted": 0.9437
+        "observed": 0.3996,
+        "predicted": 0.9436
       },
       "within_author_whitening": {
-        "observed": 0.4196,
-        "predicted": 0.9479
+        "observed": 0.4164,
+        "predicted": 0.9489
       }
     }
   }

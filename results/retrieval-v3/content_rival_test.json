@@ -1,11 +1,11 @@
 {
   "analysis": "identity among content rivals: the retrieval protocol's style-or-content test",
   "corpus": {
-    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
-    "groups": 5882,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
     "labels": 226,
-    "queries": 7231,
-    "vectors_sha256": "e61ffc05deb595b2a5ba4dc4970a771388e3c127abb986f25c9df0086b5c42a4"
+    "queries": 7220,
+    "vectors_sha256": "e1168331c5bbe39d0e073ba97e145b802a7a67c4b1fb7b4bc746e6a79f7073d1"
   },
   "design": {
     "candidate_set": "the true label plus its K rivals; rank of the true label within the set, ties counted against the query",
@@ -25,156 +25,156 @@
       "among_10_content_rivals": [
         {
           "ci95": [
-            0.2807,
-            0.3006
+            0.2823,
+            0.3018
           ],
           "excludes_zero": true,
           "minus": "semantic",
-          "mrr_difference": 0.2908,
+          "mrr_difference": 0.2919,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.0497,
-            0.0626
+            0.0506,
+            0.0635
           ],
           "excludes_zero": true,
           "minus": "lexical_char_2_5",
-          "mrr_difference": 0.056,
+          "mrr_difference": 0.0567,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.1912,
-            0.2078
+            0.1911,
+            0.2085
           ],
           "excludes_zero": true,
           "minus": "semantic",
-          "mrr_difference": 0.1995,
+          "mrr_difference": 0.1999,
           "system": "semantic_within_author_whitening"
         },
         {
           "ci95": [
-            0.082,
-            0.1011
+            0.0822,
+            0.102
           ],
           "excludes_zero": true,
           "minus": "semantic_within_author_whitening",
-          "mrr_difference": 0.0913,
+          "mrr_difference": 0.092,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            -0.0155,
-            -0.0016
+            -0.0148,
+            -0.0002
           ],
           "excludes_zero": true,
           "minus": "lexical_words",
-          "mrr_difference": -0.0084,
+          "mrr_difference": -0.0075,
           "system": "fusion_whitened_semantic_words"
         }
       ],
       "among_25_content_rivals": [
         {
           "ci95": [
-            0.2434,
-            0.2639
+            0.2441,
+            0.264
           ],
           "excludes_zero": true,
           "minus": "semantic",
-          "mrr_difference": 0.2535,
+          "mrr_difference": 0.2538,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.0586,
+            0.0588,
             0.0721
           ],
           "excludes_zero": true,
           "minus": "lexical_char_2_5",
-          "mrr_difference": 0.0653,
+          "mrr_difference": 0.0652,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.1602,
-            0.1772
+            0.1592,
+            0.1766
           ],
           "excludes_zero": true,
           "minus": "semantic",
-          "mrr_difference": 0.1687,
+          "mrr_difference": 0.1678,
           "system": "semantic_within_author_whitening"
         },
         {
           "ci95": [
-            0.0751,
-            0.0946
+            0.076,
+            0.0962
           ],
           "excludes_zero": true,
           "minus": "semantic_within_author_whitening",
-          "mrr_difference": 0.0848,
+          "mrr_difference": 0.086,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.0036,
-            0.0185
+            0.003,
+            0.0181
           ],
           "excludes_zero": true,
           "minus": "lexical_words",
-          "mrr_difference": 0.0113,
+          "mrr_difference": 0.0109,
           "system": "fusion_whitened_semantic_words"
         }
       ],
       "among_5_content_rivals": [
         {
           "ci95": [
-            0.3018,
-            0.3209
+            0.3029,
+            0.3211
           ],
           "excludes_zero": true,
           "minus": "semantic",
-          "mrr_difference": 0.3113,
+          "mrr_difference": 0.3119,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.0406,
-            0.0529
+            0.0419,
+            0.0541
           ],
           "excludes_zero": true,
           "minus": "lexical_char_2_5",
-          "mrr_difference": 0.0467,
+          "mrr_difference": 0.0479,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            0.2061,
-            0.2222
+            0.2087,
+            0.2254
           ],
           "excludes_zero": true,
           "minus": "semantic",
-          "mrr_difference": 0.2139,
+          "mrr_difference": 0.2171,
           "system": "semantic_within_author_whitening"
         },
         {
           "ci95": [
-            0.0881,
-            0.1062
+            0.0856,
+            0.1043
           ],
           "excludes_zero": true,
           "minus": "semantic_within_author_whitening",
-          "mrr_difference": 0.0973,
+          "mrr_difference": 0.0948,
           "system": "lexical_words"
         },
         {
           "ci95": [
-            -0.0321,
-            -0.0189
+            -0.0302,
+            -0.016
           ],
           "excludes_zero": true,
           "minus": "lexical_words",
-          "mrr_difference": -0.0254,
+          "mrr_difference": -0.023,
           "system": "fusion_whitened_semantic_words"
         }
       ]
@@ -184,92 +184,92 @@
   "privacy": "aggregate only",
   "results": {
     "all_labels": {
-      "fusion_semantic_words": 0.4899,
-      "fusion_whitened_semantic_words": 0.5386,
-      "lexical_char_2_5": 0.4275,
-      "lexical_words": 0.4977,
-      "semantic": 0.3015,
-      "semantic_within_author_whitening": 0.4196
+      "fusion_semantic_words": 0.4894,
+      "fusion_whitened_semantic_words": 0.5371,
+      "lexical_char_2_5": 0.4266,
+      "lexical_words": 0.4963,
+      "semantic": 0.2997,
+      "semantic_within_author_whitening": 0.4164
     },
     "among_10_content_rivals": {
       "chance_mrr": 0.2745,
       "fusion_semantic_words": {
-        "mrr": 0.5328,
-        "top1": 0.4052
+        "mrr": 0.5332,
+        "top1": 0.4065
       },
       "fusion_whitened_semantic_words": {
-        "mrr": 0.6098,
-        "top1": 0.4757
+        "mrr": 0.61,
+        "top1": 0.4763
       },
       "lexical_char_2_5": {
-        "mrr": 0.5606,
-        "top1": 0.4176
+        "mrr": 0.5593,
+        "top1": 0.4168
       },
       "lexical_words": {
-        "mrr": 0.6149,
-        "top1": 0.484
+        "mrr": 0.6142,
+        "top1": 0.4834
       },
       "semantic": {
-        "mrr": 0.3311,
-        "top1": 0.203
+        "mrr": 0.3296,
+        "top1": 0.2019
       },
       "semantic_within_author_whitening": {
-        "mrr": 0.5316,
-        "top1": 0.3803
+        "mrr": 0.5305,
+        "top1": 0.3795
       }
     },
     "among_25_content_rivals": {
       "chance_mrr": 0.1482,
       "fusion_semantic_words": {
-        "mrr": 0.5023,
-        "top1": 0.3959
+        "mrr": 0.502,
+        "top1": 0.3964
       },
       "fusion_whitened_semantic_words": {
-        "mrr": 0.5692,
-        "top1": 0.4535
+        "mrr": 0.5677,
+        "top1": 0.4508
       },
       "lexical_char_2_5": {
-        "mrr": 0.4913,
-        "top1": 0.373
+        "mrr": 0.4898,
+        "top1": 0.3716
       },
       "lexical_words": {
-        "mrr": 0.5546,
-        "top1": 0.4432
+        "mrr": 0.553,
+        "top1": 0.442
       },
       "semantic": {
-        "mrr": 0.3086,
-        "top1": 0.203
+        "mrr": 0.3069,
+        "top1": 0.2019
       },
       "semantic_within_author_whitening": {
-        "mrr": 0.4783,
-        "top1": 0.3517
+        "mrr": 0.4755,
+        "top1": 0.3485
       }
     },
     "among_5_content_rivals": {
       "chance_mrr": 0.4083,
       "fusion_semantic_words": {
-        "mrr": 0.5792,
-        "top1": 0.4236
+        "mrr": 0.5789,
+        "top1": 0.4227
       },
       "fusion_whitened_semantic_words": {
-        "mrr": 0.6557,
-        "top1": 0.502
+        "mrr": 0.6571,
+        "top1": 0.5032
       },
       "lexical_char_2_5": {
-        "mrr": 0.6328,
-        "top1": 0.4691
+        "mrr": 0.6308,
+        "top1": 0.4657
       },
       "lexical_words": {
-        "mrr": 0.6776,
-        "top1": 0.5315
+        "mrr": 0.6765,
+        "top1": 0.5298
       },
       "semantic": {
-        "mrr": 0.373,
-        "top1": 0.203
+        "mrr": 0.3716,
+        "top1": 0.2019
       },
       "semantic_within_author_whitening": {
-        "mrr": 0.5881,
-        "top1": 0.4107
+        "mrr": 0.5897,
+        "top1": 0.414
       }
     }
   }

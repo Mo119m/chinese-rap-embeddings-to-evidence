@@ -1,12 +1,12 @@
 {
   "analysis": "the representation of a song, one choice at a time",
   "chunk_query": {
-    "chunk_level_mrr": 0.1887,
-    "chunk_level_recall_at_10": 0.3379,
-    "chunks": 23898,
-    "song_level_mean_of_chunk_reciprocal_ranks": 0.2531
+    "chunk_level_mrr": 0.1876,
+    "chunk_level_recall_at_10": 0.3375,
+    "chunks": 23848,
+    "song_level_mean_of_chunk_reciprocal_ranks": 0.2509
   },
-  "chunks": 23898,
+  "chunks": 23848,
   "definitions": {
     "chunk_maxsim": "label = the set of its chunk vectors outside the query's leakage group; score = mean over the query's chunks of the best cosine to any of the label's chunks",
     "chunk_query": "each chunk scored alone against centroid profiles built from all songs outside its leakage group; reported at chunk level and as the mean reciprocal rank of a song's chunks",
@@ -14,139 +14,139 @@
     "whitened_chunks_then_mean": "within-author whitening fitted on chunk vectors of four folds, applied to every chunk, then averaged per song",
     "word_jieba": "jieba default segmentation, word unigrams and bigrams, TF-IDF with the character system's settings"
   },
-  "groups": 5882,
+  "groups": 5875,
   "labels": 226,
   "paired_contrasts": {
     "contrasts": [
       {
         "ci95": [
-          -0.0263,
-          -0.0069
+          -0.027,
+          -0.0085
         ],
         "excludes_zero": true,
         "minus": "song_centroid",
-        "mrr_difference": -0.0163,
+        "mrr_difference": -0.0177,
         "system": "chunk_maxsim"
       },
       {
         "ci95": [
-          0.0087,
-          0.0151
+          0.0077,
+          0.0142
         ],
         "excludes_zero": true,
         "minus": "whitened_centroids",
-        "mrr_difference": 0.0119,
+        "mrr_difference": 0.011,
         "system": "whitened_chunks_then_mean"
       },
       {
         "ci95": [
-          0.1087,
-          0.1257
+          0.1071,
+          0.1244
         ],
         "excludes_zero": true,
         "minus": "song_centroid",
-        "mrr_difference": 0.1171,
+        "mrr_difference": 0.1157,
         "system": "whitened_centroids"
       },
       {
         "ci95": [
-          -0.0235,
-          -0.0063
+          -0.0241,
+          -0.007
         ],
         "excludes_zero": true,
         "minus": "char_2_5",
-        "mrr_difference": -0.015,
+        "mrr_difference": -0.0155,
         "system": "char_1"
       },
       {
         "ci95": [
-          -0.0129,
-          -0.0047
+          -0.0139,
+          -0.0055
         ],
         "excludes_zero": true,
         "minus": "char_2_5",
-        "mrr_difference": -0.0086,
+        "mrr_difference": -0.0098,
         "system": "char_2_3"
       },
       {
         "ci95": [
-          -0.0829,
-          -0.0681
+          -0.0845,
+          -0.07
         ],
         "excludes_zero": true,
         "minus": "char_2_5",
-        "mrr_difference": -0.0757,
+        "mrr_difference": -0.0774,
         "system": "char_4_5"
       },
       {
         "ci95": [
-          0.0645,
-          0.0788
+          0.0643,
+          0.0785
         ],
         "excludes_zero": true,
         "minus": "char_2_5",
-        "mrr_difference": 0.0716,
+        "mrr_difference": 0.0711,
         "system": "word_jieba"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
   },
   "privacy": "aggregate only",
-  "queries": 7231,
+  "queries": 7220,
   "systems": {
     "char_1": {
-      "features": 5594,
-      "mrr": 0.4155,
-      "recall_at_1": 0.3197,
-      "recall_at_10": 0.6037
+      "features": 5591,
+      "mrr": 0.4141,
+      "recall_at_1": 0.3183,
+      "recall_at_10": 0.6008
     },
     "char_2_3": {
       "features": 150000,
-      "mrr": 0.418,
-      "recall_at_1": 0.3291,
-      "recall_at_10": 0.5908
+      "mrr": 0.4159,
+      "recall_at_1": 0.3265,
+      "recall_at_10": 0.5889
     },
     "char_2_5": {
       "features": 150000,
-      "mrr": 0.4275,
-      "recall_at_1": 0.3343,
-      "recall_at_10": 0.6095
+      "mrr": 0.4266,
+      "recall_at_1": 0.3342,
+      "recall_at_10": 0.6057
     },
     "char_4_5": {
       "features": 150000,
-      "mrr": 0.353,
-      "recall_at_1": 0.2668,
-      "recall_at_10": 0.5193
+      "mrr": 0.3504,
+      "recall_at_1": 0.265,
+      "recall_at_10": 0.5165
     },
     "chunk_maxsim": {
-      "mrr": 0.284,
-      "recall_at_1": 0.1967,
-      "recall_at_10": 0.4518
+      "mrr": 0.2805,
+      "recall_at_1": 0.1938,
+      "recall_at_10": 0.4481
     },
     "song_centroid": {
-      "mrr": 0.3015,
-      "recall_at_1": 0.203,
-      "recall_at_10": 0.4947
+      "mrr": 0.2997,
+      "recall_at_1": 0.2019,
+      "recall_at_10": 0.4911
     },
     "whitened_centroids": {
-      "mrr": 0.4196,
-      "recall_at_1": 0.3218,
-      "recall_at_10": 0.6071
+      "mrr": 0.4164,
+      "recall_at_1": 0.3179,
+      "recall_at_10": 0.6026
     },
     "whitened_chunks_then_mean": {
-      "mrr": 0.4316,
-      "recall_at_1": 0.3316,
-      "recall_at_10": 0.6262
+      "mrr": 0.4271,
+      "recall_at_1": 0.3266,
+      "recall_at_10": 0.6208
     },
     "word_jieba": {
       "features": 150000,
-      "mrr": 0.4977,
-      "recall_at_1": 0.4048,
-      "recall_at_10": 0.6738
+      "mrr": 0.4963,
+      "recall_at_1": 0.4029,
+      "recall_at_10": 0.6715
     }
   },
   "verification": {
-    "char_2_5_reproduces_builder": 0.4275,
-    "song_centroid_reproduces_builder": 0.3015
+    "char_2_5_reproduces_builder": 0.4266,
+    "song_centroid_reproduces_builder": 0.2997
   }
 }

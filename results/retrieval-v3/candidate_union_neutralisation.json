@@ -8,10 +8,10 @@
     "reviewed_605": "the screened catalogue the published neutralisation uses"
   },
   "corpus": {
-    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
-    "groups": 5882,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
     "labels": 226,
-    "queries": 7231
+    "queries": 7220
   },
   "culture_types": [
     "RAP_CULTURE_CONCEPT"
@@ -32,82 +32,82 @@
     "contrasts": [
       {
         "ci95": [
-          -0.009,
-          -0.0046
+          -0.0107,
+          -0.0061
         ],
         "excludes_zero": true,
         "minus": "words",
-        "mrr_difference": -0.0068,
+        "mrr_difference": -0.0083,
         "system": "reviewed_605"
       },
       {
         "ci95": [
-          -0.0417,
-          -0.0321
+          -0.0409,
+          -0.031
         ],
         "excludes_zero": true,
         "minus": "words",
-        "mrr_difference": -0.0367,
+        "mrr_difference": -0.0357,
         "system": "every_named_candidate"
       },
       {
         "ci95": [
-          -0.0233,
-          -0.0171
+          -0.0256,
+          -0.0188
         ],
         "excludes_zero": true,
         "minus": "words",
-        "mrr_difference": -0.0201,
+        "mrr_difference": -0.0221,
         "system": "named_candidates_in_at_most_2pct_of_songs"
       },
       {
         "ci95": [
-          -0.0226,
-          -0.0138
+          -0.0245,
+          -0.0154
         ],
         "excludes_zero": true,
         "minus": "words",
-        "mrr_difference": -0.0181,
+        "mrr_difference": -0.0197,
         "system": "named_candidates_in_over_2pct_of_songs_only"
       },
       {
         "ci95": [
-          -0.0426,
-          -0.033
+          -0.043,
+          -0.0328
         ],
         "excludes_zero": true,
         "minus": "words",
-        "mrr_difference": -0.0376,
+        "mrr_difference": -0.0377,
         "system": "every_named_and_culture_candidate"
       },
       {
         "ci95": [
-          -0.0348,
-          -0.0254
+          -0.0322,
+          -0.0229
         ],
         "excludes_zero": true,
         "minus": "reviewed_605",
-        "mrr_difference": -0.0299,
+        "mrr_difference": -0.0274,
         "system": "every_named_candidate"
       },
       {
         "ci95": [
-          -0.0161,
-          -0.0107
+          -0.0166,
+          -0.0112
         ],
         "excludes_zero": true,
         "minus": "reviewed_605",
-        "mrr_difference": -0.0134,
+        "mrr_difference": -0.0138,
         "system": "named_candidates_in_at_most_2pct_of_songs"
       },
       {
         "ci95": [
-          -0.0028,
-          0.001
+          -0.0036,
+          -0.0003
         ],
-        "excludes_zero": false,
+        "excludes_zero": true,
         "minus": "every_named_candidate",
-        "mrr_difference": -0.0009,
+        "mrr_difference": -0.0019,
         "system": "every_named_and_culture_candidate"
       }
     ],
@@ -138,37 +138,37 @@
   },
   "systems": {
     "every_named_and_culture_candidate": {
-      "characters_removed": 1437349,
-      "mrr": 0.46,
-      "share_of_text_removed": 0.1746,
+      "characters_removed": 1433730,
+      "mrr": 0.4583,
+      "share_of_text_removed": 0.1744,
       "surfaces": 8132
     },
     "every_named_candidate": {
-      "characters_removed": 1379702,
-      "mrr": 0.4608,
-      "share_of_text_removed": 0.1676,
+      "characters_removed": 1378762,
+      "mrr": 0.4603,
+      "share_of_text_removed": 0.1677,
       "surfaces": 5915
     },
     "named_candidates_in_at_most_2pct_of_songs": {
-      "characters_removed": 446808,
-      "mrr": 0.4775,
-      "share_of_text_removed": 0.0543,
+      "characters_removed": 442872,
+      "mrr": 0.4743,
+      "share_of_text_removed": 0.0539,
       "surfaces": 5419
     },
     "named_candidates_in_over_2pct_of_songs_only": {
-      "characters_removed": 1165194,
-      "mrr": 0.4797,
-      "share_of_text_removed": 0.1415,
+      "characters_removed": 1167839,
+      "mrr": 0.4766,
+      "share_of_text_removed": 0.1421,
       "surfaces": 514
     },
     "reviewed_605": {
-      "characters_removed": 165162,
-      "mrr": 0.4908,
-      "share_of_text_removed": 0.0201,
+      "characters_removed": 164280,
+      "mrr": 0.4881,
+      "share_of_text_removed": 0.02,
       "surfaces": 605
     },
     "words": {
-      "mrr": 0.4977
+      "mrr": 0.4963
     }
   }
 }

@@ -1,92 +1,92 @@
 {
   "analysis": "the three spaces at passage level",
-  "chunks": 23898,
+  "chunks": 23848,
   "design": "every chunk of the 7,236 query songs is a query; label profiles are weighted sums of chunk vectors with each song's component weight spread over its chunks; the query's whole leakage group is left out; TF-IDF spaces are fitted on the chunk texts",
   "labels": 226,
   "paired_contrasts": {
     "contrasts": [
       {
         "ci95": [
-          0.0904,
-          0.1065
+          0.091,
+          0.1077
         ],
         "excludes_zero": true,
         "minus": "semantic",
-        "mrr_difference": 0.0983,
+        "mrr_difference": 0.0994,
         "system": "lexical_char_2_5"
       },
       {
         "ci95": [
-          0.0466,
-          0.0583
+          0.0461,
+          0.0581
         ],
         "excludes_zero": true,
         "minus": "lexical_char_2_5",
-        "mrr_difference": 0.0522,
+        "mrr_difference": 0.052,
         "system": "lexical_words"
       },
       {
         "ci95": [
-          -0.0096,
+          -0.009,
           -0.0001
         ],
         "excludes_zero": true,
         "minus": "lexical_words",
-        "mrr_difference": -0.0048,
+        "mrr_difference": -0.0044,
         "system": "fusion_semantic_words"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, chunk weights summing to one per (group, label) component"
   },
   "privacy": "aggregate only",
-  "songs": 7231,
+  "songs": 7220,
   "systems": {
     "fusion_semantic_words": {
       "all_chunks": {
-        "mrr": 0.3005,
-        "recall_at_10": 0.4694
+        "mrr": 0.3012,
+        "recall_at_10": 0.4711
       },
       "chunks_with_at_least_20_characters": {
-        "mrr": 0.3035,
-        "recall_at_10": 0.4722
+        "mrr": 0.3039,
+        "recall_at_10": 0.4744
       },
-      "song_mean_of_chunk_reciprocal_ranks": 0.3928
+      "song_mean_of_chunk_reciprocal_ranks": 0.3919
     },
     "lexical_char_2_5": {
       "all_chunks": {
-        "mrr": 0.2596,
-        "recall_at_10": 0.408
+        "mrr": 0.2593,
+        "recall_at_10": 0.4079
       },
       "chunks_with_at_least_20_characters": {
-        "mrr": 0.2603,
-        "recall_at_10": 0.4087
+        "mrr": 0.2597,
+        "recall_at_10": 0.4083
       },
-      "song_mean_of_chunk_reciprocal_ranks": 0.3472
+      "song_mean_of_chunk_reciprocal_ranks": 0.3462
     },
     "lexical_words": {
       "all_chunks": {
-        "mrr": 0.2963,
-        "recall_at_10": 0.4539
+        "mrr": 0.296,
+        "recall_at_10": 0.454
       },
       "chunks_with_at_least_20_characters": {
-        "mrr": 0.2992,
+        "mrr": 0.2989,
         "recall_at_10": 0.4562
       },
-      "song_mean_of_chunk_reciprocal_ranks": 0.3962
+      "song_mean_of_chunk_reciprocal_ranks": 0.3948
     },
     "semantic": {
       "all_chunks": {
-        "mrr": 0.1887,
-        "recall_at_10": 0.3379
+        "mrr": 0.1876,
+        "recall_at_10": 0.3375
       },
       "chunks_with_at_least_20_characters": {
-        "mrr": 0.1943,
-        "recall_at_10": 0.3455
+        "mrr": 0.1928,
+        "recall_at_10": 0.3447
       },
-      "song_mean_of_chunk_reciprocal_ranks": 0.2531
+      "song_mean_of_chunk_reciprocal_ranks": 0.2509
     }
   },
   "verification": {
-    "semantic_reproduces_representation_study": 0.1887
+    "semantic_reproduces_representation_study": 0.1876
   }
 }

@@ -1,22 +1,22 @@
 {
   "analysis": "author identity across semantic, lexical and phonological spaces",
   "chance_mrr": 0.0265,
-  "groups": 5882,
+  "groups": 5875,
   "head_to_head_covered": {
     "dense_semantic_vs_lexical_character_ngrams": {
-      "first_better": 2207,
-      "second_better": 3821,
-      "tied": 1097
+      "first_better": 2210,
+      "second_better": 3841,
+      "tied": 1066
     },
     "dense_semantic_vs_phonological_strict": {
-      "first_better": 5087,
-      "second_better": 1846,
-      "tied": 192
+      "first_better": 5075,
+      "second_better": 1867,
+      "tied": 175
     },
     "lexical_character_ngrams_vs_phonological_strict": {
-      "first_better": 5624,
-      "second_better": 1258,
-      "tied": 243
+      "first_better": 5616,
+      "second_better": 1254,
+      "tied": 247
     }
   },
   "labels": 226,
@@ -24,89 +24,89 @@
     "contrasts": [
       {
         "ci95": [
-          0.1235,
-          0.1439
+          0.1243,
+          0.1438
         ],
         "excludes_zero": true,
         "minus": "dense_semantic",
-        "mrr_difference": 0.1334,
+        "mrr_difference": 0.1345,
         "system": "lexical_character_ngrams"
       },
       {
         "ci95": [
-          0.0737,
-          0.0836
+          0.0727,
+          0.0825
         ],
         "excludes_zero": true,
         "minus": "label_frequency_prior",
-        "mrr_difference": 0.0786,
+        "mrr_difference": 0.0776,
         "system": "phonological_strict"
       },
       {
         "ci95": [
-          -0.2062,
+          -0.2059,
           -0.1869
         ],
         "excludes_zero": true,
         "minus": "dense_semantic",
-        "mrr_difference": -0.197,
+        "mrr_difference": -0.1963,
         "system": "phonological_strict"
       },
       {
         "ci95": [
-          0.0133,
-          0.0194
+          0.0128,
+          0.019
         ],
         "excludes_zero": true,
         "minus": "phonological_strict",
-        "mrr_difference": 0.0161,
+        "mrr_difference": 0.0159,
         "system": "phonological_with_finals"
       },
       {
         "ci95": [
-          0.3199,
-          0.3403
+          0.3202,
+          0.3406
         ],
         "excludes_zero": true,
         "minus": "phonological_strict",
-        "mrr_difference": 0.3304,
+        "mrr_difference": 0.3308,
         "system": "lexical_character_ngrams"
       },
       {
         "ci95": [
-          -0.0431,
-          -0.0279
+          -0.0422,
+          -0.0274
         ],
         "excludes_zero": true,
         "minus": "dense_semantic",
-        "mrr_difference": -0.0353,
+        "mrr_difference": -0.0346,
         "system": "fusion_dense_phonological"
       },
       {
         "ci95": [
-          -0.0613,
-          -0.0484
+          -0.0618,
+          -0.0483
         ],
         "excludes_zero": true,
         "minus": "lexical_character_ngrams",
-        "mrr_difference": -0.0549,
+        "mrr_difference": -0.0551,
         "system": "fusion_lexical_phonological"
       },
       {
         "ci95": [
-          -0.0348,
-          -0.0232
+          -0.0347,
+          -0.0234
         ],
         "excludes_zero": true,
         "minus": "fusion_dense_lexical",
-        "mrr_difference": -0.0291,
+        "mrr_difference": -0.029,
         "system": "fusion_all_three"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one, restricted to the covered subset so every system is defined on every query"
   },
   "phonological_space": {
-    "covered_queries": 7125,
+    "covered_queries": 7117,
     "endings_per_song_quantiles": {
       "10": 25,
       "25": 37,
@@ -117,7 +117,7 @@
     "features_strict": 605,
     "features_with_finals": 1997,
     "minimum_endings_for_coverage": 4,
-    "songs_with_no_ending": 75,
+    "songs_with_no_ending": 76,
     "tokens_strict": "rhyme family of the line-final syllable (17 classes), its tone, the family pair across the last two syllables, the transition from the previous line's family, same/shift, and one token per maximal run of same-family endings",
     "tokens_with_finals": "the strict set plus the raw pinyin final, toned final and final pair, which are closer to the syllable itself",
     "uncovered_rank_policy": "worst rank in every system that uses the phonological space; excluded from the covered subset",
@@ -125,82 +125,82 @@
   },
   "privacy": "aggregate only; per-query ranks are private",
   "protocol": "one song, one vector per space; label profiles are leave-group-out weighted centroids; cosine ranking over every eligible label. Identical queries, labels and leakage groups in every space.",
-  "queries": 7231,
+  "queries": 7220,
   "systems": {
     "dense_semantic": {
       "all_queries": {
-        "mrr": 0.3015,
-        "mrr_component_weighted": 0.2997,
-        "recall_at_1": 0.203,
-        "recall_at_10": 0.4947
+        "mrr": 0.2997,
+        "mrr_component_weighted": 0.2979,
+        "recall_at_1": 0.2019,
+        "recall_at_10": 0.4911
       },
       "covered_subset": {
-        "mrr": 0.2966,
-        "mrr_component_weighted": 0.295,
-        "recall_at_1": 0.1978,
-        "recall_at_10": 0.49
+        "mrr": 0.2949,
+        "mrr_component_weighted": 0.2933,
+        "recall_at_1": 0.1969,
+        "recall_at_10": 0.4864
       }
     },
     "fusion_all_three": {
       "all_queries": {
-        "mrr": 0.4096,
-        "mrr_component_weighted": 0.4117,
-        "recall_at_1": 0.3088,
-        "recall_at_10": 0.6082
+        "mrr": 0.4086,
+        "mrr_component_weighted": 0.411,
+        "recall_at_1": 0.3083,
+        "recall_at_10": 0.6061
       },
       "covered_subset": {
-        "mrr": 0.4157,
-        "mrr_component_weighted": 0.4175,
-        "recall_at_1": 0.3134,
-        "recall_at_10": 0.6173
+        "mrr": 0.4144,
+        "mrr_component_weighted": 0.4167,
+        "recall_at_1": 0.3128,
+        "recall_at_10": 0.6149
       }
     },
     "fusion_dense_lexical": {
       "all_queries": {
-        "mrr": 0.4476,
-        "mrr_component_weighted": 0.4501,
-        "recall_at_1": 0.3493,
-        "recall_at_10": 0.6438
+        "mrr": 0.4464,
+        "mrr_component_weighted": 0.449,
+        "recall_at_1": 0.349,
+        "recall_at_10": 0.6424
       },
       "covered_subset": {
-        "mrr": 0.4439,
-        "mrr_component_weighted": 0.4466,
-        "recall_at_1": 0.3454,
-        "recall_at_10": 0.6404
+        "mrr": 0.4428,
+        "mrr_component_weighted": 0.4456,
+        "recall_at_1": 0.3452,
+        "recall_at_10": 0.639
       }
     },
     "fusion_dense_phonological": {
       "all_queries": {
-        "mrr": 0.256,
-        "mrr_component_weighted": 0.2561,
-        "recall_at_1": 0.161,
-        "recall_at_10": 0.4439
+        "mrr": 0.255,
+        "mrr_component_weighted": 0.2552,
+        "recall_at_1": 0.1605,
+        "recall_at_10": 0.4418
       },
       "covered_subset": {
-        "mrr": 0.2598,
-        "mrr_component_weighted": 0.2597,
-        "recall_at_1": 0.1634,
-        "recall_at_10": 0.4505
+        "mrr": 0.2586,
+        "mrr_component_weighted": 0.2587,
+        "recall_at_1": 0.1628,
+        "recall_at_10": 0.4482
       }
     },
     "fusion_lexical_phonological": {
       "all_queries": {
-        "mrr": 0.3644,
-        "mrr_component_weighted": 0.3683,
-        "recall_at_1": 0.2712,
-        "recall_at_10": 0.5487
+        "mrr": 0.3635,
+        "mrr_component_weighted": 0.3676,
+        "recall_at_1": 0.2704,
+        "recall_at_10": 0.547
       },
       "covered_subset": {
-        "mrr": 0.3697,
-        "mrr_component_weighted": 0.3735,
-        "recall_at_1": 0.2752,
-        "recall_at_10": 0.5569
+        "mrr": 0.3687,
+        "mrr_component_weighted": 0.3727,
+        "recall_at_1": 0.2743,
+        "recall_at_10": 0.5549
       }
     },
     "label_frequency_prior": {
       "all_queries": {
         "mrr": 0.0188,
-        "mrr_component_weighted": 0.0192,
+        "mrr_component_weighted": 0.0193,
         "recall_at_1": 0.0,
         "recall_at_10": 0.0136
       },
@@ -213,49 +213,49 @@
     },
     "lexical_character_ngrams": {
       "all_queries": {
-        "mrr": 0.4275,
-        "mrr_component_weighted": 0.4316,
-        "recall_at_1": 0.3343,
-        "recall_at_10": 0.6095
+        "mrr": 0.4266,
+        "mrr_component_weighted": 0.431,
+        "recall_at_1": 0.3342,
+        "recall_at_10": 0.6057
       },
       "covered_subset": {
-        "mrr": 0.424,
-        "mrr_component_weighted": 0.4284,
-        "recall_at_1": 0.3304,
-        "recall_at_10": 0.6066
+        "mrr": 0.4232,
+        "mrr_component_weighted": 0.4278,
+        "recall_at_1": 0.3305,
+        "recall_at_10": 0.6028
       }
     },
     "phonological_strict": {
       "all_queries": {
-        "mrr": 0.0965,
-        "mrr_component_weighted": 0.0966,
-        "recall_at_1": 0.0407,
-        "recall_at_10": 0.1926
+        "mrr": 0.0954,
+        "mrr_component_weighted": 0.0958,
+        "recall_at_1": 0.0398,
+        "recall_at_10": 0.1918
       },
       "covered_subset": {
-        "mrr": 0.0979,
-        "mrr_component_weighted": 0.0979,
-        "recall_at_1": 0.0413,
-        "recall_at_10": 0.1955
+        "mrr": 0.0967,
+        "mrr_component_weighted": 0.097,
+        "recall_at_1": 0.0403,
+        "recall_at_10": 0.1946
       }
     },
     "phonological_with_finals": {
       "all_queries": {
-        "mrr": 0.1118,
-        "mrr_component_weighted": 0.1125,
-        "recall_at_1": 0.0503,
-        "recall_at_10": 0.2238
+        "mrr": 0.1105,
+        "mrr_component_weighted": 0.1114,
+        "recall_at_1": 0.0488,
+        "recall_at_10": 0.2224
       },
       "covered_subset": {
-        "mrr": 0.1134,
-        "mrr_component_weighted": 0.1141,
-        "recall_at_1": 0.0511,
-        "recall_at_10": 0.2271
+        "mrr": 0.112,
+        "mrr_component_weighted": 0.1129,
+        "recall_at_1": 0.0495,
+        "recall_at_10": 0.2257
       }
     }
   },
   "verification": {
-    "dense_lexical_fusion_reproduces_decomposition": 0.4476,
+    "dense_lexical_fusion_reproduces_decomposition": 0.4464,
     "dense_max_gap": 0.0,
     "dense_scores_identical_across_calls": true
   }

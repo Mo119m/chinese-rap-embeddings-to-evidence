@@ -243,16 +243,16 @@
   "catalogue_note": "hand-compiled function words, particles, pronouns and unmistakable everyday words per variety; a first cut matched as jieba word tokens, not a lexicon of record",
   "confusion": {
     "markers_removed": {
-      "enrichment": 5.13,
-      "same_variety_share_if_random": 0.0484,
-      "same_variety_share_observed": 0.248,
-      "wrong_top1_queries": 4307,
-      "wrong_top1_queries_with_a_leaning_true_label": 508
+      "enrichment": 5.11,
+      "same_variety_share_if_random": 0.0483,
+      "same_variety_share_observed": 0.2471,
+      "wrong_top1_queries": 4308,
+      "wrong_top1_queries_with_a_leaning_true_label": 510
     },
     "per_label_markers_removed": {
       "enrichment_leave_one_label_out_min_max": [
-        4.81,
-        5.33
+        4.8,
+        5.31
       ],
       "labels_with_at_least_5_wrong_answers": 27,
       "leaning_labels_with_wrong_answers": 28,
@@ -260,9 +260,9 @@
       "same_variety_share_by_label": [
         {
           "same_variety": 4,
-          "share": 0.111,
+          "share": 0.108,
           "variety": "cantonese",
-          "wrong_answers": 36
+          "wrong_answers": 37
         },
         {
           "same_variety": 14,
@@ -381,14 +381,14 @@
         {
           "same_variety": 0,
           "share": 0.0,
-          "variety": "beijing_northern",
+          "variety": "southwestern_mandarin",
           "wrong_answers": 9
         },
         {
           "same_variety": 0,
           "share": 0.0,
-          "variety": "southwestern_mandarin",
-          "wrong_answers": 8
+          "variety": "beijing_northern",
+          "wrong_answers": 9
         },
         {
           "same_variety": 3,
@@ -429,20 +429,20 @@
       ]
     },
     "words_all": {
-      "enrichment": 5.46,
+      "enrichment": 5.38,
       "same_variety_share_if_random": 0.0485,
-      "same_variety_share_observed": 0.2649,
-      "wrong_top1_queries": 4304,
+      "same_variety_share_observed": 0.261,
+      "wrong_top1_queries": 4311,
       "wrong_top1_queries_with_a_leaning_true_label": 502
     }
   },
   "corpus": {
-    "content_sha256": "0798a37c6acf65b9b7b5a4e506ade2266e629186c7d97b42c671ec82ddbc1f25",
-    "groups": 5882,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
     "labels": 226,
-    "marker_tokens": 20299,
-    "queries": 7231,
-    "tokens": 3709460
+    "marker_tokens": 20294,
+    "queries": 7220,
+    "tokens": 3705957
   },
   "lean": {
     "corpus_marker_share_by_variety": {
@@ -467,12 +467,12 @@
     "contrasts": [
       {
         "ci95": [
-          -0.0018,
-          0.0012
+          -0.0021,
+          0.001
         ],
         "excludes_zero": false,
         "minus": "words_all",
-        "mrr_difference": -0.0003,
+        "mrr_difference": -0.0006,
         "system": "markers_removed"
       }
     ],
@@ -487,16 +487,16 @@
     "markers_removed": {
       "defined": true,
       "features": 150000,
-      "mrr": 0.4972,
-      "recall_at_1": 0.4044,
-      "recall_at_10": 0.6716
+      "mrr": 0.4957,
+      "recall_at_1": 0.4033,
+      "recall_at_10": 0.6695
     },
     "words_all": {
       "defined": true,
       "features": 150000,
-      "mrr": 0.4977,
-      "recall_at_1": 0.4048,
-      "recall_at_10": 0.6738
+      "mrr": 0.4963,
+      "recall_at_1": 0.4029,
+      "recall_at_10": 0.6715
     }
   }
 }
