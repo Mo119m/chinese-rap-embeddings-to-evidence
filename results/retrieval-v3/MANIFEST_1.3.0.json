@@ -1,0 +1,129 @@
+{
+  "corpus_build": "chinese-rap-cleaned-corpus-v3/1.3.0",
+  "corpus_content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+  "environment": "CHINESE_RAP_CORPUS=v3 for the v2-era scripts; every v3 script loads through corpus_v3.load_v3, which refuses any other build",
+  "files": {
+    "candidate_union_neutralisation.json": {
+      "arm": "candidate_union_neutralisation",
+      "completed_in_pipeline": true,
+      "sha256": "cc14a2e66aa3c75b1361f2cd447e23be0ef44d7b998a6d09794c484cfc83f14f",
+      "written": "2026-09-10T19:49"
+    },
+    "chunk_level_replication.json": {
+      "arm": "chunk_level_replication",
+      "completed_in_pipeline": true,
+      "sha256": "5ad774523120f22e0a0681802ada917d468067437649f645363188977612629c",
+      "written": "2026-09-10T17:16"
+    },
+    "common_word_curve.json": {
+      "arm": "common_word_curve",
+      "completed_in_pipeline": true,
+      "sha256": "0b6258bd919c2d2e0e724ea21ac34fd430858edb846e87a7a0192555b9b24995",
+      "written": "2026-09-10T17:03"
+    },
+    "content_rival_test.json": {
+      "arm": "content_rival_test",
+      "completed_in_pipeline": true,
+      "sha256": "f4e9091bef66154644d64c8cbe9fdccd3ebd3b6bfb32dfb60f598dc15ccc1056",
+      "written": "2026-09-10T17:26"
+    },
+    "dialect_marker_identity.json": {
+      "arm": "dialect_marker_identity",
+      "completed_in_pipeline": true,
+      "sha256": "a8580143e3f6c4319416593cfcdf406fda17ea9e83e601e9f5f68bdc8775b7a2",
+      "written": "2026-09-10T19:52"
+    },
+    "identity_probe.json": {
+      "arm": "identity_probe",
+      "completed_in_pipeline": true,
+      "sha256": "5cd26163d4def9ccbe8796ed66a69f871c129d95a80f98992c13cf55d3e707c2",
+      "written": "2026-09-10T16:46"
+    },
+    "identity_spaces.json": {
+      "arm": "identity_spaces",
+      "completed_in_pipeline": true,
+      "sha256": "4b129e7e1286255aaf742cdd3a19dacd077af15c0d180793a7cb456d98e5e956",
+      "written": "2026-09-10T16:49"
+    },
+    "label_permutation_null.json": {
+      "arm": "label_permutation_null",
+      "completed_in_pipeline": true,
+      "sha256": "0f7a8575acdd69b0bc91da8dc95335a61c77deb2688e8f8b531fcfbc3aea59ff",
+      "written": "2026-09-10T17:19"
+    },
+    "lexical_identity_anatomy.json": {
+      "arm": "lexical_identity_anatomy",
+      "completed_in_pipeline": true,
+      "sha256": "d6f67dd31e3072a803d5aeefa99a734b5481d171c3aa209ca2f96f5c64dbc762",
+      "written": "2026-09-10T17:02"
+    },
+    "ngram_language_model_attribution.json": {
+      "arm": "ngram_language_model_attribution",
+      "completed_in_pipeline": true,
+      "sha256": "3600d0aff786b957cd25975a5015241b6d3ac605442dbaf9857dc918fed11c8f",
+      "written": "2026-09-10T17:36"
+    },
+    "plda_scoring.json": {
+      "arm": "plda_scoring",
+      "completed_in_pipeline": true,
+      "sha256": "0de4cbd91d8072163a86edfc4e78bdd0ab161cba487f9b4814d87c23f06ed4b3",
+      "written": "2026-09-10T17:24"
+    },
+    "representation_unit.json": {
+      "arm": "representation_unit",
+      "completed_in_pipeline": true,
+      "sha256": "8b93d4398046b80ed732b244c1883b662fdfcef14d0b1d2d9b2df7da0d6651a7",
+      "written": "2026-09-10T17:08"
+    },
+    "semantic_neutralisation.json": {
+      "arm": "semantic_neutralisation",
+      "completed_in_pipeline": true,
+      "sha256": "606078b996a3f5aeeb6171b743f790eb1e5471ef0c99729ac2e457ef3d9129b4",
+      "written": "2026-09-10T17:24"
+    },
+    "style_embedding_space.json": {
+      "arm": "style_embedding_space",
+      "completed_in_pipeline": true,
+      "sha256": "abf32fa5515f839ad61e0c7a70221cc8aeeb33c10b3d27b4f0f6aee02d17c93f",
+      "written": "2026-09-10T21:01"
+    },
+    "three_spaces.json": {
+      "arm": "three_spaces",
+      "completed_in_pipeline": true,
+      "sha256": "e5dca34030d36543ddab9ff416c3be60df2407a28c3be49ef500b8cb3b681a7f",
+      "written": "2026-09-10T16:28"
+    },
+    "training_data_audit.json": {
+      "arm": "training_data_audit",
+      "completed_in_pipeline": true,
+      "sha256": "5274df3428e590dbf792b4d6cfd098af50b1132bdadf68329f49450bcd099b0b",
+      "written": "2026-09-10T16:29"
+    },
+    "two_covariance_ablation.json": {
+      "arm": "two_covariance_ablation",
+      "completed_in_pipeline": true,
+      "sha256": "342b7167a6b894ec63b2f282a9ee1276cf5f5cae35d36cde809b9b1d95513fe7",
+      "written": "2026-09-10T17:23"
+    },
+    "whitening_directions.json": {
+      "arm": "whitening_directions",
+      "completed_in_pipeline": true,
+      "sha256": "ae4edfee332ff936441f4ba141b47ebbee076e96b771391f577d45fad8509db9",
+      "written": "2026-09-10T19:55"
+    },
+    "word_identity_anatomy.json": {
+      "arm": "word_identity_anatomy",
+      "completed_in_pipeline": true,
+      "sha256": "d098efcc947786e0b40ac2e3eba66cc7d2be122e6ff9a32dd8441fec719cbddc",
+      "written": "2026-09-10T16:55"
+    },
+    "word_space_probe.json": {
+      "arm": "word_space_probe",
+      "completed_in_pipeline": true,
+      "sha256": "d2342714acb5eb442857b9571a341894b1e08763f25c9b2d1b4109c9b5e32d50",
+      "written": "2026-09-10T17:15"
+    }
+  },
+  "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
+  "pipeline": "run_v3_full_pipeline.sh, 2026-09-10 16:22-21:01 (CPU line, all twenty arms ok); the GPU line (surprisal, fine-tunes) failed or was stopped and is rerun separately on 2026-09-11"
+}

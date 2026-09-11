@@ -56,6 +56,7 @@ MODEL_ID = "hfl/chinese-roberta-wwm-ext"
 MODEL_REVISION = "5c58d0b8ec1d9014354d691c538661bf00bfdb44"   # pinned after the first local load, 2026-09-10
 MAX_LINE_TOKENS = 64
 BATCH = 384
+TOKEN_BUDGET = 12288      # tokens per batch; keeps the masked-LM forward under 2 GB at any line length
 BANDS = 4
 OTHER_SCRIPT = re.compile(r"[Ͱ-ϿЀ-ӿ֐-׿؀-ۿݐ-ݿऀ-ॿ฀-๿ༀ-࿿ᄀ-ᇿ᠀-᢯぀-ヿ㄰-㆏가-힯]")
 HAN = re.compile(r"[一-鿿]")
@@ -93,33 +94,50 @@ def stage_one(private_root: Path, songs: list[str], documents: dict[str, str], p
     pieces = np.zeros(len(instances), dtype=np.int16)
     started = time.time()
     order = sorted(range(len(instances)), key=lambda i: len(instances[i][4]))   # length-sorted batches
+    # The first run ran out of GPU memory on the longest lines: a full [batch, tokens, vocab]
+    # log-softmax is 2 GB at batch 384. Batches are now sized by a token budget, and the
+    # log-softmax is taken only at the masked positions, after gathering their logits.
+    batches, start = [], 0
+    while start < len(order):
+        longest = len(instances[order[min(start + BATCH, len(order)) - 1]][4])
+        size = max(8, min(BATCH, TOKEN_BUDGET // max(min(longest + 2, MAX_LINE_TOKENS), 8)))
+        batches.append(order[start:start + size])
+        start += size
+    done = 0
     with torch.no_grad():
-        for b in range(0, len(order), BATCH):
-            batch = order[b:b + BATCH]
+        for bi, batch in enumerate(batches):
             lines = [instances[i][4] for i in batch]
             enc = tokenizer(lines, return_offsets_mapping=True, truncation=True, max_length=MAX_LINE_TOKENS,
                             padding=True, return_tensors="pt")
             offsets = enc.pop("offset_mapping").numpy()
             input_ids = enc["input_ids"].clone()
-            targets = []   # per row: list of (token_position, original_id)
+            rows_idx, pos_idx, tok_idx, owner = [], [], [], []
             for r, i in enumerate(batch):
                 _, _, cs, ce, _ = instances[i]
                 hit = [t for t in range(offsets.shape[1]) if offsets[r, t, 1] > offsets[r, t, 0]
                        and offsets[r, t, 0] >= cs and offsets[r, t, 1] <= ce]
-                targets.append([(t, int(input_ids[r, t])) for t in hit])
-                for t, _ in targets[-1]:
+                for t in hit:
+                    rows_idx.append(r)
+                    pos_idx.append(t)
+                    tok_idx.append(int(input_ids[r, t]))
+                    owner.append(i)
                     input_ids[r, t] = mask_id
             enc["input_ids"] = input_ids
-            logits = model(**{k: v.to(device) for k, v in enc.items()}).logits.float()
-            logp = torch.log_softmax(logits, dim=-1).cpu()
-            for r, i in enumerate(batch):
-                if not targets[r]:
-                    continue
-                s = -sum(float(logp[r, t, tok]) for t, tok in targets[r])
-                surprisal[i] = s / len(targets[r])     # per masked piece, so words of different lengths compare
-                pieces[i] = len(targets[r])
-            if (b // BATCH) % 500 == 0:
-                print(f"    {b + len(batch):,} / {len(instances):,}  {(time.time() - started) / 60:.1f} min", flush=True)
+            logits = model(**{k: v.to(device) for k, v in enc.items()}).logits
+            if rows_idx:
+                picked = logits[torch.as_tensor(rows_idx, device=device), torch.as_tensor(pos_idx, device=device)].float()
+                logp = torch.log_softmax(picked, dim=-1)
+                chosen = logp[torch.arange(len(tok_idx), device=device), torch.as_tensor(tok_idx, device=device)].cpu().numpy()
+                del logits, picked, logp
+                per_instance: dict[int, list[float]] = defaultdict(list)
+                for i, lp in zip(owner, chosen):
+                    per_instance[i].append(-float(lp))
+                for i, values in per_instance.items():
+                    surprisal[i] = float(np.mean(values))     # per masked piece, so words of different lengths compare
+                    pieces[i] = len(values)
+            done += len(batch)
+            if bi % 500 == 0:
+                print(f"    {done:,} / {len(instances):,}  {(time.time() - started) / 60:.1f} min", flush=True)
 
     private_dir.mkdir(parents=True, exist_ok=True)
     np.save(private_dir / "surprisal.npy", surprisal)
