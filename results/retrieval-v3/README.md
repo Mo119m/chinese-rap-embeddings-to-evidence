@@ -322,11 +322,19 @@ each word is used. Four controls pull them apart.
   label's lyrics lean to (the rule of the dialect experiment, which reproduces its published
   counts): without the 16 Southwestern Mandarin labels +0.048 [+0.040, +0.056]; the 198
   labels leaning to no variety alone +0.046 [+0.038, +0.055].
+- **Real, but not a free feature** (`usage_tagged_words`). On the same split, every word
+  instance was also written as a token tagged with its half. Tagged by usage beats the same
+  tagging by the random coin, +0.011 [+0.007, +0.015], so the tags carry information. Added
+  beside the plain words, usage tags beat random tags by only +0.003 [+0.001, +0.006]. Any
+  tagging thins the counts, and the plain words stay ahead of both (words 0.4915, words
+  plus usage tags 0.4682).
 
 Reading, at the tier it supports: the same word, at the same frequency and in an equally
 unusual line, identifies the rapper better in the uses a standard-Mandarin model expects
 least. That is a within-word effect of about 0.05 MRR between halves, spread across most
-rappers, on top of a larger effect of which words a rapper uses. What it is not yet: a claim about intent or
+rappers, on top of a larger effect of which words a rapper uses; it says where in a word's
+uses identity concentrates, and adds almost nothing once the word counts are known. What it
+is not yet: a claim about intent or
 creativity. The model's expectation is standard written Mandarin's, so "unexpected" means
 unexpected for that register, and the context is one line.
 

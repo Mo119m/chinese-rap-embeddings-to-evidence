@@ -23,6 +23,12 @@ identity_probe_v2. Its second check: the final layer's [CLS] must reproduce the 
 cosine and whitened MRRs. It also reports, per layer, the mean cosine between random chunk
 pairs (anisotropy) and the within-author share of song-level variance.
 
+--model chinese-roberta-wwm-ext repeats both stages for a Chinese encoder of another lineage
+trained only as a masked language model, never for retrieval by meaning, so that the shape
+of the BGE-M3 curve can be told apart from what retrieval training did to it. It has no
+recorded run, so neither check applies, and its contrasts are against its own final token
+mean.
+
     python src/layerwise_identity_probe_v3.py --private-root <ni-k> [--stage 1|2|both]
 """
 
@@ -52,18 +58,37 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 OUT_DIR = ROOT / "results" / "retrieval-v3"
-MODEL_ID = "BAAI/bge-m3"
-MODEL_REVISION = "5617a9f61b028005a4858fdac845db406aefb181"
-MAX_LENGTH = 2048          # the recorded embedding run's max_length
 TOKEN_BUDGET = 16384       # tokens per batch; batches are length-sorted
-LAYERS = 25                # embedding output + 24 transformer layers
 POOLINGS = ("cls", "mean")
 RECORDED = {"cosine": ("three_spaces.json", ("systems", "semantic", "mrr")),
             "within_author_whitening": ("identity_probe.json", ("systems", "within_author_whitening", "mrr"))}
+# The second model is the contrast the BGE-M3 curve needs: a Chinese encoder of another
+# lineage trained only as a masked language model, never for retrieval by meaning. Its [CLS]
+# state was never trained as a summary, so its token mean is the fair reading; it reads at
+# most 512 tokens, which truncates about 15% of chunks (the training-data audit).
+MODELS = {
+    "bge-m3": {"id": "BAAI/bge-m3", "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+               "max_length": 2048, "layers": 25, "dim": 1024, "store": "private-layerwise-v3",
+               "out": "layerwise_identity_probe.json", "recorded_run": True},
+    "chinese-roberta-wwm-ext": {"id": "hfl/chinese-roberta-wwm-ext", "revision": "5c58d0b8ec1d9014354d691c538661bf00bfdb44",
+                                "max_length": 512, "layers": 13, "dim": 768,
+                                "store": "private-layerwise-v3-chinese-roberta-wwm-ext",
+                                "out": "layerwise_identity_probe_chinese_roberta_wwm_ext.json", "recorded_run": False},
+}
+CONFIG = MODELS["bge-m3"]
+MODEL_ID, MODEL_REVISION = CONFIG["id"], CONFIG["revision"]
+MAX_LENGTH, LAYERS, DIM = CONFIG["max_length"], CONFIG["layers"], CONFIG["dim"]
+
+
+def use_model(name: str) -> None:
+    global CONFIG, MODEL_ID, MODEL_REVISION, MAX_LENGTH, LAYERS, DIM
+    CONFIG = MODELS[name]
+    MODEL_ID, MODEL_REVISION = CONFIG["id"], CONFIG["revision"]
+    MAX_LENGTH, LAYERS, DIM = CONFIG["max_length"], CONFIG["layers"], CONFIG["dim"]
 
 
 def private_dir_of(private_root: Path) -> Path:
-    return private_root / "work" / "private-layerwise-v3"
+    return private_root / "work" / CONFIG["store"]
 
 
 # ------------------------------------------------------------------ stage 1
@@ -77,15 +102,15 @@ def stage_one(private_root: Path, rows, vectors) -> None:
     contract_path = out / "contract.json"
     if contract_path.is_file():
         previous = json.loads(contract_path.read_text(encoding="utf-8"))
-        if previous.get("corpus_content_sha256") != V3_CONTENT_SHA256:
-            raise SystemExit("the layer store was written for another corpus build; delete it and rerun stage 1")
+        if previous.get("corpus_content_sha256") != V3_CONTENT_SHA256 or previous.get("model") != MODEL_ID:
+            raise SystemExit("the layer store was written for another corpus build or model; delete it and rerun stage 1")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, revision=MODEL_REVISION)
     model = AutoModel.from_pretrained(MODEL_ID, revision=MODEL_REVISION).to("cuda").half().eval()
     texts = [r["cleaned_text"] for r in rows]
     lengths = [len(tokenizer(t, truncation=True, max_length=MAX_LENGTH)["input_ids"]) for t in texts]
     order = np.argsort(lengths, kind="stable")
     stores = {p: np.lib.format.open_memmap(out / f"{p}.npy", mode="w+", dtype=np.float16,
-                                          shape=(len(rows), LAYERS, 1024)) for p in POOLINGS}
+                                          shape=(len(rows), LAYERS, DIM)) for p in POOLINGS}
     started, done, start = time.time(), 0, 0
     with torch.no_grad():
         while start < len(order):
@@ -115,23 +140,27 @@ def stage_one(private_root: Path, rows, vectors) -> None:
     for store in stores.values():
         store.flush()
 
-    # check 1: the final layer's [CLS], normalised, is the recorded embedding run
-    final = stores["cls"][:, LAYERS - 1, :].astype(np.float32)
-    final /= np.linalg.norm(final, axis=1, keepdims=True)
-    recorded = vectors.astype(np.float32)
-    recorded /= np.linalg.norm(recorded, axis=1, keepdims=True)
-    agreement = np.sum(final * recorded, axis=1)
-    check = {"min_cosine": round(float(agreement.min()), 6), "median_cosine": round(float(np.median(agreement)), 6),
-             "chunks_below_0.999": int((agreement < 0.999).sum())}
-    print(f"  final-layer [CLS] against the recorded run: {check}", flush=True)
+    # check 1: the final layer's [CLS], normalised, is the recorded embedding run (BGE-M3 only;
+    # no other model has a recorded run)
+    check = None
+    if CONFIG["recorded_run"]:
+        final = stores["cls"][:, LAYERS - 1, :].astype(np.float32)
+        final /= np.linalg.norm(final, axis=1, keepdims=True)
+        recorded = vectors.astype(np.float32)
+        recorded /= np.linalg.norm(recorded, axis=1, keepdims=True)
+        agreement = np.sum(final * recorded, axis=1)
+        check = {"min_cosine": round(float(agreement.min()), 6), "median_cosine": round(float(np.median(agreement)), 6),
+                 "chunks_below_0.999": int((agreement < 0.999).sum())}
+        print(f"  final-layer [CLS] against the recorded run: {check}", flush=True)
+    truncated = int(sum(1 for n in lengths if n >= MAX_LENGTH))
     contract = {"model": MODEL_ID, "revision": MODEL_REVISION, "precision": "fp16", "max_length": MAX_LENGTH,
                 "layers": LAYERS, "poolings": list(POOLINGS), "chunks": len(rows),
                 "corpus_content_sha256": corpus_content_sha256(rows),
-                "check_final_cls_against_recorded_run": check,
+                "check_final_cls_against_recorded_run": check, "chunks_truncated_at_max_length": truncated,
                 "minutes": round((time.time() - started) / 60, 1),
                 "warning": "private; hidden states of copyrighted lyric text. Never commit."}
     contract_path.write_text(json.dumps(contract, indent=2), encoding="utf-8")
-    if check["median_cosine"] < 0.999:
+    if check is not None and check["median_cosine"] < 0.999:
         raise SystemExit("the final layer does not reproduce the recorded embedding run; stage 2 would score "
                          "a different space")
 
@@ -140,9 +169,10 @@ def stage_one(private_root: Path, rows, vectors) -> None:
 def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
     store = private_dir_of(private_root)
     contract = json.loads((store / "contract.json").read_text(encoding="utf-8"))
-    if contract["corpus_content_sha256"] != V3_CONTENT_SHA256:
-        raise SystemExit("the layer store was written for another corpus build")
-    if contract["check_final_cls_against_recorded_run"]["median_cosine"] < 0.999:
+    if contract["corpus_content_sha256"] != V3_CONTENT_SHA256 or contract["model"] != MODEL_ID:
+        raise SystemExit("the layer store was written for another corpus build or model")
+    stage_one_check = contract["check_final_cls_against_recorded_run"]
+    if CONFIG["recorded_run"] and (stage_one_check is None or stage_one_check["median_cosine"] < 0.999):
         raise SystemExit("the layer store failed its stage 1 check")
 
     chunks_by_song, label_by_song, components_by_song, documents, _ = build_songs(rows, vectors)
@@ -208,10 +238,10 @@ def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
                   f"{entry['within_author_share_of_variance']:.3f}", flush=True)
             del chunk
 
-    # check 2: the final layer's [CLS] reproduces the recorded results
+    # check 2: the final layer's [CLS] reproduces the recorded results (BGE-M3 only)
     final = systems[f"cls_layer_{LAYERS - 1:02d}"]
     checks = {}
-    for transform, (file_name, path) in RECORDED.items():
+    for transform, (file_name, path) in (RECORDED.items() if CONFIG["recorded_run"] else []):
         recorded = json.loads((out_dir / file_name).read_text(encoding="utf-8"))
         if recorded.get("corpus", {}).get("content_sha256") not in (None, V3_CONTENT_SHA256):
             raise SystemExit(f"{file_name} is from another corpus build")
@@ -224,7 +254,7 @@ def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
     if any(c["gap"] > 0.002 for c in checks.values()):
         raise SystemExit("the final layer does not reproduce the recorded MRRs")
 
-    reference = f"cls_layer_{LAYERS - 1:02d}"
+    reference = f"{'cls' if CONFIG['recorded_run'] else 'mean'}_layer_{LAYERS - 1:02d}"
     pairs = []
     for pooling in POOLINGS:
         for layer in range(LAYERS):
@@ -236,30 +266,32 @@ def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
 
     out_dir.mkdir(parents=True, exist_ok=True)
     payload = {
-        "analysis": "identity under the unchanged protocol at every layer of BGE-M3",
+        "analysis": f"identity under the unchanged protocol at every layer of {MODEL_ID}",
         "corpus": {"content_sha256": V3_CONTENT_SHA256, "queries": len(songs), "labels": label_count,
                    "groups": len(order)},
         "design": {"model": f"{MODEL_ID}@{MODEL_REVISION}", "precision": "fp16", "max_length": MAX_LENGTH,
-                   "layers": "0 is the embedding output, 24 the final layer",
+                   "chunks_truncated_at_max_length": contract.get("chunks_truncated_at_max_length"),
+                   "layers": f"0 is the embedding output, {LAYERS - 1} the final layer",
+                   "contrast_reference": reference,
                    "poolings": {"cls": "the first token's state", "mean": "attention-masked mean of token states"},
                    "song_vector": "mean of the song's normalised chunk vectors, normalised",
                    "whitening": "within-author, Ledoit-Wolf shrunk, cross-fitted over the five leakage-group folds",
                    "anisotropy": "mean cosine of 20,000 random chunk pairs (seeded)",
-                   "checks": {"final_cls_against_recorded_run": contract["check_final_cls_against_recorded_run"],
-                              "final_cls_against_recorded_results": checks},
+                   "checks": {"final_cls_against_recorded_run": stage_one_check,
+                              "final_cls_against_recorded_results": checks or None},
                    "caution": "the layer with the highest MRR is chosen after seeing the results; read the curve, "
                               "not the maximum",
                    "references": ["Jawahar, Sagot and Seddah 2019", "Tenney, Das and Pavlick 2019",
                                   "Ethayarajh 2019"]},
         "systems": systems,
         "paired_contrasts": {"design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, "
-                                       "each (group, label) component weighted one; every layer against the final "
-                                       "[CLS] under the same transform", "contrasts": contrasts},
+                                       f"each (group, label) component weighted one; every layer against {reference} "
+                                       "under the same transform", "contrasts": contrasts},
         "privacy": "aggregate only; hidden states are private",
     }
-    (out_dir / "layerwise_identity_probe.json").write_text(
+    (out_dir / CONFIG["out"]).write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="")
-    print(f"\nwrote {out_dir / 'layerwise_identity_probe.json'}")
+    print(f"\nwrote {out_dir / CONFIG['out']}")
     return 0
 
 
@@ -282,7 +314,9 @@ def main() -> int:
     parser.add_argument("--private-root", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
     parser.add_argument("--stage", choices=["1", "2", "both"], default="both")
+    parser.add_argument("--model", choices=sorted(MODELS), default="bge-m3")
     args = parser.parse_args()
+    use_model(args.model)
     return build(args.private_root.resolve(), args.out_dir, args.stage)
 
 

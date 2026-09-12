@@ -14,6 +14,7 @@
     "scoring": "word unigram TF-IDF (sublinear tf, min_df 3) rebuilt from the word instances of an arm alone, the protocol unchanged; unigrams because an arm keeps instances without their neighbours",
     "seed": 20260825,
     "surprisal": "negative log-probability of the actual word, whole word masked, averaged over its word pieces; one lyric line is the context; words past the 64-token line limit are unscored and left out of every arm",
+    "usage_tagged_words": "on the strictest split, each instance becomes a token tagged with its half (tagged_by_usage) or added beside the plain word (words_plus_usage_tags); the same taggings by the random coin of the same blocks are the controls, since tagging thins the counts whatever the tags mean",
     "within_word": "each word's scored instances ordered by surprisal; instances within 0.01 nats form one block with one midrank, so a repeated line is never split; words with a single block are left out; halves by midrank, quartiles for words with four or more scored instances; the random halves split the same blocks by a second seeded coin",
     "within_word_and_line_context": "the within-word split inside 10 quantile strata of line context (the mean surprisal of the other scored words of the same line), so both halves of a word hold uses in equally unusual lines; lines are rebuilt with stage 1's enumeration and checked against its word list instance by instance; the _fine family repeats it with 20 strata",
     "within_word_line_context_and_position": "the within-word, line-context split inside line position as well: a line's last word (the rhyme slot, masked with no context to its right) against every other position"
@@ -349,6 +350,56 @@
         "minus": "within_word_line_context_and_position/words_with_contrast",
         "mrr_difference": -0.0751,
         "system": "within_word_line_context_and_position/upper_half_for_its_word"
+      },
+      {
+        "ci95": [
+          0.0066,
+          0.0149
+        ],
+        "excludes_zero": true,
+        "minus": "usage_tagged_words/tagged_at_random",
+        "mrr_difference": 0.0106,
+        "system": "usage_tagged_words/tagged_by_usage"
+      },
+      {
+        "ci95": [
+          0.0005,
+          0.0057
+        ],
+        "excludes_zero": true,
+        "minus": "usage_tagged_words/words_plus_random_tags",
+        "mrr_difference": 0.003,
+        "system": "usage_tagged_words/words_plus_usage_tags"
+      },
+      {
+        "ci95": [
+          -0.0257,
+          -0.0195
+        ],
+        "excludes_zero": true,
+        "minus": "usage_tagged_words/words_with_contrast",
+        "mrr_difference": -0.0225,
+        "system": "usage_tagged_words/words_plus_usage_tags"
+      },
+      {
+        "ci95": [
+          -0.0575,
+          -0.0483
+        ],
+        "excludes_zero": true,
+        "minus": "usage_tagged_words/words_with_contrast",
+        "mrr_difference": -0.053,
+        "system": "usage_tagged_words/tagged_by_usage"
+      },
+      {
+        "ci95": [
+          -0.0682,
+          -0.0593
+        ],
+        "excludes_zero": true,
+        "minus": "usage_tagged_words/words_with_contrast",
+        "mrr_difference": -0.0636,
+        "system": "usage_tagged_words/tagged_at_random"
       }
     ],
     "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
@@ -655,6 +706,103 @@
           "songs_below_20": 28
         },
         "types": 117583
+      }
+    },
+    "usage_tagged_words": {
+      "tagged_at_random": {
+        "defined": true,
+        "mean_line_context_nats": 4.378,
+        "mean_word_length": 1.79,
+        "median_corpus_frequency_of_its_tokens": 2121,
+        "mrr": 0.4266,
+        "recall_at_10": 0.6114,
+        "share_in_reviewed_catalogue": 0.0121,
+        "share_latin": 0.167,
+        "share_line_final": 0.1125,
+        "share_other_script": 0.0018,
+        "tokens": 3269132,
+        "tokens_per_song": {
+          "median": 395,
+          "p10": 235,
+          "songs_below_20": 9
+        },
+        "types": 34256
+      },
+      "tagged_by_usage": {
+        "defined": true,
+        "mean_line_context_nats": 4.378,
+        "mean_word_length": 1.79,
+        "median_corpus_frequency_of_its_tokens": 2121,
+        "mrr": 0.4372,
+        "recall_at_10": 0.6216,
+        "share_in_reviewed_catalogue": 0.0121,
+        "share_latin": 0.167,
+        "share_line_final": 0.1125,
+        "share_other_script": 0.0018,
+        "tokens": 3269132,
+        "tokens_per_song": {
+          "median": 395,
+          "p10": 235,
+          "songs_below_20": 9
+        },
+        "types": 34256
+      },
+      "words_plus_random_tags": {
+        "defined": true,
+        "mean_line_context_nats": 4.378,
+        "mean_word_length": 1.79,
+        "median_corpus_frequency_of_its_tokens": 2121,
+        "mrr": 0.4649,
+        "recall_at_10": 0.6465,
+        "share_in_reviewed_catalogue": 0.0121,
+        "share_latin": 0.167,
+        "share_line_final": 0.1125,
+        "share_other_script": 0.0018,
+        "tokens": 3269132,
+        "tokens_per_song": {
+          "median": 395,
+          "p10": 235,
+          "songs_below_20": 9
+        },
+        "types": 34256
+      },
+      "words_plus_usage_tags": {
+        "defined": true,
+        "mean_line_context_nats": 4.378,
+        "mean_word_length": 1.79,
+        "median_corpus_frequency_of_its_tokens": 2121,
+        "mrr": 0.4682,
+        "recall_at_10": 0.6536,
+        "share_in_reviewed_catalogue": 0.0121,
+        "share_latin": 0.167,
+        "share_line_final": 0.1125,
+        "share_other_script": 0.0018,
+        "tokens": 3269132,
+        "tokens_per_song": {
+          "median": 395,
+          "p10": 235,
+          "songs_below_20": 9
+        },
+        "types": 34256
+      },
+      "words_with_contrast": {
+        "defined": true,
+        "mean_line_context_nats": 4.378,
+        "mean_word_length": 1.79,
+        "median_corpus_frequency_of_its_tokens": 2121,
+        "mrr": 0.4915,
+        "recall_at_10": 0.6777,
+        "share_in_reviewed_catalogue": 0.0121,
+        "share_latin": 0.167,
+        "share_line_final": 0.1125,
+        "share_other_script": 0.0018,
+        "tokens": 3269132,
+        "tokens_per_song": {
+          "median": 395,
+          "p10": 235,
+          "songs_below_20": 9
+        },
+        "types": 34256
       }
     },
     "within_word": {

@@ -281,7 +281,7 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
 
     rr, systems = {}, {}
 
-    def score(family: str, name: str, mask: np.ndarray, extra: dict | None = None) -> None:
+    def score(family: str, name: str, mask: np.ndarray, extra: dict | None = None, docs: list[str] | None = None) -> None:
         idx = np.flatnonzero(mask)
         info = {"tokens": int(len(idx)), "types": int(len(np.unique(type_id[idx]))),
                 "median_corpus_frequency_of_its_tokens": int(np.median(type_freq[type_id[idx]])),
@@ -296,7 +296,8 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
                                    "songs_below_20": int((per_song < 20).sum())}
         if extra:
             info.update(extra)
-        ranks, error = score_arm(dense, fit_unigrams(docs_for(mask)), label_index, group_ids, label_count)
+        ranks, error = score_arm(dense, fit_unigrams(docs if docs is not None else docs_for(mask)),
+                                 label_index, group_ids, label_count)
         if error:
             info.update({"defined": False, "why": error})
             systems.setdefault(family, {})[name] = info
@@ -360,6 +361,27 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
         score(family, "random_half_a", contrastable_s & (coin_s < 0.5), {"strata": strata})
         score(family, "random_half_b", contrastable_s & (coin_s >= 0.5), {"strata": strata})
 
+    # 5. is usage additive to vocabulary? On the strictest split (the loop's last family), each
+    #    word instance also becomes a usage-tagged token, word + lower/upper half. Tagging splits
+    #    counts and thins the space whatever the tags mean, so the comparison that isolates the
+    #    usage information is against the same tagging by the random coin of the same blocks.
+    lower_tag, upper_tag = "⟨L⟩", "⟨U⟩"
+
+    def tagged_docs(mask, upper, keep_word):
+        per_song: dict[int, list[str]] = defaultdict(list)
+        for i in np.flatnonzero(mask):
+            token = words[i] + (upper_tag if upper[i] else lower_tag)
+            per_song[int(song_index[i])].extend((words[i], token) if keep_word else (token,))
+        return [" ".join(per_song.get(si, [])) for si in range(len(songs))]
+
+    family = "usage_tagged_words"
+    by_usage, by_coin = mid_s > 0.5, coin_s >= 0.5
+    score(family, "words_with_contrast", contrastable_s)
+    score(family, "tagged_by_usage", contrastable_s, docs=tagged_docs(contrastable_s, by_usage, False))
+    score(family, "tagged_at_random", contrastable_s, docs=tagged_docs(contrastable_s, by_coin, False))
+    score(family, "words_plus_usage_tags", contrastable_s, docs=tagged_docs(contrastable_s, by_usage, True))
+    score(family, "words_plus_random_tags", contrastable_s, docs=tagged_docs(contrastable_s, by_coin, True))
+
     g, c, w = "global_surprisal/", "global_surprisal_catalogue_removed/", "within_word/"
     pairs = [(g + "expected_half", g + "unexpected_half"), (g + "unexpected_half", g + "all_scored_words")]
     pairs += [(g + f"band_{k + 1}_of_{BANDS}", g + "all_scored_words") for k in range(BANDS)]
@@ -377,6 +399,12 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
                   (x + "random_half_a", x + "random_half_b"),
                   (x + "lower_half_for_its_word", x + "words_with_contrast"),
                   (x + "upper_half_for_its_word", x + "words_with_contrast")]
+    u = "usage_tagged_words/"
+    pairs += [(u + "tagged_by_usage", u + "tagged_at_random"),
+              (u + "words_plus_usage_tags", u + "words_plus_random_tags"),
+              (u + "words_plus_usage_tags", u + "words_with_contrast"),
+              (u + "tagged_by_usage", u + "words_with_contrast"),
+              (u + "tagged_at_random", u + "words_with_contrast")]
     pairs = [(a, b) for a, b in pairs if a in rr and b in rr]
     contrasts = paired_group_bootstrap(rr, weights, group_ids, np.ones(len(songs), dtype=bool), pairs)
     for item in contrasts:
@@ -483,6 +511,10 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
                                             "lines; lines are rebuilt with stage 1's enumeration and checked "
                                             "against its word list instance by instance; the _fine family repeats "
                                             f"it with {2 * CONTEXT_STRATA} strata",
+            "usage_tagged_words": "on the strictest split, each instance becomes a token tagged with its half "
+                                  "(tagged_by_usage) or added beside the plain word (words_plus_usage_tags); the "
+                                  "same taggings by the random coin of the same blocks are the controls, since "
+                                  "tagging thins the counts whatever the tags mean",
             "within_word_line_context_and_position": "the within-word, line-context split inside line position as "
                                                      "well: a line's last word (the rhyme slot, masked with no "
                                                      "context to its right) against every other position",

@@ -97,8 +97,8 @@
       "arm": "lexical_choice_surprisal",
       "completed_in_pipeline": false,
       "run": "run_v3_gpu_line.sh stage 1, 2026-09-11 11:19-11:35; stage 2 with its controls rerun alone 2026-09-12",
-      "sha256": "b5a6d4a48ebedc6b514c52d76d360d0d2c3983bc23c9e3767277998b3dd0ba8e",
-      "written": "2026-09-12T01:51"
+      "sha256": "a299eb0eaf80e9a82e3d6a18d691069b23346b31286a15d261ef37567a788a81",
+      "written": "2026-09-12T02:13"
     },
     "lexical_identity_anatomy.json": {
       "arm": "lexical_identity_anatomy",
