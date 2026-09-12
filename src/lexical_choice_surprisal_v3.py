@@ -383,6 +383,80 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
         print(f"  {item['system']} - {item['minus']}: {item['mrr_difference']:+.4f} "
               f"[{item['ci95'][0]:+.4f}, {item['ci95'][1]:+.4f}]", flush=True)
 
+    # 4. who carries the within-word gap: per label (unnamed), leaving one label out at a time,
+    #    and by the regional variety a label's lyrics lean to, with the lean rule and constants
+    #    of dialect_marker_identity_v3 (checked against its published counts)
+    from dialect_marker_identity_v3 import LEAN_RATIO, LEAN_SHARE, MARKERS
+    base = "within_word_line_context_and_position/"
+    lower_rr, upper_rr = rr[base + "lower_half_for_its_word"], rr[base + "upper_half_for_its_word"]
+    delta = weights * (upper_rr - lower_rr)
+    mass = np.bincount(label_index, weights=weights, minlength=label_count)
+    queries_of = np.bincount(label_index, minlength=label_count)
+    gain = np.bincount(label_index, weights=delta, minlength=label_count) / mass
+    overall_gain = float(delta.sum() / weights.sum())
+    leave_one_out = np.asarray([(delta.sum() - delta[label_index == l].sum()) / (weights.sum() - mass[l])
+                                for l in range(label_count)])
+    enough = queries_of >= 20
+
+    marker_of: dict[str, set] = {}
+    for variety, items in MARKERS.items():
+        for item in items:
+            marker_of.setdefault(item, set()).add(variety)
+    varieties = list(MARKERS)
+    tokens = [segment(documents[s]) for s in songs]
+    label_share = np.zeros((label_count, len(varieties)))
+    label_mass = np.zeros(label_count)
+    for t, label, w_ in zip(tokens, label_index, weights):
+        counts = Counter(v for token in t for v in marker_of.get(token, ()))
+        for j, v in enumerate(varieties):
+            label_share[int(label), j] += w_ * counts.get(v, 0)
+        label_mass[int(label)] += w_ * len(t)
+    label_share = label_share / np.maximum(label_mass, 1)[:, None]
+    corpus_vec = (label_share * label_mass[:, None]).sum(axis=0) / label_mass.sum()
+    lean = np.full(label_count, -1)
+    for l in range(label_count):
+        best = int(np.argmax(label_share[l] / np.maximum(corpus_vec, 1e-9)))
+        if label_share[l, best] >= LEAN_SHARE and label_share[l, best] >= LEAN_RATIO * corpus_vec[best]:
+            lean[l] = best
+    lean_counts = Counter(varieties[k] if k >= 0 else "none" for k in lean)
+    published = json.loads((out_dir / "dialect_marker_identity.json").read_text(encoding="utf-8"))["lean"]["labels_by_variety"]
+    if dict(lean_counts) != published:
+        raise SystemExit(f"the lean rule gives {dict(lean_counts)}, dialect_marker_identity.json has {published}")
+
+    def masked_mrr(values, mask):
+        return round(float((weights * values)[mask].sum() / weights[mask].sum()), 4)
+
+    by_variety = {}
+    for k, name in [(-1, "none")] + list(enumerate(varieties)):
+        q = lean[label_index] == k
+        if not q.any():
+            continue
+        by_variety[name] = {"labels": int((lean == k).sum()), "queries": int(q.sum()),
+                            "lower_half_mrr": masked_mrr(lower_rr, q), "upper_half_mrr": masked_mrr(upper_rr, q),
+                            "upper_minus_lower": round(masked_mrr(upper_rr, q) - masked_mrr(lower_rr, q), 4)}
+    largest = max((k for k in range(len(varieties)) if (lean == k).any()), key=lambda k: int((lean == k).sum()))
+    pair = {"upper": upper_rr, "lower": lower_rr}
+    without_largest = paired_group_bootstrap(pair, weights, group_ids, lean[label_index] != largest, [("upper", "lower")])[0]
+    no_lean_only = paired_group_bootstrap(pair, weights, group_ids, lean[label_index] == -1, [("upper", "lower")])[0]
+    who = {
+        "halves": base + "lower_half_for_its_word and upper_half_for_its_word; gains are upper minus lower",
+        "overall_gain": round(overall_gain, 4),
+        "labels_with_20_or_more_queries": int(enough.sum()),
+        "share_of_those_labels_with_a_positive_gain": round(float((gain[enough] > 0).mean()), 4),
+        "per_label_gain_quantiles_among_them": {q: round(float(np.quantile(gain[enough], p)), 4)
+                                                 for q, p in (("p10", 0.1), ("p25", 0.25), ("median", 0.5),
+                                                              ("p75", 0.75), ("p90", 0.9))},
+        "leave_one_label_out_gain_range": [round(float(leave_one_out.min()), 4), round(float(leave_one_out.max()), 4)],
+        "lean_rule": "dialect_marker_identity_v3 (markers counted in each label's lyrics; checked against its published counts)",
+        "by_variety": by_variety,
+        "without_the_largest_leaning_variety": {"variety": varieties[largest], **without_largest},
+        "labels_leaning_to_no_variety_only": no_lean_only,
+    }
+    print(f"  who carries it: overall {overall_gain:+.4f}; {who['share_of_those_labels_with_a_positive_gain']:.0%} of "
+          f"{int(enough.sum())} labels positive; leave-one-label-out {who['leave_one_label_out_gain_range']}; "
+          f"without {varieties[largest]} {without_largest['mrr_difference']:+.4f} {without_largest['ci95']}; "
+          f"no-lean labels only {no_lean_only['mrr_difference']:+.4f} {no_lean_only['ci95']}", flush=True)
+
     out_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "analysis": "identity by the surprisal of each word choice under a standard-Mandarin masked language model",
@@ -415,6 +489,7 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
             "seed": SEED,
             "reference": "Sun, Zemel and Xu 2021: word choice as inference over candidates given meaning and context"},
         "systems": systems,
+        "who_carries_the_within_word_gap": who,
         "paired_contrasts": {"design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, "
                                        "each (group, label) component weighted one", "contrasts": contrasts},
         "privacy": "aggregate only; no word is published",

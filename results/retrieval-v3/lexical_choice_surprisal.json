@@ -1155,5 +1155,81 @@
         "types": 34256
       }
     }
+  },
+  "who_carries_the_within_word_gap": {
+    "by_variety": {
+      "beijing_northern": {
+        "labels": 3,
+        "lower_half_mrr": 0.3406,
+        "queries": 53,
+        "upper_half_mrr": 0.4268,
+        "upper_minus_lower": 0.0862
+      },
+      "cantonese": {
+        "labels": 6,
+        "lower_half_mrr": 0.4246,
+        "queries": 214,
+        "upper_half_mrr": 0.5239,
+        "upper_minus_lower": 0.0993
+      },
+      "none": {
+        "labels": 198,
+        "lower_half_mrr": 0.3621,
+        "queries": 6297,
+        "upper_half_mrr": 0.4085,
+        "upper_minus_lower": 0.0464
+      },
+      "northeastern": {
+        "labels": 3,
+        "lower_half_mrr": 0.5076,
+        "queries": 96,
+        "upper_half_mrr": 0.5406,
+        "upper_minus_lower": 0.033
+      },
+      "southwestern_mandarin": {
+        "labels": 16,
+        "lower_half_mrr": 0.4148,
+        "queries": 560,
+        "upper_half_mrr": 0.4647,
+        "upper_minus_lower": 0.0499
+      }
+    },
+    "halves": "within_word_line_context_and_position/lower_half_for_its_word and upper_half_for_its_word; gains are upper minus lower",
+    "labels_leaning_to_no_variety_only": {
+      "ci95": [
+        0.0379,
+        0.0547
+      ],
+      "excludes_zero": true,
+      "minus": "lower",
+      "mrr_difference": 0.0464,
+      "system": "upper"
+    },
+    "labels_with_20_or_more_queries": 174,
+    "lean_rule": "dialect_marker_identity_v3 (markers counted in each label's lyrics; checked against its published counts)",
+    "leave_one_label_out_gain_range": [
+      0.0472,
+      0.0492
+    ],
+    "overall_gain": 0.0483,
+    "per_label_gain_quantiles_among_them": {
+      "median": 0.049,
+      "p10": -0.0342,
+      "p25": -0.0025,
+      "p75": 0.1048,
+      "p90": 0.1432
+    },
+    "share_of_those_labels_with_a_positive_gain": 0.7356,
+    "without_the_largest_leaning_variety": {
+      "ci95": [
+        0.0401,
+        0.0562
+      ],
+      "excludes_zero": true,
+      "minus": "lower",
+      "mrr_difference": 0.0482,
+      "system": "upper",
+      "variety": "southwestern_mandarin"
+    }
   }
 }

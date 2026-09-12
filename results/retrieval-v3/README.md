@@ -316,11 +316,17 @@ each word is used. Four controls pull them apart.
   Splitting inside line position as well balances that (11.3% both) and leaves −0.048.
 - **Not document length.** Both stratified halves give a median song 202–203 tokens, and 30
   and 31 songs have fewer than 20.
+- **Not a few rappers, and not dialect** (`who_carries_the_within_word_gap`, strictest split,
+  upper minus lower). Of the 174 labels with at least 20 queries, 74% gain, median +0.049.
+  Leaving any one label out keeps the gap between +0.047 and +0.049. By the variety a
+  label's lyrics lean to (the rule of the dialect experiment, which reproduces its published
+  counts): without the 16 Southwestern Mandarin labels +0.048 [+0.040, +0.056]; the 198
+  labels leaning to no variety alone +0.046 [+0.038, +0.055].
 
 Reading, at the tier it supports: the same word, at the same frequency and in an equally
 unusual line, identifies the rapper better in the uses a standard-Mandarin model expects
-least. That is a within-word effect of about 0.05 MRR between halves, on top of a larger
-effect of which words a rapper uses. What it is not yet: a claim about intent or
+least. That is a within-word effect of about 0.05 MRR between halves, spread across most
+rappers, on top of a larger effect of which words a rapper uses. What it is not yet: a claim about intent or
 creativity. The model's expectation is standard written Mandarin's, so "unexpected" means
 unexpected for that register, and the context is one line.
 
