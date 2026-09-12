@@ -1,0 +1,14 @@
+{
+  "check": {
+    "chunk": 12,
+    "gradient_cosine": 0.999955,
+    "gradient_norm_direct": 4.904761,
+    "gradient_relative_difference": 0.009469,
+    "loss_cached": 4.578385,
+    "loss_direct": 4.578385,
+    "sequences": 32,
+    "vector_drift_dropout_off": 0.0,
+    "vector_drift_dropout_on": 0.0
+  },
+  "passed": true
+}

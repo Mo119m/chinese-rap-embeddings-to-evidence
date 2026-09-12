@@ -33,6 +33,41 @@
       "sha256": "a8580143e3f6c4319416593cfcdf406fda17ea9e83e601e9f5f68bdc8775b7a2",
       "written": "2026-09-10T19:52"
     },
+    "identity_encoder_analysis_fold0.json": {
+      "arm": "analyse_identity_encoder_v3 fold 0 baseline",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gpu_line.sh, 2026-09-11 14:28-14:29",
+      "sha256": "d6eb1118bdd81d06583de1404d26cabb4df754e20ce53aa4b55d49f63965904a",
+      "written": "2026-09-11T14:29"
+    },
+    "identity_encoder_analysis_fold0_moco.json": {
+      "arm": "analyse_identity_encoder_v3 fold 0 momentum queue",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gpu_line.sh, 2026-09-12 00:51-00:52",
+      "sha256": "965db0120b082e912b136db256ff96818b3afd716e116cf9c6d4cd18d1b61020",
+      "written": "2026-09-12T00:52"
+    },
+    "identity_encoder_fold0.json": {
+      "arm": "train_identity_encoder_v3 fold 0 baseline",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gpu_line.sh, 2026-09-11 11:36-14:28",
+      "sha256": "0a4f65127005d0101e25116fbaa74c708ba78a35ff173eb3f746fec9e0aab932",
+      "written": "2026-09-11T14:28"
+    },
+    "identity_encoder_fold0_moco.json": {
+      "arm": "train_identity_encoder_v3 fold 0 momentum queue",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gpu_line.sh, 2026-09-11 14:29 to 2026-09-12 00:51 (process suspended about five hours while the GPU was needed elsewhere; no wall-clock logic in training)",
+      "sha256": "62244fd0349f83921e01b242e085a7576f23c76311cdf92831566119d64d6516",
+      "written": "2026-09-12T00:51"
+    },
+    "identity_encoder_grad_cache_check_gradcache.json": {
+      "arm": "train_identity_encoder_v3 --check-grad-cache",
+      "completed_in_pipeline": false,
+      "run": "2026-09-12, before the GradCache run",
+      "sha256": "4f1858b00b375127404fb2cf95b22982f0dd4b82de512af03abdc3dab21117ac",
+      "written": "2026-09-12T01:19"
+    },
     "identity_probe.json": {
       "arm": "identity_probe",
       "completed_in_pipeline": true,
@@ -50,6 +85,20 @@
       "completed_in_pipeline": true,
       "sha256": "0f7a8575acdd69b0bc91da8dc95335a61c77deb2688e8f8b531fcfbc3aea59ff",
       "written": "2026-09-10T17:19"
+    },
+    "layerwise_identity_probe.json": {
+      "arm": "layerwise_identity_probe_v3",
+      "completed_in_pipeline": false,
+      "run": "stage 1 GPU and stage 2 CPU, 2026-09-12",
+      "sha256": "a2749d4620bab9dadf5a6a72db5da410072935814fcc1af9fb915fee11635358",
+      "written": "2026-09-12T01:19"
+    },
+    "lexical_choice_surprisal.json": {
+      "arm": "lexical_choice_surprisal",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gpu_line.sh stage 1, 2026-09-11 11:19-11:35; stage 2 with its controls rerun alone 2026-09-12",
+      "sha256": "bc4e99c84512e5c5c4247519696aa03f45f89831dde48924d64864e55b92365c",
+      "written": "2026-09-12T01:17"
     },
     "lexical_identity_anatomy.json": {
       "arm": "lexical_identity_anatomy",
@@ -125,5 +174,5 @@
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
-  "pipeline": "run_v3_full_pipeline.sh, 2026-09-10 16:22-21:01 (CPU line, all twenty arms ok); the GPU line (surprisal, fine-tunes) failed or was stopped and is rerun separately on 2026-09-11"
+  "pipeline": "run_v3_full_pipeline.sh, 2026-09-10 16:22-21:01 (CPU line, all twenty arms ok); the GPU line failed or was stopped that night and was rerun alone as run_v3_gpu_line.sh on 2026-09-11; later files name their own run"
 }

@@ -20,6 +20,16 @@ rapper) or in the unexpected ones (dialect, slang, coinage, a personal turn of p
 A companion table lists, per band, the share of tokens and how many of each are in the
 605-surface catalogue and in the other-script set, so the bands can be read.
 
+A global band mixes two things: which words sit in it (rare, non-standard and name-like
+words are surprising wherever they occur) and how each word is used. Three controls pull
+them apart. The catalogue-removed bands drop the reviewed name surfaces. The within-word
+split orders every word's own instances by surprisal and halves them, so both halves hold
+the same words at the same frequencies and differ only in how expected each use was; a
+random split of the same blocks is its null. The within-word split inside strata of line
+context repeats it among uses in equally unusual lines, so that a word's surprising uses
+are not simply its uses in dialect, code-mixed or otherwise non-standard lines. Every arm is scored with unigram word TF-IDF,
+because an arm keeps word instances without their neighbours.
+
     python src/lexical_choice_surprisal_v3.py --private-root <ni-k> [--stage 1|2|both]
 """
 
@@ -42,6 +52,7 @@ sys.path.insert(0, str(ROOT / "src"))
 import build_chinese_rap_downstream_retrieval_v1 as v1  # noqa: E402
 from build_downstream_retrieval_v2 import MINIMUM_SONGS_PER_LABEL, build_songs  # noqa: E402
 from corpus_v3 import V3_CONTENT_SHA256, load_v3  # noqa: E402
+from identity_probe_v2 import SEED  # noqa: E402
 from identity_spaces_v2 import paired_group_bootstrap  # noqa: E402
 from leakage_groups_v2 import build_groups, normalise_document  # noqa: E402
 from lexical_identity_anatomy_v2 import score_arm  # noqa: E402
@@ -58,6 +69,7 @@ MAX_LINE_TOKENS = 64
 BATCH = 384
 TOKEN_BUDGET = 12288      # tokens per batch; keeps the masked-LM forward under 2 GB at any line length
 BANDS = 4
+CONTEXT_STRATA = 10
 OTHER_SCRIPT = re.compile(r"[Ͱ-ϿЀ-ӿ֐-׿؀-ۿݐ-ݿऀ-ॿ฀-๿ༀ-࿿ᄀ-ᇿ᠀-᢯぀-ヿ㄰-㆏가-힯]")
 HAN = re.compile(r"[一-鿿]")
 
@@ -153,26 +165,113 @@ def stage_one(private_root: Path, songs: list[str], documents: dict[str, str], p
     return private_dir
 
 
-# ------------------------------------------------------------------ stage 2: identity by surprisal band
+# ------------------------------------------------------------------ stage 2: identity by surprisal
+def fit_unigrams(documents):
+    """The protocol's word TF-IDF (fit_words) with unigrams only. An arm keeps word instances
+    without their neighbours, so a bigram inside an arm would join words that were never
+    adjacent in the lyric; the first pass of this stage used fit_words and had that defect."""
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    vectorizer = TfidfVectorizer(analyzer="word", ngram_range=(1, 1), token_pattern=r"(?u)\S+",
+                                 min_df=3, max_features=v1.TFIDF_MAX_FEATURES, sublinear_tf=True,
+                                 norm="l2", dtype=np.float32)
+    return vectorizer.fit_transform(documents).tocsr().astype(np.float32)
+
+
+def within_word_midranks(type_id: np.ndarray, surprisal: np.ndarray, ok: np.ndarray, seed: int):
+    """Where each scored instance sits among the instances of its own word, as a midrank in (0, 1).
+
+    Instances of one word whose surprisal agrees to 0.01 nats form one block and share one
+    midrank, so the repetitions of a hook line are never split between halves. A word with a
+    single block has no within-word contrast and gets NaN. A block centred exactly on the
+    median goes to a side by a seeded coin. The second return value is an independent seeded
+    coin per block, which splits the same blocks at random: the null for the halving itself."""
+    rng = np.random.default_rng(seed)
+    idx = np.flatnonzero(ok)
+    t = type_id[idx]
+    s = np.round(surprisal[idx].astype(np.float64), 2)
+    order = np.lexsort((s, t))
+    t_sorted, s_sorted = t[order], s[order]
+    count_of_type = np.bincount(t_sorted)
+    new_type = np.r_[True, np.diff(t_sorted) != 0]
+    type_start = np.flatnonzero(new_type)
+    run = np.diff(np.r_[type_start, len(t_sorted)])
+    position = np.arange(len(t_sorted)) - np.repeat(type_start, run)
+    new_block = new_type | np.r_[True, np.diff(s_sorted) != 0]
+    block_id = np.cumsum(new_block) - 1
+    block_start = np.flatnonzero(new_block)
+    block_size = np.diff(np.r_[block_start, len(t_sorted)])
+    mid = (position[block_start][block_id] + block_size[block_id] / 2.0) / count_of_type[t_sorted]
+    blocks_of_type = np.bincount(t_sorted[block_start], minlength=len(count_of_type))
+    mid[blocks_of_type[t_sorted] < 2] = np.nan
+    tie_coin = rng.random(len(block_start))[block_id]
+    split_coin = rng.random(len(block_start))[block_id]
+    at_median = np.isclose(mid, 0.5)
+    mid[at_median] = np.where(tie_coin[at_median] < 0.5, 0.49999, 0.50001)
+    split_coin[~np.isfinite(mid)] = np.nan
+    out_mid = np.full(len(surprisal), np.nan)
+    out_coin = np.full(len(surprisal), np.nan)
+    out_mid[idx[order]] = mid
+    out_coin[idx[order]] = split_coin
+    return out_mid, out_coin
+
+
 def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, weights, label_count, dense,
               documents, private_dir: Path) -> int:
+    import csv
     surprisal = np.load(private_dir / "surprisal.npy")
     song_index = np.load(private_dir / "song_index.npy")
     words = (private_dir / "words.txt").read_text(encoding="utf-8").split("\n")
     contract = json.loads((private_dir / "contract.json").read_text(encoding="utf-8"))
     if contract["corpus_content_sha256"] != V3_CONTENT_SHA256:
         raise SystemExit("the surprisal table was computed on another corpus build")
+    if not (len(words) == len(surprisal) == len(song_index) == contract["instances"]):
+        raise SystemExit("the surprisal table, the word list and the song index disagree in length")
     ok = np.isfinite(surprisal)
     print(f"  {int(ok.sum()):,} scored word instances; median surprisal {np.nanmedian(surprisal):.2f} nats", flush=True)
-    edges = np.nanquantile(surprisal, np.linspace(0, 1, BANDS + 1))
-    band = np.full(len(surprisal), -1, dtype=np.int8)
-    for k in range(BANDS):
-        lo, hi = edges[k], edges[k + 1]
-        band[ok & (surprisal >= lo) & ((surprisal < hi) | ((k == BANDS - 1) & (surprisal <= hi)))] = k
 
+    vocab: dict[str, int] = {}
+    type_id = np.fromiter((vocab.setdefault(w, len(vocab)) for w in words), dtype=np.int64, count=len(words))
+    type_freq = np.bincount(type_id[ok], minlength=len(vocab))
     lexicon = private_root / "work" / "lexicon_arm_everything.csv"
-    import csv
     surfaces = {r["entity"].strip() for r in csv.DictReader(lexicon.open(encoding="utf-8-sig")) if r.get("entity", "").strip()}
+    in_catalogue = np.fromiter((w in surfaces for w in words), dtype=bool, count=len(words))
+    other_script = np.fromiter((bool(OTHER_SCRIPT.search(w)) for w in words), dtype=bool, count=len(words))
+    latin = np.fromiter((not HAN.search(w) and bool(re.search(r"[A-Za-z]", w)) for w in words), dtype=bool, count=len(words))
+    word_length = np.fromiter((len(w) for w in words), dtype=np.int32, count=len(words))
+
+    # the line of every instance, rebuilt with stage 1's own enumeration and checked word by word
+    line_id = np.full(len(words), -1, dtype=np.int64)
+    rebuilt, line_count = 0, 0
+    for si, song in enumerate(songs):
+        for line in documents[song].split("\n"):
+            line = line.strip()
+            if not line:
+                continue
+            pos = 0
+            for word in segment(line):
+                start = line.find(word, pos)
+                if start < 0:
+                    continue
+                if rebuilt >= len(words) or words[rebuilt] != word or int(song_index[rebuilt]) != si:
+                    raise SystemExit(f"the rebuilt word instances diverge from stage 1 at instance {rebuilt}")
+                line_id[rebuilt] = line_count
+                rebuilt += 1
+                pos = start + len(word)
+            line_count += 1
+    if rebuilt != len(words):
+        raise SystemExit(f"rebuilt {rebuilt:,} word instances, stage 1 recorded {len(words):,}")
+    # line context: the mean surprisal of the other scored words of the same line
+    line_sum = np.bincount(line_id[ok], weights=surprisal[ok].astype(np.float64), minlength=line_count)
+    line_n = np.bincount(line_id[ok], minlength=line_count)
+    own = np.where(ok, surprisal, 0.0).astype(np.float64)
+    others = line_n[line_id] - ok.astype(np.int64)
+    context = np.full(len(words), np.nan)
+    has_context = ok & (others >= 1)
+    context[has_context] = (line_sum[line_id][has_context] - own[has_context]) / others[has_context]
+    print(f"  rebuilt {rebuilt:,} instances over {line_count:,} lines; {int(has_context.sum()):,} have line context",
+          flush=True)
+    # the last word of a line: the rhyme slot, predicted with no context to its right
+    line_final = np.r_[line_id[1:] != line_id[:-1], True]
 
     def docs_for(mask) -> list[str]:
         per_song: dict[int, list[str]] = defaultdict(list)
@@ -180,69 +279,142 @@ def stage_two(private_root: Path, out_dir: Path, songs, label_index, group_ids, 
             per_song[int(song_index[i])].append(words[i])
         return [" ".join(per_song.get(si, [])) for si in range(len(songs))]
 
-    rr, report = {}, {}
-    all_docs = docs_for(ok)
-    matrix, _ = fit_words(all_docs)
-    ranks, error = score_arm(dense, matrix, label_index, group_ids, label_count)
-    if error:
-        raise SystemExit(error)
-    rr["all_scored_words"] = 1.0 / ranks
-    report["all_scored_words"] = {"mrr": round(float(np.mean(rr["all_scored_words"])), 4), "tokens": int(ok.sum())}
-    print(f"  all scored words: MRR {report['all_scored_words']['mrr']:.4f}", flush=True)
-    for k in range(BANDS):
-        mask = band == k
-        docs = docs_for(mask)
-        matrix, _ = fit_words(docs)
-        ranks, error = score_arm(dense, matrix, label_index, group_ids, label_count)
-        name = f"band_{k + 1}_of_{BANDS}"
+    rr, systems = {}, {}
+
+    def score(family: str, name: str, mask: np.ndarray, extra: dict | None = None) -> None:
         idx = np.flatnonzero(mask)
-        band_words = [words[i] for i in idx]
-        types = Counter(band_words)
-        report[name] = {
-            "surprisal_range_nats": [round(float(edges[k]), 3), round(float(edges[k + 1]), 3)],
-            "tokens": int(mask.sum()), "types": len(types),
-            "share_in_reviewed_catalogue": round(sum(1 for w in band_words if w in surfaces) / max(len(band_words), 1), 4),
-            "share_other_script": round(sum(1 for w in band_words if OTHER_SCRIPT.search(w)) / max(len(band_words), 1), 4),
-            "share_latin": round(sum(1 for w in band_words if not HAN.search(w) and re.search(r"[A-Za-z]", w)) / max(len(band_words), 1), 4),
-            "mean_word_length": round(float(np.mean([len(w) for w in band_words])), 3) if band_words else None,
-        }
+        info = {"tokens": int(len(idx)), "types": int(len(np.unique(type_id[idx]))),
+                "median_corpus_frequency_of_its_tokens": int(np.median(type_freq[type_id[idx]])),
+                "share_in_reviewed_catalogue": round(float(in_catalogue[idx].mean()), 4),
+                "share_other_script": round(float(other_script[idx].mean()), 4),
+                "share_latin": round(float(latin[idx].mean()), 4),
+                "mean_word_length": round(float(word_length[idx].mean()), 3),
+                "mean_line_context_nats": round(float(np.nanmean(context[idx])), 3),
+                "share_line_final": round(float(line_final[idx].mean()), 4)}
+        per_song = np.bincount(song_index[idx], minlength=len(songs))
+        info["tokens_per_song"] = {"median": int(np.median(per_song)), "p10": int(np.percentile(per_song, 10)),
+                                   "songs_below_20": int((per_song < 20).sum())}
+        if extra:
+            info.update(extra)
+        ranks, error = score_arm(dense, fit_unigrams(docs_for(mask)), label_index, group_ids, label_count)
         if error:
-            report[name].update({"defined": False, "why": error})
-            print(f"  {name}: undefined ({error[:50]})", flush=True)
-            continue
-        rr[name] = 1.0 / ranks
-        report[name].update({"defined": True, "mrr": round(float(np.mean(rr[name])), 4),
-                             "recall_at_10": round(float(np.mean(ranks <= 10)), 4)})
-        print(f"  {name} [{edges[k]:.2f}, {edges[k + 1]:.2f}] nats: MRR {report[name]['mrr']:.4f}  "
-              f"tokens {report[name]['tokens']:,}  types {report[name]['types']:,}  "
-              f"catalogue {report[name]['share_in_reviewed_catalogue']:.1%}  other-script {report[name]['share_other_script']:.1%}",
+            info.update({"defined": False, "why": error})
+            systems.setdefault(family, {})[name] = info
+            print(f"  {family:36s} {name:28s} undefined ({error[:50]})", flush=True)
+            return
+        rr[f"{family}/{name}"] = 1.0 / ranks
+        info.update({"defined": True, "mrr": round(float(np.mean(1.0 / ranks)), 4),
+                     "recall_at_10": round(float(np.mean(ranks <= 10)), 4)})
+        systems.setdefault(family, {})[name] = info
+        print(f"  {family:36s} {name:28s} MRR {info['mrr']:.4f}  tokens {info['tokens']:>9,}  types {info['types']:>7,}  "
+              f"median freq {info['median_corpus_frequency_of_its_tokens']:>7,}  catalogue {info['share_in_reviewed_catalogue']:.1%}",
               flush=True)
-    # the low half against the high half, the cleanest statement of the question
-    for name, mask in (("expected_half", ok & (surprisal < edges[BANDS // 2])), ("unexpected_half", ok & (surprisal >= edges[BANDS // 2]))):
-        matrix, _ = fit_words(docs_for(mask))
-        ranks, error = score_arm(dense, matrix, label_index, group_ids, label_count)
-        if error:
-            raise SystemExit(f"{name}: {error}")
-        rr[name] = 1.0 / ranks
-        report[name] = {"mrr": round(float(np.mean(rr[name])), 4), "tokens": int(mask.sum())}
-        print(f"  {name}: MRR {report[name]['mrr']:.4f}", flush=True)
-    pairs = [("expected_half", "unexpected_half"), ("expected_half", "all_scored_words"), ("unexpected_half", "all_scored_words")]
-    pairs += [(f"band_{k + 1}_of_{BANDS}", "all_scored_words") for k in range(BANDS) if f"band_{k + 1}_of_{BANDS}" in rr]
+
+    # 1. global surprisal bands: the question as first asked
+    edges = np.nanquantile(surprisal, np.linspace(0, 1, BANDS + 1))
+    band = np.full(len(surprisal), -1, dtype=np.int8)
+    for k in range(BANDS):
+        lo, hi = edges[k], edges[k + 1]
+        band[ok & (surprisal >= lo) & ((surprisal < hi) | ((k == BANDS - 1) & (surprisal <= hi)))] = k
+    half = edges[BANDS // 2]
+    for family, keep in (("global_surprisal", ok), ("global_surprisal_catalogue_removed", ok & ~in_catalogue)):
+        score(family, "all_scored_words", keep)
+        for k in range(BANDS):
+            score(family, f"band_{k + 1}_of_{BANDS}", keep & (band == k),
+                  {"surprisal_range_nats": [round(float(edges[k]), 3), round(float(edges[k + 1]), 3)]})
+        score(family, "expected_half", keep & (surprisal < half))
+        score(family, "unexpected_half", keep & (surprisal >= half))
+
+    # 2. within each word: the same words at the same frequencies, split only by context
+    mid, coin = within_word_midranks(type_id, surprisal, ok, SEED)
+    contrastable = np.isfinite(mid)
+    four = contrastable & (type_freq[type_id] >= 4)
+    quartile = np.minimum(np.floor(np.nan_to_num(mid, nan=-1.0) * 4), 3)
+    family = "within_word"
+    score(family, "words_with_contrast", contrastable)
+    score(family, "lower_half_for_its_word", contrastable & (mid < 0.5))
+    score(family, "upper_half_for_its_word", contrastable & (mid > 0.5))
+    score(family, "random_half_a", contrastable & (coin < 0.5))
+    score(family, "random_half_b", contrastable & (coin >= 0.5))
+    score(family, "words_with_four_or_more", four)
+    for k in range(4):
+        score(family, f"quartile_{k + 1}_for_its_word", four & (quartile == k))
+
+    # 3. the same split inside deciles of line context: a word's more surprising uses must not
+    #    simply be its uses in unusual lines (dialect, code-mixing, a non-standard register)
+    #    (and at twice the resolution, to see whether the answer depends on the stratum width)
+    #    and, last, inside line position too: the rhyme slot against the rest of the line
+    for family, strata, by_position in (("within_word_and_line_context", CONTEXT_STRATA, False),
+                                        ("within_word_and_line_context_fine", 2 * CONTEXT_STRATA, False),
+                                        ("within_word_line_context_and_position", CONTEXT_STRATA, True)):
+        cuts = np.quantile(context[has_context], np.linspace(0, 1, strata + 1)[1:-1])
+        stratum = np.searchsorted(cuts, np.nan_to_num(context, nan=0.0), side="right")
+        key = type_id * strata + stratum
+        if by_position:
+            key = key * 2 + line_final.astype(np.int64)
+        mid_s, coin_s = within_word_midranks(key, surprisal, has_context, SEED + 1)
+        contrastable_s = np.isfinite(mid_s)
+        score(family, "words_with_contrast", contrastable_s, {"strata": strata})
+        score(family, "lower_half_for_its_word", contrastable_s & (mid_s < 0.5), {"strata": strata})
+        score(family, "upper_half_for_its_word", contrastable_s & (mid_s > 0.5), {"strata": strata})
+        score(family, "random_half_a", contrastable_s & (coin_s < 0.5), {"strata": strata})
+        score(family, "random_half_b", contrastable_s & (coin_s >= 0.5), {"strata": strata})
+
+    g, c, w = "global_surprisal/", "global_surprisal_catalogue_removed/", "within_word/"
+    pairs = [(g + "expected_half", g + "unexpected_half"), (g + "unexpected_half", g + "all_scored_words")]
+    pairs += [(g + f"band_{k + 1}_of_{BANDS}", g + "all_scored_words") for k in range(BANDS)]
+    pairs += [(c + "expected_half", c + "unexpected_half"), (c + "unexpected_half", c + "all_scored_words")]
+    pairs += [(c + f"band_{k + 1}_of_{BANDS}", c + "all_scored_words") for k in range(BANDS)]
+    pairs += [(w + "lower_half_for_its_word", w + "upper_half_for_its_word"),
+              (w + "random_half_a", w + "random_half_b"),
+              (w + "lower_half_for_its_word", w + "words_with_contrast"),
+              (w + "upper_half_for_its_word", w + "words_with_contrast"),
+              (w + "quartile_4_for_its_word", w + "quartile_1_for_its_word")]
+    pairs += [(w + f"quartile_{k + 1}_for_its_word", w + "words_with_four_or_more") for k in range(4)]
+    for x in ("within_word_and_line_context/", "within_word_and_line_context_fine/",
+              "within_word_line_context_and_position/"):
+        pairs += [(x + "lower_half_for_its_word", x + "upper_half_for_its_word"),
+                  (x + "random_half_a", x + "random_half_b"),
+                  (x + "lower_half_for_its_word", x + "words_with_contrast"),
+                  (x + "upper_half_for_its_word", x + "words_with_contrast")]
+    pairs = [(a, b) for a, b in pairs if a in rr and b in rr]
     contrasts = paired_group_bootstrap(rr, weights, group_ids, np.ones(len(songs), dtype=bool), pairs)
-    for c in contrasts:
-        print(f"  {c['system']} - {c['minus']}: {c['mrr_difference']:+.4f} [{c['ci95'][0]:+.4f}, {c['ci95'][1]:+.4f}]", flush=True)
+    for item in contrasts:
+        print(f"  {item['system']} - {item['minus']}: {item['mrr_difference']:+.4f} "
+              f"[{item['ci95'][0]:+.4f}, {item['ci95'][1]:+.4f}]", flush=True)
 
     out_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "analysis": "identity by the surprisal of each word choice under a standard-Mandarin masked language model",
         "corpus": {"content_sha256": V3_CONTENT_SHA256, "queries": len(songs), "labels": label_count},
-        "design": {"model": contract["model"], "revision": contract["revision"],
-                   "surprisal": "negative log-probability of the actual word, whole word masked, averaged over its "
-                                "word pieces; one lyric line is the context",
-                   "bands": f"{BANDS} quantile bands of surprisal over all scored word instances",
-                   "scoring": "jieba word TF-IDF rebuilt from the word instances of a band alone, the protocol unchanged",
-                   "reference": "Sun, Zemel and Xu 2021: word choice as inference over candidates given meaning and context"},
-        "systems": report,
+        "design": {
+            "model": contract["model"], "revision": contract["revision"],
+            "surprisal": "negative log-probability of the actual word, whole word masked, averaged over its word "
+                         "pieces; one lyric line is the context; words past the 64-token line limit are unscored "
+                         "and left out of every arm",
+            "scoring": "word unigram TF-IDF (sublinear tf, min_df 3) rebuilt from the word instances of an arm "
+                       "alone, the protocol unchanged; unigrams because an arm keeps instances without their "
+                       "neighbours",
+            "global_surprisal": f"{BANDS} quantile bands of surprisal over all scored word instances; the halves "
+                                "split at the median",
+            "catalogue_removed": f"the same bands without the tokens that are one of the {len(surfaces)} reviewed "
+                                 "catalogue surfaces",
+            "within_word": "each word's scored instances ordered by surprisal; instances within 0.01 nats form one "
+                           "block with one midrank, so a repeated line is never split; words with a single block "
+                           "are left out; halves by midrank, quartiles for words with four or more scored "
+                           "instances; the random halves split the same blocks by a second seeded coin",
+            "within_word_and_line_context": f"the within-word split inside {CONTEXT_STRATA} quantile strata of "
+                                            "line context (the mean surprisal of the other scored words of the "
+                                            "same line), so both halves of a word hold uses in equally unusual "
+                                            "lines; lines are rebuilt with stage 1's enumeration and checked "
+                                            "against its word list instance by instance; the _fine family repeats "
+                                            f"it with {2 * CONTEXT_STRATA} strata",
+            "within_word_line_context_and_position": "the within-word, line-context split inside line position as "
+                                                     "well: a line's last word (the rhyme slot, masked with no "
+                                                     "context to its right) against every other position",
+            "seed": SEED,
+            "reference": "Sun, Zemel and Xu 2021: word choice as inference over candidates given meaning and context"},
+        "systems": systems,
         "paired_contrasts": {"design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, "
                                        "each (group, label) component weighted one", "contrasts": contrasts},
         "privacy": "aggregate only; no word is published",

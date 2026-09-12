@@ -5,8 +5,9 @@ production-credit residue and two television-episode transcripts removed from th
 text (`results/cleaned-corpus-v3/`): 24,237 chunks, 7,379 songs, content digest
 `cd51bf69…`. The semantic vectors are a local BGE-M3 run over the v3 text (fp16, pinned
 revision `5617a9f6`, weights `b5e0ce34`; contract in the private embedding run). Every
-file in this directory was produced on 2026-09-10 by the same scripts as
-`results/retrieval-v2/`, run with `CHINESE_RAP_CORPUS=v3`, so the protocol is unchanged:
+CPU experiment was produced on 2026-09-10 by the same scripts as `results/retrieval-v2/`,
+run with `CHINESE_RAP_CORPUS=v3`; the GPU experiments (surprisal, layer-wise probe,
+fine-tuning) followed on 2026-09-11 and 12. The protocol is unchanged throughout:
 leave-group-out label profiles, 7,220 queries over 226 labels in 5,875 leakage groups,
 per-(group, label) weight one, paired group bootstrap (2,000 replicates, seed 20260825).
 `MANIFEST_1.3.0.json` records each file's digest and the build it was computed on.
@@ -264,24 +265,172 @@ first more than half the time; the fusion that wins over all labels loses to wor
 when every candidate shares the subject and wins again as candidates diversify: part of
 what the semantic component contributes to identity is content.
 
-## Contrastive fine-tuning (1.2.0 numbers; 1.3.0 reruns in progress)
+## Word choice against a language model's expectation (`lexical_choice_surprisal.json`)
 
-Fold 0 on build 1.2.0 (`identity_encoder_fold0.json`, `identity_encoder_analysis_fold0.json`):
-LoRA fine-tuning of BGE-M3 with stanza positives from another leakage group, two
-content-controlled hard negatives per anchor, labels masked, two epochs, scored 0.2698 on
-the test fold against 0.2871 for the frozen model on the same masked text and 0.1952
-against 0.2480 on the 34 labels never trained on; only after within-label whitening did
-the tuned space lead (0.4189 vs 0.3839, a bound since the whitening is fitted on songs the
-model saw), and it added nothing to the word space (0.5022 vs 0.4999). The vectors show
-why: the fine-tune contracted the space (mean pairwise cosine 0.50 → 0.80, effective rank
-265 → 138).
+A Chinese masked language model trained on standard written Mandarin and never on this
+corpus (`hfl/chinese-roberta-wwm-ext`, pinned) scored how expected every word the rapper
+used was, with the whole word masked and its lyric line as context: 3,670,476 scored word
+instances, median 4.17 nats. Each arm rebuilds the word space from a subset of those
+instances and scores it under the unchanged protocol. Arms use unigram word TF-IDF, because
+an arm keeps word instances without their neighbours. A first, uncommitted pass used the
+protocol's unigram-plus-bigram vectorizer, whose bigrams inside a band joined words that
+were never adjacent; it was replaced before any number here was written. On all scored
+words the unigram space gives 0.5126, above the protocol's unigram-plus-bigram 0.4963. That
+is a sensitivity observation; the headline system is not re-chosen on it.
 
-The same run with a 4,096-embedding cross-batch queue (`identity_encoder_fold0_queue4096.json`)
-collapsed to a single point — mean pairwise cosine 1.000, effective rank 4, MRR 0.0212 at
-chance, loss at ln K — the known failure of a stale queue without a momentum encoder. The
-trainer now fills the queue from an EMA of the LoRA weights (MoCo), guards on the batch's
-mean cosine, and records both. The fold-0 baseline and a MoCo run (lr 5e-5) are being
-rerun on 1.3.0; this section is replaced when they finish.
+**Global bands.** Quartiles of surprisal, equal token mass each:
+
+| band | nats | MRR | word types | median corpus frequency of its tokens | catalogue share |
+|---|---|---|---|---|---|
+| 1, most expected | 0.00–1.30 | 0.2007 | 11,080 | 12,981 | 0.2% |
+| 2 | 1.30–4.17 | 0.2852 | 29,610 | 3,071 | 0.5% |
+| 3 | 4.17–6.85 | 0.3232 | 63,975 | 415 | 1.5% |
+| 4, least expected | 6.85–29.1 | 0.4541 | 90,396 | 129 | 2.6% |
+
+Expected half 0.3182, unexpected half 0.5025: −0.184 [−0.193, −0.174]. Read alone this says
+identity lives in surprising choices, but a band mixes two things: which words sit in it
+(rare, long, Latin-script and name-like words are surprising wherever they occur) and how
+each word is used. Four controls pull them apart.
+
+| control | lower half | upper half | lower − upper | random halves of the same blocks |
+|---|---|---|---|---|
+| global halves | 0.3182 | 0.5025 | −0.184 [−0.193, −0.174] | — |
+| catalogue surfaces removed | 0.3171 | 0.4942 | −0.176 [−0.186, −0.167] | — |
+| within each word | 0.3767 | 0.4440 | −0.065 [−0.073, −0.057] | +0.003 [−0.005, +0.011] |
+| within each word and line-context decile | 0.3731 | 0.4200 | −0.047 [−0.055, −0.039] | −0.002 [−0.010, +0.006] |
+| the same with 20 strata | 0.3668 | 0.4150 | −0.048 [−0.056, −0.039] | +0.005 [−0.003, +0.013] |
+| within each word, line-context decile and line position | 0.3670 | 0.4156 | −0.048 [−0.056, −0.041] | +0.000 [−0.008, +0.008] |
+
+- **Names do not carry it.** Removing the 605 reviewed catalogue surfaces moves the halves by
+  less than 0.01.
+- **Most of the global gap is vocabulary.** Split within each word, so both halves hold the
+  same 62,413 words at the same frequencies, the gap falls from 0.184 to 0.065. The within-word
+  quartiles still rise in order: 0.2578, 0.2981, 0.3130, 0.3415 (fourth − first +0.083
+  [+0.074, +0.092]).
+- **Part of the within-word gap is the line, not the word.** A word's surprising uses sat in
+  more unusual lines (mean surprisal of the other words of the line 4.88 against 3.93 nats).
+  Splitting inside deciles of that line context balances it (4.41 against 4.36) and leaves
+  −0.047; twenty strata give the same.
+- **Not the rhyme slot.** After the line-context split, the surprising uses still sat at a
+  line's end more often (14.1% against 11.3%), where the model has no context to the right.
+  Splitting inside line position as well balances that (11.3% both) and leaves −0.048.
+- **Not document length.** Both stratified halves give a median song 202–203 tokens, and 30
+  and 31 songs have fewer than 20.
+
+Reading, at the tier it supports: the same word, at the same frequency and in an equally
+unusual line, identifies the rapper better in the uses a standard-Mandarin model expects
+least. That is a within-word effect of about 0.05 MRR between halves, on top of a larger
+effect of which words a rapper uses. What it is not yet: a claim about intent or
+creativity. The model's expectation is standard written Mandarin's, so "unexpected" means
+unexpected for that register, and the context is one line.
+
+## Identity at every layer of BGE-M3 (`layerwise_identity_probe.json`)
+
+Every semantic number above reads one vector: the final layer's [CLS] state, which BGE-M3
+was trained to make useful for retrieval by meaning. Probing work on BERT-style encoders
+puts surface and lexical information low in the stack and more abstract information higher
+(Jawahar, Sagot and Seddah 2019; Tenney, Das and Pavlick 2019). So the script was written
+with a prediction: if identity here is word use, it should be most readable low in the
+stack and fade toward the retrieval head. The pinned checkpoint was run once over every
+chunk with all 25 hidden states, keeping each layer's [CLS] state and its attention-masked
+token mean, and every layer was scored under the unchanged protocol, raw and after
+within-author whitening cross-fitted over the five folds. Two checks come first. The final
+[CLS], normalised, matches the recorded embedding run chunk by chunk (minimum cosine 0.9996,
+none below 0.999). Scored, it reproduces the recorded MRRs (0.2998 against 0.2997, and
+0.4164 against 0.4164).
+
+| layer | [CLS] cosine | [CLS] whitened | mean-pooled cosine | mean-pooled whitened | mean cosine of random chunk pairs, [CLS] / mean |
+|---|---|---|---|---|---|
+| 0 | 0.0244 | 0.0244 | 0.1256 | 0.3621 | 1.000 / 0.694 |
+| 4 | 0.1242 | 0.3478 | 0.1493 | 0.3795 | 0.991 / 0.930 |
+| 8 | 0.1003 | 0.3354 | 0.1267 | 0.3883 | 0.986 / 0.945 |
+| 12 | 0.0949 | 0.3454 | 0.1130 | 0.3806 | 0.982 / 0.907 |
+| 16 | 0.0747 | 0.3370 | 0.1031 | 0.3427 | 0.982 / 0.859 |
+| 18 | 0.0676 | 0.2711 | 0.0894 | 0.3313 | 0.969 / 0.838 |
+| 20 | 0.1522 | 0.2904 | 0.0804 | 0.3331 | 0.977 / 0.846 |
+| 22 | 0.2459 | 0.3741 | 0.0832 | 0.3624 | 0.876 / 0.892 |
+| 23 | 0.2799 | 0.4061 | 0.1268 | 0.3643 | 0.706 / 0.905 |
+| 24 | **0.2998** | **0.4164** | 0.2075 | 0.4013 | 0.496 / 0.719 |
+
+Every other layer and pooling is below the final [CLS] under the same transform, each
+interval excluding zero. The closest is the final layer's token mean after whitening,
+−0.016 [−0.023, −0.010]. The best lower layer is the token mean at layer 8, −0.028
+[−0.037, −0.018]. Both poolings dip between layers 16 and 20.
+
+The prediction failed. Read by a linear map, BGE-M3 holds the most label identity at the
+output it was trained to produce, not below it. Layer 0's token mean is a dense bag of
+subword embeddings and whitens to 0.362, while a 1,024-dimensional SVD of the word TF-IDF
+space whitens to 0.548. So the distance between the semantic encoder and the word space
+is not a matter of which layer is read, and not of vector width. What the final layer does
+is hide what it holds: its raw cosine is 0.30, and whitening lifts it to 0.42.
+
+Limits: one encoder, a linear readout, and chunk vectors averaged into songs. The hidden
+states are stored in float16, which limits the nearly constant [CLS] states of layers 0–2
+and not the token means. The [CLS] state of a lower layer is not yet a summary of the
+chunk, so for "low in the stack" the token mean is the fair reading.
+
+## Contrastive fine-tuning, fold 0 (`identity_encoder_fold0*.json`, `identity_encoder_analysis_fold0*.json`)
+
+**Baseline** (`identity_encoder_fold0.json`): LoRA on BGE-M3, eight anchors a step, a positive
+from another leakage group, two content-controlled hard negatives per anchor, label strings
+masked, lr 2e-4, two epochs (3,828 steps). Scored on the test fold (1,187 queries) and on the
+34 labels never trained on (1,041 queries); whitening is fitted on the training folds.
+
+| system | test fold | unseen labels |
+|---|---|---|
+| frozen BGE-M3, masked text | 0.2947 | 0.2419 |
+| fine-tuned | 0.2565 | 0.1777 |
+| frozen + within-author whitening | 0.4013 | 0.3361 |
+| fine-tuned + within-author whitening | 0.4133 | 0.3365 |
+| words | 0.5145 | 0.4233 |
+| fine-tuned fused with words | 0.5198 | 0.4112 |
+
+| contrast | test fold | unseen labels |
+|---|---|---|
+| fine-tuned − frozen | −0.041 [−0.061, −0.020] | −0.065 [−0.085, −0.045] |
+| whitened fine-tuned − whitened frozen | +0.014 [−0.010, +0.036] | +0.002 [−0.019, +0.025] |
+| fine-tuned fused with words − words | +0.006 [−0.005, +0.018] | −0.014 [−0.026, −0.001] |
+
+The chunk vectors show what training did. The frozen space has a mean pairwise cosine of
+0.495 and a participation ratio of 132; the tuned space 0.800 and 26, and a chunk's median
+cosine to its own frozen vector is 0.62. Training moved the space a long way and narrowed
+it, and after whitening it holds what the whitened frozen space already held.
+
+Reading, and its limit: with eight anchors a step, contrastive fine-tuning added nothing
+detectable beyond a within-author whitening of the frozen encoder, and on unseen labels it
+made the word space slightly worse. That is a result about this configuration, not proof
+that fine-tuning cannot help; batch size is the obvious untested variable (below). The 1.2.0
+run's whitened lead (0.4189 vs 0.3839) does not replicate on 1.3.0. Fold-level numbers are
+not paired across builds: a group's fold is drawn over the sorted group list, seven groups
+left the corpus, and the 1.2.0 test fold had 1,205 queries.
+
+**Momentum queue** (`identity_encoder_fold0_moco.json`): a 4,096-vector queue filled by an
+exponential moving average of the LoRA weights (m 0.999), lr 5e-5. Test fold 0.1331, unseen
+labels 0.0882; whitened 0.3091 and 0.2499, 0.090 and 0.081 below the whitened frozen space.
+Its vectors have a mean pairwise cosine of 0.941 and a participation ratio of 7.0, and a
+chunk's median cosine to its frozen vector is 0.20: a dimensional collapse. The training
+guard missed it because it read the mean cosine of 32 vectors in train mode, which stayed
+near 0.8. Review of the code then found the design flawed. MoCo compares each query with
+keys that all come from the momentum encoder; here the positives came from the live encoder
+and only the queue from the momentum encoder, so the loss could fall by moving live vectors
+away from the queue. The learning rate also differed from the baseline by a factor of four.
+The run therefore says nothing about whether more negatives help, and is kept only so the
+failure stays on record, beside the earlier live-encoder queue that collapsed to one point
+(`identity_encoder_fold0_queue4096.json`, 1.2.0).
+
+**Next, with its reading fixed before it runs.** Both queue designs are replaced by an exact
+64-anchor batch (GradCache, Gao et al. 2021): every vector in the denominator comes from the
+current encoder and the gradient is computed in chunks. Before launch the chunked gradient
+was checked against the direct one on a 32-sequence batch in chunks of 12
+(`identity_encoder_grad_cache_check_gradcache.json`): with dropout off the two losses agree
+to six decimals and the gradients have cosine 0.99996 (relative difference 0.9%); with
+dropout on, the second pass reproduces the first pass's vectors exactly. The run uses 64
+anchors a step in chunks of 32, lr 2e-4 and two epochs as before (so about 480 steps), and
+the trainer now records an eval-mode probe's participation ratio every 50 steps. The
+decision rule: the fine-tuning line shows learned identity beyond linear whitening only if
+the whitened fine-tuned space beats the whitened frozen space on the unseen labels with an
+interval excluding zero. Otherwise the conclusion is that, within this compute budget,
+contrastive adaptation adds nothing detectable beyond a linear whitening of the frozen space.
 
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
