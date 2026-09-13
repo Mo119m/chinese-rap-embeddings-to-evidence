@@ -383,6 +383,28 @@ states are stored in float16, which limits the nearly constant [CLS] states of l
 and not the token means. The [CLS] state of a lower layer is not yet a summary of the
 chunk, so for "low in the stack" the token mean is the fair reading.
 
+**A second encoder** (`layerwise_identity_probe_chinese_roberta_wwm_ext.json`):
+`hfl/chinese-roberta-wwm-ext`, a Chinese BERT-base trained only as a masked language model,
+never for retrieval. It reads at most 512 tokens, which truncates 4,773 chunks. It has no
+recorded run, so neither check applies, and its contrasts are against its own final token
+mean.
+
+| layer | [CLS] whitened | mean-pooled cosine | mean-pooled whitened |
+|---|---|---|---|
+| 0 | 0.0244 | 0.1291 | 0.3564 |
+| 3 | 0.3407 | 0.1285 | 0.3665 |
+| 6 | 0.3514 | 0.1143 | 0.3651 |
+| 9 | 0.3652 | 0.1373 | 0.3637 |
+| 12 | 0.3634 | 0.1957 | **0.3744** |
+
+Its whitened curve is nearly flat. Every layer's token mean lies between 0.356 and 0.374,
+the final layer is the highest, and layers 4, 5, 8 and 11 are inside its interval. So the
+prediction fails for an encoder never trained for retrieval as well: identity is about
+equally readable by a linear map at every depth, and across both encoders a whitened token
+mean stays between 0.33 and 0.40. What BGE-M3 adds is its final [CLS] summary, 0.416 after
+whitening. Raw cosine stays at or below 0.30 at every layer of both models. Limits as above,
+plus a smaller model that truncates long chunks.
+
 ## Contrastive fine-tuning, fold 0 (`identity_encoder_fold0*.json`, `identity_encoder_analysis_fold0*.json`)
 
 **Baseline** (`identity_encoder_fold0.json`): LoRA on BGE-M3, eight anchors a step, a positive
@@ -411,8 +433,9 @@ cosine to its own frozen vector is 0.62. Training moved the space a long way and
 it, and after whitening it holds what the whitened frozen space already held.
 
 Reading, and its limit: with eight anchors a step, contrastive fine-tuning added nothing
-detectable beyond a within-author whitening of the frozen encoder, and on unseen labels it
-made the word space slightly worse. That is a result about this configuration, not proof
+detectable beyond a within-author whitening of the frozen encoder, and on unseen labels its
+raw space made the word space slightly worse (the whitened fusions are in the GradCache
+table below). That is a result about this configuration, not proof
 that fine-tuning cannot help; batch size is the obvious untested variable (below). The 1.2.0
 run's whitened lead (0.4189 vs 0.3839) does not replicate on 1.3.0. Fold-level numbers are
 not paired across builds: a group's fold is drawn over the sorted group list, seven groups
@@ -430,7 +453,8 @@ and only the queue from the momentum encoder, so the loss could fall by moving l
 away from the queue. The learning rate also differed from the baseline by a factor of four.
 The run therefore says nothing about whether more negatives help, and is kept only so the
 failure stays on record, beside the earlier live-encoder queue that collapsed to one point
-(`identity_encoder_fold0_queue4096.json`, 1.2.0).
+(`identity_encoder_fold0_queue4096.json`, 1.2.0). Fused with the words, its whitened space
+falls 0.062 below the whitened frozen fusion on both scopes.
 
 **Next, with its reading fixed before it runs.** Both queue designs are replaced by an exact
 64-anchor batch (GradCache, Gao et al. 2021): every vector in the denominator comes from the
@@ -458,6 +482,45 @@ bootstrap intervals above cover the sampling of queries, not the variation betwe
 runs, which is unmeasured. One rule is therefore added before any GradCache result exists,
 and it only makes the reading stricter: a pass on one launch counts only once a second launch
 repeats it.
+
+**First GradCache launch** (`identity_encoder_fold0_gradcache64.json`,
+`identity_encoder_analysis_fold0_gradcache64.json`): 480 steps without interruption; the
+largest change of a vector between the two GradCache passes was 0.0.
+
+| system | 8 anchors, test fold | 8 anchors, unseen labels | 64 anchors, test fold | 64 anchors, unseen labels |
+|---|---|---|---|---|
+| frozen, masked text | 0.2947 | 0.2419 | 0.2947 | 0.2419 |
+| fine-tuned | 0.2565 | 0.1777 | 0.2802 | 0.2066 |
+| frozen + within-author whitening | 0.4013 | 0.3361 | 0.4013 | 0.3361 |
+| fine-tuned + within-author whitening | 0.4133 | 0.3365 | 0.4412 | 0.3721 |
+| words | 0.5145 | 0.4233 | 0.5145 | 0.4233 |
+| whitened frozen fused with words | 0.5361 | 0.4546 | 0.5361 | 0.4546 |
+| whitened fine-tuned fused with words | 0.5448 | 0.4577 | 0.5513 | 0.4767 |
+
+| contrast | 8 anchors, test fold | 8 anchors, unseen labels | 64 anchors, test fold | 64 anchors, unseen labels |
+|---|---|---|---|---|
+| fine-tuned − frozen | −0.041 [−0.061, −0.020] | −0.065 [−0.085, −0.045] | −0.015 [−0.033, +0.004] | −0.035 [−0.052, −0.017] |
+| whitened fine-tuned − whitened frozen | +0.014 [−0.010, +0.036] | +0.002 [−0.019, +0.025] | +0.041 [+0.020, +0.062] | +0.039 [+0.019, +0.060] |
+| whitened fine-tuned with words − whitened frozen with words | +0.009 [−0.009, +0.027] | +0.005 [−0.013, +0.024] | +0.016 [+0.001, +0.032] | +0.024 [+0.006, +0.042] |
+| whitened fine-tuned with words − words | +0.026 [+0.007, +0.044] | +0.034 [+0.014, +0.054] | +0.033 [+0.015, +0.050] | +0.052 [+0.033, +0.073] |
+
+By the rule written before the run, this launch passes: the whitened tuned space beats the
+whitened frozen space on the 34 unseen labels, +0.039 [+0.019, +0.060], and on the test fold,
++0.041. With eight anchors the same contrast was +0.002, so batch size was the variable that
+mattered. The gain carries into the kind of system this project builds: fused with the
+words, the whitened tuned space beats the whitened frozen space fused with the words, +0.024
+[+0.006, +0.042] on unseen labels. Read raw, the tuned space is still below the frozen one
+(−0.035 on unseen labels), so what it learned, like what the frozen space holds, has to be
+read through the whitening. Its participation ratio is 40.6, against 26 for the 8-anchor run
+and 132 for the frozen space; mean pairwise cosine 0.798; a chunk's median cosine to its
+frozen vector 0.66.
+
+By the second rule this is not yet a result. The same configuration is running again with
+another training seed, which moves the LoRA initialisation, batch order and dropout and
+leaves the folds, held-out labels and probe unchanged (tag `_gradcache64_seed2`). The
+analysis first fused only raw spaces with the words, which is why the baseline reading above
+spoke of the word space getting worse; the whitened fusions were added and all three fold-0
+runs rescored, with every earlier number unchanged. Fold 0 only.
 
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 

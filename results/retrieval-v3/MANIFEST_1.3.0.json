@@ -36,16 +36,23 @@
     "identity_encoder_analysis_fold0.json": {
       "arm": "analyse_identity_encoder_v3 fold 0 baseline",
       "completed_in_pipeline": false,
-      "run": "run_v3_gpu_line.sh, 2026-09-11 14:28-14:29",
-      "sha256": "d6eb1118bdd81d06583de1404d26cabb4df754e20ce53aa4b55d49f63965904a",
-      "written": "2026-09-11T14:29"
+      "run": "2026-09-11; rerun 2026-09-13 with whitened fusions, earlier numbers unchanged",
+      "sha256": "84060b303d0fc9225e8aa6a4b04694e6a787873da58da28e7f82f19003ff1fe9",
+      "written": "2026-09-13T17:21"
+    },
+    "identity_encoder_analysis_fold0_gradcache64.json": {
+      "arm": "analyse_identity_encoder_v3 fold 0, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "2026-09-13, rerun with whitened fusions",
+      "sha256": "b2700fa1d91584c9f50cbe3e87a0995dddb500775cf0d5d16affe757ca691c3f",
+      "written": "2026-09-13T17:21"
     },
     "identity_encoder_analysis_fold0_moco.json": {
       "arm": "analyse_identity_encoder_v3 fold 0 momentum queue",
       "completed_in_pipeline": false,
-      "run": "run_v3_gpu_line.sh, 2026-09-12 00:51-00:52",
-      "sha256": "965db0120b082e912b136db256ff96818b3afd716e116cf9c6d4cd18d1b61020",
-      "written": "2026-09-12T00:52"
+      "run": "2026-09-12; rerun 2026-09-13 with whitened fusions, earlier numbers unchanged",
+      "sha256": "5c026ca7b4544a32d621a2af6d4c104b49b0be723b4b83823b18a9b67dc27ed7",
+      "written": "2026-09-13T17:21"
     },
     "identity_encoder_fold0.json": {
       "arm": "train_identity_encoder_v3 fold 0 baseline",
@@ -53,6 +60,13 @@
       "run": "run_v3_gpu_line.sh, 2026-09-11 11:36-14:28",
       "sha256": "0a4f65127005d0101e25116fbaa74c708ba78a35ff173eb3f746fec9e0aab932",
       "written": "2026-09-11T14:28"
+    },
+    "identity_encoder_fold0_gradcache64.json": {
+      "arm": "train_identity_encoder_v3 fold 0, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_supervised_queue.sh, 2026-09-13 13:22-17:16, no interruption",
+      "sha256": "0e41e048ba7fc21a6153362c599442098057bc8e4c1c253874331621d9c8f947",
+      "written": "2026-09-13T17:16"
     },
     "identity_encoder_fold0_moco.json": {
       "arm": "train_identity_encoder_v3 fold 0 momentum queue",
@@ -92,6 +106,13 @@
       "run": "stage 1 GPU and stage 2 CPU, 2026-09-12",
       "sha256": "a2749d4620bab9dadf5a6a72db5da410072935814fcc1af9fb915fee11635358",
       "written": "2026-09-12T01:19"
+    },
+    "layerwise_identity_probe_chinese_roberta_wwm_ext.json": {
+      "arm": "layerwise_identity_probe_v3 --model chinese-roberta-wwm-ext",
+      "completed_in_pipeline": false,
+      "run": "run_v3_supervised_queue.sh, 2026-09-13 17:18-17:22",
+      "sha256": "8dd7731c8e222e6e3c9a34eb01bd56fd321d1d6948315c34c005ce232c04e9e2",
+      "written": "2026-09-13T17:21"
     },
     "lexical_choice_surprisal.json": {
       "arm": "lexical_choice_surprisal",

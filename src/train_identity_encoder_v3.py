@@ -159,7 +159,9 @@ def build(args) -> int:
     device = "cuda" if torch.cuda.is_available() else "cpu"
     if device != "cuda" and not args.allow_cpu:
         raise SystemExit("no CUDA device; training on CPU is not realistic (pass --allow-cpu to insist)")
-    torch.manual_seed(SEED)
+    # the training seed moves only the training randomness (LoRA initialisation, batch order and
+    # sampling, dropout); folds, held-out labels and the probe set stay on the project seed
+    torch.manual_seed(args.train_seed)
 
     print("loading corpus v3", flush=True)
     rows, vectors, state = load_v3(args.private_root, allow_interim_v2_vectors=True)
@@ -241,7 +243,7 @@ def build(args) -> int:
     fingerprint = {key: getattr(args, key) for key in (
         "test_fold", "held_out_label_share", "max_length", "batch_size", "hard_negatives", "hard_negative_pool",
         "epochs", "temperature", "learning_rate", "lora_rank", "queue_size", "momentum", "grad_cache_chunk",
-        "dry_run", "tag")}
+        "dry_run", "tag", "train_seed")}
     fingerprint.update({"corpus": V3_CONTENT_SHA256, "model_revision": MODEL_REVISION,
                         "anchors_sha256": hashlib.sha256(np.asarray(anchors, dtype=np.int64).tobytes()).hexdigest(),
                         "text_sha256": hashlib.sha256("\x1f".join(chunk_text).encode("utf-8")).hexdigest()})
@@ -309,7 +311,7 @@ def build(args) -> int:
     steps_per_epoch = math.ceil(len(anchors) / args.batch_size)
     total_steps = steps_per_epoch * args.epochs if not args.dry_run else 20
     schedule = torch.optim.lr_scheduler.LambdaLR(optimiser, lambda s: min(1.0, (s + 1) / 50) * max(0.0, 1 - s / max(total_steps, 1)))
-    rng = np.random.default_rng(SEED + args.test_fold)
+    rng = np.random.default_rng(args.train_seed + args.test_fold)
     model.train()
     step = 0
     losses = []
@@ -589,6 +591,7 @@ def build(args) -> int:
                    "probe_geometry_every_50_steps": probe_geometry,
                    "min_participation_guard": args.min_participation,
                    "checkpoint_every": args.checkpoint_every, "resumed_at_steps": resumed_at,
+                   "train_seed": args.train_seed,
                    "frozen_vectors": frozen_source,
                    "model": f"{MODEL_ID}@{MODEL_REVISION}", "device": device, "dry_run": args.dry_run},
         "training_loss": {"first_50_mean": round(float(np.mean(losses[:50])), 4) if losses else None,
@@ -639,6 +642,9 @@ def main() -> int:
                         help="compare the GradCache gradient with the direct one on one batch, write the check, exit")
     parser.add_argument("--min-participation", type=float, default=0.0,
                         help="stop when the eval-mode probe's participation ratio stays below this at two checks; 0 = off")
+    parser.add_argument("--train-seed", type=int, default=SEED,
+                        help="seed of the training randomness only (LoRA init, batches, dropout); the default is the "
+                             "project seed, which every earlier run used")
     parser.add_argument("--checkpoint-every", type=int, default=0,
                         help="save weights, optimiser, schedule, data order and RNG states every N steps; 0 = off")
     parser.add_argument("--resume", action="store_true",

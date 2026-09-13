@@ -159,7 +159,11 @@ def build(private_root: Path, out_dir: Path, test_fold: int, held_out_share: flo
                                             label_index, group_ids, label_count).lexical.astype(np.float64)
     for scope, queries in scopes.items():
         scores["words"][scope] = lexical_full[queries]
-        for name in ("frozen_masked", "fine_tuned"):
+        # raw and within-author-whitened dense spaces, each fused with the words: the best system of
+        # the project fuses whitened spaces, so the fair question is whether the whitened tuned
+        # space adds to the words more than the whitened frozen space does
+        for name in ("frozen_masked", "fine_tuned",
+                     "frozen_masked_within_author_whitening", "fine_tuned_within_author_whitening"):
             scores[f"fusion_{name}_words"][scope] = (v1.zscore_rows(scores[name][scope])
                                                      + v1.zscore_rows(lexical_full[queries])) / 2.0
 
@@ -195,7 +199,10 @@ def build(private_root: Path, out_dir: Path, test_fold: int, held_out_share: flo
              ("fine_tuned", "frozen_masked_within_author_whitening"),
              ("fusion_fine_tuned_words", "fusion_frozen_masked_words"),
              ("fusion_fine_tuned_words", "words"),
-             ("fine_tuned", "words")]
+             ("fine_tuned", "words"),
+             ("fusion_fine_tuned_within_author_whitening_words", "fusion_frozen_masked_within_author_whitening_words"),
+             ("fusion_fine_tuned_within_author_whitening_words", "words"),
+             ("fusion_frozen_masked_within_author_whitening_words", "words")]
     contrasts = {}
     for scope, queries in scopes.items():
         mask = np.zeros(len(songs), dtype=bool)
