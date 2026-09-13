@@ -51,6 +51,10 @@ audit measured, and each decision below names the fact that forced it.
                   and its participation ratio and mean pairwise cosine are recorded; the
                   batch cosine of the first runs, taken in train mode over one small batch,
                   read 0.8 while the finished space sat at 0.94
+  checkpoints     with --checkpoint-every N the LoRA weights, optimiser, schedule, data order
+                  and every RNG state are saved every N steps, and --resume continues from
+                  them; the card is shared with a game, a frozen CUDA process keeps its
+                  memory, and so a run has to survive being killed and restarted
 
 Evaluation is the protocol every number in this project uses: song = mean of its chunk
 vectors, label profile = leave-group-out weighted mean, cosine rank of the true label
@@ -63,9 +67,12 @@ so the comparison is one variable. Aggregate metrics are public; vectors are pri
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
+import os
 import re
+import shutil
 import sys
 import time
 from collections import Counter, defaultdict
@@ -227,10 +234,46 @@ def build(args) -> int:
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"  trainable parameters {trainable_params:,}", flush=True)
 
-    # frozen baseline on the same masked text, same protocol
-    print("scoring the frozen model on the masked text", flush=True)
-    with model.disable_adapter():
-        frozen = encode_all(model, tokenizer, chunk_text, device, args.max_length)
+    # checkpoints: a run is identified by everything that shapes its training, and a resume
+    # refuses a checkpoint written under anything else
+    private = args.private_root / "work" / "private-identity-encoder-v3"
+    checkpoint_dir = private / f"checkpoint_fold{args.test_fold}{args.tag}{'_dryrun' if args.dry_run else ''}"
+    fingerprint = {key: getattr(args, key) for key in (
+        "test_fold", "held_out_label_share", "max_length", "batch_size", "hard_negatives", "hard_negative_pool",
+        "epochs", "temperature", "learning_rate", "lora_rank", "queue_size", "momentum", "grad_cache_chunk",
+        "dry_run", "tag")}
+    fingerprint.update({"corpus": V3_CONTENT_SHA256, "model_revision": MODEL_REVISION,
+                        "anchors_sha256": hashlib.sha256(np.asarray(anchors, dtype=np.int64).tobytes()).hexdigest(),
+                        "text_sha256": hashlib.sha256("\x1f".join(chunk_text).encode("utf-8")).hexdigest()})
+    if args.checkpoint_every > 0 and (args.queue_size > 0 or args.momentum > 0):
+        raise SystemExit("checkpoints do not cover the queue designs")
+    resume_state = None
+    if args.resume:
+        if (checkpoint_dir / "state.pt").is_file():
+            resume_state = torch.load(checkpoint_dir / "state.pt", map_location="cpu", weights_only=False)
+            if resume_state["fingerprint"] != fingerprint:
+                raise SystemExit(f"{checkpoint_dir} was written by a run with another configuration; "
+                                 "delete it or drop --resume")
+        else:
+            print("  --resume given but there is no checkpoint yet; starting fresh", flush=True)
+
+    # frozen baseline on the same masked text, same protocol; with checkpoints it is cached, so
+    # a resumed run scores exactly the vectors its first launch encoded
+    frozen_cache = checkpoint_dir / "frozen_masked_chunk_vectors.npy"
+    if resume_state is not None:
+        print("loading the frozen model's vectors from the checkpoint", flush=True)
+        frozen = np.load(frozen_cache)
+        if frozen.shape != (len(chunk_text), 1024):
+            raise SystemExit("the cached frozen vectors do not match this run")
+        frozen_source = "encoded at the run's first launch, reloaded from its checkpoint on resume"
+    else:
+        print("scoring the frozen model on the masked text", flush=True)
+        with model.disable_adapter():
+            frozen = encode_all(model, tokenizer, chunk_text, device, args.max_length)
+        frozen_source = "encoded in this launch"
+        if args.checkpoint_every > 0:
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            np.save(frozen_cache, frozen.astype(np.float32))
 
     def song_level(chunk_vectors):
         acc = np.zeros((len(songs), chunk_vectors.shape[1]))
@@ -395,15 +438,52 @@ def build(args) -> int:
         raise SystemExit("GradCache replaces the queue; use one or the other")
     probe_idx = np.random.default_rng(SEED).choice(train_idx, size=min(512, len(train_idx)), replace=False)
     probe_text = [chunk_text[i] for i in probe_idx]
-    probe_geometry = [dict(step=0, **geometry(encode_all(model, tokenizer, probe_text, device, args.max_length, 32)))]
-    model.train()
-    print(f"  probe at step 0: {probe_geometry[0]}", flush=True)
-    rep_drift = []
+    resume_epoch, resume_start, resumed_at = 0, 0, []
+    if resume_state is None:
+        probe_geometry = [dict(step=0, **geometry(encode_all(model, tokenizer, probe_text, device, args.max_length, 32)))]
+        model.train()
+        print(f"  probe at step 0: {probe_geometry[0]}", flush=True)
+        rep_drift = []
+        cohesion = []   # mean pairwise cosine of the batch embeddings, every 50 steps: the collapse guard
+    else:
+        with torch.no_grad():
+            for name, p in trainable_named:
+                p.copy_(resume_state["trainable"][name].to(device=p.device, dtype=p.dtype))
+        optimiser.load_state_dict(resume_state["optimiser"])
+        schedule.load_state_dict(resume_state["schedule"])
+        step = resume_state["step"]
+        losses, cohesion = resume_state["losses"], resume_state["cohesion"]
+        probe_geometry, rep_drift = resume_state["probe_geometry"], resume_state["rep_drift"]
+        anchors[:] = resume_state["anchors"]
+        rng.bit_generator.state = resume_state["numpy_rng"]
+        resume_epoch, resume_start = resume_state["epoch"], resume_state["next_start"]
+        resumed_at = resume_state["resumed_at"] + [step]
+        started = time.time() - resume_state["elapsed_seconds"]
+        torch.set_rng_state(resume_state["torch_rng"])
+        if device == "cuda" and resume_state["cuda_rng"] is not None:
+            torch.cuda.set_rng_state(resume_state["cuda_rng"])
+        model.train()
+        print(f"  resumed at step {step} (epoch {resume_epoch}, batch start {resume_start})", flush=True)
 
-    cohesion = []   # mean pairwise cosine of the batch embeddings, every 50 steps: the collapse guard
-    for epoch in range(args.epochs):
-        rng.shuffle(anchors)
-        for start in range(0, len(anchors), args.batch_size):
+    def save_checkpoint(epoch, next_start):
+        checkpoint_dir.mkdir(parents=True, exist_ok=True)
+        state_out = {"fingerprint": fingerprint, "step": step, "epoch": epoch, "next_start": next_start,
+                     "anchors": list(anchors), "numpy_rng": rng.bit_generator.state,
+                     "torch_rng": torch.get_rng_state(),
+                     "cuda_rng": torch.cuda.get_rng_state() if device == "cuda" else None,
+                     "trainable": {name: p.detach().cpu().clone() for name, p in trainable_named},
+                     "optimiser": optimiser.state_dict(), "schedule": schedule.state_dict(),
+                     "losses": losses, "cohesion": cohesion, "probe_geometry": probe_geometry,
+                     "rep_drift": rep_drift, "resumed_at": resumed_at, "elapsed_seconds": time.time() - started}
+        temporary = checkpoint_dir / "state.pt.tmp"
+        torch.save(state_out, temporary)
+        os.replace(temporary, checkpoint_dir / "state.pt")
+
+    for epoch in range(resume_epoch, args.epochs):
+        continuing = resume_state is not None and epoch == resume_epoch
+        if not continuing:
+            rng.shuffle(anchors)
+        for start in range(resume_start if continuing else 0, len(anchors), args.batch_size):
             if step >= total_steps:
                 break
             batch_anchor = anchors[start:start + args.batch_size]
@@ -462,6 +542,11 @@ def build(args) -> int:
                         and max(p["participation_ratio"] for p in probe_geometry[-2:]) < args.min_participation):
                     raise SystemExit(f"dimensional collapse: probe participation ratio below {args.min_participation} "
                                      f"at two checks, step {step}; stopping rather than scoring a degenerate space")
+            if args.checkpoint_every > 0 and (step % args.checkpoint_every == 0 or step == total_steps):
+                save_checkpoint(epoch, start + args.batch_size)
+            if args.stop_after_step and step >= args.stop_after_step:
+                print(f"  stopping after step {step} as asked", flush=True)
+                return 0
         if step >= total_steps:
             break
 
@@ -503,6 +588,8 @@ def build(args) -> int:
                    "grad_cache_max_vector_drift": round(max(rep_drift), 6) if rep_drift else None,
                    "probe_geometry_every_50_steps": probe_geometry,
                    "min_participation_guard": args.min_participation,
+                   "checkpoint_every": args.checkpoint_every, "resumed_at_steps": resumed_at,
+                   "frozen_vectors": frozen_source,
                    "model": f"{MODEL_ID}@{MODEL_REVISION}", "device": device, "dry_run": args.dry_run},
         "training_loss": {"first_50_mean": round(float(np.mean(losses[:50])), 4) if losses else None,
                           "last_50_mean": round(float(np.mean(losses[-50:])), 4) if losses else None},
@@ -519,6 +606,8 @@ def build(args) -> int:
     (args.out_dir / f"identity_encoder_fold{args.test_fold}{args.tag}{'_dryrun' if args.dry_run else ''}.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="")
     print(f"\nwrote {args.out_dir}")
+    if checkpoint_dir.is_dir():
+        shutil.rmtree(checkpoint_dir)   # the run is complete; a stale checkpoint must not be resumed
     return 0
 
 
@@ -550,6 +639,12 @@ def main() -> int:
                         help="compare the GradCache gradient with the direct one on one batch, write the check, exit")
     parser.add_argument("--min-participation", type=float, default=0.0,
                         help="stop when the eval-mode probe's participation ratio stays below this at two checks; 0 = off")
+    parser.add_argument("--checkpoint-every", type=int, default=0,
+                        help="save weights, optimiser, schedule, data order and RNG states every N steps; 0 = off")
+    parser.add_argument("--resume", action="store_true",
+                        help="continue from this run's checkpoint if one exists (it must match the configuration)")
+    parser.add_argument("--stop-after-step", type=int, default=0,
+                        help="exit right after this step and its checkpoint, without scoring; for testing resume")
     parser.add_argument("--tag", default="", help="suffix for this run's output names, e.g. _queue4096")
     parser.add_argument("--dry-run", action="store_true", help="20 steps, to prove the pipeline")
     parser.add_argument("--allow-cpu", action="store_true")

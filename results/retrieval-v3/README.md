@@ -446,6 +446,19 @@ the whitened fine-tuned space beats the whitened frozen space on the unseen labe
 interval excluding zero. Otherwise the conclusion is that, within this compute budget,
 contrastive adaptation adds nothing detectable beyond a linear whitening of the frozen space.
 
+**Run-to-run variation, found while adding checkpoints.** The first GradCache launch was
+stopped at step 250 of 480 and left no output, so the trainer now saves and resumes
+(`--checkpoint-every`, `--resume`). Testing that on 20-step runs showed something that bears
+on every fine-tuning number here: two identical, uninterrupted launches are not reproducible
+on this GPU. After 20 steps their learned LoRA update (the `lora_B` matrices, which start at
+zero) differed by 49% in relative norm, and Adam's first moment by 67%, with the data order
+and every RNG state identical. A run stopped at step 10 and resumed differed from an
+uninterrupted one by 42% and 61%, inside that spread, so resuming adds nothing beyond it. The
+bootstrap intervals above cover the sampling of queries, not the variation between training
+runs, which is unmeasured. One rule is therefore added before any GradCache result exists,
+and it only makes the reading stricter: a pass on one launch counts only once a second launch
+repeats it.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,669 over 512; all 226 labels have at least two
