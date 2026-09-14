@@ -1,0 +1,453 @@
+{
+  "analysis": "what the fine-tuned identity encoder learned, read with the project's own tools",
+  "chunk_queries": {
+    "test_fold": {
+      "fine_tuned": {
+        "mrr": 0.1909,
+        "queries": 3784,
+        "recall_at_1": 0.1115,
+        "recall_at_10": 0.3486
+      },
+      "frozen_masked": {
+        "mrr": 0.1859,
+        "queries": 3784,
+        "recall_at_1": 0.1041,
+        "recall_at_10": 0.3383
+      }
+    },
+    "unseen_labels": {
+      "fine_tuned": {
+        "mrr": 0.1441,
+        "queries": 3267,
+        "recall_at_1": 0.0762,
+        "recall_at_10": 0.2687
+      },
+      "frozen_masked": {
+        "mrr": 0.1505,
+        "queries": 3267,
+        "recall_at_1": 0.0774,
+        "recall_at_10": 0.2868
+      }
+    }
+  },
+  "corpus": {
+    "chunks": 23848,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "chunk_queries": "each chunk scored on its own against song-mean label profiles, the chunk's song's leakage group left out; bootstrap over songs after averaging chunks",
+    "fusion": "z-score mean of the dense and word score rows",
+    "held_out_labels": 34,
+    "run_tag": "_gradcache64_seed2",
+    "scopes": {
+      "test_fold": 1187,
+      "unseen_labels": 1041
+    },
+    "test_fold": 0,
+    "whitening": "fitted on the training folds' non-held songs, which the tuned model was trained on; a bound on what whitening adds, not an unseen-data result",
+    "words": "jieba word TF-IDF fitted over all query songs, the protocol's lexical scorer"
+  },
+  "paired_contrasts": {
+    "by_scope": {
+      "test_fold": [
+        {
+          "ci95": [
+            -0.0253,
+            0.0101
+          ],
+          "excludes_zero": false,
+          "minus": "frozen_masked",
+          "mrr_difference": -0.0081,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.1328,
+            0.176
+          ],
+          "excludes_zero": true,
+          "minus": "fine_tuned",
+          "mrr_difference": 0.1556,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            0.0237,
+            0.0663
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": 0.0449,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.135,
+            -0.0855
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": -0.1106,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.0059,
+            0.0302
+          ],
+          "excludes_zero": true,
+          "minus": "fusion_frozen_masked_words",
+          "mrr_difference": 0.0181,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.0149,
+            0.0086
+          ],
+          "excludes_zero": false,
+          "minus": "words",
+          "mrr_difference": -0.0032,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.2608,
+            -0.2077
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": -0.2343,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.0084,
+            0.0426
+          ],
+          "excludes_zero": true,
+          "minus": "fusion_frozen_masked_within_author_whitening_words",
+          "mrr_difference": 0.0254,
+          "system": "fusion_fine_tuned_within_author_whitening_words"
+        },
+        {
+          "ci95": [
+            0.0216,
+            0.0613
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": 0.0417,
+          "system": "fusion_fine_tuned_within_author_whitening_words"
+        },
+        {
+          "ci95": [
+            -0.0025,
+            0.0356
+          ],
+          "excludes_zero": false,
+          "minus": "words",
+          "mrr_difference": 0.0163,
+          "system": "fusion_frozen_masked_within_author_whitening_words"
+        },
+        {
+          "ci95": [
+            -0.005,
+            0.0247
+          ],
+          "excludes_zero": false,
+          "minus": "chunk_frozen_masked",
+          "mrr_difference": 0.0098,
+          "system": "chunk_fine_tuned"
+        }
+      ],
+      "unseen_labels": [
+        {
+          "ci95": [
+            -0.0421,
+            -0.0071
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked",
+          "mrr_difference": -0.0246,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.1439,
+            0.1882
+          ],
+          "excludes_zero": true,
+          "minus": "fine_tuned",
+          "mrr_difference": 0.1656,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            0.031,
+            0.0697
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": 0.0504,
+          "system": "fine_tuned_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.138,
+            -0.0921
+          ],
+          "excludes_zero": true,
+          "minus": "frozen_masked_within_author_whitening",
+          "mrr_difference": -0.1152,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            -0.0119,
+            0.0139
+          ],
+          "excludes_zero": false,
+          "minus": "fusion_frozen_masked_words",
+          "mrr_difference": 0.0013,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.0295,
+            -0.0018
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": -0.0153,
+          "system": "fusion_fine_tuned_words"
+        },
+        {
+          "ci95": [
+            -0.2294,
+            -0.1808
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": -0.2052,
+          "system": "fine_tuned"
+        },
+        {
+          "ci95": [
+            0.021,
+            0.0535
+          ],
+          "excludes_zero": true,
+          "minus": "fusion_frozen_masked_within_author_whitening_words",
+          "mrr_difference": 0.0373,
+          "system": "fusion_fine_tuned_within_author_whitening_words"
+        },
+        {
+          "ci95": [
+            0.044,
+            0.0872
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": 0.066,
+          "system": "fusion_fine_tuned_within_author_whitening_words"
+        },
+        {
+          "ci95": [
+            0.0074,
+            0.0491
+          ],
+          "excludes_zero": true,
+          "minus": "words",
+          "mrr_difference": 0.0287,
+          "system": "fusion_frozen_masked_within_author_whitening_words"
+        },
+        {
+          "ci95": [
+            -0.0323,
+            -0.0017
+          ],
+          "excludes_zero": true,
+          "minus": "chunk_frozen_masked",
+          "mrr_difference": -0.0169,
+          "system": "chunk_fine_tuned"
+        }
+      ]
+    },
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only",
+  "systems": {
+    "test_fold": {
+      "fine_tuned": {
+        "mrr": 0.289,
+        "queries": 1187,
+        "recall_at_1": 0.1938,
+        "recall_at_10": 0.4844
+      },
+      "fine_tuned_total_whitening": {
+        "mrr": 0.4043,
+        "queries": 1187,
+        "recall_at_1": 0.3016,
+        "recall_at_10": 0.5948
+      },
+      "fine_tuned_within_author_whitening": {
+        "mrr": 0.4443,
+        "queries": 1187,
+        "recall_at_1": 0.342,
+        "recall_at_10": 0.647
+      },
+      "frozen_masked": {
+        "mrr": 0.2947,
+        "queries": 1187,
+        "recall_at_1": 0.1963,
+        "recall_at_10": 0.4794
+      },
+      "frozen_masked_total_whitening": {
+        "mrr": 0.3749,
+        "queries": 1187,
+        "recall_at_1": 0.2772,
+        "recall_at_10": 0.5619
+      },
+      "frozen_masked_within_author_whitening": {
+        "mrr": 0.4013,
+        "queries": 1187,
+        "recall_at_1": 0.3033,
+        "recall_at_10": 0.5889
+      },
+      "fusion_fine_tuned_within_author_whitening_words": {
+        "mrr": 0.561,
+        "queries": 1187,
+        "recall_at_1": 0.4625,
+        "recall_at_10": 0.7498
+      },
+      "fusion_fine_tuned_words": {
+        "mrr": 0.5118,
+        "queries": 1187,
+        "recall_at_1": 0.4204,
+        "recall_at_10": 0.6832
+      },
+      "fusion_frozen_masked_within_author_whitening_words": {
+        "mrr": 0.5361,
+        "queries": 1187,
+        "recall_at_1": 0.4381,
+        "recall_at_10": 0.7254
+      },
+      "fusion_frozen_masked_words": {
+        "mrr": 0.4934,
+        "queries": 1187,
+        "recall_at_1": 0.3976,
+        "recall_at_10": 0.6731
+      },
+      "words": {
+        "mrr": 0.5145,
+        "queries": 1187,
+        "recall_at_1": 0.4195,
+        "recall_at_10": 0.6925
+      }
+    },
+    "unseen_labels": {
+      "fine_tuned": {
+        "mrr": 0.2177,
+        "queries": 1041,
+        "recall_at_1": 0.1306,
+        "recall_at_10": 0.3804
+      },
+      "fine_tuned_total_whitening": {
+        "mrr": 0.4032,
+        "queries": 1041,
+        "recall_at_1": 0.3026,
+        "recall_at_10": 0.5889
+      },
+      "fine_tuned_within_author_whitening": {
+        "mrr": 0.3841,
+        "queries": 1041,
+        "recall_at_1": 0.2805,
+        "recall_at_10": 0.5869
+      },
+      "frozen_masked": {
+        "mrr": 0.2419,
+        "queries": 1041,
+        "recall_at_1": 0.1508,
+        "recall_at_10": 0.4227
+      },
+      "frozen_masked_total_whitening": {
+        "mrr": 0.3576,
+        "queries": 1041,
+        "recall_at_1": 0.2632,
+        "recall_at_10": 0.5283
+      },
+      "frozen_masked_within_author_whitening": {
+        "mrr": 0.3361,
+        "queries": 1041,
+        "recall_at_1": 0.2373,
+        "recall_at_10": 0.5245
+      },
+      "fusion_fine_tuned_within_author_whitening_words": {
+        "mrr": 0.4891,
+        "queries": 1041,
+        "recall_at_1": 0.389,
+        "recall_at_10": 0.6878
+      },
+      "fusion_fine_tuned_words": {
+        "mrr": 0.4094,
+        "queries": 1041,
+        "recall_at_1": 0.3132,
+        "recall_at_10": 0.6148
+      },
+      "fusion_frozen_masked_within_author_whitening_words": {
+        "mrr": 0.4546,
+        "queries": 1041,
+        "recall_at_1": 0.3497,
+        "recall_at_10": 0.6599
+      },
+      "fusion_frozen_masked_words": {
+        "mrr": 0.4072,
+        "queries": 1041,
+        "recall_at_1": 0.3016,
+        "recall_at_10": 0.6042
+      },
+      "words": {
+        "mrr": 0.4233,
+        "queries": 1041,
+        "recall_at_1": 0.3343,
+        "recall_at_10": 0.5965
+      }
+    }
+  },
+  "who_gained_test_fold": {
+    "collaboration_title": {
+      "fine_tuned_mrr": 0.2211,
+      "frozen_mrr": 0.2969,
+      "mean_gain": -0.0758,
+      "queries": 75
+    },
+    "one_or_two_chunks": {
+      "fine_tuned_mrr": 0.3064,
+      "frozen_mrr": 0.2985,
+      "mean_gain": 0.0079,
+      "queries": 801
+    },
+    "single_artist_title": {
+      "fine_tuned_mrr": 0.2936,
+      "frozen_mrr": 0.2945,
+      "mean_gain": -0.0009,
+      "queries": 1112
+    },
+    "six_or_more_chunks": {
+      "fine_tuned_mrr": 0.2348,
+      "frozen_mrr": 0.2593,
+      "mean_gain": -0.0245,
+      "queries": 220
+    },
+    "three_to_five_chunks": {
+      "fine_tuned_mrr": 0.2768,
+      "frozen_mrr": 0.323,
+      "mean_gain": -0.0462,
+      "queries": 166
+    }
+  }
+}

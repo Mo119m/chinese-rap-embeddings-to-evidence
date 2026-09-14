@@ -47,6 +47,13 @@
       "sha256": "b2700fa1d91584c9f50cbe3e87a0995dddb500775cf0d5d16affe757ca691c3f",
       "written": "2026-09-13T17:21"
     },
+    "identity_encoder_analysis_fold0_gradcache64_seed2.json": {
+      "arm": "analyse_identity_encoder_v3 fold 0, GradCache 64 anchors, train seed 20260826",
+      "completed_in_pipeline": false,
+      "run": "run_v3_replication_queue.sh, 2026-09-14 11:31-11:32",
+      "sha256": "c4765b2a360adc702af01a3011cafc7d3bd6bc035c63847303e652cddafc96ac",
+      "written": "2026-09-14T11:32"
+    },
     "identity_encoder_analysis_fold0_moco.json": {
       "arm": "analyse_identity_encoder_v3 fold 0 momentum queue",
       "completed_in_pipeline": false,
@@ -67,6 +74,13 @@
       "run": "run_v3_supervised_queue.sh, 2026-09-13 13:22-17:16, no interruption",
       "sha256": "0e41e048ba7fc21a6153362c599442098057bc8e4c1c253874331621d9c8f947",
       "written": "2026-09-13T17:16"
+    },
+    "identity_encoder_fold0_gradcache64_seed2.json": {
+      "arm": "train_identity_encoder_v3 fold 0, GradCache 64 anchors, train seed 20260826",
+      "completed_in_pipeline": false,
+      "run": "run_v3_replication_queue.sh, 2026-09-13 17:22 to 2026-09-14 11:31; stopped for a game at 18:08 and resumed from the step-90 checkpoint at 21:03; the process was suspended by lid-close standby 23:24 to 10:42 and continued",
+      "sha256": "f28dc52ff6724fa0f2fff6bb6d00960b56256b5f8d023a92f4cdd0c3f1ec5b96",
+      "written": "2026-09-14T11:30"
     },
     "identity_encoder_fold0_moco.json": {
       "arm": "train_identity_encoder_v3 fold 0 momentum queue",

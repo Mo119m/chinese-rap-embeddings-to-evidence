@@ -515,12 +515,37 @@ read through the whitening. Its participation ratio is 40.6, against 26 for the 
 and 132 for the frozen space; mean pairwise cosine 0.798; a chunk's median cosine to its
 frozen vector 0.66.
 
-By the second rule this is not yet a result. The same configuration is running again with
-another training seed, which moves the LoRA initialisation, batch order and dropout and
-leaves the folds, held-out labels and probe unchanged (tag `_gradcache64_seed2`). The
-analysis first fused only raw spaces with the words, which is why the baseline reading above
-spoke of the word space getting worse; the whitened fusions were added and all three fold-0
-runs rescored, with every earlier number unchanged. Fold 0 only.
+**Second launch, another training seed** (`identity_encoder_fold0_gradcache64_seed2.json`,
+`identity_encoder_analysis_fold0_gradcache64_seed2.json`): the same configuration with
+`--train-seed 20260826`, which moves the LoRA initialisation, batch order and dropout and
+leaves the folds, held-out labels and probe unchanged. The first launch used the project seed,
+20260825, before the flag existed. The second was stopped once for a game and resumed from its
+step-90 checkpoint, and its process was suspended by standby for eleven hours and continued;
+neither changes what is computed.
+
+| | seed 20260825 | seed 20260826 |
+|---|---|---|
+| fine-tuned, test fold / unseen labels | 0.2802 / 0.2066 | 0.2890 / 0.2177 |
+| fine-tuned + within-author whitening | 0.4412 / 0.3721 | 0.4443 / 0.3841 |
+| whitened fine-tuned fused with words | 0.5513 / 0.4767 | 0.5610 / 0.4891 |
+| whitened fine-tuned − whitened frozen, unseen labels | +0.039 [+0.019, +0.060] | +0.050 [+0.031, +0.070] |
+| the same, test fold | +0.041 [+0.020, +0.062] | +0.045 [+0.024, +0.066] |
+| whitened fine-tuned with words − whitened frozen with words, unseen labels | +0.024 [+0.006, +0.042] | +0.037 [+0.021, +0.054] |
+| whitened fine-tuned with words − words, unseen labels | +0.052 [+0.033, +0.073] | +0.066 [+0.044, +0.087] |
+| participation ratio; mean pairwise cosine | 40.6; 0.798 | 47.0; 0.773 |
+
+Both launches pass, so by both rules written before the results the reading holds. With a
+64-anchor batch, contrastive fine-tuning learns label identity beyond what a within-author
+whitening of the frozen encoder reveals; it transfers to labels never trained on; and fused
+with the words it adds to them more than the whitened frozen space does. Linear whitening is
+not the ceiling of the semantic encoder. The two launches differ by 0.011 on the main
+unseen-label contrast, the first measure of run-to-run spread, well inside both intervals.
+Limits: fold 0 only and two seeds. Raw cosine on the tuned space is still below the frozen
+space (−0.025 on unseen labels for the second seed), so the learned identity, like the frozen
+space's, is read through the whitening, and the word space alone stays ahead of the whitened
+tuned space. The analysis first fused only raw spaces with the words, which is why the
+baseline reading above spoke of the word space getting worse; the whitened fusions were added
+and every fold-0 run rescored, with every earlier number unchanged.
 
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
