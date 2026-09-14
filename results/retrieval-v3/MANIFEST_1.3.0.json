@@ -96,6 +96,13 @@
       "sha256": "4f1858b00b375127404fb2cf95b22982f0dd4b82de512af03abdc3dab21117ac",
       "written": "2026-09-12T01:19"
     },
+    "identity_encoder_resume_check.json": {
+      "arm": "tools/check_trainer_resume_v3.py",
+      "completed_in_pipeline": false,
+      "run": "run_v3_resume_check_after_replication.sh, 2026-09-14 11:32-11:54",
+      "sha256": "bbfa4aedec515827fac2fa47b6a9b30cfc284369fd9677b70a0cb5a5b2c0d492",
+      "written": "2026-09-14T11:54"
+    },
     "identity_probe.json": {
       "arm": "identity_probe",
       "completed_in_pipeline": true,

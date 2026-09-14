@@ -1,0 +1,52 @@
+{
+  "analysis": "resume of train_identity_encoder_v3 against run-to-run nondeterminism",
+  "comparisons": {
+    "uninterrupted_vs_resumed": {
+      "adam_exp_avg_relative_diff": 0.59319,
+      "adam_exp_avg_sq_relative_diff": 0.56354,
+      "cuda_rng_equal": true,
+      "data_order_equal": true,
+      "lora_A_relative_diff": 0.003624,
+      "lora_B_relative_diff": 0.44979,
+      "loss_max_abs_diff_steps_11_20": 0.00898,
+      "loss_max_abs_diff_steps_1_10": 0.00581,
+      "numpy_rng_equal": true,
+      "resumed_at": [
+        10
+      ],
+      "schedule_equal": true,
+      "torch_rng_equal": true
+    },
+    "uninterrupted_vs_uninterrupted": {
+      "adam_exp_avg_relative_diff": 0.59204,
+      "adam_exp_avg_sq_relative_diff": 0.77777,
+      "cuda_rng_equal": true,
+      "data_order_equal": true,
+      "lora_A_relative_diff": 0.003516,
+      "lora_B_relative_diff": 0.44069,
+      "loss_max_abs_diff_steps_11_20": 0.00987,
+      "loss_max_abs_diff_steps_1_10": 0.00596,
+      "numpy_rng_equal": true,
+      "resumed_at": [],
+      "schedule_equal": true,
+      "torch_rng_equal": true
+    }
+  },
+  "design": {
+    "arguments": [
+      "--test-fold",
+      "0",
+      "--dry-run",
+      "--batch-size",
+      "8",
+      "--grad-cache-chunk",
+      "12",
+      "--checkpoint-every",
+      "10"
+    ],
+    "pass_rule": "data order and RNG states equal, and the resumed lora_B and Adam first-moment differences at most 1.5 times the uninterrupted pair's",
+    "runs": "B and D uninterrupted 20 steps; C stopped at 10 and resumed to 20"
+  },
+  "passed": true,
+  "privacy": "aggregate only"
+}

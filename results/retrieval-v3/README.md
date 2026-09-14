@@ -7,7 +7,7 @@ text (`results/cleaned-corpus-v3/`): 24,237 chunks, 7,379 songs, content digest
 revision `5617a9f6`, weights `b5e0ce34`; contract in the private embedding run). Every
 CPU experiment was produced on 2026-09-10 by the same scripts as `results/retrieval-v2/`,
 run with `CHINESE_RAP_CORPUS=v3`; the GPU experiments (surprisal, layer-wise probe,
-fine-tuning) followed on 2026-09-11 and 12. The protocol is unchanged throughout:
+fine-tuning) followed between 2026-09-11 and 2026-09-14. The protocol is unchanged throughout:
 leave-group-out label profiles, 7,220 queries over 226 labels in 5,875 leakage groups,
 per-(group, label) weight one, paired group bootstrap (2,000 replicates, seed 20260825).
 `MANIFEST_1.3.0.json` records each file's digest and the build it was computed on.
@@ -477,9 +477,12 @@ on every fine-tuning number here: two identical, uninterrupted launches are not 
 on this GPU. After 20 steps their learned LoRA update (the `lora_B` matrices, which start at
 zero) differed by 49% in relative norm, and Adam's first moment by 67%, with the data order
 and every RNG state identical. A run stopped at step 10 and resumed differed from an
-uninterrupted one by 42% and 61%, inside that spread, so resuming adds nothing beyond it. The
-bootstrap intervals above cover the sampling of queries, not the variation between training
-runs, which is unmeasured. One rule is therefore added before any GradCache result exists,
+uninterrupted one by 42% and 61%, inside that spread, so resuming adds nothing beyond it. That
+first test ran from scratch scripts; the check is now in the repo
+(`tools/check_trainer_resume_v3.py`, report `identity_encoder_resume_check.json`), and its run
+on 2026-09-14 gave 44% and 59% between two uninterrupted runs and 45% and 59% for the resumed
+one, with the data order and every RNG state identical, and passed. The bootstrap intervals
+above cover the sampling of queries, not the variation between training runs. One rule is therefore added before any GradCache result exists,
 and it only makes the reading stricter: a pass on one launch counts only once a second launch
 repeats it.
 
