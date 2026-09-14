@@ -27,7 +27,10 @@ pairs (anisotropy) and the within-author share of song-level variance.
 trained only as a masked language model, never for retrieval by meaning, so that the shape
 of the BGE-M3 curve can be told apart from what retrieval training did to it. It has no
 recorded run, so neither check applies, and its contrasts are against its own final token
-mean.
+mean. --model gte-large-zh is a second Chinese retrieval encoder (BERT-large, GTE); it has
+no recorded run either, so stage 1 instead checks its final [CLS] against the model's own
+sentence-transformers pipeline on a seeded sample of chunks, and refuses stage 2 on a
+mismatch.
 
     python src/layerwise_identity_probe_v3.py --private-root <ni-k> [--stage 1|2|both]
 """
@@ -66,15 +69,28 @@ RECORDED = {"cosine": ("three_spaces.json", ("systems", "semantic", "mrr")),
 # lineage trained only as a masked language model, never for retrieval by meaning. Its [CLS]
 # state was never trained as a summary, so its token mean is the fair reading; it reads at
 # most 512 tokens, which truncates about 15% of chunks (the training-data audit).
+# official_pooling is how the model's authors read it: BGE-M3 and gte-large-zh take the final
+# [CLS] state (gte's sentence-transformers config: pooling_mode_cls_token, then Normalize);
+# chinese-roberta has no official sentence embedding, so its token mean is the fair reading.
+# The reference of every contrast is the official pooling of the final layer.
 MODELS = {
     "bge-m3": {"id": "BAAI/bge-m3", "revision": "5617a9f61b028005a4858fdac845db406aefb181",
                "max_length": 2048, "layers": 25, "dim": 1024, "store": "private-layerwise-v3",
-               "out": "layerwise_identity_probe.json", "recorded_run": True},
+               "out": "layerwise_identity_probe.json", "recorded_run": True, "official_pooling": "cls",
+               "check_sentence_transformers": False},
     "chinese-roberta-wwm-ext": {"id": "hfl/chinese-roberta-wwm-ext", "revision": "5c58d0b8ec1d9014354d691c538661bf00bfdb44",
                                 "max_length": 512, "layers": 13, "dim": 768,
                                 "store": "private-layerwise-v3-chinese-roberta-wwm-ext",
-                                "out": "layerwise_identity_probe_chinese_roberta_wwm_ext.json", "recorded_run": False},
+                                "out": "layerwise_identity_probe_chinese_roberta_wwm_ext.json", "recorded_run": False,
+                                "official_pooling": "mean", "check_sentence_transformers": False},
+    # a second Chinese retrieval encoder of another lineage (BERT-large, Alibaba's GTE), to ask
+    # whether the BGE-M3 curve is that encoder's or every retrieval encoder's
+    "gte-large-zh": {"id": "thenlper/gte-large-zh", "revision": "64c364e579de308104a9b2c170ca009502f4f545",
+                     "max_length": 512, "layers": 25, "dim": 1024, "store": "private-layerwise-v3-gte-large-zh",
+                     "out": "layerwise_identity_probe_gte_large_zh.json", "recorded_run": False,
+                     "official_pooling": "cls", "check_sentence_transformers": True},
 }
+ST_CHECK_SAMPLE = 64
 CONFIG = MODELS["bge-m3"]
 MODEL_ID, MODEL_REVISION = CONFIG["id"], CONFIG["revision"]
 MAX_LENGTH, LAYERS, DIM = CONFIG["max_length"], CONFIG["layers"], CONFIG["dim"]
@@ -153,16 +169,42 @@ def stage_one(private_root: Path, rows, vectors) -> None:
                  "chunks_below_0.999": int((agreement < 0.999).sum())}
         print(f"  final-layer [CLS] against the recorded run: {check}", flush=True)
     truncated = int(sum(1 for n in lengths if n >= MAX_LENGTH))
+    # check 1b: for a model with no recorded run but an official sentence-transformers pipeline,
+    # the official pooling of the final layer must reproduce that pipeline on a seeded sample
+    st_check = None
+    if CONFIG["check_sentence_transformers"]:
+        from sentence_transformers import SentenceTransformer
+        sample = np.sort(np.random.default_rng(SEED).choice(len(rows), size=min(ST_CHECK_SAMPLE, len(rows)), replace=False))
+        # loaded exactly as the model card does (no dtype override), so the check is against the
+        # pipeline as published; the pooling and truncation are what it tests
+        st_model = SentenceTransformer(MODEL_ID, revision=MODEL_REVISION, device="cuda")
+        st_model.max_seq_length = MAX_LENGTH
+        official = st_model.encode([texts[i] for i in sample], batch_size=16, convert_to_numpy=True,
+                                   normalize_embeddings=True).astype(np.float32)
+        mine = stores[CONFIG["official_pooling"]][sample, LAYERS - 1, :].astype(np.float32)
+        mine /= np.linalg.norm(mine, axis=1, keepdims=True)
+        agreement = np.sum(mine * official, axis=1)
+        st_check = {"sample": int(len(sample)), "pooling": CONFIG["official_pooling"],
+                    "min_cosine": round(float(agreement.min()), 6), "median_cosine": round(float(np.median(agreement)), 6),
+                    "chunks_below_0.999": int((agreement < 0.999).sum())}
+        print(f"  final-layer {CONFIG['official_pooling']} against the sentence-transformers pipeline: {st_check}", flush=True)
+        del st_model
+        torch.cuda.empty_cache()
     contract = {"model": MODEL_ID, "revision": MODEL_REVISION, "precision": "fp16", "max_length": MAX_LENGTH,
                 "layers": LAYERS, "poolings": list(POOLINGS), "chunks": len(rows),
                 "corpus_content_sha256": corpus_content_sha256(rows),
-                "check_final_cls_against_recorded_run": check, "chunks_truncated_at_max_length": truncated,
+                "check_final_cls_against_recorded_run": check,
+                "check_official_pooling_against_sentence_transformers": st_check,
+                "chunks_truncated_at_max_length": truncated,
                 "minutes": round((time.time() - started) / 60, 1),
                 "warning": "private; hidden states of copyrighted lyric text. Never commit."}
     contract_path.write_text(json.dumps(contract, indent=2), encoding="utf-8")
     if check is not None and check["median_cosine"] < 0.999:
         raise SystemExit("the final layer does not reproduce the recorded embedding run; stage 2 would score "
                          "a different space")
+    if st_check is not None and st_check["median_cosine"] < 0.999:
+        raise SystemExit("the final layer's official pooling does not reproduce the sentence-transformers "
+                         "pipeline; stage 2 would score a different space")
 
 
 # ------------------------------------------------------------------ stage 2
@@ -174,6 +216,9 @@ def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
     stage_one_check = contract["check_final_cls_against_recorded_run"]
     if CONFIG["recorded_run"] and (stage_one_check is None or stage_one_check["median_cosine"] < 0.999):
         raise SystemExit("the layer store failed its stage 1 check")
+    st_check = contract.get("check_official_pooling_against_sentence_transformers")
+    if CONFIG["check_sentence_transformers"] and (st_check is None or st_check["median_cosine"] < 0.999):
+        raise SystemExit("the layer store failed its sentence-transformers check")
 
     chunks_by_song, label_by_song, components_by_song, documents, _ = build_songs(rows, vectors)
     songs_by_label: dict[str, list[str]] = defaultdict(list)
@@ -254,7 +299,7 @@ def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
     if any(c["gap"] > 0.002 for c in checks.values()):
         raise SystemExit("the final layer does not reproduce the recorded MRRs")
 
-    reference = f"{'cls' if CONFIG['recorded_run'] else 'mean'}_layer_{LAYERS - 1:02d}"
+    reference = f"{CONFIG['official_pooling']}_layer_{LAYERS - 1:02d}"
     pairs = []
     for pooling in POOLINGS:
         for layer in range(LAYERS):
@@ -277,8 +322,10 @@ def stage_two(private_root: Path, out_dir: Path, rows, vectors) -> int:
                    "song_vector": "mean of the song's normalised chunk vectors, normalised",
                    "whitening": "within-author, Ledoit-Wolf shrunk, cross-fitted over the five leakage-group folds",
                    "anisotropy": "mean cosine of 20,000 random chunk pairs (seeded)",
+                   "official_pooling": CONFIG["official_pooling"],
                    "checks": {"final_cls_against_recorded_run": stage_one_check,
-                              "final_cls_against_recorded_results": checks or None},
+                              "final_cls_against_recorded_results": checks or None,
+                              "official_pooling_against_sentence_transformers": st_check},
                    "caution": "the layer with the highest MRR is chosen after seeing the results; read the curve, "
                               "not the maximum",
                    "references": ["Jawahar, Sagot and Seddah 2019", "Tenney, Das and Pavlick 2019",

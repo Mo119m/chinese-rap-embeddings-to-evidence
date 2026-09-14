@@ -135,6 +135,13 @@
       "sha256": "8dd7731c8e222e6e3c9a34eb01bd56fd321d1d6948315c34c005ce232c04e9e2",
       "written": "2026-09-13T17:21"
     },
+    "layerwise_identity_probe_gte_large_zh.json": {
+      "arm": "layerwise_identity_probe_v3 --model gte-large-zh",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-14 16:03-16:38 (stage 1 GPU with the sentence-transformers check, stage 2 CPU)",
+      "sha256": "1847515faab272db05326895f21ce2bdb0dda209d4f6f3bc4096dcc4c308f717",
+      "written": "2026-09-14T16:38"
+    },
     "lexical_choice_surprisal.json": {
       "arm": "lexical_choice_surprisal",
       "completed_in_pipeline": false,

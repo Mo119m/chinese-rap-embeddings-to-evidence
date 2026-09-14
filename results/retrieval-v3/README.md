@@ -400,10 +400,45 @@ mean.
 Its whitened curve is nearly flat. Every layer's token mean lies between 0.356 and 0.374,
 the final layer is the highest, and layers 4, 5, 8 and 11 are inside its interval. So the
 prediction fails for an encoder never trained for retrieval as well: identity is about
-equally readable by a linear map at every depth, and across both encoders a whitened token
-mean stays between 0.33 and 0.40. What BGE-M3 adds is its final [CLS] summary, 0.416 after
-whitening. Raw cosine stays at or below 0.30 at every layer of both models. Limits as above,
-plus a smaller model that truncates long chunks.
+equally readable by a linear map at every depth, and across these two encoders a whitened
+token mean stays between 0.33 and 0.40. What BGE-M3 adds is its final [CLS] summary, 0.416
+after whitening.
+
+**A second retrieval encoder** (`layerwise_identity_probe_gte_large_zh.json`):
+`thenlper/gte-large-zh`, a BERT-large trained for Chinese retrieval (Alibaba's GTE), read
+officially as the final [CLS] state, normalised; its 512-token limit truncates 4,773 chunks.
+It has no recorded run, so stage 1 checks its final [CLS] against the model's own
+sentence-transformers pipeline on 64 seeded chunks: minimum cosine 0.9998, none below 0.999.
+Contrasts are against its final [CLS].
+
+| layer | [CLS] cosine | [CLS] whitened | mean-pooled cosine | mean-pooled whitened |
+|---|---|---|---|---|
+| 0 | 0.0244 | 0.0244 | 0.0864 | 0.3383 |
+| 4 | 0.1569 | 0.3180 | 0.1596 | 0.3363 |
+| 8 | 0.1875 | 0.3329 | 0.1547 | 0.3422 |
+| 12 | 0.1872 | 0.3303 | 0.1573 | 0.3552 |
+| 14 | 0.1782 | 0.3287 | 0.1571 | **0.3597** |
+| 18 | 0.1317 | 0.3307 | 0.1157 | 0.2986 |
+| 22 | 0.2039 | 0.3146 | 0.1219 | 0.2880 |
+| 24 | **0.2270** | 0.3117 | 0.1636 | 0.2956 |
+
+Here the curve has the shape the prediction expected. The official reading whitens to 0.312,
+and most of the other readings beat it with intervals clear of zero: the token mean of layer
+14 by +0.047 [+0.037, +0.056], the [CLS] of layer 17 by +0.031 [+0.022, +0.039], layer 0's
+token mean by +0.026 [+0.016, +0.036]. The token means fall from layer 14 to the top (0.360
+to 0.296): in this encoder the retrieval head is where the least identity is readable.
+
+Across the three encoders, then. Raw cosine is low everywhere, never above 0.30 at any layer
+of any model against 0.496 for the words. Within-author whitening lifts every reading, by
++0.12 for BGE-M3's final [CLS] and +0.09 for gte's. Where in the stack identity is most
+readable is a property of the encoder, not of encoders: BGE-M3 holds the most at its
+retrieval head, gte-large-zh holds the most in its middle token means and the least at its
+head, and the masked-LM-only model is flat. So the earlier sentence that an encoder holds the
+most identity "at the output it was trained to produce" is true of BGE-M3 and false of gte.
+BGE-M3 is the stronger identity encoder at every reading (best whitened 0.416 against
+0.360), and the word space whitened at the same width stays ahead of all three (0.548).
+Limits: linear readouts, song means of chunk vectors, float16 stores, and two of the three
+encoders truncate 4,773 chunks at 512 tokens.
 
 ## Contrastive fine-tuning, fold 0 (`identity_encoder_fold0*.json`, `identity_encoder_analysis_fold0*.json`)
 
