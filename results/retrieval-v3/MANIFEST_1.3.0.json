@@ -75,6 +75,13 @@
       "sha256": "0aa6019cf774f367261006a595c35018f8e1c898994ad1826cd04d0fef96a8dd",
       "written": "2026-09-15T14:00"
     },
+    "identity_encoder_analysis_fold3_gradcache64.json": {
+      "arm": "analyse_identity_encoder_v3 fold 3, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-15 17:35-17:35",
+      "sha256": "ff5fb1868dcd663793df6c62737088ea16e885a9d4a0eb83aa8e6fd7eebd6988",
+      "written": "2026-09-15T17:35"
+    },
     "identity_encoder_fold0.json": {
       "arm": "train_identity_encoder_v3 fold 0 baseline",
       "completed_in_pipeline": false,
@@ -116,6 +123,13 @@
       "run": "run_v3_gte_and_folds_queue.sh, 2026-09-15 00:02 to 13:59; the machine went into standby at 00:20 and the queue died; relaunched 09:48, started 10:52 on mains power, resumed from the step-30 checkpoint",
       "sha256": "186a2bcd86e6bbbab1297fc85ecbb56aa43e1eb9a7a774440bb0ff84500f08be",
       "written": "2026-09-15T13:59"
+    },
+    "identity_encoder_fold3_gradcache64.json": {
+      "arm": "train_identity_encoder_v3 fold 3, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-15 14:00-17:35, no interruption",
+      "sha256": "d4af405d271c035b5919890f934106d26a4b158a1b3b6eeef318c1ec263c6c33",
+      "written": "2026-09-15T17:35"
     },
     "identity_encoder_grad_cache_check_gradcache.json": {
       "arm": "train_identity_encoder_v3 --check-grad-cache",

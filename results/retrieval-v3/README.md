@@ -596,6 +596,7 @@ folds finish; the rule is the one above.
 | 0, seed 2 | 1,187 | +0.045 [+0.024, +0.066] | +0.050 [+0.031, +0.070] | +0.037 [+0.021, +0.054] | +0.066 [+0.044, +0.087] | 47.0 |
 | 1 | 1,239 | +0.048 [+0.030, +0.067] | +0.030 [+0.012, +0.048] | +0.014 [−0.001, +0.030] | +0.039 [+0.018, +0.060] | 50.5 |
 | 2 | 1,284 | +0.049 [+0.030, +0.066] | +0.020 [+0.003, +0.039] | +0.014 [−0.002, +0.032] | +0.040 [+0.019, +0.062] | 43.0 |
+| 3 | 1,237 | +0.047 [+0.027, +0.066] | +0.028 [+0.008, +0.048] | +0.017 [−0.002, +0.036] | +0.047 [+0.026, +0.069] | 46.1 |
 
 Fold 1 (stopped three times for a game and resumed from its checkpoints at steps 190, 280 and
 420) passes the rule: +0.030 on the unseen labels with the interval clear of zero. Its
@@ -605,9 +606,14 @@ whitened fusion with the words beats the whitened frozen fusion on the test fold
 step 30 after the machine went into standby) passes too, with the smallest unseen-label margin
 so far, +0.020 [+0.003, +0.039]; its test-fold gain is as large as the others (+0.049), and
 its fusion pattern is fold 1's (+0.021 [+0.007, +0.035] on the test fold, +0.014 [−0.002,
-+0.032] on the unseen labels, +0.040 against the words alone). So far every launch passes the
-main rule, and the fusion gain over the whitened frozen fusion is significant on every test
-fold and on the unseen labels in fold 0 only.
++0.032] on the unseen labels, +0.040 against the words alone). Fold 3 (474 steps, no
+interruption) passes, +0.028 [+0.008, +0.048]; it is the first fold where the raw tuned space
+is not below the frozen one on the test fold (+0.005 [−0.012, +0.022]), and the first where
+the fusion gain over the whitened frozen fusion misses on the test fold as well (+0.015
+[−0.001, +0.031]; unseen +0.017 [−0.002, +0.036]; against the words alone +0.047). So far
+every launch passes the main rule. The fusion gain over the whitened frozen fusion is
+significant in fold 0 (both scopes, both seeds) and on the test folds of 1 and 2, and misses
+narrowly elsewhere; against the words alone it is significant everywhere.
 
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 

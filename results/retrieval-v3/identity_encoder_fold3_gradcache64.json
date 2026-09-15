@@ -1,0 +1,181 @@
+{
+  "analysis": "contrastive fine-tuning of BGE-M3 for label identity on corpus v3",
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "batch_anchors": 64,
+    "batch_cosine_every_50_steps": [
+      0.8565,
+      0.8033,
+      0.8,
+      0.7276,
+      0.7519,
+      0.7234,
+      0.705,
+      0.7576,
+      0.7465,
+      0.7399
+    ],
+    "checkpoint_every": 10,
+    "collaboration_titles_excluded_from_training": 2076,
+    "collapse_guard": 0.98,
+    "device": "cuda",
+    "dry_run": false,
+    "epochs": 2,
+    "frozen_vectors": "encoded in this launch",
+    "grad_cache_chunk": 32,
+    "grad_cache_max_vector_drift": 0.0,
+    "hard_negative_pool": "20 nearest other-label chunks in the frozen space (v3 vectors)",
+    "hard_negatives_per_anchor": 2,
+    "held_out_labels": 34,
+    "label_string_masked_in_all_text": true,
+    "learning_rate": 0.0002,
+    "lora_rank": 16,
+    "max_length_tokens": 512,
+    "min_participation_guard": 4.0,
+    "model": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181",
+    "momentum": 0.0,
+    "positive": "same label, different leakage group",
+    "probe_geometry_every_50_steps": [
+      {
+        "mean_pairwise_cosine": 0.5009,
+        "participation_ratio": 107.5,
+        "step": 0
+      },
+      {
+        "mean_pairwise_cosine": 0.8858,
+        "participation_ratio": 67.4,
+        "step": 50
+      },
+      {
+        "mean_pairwise_cosine": 0.8444,
+        "participation_ratio": 52.2,
+        "step": 100
+      },
+      {
+        "mean_pairwise_cosine": 0.8526,
+        "participation_ratio": 31.4,
+        "step": 150
+      },
+      {
+        "mean_pairwise_cosine": 0.7768,
+        "participation_ratio": 42.6,
+        "step": 200
+      },
+      {
+        "mean_pairwise_cosine": 0.7982,
+        "participation_ratio": 37.3,
+        "step": 250
+      },
+      {
+        "mean_pairwise_cosine": 0.7686,
+        "participation_ratio": 44.0,
+        "step": 300
+      },
+      {
+        "mean_pairwise_cosine": 0.757,
+        "participation_ratio": 51.7,
+        "step": 350
+      },
+      {
+        "mean_pairwise_cosine": 0.8043,
+        "participation_ratio": 39.3,
+        "step": 400
+      },
+      {
+        "mean_pairwise_cosine": 0.786,
+        "participation_ratio": 39.4,
+        "step": 450
+      },
+      {
+        "mean_pairwise_cosine": 0.7791,
+        "participation_ratio": 39.6,
+        "step": 474
+      }
+    ],
+    "queue_size": 0,
+    "resumed_at_steps": [],
+    "steps": 474,
+    "tag": "_gradcache64",
+    "temperature": 0.05,
+    "test_fold": 3,
+    "train_seed": 20260825,
+    "trainable_parameters": 7110656,
+    "unit": "chunk (stanza)"
+  },
+  "geometry": {
+    "fine_tuned": {
+      "mean_pairwise_cosine": 0.7816,
+      "participation_ratio": 46.1
+    },
+    "frozen_masked": {
+      "mean_pairwise_cosine": 0.4946,
+      "participation_ratio": 131.7
+    },
+    "median_cosine_of_each_chunk_to_its_frozen_vector": 0.6476
+  },
+  "paired_contrasts": {
+    "test_fold": [
+      {
+        "ci95": [
+          -0.012,
+          0.0217
+        ],
+        "excludes_zero": false,
+        "minus": "frozen_masked",
+        "mrr_difference": 0.0049,
+        "system": "fine_tuned"
+      }
+    ],
+    "unseen_labels": [
+      {
+        "ci95": [
+          -0.0565,
+          -0.0211
+        ],
+        "excludes_zero": true,
+        "minus": "frozen_masked",
+        "mrr_difference": -0.0385,
+        "system": "fine_tuned"
+      }
+    ]
+  },
+  "privacy": "aggregate only; vectors and adapter weights are private",
+  "reading": "the frozen row is BGE-M3 on the same masked text under the same protocol, so the difference is what the corpus taught the encoder; the unseen-label row is whether what it learned is identity in general or these authors in particular",
+  "results": {
+    "fine_tuned": {
+      "test_fold": {
+        "mrr": 0.2731,
+        "queries": 1237,
+        "recall_at_1": 0.1754,
+        "recall_at_10": 0.4794
+      },
+      "unseen_labels": {
+        "mrr": 0.2045,
+        "queries": 1041,
+        "recall_at_10": 0.3727
+      }
+    },
+    "frozen_masked": {
+      "test_fold": {
+        "mrr": 0.266,
+        "queries": 1237,
+        "recall_at_1": 0.1641,
+        "recall_at_10": 0.4689
+      },
+      "unseen_labels": {
+        "mrr": 0.2419,
+        "queries": 1041,
+        "recall_at_10": 0.4227
+      }
+    }
+  },
+  "training_loss": {
+    "first_50_mean": 5.5167,
+    "last_50_mean": 4.887
+  }
+}
