@@ -61,6 +61,13 @@
       "sha256": "5c026ca7b4544a32d621a2af6d4c104b49b0be723b4b83823b18a9b67dc27ed7",
       "written": "2026-09-13T17:21"
     },
+    "identity_encoder_analysis_fold1_gradcache64.json": {
+      "arm": "analyse_identity_encoder_v3 fold 1, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-15 00:01-00:02",
+      "sha256": "1bfb5aa8e7d10484fba516a9cf56fb48ed0890a6f65daa5ba83399b75e0f0424",
+      "written": "2026-09-15T00:02"
+    },
     "identity_encoder_fold0.json": {
       "arm": "train_identity_encoder_v3 fold 0 baseline",
       "completed_in_pipeline": false,
@@ -88,6 +95,13 @@
       "run": "run_v3_gpu_line.sh, 2026-09-11 14:29 to 2026-09-12 00:51 (process suspended about five hours while the GPU was needed elsewhere; no wall-clock logic in training)",
       "sha256": "62244fd0349f83921e01b242e085a7576f23c76311cdf92831566119d64d6516",
       "written": "2026-09-12T00:51"
+    },
+    "identity_encoder_fold1_gradcache64.json": {
+      "arm": "train_identity_encoder_v3 fold 1, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-14 16:38 to 2026-09-15 00:01; stopped for a game three times and resumed from checkpoints at steps 190, 280, 420",
+      "sha256": "c43024a5dce74d755d16239aa1b831194749f232094b01e96e70d7b10801740e",
+      "written": "2026-09-15T00:01"
     },
     "identity_encoder_grad_cache_check_gradcache.json": {
       "arm": "train_identity_encoder_v3 --check-grad-cache",

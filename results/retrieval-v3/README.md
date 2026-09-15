@@ -585,6 +585,23 @@ tuned space. The analysis first fused only raw spaces with the words, which is w
 baseline reading above spoke of the word space getting worse; the whitened fusions were added
 and every fold-0 run rescored, with every earlier number unchanged.
 
+**The other folds, one launch each** (`identity_encoder_fold{k}_gradcache64.json`,
+`identity_encoder_analysis_fold{k}_gradcache64.json`, project seed, same configuration; the
+34 held-out labels are the same in every fold, the test fold changes). Rows are added as
+folds finish; the rule is the one above.
+
+| fold | test queries | whitened tuned − whitened frozen, test | the same, unseen labels | whitened tuned with words − whitened frozen with words, unseen | whitened tuned with words − words, unseen | participation ratio |
+|---|---|---|---|---|---|---|
+| 0 | 1,187 | +0.041 [+0.020, +0.062] | +0.039 [+0.019, +0.060] | +0.024 [+0.006, +0.042] | +0.052 [+0.033, +0.073] | 40.6 |
+| 0, seed 2 | 1,187 | +0.045 [+0.024, +0.066] | +0.050 [+0.031, +0.070] | +0.037 [+0.021, +0.054] | +0.066 [+0.044, +0.087] | 47.0 |
+| 1 | 1,239 | +0.048 [+0.030, +0.067] | +0.030 [+0.012, +0.048] | +0.014 [−0.001, +0.030] | +0.039 [+0.018, +0.060] | 50.5 |
+
+Fold 1 (stopped three times for a game and resumed from its checkpoints at steps 190, 280 and
+420) passes the rule: +0.030 on the unseen labels with the interval clear of zero. Its
+whitened fusion with the words beats the whitened frozen fusion on the test fold (+0.026
+[+0.010, +0.042]) but on the unseen labels its interval touches zero (+0.014 [−0.001,
++0.030]); against the words alone it is clear (+0.039).
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,669 over 512; all 226 labels have at least two
