@@ -32,6 +32,11 @@ reconciliation this brief opens with is finished, not pending. `merge/pd002-inte
 carries both branches' work and is local, unpushed, unmerged, untagged. The sequencing below
 is kept because steps 4 through 9 still stand.
 
+**Status, 15 September 2026.** `merge/pd002-integration` was fast-forwarded into `main`
+(41 commits, corpus v3 build 1.3.0 and every result under `results/retrieval-v3/`) and
+deleted, together with `fix/release-integrity` and `codex/release-integrity-publication`,
+both already contained in `main`. `main` is the only branch; work continues on it.
+
 The order of work is not negotiable, and merging is the LAST step, not the first:
 
 1. agree the scientific boundary between the two branches
