@@ -265,6 +265,13 @@
       "sha256": "ae4edfee332ff936441f4ba141b47ebbee076e96b771391f577d45fad8509db9",
       "written": "2026-09-10T19:55"
     },
+    "whole_song_embedding.json": {
+      "arm": "whole_song_embedding_v3",
+      "completed_in_pipeline": false,
+      "run": "run_v3_whole_song_after_folds.sh, 2026-09-16 11:45-11:49 (stage 1 GPU with the single-stanza check, stage 2 CPU); stage 2 rerun 13:25 to add the stanza-count breakdown, earlier numbers unchanged",
+      "sha256": "a31fa047412aa89be211561977eac96d182f53e9d0709902c2d7a74b72082619",
+      "written": "2026-09-16T13:23"
+    },
     "word_identity_anatomy.json": {
       "arm": "word_identity_anatomy",
       "completed_in_pipeline": true,

@@ -1,0 +1,341 @@
+{
+  "analysis": "one whole-song BGE-M3 embedding per song against the mean of its stanza vectors, unchanged protocol",
+  "by_stanza_count": {
+    "buckets": {
+      "1": {
+        "chunk_mean/cosine": 0.3035,
+        "chunk_mean/within_author_whitening": 0.3952,
+        "contrasts": [
+          {
+            "ci95": [
+              0.0054,
+              0.0173
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/cosine",
+            "mrr_difference": 0.0114,
+            "system": "whole_song/cosine"
+          },
+          {
+            "ci95": [
+              0.0005,
+              0.0144
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/within_author_whitening",
+            "mrr_difference": 0.0077,
+            "system": "whole_song/within_author_whitening"
+          }
+        ],
+        "queries": 3524,
+        "whole_song/cosine": 0.3134,
+        "whole_song/within_author_whitening": 0.4043
+      },
+      "2": {
+        "chunk_mean/cosine": 0.3291,
+        "chunk_mean/within_author_whitening": 0.4656,
+        "contrasts": [
+          {
+            "ci95": [
+              -0.0016,
+              0.0324
+            ],
+            "excludes_zero": false,
+            "minus": "chunk_mean/cosine",
+            "mrr_difference": 0.0154,
+            "system": "whole_song/cosine"
+          },
+          {
+            "ci95": [
+              -0.0259,
+              0.0085
+            ],
+            "excludes_zero": false,
+            "minus": "chunk_mean/within_author_whitening",
+            "mrr_difference": -0.0094,
+            "system": "whole_song/within_author_whitening"
+          }
+        ],
+        "queries": 1391,
+        "whole_song/cosine": 0.3473,
+        "whole_song/within_author_whitening": 0.4575
+      },
+      "2+": {
+        "chunk_mean/cosine": 0.2962,
+        "chunk_mean/within_author_whitening": 0.4366,
+        "contrasts": [
+          {
+            "ci95": [
+              0.0212,
+              0.0427
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/cosine",
+            "mrr_difference": 0.0322,
+            "system": "whole_song/cosine"
+          },
+          {
+            "ci95": [
+              -0.0273,
+              -0.0056
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/within_author_whitening",
+            "mrr_difference": -0.0164,
+            "system": "whole_song/within_author_whitening"
+          }
+        ],
+        "queries": 3696,
+        "whole_song/cosine": 0.3298,
+        "whole_song/within_author_whitening": 0.4198
+      },
+      "3-5": {
+        "chunk_mean/cosine": 0.2979,
+        "chunk_mean/within_author_whitening": 0.4447,
+        "contrasts": [
+          {
+            "ci95": [
+              0.0006,
+              0.0387
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/cosine",
+            "mrr_difference": 0.0193,
+            "system": "whole_song/cosine"
+          },
+          {
+            "ci95": [
+              -0.0464,
+              -0.0044
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/within_author_whitening",
+            "mrr_difference": -0.0253,
+            "system": "whole_song/within_author_whitening"
+          }
+        ],
+        "queries": 1010,
+        "whole_song/cosine": 0.3179,
+        "whole_song/within_author_whitening": 0.4186
+      },
+      "6+": {
+        "chunk_mean/cosine": 0.2594,
+        "chunk_mean/within_author_whitening": 0.3991,
+        "contrasts": [
+          {
+            "ci95": [
+              0.0422,
+              0.08
+            ],
+            "excludes_zero": true,
+            "minus": "chunk_mean/cosine",
+            "mrr_difference": 0.0607,
+            "system": "whole_song/cosine"
+          },
+          {
+            "ci95": [
+              -0.0382,
+              0.0012
+            ],
+            "excludes_zero": false,
+            "minus": "chunk_mean/within_author_whitening",
+            "mrr_difference": -0.017,
+            "system": "whole_song/within_author_whitening"
+          }
+        ],
+        "queries": 1295,
+        "whole_song/cosine": 0.3203,
+        "whole_song/within_author_whitening": 0.3802
+      }
+    },
+    "note": "MRR is the plain mean over the bucket's queries; contrasts are the protocol's weighted estimand with a group bootstrap restricted to the bucket"
+  },
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "checks": {
+      "single_stanza_songs_against_recorded_chunks": {
+        "compared_at_most_2048_tokens": 3649,
+        "median_cosine": 1.0,
+        "min_cosine": 0.999941,
+        "single_stanza_songs": 3649,
+        "songs_below_0.999": 0
+      },
+      "stanza_mean_against_recorded_results": {
+        "cosine": {
+          "gap": 0.0,
+          "recomputed": 0.2997,
+          "recorded": 0.2997
+        },
+        "within_author_whitening": {
+          "gap": 0.0,
+          "recomputed": 0.4164,
+          "recorded": 0.4164
+        }
+      }
+    },
+    "fusion": "z-score mean of the dense and word (jieba TF-IDF) score rows",
+    "reading_rule": "switch to the whole-song embedding only if it beats the stanza mean after within-author whitening with an interval excluding zero and is not worse raw",
+    "representation_agreement": {
+      "median_cosine": 0.9621,
+      "p10_cosine": 0.8675
+    },
+    "stanza_mean": "the project's song vector: mean of the recorded chunk vectors, normalised",
+    "switch_representation": false,
+    "verdict": "the stanza mean stands; the whole-song embedding was tried and does not beat it under the rule",
+    "whitening": "total and within-author, Ledoit-Wolf shrunk, cross-fitted over the five leakage-group folds",
+    "whole_song": {
+      "batch_size": 4,
+      "implementation": "FlagEmbedding.BGEM3FlagModel dense vectors",
+      "max_length": 8192,
+      "model": "BAAI/bge-m3",
+      "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "text": "stanzas in source order joined by newlines",
+      "tokens_per_song": {
+        "max": 11191,
+        "median": 574,
+        "over_max_length": 2,
+        "over_recorded_max_length": 115,
+        "p90": 1051
+      },
+      "use_fp16": true
+    }
+  },
+  "paired_contrasts": {
+    "contrasts": [
+      {
+        "ci95": [
+          0.0162,
+          0.0284
+        ],
+        "excludes_zero": true,
+        "minus": "chunk_mean/cosine",
+        "mrr_difference": 0.022,
+        "system": "whole_song/cosine"
+      },
+      {
+        "ci95": [
+          -0.0123,
+          0.0012
+        ],
+        "excludes_zero": false,
+        "minus": "chunk_mean/total_whitening",
+        "mrr_difference": -0.0055,
+        "system": "whole_song/total_whitening"
+      },
+      {
+        "ci95": [
+          -0.011,
+          0.002
+        ],
+        "excludes_zero": false,
+        "minus": "chunk_mean/within_author_whitening",
+        "mrr_difference": -0.0045,
+        "system": "whole_song/within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.0035,
+          0.0038
+        ],
+        "excludes_zero": false,
+        "minus": "chunk_mean/fusion_cosine_words",
+        "mrr_difference": 0.0002,
+        "system": "whole_song/fusion_cosine_words"
+      },
+      {
+        "ci95": [
+          -0.0093,
+          0.0014
+        ],
+        "excludes_zero": false,
+        "minus": "chunk_mean/fusion_within_author_whitening_words",
+        "mrr_difference": -0.004,
+        "system": "whole_song/fusion_within_author_whitening_words"
+      },
+      {
+        "ci95": [
+          -0.1033,
+          -0.083
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0929,
+        "system": "whole_song/within_author_whitening"
+      },
+      {
+        "ci95": [
+          -0.0986,
+          -0.0789
+        ],
+        "excludes_zero": true,
+        "minus": "words",
+        "mrr_difference": -0.0884,
+        "system": "chunk_mean/within_author_whitening"
+      }
+    ],
+    "design": "2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one"
+  },
+  "privacy": "aggregate only; vectors are private",
+  "systems": {
+    "chunk_mean/cosine": {
+      "mrr": 0.2997,
+      "recall_at_1": 0.2019,
+      "recall_at_10": 0.4911
+    },
+    "chunk_mean/fusion_cosine_words": {
+      "mrr": 0.4894,
+      "recall_at_1": 0.3932,
+      "recall_at_10": 0.6716
+    },
+    "chunk_mean/fusion_within_author_whitening_words": {
+      "mrr": 0.5371,
+      "recall_at_1": 0.4357,
+      "recall_at_10": 0.7255
+    },
+    "chunk_mean/total_whitening": {
+      "mrr": 0.3996,
+      "recall_at_1": 0.3062,
+      "recall_at_10": 0.5769
+    },
+    "chunk_mean/within_author_whitening": {
+      "mrr": 0.4164,
+      "recall_at_1": 0.3179,
+      "recall_at_10": 0.6026
+    },
+    "whole_song/cosine": {
+      "mrr": 0.3218,
+      "recall_at_1": 0.2233,
+      "recall_at_10": 0.5148
+    },
+    "whole_song/fusion_cosine_words": {
+      "mrr": 0.4901,
+      "recall_at_1": 0.3945,
+      "recall_at_10": 0.6719
+    },
+    "whole_song/fusion_within_author_whitening_words": {
+      "mrr": 0.5323,
+      "recall_at_1": 0.4306,
+      "recall_at_10": 0.7247
+    },
+    "whole_song/total_whitening": {
+      "mrr": 0.3943,
+      "recall_at_1": 0.3064,
+      "recall_at_10": 0.5657
+    },
+    "whole_song/within_author_whitening": {
+      "mrr": 0.4122,
+      "recall_at_1": 0.3168,
+      "recall_at_10": 0.5947
+    },
+    "words": {
+      "mrr": 0.4963,
+      "recall_at_1": 0.4029,
+      "recall_at_10": 0.6715
+    }
+  }
+}

@@ -91,6 +91,52 @@ whitening 0.5479, within-author whitening 0.5426; **whitened words + chunk-white
 semantic 0.5854** (R@1 0.479, R@10 0.780), the best system on v3 (v2 0.6082); the same
 fusion without whitening 0.4894 (v2 0.5153).
 
+## Whole song against the stanza mean (`whole_song_embedding.json`)
+
+Every semantic number represents a song as the mean of its stanza vectors. The stanza is the
+source file's own unit: 3,649 of the 7,379 song records are a single stanza, the rest a
+median of three. The alternative not tried before is to embed the song once as one text:
+stanzas joined by newlines in source order, the same pinned BGE-M3 through FlagEmbedding at
+fp16, `max_length` 8,192 (median song 574 tokens, two songs over the limit). Two checks come
+first. A one-stanza song is the same text as its stanza, and its whole-song vector matches the
+recorded chunk vector for all 3,649 (minimum cosine 0.99994). The stanza mean reproduces the
+recorded 0.2997 and 0.4164 exactly. The two representations of a song agree at a median
+cosine of 0.962 (10th percentile 0.867).
+
+| | stanza mean | whole song | whole − mean |
+|---|---|---|---|
+| cosine | 0.2997 | 0.3218 | +0.022 [+0.016, +0.028] |
+| total whitening | 0.3996 | 0.3943 | −0.006 [−0.012, +0.001] |
+| within-author whitening | 0.4164 | 0.4122 | −0.005 [−0.011, +0.002] |
+| fused with words, raw | 0.4894 | 0.4901 | +0.000 [−0.004, +0.004] |
+| fused with words, within-author whitened | 0.5371 | 0.5323 | −0.004 [−0.009, +0.001] |
+
+By the rule written before the run (switch only if the whole song beats the stanza mean after
+within-author whitening with an interval clear of zero, and is not worse raw) the stanza mean
+stands. By number of stanzas, which is where any difference must come from:
+
+| stanzas | queries | cosine: mean → whole | whole − mean | whitened: mean → whole | whole − mean |
+|---|---|---|---|---|---|
+| 1 | 3,524 | 0.3035 → 0.3134 | +0.011 [+0.005, +0.017] | 0.3952 → 0.4043 | +0.008 [+0.001, +0.014] |
+| 2 | 1,391 | 0.3291 → 0.3473 | +0.015 [−0.002, +0.032] | 0.4656 → 0.4575 | −0.009 [−0.026, +0.009] |
+| 3–5 | 1,010 | 0.2979 → 0.3179 | +0.019 [+0.001, +0.039] | 0.4447 → 0.4186 | −0.025 [−0.046, −0.004] |
+| 6 or more | 1,295 | 0.2594 → 0.3203 | +0.061 [+0.042, +0.080] | 0.3991 → 0.3802 | −0.017 [−0.038, +0.001] |
+| 2 or more | 3,696 | 0.2962 → 0.3298 | +0.032 [+0.021, +0.043] | 0.4366 → 0.4198 | −0.016 [−0.027, −0.006] |
+
+One-stanza queries move only because the label profiles and the whitening are built from
+every song. For songs of two or more stanzas the two readings point opposite ways. Read by raw
+cosine, averaging loses identity, the more stanzas the more (+0.061 for the whole song at six
+or more): a mean of many unit vectors in an anisotropic space is pulled toward the shared
+direction. Read after within-author whitening, the reading every semantic conclusion here
+rests on, the stanza mean holds more identity than the whole-song embedding (−0.016 [−0.027,
+−0.006]): the spread of stanza vectors that the mean keeps is what whitening uses, and one pass
+over the whole song does not recover it. So averaging stanzas does not throw away identity the
+encoder could otherwise give; it only hides part of it from raw cosine, which whitening
+already corrects. The raw semantic number is conservative by 0.022, and the word space stays
+ahead of either representation (whole song whitened − words −0.093 [−0.103, −0.083]). What this
+does not measure is meaning for its own sake: the task is identity, and the two representations
+agree closely enough (median cosine 0.962) that they are not different readings of the songs.
+
 ## Chunk-level replication (`chunk_level_replication.json`)
 
 At the chunk level (23,848 chunks, each scored on its own): semantic 0.1876, characters
