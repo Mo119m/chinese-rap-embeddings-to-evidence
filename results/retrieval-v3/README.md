@@ -688,6 +688,44 @@ labels never trained on. Fused with the words it beats the words alone everywher
 whitened frozen fusion on seen labels; on unseen labels that last margin is small and not
 established. The raw tuned space stays below the frozen one in four folds of five.
 
+**What the fine-tune learned, part A: description** (`finetune_learned_identity.json`,
+`src/finetune_learned_identity_v3.py`). For each fold the tuned and frozen song vectors are
+whitened on the fold's training songs; the whitened MRRs reproduce the analysis files in every
+fold. The new part of the tuned space is what a ridge regression from the whitened frozen
+vectors, fitted on the training songs, does not predict.
+
+| over the five folds | test fold | unseen labels |
+|---|---|---|
+| R² of the whitened tuned vectors from the whitened frozen ones | 0.29–0.31 | 0.32–0.34 |
+| MRR of the new part alone | 0.196–0.215 | 0.230–0.250 |
+| MRR of random vectors, same protocol | 0.025–0.029 | 0.026–0.029 |
+| linear CKA with the word TF-IDF space: frozen raw → tuned raw | 0.39–0.41 → 0.26–0.29 | 0.39 → 0.25–0.28 |
+| linear CKA with the word space: frozen whitened → tuned whitened | 0.66–0.69 → 0.66–0.69, +0.004 to +0.008 each fold | 0.66–0.67 → 0.67–0.68, +0.007 to +0.010 each fold |
+
+Among the 50 words most correlated with each of the six leading directions of the new part,
+42–55% are English (Latin-script) tokens and 6–9% function words; for the whitened frozen space
+the figures are 37–45% and 13–16%. The English share is higher and the function-word share lower
+in every fold.
+
+Reading, descriptive only. Fine-tuning reorganised the space (about a third of it linear in the
+frozen one) and added identity that no linear map of the whitened frozen space supplies. Its
+leading new directions lean toward English tokens. After whitening, its geometry is very slightly
+closer to the word space; raw, it is further from it. None of this says what the added identity
+rests on: correlation with English tokens is not dependence on them, which part B tests by masking.
+
+A first version of part A removed from each space its ridge prediction from the word space and
+compared what was left. It was dropped after one fold, before its result was used: a regression
+from words to vectors fitted on songs of the same labels learns "this label's words, this
+label's direction" and so strips seen-label identity whether or not the spaces share information
+(fold 0: whitened frozen 0.401 → 0.143 on the test fold, 0.336 → 0.337 on unseen labels, at an
+out-of-sample R² of 0.01).
+
+A related methods note found while checking it: a word SVD fitted on the training songs only
+projects out-of-sample queries onto directions of other songs, while label profiles are built
+mostly from in-sample songs. In fold 0 that lowers the whitened word SVD on the test fold from
+0.582 (SVD fitted on all songs, which uses no labels) to 0.561 (fitted on the training folds, as
+in `word_space_probe.json`). The published word-SVD numbers are therefore conservative.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,669 over 512; all 226 labels have at least two

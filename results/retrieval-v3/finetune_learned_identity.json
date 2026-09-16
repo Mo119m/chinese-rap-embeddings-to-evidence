@@ -1,0 +1,3039 @@
+{
+  "analysis": "what the 64-anchor GradCache fine-tune learned beyond within-author whitening: descriptive part",
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "cka": "linear centred kernel alignment with the raw word TF-IDF space over the scope's songs, label-free",
+    "dropped_design": "removing each space's ridge prediction from the word space was dropped after a one-fold run: fitted on songs of the same labels it strips seen-label identity through the label association alone",
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "new_part": "tuned whitened vectors minus their multi-output ridge prediction from the frozen whitened vectors, fitted on the training songs, alpha by generalised cross-validation over 0.1, 0.316228, 1, 3.16228, 10, 31.6228, 100, 316.228, 1000",
+    "null": "random Gaussian song vectors, seeds [1, 2, 3]",
+    "reading": "descriptive only; the causal test of which words the tuned advantage depends on is finetune_cue_masking_v3.py",
+    "runs": "fine-tune tag _gradcache64, one launch per fold",
+    "whitening": "within-author, fitted on each fold's training songs (other folds, labels not held out)",
+    "word_correlates": "top 6 principal directions on the training songs; correlation of each unigram's TF-IDF weight (words in at least 50 songs) with all songs' coordinates; categories by jieba part of speech for the 50 strongest per direction"
+  },
+  "folds": {
+    "0": {
+      "checks_against_recorded_analysis": {
+        "test_fold/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.4013,
+          "recorded": 0.4013
+        },
+        "test_fold/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.4412,
+          "recorded": 0.4412
+        },
+        "unseen_labels/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3361,
+          "recorded": 0.3361
+        },
+        "unseen_labels/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3721,
+          "recorded": 0.3721
+        }
+      },
+      "geometry": {
+        "test_fold": {
+          "cka_frozen_whitened_tuned_whitened": 0.6968,
+          "cka_words_frozen_raw": 0.402,
+          "cka_words_frozen_whitened": 0.6856,
+          "cka_words_tuned_new_part": 0.6611,
+          "cka_words_tuned_raw": 0.2623,
+          "cka_words_tuned_whitened": 0.6898,
+          "r2_frozen_whitened_to_tuned_whitened": 0.3062
+        },
+        "unseen_labels": {
+          "cka_frozen_whitened_tuned_whitened": 0.6986,
+          "cka_words_frozen_raw": 0.3905,
+          "cka_words_frozen_whitened": 0.666,
+          "cka_words_tuned_new_part": 0.6391,
+          "cka_words_tuned_raw": 0.2655,
+          "cka_words_tuned_whitened": 0.6756,
+          "r2_frozen_whitened_to_tuned_whitened": 0.3428
+        }
+      },
+      "paired_contrasts": {
+        "test_fold": [
+          {
+            "ci95": [
+              0.0204,
+              0.0617
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0409,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1671,
+              0.2088
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.1874,
+            "system": "tuned_new_part"
+          }
+        ],
+        "unseen_labels": [
+          {
+            "ci95": [
+              0.0186,
+              0.06
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0391,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.2045,
+              0.2514
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.2278,
+            "system": "tuned_new_part"
+          }
+        ]
+      },
+      "queries": {
+        "test_fold": 1187,
+        "unseen_labels": 1041
+      },
+      "ridge_alpha_frozen_to_tuned": 1.0,
+      "systems": {
+        "test_fold": {
+          "frozen_whitened": 0.4013,
+          "null_random_1": 0.0275,
+          "null_random_2": 0.0286,
+          "null_random_3": 0.0307,
+          "null_random_mean": 0.0289,
+          "tuned_new_part": 0.2145,
+          "tuned_whitened": 0.4412
+        },
+        "unseen_labels": {
+          "frozen_whitened": 0.3361,
+          "null_random_1": 0.0244,
+          "null_random_2": 0.0248,
+          "null_random_3": 0.0279,
+          "null_random_mean": 0.0257,
+          "tuned_new_part": 0.2503,
+          "tuned_whitened": 0.3721
+        }
+      },
+      "train_songs": 4992,
+      "word_correlates": {
+        "frozen_whitened": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.0467,
+            "content": 0.2467,
+            "english": 0.4467,
+            "function": 0.13,
+            "multi_token": 0.0033,
+            "numeral": 0.0033,
+            "person_or_place_name": 0.0233,
+            "punctuation_or_symbol": 0.1
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.384,
+              "negative_end": [
+                "着",
+                "与",
+                "的",
+                "中",
+                "世界",
+                "却",
+                "谁",
+                "自己",
+                "这",
+                "可",
+                "也",
+                "里",
+                "生命",
+                "和",
+                "梦"
+              ],
+              "positive_end": [
+                "i",
+                "like",
+                "my",
+                "老子",
+                "on",
+                "money",
+                "me",
+                "got",
+                "a",
+                "耍",
+                "im",
+                "他们",
+                "in",
+                "the",
+                "it"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.203,
+              "negative_end": [
+                "i",
+                "in",
+                "the",
+                "a",
+                "you",
+                "it",
+                "my",
+                "t",
+                "’",
+                "to",
+                ",",
+                "me",
+                "all",
+                "be",
+                "like"
+              ],
+              "positive_end": [
+                "就",
+                "是",
+                "都",
+                "要",
+                "跟",
+                "兄弟",
+                "得",
+                "我",
+                "也",
+                "给",
+                "来",
+                "你们",
+                "人",
+                "不",
+                "那"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.24,
+              "negative_end": [
+                "the",
+                "you",
+                "i",
+                "me",
+                "my",
+                "to",
+                "'",
+                "it",
+                "let",
+                "so",
+                "s",
+                "’",
+                "and",
+                "be",
+                "m"
+              ],
+              "positive_end": [
+                "老子",
+                "耍",
+                "晓得",
+                "啥子",
+                "不得",
+                "儿",
+                "脑壳",
+                "个",
+                "北门",
+                "钱",
+                "吃",
+                "搞",
+                "没得",
+                "哪个",
+                "得"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.272,
+              "negative_end": [
+                "都",
+                "也",
+                "的",
+                "要",
+                "不",
+                "钱",
+                "兄弟",
+                "了",
+                "我",
+                "得",
+                "儿",
+                "还",
+                "人",
+                "他",
+                "走"
+              ],
+              "positive_end": [
+                "i",
+                "you",
+                "’",
+                "the",
+                "t",
+                "my",
+                "me",
+                "a",
+                "on",
+                "to",
+                "m",
+                "that",
+                "it",
+                "and",
+                "can"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.334,
+              "negative_end": [
+                "说唱",
+                "flow",
+                "你们",
+                "rapper",
+                "rap",
+                "beat",
+                "们",
+                "兄弟",
+                "得",
+                "他们",
+                "ar",
+                "hiphop",
+                "拿",
+                "we",
+                "“"
+              ],
+              "positive_end": [
+                "我",
+                "你",
+                "爱",
+                "的",
+                "离开",
+                "baby",
+                "回忆",
+                "陪",
+                "不想",
+                "难过",
+                "想",
+                "girl",
+                "爱情",
+                "感情",
+                "身边"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.321,
+              "negative_end": [
+                "你",
+                "我",
+                "像",
+                "就",
+                "的",
+                "把",
+                "是",
+                "哥们",
+                "爱",
+                "跟",
+                "对",
+                "不",
+                "陪",
+                "想",
+                "喜欢"
+              ],
+              "positive_end": [
+                "in",
+                "the",
+                "is",
+                "to",
+                ",",
+                "but",
+                "a",
+                "of",
+                "it",
+                "athree",
+                "and",
+                "that",
+                "was",
+                "痛苦",
+                "her"
+              ]
+            }
+          ]
+        },
+        "tuned_new_part": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.0367,
+            "content": 0.1867,
+            "english": 0.5467,
+            "function": 0.0733,
+            "multi_token": 0.01,
+            "numeral": 0.0133,
+            "person_or_place_name": 0.0133,
+            "punctuation_or_symbol": 0.12
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.159,
+              "negative_end": [
+                ",",
+                "athree",
+                "'",
+                "，",
+                "那些",
+                "re",
+                "our",
+                "mic",
+                "天黑",
+                ".",
+                "ya",
+                "rap",
+                "hip",
+                "rules",
+                "peace"
+              ],
+              "positive_end": [
+                "these",
+                "wit",
+                "bih",
+                "aint",
+                "might",
+                "they",
+                "im",
+                "she",
+                "ap",
+                "opps",
+                "em",
+                "imma",
+                "bands",
+                "racks",
+                "her"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.229,
+              "negative_end": [
+                "in",
+                "a",
+                "if",
+                "been",
+                "all",
+                "different",
+                "and",
+                "s",
+                "the",
+                "we",
+                "to",
+                "but",
+                "without",
+                "it",
+                "of"
+              ],
+              "positive_end": [
+                "，",
+                "。",
+                "？",
+                "您",
+                "“",
+                "”",
+                "ar",
+                "亦",
+                "、",
+                "佬",
+                "至",
+                "流水",
+                "观察",
+                "诗",
+                "痛快"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.115,
+              "negative_end": [
+                "的",
+                "我",
+                "uh",
+                "是",
+                "”",
+                "在",
+                "“",
+                "了",
+                "你",
+                "铁",
+                "不",
+                "一直",
+                "祝",
+                "就",
+                "u"
+              ],
+              "positive_end": [
+                "of",
+                "ve",
+                "our",
+                "and",
+                "re",
+                "been",
+                "their",
+                "in",
+                "finally",
+                "a",
+                "to",
+                "is",
+                "have",
+                "the",
+                "then"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.08,
+              "negative_end": [
+                "“",
+                "”",
+                "these",
+                "’",
+                "be",
+                "ain",
+                "some",
+                "man",
+                "we",
+                "getting",
+                "them",
+                "a",
+                "athree",
+                "lil",
+                "词"
+              ],
+              "positive_end": [
+                "拿",
+                "同学",
+                "咋",
+                "喝完",
+                "ap",
+                "永远",
+                "champion",
+                "书包",
+                "mc",
+                "想念",
+                "每",
+                "呐喊",
+                "爱情",
+                "song",
+                "饥饿"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.063,
+              "negative_end": [
+                "接着",
+                "法老",
+                "表演",
+                "little",
+                "不敢",
+                "v2",
+                "出发",
+                "v1",
+                "探索",
+                "右",
+                "速度",
+                "微博",
+                "不断",
+                "hiphop",
+                "不如"
+              ],
+              "positive_end": [
+                "亦",
+                "aint",
+                "im",
+                "娃儿",
+                "up",
+                "wit",
+                "woah",
+                "黑夜",
+                "these",
+                "hunnid",
+                "drip",
+                "我",
+                "无助",
+                "em",
+                "天地"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.138,
+              "negative_end": [
+                "不",
+                "不是",
+                "都",
+                "理解",
+                "闹",
+                "别个",
+                "当成",
+                "东北",
+                "辜负",
+                "就是",
+                "白",
+                "所有",
+                "灵魂",
+                "_",
+                "enemy"
+              ],
+              "positive_end": [
+                "，",
+                ",",
+                "”",
+                "“",
+                "she",
+                "’",
+                "！",
+                "these",
+                "(",
+                "babe",
+                "just",
+                ")",
+                "they",
+                "—",
+                "九"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "1": {
+      "checks_against_recorded_analysis": {
+        "test_fold/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3823,
+          "recorded": 0.3823
+        },
+        "test_fold/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.4225,
+          "recorded": 0.4225
+        },
+        "unseen_labels/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3361,
+          "recorded": 0.3361
+        },
+        "unseen_labels/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3651,
+          "recorded": 0.3651
+        }
+      },
+      "geometry": {
+        "test_fold": {
+          "cka_frozen_whitened_tuned_whitened": 0.6895,
+          "cka_words_frozen_raw": 0.4053,
+          "cka_words_frozen_whitened": 0.6707,
+          "cka_words_tuned_new_part": 0.6482,
+          "cka_words_tuned_raw": 0.2878,
+          "cka_words_tuned_whitened": 0.6761,
+          "r2_frozen_whitened_to_tuned_whitened": 0.3047
+        },
+        "unseen_labels": {
+          "cka_frozen_whitened_tuned_whitened": 0.7005,
+          "cka_words_frozen_raw": 0.3905,
+          "cka_words_frozen_whitened": 0.6664,
+          "cka_words_tuned_new_part": 0.6361,
+          "cka_words_tuned_raw": 0.2804,
+          "cka_words_tuned_whitened": 0.6729,
+          "r2_frozen_whitened_to_tuned_whitened": 0.3427
+        }
+      },
+      "paired_contrasts": {
+        "test_fold": [
+          {
+            "ci95": [
+              0.0298,
+              0.0666
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0484,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1502,
+              0.189
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.1692,
+            "system": "tuned_new_part"
+          }
+        ],
+        "unseen_labels": [
+          {
+            "ci95": [
+              0.0124,
+              0.048
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0299,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1935,
+              0.2402
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.2162,
+            "system": "tuned_new_part"
+          }
+        ]
+      },
+      "queries": {
+        "test_fold": 1239,
+        "unseen_labels": 1041
+      },
+      "ridge_alpha_frozen_to_tuned": 1.0,
+      "systems": {
+        "test_fold": {
+          "frozen_whitened": 0.3823,
+          "null_random_1": 0.0288,
+          "null_random_2": 0.0223,
+          "null_random_3": 0.0325,
+          "null_random_mean": 0.0279,
+          "tuned_new_part": 0.2014,
+          "tuned_whitened": 0.4225
+        },
+        "unseen_labels": {
+          "frozen_whitened": 0.3361,
+          "null_random_1": 0.0311,
+          "null_random_2": 0.0247,
+          "null_random_3": 0.0224,
+          "null_random_mean": 0.0261,
+          "tuned_new_part": 0.2448,
+          "tuned_whitened": 0.3651
+        }
+      },
+      "train_songs": 4940,
+      "word_correlates": {
+        "frozen_whitened": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.03,
+            "content": 0.3,
+            "english": 0.39,
+            "function": 0.1433,
+            "multi_token": 0.0067,
+            "numeral": 0.0067,
+            "person_or_place_name": 0.0367,
+            "punctuation_or_symbol": 0.0867
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.383,
+              "negative_end": [
+                "着",
+                "与",
+                "的",
+                "中",
+                "世界",
+                "却",
+                "谁",
+                "自己",
+                "也",
+                "可",
+                "这",
+                "生命",
+                "又",
+                "人们",
+                "而"
+              ],
+              "positive_end": [
+                "i",
+                "my",
+                "like",
+                "老子",
+                "on",
+                "me",
+                "money",
+                "耍",
+                "a",
+                "got",
+                "im",
+                "in",
+                "他们",
+                "it",
+                "they"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.221,
+              "negative_end": [
+                "i",
+                "in",
+                "the",
+                "a",
+                "t",
+                "you",
+                ",",
+                "’",
+                "it",
+                "my",
+                "to",
+                "me",
+                "be",
+                "don",
+                "and"
+              ],
+              "positive_end": [
+                "要",
+                "就",
+                "都",
+                "兄弟",
+                "是",
+                "跟",
+                "得",
+                "我",
+                "说唱",
+                "给",
+                "你们",
+                "来",
+                "不",
+                "有",
+                "看"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.245,
+              "negative_end": [
+                "老子",
+                "耍",
+                "晓得",
+                "个",
+                "不得",
+                "啥子",
+                "脑壳",
+                "咋个",
+                "北门",
+                "喊",
+                "搞",
+                "吃",
+                "哪个",
+                "些",
+                "儿"
+              ],
+              "positive_end": [
+                "you",
+                "i",
+                "me",
+                "the",
+                "却",
+                "'",
+                "my",
+                "为",
+                "baby",
+                "to",
+                "let",
+                "oh",
+                "know",
+                "so",
+                "/"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.301,
+              "negative_end": [
+                "我",
+                "你",
+                "的",
+                "说",
+                "了",
+                "爱",
+                "不",
+                "感情",
+                "也",
+                "就",
+                "喜欢",
+                "大哥",
+                "都",
+                "她",
+                "啊"
+              ],
+              "positive_end": [
+                "the",
+                "we",
+                "to",
+                "i",
+                "’",
+                "it",
+                "a",
+                "my",
+                "on",
+                "flow",
+                "rap",
+                "up",
+                "s",
+                "and",
+                "that"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.226,
+              "negative_end": [
+                "you",
+                "i",
+                "girl",
+                "baby",
+                "me",
+                "can",
+                "t",
+                "你",
+                "my",
+                "’",
+                "don",
+                "your",
+                "爱",
+                "love",
+                "so"
+              ],
+              "positive_end": [
+                "你们",
+                "兄弟",
+                "得",
+                "拿",
+                "老子",
+                "们",
+                "钱",
+                "说唱",
+                "他",
+                "几个",
+                "他们",
+                "吃",
+                "要",
+                "大",
+                "儿"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.202,
+              "negative_end": [
+                "卡斯",
+                "陶斯东",
+                "argo",
+                "说唱",
+                "成都",
+                "江湖",
+                "/",
+                "厂牌",
+                "巅峰",
+                "来",
+                "唱",
+                "chain",
+                "要",
+                "中国",
+                "歌手"
+              ],
+              "positive_end": [
+                "自己",
+                "选择",
+                "伤害",
+                "痛苦",
+                "一切",
+                "but",
+                "i",
+                "不想",
+                "when",
+                "却",
+                "没有",
+                "离开",
+                "但",
+                "really",
+                "to"
+              ]
+            }
+          ]
+        },
+        "tuned_new_part": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.05,
+            "content": 0.28,
+            "english": 0.4233,
+            "function": 0.0733,
+            "multi_token": 0.0133,
+            "numeral": 0.0167,
+            "person_or_place_name": 0.0267,
+            "punctuation_or_symbol": 0.1167
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.225,
+              "negative_end": [
+                "了",
+                "那些",
+                "踢",
+                "都",
+                "哥们",
+                "的",
+                "装备",
+                "是",
+                "，",
+                "们",
+                "做",
+                "也",
+                "future",
+                "aka",
+                "嘴"
+              ],
+              "positive_end": [
+                "these",
+                "wit",
+                "they",
+                "bih",
+                "aint",
+                "been",
+                "might",
+                "im",
+                "em",
+                "hard",
+                "opps",
+                "then",
+                "got",
+                "her",
+                "bands"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.128,
+              "negative_end": [
+                "of",
+                "ve",
+                "been",
+                "as",
+                "re",
+                "to",
+                "our",
+                "by",
+                "and",
+                "then",
+                "first",
+                "an",
+                "will",
+                "their",
+                "much"
+              ],
+              "positive_end": [
+                "我",
+                "的",
+                "所以",
+                "有",
+                "在",
+                "”",
+                "“",
+                "你",
+                "要",
+                "比",
+                "位置",
+                "？",
+                "athree",
+                "能",
+                "像"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.082,
+              "negative_end": [
+                "亦",
+                "见",
+                "天地",
+                "醉",
+                "如",
+                "与",
+                "top",
+                "剑",
+                "北方",
+                "富贵",
+                "大道",
+                "让",
+                "，",
+                "生活",
+                "天下"
+              ],
+              "positive_end": [
+                "婆娘",
+                "冲破",
+                "chinese",
+                "南京",
+                ")",
+                "you",
+                "find",
+                "铁",
+                "(",
+                "want",
+                "over",
+                "to",
+                "lil",
+                "where",
+                "歌手"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.123,
+              "negative_end": [
+                "，",
+                "(",
+                ")",
+                ",",
+                "’",
+                "athree",
+                "?",
+                "。",
+                "山河",
+                "their",
+                "魂",
+                "天下",
+                "剑",
+                "chinese",
+                "re"
+              ],
+              "positive_end": [
+                "啥",
+                "门口",
+                "咋",
+                "我",
+                "loyalty",
+                "不",
+                "歪",
+                "婆娘",
+                "啊",
+                "难免",
+                "不见",
+                "小伙",
+                "不出",
+                "东北",
+                "张嘴"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.088,
+              "negative_end": [
+                "的",
+                "着",
+                "青春",
+                "忙碌",
+                "早已",
+                "捡起",
+                "旧",
+                "肆无忌惮",
+                "一件",
+                "黄色",
+                "已",
+                "加油",
+                "商业",
+                "盯",
+                "却"
+              ],
+              "positive_end": [
+                "亦",
+                "印象",
+                "山河",
+                "咯",
+                "大道",
+                "嘛",
+                "得意",
+                "give",
+                "finally",
+                "录",
+                "升起",
+                "知己",
+                "无敌",
+                "/",
+                "皆"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.066,
+              "negative_end": [
+                "(",
+                ")",
+                "音乐",
+                "帽子",
+                "'",
+                "/",
+                "*",
+                "drunk",
+                "re",
+                "up",
+                "开着",
+                "stop",
+                "shit",
+                "超过",
+                "拖"
+              ],
+              "positive_end": [
+                "“",
+                "成天",
+                "o",
+                "”",
+                "诋毁",
+                "儿",
+                "这",
+                "4",
+                "尽全力",
+                "！",
+                "俺",
+                "小子",
+                "旁人",
+                "三",
+                "事儿"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "checks_against_recorded_analysis": {
+        "test_fold/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3675,
+          "recorded": 0.3675
+        },
+        "test_fold/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.415,
+          "recorded": 0.415
+        },
+        "unseen_labels/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.336,
+          "recorded": 0.336
+        },
+        "unseen_labels/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3524,
+          "recorded": 0.3524
+        }
+      },
+      "geometry": {
+        "test_fold": {
+          "cka_frozen_whitened_tuned_whitened": 0.6825,
+          "cka_words_frozen_raw": 0.3876,
+          "cka_words_frozen_whitened": 0.6572,
+          "cka_words_tuned_new_part": 0.6358,
+          "cka_words_tuned_raw": 0.2672,
+          "cka_words_tuned_whitened": 0.6648,
+          "r2_frozen_whitened_to_tuned_whitened": 0.301
+        },
+        "unseen_labels": {
+          "cka_frozen_whitened_tuned_whitened": 0.6967,
+          "cka_words_frozen_raw": 0.3905,
+          "cka_words_frozen_whitened": 0.6651,
+          "cka_words_tuned_new_part": 0.6344,
+          "cka_words_tuned_raw": 0.2672,
+          "cka_words_tuned_whitened": 0.675,
+          "r2_frozen_whitened_to_tuned_whitened": 0.3332
+        }
+      },
+      "paired_contrasts": {
+        "test_fold": [
+          {
+            "ci95": [
+              0.0301,
+              0.0661
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0485,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1531,
+              0.191
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.1719,
+            "system": "tuned_new_part"
+          }
+        ],
+        "unseen_labels": [
+          {
+            "ci95": [
+              0.0026,
+              0.0391
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0202,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1812,
+              0.2273
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.2039,
+            "system": "tuned_new_part"
+          }
+        ]
+      },
+      "queries": {
+        "test_fold": 1284,
+        "unseen_labels": 1041
+      },
+      "ridge_alpha_frozen_to_tuned": 1.0,
+      "systems": {
+        "test_fold": {
+          "frozen_whitened": 0.3675,
+          "null_random_1": 0.0272,
+          "null_random_2": 0.0264,
+          "null_random_3": 0.0269,
+          "null_random_mean": 0.0268,
+          "tuned_new_part": 0.1957,
+          "tuned_whitened": 0.415
+        },
+        "unseen_labels": {
+          "frozen_whitened": 0.336,
+          "null_random_1": 0.0298,
+          "null_random_2": 0.0314,
+          "null_random_3": 0.0249,
+          "null_random_mean": 0.0287,
+          "tuned_new_part": 0.23,
+          "tuned_whitened": 0.3524
+        }
+      },
+      "train_songs": 4895,
+      "word_correlates": {
+        "frozen_whitened": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.03,
+            "content": 0.2633,
+            "english": 0.4267,
+            "function": 0.1567,
+            "multi_token": 0.0033,
+            "numeral": 0.0067,
+            "person_or_place_name": 0.0233,
+            "punctuation_or_symbol": 0.09
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.399,
+              "negative_end": [
+                "着",
+                "与",
+                "的",
+                "中",
+                "谁",
+                "世界",
+                "却",
+                "这",
+                "自己",
+                "也",
+                "可",
+                "梦",
+                "和",
+                "而",
+                "里"
+              ],
+              "positive_end": [
+                "i",
+                "like",
+                "my",
+                "老子",
+                "on",
+                "me",
+                "money",
+                "got",
+                "a",
+                "im",
+                "in",
+                "the",
+                "耍",
+                "it",
+                "they"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.199,
+              "negative_end": [
+                "我",
+                "都",
+                "就",
+                "要",
+                "是",
+                "不",
+                "你",
+                "的",
+                "也",
+                "跟",
+                "兄弟",
+                "给",
+                "还",
+                "说",
+                "得"
+              ],
+              "positive_end": [
+                "i",
+                "the",
+                "in",
+                "a",
+                "it",
+                "’",
+                ",",
+                "my",
+                "to",
+                "and",
+                "t",
+                "you",
+                "be",
+                "on",
+                "can"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.217,
+              "negative_end": [
+                "you",
+                "the",
+                "i",
+                "'",
+                "my",
+                "me",
+                "to",
+                "let",
+                "so",
+                "it",
+                "s",
+                "know",
+                "oh",
+                "t",
+                "("
+              ],
+              "positive_end": [
+                "耍",
+                "老子",
+                "不得",
+                "晓得",
+                "啥子",
+                "吃",
+                "个",
+                "哪个",
+                "脑壳",
+                "儿",
+                "咋个",
+                "钱",
+                "没得",
+                "些",
+                "兄弟"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.242,
+              "negative_end": [
+                "you",
+                "baby",
+                "你",
+                "girl",
+                "i",
+                "爱",
+                "me",
+                "can",
+                "love",
+                "爱情",
+                "your",
+                "’",
+                "oh",
+                "t",
+                "我"
+              ],
+              "positive_end": [
+                "你们",
+                "兄弟",
+                "老子",
+                "得",
+                "拿",
+                "们",
+                "hiphop",
+                "钱",
+                "说唱",
+                "他们",
+                "大",
+                "几个",
+                "他",
+                "么",
+                "儿"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.281,
+              "negative_end": [
+                "我",
+                "你",
+                "的",
+                "说",
+                "爱",
+                "了",
+                "不",
+                "喜欢",
+                "都",
+                "就",
+                "也",
+                "感情",
+                "开心",
+                "陪",
+                "不想"
+              ],
+              "positive_end": [
+                "the",
+                "to",
+                "we",
+                "a",
+                "’",
+                "on",
+                "it",
+                "i",
+                "and",
+                "my",
+                "is",
+                "that",
+                "s",
+                "in",
+                "all"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.235,
+              "negative_end": [
+                "你",
+                "像",
+                "对手",
+                "比",
+                "把",
+                "厂牌",
+                "说唱",
+                "我",
+                "rapper",
+                "冠军",
+                "卡斯",
+                "cypher",
+                "给",
+                "陶斯东",
+                "你们"
+              ],
+              "positive_end": [
+                ",",
+                "in",
+                "the",
+                "免费",
+                "some",
+                "but",
+                "and",
+                "生活",
+                "to",
+                "is",
+                "，",
+                "it",
+                "a",
+                "been",
+                "of"
+              ]
+            }
+          ]
+        },
+        "tuned_new_part": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.0367,
+            "content": 0.29,
+            "english": 0.45,
+            "function": 0.07,
+            "multi_token": 0.0033,
+            "numeral": 0.0167,
+            "person_or_place_name": 0.0133,
+            "punctuation_or_symbol": 0.12
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.129,
+              "negative_end": [
+                "these",
+                "bih",
+                "aint",
+                "wit",
+                "might",
+                "opps",
+                "pull",
+                "cant",
+                "digi",
+                "im",
+                "’",
+                "they",
+                "em",
+                "hard",
+                "dont"
+              ],
+              "positive_end": [
+                "'",
+                ",",
+                "re",
+                "哥们",
+                "，",
+                "open",
+                "外",
+                "higher",
+                "world",
+                "hip",
+                "yes",
+                "装饰",
+                "beautiful",
+                "rain",
+                "their"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.147,
+              "negative_end": [
+                "，",
+                ",",
+                "ar",
+                "？",
+                "fans",
+                "扒",
+                "醉",
+                "man",
+                "您",
+                "快点",
+                "认可",
+                "噩梦",
+                "”",
+                "“",
+                "上海"
+              ],
+              "positive_end": [
+                "老子",
+                "屋头",
+                "婆娘",
+                "喊",
+                "西边",
+                "future",
+                "切",
+                "leader",
+                "dream",
+                "胆",
+                "娃儿",
+                "西部",
+                "squad",
+                "没得",
+                "娃"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.101,
+              "negative_end": [
+                "我",
+                "你",
+                "的",
+                "它",
+                "在",
+                "～",
+                "就",
+                "是",
+                "让",
+                "那",
+                "这里",
+                "着",
+                "这",
+                "呀",
+                "很"
+              ],
+              "positive_end": [
+                "of",
+                "ve",
+                "much",
+                "place",
+                "re",
+                "by",
+                "war",
+                "been",
+                "there",
+                "we",
+                "music",
+                "then",
+                "finally",
+                "but",
+                "through"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.129,
+              "negative_end": [
+                ",",
+                "”",
+                "“",
+                "athree",
+                "ay",
+                "uh",
+                "我",
+                "man",
+                "追逐",
+                "ar",
+                "风雨",
+                "不曾",
+                "has",
+                "gang",
+                "花"
+              ],
+              "positive_end": [
+                "爸",
+                "快乐",
+                "迟到",
+                "笑话",
+                "观察",
+                "伤感",
+                "wit",
+                "~",
+                "包",
+                "不经意",
+                "缝隙",
+                "racks",
+                "bass",
+                "重新",
+                "倒霉"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.134,
+              "negative_end": [
+                "哥们",
+                "都",
+                "水面",
+                "就",
+                "毒药",
+                "世上",
+                "还有",
+                "多",
+                "喝",
+                "别",
+                "撕",
+                "跟",
+                "拜托",
+                "梦见",
+                "一定"
+              ],
+              "positive_end": [
+                "，",
+                "。",
+                "、",
+                ",",
+                "亦",
+                "？",
+                "那儿",
+                "追逐",
+                "she",
+                "老子",
+                "山河",
+                "嘞",
+                "冷漠",
+                "shit",
+                "无"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.122,
+              "negative_end": [
+                "but",
+                "these",
+                "and",
+                "was",
+                "when",
+                "just",
+                "很",
+                "what",
+                "then",
+                "racks",
+                "on",
+                "getting",
+                "hard",
+                "wit",
+                "三点"
+              ],
+              "positive_end": [
+                "，",
+                "（",
+                "）",
+                "亦",
+                "(",
+                ")",
+                "“",
+                "。",
+                "天下",
+                "？",
+                "吗",
+                "”",
+                "皆",
+                "如",
+                "至"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "3": {
+      "checks_against_recorded_analysis": {
+        "test_fold/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3689,
+          "recorded": 0.3689
+        },
+        "test_fold/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.416,
+          "recorded": 0.416
+        },
+        "unseen_labels/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3433,
+          "recorded": 0.3433
+        },
+        "unseen_labels/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3685,
+          "recorded": 0.3685
+        }
+      },
+      "geometry": {
+        "test_fold": {
+          "cka_frozen_whitened_tuned_whitened": 0.6772,
+          "cka_words_frozen_raw": 0.395,
+          "cka_words_frozen_whitened": 0.66,
+          "cka_words_tuned_new_part": 0.6382,
+          "cka_words_tuned_raw": 0.2762,
+          "cka_words_tuned_whitened": 0.6679,
+          "r2_frozen_whitened_to_tuned_whitened": 0.2856
+        },
+        "unseen_labels": {
+          "cka_frozen_whitened_tuned_whitened": 0.6877,
+          "cka_words_frozen_raw": 0.3905,
+          "cka_words_frozen_whitened": 0.6645,
+          "cka_words_tuned_new_part": 0.6371,
+          "cka_words_tuned_raw": 0.2788,
+          "cka_words_tuned_whitened": 0.6737,
+          "r2_frozen_whitened_to_tuned_whitened": 0.317
+        }
+      },
+      "paired_contrasts": {
+        "test_fold": [
+          {
+            "ci95": [
+              0.0271,
+              0.0659
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0467,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1564,
+              0.1966
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.1761,
+            "system": "tuned_new_part"
+          }
+        ],
+        "unseen_labels": [
+          {
+            "ci95": [
+              0.0079,
+              0.0479
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0279,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1975,
+              0.2436
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.2197,
+            "system": "tuned_new_part"
+          }
+        ]
+      },
+      "queries": {
+        "test_fold": 1237,
+        "unseen_labels": 1041
+      },
+      "ridge_alpha_frozen_to_tuned": 1.0,
+      "systems": {
+        "test_fold": {
+          "frozen_whitened": 0.3689,
+          "null_random_1": 0.0304,
+          "null_random_2": 0.0252,
+          "null_random_3": 0.0314,
+          "null_random_mean": 0.029,
+          "tuned_new_part": 0.2034,
+          "tuned_whitened": 0.416
+        },
+        "unseen_labels": {
+          "frozen_whitened": 0.3433,
+          "null_random_1": 0.0246,
+          "null_random_2": 0.0306,
+          "null_random_3": 0.0278,
+          "null_random_mean": 0.0277,
+          "tuned_new_part": 0.2426,
+          "tuned_whitened": 0.3685
+        }
+      },
+      "train_songs": 4942,
+      "word_correlates": {
+        "frozen_whitened": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.0367,
+            "content": 0.2767,
+            "english": 0.4167,
+            "function": 0.15,
+            "multi_token": 0.0033,
+            "numeral": 0.0033,
+            "person_or_place_name": 0.0167,
+            "punctuation_or_symbol": 0.0967
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.393,
+              "negative_end": [
+                "i",
+                "my",
+                "like",
+                "老子",
+                "on",
+                "me",
+                "money",
+                "got",
+                "a",
+                "in",
+                "the",
+                "耍",
+                "they",
+                "it",
+                "t"
+              ],
+              "positive_end": [
+                "着",
+                "与",
+                "的",
+                "中",
+                "自己",
+                "世界",
+                "却",
+                "谁",
+                "这",
+                "也",
+                "可",
+                "生命",
+                "和",
+                "里",
+                "人们"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.221,
+              "negative_end": [
+                "i",
+                "a",
+                "in",
+                "the",
+                "my",
+                "it",
+                "t",
+                "you",
+                "like",
+                "’",
+                "me",
+                "be",
+                "just",
+                "can",
+                "on"
+              ],
+              "positive_end": [
+                "要",
+                "就",
+                "是",
+                "也",
+                "都",
+                "那",
+                "兄弟",
+                "人",
+                "得",
+                "谁",
+                "的",
+                "跟",
+                "来",
+                "有",
+                "还"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.264,
+              "negative_end": [
+                "耍",
+                "老子",
+                "啥子",
+                "不得",
+                "晓得",
+                "脑壳",
+                "哪个",
+                "儿",
+                "吃",
+                "个",
+                "咋个",
+                "搞",
+                "兄弟",
+                "喊",
+                "没得"
+              ],
+              "positive_end": [
+                "the",
+                "you",
+                "i",
+                "to",
+                "my",
+                "me",
+                "'",
+                "it",
+                "is",
+                "know",
+                "and",
+                "so",
+                "let",
+                "s",
+                "t"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.231,
+              "negative_end": [
+                "我",
+                "你",
+                "爱",
+                "的",
+                "girl",
+                "baby",
+                "陪",
+                "爱情",
+                "回忆",
+                "难过",
+                "离开",
+                "浪漫",
+                "温柔",
+                "感情",
+                "快乐"
+              ],
+              "positive_end": [
+                "hiphop",
+                "你们",
+                "rapper",
+                "flow",
+                "说唱",
+                "歌词",
+                "cypher",
+                "地下",
+                "rap",
+                "beat",
+                "underground",
+                "兄弟",
+                "们",
+                "mic",
+                "da"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.283,
+              "negative_end": [
+                "i",
+                "you",
+                "the",
+                "’",
+                "me",
+                "my",
+                "can",
+                "t",
+                "to",
+                "it",
+                "we",
+                "on",
+                "and",
+                "a",
+                "that"
+              ],
+              "positive_end": [
+                "兄弟",
+                "都",
+                "吃",
+                "要",
+                "钱",
+                "老子",
+                "不",
+                "他",
+                "得",
+                "儿",
+                "了",
+                "勒",
+                "大哥",
+                "就",
+                "大"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.267,
+              "negative_end": [
+                "重庆",
+                ",",
+                "，",
+                "免费",
+                "晓得",
+                "广东",
+                "哩",
+                "it",
+                "ar",
+                "社会",
+                "the",
+                "c",
+                "佬",
+                "钱",
+                "and"
+              ],
+              "positive_end": [
+                "你",
+                "我",
+                "的",
+                "让",
+                "会",
+                "爱",
+                "也",
+                "对",
+                "没有",
+                "被",
+                "没",
+                "不会",
+                "像",
+                "想",
+                "我会"
+              ]
+            }
+          ]
+        },
+        "tuned_new_part": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.03,
+            "content": 0.2633,
+            "english": 0.5033,
+            "function": 0.0567,
+            "multi_token": 0.0033,
+            "numeral": 0.0067,
+            "person_or_place_name": 0.0367,
+            "punctuation_or_symbol": 0.1
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.144,
+              "negative_end": [
+                "these",
+                "wit",
+                "bih",
+                "im",
+                "aint",
+                "might",
+                "they",
+                "em",
+                "ap",
+                "gon",
+                "bout",
+                "cant",
+                "racks",
+                "ho",
+                "u"
+              ],
+              "positive_end": [
+                "'",
+                "athree",
+                "\"",
+                "感",
+                "下",
+                "little",
+                ",",
+                "法拉利",
+                "个",
+                "黑",
+                "怕",
+                "根本",
+                "黑色",
+                "特别",
+                "妈妈"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.1,
+              "negative_end": [
+                "，",
+                "天地",
+                "？",
+                "剑",
+                "山河",
+                "江湖",
+                "入",
+                "亦",
+                "these",
+                "天下",
+                "脚踏实地",
+                "天涯",
+                "红尘",
+                "皆",
+                "move"
+              ],
+              "positive_end": [
+                "gai",
+                "掐",
+                "期盼",
+                "黑人",
+                "大哥",
+                "义气",
+                "来到",
+                "朝着",
+                "x",
+                "伙伴",
+                "新疆",
+                "那些",
+                "集体",
+                "父亲",
+                "四季"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.12,
+              "negative_end": [
+                "，",
+                "正确",
+                "诗",
+                "您",
+                "亦",
+                "boss",
+                "。",
+                "至",
+                "坠入",
+                "与",
+                "上",
+                "champion",
+                "难以",
+                "街",
+                "意思"
+              ],
+              "positive_end": [
+                "these",
+                "wit",
+                "im",
+                "hard",
+                "but",
+                "aint",
+                "might",
+                "made",
+                "she",
+                "bih",
+                "too",
+                "as",
+                "they",
+                "been",
+                "was"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.081,
+              "negative_end": [
+                "when",
+                "war",
+                "of",
+                "even",
+                "together",
+                "as",
+                "people",
+                "through",
+                "other",
+                "first",
+                "those",
+                "our",
+                "and",
+                "their",
+                "we"
+              ],
+              "positive_end": [
+                "“",
+                "”",
+                "我",
+                "你",
+                "陶斯东",
+                "hop",
+                "卡斯",
+                "所以",
+                "argo",
+                "hip",
+                "digi",
+                "无法",
+                "pull",
+                "’",
+                "bae"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.07,
+              "negative_end": [
+                "been",
+                "北门",
+                "ve",
+                "but",
+                "》",
+                "《",
+                "月",
+                "凶",
+                "sing",
+                "啥子",
+                "of",
+                "_",
+                "直",
+                "」",
+                "「"
+              ],
+              "positive_end": [
+                "，",
+                "您",
+                "rap",
+                "配",
+                "街头",
+                "都",
+                "历练",
+                "仔",
+                "他",
+                "ar",
+                "u",
+                "呐",
+                "看看",
+                "好戏",
+                "游荡"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.067,
+              "negative_end": [
+                "time",
+                "老子",
+                "理解",
+                "停歇",
+                "of",
+                "北门",
+                "then",
+                "以",
+                "键盘",
+                "艺术家",
+                "传来",
+                "same",
+                "抑郁",
+                "whole",
+                "晓得"
+              ],
+              "positive_end": [
+                "（",
+                "，",
+                "）",
+                "style",
+                "诚实",
+                "穿梭",
+                "着",
+                "眉头",
+                "ar",
+                "新疆",
+                "登场",
+                "虽",
+                "stand",
+                "athree",
+                "babe"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "4": {
+      "checks_against_recorded_analysis": {
+        "test_fold/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.4005,
+          "recorded": 0.4005
+        },
+        "test_fold/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.4328,
+          "recorded": 0.4328
+        },
+        "unseen_labels/frozen_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.3315,
+          "recorded": 0.3315
+        },
+        "unseen_labels/tuned_whitened": {
+          "gap": 0.0,
+          "recomputed": 0.36,
+          "recorded": 0.36
+        }
+      },
+      "geometry": {
+        "test_fold": {
+          "cka_frozen_whitened_tuned_whitened": 0.6803,
+          "cka_words_frozen_raw": 0.4061,
+          "cka_words_frozen_whitened": 0.6704,
+          "cka_words_tuned_new_part": 0.6442,
+          "cka_words_tuned_raw": 0.2553,
+          "cka_words_tuned_whitened": 0.6747,
+          "r2_frozen_whitened_to_tuned_whitened": 0.2882
+        },
+        "unseen_labels": {
+          "cka_frozen_whitened_tuned_whitened": 0.6888,
+          "cka_words_frozen_raw": 0.3905,
+          "cka_words_frozen_whitened": 0.6657,
+          "cka_words_tuned_new_part": 0.6351,
+          "cka_words_tuned_raw": 0.2479,
+          "cka_words_tuned_whitened": 0.6725,
+          "r2_frozen_whitened_to_tuned_whitened": 0.3229
+        }
+      },
+      "paired_contrasts": {
+        "test_fold": [
+          {
+            "ci95": [
+              0.0064,
+              0.0434
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0248,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1704,
+              0.2107
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.1901,
+            "system": "tuned_new_part"
+          }
+        ],
+        "unseen_labels": [
+          {
+            "ci95": [
+              0.0114,
+              0.0488
+            ],
+            "excludes_zero": true,
+            "minus": "frozen_whitened",
+            "mrr_difference": 0.0291,
+            "system": "tuned_whitened"
+          },
+          {
+            "ci95": [
+              0.1952,
+              0.2407
+            ],
+            "excludes_zero": true,
+            "minus": "null_random_1",
+            "mrr_difference": 0.2173,
+            "system": "tuned_new_part"
+          }
+        ]
+      },
+      "queries": {
+        "test_fold": 1232,
+        "unseen_labels": 1041
+      },
+      "ridge_alpha_frozen_to_tuned": 1.0,
+      "systems": {
+        "test_fold": {
+          "frozen_whitened": 0.4005,
+          "null_random_1": 0.0232,
+          "null_random_2": 0.0268,
+          "null_random_3": 0.0248,
+          "null_random_mean": 0.0249,
+          "tuned_new_part": 0.2143,
+          "tuned_whitened": 0.4328
+        },
+        "unseen_labels": {
+          "frozen_whitened": 0.3315,
+          "null_random_1": 0.0246,
+          "null_random_2": 0.0315,
+          "null_random_3": 0.028,
+          "null_random_mean": 0.028,
+          "tuned_new_part": 0.2407,
+          "tuned_whitened": 0.36
+        }
+      },
+      "train_songs": 4947,
+      "word_correlates": {
+        "frozen_whitened": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.0333,
+            "content": 0.3233,
+            "english": 0.37,
+            "function": 0.1533,
+            "multi_token": 0.0033,
+            "numeral": 0.0033,
+            "person_or_place_name": 0.0267,
+            "punctuation_or_symbol": 0.0867
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.394,
+              "negative_end": [
+                "i",
+                "my",
+                "like",
+                "老子",
+                "on",
+                "me",
+                "money",
+                "a",
+                "got",
+                "in",
+                "im",
+                "she",
+                "耍",
+                "t",
+                "the"
+              ],
+              "positive_end": [
+                "着",
+                "与",
+                "中",
+                "的",
+                "世界",
+                "自己",
+                "谁",
+                "却",
+                "这",
+                "也",
+                "可",
+                "又",
+                "人",
+                "而",
+                "那"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.219,
+              "negative_end": [
+                "i",
+                "you",
+                "the",
+                "in",
+                "my",
+                "me",
+                "it",
+                "t",
+                "a",
+                "’",
+                "be",
+                ",",
+                "don",
+                "to",
+                "and"
+              ],
+              "positive_end": [
+                "兄弟",
+                "老子",
+                "你们",
+                "得",
+                "耍",
+                "就",
+                "跟",
+                "说唱",
+                "都",
+                "是",
+                "要",
+                "给",
+                "哪个",
+                "搞",
+                "个"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.208,
+              "negative_end": [
+                "you",
+                "the",
+                "me",
+                "i",
+                "my",
+                "to",
+                "'",
+                "know",
+                "let",
+                "/",
+                "is",
+                "m",
+                "it",
+                "for",
+                "却"
+              ],
+              "positive_end": [
+                "耍",
+                "老子",
+                "不得",
+                "啥子",
+                "脑壳",
+                "晓得",
+                "北门",
+                "咋个",
+                "儿",
+                "观察",
+                "个",
+                "切",
+                "吃",
+                "莫得",
+                "没得"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.283,
+              "negative_end": [
+                "我",
+                "你",
+                "爱",
+                "的",
+                "陪",
+                "baby",
+                "离开",
+                "girl",
+                "回忆",
+                "爱情",
+                "难过",
+                "温柔",
+                "感情",
+                "在",
+                "很"
+              ],
+              "positive_end": [
+                "rapper",
+                "说唱",
+                "flow",
+                "你们",
+                "hiphop",
+                "rap",
+                "beat",
+                "歌词",
+                "cypher",
+                "the",
+                "他们",
+                "da",
+                "们",
+                "地下",
+                "mic"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.279,
+              "negative_end": [
+                "i",
+                "’",
+                "the",
+                "you",
+                "t",
+                "and",
+                "my",
+                "to",
+                "it",
+                "a",
+                "me",
+                "can",
+                "we",
+                "on",
+                "that"
+              ],
+              "positive_end": [
+                "都",
+                "我",
+                "兄弟",
+                "的",
+                "老子",
+                "要",
+                "不",
+                "钱",
+                "了",
+                "吃",
+                "儿",
+                "勒",
+                "也",
+                "就",
+                "是"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.171,
+              "negative_end": [
+                "我",
+                "自己",
+                "不想",
+                "没有",
+                "一切",
+                "离开",
+                "你",
+                "伤害",
+                "却",
+                "会",
+                "痛苦",
+                "选择",
+                "为什么",
+                "让",
+                "忘记"
+              ],
+              "positive_end": [
+                "江湖",
+                "说唱",
+                "卡斯",
+                "陶斯东",
+                "argo",
+                "佬",
+                "-",
+                "ar",
+                "要",
+                "吃",
+                "兄弟",
+                "》",
+                "《",
+                "老板",
+                "重庆"
+              ]
+            }
+          ]
+        },
+        "tuned_new_part": {
+          "category_share_of_most_correlated_words": {
+            "adverb": 0.02,
+            "content": 0.2267,
+            "english": 0.5333,
+            "function": 0.09,
+            "multi_token": 0.0067,
+            "numeral": 0.01,
+            "person_or_place_name": 0.01,
+            "punctuation_or_symbol": 0.1033
+          },
+          "directions": [
+            {
+              "direction": 1,
+              "largest_abs_correlation": 0.144,
+              "negative_end": [
+                ",",
+                "'",
+                "re",
+                "of",
+                "will",
+                "and",
+                "our",
+                "are",
+                "world",
+                "their",
+                "哥们",
+                "people",
+                "by",
+                "finally",
+                "团队"
+              ],
+              "positive_end": [
+                "these",
+                "bih",
+                "wit",
+                "aint",
+                "im",
+                "might",
+                "bands",
+                "opps",
+                "she",
+                "cant",
+                "pull",
+                "hunnid",
+                "neck",
+                "they",
+                "bish"
+              ]
+            },
+            {
+              "direction": 2,
+              "largest_abs_correlation": 0.154,
+              "negative_end": [
+                "哥们",
+                "你",
+                "很",
+                "c",
+                "我",
+                "就",
+                "好像",
+                "免费",
+                "秘密",
+                "那么",
+                "里面",
+                "劳资",
+                "私信",
+                "loyalty",
+                "fxxk"
+              ],
+              "positive_end": [
+                "，",
+                "亦",
+                "山河",
+                "。",
+                "天下",
+                "、",
+                "与",
+                "皆",
+                "知",
+                "红尘",
+                "尽",
+                ",",
+                "剑",
+                "世间",
+                "”"
+              ]
+            },
+            {
+              "direction": 3,
+              "largest_abs_correlation": 0.105,
+              "negative_end": [
+                "，",
+                "的",
+                "”",
+                "“",
+                "了",
+                "ar",
+                "你",
+                "是",
+                "着",
+                "在",
+                "买单",
+                "爷爷",
+                "嘴巴",
+                "没有",
+                "对"
+              ],
+              "positive_end": [
+                "these",
+                "been",
+                "hard",
+                "big",
+                "they",
+                "opps",
+                "out",
+                "of",
+                "a",
+                "in",
+                "the",
+                "finally",
+                "be",
+                "on",
+                "ve"
+              ]
+            },
+            {
+              "direction": 4,
+              "largest_abs_correlation": 0.098,
+              "negative_end": [
+                "我们",
+                "传递",
+                "天堂",
+                "红尘",
+                "啥子",
+                "山河",
+                "铁",
+                "北门",
+                "惨",
+                "锋芒",
+                "月",
+                "人民",
+                "可能",
+                "信念",
+                "莫得"
+              ],
+              "positive_end": [
+                "ve",
+                "we",
+                "they",
+                "of",
+                "been",
+                "then",
+                "all",
+                "and",
+                "days",
+                ",",
+                "just",
+                "in",
+                "first",
+                "wit",
+                "the"
+              ]
+            },
+            {
+              "direction": 5,
+              "largest_abs_correlation": 0.135,
+              "negative_end": [
+                "’",
+                "ain",
+                "s",
+                "that",
+                "a",
+                "(",
+                ")",
+                ",",
+                "digi",
+                "ve",
+                "been",
+                "tryna",
+                "in",
+                "he",
+                "be"
+              ],
+              "positive_end": [
+                "我",
+                "的",
+                "是",
+                "了",
+                "不",
+                "能够",
+                "你",
+                "立刻",
+                "长",
+                "爱情",
+                "人心",
+                "躺",
+                "印象",
+                "都",
+                "直"
+              ]
+            },
+            {
+              "direction": 6,
+              "largest_abs_correlation": 0.066,
+              "negative_end": [
+                "力",
+                "their",
+                "正是",
+                "without",
+                "of",
+                "这座",
+                "but",
+                "黑人",
+                "full",
+                "餐厅",
+                "文字",
+                "集体",
+                "歌词",
+                "提起",
+                "烂"
+              ],
+              "positive_end": [
+                "，",
+                "给",
+                "出手",
+                "压力",
+                "你",
+                "正确",
+                "嘛",
+                "味道",
+                "佬",
+                "stop",
+                "小弟",
+                "说",
+                "athree",
+                "出去",
+                "哩"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "privacy": "aggregate only; the listed words are common vocabulary in at least 50 songs, no lyric line is published"
+}

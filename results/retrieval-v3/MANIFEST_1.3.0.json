@@ -33,6 +33,13 @@
       "sha256": "a8580143e3f6c4319416593cfcdf406fda17ea9e83e601e9f5f68bdc8775b7a2",
       "written": "2026-09-10T19:52"
     },
+    "finetune_learned_identity.json": {
+      "arm": "finetune_learned_identity_v3 (part A, descriptive), folds 0-4",
+      "completed_in_pipeline": false,
+      "run": "2026-09-16, CPU, all five folds in one run; every fold's whitened MRRs checked against its analysis file",
+      "sha256": "fe4ef28b4a55474905a37a9344b25b314beb36553d214d151259b96e45b036c6",
+      "written": "2026-09-16T16:58"
+    },
     "identity_encoder_analysis_fold0.json": {
       "arm": "analyse_identity_encoder_v3 fold 0 baseline",
       "completed_in_pipeline": false,
