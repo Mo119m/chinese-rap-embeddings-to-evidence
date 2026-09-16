@@ -597,6 +597,7 @@ folds finish; the rule is the one above.
 | 1 | 1,239 | +0.048 [+0.030, +0.067] | +0.030 [+0.012, +0.048] | +0.014 [−0.001, +0.030] | +0.039 [+0.018, +0.060] | 50.5 |
 | 2 | 1,284 | +0.049 [+0.030, +0.066] | +0.020 [+0.003, +0.039] | +0.014 [−0.002, +0.032] | +0.040 [+0.019, +0.062] | 43.0 |
 | 3 | 1,237 | +0.047 [+0.027, +0.066] | +0.028 [+0.008, +0.048] | +0.017 [−0.002, +0.036] | +0.047 [+0.026, +0.069] | 46.1 |
+| 4 | 1,232 | +0.025 [+0.006, +0.043] | +0.029 [+0.011, +0.049] | +0.016 [−0.001, +0.033] | +0.036 [+0.015, +0.058] | 35.7 |
 
 Fold 1 (stopped three times for a game and resumed from its checkpoints at steps 190, 280 and
 420) passes the rule: +0.030 on the unseen labels with the interval clear of zero. Its
@@ -610,10 +611,36 @@ its fusion pattern is fold 1's (+0.021 [+0.007, +0.035] on the test fold, +0.014
 interruption) passes, +0.028 [+0.008, +0.048]; it is the first fold where the raw tuned space
 is not below the frozen one on the test fold (+0.005 [−0.012, +0.022]), and the first where
 the fusion gain over the whitened frozen fusion misses on the test fold as well (+0.015
-[−0.001, +0.031]; unseen +0.017 [−0.002, +0.036]; against the words alone +0.047). So far
-every launch passes the main rule. The fusion gain over the whitened frozen fusion is
-significant in fold 0 (both scopes, both seeds) and on the test folds of 1 and 2, and misses
-narrowly elsewhere; against the words alone it is significant everywhere.
+[−0.001, +0.031]; unseen +0.017 [−0.002, +0.036]; against the words alone +0.047). Fold 4
+(478 steps; resumed from checkpoints at steps 50, 130 and 370 after two stops for a game and
+one for battery power) passes, +0.029 [+0.011, +0.049], with the smallest test-fold gain,
++0.025 [+0.006, +0.043].
+
+All five folds pass the rule written before the first run: unseen-label gains of +0.020 to
++0.039 with one launch per fold (+0.050 on fold 0's second seed), test-fold gains of +0.025 to
++0.049. Pooled over the five test folds, so that each of the 6,179 songs of the 192 seen
+labels is scored once as an out-of-fold query under the adapter that never saw its fold:
+
+| pooled over the five test folds | MRR |
+|---|---|
+| frozen, masked text | 0.284 |
+| fine-tuned | 0.273 |
+| frozen + within-author whitening | 0.384 |
+| fine-tuned + within-author whitening | 0.425 |
+| words | 0.509 |
+| whitened frozen fused with words | 0.523 |
+| whitened fine-tuned fused with words | 0.543 |
+
+The pooled numbers are query-weighted means of the per-fold values and carry no interval:
+the folds are disjoint query sets scored under different adapters. The fusion gain over the
+whitened frozen fusion is significant in fold 0 (both scopes, both seeds) and on the test
+folds of 1, 2 and 4, and not on the unseen labels of folds 1 to 4 (+0.014 to +0.017, each
+interval touching zero); against the words alone it is significant everywhere, +0.036 to
++0.066 on the unseen labels. Reading: with a 64-anchor batch, contrastive adaptation learns
+identity beyond within-author whitening in every fold, and the learned part transfers to
+labels never trained on. Fused with the words it beats the words alone everywhere and the
+whitened frozen fusion on seen labels; on unseen labels that last margin is small and not
+established. The raw tuned space stays below the frozen one in four folds of five.
 
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 

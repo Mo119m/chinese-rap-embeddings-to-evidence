@@ -82,6 +82,13 @@
       "sha256": "ff5fb1868dcd663793df6c62737088ea16e885a9d4a0eb83aa8e6fd7eebd6988",
       "written": "2026-09-15T17:35"
     },
+    "identity_encoder_analysis_fold4_gradcache64.json": {
+      "arm": "analyse_identity_encoder_v3 fold 4, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-16 11:44-11:45",
+      "sha256": "02d3f99cc6a4bc92538b2643e3ad86effe4605dd3d0d1f56cc8cb9569822af85",
+      "written": "2026-09-16T11:45"
+    },
     "identity_encoder_fold0.json": {
       "arm": "train_identity_encoder_v3 fold 0 baseline",
       "completed_in_pipeline": false,
@@ -130,6 +137,13 @@
       "run": "run_v3_gte_and_folds_queue.sh, 2026-09-15 14:00-17:35, no interruption",
       "sha256": "d4af405d271c035b5919890f934106d26a4b158a1b3b6eeef318c1ec263c6c33",
       "written": "2026-09-15T17:35"
+    },
+    "identity_encoder_fold4_gradcache64.json": {
+      "arm": "train_identity_encoder_v3 fold 4, GradCache 64 anchors",
+      "completed_in_pipeline": false,
+      "run": "run_v3_gte_and_folds_queue.sh, 2026-09-15 17:36 to 2026-09-16 11:44; stopped twice for a game and once for battery power, resumed from checkpoints at steps 50, 130, 370; suspended by standby overnight",
+      "sha256": "4ddd4b9fe43742966e1920c625081969e0741c405c7e537296d0a6ab57861b3d",
+      "written": "2026-09-16T11:44"
     },
     "identity_encoder_grad_cache_check_gradcache.json": {
       "arm": "train_identity_encoder_v3 --check-grad-cache",
