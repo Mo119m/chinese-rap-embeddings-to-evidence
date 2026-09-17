@@ -726,6 +726,95 @@ mostly from in-sample songs. In fold 0 that lowers the whitened word SVD on the 
 0.582 (SVD fitted on all songs, which uses no labels) to 0.561 (fitted on the training folds, as
 in `word_space_probe.json`). The published word-SVD numbers are therefore conservative.
 
+**What the fine-tune learned, part B: masking query words** (`finetune_cue_masking.json`,
+`src/finetune_cue_masking_v3.py`). Each fold's query songs (its test-fold songs and the 1,041
+songs of the 34 unseen labels) are re-encoded by the fold's adapter and by the same model with the
+adapter disabled, with one kind of word replaced by the tokenizer's mask token: English tokens
+(jieba words containing a Latin letter) or the 100 Han words found in the most songs. A control
+replaces other words of the same chunk, chosen at random. Label profiles stay unmasked, and
+whitening is fitted on the unmasked training songs. Dependence is the tuned model's advantage over
+the frozen one under the control minus that advantage under masking the kind of word, with a group
+bootstrap interval per fold. The rule, written before the first run: the advantage rests on a kind
+of word if dependence clears zero in at least four of five folds, and does not if it fails to in at
+least four.
+
+Checks in every fold: 256 unmasked query chunks reproduce the saved vectors of both models (minimum
+cosine 1.000); every masked encoding stored by an earlier run reproduces from the rebuilt texts on 64
+chunks (minimum cosine 1.000); stage 2 rebuilds every masked text and matches stage 1's digests; the unmasked MRRs
+equal the analysis files (gap 0.000).
+
+The design grew four times, each step recorded in the script before the result it could affect:
+
+1. After fold 0's word counts and before any masked MRR: English-dominated chunks have too few
+   other words for a full control. The rule is also applied to the songs whose every chunk has a
+   full control, and a reading is kept only when all songs and those songs agree.
+2. After fold 0's result: a control can remove the advantage by itself, which leaves nothing for
+   dependence to show. A reading other than "rests on" is marked uninformative unless the advantage
+   under the control clears zero in at least four folds.
+3. After folds 0–2 with the word-matched control, before any token-matched MRR: the masked words
+   differ in length from their controls (table below). A control matched in model tokens was added,
+   and an overall reading is stated only when the word- and token-matched controls agree.
+4. After all five folds with those two, before any single-token MRR: every common Han word is one
+   model token, so the token-matched control masks fewer words and places fewer mask tokens. A
+   control of as many words drawn only from one-token words matches words, mask tokens and, for the
+   common words, model tokens. A token-matched "rests on" is attributed to the words only if this
+   control also gives an informative "rests on".
+
+| per fold (7,051–8,060 query chunks) | words masked | model tokens | characters |
+|---|---|---|---|
+| English tokens | 182,191–192,226 (16%) | 224,391–236,686 | 668,386–706,716 |
+| word-matched control | 154,767–163,301 | 191,559–202,548 | 235,715–248,383 |
+| token-matched control | 153,201–163,763 | 189,355–202,360 | 232,970–248,199 |
+| single-token control | 150,182–158,166 | 150,182–158,166 | 200,754–210,645 |
+| 100 common Han words | 373,387–386,235 (33%) | 373,387–386,235 | 422,053–436,122 |
+| word-matched control | 368,992–381,454 | 519,861–536,556 | 807,411–833,687 |
+| token-matched control | 267,649–277,427 | 374,539–387,603 | 586,782–607,762 |
+| single-token control | 336,868–347,887 | 336,868–347,887 | 665,271–685,792 |
+
+English controls fall short of their target mostly in English-dominated chunks.
+
+**Both encoders lean on English tokens.** Masking them lowers MRR more than masking the control
+words, in every fold, under every control, for both models: on the test folds by +0.097 to +0.132
+for the frozen encoder and +0.115 to +0.151 for the tuned one, on the unseen labels by +0.061 to
++0.079 and +0.056 to +0.102. Masking the common Han words lowers MRR no more than the single-token
+control (frozen, test folds: −0.024 to −0.000), which removes about 1.6 times their characters.
+
+**Dependence of the tuned advantage** (unmasked advantage +0.025 to +0.049 on the test folds,
++0.020 to +0.039 on the unseen labels):
+
+| test folds | all songs: dependence, folds clear of zero | songs with a full control |
+|---|---|---|
+| English, word-matched | +0.011 to +0.033, 3 of 5 | +0.016 to +0.041, 4 of 5 (923–1,004 songs) |
+| English, token-matched | +0.014 to +0.040, 2 of 5 | +0.020 to +0.043, 4 of 5 (914–989 songs) |
+| English, single-token | +0.009 to +0.030, 2 of 5 | +0.022 to +0.029, 5 of 5 (880–959 songs) |
+| common Han, word-matched | −0.002 to +0.008, 0 of 5; the control alone removes the advantage in 4 folds | −0.003 to +0.012, 0 of 5 |
+| common Han, token-matched | +0.011 to +0.029, 4 of 5; the advantage survives the control in 5 folds | +0.009 to +0.031, 4 of 5 |
+| common Han, single-token | +0.005 to +0.012, 0 of 5; the control alone removes the advantage in 3 folds | −0.002 to +0.022, 0 of 5 (624–677 songs) |
+
+Readings by the rules above:
+
+- **English tokens, test folds:** "depends on the songs whose control is short", under all three
+  controls. All 30 fold estimates are positive. Dependence clears zero in 4, 4 and 5 folds among the
+  three quarters of test songs with a full control, and in 2–3 folds over all songs.
+- **Common Han words, test folds:** the word- and token-matched controls disagree. The single-token
+  control shows no dependence in any fold, so the token-matched dependence could come from the
+  number of mask tokens rather than from the words.
+- **Unseen labels:** uninformative for both kinds of word under all three controls. Masking a sixth
+  of the words at random (the English controls) already takes the advantage below significance in two
+  or three folds, and a third (the common-word controls) in four or five. English dependence clears
+  zero only in folds 3 and 4, and not under every control. The unseen-label queries are the same 1,041
+  songs in every fold, so these five results share their queries.
+
+Reading. On labels it was trained on, the fine-tune's extra identity leans on English tokens beyond
+their amount, whether amount is counted in words, model tokens or mask tokens, in the songs where a
+full control can be built. This matches part A's English-leaning directions, but the rule does not
+state it for all songs. There is no evidence that the extra identity rests on the common Han words:
+a dependence that the token-matched control showed disappeared once mask tokens were matched as
+well. What the part that transfers to new labels rests on, this test cannot say. Limits: a mask
+token starts a new tokenizer piece, so masked texts can be longer in model tokens than the original
+(masking the common words adds about 14 tokens per chunk). For the 1,091–1,148 chunks per fold
+that reach the 512-token limit, masking changes how much of the end the model reads.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,669 over 512; all 226 labels have at least two

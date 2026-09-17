@@ -37,6 +37,11 @@ is kept because steps 4 through 9 still stand.
 deleted, together with `fix/release-integrity` and `codex/release-integrity-publication`,
 both already contained in `main`. `main` is the only branch; work continues on it.
 
+**Status, 16 September 2026.** The lyrics used are the cleaned corpus only; the raw NetEase
+crawl is not used, so uploader, lyricist and release-date questions stay out of scope and go
+to the limitations. The fine-tune analyses (part A description, part B masking with three
+controls) are in `results/retrieval-v3/README.md`.
+
 The order of work is not negotiable, and merging is the LAST step, not the first:
 
 1. agree the scientific boundary between the two branches

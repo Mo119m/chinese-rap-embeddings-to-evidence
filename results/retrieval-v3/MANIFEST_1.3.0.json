@@ -290,6 +290,13 @@
       "completed_in_pipeline": true,
       "sha256": "d2342714acb5eb442857b9571a341894b1e08763f25c9b2d1b4109c9b5e32d50",
       "written": "2026-09-10T17:15"
+    },
+    "finetune_cue_masking.json": {
+      "arm": "finetune_cue_masking_v3 (part B, masking query words), folds 0-4",
+      "completed_in_pipeline": false,
+      "run": "2026-09-16, stage 1 on the GPU per fold, stage 2 on the CPU over all five folds; checks: saved vectors, stored encodings re-encoded from the rebuilt texts, text digests, recorded unmasked MRRs",
+      "sha256": "681046e14a59520d1e54d7277b03ea47a372d198eefd4fce2799f9ab549de27a",
+      "written": "2026-09-16T23:42"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
