@@ -1,0 +1,665 @@
+{
+  "analysis": "prototype scoring against Z-normalised and noise-corrected profiles, read by label size",
+  "by_band": {
+    "10-19": {
+      "counts_for_the_rule": true,
+      "headline_contrasts": {
+        "noise_corrected": [
+          {
+            "ci95": [
+              0.1641,
+              0.2392
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.2025,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.0239,
+              0.0987
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/noise_corrected",
+            "mrr_difference": 0.0608,
+            "system": "words_svd_whitened/noise_corrected"
+          }
+        ],
+        "prototype": [
+          {
+            "ci95": [
+              -0.0422,
+              0.0292
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": -0.0068,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              0.0047,
+              0.0713
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/prototype",
+            "mrr_difference": 0.0378,
+            "system": "words_svd_whitened/prototype"
+          }
+        ],
+        "znorm": [
+          {
+            "ci95": [
+              0.194,
+              0.2661
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.2299,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              -0.0031,
+              0.0659
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_whitened/znorm",
+            "mrr_difference": 0.0322,
+            "system": "words_svd_whitened/znorm"
+          }
+        ]
+      },
+      "labels": 33,
+      "mrr": {
+        "semantic_raw": {
+          "noise_corrected": 0.378,
+          "prototype": 0.2806,
+          "znorm": 0.3212
+        },
+        "semantic_whitened": {
+          "noise_corrected": 0.4593,
+          "prototype": 0.4152,
+          "znorm": 0.4219
+        },
+        "words_raw": {
+          "noise_corrected": 0.5806,
+          "prototype": 0.2738,
+          "znorm": 0.5511
+        },
+        "words_svd_whitened": {
+          "noise_corrected": 0.5201,
+          "prototype": 0.453,
+          "znorm": 0.4541
+        }
+      },
+      "queries": 477
+    },
+    "20-49": {
+      "counts_for_the_rule": true,
+      "headline_contrasts": {
+        "noise_corrected": [
+          {
+            "ci95": [
+              0.2744,
+              0.2952
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.2849,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.1363,
+              0.1579
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/noise_corrected",
+            "mrr_difference": 0.1477,
+            "system": "words_svd_whitened/noise_corrected"
+          }
+        ],
+        "prototype": [
+          {
+            "ci95": [
+              0.2172,
+              0.2381
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": 0.228,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              0.1322,
+              0.1537
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/prototype",
+            "mrr_difference": 0.143,
+            "system": "words_svd_whitened/prototype"
+          }
+        ],
+        "znorm": [
+          {
+            "ci95": [
+              0.2735,
+              0.2924
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.2834,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              0.1409,
+              0.1621
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/znorm",
+            "mrr_difference": 0.1517,
+            "system": "words_svd_whitened/znorm"
+          }
+        ]
+      },
+      "labels": 171,
+      "mrr": {
+        "semantic_raw": {
+          "noise_corrected": 0.2481,
+          "prototype": 0.301,
+          "znorm": 0.1928
+        },
+        "semantic_whitened": {
+          "noise_corrected": 0.3795,
+          "prototype": 0.414,
+          "znorm": 0.4105
+        },
+        "words_raw": {
+          "noise_corrected": 0.5331,
+          "prototype": 0.529,
+          "znorm": 0.4762
+        },
+        "words_svd_whitened": {
+          "noise_corrected": 0.5272,
+          "prototype": 0.557,
+          "znorm": 0.5622
+        }
+      },
+      "queries": 6356
+    },
+    "5-9": {
+      "counts_for_the_rule": true,
+      "headline_contrasts": {
+        "noise_corrected": [
+          {
+            "ci95": [
+              -0.0447,
+              0.1023
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.0292,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.0686,
+              0.2249
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/noise_corrected",
+            "mrr_difference": 0.1469,
+            "system": "words_svd_whitened/noise_corrected"
+          }
+        ],
+        "prototype": [
+          {
+            "ci95": [
+              -0.1156,
+              -0.0143
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": -0.0639,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              -0.0745,
+              0.0431
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_whitened/prototype",
+            "mrr_difference": -0.0154,
+            "system": "words_svd_whitened/prototype"
+          }
+        ],
+        "znorm": [
+          {
+            "ci95": [
+              0.1345,
+              0.2775
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.206,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              -0.0578,
+              0.0655
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_whitened/znorm",
+            "mrr_difference": 0.004,
+            "system": "words_svd_whitened/znorm"
+          }
+        ]
+      },
+      "labels": 19,
+      "mrr": {
+        "semantic_raw": {
+          "noise_corrected": 0.3987,
+          "prototype": 0.1597,
+          "znorm": 0.3325
+        },
+        "semantic_whitened": {
+          "noise_corrected": 0.4051,
+          "prototype": 0.3404,
+          "znorm": 0.3466
+        },
+        "words_raw": {
+          "noise_corrected": 0.4278,
+          "prototype": 0.0958,
+          "znorm": 0.5385
+        },
+        "words_svd_whitened": {
+          "noise_corrected": 0.552,
+          "prototype": 0.325,
+          "znorm": 0.3506
+        }
+      },
+      "queries": 149
+    },
+    "50-up": {
+      "counts_for_the_rule": false,
+      "headline_contrasts": {
+        "noise_corrected": [
+          {
+            "ci95": [
+              0.2529,
+              0.4617
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.3552,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.0559,
+              0.2573
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/noise_corrected",
+            "mrr_difference": 0.1576,
+            "system": "words_svd_whitened/noise_corrected"
+          }
+        ],
+        "prototype": [
+          {
+            "ci95": [
+              -0.0835,
+              0.1576
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": 0.0379,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              -0.0539,
+              0.1507
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_whitened/prototype",
+            "mrr_difference": 0.0493,
+            "system": "words_svd_whitened/prototype"
+          }
+        ],
+        "znorm": [
+          {
+            "ci95": [
+              0.1336,
+              0.3488
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.2414,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              0.1473,
+              0.3406
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_whitened/znorm",
+            "mrr_difference": 0.2441,
+            "system": "words_svd_whitened/znorm"
+          }
+        ]
+      },
+      "labels": 3,
+      "mrr": {
+        "semantic_raw": {
+          "noise_corrected": 0.3545,
+          "prototype": 0.4016,
+          "znorm": 0.3646
+        },
+        "semantic_whitened": {
+          "noise_corrected": 0.4722,
+          "prototype": 0.5068,
+          "znorm": 0.5206
+        },
+        "words_raw": {
+          "noise_corrected": 0.7097,
+          "prototype": 0.4396,
+          "znorm": 0.6059
+        },
+        "words_svd_whitened": {
+          "noise_corrected": 0.6299,
+          "prototype": 0.5561,
+          "znorm": 0.7647
+        }
+      },
+      "queries": 238
+    }
+  },
+  "checks": {
+    "against_published": {
+      "semantic_raw": {
+        "expected": 0.2997,
+        "gap": 0.0,
+        "recomputed": 0.2997
+      },
+      "semantic_whitened": {
+        "expected": 0.4164,
+        "gap": 0.0,
+        "recomputed": 0.4164
+      },
+      "words_raw": {
+        "expected": 0.4963,
+        "gap": 0.0,
+        "recomputed": 0.4963
+      },
+      "words_svd_whitened": {
+        "expected": 0.5426,
+        "gap": 0.0,
+        "recomputed": 0.5426
+      }
+    },
+    "generic_scorer_gap_dense": 1.2212453270876722e-15,
+    "generic_scorer_gap_sparse": 4.4165354919079025e-07
+  },
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "labels": 226,
+    "queries": 7220,
+    "songs_per_label_bands": {
+      "10-19": 33,
+      "20-49": 171,
+      "5-9": 19,
+      "50-up": 3
+    }
+  },
+  "design": {
+    "bands": "songs per label of the query's label",
+    "checks": "generic scorer equals the protocol's dense and sparse scorers on 300 queries; prototype MRR reproduces the published numbers (gap <= 0.002)",
+    "folds": "identity_probe_v2 folds and transforms; profiles leave-group-out over all songs; cohort and s^2 from training folds",
+    "reading_rule": "size-robust if the headline contrast is positive with the interval clear of zero in every band with at least 10 labels and 100 queries",
+    "scorers": {
+      "noise_corrected": "dot with the profile mean divided by sqrt(max(||m||^2 - s^2/n, 0.25*||m||^2)); s^2 the pooled within-label residual variance on the training folds",
+      "prototype": "cosine with the normalised leave-group-out weighted sum (the protocol)",
+      "znorm": "prototype score standardised per label by the impostor scores of training-fold songs of other labels"
+    }
+  },
+  "fold_info": {
+    "semantic_raw": {
+      "0": {
+        "floor_hits_of_query_label_pairs": 0,
+        "query_label_pairs": 1631720,
+        "s2": 0.3561
+      },
+      "1": {
+        "floor_hits_of_query_label_pairs": 0,
+        "query_label_pairs": 1631720,
+        "s2": 0.3555
+      },
+      "2": {
+        "floor_hits_of_query_label_pairs": 0,
+        "query_label_pairs": 1631720,
+        "s2": 0.3567
+      },
+      "3": {
+        "floor_hits_of_query_label_pairs": 0,
+        "query_label_pairs": 1631720,
+        "s2": 0.3547
+      },
+      "4": {
+        "floor_hits_of_query_label_pairs": 0,
+        "query_label_pairs": 1631720,
+        "s2": 0.3559
+      }
+    },
+    "semantic_whitened": {
+      "0": {
+        "floor_hits_of_query_label_pairs": 115634,
+        "query_label_pairs": 1631720,
+        "s2": 1.0014
+      },
+      "1": {
+        "floor_hits_of_query_label_pairs": 144535,
+        "query_label_pairs": 1631720,
+        "s2": 1.0015
+      },
+      "2": {
+        "floor_hits_of_query_label_pairs": 101264,
+        "query_label_pairs": 1631720,
+        "s2": 1.0012
+      },
+      "3": {
+        "floor_hits_of_query_label_pairs": 144479,
+        "query_label_pairs": 1631720,
+        "s2": 1.0013
+      },
+      "4": {
+        "floor_hits_of_query_label_pairs": 115704,
+        "query_label_pairs": 1631720,
+        "s2": 1.002
+      }
+    },
+    "words_raw": {
+      "0": {
+        "floor_hits_of_query_label_pairs": 144428,
+        "query_label_pairs": 1631720,
+        "s2": 0.9967
+      },
+      "1": {
+        "floor_hits_of_query_label_pairs": 144428,
+        "query_label_pairs": 1631720,
+        "s2": 0.9965
+      },
+      "2": {
+        "floor_hits_of_query_label_pairs": 144428,
+        "query_label_pairs": 1631720,
+        "s2": 0.9966
+      },
+      "3": {
+        "floor_hits_of_query_label_pairs": 144428,
+        "query_label_pairs": 1631720,
+        "s2": 0.9965
+      },
+      "4": {
+        "floor_hits_of_query_label_pairs": 144429,
+        "query_label_pairs": 1631720,
+        "s2": 0.9969
+      }
+    },
+    "words_svd_whitened": {
+      "0": {
+        "floor_hits_of_query_label_pairs": 43379,
+        "query_label_pairs": 1631720,
+        "s2": 0.983
+      },
+      "1": {
+        "floor_hits_of_query_label_pairs": 36175,
+        "query_label_pairs": 1631720,
+        "s2": 0.9834
+      },
+      "2": {
+        "floor_hits_of_query_label_pairs": 50592,
+        "query_label_pairs": 1631720,
+        "s2": 0.9843
+      },
+      "3": {
+        "floor_hits_of_query_label_pairs": 36173,
+        "query_label_pairs": 1631720,
+        "s2": 0.9842
+      },
+      "4": {
+        "floor_hits_of_query_label_pairs": 28937,
+        "query_label_pairs": 1631720,
+        "s2": 0.9848
+      }
+    }
+  },
+  "minutes": 7.8,
+  "overall_contrasts_against_prototype": {
+    "semantic_raw": [
+      {
+        "ci95": [
+          -0.0977,
+          -0.0859
+        ],
+        "excludes_zero": true,
+        "minus": "semantic_raw/prototype",
+        "mrr_difference": -0.0916,
+        "system": "semantic_raw/znorm"
+      },
+      {
+        "ci95": [
+          -0.041,
+          -0.0326
+        ],
+        "excludes_zero": true,
+        "minus": "semantic_raw/prototype",
+        "mrr_difference": -0.0367,
+        "system": "semantic_raw/noise_corrected"
+      }
+    ],
+    "semantic_whitened": [
+      {
+        "ci95": [
+          -0.0043,
+          -0.0005
+        ],
+        "excludes_zero": true,
+        "minus": "semantic_whitened/prototype",
+        "mrr_difference": -0.0024,
+        "system": "semantic_whitened/znorm"
+      },
+      {
+        "ci95": [
+          -0.0309,
+          -0.0233
+        ],
+        "excludes_zero": true,
+        "minus": "semantic_whitened/prototype",
+        "mrr_difference": -0.0272,
+        "system": "semantic_whitened/noise_corrected"
+      }
+    ],
+    "words_raw": [
+      {
+        "ci95": [
+          -0.0256,
+          -0.0107
+        ],
+        "excludes_zero": true,
+        "minus": "words_raw/prototype",
+        "mrr_difference": -0.018,
+        "system": "words_raw/znorm"
+      },
+      {
+        "ci95": [
+          0.0269,
+          0.0409
+        ],
+        "excludes_zero": true,
+        "minus": "words_raw/prototype",
+        "mrr_difference": 0.034,
+        "system": "words_raw/noise_corrected"
+      }
+    ],
+    "words_svd_whitened": [
+      {
+        "ci95": [
+          0.0045,
+          0.0111
+        ],
+        "excludes_zero": true,
+        "minus": "words_svd_whitened/prototype",
+        "mrr_difference": 0.0078,
+        "system": "words_svd_whitened/znorm"
+      },
+      {
+        "ci95": [
+          -0.021,
+          -0.0123
+        ],
+        "excludes_zero": true,
+        "minus": "words_svd_whitened/prototype",
+        "mrr_difference": -0.0167,
+        "system": "words_svd_whitened/noise_corrected"
+      }
+    ]
+  },
+  "privacy": "aggregate only",
+  "readings": {
+    "words_raw - semantic_raw under noise_corrected": "size-dependent; fails in bands ['5-9']",
+    "words_raw - semantic_raw under prototype": "size-dependent; fails in bands ['5-9', '10-19']",
+    "words_raw - semantic_raw under znorm": "size-robust",
+    "words_svd_whitened - semantic_whitened under noise_corrected": "size-robust",
+    "words_svd_whitened - semantic_whitened under prototype": "size-dependent; fails in bands ['5-9']",
+    "words_svd_whitened - semantic_whitened under znorm": "size-dependent; fails in bands ['5-9', '10-19']"
+  },
+  "systems": {
+    "semantic_raw": {
+      "noise_corrected": 0.2635,
+      "prototype": 0.2997,
+      "znorm": 0.21
+    },
+    "semantic_whitened": {
+      "noise_corrected": 0.3902,
+      "prototype": 0.4164,
+      "znorm": 0.4144
+    },
+    "words_raw": {
+      "noise_corrected": 0.5394,
+      "prototype": 0.4963,
+      "znorm": 0.4868
+    },
+    "words_svd_whitened": {
+      "noise_corrected": 0.5291,
+      "prototype": 0.5426,
+      "znorm": 0.5577
+    }
+  }
+}

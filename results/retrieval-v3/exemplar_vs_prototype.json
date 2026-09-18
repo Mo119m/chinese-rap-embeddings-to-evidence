@@ -1,0 +1,438 @@
+{
+  "analysis": "exemplar (nearest-instance) scoring against the protocol's prototype profile, four spaces",
+  "checks_against_published": {
+    "semantic_raw": {
+      "expected": 0.2997,
+      "gap": 0.0,
+      "recomputed": 0.2997
+    },
+    "semantic_whitened": {
+      "expected": 0.4164,
+      "gap": 0.0,
+      "recomputed": 0.4164
+    },
+    "words_raw": {
+      "expected": 0.4963,
+      "gap": 0.0,
+      "recomputed": 0.4963
+    },
+    "words_svd_whitened": {
+      "expected": 0.5426,
+      "gap": 0.0,
+      "recomputed": 0.5426
+    }
+  },
+  "corpus": {
+    "components": 6889,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "bands": "components per label of the query's own label",
+    "checks": "prototype MRR must reproduce the published number in every space (gap <= 0.002); the vectorised exemplar scorers must agree with their brute-force definition on six queries in every space",
+    "leave_group_out": "the query's whole leakage group is removed from every label before any scorer",
+    "reading_rule": "exemplar scoring changes the answer in a space only if exemplar_max - prototype and exemplar_max_4 - prototype both have intervals clear of zero in the same direction",
+    "scorers": {
+      "exemplar_max": "highest cosine with any remaining song of the label",
+      "exemplar_max_4": "exemplar_max over at most 4 components per label in a fixed seeded order",
+      "exemplar_mean": "protocol-weighted mean cosine over the remaining songs",
+      "exemplar_top3": "mean of the 3 highest component scores (component = (group, label), scored by its best member)",
+      "prototype": "cosine with the weighted-mean leave-group-out profile (the protocol)"
+    },
+    "spaces": {
+      "semantic_raw": "BGE-M3 song centroids",
+      "semantic_whitened": "the same, within-author whitening fitted per fold",
+      "words_raw": "jieba word TF-IDF (1-2-grams)",
+      "words_svd_whitened": "word SVD-1024 fitted on the training folds, within-author whitening per fold"
+    }
+  },
+  "minutes": 4.4,
+  "privacy": "aggregate only",
+  "spaces": {
+    "semantic_raw": {
+      "by_components_per_label": {
+        "10-19": {
+          "exemplar_max": 0.1711,
+          "exemplar_max_4": 0.1383,
+          "exemplar_mean": 0.2137,
+          "exemplar_top3": 0.1494,
+          "prototype": 0.2876,
+          "queries": 648
+        },
+        "20-49": {
+          "exemplar_max": 0.1559,
+          "exemplar_max_4": 0.0768,
+          "exemplar_mean": 0.0944,
+          "exemplar_top3": 0.1669,
+          "prototype": 0.3024,
+          "queries": 6413
+        },
+        "4-9": {
+          "exemplar_max": 0.1229,
+          "exemplar_max_4": 0.1481,
+          "exemplar_mean": 0.152,
+          "exemplar_top3": 0.0564,
+          "prototype": 0.1517,
+          "queries": 159
+        },
+        "50-up": {
+          "exemplar_max": NaN,
+          "exemplar_max_4": NaN,
+          "exemplar_mean": NaN,
+          "exemplar_top3": NaN,
+          "prototype": NaN,
+          "queries": 0
+        }
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            -0.1506,
+            -0.1327
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1416,
+          "system": "exemplar_max"
+        },
+        {
+          "ci95": [
+            -0.1436,
+            -0.1264
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1348,
+          "system": "exemplar_top3"
+        },
+        {
+          "ci95": [
+            -0.2009,
+            -0.1854
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1929,
+          "system": "exemplar_mean"
+        },
+        {
+          "ci95": [
+            -0.2239,
+            -0.2058
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.2147,
+          "system": "exemplar_max_4"
+        },
+        {
+          "ci95": [
+            0.0667,
+            0.0798
+          ],
+          "excludes_zero": true,
+          "minus": "exemplar_max_4",
+          "mrr_difference": 0.0731,
+          "system": "exemplar_max"
+        }
+      ],
+      "reading": "the prototype identifies better than exemplar scoring",
+      "systems": {
+        "exemplar_max": 0.1547,
+        "exemplar_max_4": 0.0825,
+        "exemplar_mean": 0.1046,
+        "exemplar_top3": 0.1618,
+        "prototype": 0.2997
+      }
+    },
+    "semantic_whitened": {
+      "by_components_per_label": {
+        "10-19": {
+          "exemplar_max": 0.3544,
+          "exemplar_max_4": 0.2791,
+          "exemplar_mean": 0.4606,
+          "exemplar_top3": 0.354,
+          "prototype": 0.4085,
+          "queries": 648
+        },
+        "20-49": {
+          "exemplar_max": 0.3394,
+          "exemplar_max_4": 0.1701,
+          "exemplar_mean": 0.3024,
+          "exemplar_top3": 0.4128,
+          "prototype": 0.4162,
+          "queries": 6413
+        },
+        "4-9": {
+          "exemplar_max": 0.2608,
+          "exemplar_max_4": 0.3152,
+          "exemplar_mean": 0.4641,
+          "exemplar_top3": 0.2269,
+          "prototype": 0.3284,
+          "queries": 159
+        },
+        "50-up": {
+          "exemplar_max": NaN,
+          "exemplar_max_4": NaN,
+          "exemplar_mean": NaN,
+          "exemplar_top3": NaN,
+          "prototype": NaN,
+          "queries": 0
+        }
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            -0.0829,
+            -0.0667
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.0748,
+          "system": "exemplar_max"
+        },
+        {
+          "ci95": [
+            -0.0166,
+            -0.0025
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.0095,
+          "system": "exemplar_top3"
+        },
+        {
+          "ci95": [
+            -0.1005,
+            -0.0899
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.0953,
+          "system": "exemplar_mean"
+        },
+        {
+          "ci95": [
+            -0.2414,
+            -0.2224
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.2318,
+          "system": "exemplar_max_4"
+        },
+        {
+          "ci95": [
+            0.1477,
+            0.1659
+          ],
+          "excludes_zero": true,
+          "minus": "exemplar_max_4",
+          "mrr_difference": 0.157,
+          "system": "exemplar_max"
+        }
+      ],
+      "reading": "the prototype identifies better than exemplar scoring",
+      "systems": {
+        "exemplar_max": 0.3394,
+        "exemplar_max_4": 0.1846,
+        "exemplar_mean": 0.3224,
+        "exemplar_top3": 0.4048,
+        "prototype": 0.4164
+      }
+    },
+    "words_raw": {
+      "by_components_per_label": {
+        "10-19": {
+          "exemplar_max": 0.3568,
+          "exemplar_max_4": 0.3133,
+          "exemplar_mean": 0.4594,
+          "exemplar_top3": 0.3804,
+          "prototype": 0.2631,
+          "queries": 648
+        },
+        "20-49": {
+          "exemplar_max": 0.3628,
+          "exemplar_max_4": 0.215,
+          "exemplar_mean": 0.3361,
+          "exemplar_top3": 0.455,
+          "prototype": 0.5329,
+          "queries": 6413
+        },
+        "4-9": {
+          "exemplar_max": 0.2356,
+          "exemplar_max_4": 0.3181,
+          "exemplar_mean": 0.4474,
+          "exemplar_top3": 0.2306,
+          "prototype": 0.0906,
+          "queries": 159
+        },
+        "50-up": {
+          "exemplar_max": NaN,
+          "exemplar_max_4": NaN,
+          "exemplar_mean": NaN,
+          "exemplar_top3": NaN,
+          "prototype": NaN,
+          "queries": 0
+        }
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            -0.1517,
+            -0.1337
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1426,
+          "system": "exemplar_max"
+        },
+        {
+          "ci95": [
+            -0.0653,
+            -0.0504
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.0579,
+          "system": "exemplar_top3"
+        },
+        {
+          "ci95": [
+            -0.1615,
+            -0.1458
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1538,
+          "system": "exemplar_mean"
+        },
+        {
+          "ci95": [
+            -0.2875,
+            -0.2664
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.2771,
+          "system": "exemplar_max_4"
+        },
+        {
+          "ci95": [
+            0.1262,
+            0.1435
+          ],
+          "excludes_zero": true,
+          "minus": "exemplar_max_4",
+          "mrr_difference": 0.1345,
+          "system": "exemplar_max"
+        }
+      ],
+      "reading": "the prototype identifies better than exemplar scoring",
+      "systems": {
+        "exemplar_max": 0.3573,
+        "exemplar_max_4": 0.2247,
+        "exemplar_mean": 0.345,
+        "exemplar_top3": 0.4404,
+        "prototype": 0.4963
+      }
+    },
+    "words_svd_whitened": {
+      "by_components_per_label": {
+        "10-19": {
+          "exemplar_max": 0.3208,
+          "exemplar_max_4": 0.2949,
+          "exemplar_mean": 0.4981,
+          "exemplar_top3": 0.3592,
+          "prototype": 0.4496,
+          "queries": 648
+        },
+        "20-49": {
+          "exemplar_max": 0.3439,
+          "exemplar_max_4": 0.2185,
+          "exemplar_mean": 0.415,
+          "exemplar_top3": 0.4376,
+          "prototype": 0.5594,
+          "queries": 6413
+        },
+        "4-9": {
+          "exemplar_max": 0.1718,
+          "exemplar_max_4": 0.2307,
+          "exemplar_mean": 0.5311,
+          "exemplar_top3": 0.1477,
+          "prototype": 0.3071,
+          "queries": 159
+        },
+        "50-up": {
+          "exemplar_max": NaN,
+          "exemplar_max_4": NaN,
+          "exemplar_mean": NaN,
+          "exemplar_top3": NaN,
+          "prototype": NaN,
+          "queries": 0
+        }
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            -0.2159,
+            -0.1985
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.2069,
+          "system": "exemplar_max"
+        },
+        {
+          "ci95": [
+            -0.1274,
+            -0.1129
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1202,
+          "system": "exemplar_top3"
+        },
+        {
+          "ci95": [
+            -0.1273,
+            -0.1151
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.1212,
+          "system": "exemplar_mean"
+        },
+        {
+          "ci95": [
+            -0.3301,
+            -0.3113
+          ],
+          "excludes_zero": true,
+          "minus": "prototype",
+          "mrr_difference": -0.3205,
+          "system": "exemplar_max_4"
+        },
+        {
+          "ci95": [
+            0.1057,
+            0.1219
+          ],
+          "excludes_zero": true,
+          "minus": "exemplar_max_4",
+          "mrr_difference": 0.1136,
+          "system": "exemplar_max"
+        }
+      ],
+      "reading": "the prototype identifies better than exemplar scoring",
+      "systems": {
+        "exemplar_max": 0.3408,
+        "exemplar_max_4": 0.2268,
+        "exemplar_mean": 0.4218,
+        "exemplar_top3": 0.425,
+        "prototype": 0.5426
+      }
+    }
+  }
+}

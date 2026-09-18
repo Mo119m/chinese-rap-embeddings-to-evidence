@@ -297,6 +297,20 @@
       "run": "2026-09-16, stage 1 on the GPU per fold, stage 2 on the CPU over all five folds; checks: saved vectors, stored encodings re-encoded from the rebuilt texts, text digests, recorded unmasked MRRs",
       "sha256": "681046e14a59520d1e54d7277b03ea47a372d198eefd4fce2799f9ab549de27a",
       "written": "2026-09-16T23:42"
+    },
+    "exemplar_vs_prototype.json": {
+      "arm": "exemplar_vs_prototype_v3 (exemplar scoring against the prototype, four spaces)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-18, CPU; prototype reproduces the published MRR in every space; vectorised exemplar scorers checked against their brute-force definition",
+      "sha256": "fef41f8a97987bff8185cd77e06d72051bc8fc30c7d585e12f568d61f55f063c",
+      "written": "2026-09-18T10:50"
+    },
+    "label_size_calibration.json": {
+      "arm": "label_size_calibration_v3 (Z-normalised and noise-corrected scoring, read by songs per label)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-18, CPU; generic leave-group-out scorer checked against the protocol's dense and sparse scorers; prototype reproduces the published MRR in every space",
+      "sha256": "144ac472b732a710cb6c87c70f1c8a4cf30b35f46f64894c18966cadae13a735",
+      "written": "2026-09-18T11:04"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

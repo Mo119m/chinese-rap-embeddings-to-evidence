@@ -137,6 +137,90 @@ ahead of either representation (whole song whitened − words −0.093 [−0.103
 does not measure is meaning for its own sake: the task is identity, and the two representations
 agree closely enough (median cosine 0.962) that they are not different readings of the songs.
 
+## A label as a centre, and the scorer's dependence on label size (`exemplar_vs_prototype.json`, `label_size_calibration.json`)
+
+Every published number scores a held-out song against one profile per label, the normalised
+weighted sum of the label's other songs: a prototype. Two questions about that choice were
+asked on 2026-09-18, each with its reading rule fixed before the run.
+
+**Exemplar scoring** (`src/exemplar_vs_prototype_v3.py`). Exemplar theory keeps every
+instance: a query belongs with the label holding the song nearest to it. Four exemplar scorers
+were run in four spaces, leave-group-out throughout: the nearest remaining song; the mean of
+the three best near-duplicate components (a component is a (group, label) set scored by its
+best member); the protocol-weighted mean cosine over the remaining songs; and the nearest song
+among at most four components in a fixed seeded order, which removes the extra chances a large
+label gets under a maximum. The prototype reproduces its published number in every space
+(gaps 0.000) and wins everywhere:
+
+| space | prototype | nearest song | top-3 components | mean cosine | nearest of at most 4 components |
+|---|---|---|---|---|---|
+| semantic, raw | 0.2997 | 0.1547 | 0.1618 | 0.1046 | 0.0825 |
+| semantic, within-author whitened | 0.4164 | 0.3394 | 0.4048 | 0.3224 | 0.1846 |
+| words, raw TF-IDF | 0.4963 | 0.3573 | 0.4404 | 0.3450 | 0.2247 |
+| word SVD-1024, whitened | 0.5426 | 0.3408 | 0.4250 | 0.4218 | 0.2268 |
+
+Nearest song minus prototype: −0.142 [−0.151, −0.133], −0.075 [−0.083, −0.067], −0.143
+[−0.152, −0.134] and −0.207 [−0.216, −0.199]. By the rule (both the nearest song and the
+size-matched nearest song must beat the prototype with intervals clear of zero) the prototype
+stands in all four spaces. A label is one centre with variation around it, not a set of
+separable styles; in the raw semantic space the nearest song is a topic neighbour. After
+whitening the three best components come within 0.01 of the prototype (−0.010 [−0.017,
+−0.003]): whitening is what makes the centre findable from few instances.
+
+**Label size** (`src/label_size_calibration_v3.py`). The exemplar run's breakdown by label size
+showed that the prototype's word-over-semantic lead is not uniform. Under the protocol's
+scorer, by songs per label (paired group bootstrap within the band):
+
+| songs per label (labels, queries) | raw words | raw semantic | words − semantic | whitened word SVD | whitened semantic | words − semantic |
+|---|---|---|---|---|---|---|
+| 5–9 (19, 149) | 0.096 | 0.160 | −0.064 [−0.116, −0.014] | 0.325 | 0.340 | −0.015 [−0.074, +0.043] |
+| 10–19 (33, 477) | 0.274 | 0.281 | −0.007 [−0.042, +0.029] | 0.453 | 0.415 | +0.038 [+0.005, +0.071] |
+| 20–49 (171, 6,356) | 0.529 | 0.301 | +0.228 [+0.217, +0.238] | 0.557 | 0.414 | +0.143 [+0.132, +0.154] |
+| 50 or more (3, 238) | 0.440 | 0.402 | +0.038 [−0.084, +0.158] | 0.556 | 0.507 | +0.049 [−0.054, +0.151] |
+
+The cause is in the scorer. The prototype divides a query's dot product by the profile's norm,
+and the norm of a mean of n unit vectors carries sampling noise: ||m||² = ||μ||² + s²/n, with
+s² the within-label variance of one song. On the training folds s² is 0.36 in the raw semantic
+space and 1.00 in the word space, whose sparse unit rows barely overlap, so a small label's word
+profile is inflated far more than its semantic profile and its scores deflated accordingly. Two
+scorers from the speaker-recognition back-end remove the dependence without a tuned parameter:
+Z-normalisation, which standardises each label's scores by the impostor scores of training-fold
+songs of other labels, and a noise-corrected prototype that divides by
+sqrt(max(||m||² − s²/n, ||m||²/4)) instead of ||m||. The floor binds for no query–label pair in
+the raw semantic space, 9% of pairs in the raw word space, 6–9% in the whitened semantic space
+and 2–3% in the whitened word SVD. Rule, fixed before the run: an ordering is size-robust under
+a scorer if the contrast is positive with the interval clear of zero in every band with at least
+ten labels and one hundred queries (the three-label band is reported but does not count).
+
+| scorer | raw words | raw semantic | whitened word SVD | whitened semantic | raw words − semantic | whitened words − semantic |
+|---|---|---|---|---|---|---|
+| prototype (the protocol) | 0.4963 | 0.2997 | 0.5426 | 0.4164 | size-dependent: fails at 5–9 and 10–19 | size-dependent: fails at 5–9 |
+| Z-normalised | 0.4868 | 0.2100 | 0.5577 | 0.4144 | size-robust: +0.206 [+0.135, +0.278], +0.230, +0.283 | size-dependent: +0.004 [−0.058, +0.066] at 5–9, +0.032 [−0.003, +0.066] at 10–19 |
+| noise-corrected | 0.5394 | 0.2635 | 0.5291 | 0.3902 | size-dependent: +0.029 [−0.045, +0.102] at 5–9, then +0.203, +0.285 | size-robust: +0.147 [+0.069, +0.225], +0.061, +0.148 |
+
+Under Z-normalisation the raw word space identifies labels of every size alike (0.539, 0.551,
+0.476 and 0.606 across the four bands), while the raw semantic space loses 0.092 [0.086, 0.098]
+overall: its 20–49-song band falls from 0.301 to 0.193 as its small bands rise from 0.160 and
+0.281 to 0.333 and 0.321, so part of the raw semantic score under the prototype is a
+large-label advantage (averaged profiles sit nearer the centre of an anisotropic space and
+score high against everything). Whitening removes that advantage on its own: Z-normalisation
+moves the whitened spaces by −0.002 and +0.008. The noise-corrected prototype raises the raw
+word space by +0.034 [+0.027, +0.041] to 0.539, the sampling inflation of sparse profile norms
+having held it down, and lowers every other space.
+
+Reading. The protocol's prototype scorer disadvantages labels with few songs, most in sparse
+spaces. For the 52 labels with fewer than twenty songs (626 queries) the published raw word
+lead does not hold under it, and at five to nine songs the raw semantic space leads. Under a
+calibrated scorer the raw word lead holds in every band (Z-normalisation) or in every band but
+the smallest (noise-corrected); the whitened word lead among small labels is established under
+one calibration and not the other. Both calibrations leave the whitened spaces nearly where
+they were. The headline ordering is therefore a result for labels with twenty songs or more
+under the protocol's own scorer, and a result for all sizes only under calibrated scoring; the
+paper should carry a label-size panel and a label-macro estimand beside the query-weighted one.
+Both calibrations were added after the exemplar breakdown had been seen, with their reading rule
+fixed before they were run; which of the two to headline is not pre-specified, and both are
+reported.
+
 ## Chunk-level replication (`chunk_level_replication.json`)
 
 At the chunk level (23,848 chunks, each scored on its own): semantic 0.1876, characters
