@@ -1,0 +1,797 @@
+{
+  "analysis": "whitening transfer to unseen labels under six disjoint held-out draws (the probe's draw and five redraws)",
+  "checks_against_published": {
+    "all_queries_none": {
+      "expected": 0.2997,
+      "gap": 2e-05,
+      "passed": true,
+      "recomputed": 0.2997,
+      "tolerance": 0.0005
+    },
+    "all_queries_within_author_whitening": {
+      "expected": 0.4164,
+      "gap": 2e-05,
+      "passed": true,
+      "recomputed": 0.4164,
+      "tolerance": 0.002
+    },
+    "literals_match_identity_probe_json": true,
+    "seen_within_author_whitening": {
+      "expected": 0.3814,
+      "gap": 1e-05,
+      "passed": true,
+      "recomputed": 0.3814,
+      "tolerance": 0.002
+    },
+    "unseen_none": {
+      "expected": 0.2658,
+      "gap": 4e-05,
+      "passed": true,
+      "recomputed": 0.2658,
+      "tolerance": 0.0005
+    },
+    "unseen_total_whitening": {
+      "expected": 0.4072,
+      "gap": 1e-05,
+      "passed": true,
+      "recomputed": 0.4072,
+      "tolerance": 0.002
+    },
+    "unseen_within_author_whitening": {
+      "expected": 0.3813,
+      "gap": 1e-05,
+      "passed": true,
+      "recomputed": 0.3813,
+      "tolerance": 0.002
+    }
+  },
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "held_out_labels_per_draw": 34,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "bootstrap": "identity_spaces_v2.paired_group_bootstrap: the draw's leakage groups resampled with replacement, 2000 replicates, seed 20260825",
+    "checks": {
+      "all_queries": "untransformed space 0.2997 (gap <= 0.0005), fold-wise within-author 0.4164 (gap <= 0.002)",
+      "draw_0": "reproduces identity_probe.json on unrounded values: unseen none (gap <= 0.0005), total, within-author and seen-label within-author (gap <= 0.002); literals, 34 labels and 1,041 queries matched against the file",
+      "draws": "each of the required size, pairwise disjoint, training mask free of held-out labels' songs",
+      "order": "draw 0 is scored and checked before any redraw is scored"
+    },
+    "contrasts": [
+      "unseen_total_whitening - unseen_none",
+      "unseen_within_author_whitening - unseen_none",
+      "unseen_within_author_whitening - unseen_total_whitening",
+      "seen_within_author_whitening - unseen_within_author_whitening"
+    ],
+    "draw_0": "identity_probe_v2's held-out set: rng(20260825).permutation(labels)[:round(0.15 x labels)]",
+    "estimands": {
+      "mrr": "plain mean of reciprocal ranks over the draw's queries (identity_probe.json's mrr)",
+      "mrr_component_weighted": "per-(group, label) component-weighted MRR, the bootstrap's estimand",
+      "mrr_label_macro": "mean over the held-out labels of the label's component-weighted MRR (description only)",
+      "recall_at_10": "share of queries with rank <= 10"
+    },
+    "held_out_sets_pairwise_disjoint": true,
+    "labels_never_held_out": 22,
+    "reading_rule": {
+      "description_only": "the counts of draws with that contrast negative and clear of zero or with a point estimate at or below zero, the seen - unseen contrast, the label-macro MRR and the spreads",
+      "label_free_part": "'the label-free part transfers' if unseen_total_whitening - unseen_none is positive with the 95% interval clear of zero in every draw; otherwise the count is stated",
+      "label_specific_part": "'the label-specific part does not transfer' only if unseen_within_author_whitening - unseen_total_whitening is not positive (positive = point estimate above zero with the 95% interval clear of zero) in at least 5 of the six draws; otherwise the count is stated"
+    },
+    "redraws": "draw i permutes, with seeds[i], the labels no earlier draw held out and takes the first block; the six sets are pairwise disjoint",
+    "scoring": "identity_probe_v2.dense_leave_group_out: the held-out labels' queries against leave-group-out profiles of all labels",
+    "seeds": [
+      20260825,
+      20260918,
+      20260919,
+      20260920,
+      20260921,
+      20260922
+    ],
+    "seen_label_comparison": "the probe's fold-wise within-author space (fitted on the other four folds, every label seen), the same queries",
+    "spread": "min, max, mean and sample sd (ddof 1) over the six draws",
+    "transforms": "identity_probe_v2.fit_transform none / total_whitening / within_author_whitening, fitted on the seen labels' songs only, applied to every song"
+  },
+  "draws": [
+    {
+      "contrasts": [
+        {
+          "ci95": [
+            0.1143,
+            0.1601
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1376,
+          "system": "unseen_total_whitening"
+        },
+        {
+          "ci95": [
+            0.0889,
+            0.1324
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1116,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0341,
+            -0.0185
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_total_whitening",
+          "mrr_difference": -0.026,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0051,
+            0.0088
+          ],
+          "excludes_zero": false,
+          "minus": "unseen_within_author_whitening",
+          "mrr_difference": 0.0019,
+          "system": "seen_within_author_whitening"
+        }
+      ],
+      "draw": 0,
+      "fit": {
+        "total_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0222
+        },
+        "within_author_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0286,
+          "within_author_share_of_variance": 0.9055
+        }
+      },
+      "groups": 959,
+      "held_out_labels": 34,
+      "queries": 1041,
+      "seconds": 4.9,
+      "seed": 20260825,
+      "songs_per_held_out_label": {
+        "max": 48,
+        "median": 33.5,
+        "min": 6
+      },
+      "source": "identity_probe_v2 (the published draw)",
+      "systems": {
+        "seen_within_author_whitening": {
+          "mrr": 0.3814,
+          "mrr_component_weighted": 0.382,
+          "mrr_label_macro": 0.3798,
+          "recall_at_10": 0.5648
+        },
+        "unseen_none": {
+          "mrr": 0.2658,
+          "mrr_component_weighted": 0.2685,
+          "mrr_label_macro": 0.2417,
+          "recall_at_10": 0.4534
+        },
+        "unseen_total_whitening": {
+          "mrr": 0.4072,
+          "mrr_component_weighted": 0.4061,
+          "mrr_label_macro": 0.4051,
+          "recall_at_10": 0.586
+        },
+        "unseen_within_author_whitening": {
+          "mrr": 0.3813,
+          "mrr_component_weighted": 0.38,
+          "mrr_label_macro": 0.3829,
+          "recall_at_10": 0.5821
+        }
+      }
+    },
+    {
+      "contrasts": [
+        {
+          "ci95": [
+            0.1629,
+            0.2128
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1871,
+          "system": "unseen_total_whitening"
+        },
+        {
+          "ci95": [
+            0.1462,
+            0.1938
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1696,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0254,
+            -0.0098
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_total_whitening",
+          "mrr_difference": -0.0175,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0175,
+            -0.0044
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_within_author_whitening",
+          "mrr_difference": -0.0108,
+          "system": "seen_within_author_whitening"
+        }
+      ],
+      "draw": 1,
+      "fit": {
+        "total_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0215
+        },
+        "within_author_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0279,
+          "within_author_share_of_variance": 0.9054
+        }
+      },
+      "groups": 903,
+      "held_out_labels": 34,
+      "queries": 932,
+      "seconds": 5.8,
+      "seed": 20260918,
+      "songs_per_held_out_label": {
+        "max": 49,
+        "median": 25.5,
+        "min": 7
+      },
+      "source": "redraw",
+      "systems": {
+        "seen_within_author_whitening": {
+          "mrr": 0.4323,
+          "mrr_component_weighted": 0.4312,
+          "mrr_label_macro": 0.4543,
+          "recall_at_10": 0.6041
+        },
+        "unseen_none": {
+          "mrr": 0.2724,
+          "mrr_component_weighted": 0.2724,
+          "mrr_label_macro": 0.2774,
+          "recall_at_10": 0.427
+        },
+        "unseen_total_whitening": {
+          "mrr": 0.4614,
+          "mrr_component_weighted": 0.4595,
+          "mrr_label_macro": 0.4893,
+          "recall_at_10": 0.6277
+        },
+        "unseen_within_author_whitening": {
+          "mrr": 0.4433,
+          "mrr_component_weighted": 0.442,
+          "mrr_label_macro": 0.4675,
+          "recall_at_10": 0.6212
+        }
+      }
+    },
+    {
+      "contrasts": [
+        {
+          "ci95": [
+            0.1031,
+            0.1451
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1243,
+          "system": "unseen_total_whitening"
+        },
+        {
+          "ci95": [
+            0.0846,
+            0.125
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1048,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0266,
+            -0.0125
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_total_whitening",
+          "mrr_difference": -0.0194,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0064,
+            0.0086
+          ],
+          "excludes_zero": false,
+          "minus": "unseen_within_author_whitening",
+          "mrr_difference": 0.0012,
+          "system": "seen_within_author_whitening"
+        }
+      ],
+      "draw": 2,
+      "fit": {
+        "total_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0226
+        },
+        "within_author_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0287,
+          "within_author_share_of_variance": 0.906
+        }
+      },
+      "groups": 1129,
+      "held_out_labels": 34,
+      "queries": 1211,
+      "seconds": 4.1,
+      "seed": 20260919,
+      "songs_per_held_out_label": {
+        "max": 49,
+        "median": 39.5,
+        "min": 9
+      },
+      "source": "redraw",
+      "systems": {
+        "seen_within_author_whitening": {
+          "mrr": 0.4499,
+          "mrr_component_weighted": 0.4473,
+          "mrr_label_macro": 0.4281,
+          "recall_at_10": 0.6317
+        },
+        "unseen_none": {
+          "mrr": 0.339,
+          "mrr_component_weighted": 0.3412,
+          "mrr_label_macro": 0.319,
+          "recall_at_10": 0.5318
+        },
+        "unseen_total_whitening": {
+          "mrr": 0.4679,
+          "mrr_component_weighted": 0.4655,
+          "mrr_label_macro": 0.4484,
+          "recall_at_10": 0.6375
+        },
+        "unseen_within_author_whitening": {
+          "mrr": 0.4484,
+          "mrr_component_weighted": 0.446,
+          "mrr_label_macro": 0.4275,
+          "recall_at_10": 0.6424
+        }
+      }
+    },
+    {
+      "contrasts": [
+        {
+          "ci95": [
+            0.0929,
+            0.1366
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1139,
+          "system": "unseen_total_whitening"
+        },
+        {
+          "ci95": [
+            0.0753,
+            0.1171
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.0959,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0263,
+            -0.0102
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_total_whitening",
+          "mrr_difference": -0.018,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0158,
+            -0.0014
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_within_author_whitening",
+          "mrr_difference": -0.0087,
+          "system": "seen_within_author_whitening"
+        }
+      ],
+      "draw": 3,
+      "fit": {
+        "total_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0229
+        },
+        "within_author_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0284,
+          "within_author_share_of_variance": 0.9083
+        }
+      },
+      "groups": 1046,
+      "held_out_labels": 34,
+      "queries": 1156,
+      "seconds": 5.9,
+      "seed": 20260920,
+      "songs_per_held_out_label": {
+        "max": 86,
+        "median": 34.5,
+        "min": 11
+      },
+      "source": "redraw",
+      "systems": {
+        "seen_within_author_whitening": {
+          "mrr": 0.4446,
+          "mrr_component_weighted": 0.4378,
+          "mrr_label_macro": 0.4333,
+          "recall_at_10": 0.6073
+        },
+        "unseen_none": {
+          "mrr": 0.3505,
+          "mrr_component_weighted": 0.3506,
+          "mrr_label_macro": 0.3438,
+          "recall_at_10": 0.5562
+        },
+        "unseen_total_whitening": {
+          "mrr": 0.4719,
+          "mrr_component_weighted": 0.4645,
+          "mrr_label_macro": 0.4627,
+          "recall_at_10": 0.628
+        },
+        "unseen_within_author_whitening": {
+          "mrr": 0.4545,
+          "mrr_component_weighted": 0.4465,
+          "mrr_label_macro": 0.44,
+          "recall_at_10": 0.6263
+        }
+      }
+    },
+    {
+      "contrasts": [
+        {
+          "ci95": [
+            0.1301,
+            0.1739
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1515,
+          "system": "unseen_total_whitening"
+        },
+        {
+          "ci95": [
+            0.1194,
+            0.1625
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1408,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0176,
+            -0.0038
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_total_whitening",
+          "mrr_difference": -0.0107,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0164,
+            0.0002
+          ],
+          "excludes_zero": false,
+          "minus": "unseen_within_author_whitening",
+          "mrr_difference": -0.0079,
+          "system": "seen_within_author_whitening"
+        }
+      ],
+      "draw": 4,
+      "fit": {
+        "total_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0227
+        },
+        "within_author_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0293,
+          "within_author_share_of_variance": 0.9046
+        }
+      },
+      "groups": 1082,
+      "held_out_labels": 34,
+      "queries": 1158,
+      "seconds": 7.7,
+      "seed": 20260921,
+      "songs_per_held_out_label": {
+        "max": 48,
+        "median": 38.0,
+        "min": 8
+      },
+      "source": "redraw",
+      "systems": {
+        "seen_within_author_whitening": {
+          "mrr": 0.4016,
+          "mrr_component_weighted": 0.3983,
+          "mrr_label_macro": 0.3933,
+          "recall_at_10": 0.595
+        },
+        "unseen_none": {
+          "mrr": 0.2631,
+          "mrr_component_weighted": 0.2653,
+          "mrr_label_macro": 0.261,
+          "recall_at_10": 0.4724
+        },
+        "unseen_total_whitening": {
+          "mrr": 0.4202,
+          "mrr_component_weighted": 0.4168,
+          "mrr_label_macro": 0.4106,
+          "recall_at_10": 0.5984
+        },
+        "unseen_within_author_whitening": {
+          "mrr": 0.4092,
+          "mrr_component_weighted": 0.4062,
+          "mrr_label_macro": 0.4023,
+          "recall_at_10": 0.6105
+        }
+      }
+    },
+    {
+      "contrasts": [
+        {
+          "ci95": [
+            0.124,
+            0.173
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1495,
+          "system": "unseen_total_whitening"
+        },
+        {
+          "ci95": [
+            0.1049,
+            0.1515
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_none",
+          "mrr_difference": 0.1291,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.029,
+            -0.0122
+          ],
+          "excludes_zero": true,
+          "minus": "unseen_total_whitening",
+          "mrr_difference": -0.0205,
+          "system": "unseen_within_author_whitening"
+        },
+        {
+          "ci95": [
+            -0.0163,
+            0.0007
+          ],
+          "excludes_zero": false,
+          "minus": "unseen_within_author_whitening",
+          "mrr_difference": -0.0076,
+          "system": "seen_within_author_whitening"
+        }
+      ],
+      "draw": 5,
+      "fit": {
+        "total_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0222
+        },
+        "within_author_whitening": {
+          "labels_seen": 192,
+          "shrinkage": 0.0285,
+          "within_author_share_of_variance": 0.9056
+        }
+      },
+      "groups": 931,
+      "held_out_labels": 34,
+      "queries": 983,
+      "seconds": 4.0,
+      "seed": 20260922,
+      "songs_per_held_out_label": {
+        "max": 48,
+        "median": 35.0,
+        "min": 5
+      },
+      "source": "redraw",
+      "systems": {
+        "seen_within_author_whitening": {
+          "mrr": 0.4042,
+          "mrr_component_weighted": 0.3997,
+          "mrr_label_macro": 0.3683,
+          "recall_at_10": 0.6012
+        },
+        "unseen_none": {
+          "mrr": 0.2825,
+          "mrr_component_weighted": 0.2782,
+          "mrr_label_macro": 0.2496,
+          "recall_at_10": 0.4649
+        },
+        "unseen_total_whitening": {
+          "mrr": 0.4312,
+          "mrr_component_weighted": 0.4277,
+          "mrr_label_macro": 0.3942,
+          "recall_at_10": 0.6033
+        },
+        "unseen_within_author_whitening": {
+          "mrr": 0.4111,
+          "mrr_component_weighted": 0.4073,
+          "mrr_label_macro": 0.377,
+          "recall_at_10": 0.6114
+        }
+      }
+    }
+  ],
+  "minutes": 0.9,
+  "privacy": "aggregate only",
+  "question": "does the label-free / label-specific transfer reading of identity_probe_v2 depend on its single held-out draw?",
+  "reading": {
+    "draws": 6,
+    "draws_seen_minus_unseen_clear_of_zero": 2,
+    "draws_total_minus_none_positive_clear_of_zero": 6,
+    "draws_within_minus_total_negative_clear_of_zero": 6,
+    "draws_within_minus_total_not_positive": 6,
+    "draws_within_minus_total_point_estimate_at_or_below_zero": 6,
+    "label_free_part": "the label-free part transfers",
+    "label_specific_part": "the label-specific part does not transfer",
+    "rule_threshold_not_positive": 5
+  },
+  "spread_across_draws": {
+    "contrasts": {
+      "seen_within_author_whitening - unseen_within_author_whitening": {
+        "draws": 6,
+        "max": 0.0019,
+        "mean": -0.0053,
+        "min": -0.0108,
+        "sd": 0.0054
+      },
+      "unseen_total_whitening - unseen_none": {
+        "draws": 6,
+        "max": 0.1871,
+        "mean": 0.144,
+        "min": 0.1139,
+        "sd": 0.0256
+      },
+      "unseen_within_author_whitening - unseen_none": {
+        "draws": 6,
+        "max": 0.1696,
+        "mean": 0.1253,
+        "min": 0.0959,
+        "sd": 0.0272
+      },
+      "unseen_within_author_whitening - unseen_total_whitening": {
+        "draws": 6,
+        "max": -0.0107,
+        "mean": -0.0187,
+        "min": -0.026,
+        "sd": 0.005
+      }
+    },
+    "systems": {
+      "seen_within_author_whitening": {
+        "mrr": {
+          "draws": 6,
+          "max": 0.4499,
+          "mean": 0.419,
+          "min": 0.3814,
+          "sd": 0.0273
+        },
+        "mrr_component_weighted": {
+          "draws": 6,
+          "max": 0.4473,
+          "mean": 0.4161,
+          "min": 0.382,
+          "sd": 0.0262
+        },
+        "mrr_label_macro": {
+          "draws": 6,
+          "max": 0.4543,
+          "mean": 0.4095,
+          "min": 0.3683,
+          "sd": 0.0339
+        }
+      },
+      "unseen_none": {
+        "mrr": {
+          "draws": 6,
+          "max": 0.3505,
+          "mean": 0.2956,
+          "min": 0.2631,
+          "sd": 0.0389
+        },
+        "mrr_component_weighted": {
+          "draws": 6,
+          "max": 0.3506,
+          "mean": 0.296,
+          "min": 0.2653,
+          "sd": 0.039
+        },
+        "mrr_label_macro": {
+          "draws": 6,
+          "max": 0.3438,
+          "mean": 0.2821,
+          "min": 0.2417,
+          "sd": 0.0408
+        }
+      },
+      "unseen_total_whitening": {
+        "mrr": {
+          "draws": 6,
+          "max": 0.4719,
+          "mean": 0.4433,
+          "min": 0.4072,
+          "sd": 0.0273
+        },
+        "mrr_component_weighted": {
+          "draws": 6,
+          "max": 0.4655,
+          "mean": 0.44,
+          "min": 0.4061,
+          "sd": 0.0263
+        },
+        "mrr_label_macro": {
+          "draws": 6,
+          "max": 0.4893,
+          "mean": 0.435,
+          "min": 0.3942,
+          "sd": 0.0375
+        }
+      },
+      "unseen_within_author_whitening": {
+        "mrr": {
+          "draws": 6,
+          "max": 0.4545,
+          "mean": 0.4246,
+          "min": 0.3813,
+          "sd": 0.0287
+        },
+        "mrr_component_weighted": {
+          "draws": 6,
+          "max": 0.4465,
+          "mean": 0.4213,
+          "min": 0.38,
+          "sd": 0.0276
+        },
+        "mrr_label_macro": {
+          "draws": 6,
+          "max": 0.4675,
+          "mean": 0.4162,
+          "min": 0.377,
+          "sd": 0.0351
+        }
+      }
+    }
+  }
+}

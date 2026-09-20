@@ -63,6 +63,40 @@ Held-out labels (15%): none 0.2658 → total whitening 0.4072 → within-author 
 0.3813; seen labels under within-author whitening 0.3814. The label-free part of the gain
 transfers to unseen labels; the label-specific part does not.
 
+**Six held-out draws** (`heldout_label_redraw.json`, `src/heldout_label_redraw_v3.py`, 2026-09-20).
+The transfer reading above rests on one draw of 34 labels, fixed by seed and shared by every
+fold. Five further draws were taken as disjoint blocks of 34 labels each (seeds 20260918 to
+20260922; 22 labels are never held out), each transform fitted on the seen labels' songs only
+as the probe does, and the held-out labels' queries scored against all 226 profiles. Draw 0
+reproduces the probe's numbers (gaps at most 0.00004). Rule, fixed before the run: the
+label-free part transfers if total whitening minus none is positive with the interval clear
+of zero in every draw; the label-specific part does not transfer if within-author minus total
+whitening is not positive in at least five of six draws.
+
+| draw (seed) | queries | none | total | within-author | seen, within-author | total − none | within − total | seen − unseen |
+|---|---|---|---|---|---|---|---|---|
+| 0 (20260825) | 1,041 | 0.2658 | 0.4072 | 0.3813 | 0.3814 | +0.138 [+0.114, +0.160] | -0.026 [-0.034, -0.018] | +0.002 [-0.005, +0.009] |
+| 1 (20260918) | 932 | 0.2724 | 0.4614 | 0.4433 | 0.4323 | +0.187 [+0.163, +0.213] | -0.018 [-0.025, -0.010] | -0.011 [-0.018, -0.004] |
+| 2 (20260919) | 1,211 | 0.3390 | 0.4679 | 0.4484 | 0.4499 | +0.124 [+0.103, +0.145] | -0.019 [-0.027, -0.013] | +0.001 [-0.006, +0.009] |
+| 3 (20260920) | 1,156 | 0.3505 | 0.4719 | 0.4545 | 0.4446 | +0.114 [+0.093, +0.137] | -0.018 [-0.026, -0.010] | -0.009 [-0.016, -0.001] |
+| 4 (20260921) | 1,158 | 0.2631 | 0.4202 | 0.4092 | 0.4016 | +0.151 [+0.130, +0.174] | -0.011 [-0.018, -0.004] | -0.008 [-0.016, +0.000] |
+| 5 (20260922) | 983 | 0.2825 | 0.4312 | 0.4111 | 0.4042 | +0.149 [+0.124, +0.173] | -0.021 [-0.029, -0.012] | -0.008 [-0.016, +0.001] |
+
+Spread over the six draws: unseen none 0.263–0.350,
+total whitening 0.407–0.472,
+within-author 0.381–0.455;
+total − none +0.114 to +0.187
+(sd 0.026); within − total
+-0.026 to
+-0.011 (sd
+0.005). Readings:
+the label-free part transfers (6 of 6 draws clear of zero) and the
+label-specific part does not (6 of 6 negative and clear of zero). On unseen labels
+the label-fitted whitening is below the label-free one in every draw, by 0.011 to 0.026. The
+seen-label space is not reliably ahead of the unseen one on the same queries: the contrast is
+clear of zero in 2 of 6 draws, both times negative. The single-draw levels vary
+(none 0.263 to 0.351 across draws) but the two readings do not.
+
 ## Where the word signal sits (`word_identity_anatomy.json`, `common_word_curve.json`)
 
 Unigrams alone 0.5117 (bigrams alone 0.4114); the commonest document-frequency quartile

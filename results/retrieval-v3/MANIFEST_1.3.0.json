@@ -311,6 +311,13 @@
       "run": "2026-09-18, CPU; generic leave-group-out scorer checked against the protocol's dense and sparse scorers; prototype reproduces the published MRR in every space",
       "sha256": "144ac472b732a710cb6c87c70f1c8a4cf30b35f46f64894c18966cadae13a735",
       "written": "2026-09-18T11:04"
+    },
+    "heldout_label_redraw.json": {
+      "arm": "heldout_label_redraw_v3 (whitening transfer under six disjoint held-out label draws)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-20, CPU; draw 0 reproduces identity_probe.json's held-out and all-query numbers; synthetic test tests/test_heldout_label_redraw.py",
+      "sha256": "ff401cd3f73a0c0edc063ea00870a670fa405fd387af8454d449fd4ab9115c53",
+      "written": "2026-09-20T17:48"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
