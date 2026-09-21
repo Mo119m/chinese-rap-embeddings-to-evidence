@@ -1000,6 +1000,38 @@ whitening +0.0137 [+0.0094, +0.0180], and within-label minus the permuted-label 
 estimand (+0.129 against +0.083), consistent with the label-size section, where the whitened
 spaces lose far less than the raw word space among labels with few songs.
 
+### Fusion weights fitted inside the training folds (`fusion_weights_nested.json`, `src/fusion_weights_nested_v3.py`)
+
+Every published fusion averages the two spaces' row-wise z-scores with weight 0.5, never tuned
+and never tested. Here the weight w of the word space (grid 0.00 to 1.00 in steps of 0.05) is
+chosen for each test fold on its training folds only, from inner scores whose SVD and whitening
+were fitted on the three folds outside both the test fold and the training fold being scored,
+and then applied to the test fold's published scores. Nine published numbers are reproduced
+first (the four raw spaces under both published rank policies for rhyme, the fold-wise spaces
+0.5426 and 0.4271, the fusions 0.4894 and 0.5854); fused(0.5) is bitwise the published
+expression. Rules, fixed before the run: a fusion adds to its better component if the
+fitted-weight fusion minus that component is positive with the interval clear of zero; rhyme
+adds nothing beyond the surface if words + rhyme minus words is not; the published equal weight
+"exceeds honest weighting", "is conservative" or "stands" by the sign of fitted minus equal.
+
+| pair | better component | equal weight (published) | fitted weight | w chosen per fold | fitted − better component | fitted − equal | w chosen on the test fold itself − fitted (description) |
+|---|---|---|---|---|---|---|---|
+| whitened word SVD + chunk-whitened semantic (the published best system) | 0.5426 | 0.5854 | 0.5908 | 0.65, 0.60, 0.60, 0.60, 0.60 | +0.0455 [+0.0399, +0.0511] | +0.0061 [+0.0034, +0.0088] | +0.0011 [-0.0007, +0.0029] |
+| raw words + raw semantic | 0.4963 | 0.4894 | 0.5040 | 0.75, 0.75, 0.75, 0.70, 0.70 | +0.0074 [+0.0039, +0.0107] | +0.0156 [+0.0119, +0.0195] | +0.0014 [-0.0002, +0.0030] |
+| raw words + raw characters | 0.4963 | 0.4835 | 0.4964 | 0.85, 0.85, 0.85, 0.80, 0.95 | +0.0001 [-0.0019, +0.0022] | +0.0134 [+0.0100, +0.0171] | +0.0018 [+0.0001, +0.0033] |
+| raw words + strict rhyme form (7,117 covered songs) | 0.4940 | 0.4170 | 0.4940 | 0.90, 0.85, 0.95, 0.85, 0.85 | +0.0002 [-0.0021, +0.0025] | +0.0776 [+0.0717, +0.0839] | +0.0029 [+0.0009, +0.0049] |
+
+Readings. The published best system was not selected on the evaluation queries: a weight
+fitted without them gives 0.5908 against the published 0.5854, so the published number is
+conservative, and choosing the weight on the test fold itself would add +0.0011 [−0.0007,
++0.0029], an interval that includes zero. The fusion
+adds 0.046 to the whitened word space. Raw words with raw semantic adds to the words under a
+fitted weight (+0.007) where the published equal-weight fusion fell below them (−0.008). Words
+with characters adds nothing. Rhyme adds nothing beyond the surface: words + rhyme minus words
+is +0.0002 [−0.0021, +0.0025] with the weight fitted, so the redundancy reading no longer rests
+on an untuned equal weight, under which the rhyme space simply dragged the fusion down (−0.077).
+In every pair the fitted weight favours the word space (0.60 to 0.95).
+
 ### Repeated passages within a label (`within_label_repeats.json`, `src/within_label_repeats_v3.py`)
 
 Leave-group-out removes the query's leakage group, not the label's other songs that share a

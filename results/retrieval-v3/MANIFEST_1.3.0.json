@@ -346,6 +346,13 @@
       "run": "2026-09-21, CPU; every system's published MRR reproduced as it was scored; published group-bootstrap contrasts reproduced; builder's own bootstrap functions; synthetic test tests/test_estimand_two_stage.py",
       "sha256": "163278bc5bf4b5bdfedbd30873c0ebac4e165ffe611345c6f0fa678e21d0759d",
       "written": "2026-09-21T18:16"
+    },
+    "fusion_weights_nested.json": {
+      "arm": "fusion_weights_nested_v3 (fusion weight fitted inside the training folds, four pairs of spaces)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU, 22 min; nine published numbers reproduced first; fused(0.5) bitwise the published fusion; synthetic test tests/test_fusion_weights_nested.py",
+      "sha256": "e5de58a9b42564ec87a5cd9f0140c2a9a369fd1312bd97a597e6a497fdaaf337",
+      "written": "2026-09-21T18:38"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
