@@ -946,6 +946,60 @@ published numbers before scoring anything new, fixes its reading rule in its doc
 the run, and has a synthetic test under `tests/` that checks its scorers against brute-force
 definitions without the corpus.
 
+### Resampling the labels: the two-stage bootstrap and the label-macro estimand (`estimand_two_stage.json`, `src/estimand_two_stage_v3.py`)
+
+Every interval published on corpus v3 resamples leakage groups and reads the
+component-weighted MRR, which conditions on the 226 labels and lets a label with a hundred songs
+count twenty times a label with five. The retrieval builder's own design, used on corpus v2 and
+never run on v3, reads the label-macro MRR (component-weighted mean within a label, then the
+plain mean over labels) under a paired two-stage bootstrap: labels drawn with replacement, then
+each drawn label's components drawn with replacement (5,000 replicates, seed 20260825). The script
+calls the builder's own `component_metric_values` and `run_bootstrap` through the constant
+redirect `build_downstream_retrieval_v2` uses. Checks: all nine systems reproduce their
+published query-weighted MRR (gap 0.0000) and, where published, their component-weighted MRR;
+the three group-bootstrap contrasts already published on these ranks reproduce with their
+intervals; the builder's component tensors equal the script's component means (gap 0) and its
+point estimate equals the label-macro of the ranks (gap 1e-16). Rule, fixed before the run: a
+contrast is established under label resampling if its two-stage 95% interval for the
+label-macro MRR difference excludes zero.
+
+| system | MRR, query-weighted | component-weighted | label-macro [two-stage 95%] | R@1, query-weighted | R@1, label-macro |
+|---|---|---|---|---|---|
+| semantic, raw | 0.2997 | 0.2979 | 0.2831 [0.258, 0.308] | 0.2019 | 0.1936 |
+| characters, raw | 0.4266 | 0.4310 | 0.3765 [0.343, 0.410] | 0.3342 | 0.2947 |
+| words, raw | 0.4963 | 0.5020 | 0.4316 [0.395, 0.468] | 0.4029 | 0.3481 |
+| semantic, total whitening | 0.3996 | 0.3968 | 0.3924 [0.367, 0.417] | 0.3062 | 0.3006 |
+| semantic, within-label whitening | 0.4164 | 0.4136 | 0.4062 [0.380, 0.431] | 0.3179 | 0.3101 |
+| semantic, within-label whitening on permuted labels | 0.3983 | 0.3958 | 0.3919 [0.367, 0.416] | 0.3051 | 0.3011 |
+| word SVD-1024, within-label whitening | 0.5426 | 0.5452 | 0.5121 [0.481, 0.543] | 0.4334 | 0.4039 |
+| semantic, chunks whitened then averaged | 0.4271 | 0.4247 | 0.4174 [0.391, 0.443] | 0.3266 | 0.3205 |
+| fusion of the two whitened spaces | 0.5854 | 0.5846 | 0.5608 [0.531, 0.589] | 0.4794 | 0.4581 |
+
+| contrast | component-weighted MRR, group bootstrap | label-macro MRR, two-stage | label-macro R@1, two-stage | reading |
+|---|---|---|---|---|
+| words, raw − characters, raw (confirmatory) | +0.0711 [+0.0643, +0.0785] | +0.0551 [+0.0409, +0.0692] | +0.0534 [+0.0374, +0.0695] | established |
+| characters, raw − semantic, raw (confirmatory) | +0.1331 [+0.1229, +0.1435] | +0.0935 [+0.0698, +0.1182] | +0.1011 [+0.0765, +0.1265] | established |
+| words, raw − semantic, raw (confirmatory) | +0.2042 [+0.1944, +0.2142] | +0.1486 [+0.1201, +0.1767] | +0.1545 [+0.1255, +0.1836] | established |
+| semantic, within-label whitening − semantic, total whitening (confirmatory) | +0.0168 [+0.0142, +0.0195] | +0.0137 [+0.0094, +0.0180] | +0.0095 [+0.0035, +0.0154] | established |
+| semantic, within-label whitening − semantic, within-label whitening on permuted labels (confirmatory) | +0.0179 [+0.0153, +0.0205] | +0.0143 [+0.0093, +0.0191] | +0.0090 [+0.0017, +0.0159] | established |
+| word SVD-1024, within-label whitening − semantic, within-label whitening (confirmatory) | +0.1316 [+0.1217, +0.1418] | +0.1059 [+0.0835, +0.1278] | +0.0938 [+0.0684, +0.1188] | established |
+| fusion of the two whitened spaces − words, raw (confirmatory) | +0.0826 [+0.0746, +0.0898] | +0.1292 [+0.1067, +0.1525] | +0.1101 [+0.0872, +0.1334] | established |
+| word SVD-1024, within-label whitening − semantic, chunks whitened then averaged (supplementary) | +0.1205 [+0.1108, +0.1305] | +0.0947 [+0.0720, +0.1164] | +0.0834 [+0.0574, +0.1084] | established |
+| fusion of the two whitened spaces − word SVD-1024, within-label whitening (supplementary) | +0.0394 [+0.0329, +0.0461] | +0.0487 [+0.0360, +0.0615] | +0.0542 [+0.0378, +0.0711] | established |
+
+All 9 of 9 contrasts are established under label resampling, the seven confirmatory ones
+included; the two resamplings agree on every sign. The two-stage intervals are 1.6 to 3.0
+times as wide as the group-bootstrap ones, which is the between-label variation the group
+bootstrap holds fixed. Label-macro levels sit below the query-weighted ones in every space
+(words 0.4316 against 0.4963, characters 0.3765 against 0.4266, semantic 0.2831 against
+0.2997), most in the sparse spaces: labels with few songs score lower under the prototype
+scorer, as the label-size section shows, and the label-macro estimand gives them equal weight.
+The margins that were thin under group resampling stay clear of zero: within-label minus total
+whitening +0.0137 [+0.0094, +0.0180], and within-label minus the permuted-label null +0.0143
+[+0.0093, +0.0191]. The fusion's lead over the raw word space is larger under the label-macro
+estimand (+0.129 against +0.083), consistent with the label-size section, where the whitened
+spaces lose far less than the raw word space among labels with few songs.
+
 ### Repeated passages within a label (`within_label_repeats.json`, `src/within_label_repeats_v3.py`)
 
 Leave-group-out removes the query's leakage group, not the label's other songs that share a

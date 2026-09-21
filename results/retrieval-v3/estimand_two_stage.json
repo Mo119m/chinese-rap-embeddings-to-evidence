@@ -1,0 +1,1084 @@
+{
+  "analysis": "the headline contrasts under the retrieval builder's two-stage bootstrap and label-macro estimand, corpus v3",
+  "checks": {
+    "against_published": {
+      "characters_raw": {
+        "component_weighted_gap": 0.0,
+        "gap": 0.0,
+        "passes": true,
+        "published_component_weighted_mrr": 0.431,
+        "published_query_weighted_mrr": 0.4266,
+        "recomputed_component_weighted_mrr": 0.431,
+        "recomputed_query_weighted_mrr": 0.4266,
+        "source": "identity_probe.json systems.lexical_character_ngrams",
+        "tolerance": 0.0005
+      },
+      "fusion_whitened_words_semantic": {
+        "gap": 0.0,
+        "passes": true,
+        "published_query_weighted_mrr": 0.5854,
+        "recomputed_query_weighted_mrr": 0.5854,
+        "source": "word_space_probe.json systems.fusion_whitened_words_whitened_semantic",
+        "tolerance": 0.002
+      },
+      "semantic_raw": {
+        "component_weighted_gap": 0.0,
+        "gap": 0.0,
+        "passes": true,
+        "published_component_weighted_mrr": 0.2979,
+        "published_query_weighted_mrr": 0.2997,
+        "recomputed_component_weighted_mrr": 0.2979,
+        "recomputed_query_weighted_mrr": 0.2997,
+        "source": "identity_probe.json systems.none; representation_unit.json song_centroid",
+        "tolerance": 0.0005
+      },
+      "semantic_total_whitened": {
+        "component_weighted_gap": 0.0,
+        "gap": 0.0,
+        "passes": true,
+        "published_component_weighted_mrr": 0.3968,
+        "published_query_weighted_mrr": 0.3996,
+        "recomputed_component_weighted_mrr": 0.3968,
+        "recomputed_query_weighted_mrr": 0.3996,
+        "source": "identity_probe.json systems.total_whitening",
+        "tolerance": 0.002
+      },
+      "semantic_whitened_chunks": {
+        "gap": 0.0,
+        "passes": true,
+        "published_query_weighted_mrr": 0.4271,
+        "recomputed_query_weighted_mrr": 0.4271,
+        "source": "word_space_probe.json systems.semantic_whitened_chunks; representation_unit.json whitened_chunks_then_mean",
+        "tolerance": 0.002
+      },
+      "semantic_within_whitened": {
+        "component_weighted_gap": 0.0,
+        "gap": 0.0,
+        "passes": true,
+        "published_component_weighted_mrr": 0.4136,
+        "published_query_weighted_mrr": 0.4164,
+        "recomputed_component_weighted_mrr": 0.4136,
+        "recomputed_query_weighted_mrr": 0.4164,
+        "source": "identity_probe.json systems.within_author_whitening",
+        "tolerance": 0.002
+      },
+      "semantic_within_whitened_permuted": {
+        "component_weighted_gap": 0.0,
+        "gap": 0.0,
+        "passes": true,
+        "published_component_weighted_mrr": 0.3958,
+        "published_query_weighted_mrr": 0.3983,
+        "recomputed_component_weighted_mrr": 0.3958,
+        "recomputed_query_weighted_mrr": 0.3983,
+        "source": "identity_probe.json systems.within_author_whitening_permuted_labels",
+        "tolerance": 0.002
+      },
+      "words_raw": {
+        "gap": 0.0,
+        "passes": true,
+        "published_query_weighted_mrr": 0.4963,
+        "recomputed_query_weighted_mrr": 0.4963,
+        "source": "three_spaces.json systems.lexical_words (read by expected())",
+        "tolerance": 0.0005
+      },
+      "words_svd_within_whitened": {
+        "gap": 0.0,
+        "passes": true,
+        "published_query_weighted_mrr": 0.5426,
+        "recomputed_query_weighted_mrr": 0.5426,
+        "source": "word_space_probe.json systems.words_svd_within_author_whitening",
+        "tolerance": 0.002
+      }
+    },
+    "builder_component_tensors_max_gap": 0.0,
+    "components_equal_builder": true,
+    "dense_arm_across_calls_max_gap": 0.0,
+    "dense_scorer_max_gap": 7.088882655326145e-07,
+    "label_macro_against_two_stage_point_max_gap": 1.1102230246251565e-16,
+    "published_group_bootstrap_contrasts": {
+      "fusion_whitened_words_semantic - words_svd_within_whitened": {
+        "gap": 0.0,
+        "passes": true,
+        "published_mrr_difference": 0.0394,
+        "recomputed": 0.0394,
+        "recomputed_ci95": [
+          0.0329,
+          0.0461
+        ],
+        "source": "word_space_probe.json"
+      },
+      "semantic_within_whitened - semantic_total_whitened": {
+        "gap": 0.0,
+        "passes": true,
+        "published_mrr_difference": 0.0168,
+        "recomputed": 0.0168,
+        "recomputed_ci95": [
+          0.0142,
+          0.0195
+        ],
+        "source": "identity_probe.json"
+      },
+      "semantic_within_whitened - semantic_within_whitened_permuted": {
+        "gap": 0.0,
+        "passes": true,
+        "published_mrr_difference": 0.0179,
+        "recomputed": 0.0179,
+        "recomputed_ci95": [
+          0.0153,
+          0.0205
+        ],
+        "source": "identity_probe.json"
+      }
+    },
+    "second_load_centroid_max_gap": 0.0
+  },
+  "contrasts": [
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.0643,
+            0.0785
+          ],
+          "difference": 0.0711,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0595,
+            0.0779
+          ],
+          "difference": 0.0685,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.0409,
+            0.0692
+          ],
+          "difference": 0.0551,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0374,
+            0.0695
+          ],
+          "difference": 0.0534,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.0373,
+            0.0734
+          ],
+          "difference": 0.0553,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "characters_raw",
+      "query_weighted_mrr_difference": 0.0697,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "words_raw"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.1229,
+            0.1435
+          ],
+          "difference": 0.1331,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.127,
+            0.1503
+          ],
+          "difference": 0.1385,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.0698,
+            0.1182
+          ],
+          "difference": 0.0935,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0765,
+            0.1265
+          ],
+          "difference": 0.1011,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.0452,
+            0.1046
+          ],
+          "difference": 0.0748,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "semantic_raw",
+      "query_weighted_mrr_difference": 0.1269,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "characters_raw"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.1944,
+            0.2142
+          ],
+          "difference": 0.2042,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.1954,
+            0.2185
+          ],
+          "difference": 0.207,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.1201,
+            0.1767
+          ],
+          "difference": 0.1486,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.1255,
+            0.1836
+          ],
+          "difference": 0.1545,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.0958,
+            0.1628
+          ],
+          "difference": 0.1302,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "semantic_raw",
+      "query_weighted_mrr_difference": 0.1966,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "words_raw"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.0142,
+            0.0195
+          ],
+          "difference": 0.0168,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0078,
+            0.0164
+          ],
+          "difference": 0.0121,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.0094,
+            0.018
+          ],
+          "difference": 0.0137,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0035,
+            0.0154
+          ],
+          "difference": 0.0095,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.0146,
+            0.0314
+          ],
+          "difference": 0.0227,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "semantic_total_whitened",
+      "query_weighted_mrr_difference": 0.0168,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "semantic_within_whitened"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.0153,
+            0.0205
+          ],
+          "difference": 0.0179,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0083,
+            0.0172
+          ],
+          "difference": 0.0127,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.0093,
+            0.0191
+          ],
+          "difference": 0.0143,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0017,
+            0.0159
+          ],
+          "difference": 0.009,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.0177,
+            0.0344
+          ],
+          "difference": 0.0259,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "semantic_within_whitened_permuted",
+      "query_weighted_mrr_difference": 0.0181,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "semantic_within_whitened"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.1217,
+            0.1418
+          ],
+          "difference": 0.1316,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.1093,
+            0.133
+          ],
+          "difference": 0.1211,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.0835,
+            0.1278
+          ],
+          "difference": 0.1059,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0684,
+            0.1188
+          ],
+          "difference": 0.0938,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.1098,
+            0.1646
+          ],
+          "difference": 0.1376,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "semantic_within_whitened",
+      "query_weighted_mrr_difference": 0.1262,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "words_svd_within_whitened"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.0746,
+            0.0898
+          ],
+          "difference": 0.0826,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0635,
+            0.0824
+          ],
+          "difference": 0.0732,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.1067,
+            0.1525
+          ],
+          "difference": 0.1292,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0872,
+            0.1334
+          ],
+          "difference": 0.1101,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.1395,
+            0.2028
+          ],
+          "difference": 0.1699,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "words_raw",
+      "query_weighted_mrr_difference": 0.0891,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "confirmatory",
+      "system": "fusion_whitened_words_semantic"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.1108,
+            0.1305
+          ],
+          "difference": 0.1205,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.1003,
+            0.1238
+          ],
+          "difference": 0.1118,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.072,
+            0.1164
+          ],
+          "difference": 0.0947,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0574,
+            0.1084
+          ],
+          "difference": 0.0834,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.091,
+            0.1449
+          ],
+          "difference": 0.1184,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "semantic_whitened_chunks",
+      "query_weighted_mrr_difference": 0.1155,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "supplementary",
+      "system": "words_svd_within_whitened"
+    },
+    {
+      "component_weighted_group_bootstrap": {
+        "mrr": {
+          "ci95": [
+            0.0329,
+            0.0461
+          ],
+          "difference": 0.0394,
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0344,
+            0.0527
+          ],
+          "difference": 0.0435,
+          "excludes_zero": true
+        }
+      },
+      "label_macro_two_stage": {
+        "mrr": {
+          "ci95": [
+            0.036,
+            0.0615
+          ],
+          "difference": 0.0487,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_1": {
+          "ci95": [
+            0.0378,
+            0.0711
+          ],
+          "difference": 0.0542,
+          "direction": "left_higher",
+          "excludes_zero": true
+        },
+        "recall_at_10": {
+          "ci95": [
+            0.0162,
+            0.0468
+          ],
+          "difference": 0.0313,
+          "direction": "left_higher",
+          "excludes_zero": true
+        }
+      },
+      "minus": "words_svd_within_whitened",
+      "query_weighted_mrr_difference": 0.0427,
+      "reading": "established under label resampling",
+      "resamplings_agree_on_mrr": true,
+      "role": "supplementary",
+      "system": "fusion_whitened_words_semantic"
+    }
+  ],
+  "corpus": {
+    "chunks_in_queries": 23848,
+    "components": 6889,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "checks": "query-weighted MRR of every system reproduces its published corpus-v3 number as soon as it is scored (gap <= 5e-4 for the raw spaces, <= 0.002 fold-wise; published component-weighted MRR within 0.002 where one exists); dense scorer reproduces the builder (<= 1e-4), the builder's dense arm is identical across calls, and the component count equals the builder's; the second corpus load reproduces setup()'s centroids (<= 1e-6); the builder's component tensors equal this file's component means (<= 1e-12) and its point_macro equals the label-macro estimand of the ranks (<= 1e-9); the three published group-bootstrap contrasts on these ranks reproduce within 0.002; the synthetic unit test checks the component means against v1's own function, the two-stage wrapper against a transcription of v1.run_bootstrap, the fold-wise scorer against identity_probe_v2's loop, and the estimands and intervals against brute force",
+    "contrasts": {
+      "confirmatory": [
+        "words_raw - characters_raw",
+        "characters_raw - semantic_raw",
+        "words_raw - semantic_raw",
+        "semantic_within_whitened - semantic_total_whitened",
+        "semantic_within_whitened - semantic_within_whitened_permuted",
+        "words_svd_within_whitened - semantic_within_whitened",
+        "fusion_whitened_words_semantic - words_raw"
+      ],
+      "supplementary": [
+        "words_svd_within_whitened - semantic_whitened_chunks",
+        "fusion_whitened_words_semantic - words_svd_within_whitened"
+      ]
+    },
+    "estimands": {
+      "component_weighted": "each (leakage group, label) component weight one (the estimand of every published interval)",
+      "label_macro": "component-weighted mean within each label, then the plain mean over labels (the retrieval builder's estimand)",
+      "query_weighted": "mean over queries (the published numbers)"
+    },
+    "folds": {
+      "count": 5,
+      "seed": 20260825,
+      "sizes": [
+        1389,
+        1445,
+        1496,
+        1448,
+        1442
+      ],
+      "svd_variance_kept_by_fold": [
+        0.4057,
+        0.4096,
+        0.4101,
+        0.4077,
+        0.4085
+      ],
+      "unit": "leakage group"
+    },
+    "reading_rule": "a contrast is 'established under label resampling' if its two-stage 95% interval for the label-macro MRR difference excludes zero, and 'not established under label resampling' otherwise; every contrast is reported either way, with its label-macro R@1 and R@10 intervals and its group-bootstrap component-weighted intervals beside it; a disagreement between the two resamplings is named, not resolved",
+    "resampling": {
+      "component_weighted_group_bootstrap": "identity_spaces_v2.paired_group_bootstrap: 2000 replicates, seed 20260825, leakage groups drawn with replacement, paired across systems; MRR and R@1",
+      "label_macro_two_stage": "the builder's own v1.component_metric_values and v1.run_bootstrap, called through the constant redirect build_downstream_retrieval_v2 uses: 5000 replicates, seed 20260825; 226 label occurrences drawn with replacement, then for every occurrence an independent draw with replacement of that label's components, each component valued by the mean over its songs; MRR, R@1 and R@10",
+      "two_stage_diagnostics": {
+        "algorithm": "literal_occurrence_wise_two_stage_paired_bootstrap_v1",
+        "independent_inner_resample_occurrences": 1130000,
+        "outer_label_occurrences_per_replicate": 226,
+        "repeated_outer_label_occurrences": 414307,
+        "repeated_outer_occurrences_reuse_inner_draw": false,
+        "replicates": 5000,
+        "same_component_draw_applied_to_all_systems_and_metrics": true,
+        "total_inner_component_draws": 34444822,
+        "total_outer_label_occurrences": 1130000
+      }
+    },
+    "systems": {
+      "characters_raw": "character 2-5-gram TF-IDF, leave-group-out cosine (the builder's lexical arm)",
+      "fusion_whitened_words_semantic": "equal-weight z-score fusion of words_svd_within_whitened and semantic_whitened_chunks (the published best system)",
+      "semantic_raw": "BGE-M3 song centroids, leave-group-out cosine (the builder's dense arm)",
+      "semantic_total_whitened": "total-covariance whitening of the centroids, fitted per fold on the training folds (identity_probe_v2)",
+      "semantic_whitened_chunks": "within-author whitening fitted on chunk vectors, whitened chunks averaged into songs (representation_unit_v2)",
+      "semantic_within_whitened": "within-author whitening of the centroids, the same folds",
+      "semantic_within_whitened_permuted": "within-author whitening fitted on permuted training labels, the same folds and seeds (identity_probe_v2's null)",
+      "words_raw": "jieba word 1-2-gram TF-IDF, the same scorer",
+      "words_svd_within_whitened": "word TF-IDF reduced by SVD-1024 fitted on the training folds, then within-author whitening (word_space_probe_v2)"
+    }
+  },
+  "identity_estimands": {
+    "definitions": {
+      "component_weighted": "each (group, label) component weight one",
+      "label_macro": "component-weighted mean within each label, then the mean over labels",
+      "plain_all": "each query weight one"
+    },
+    "labels": 226,
+    "queries": 7220,
+    "systems": {
+      "characters_raw": {
+        "mrr": {
+          "component_weighted": 0.431,
+          "label_macro": 0.3765,
+          "plain_all": 0.4266
+        },
+        "recall_at_1": {
+          "component_weighted": 0.3392,
+          "label_macro": 0.2947,
+          "plain_all": 0.3342
+        },
+        "recall_at_10": {
+          "component_weighted": 0.6068,
+          "label_macro": 0.5303,
+          "plain_all": 0.6057
+        }
+      },
+      "semantic_raw": {
+        "mrr": {
+          "component_weighted": 0.2979,
+          "label_macro": 0.2831,
+          "plain_all": 0.2997
+        },
+        "recall_at_1": {
+          "component_weighted": 0.2008,
+          "label_macro": 0.1936,
+          "plain_all": 0.2019
+        },
+        "recall_at_10": {
+          "component_weighted": 0.4874,
+          "label_macro": 0.4555,
+          "plain_all": 0.4911
+        }
+      },
+      "words_raw": {
+        "mrr": {
+          "component_weighted": 0.502,
+          "label_macro": 0.4316,
+          "plain_all": 0.4963
+        },
+        "recall_at_1": {
+          "component_weighted": 0.4077,
+          "label_macro": 0.3481,
+          "plain_all": 0.4029
+        },
+        "recall_at_10": {
+          "component_weighted": 0.6786,
+          "label_macro": 0.5856,
+          "plain_all": 0.6715
+        }
+      }
+    }
+  },
+  "minutes": 9.5,
+  "privacy": "aggregate only",
+  "question": "which published contrasts hold when labels (artists) are resampled, read on the label-macro MRR and R@1, and how far apart the query-weighted, component-weighted and label-macro readings of each system are",
+  "readings": {
+    "characters_raw - semantic_raw": "established under label resampling",
+    "fusion_whitened_words_semantic - words_raw": "established under label resampling",
+    "fusion_whitened_words_semantic - words_svd_within_whitened": "established under label resampling",
+    "semantic_within_whitened - semantic_total_whitened": "established under label resampling",
+    "semantic_within_whitened - semantic_within_whitened_permuted": "established under label resampling",
+    "words_raw - characters_raw": "established under label resampling",
+    "words_raw - semantic_raw": "established under label resampling",
+    "words_svd_within_whitened - semantic_whitened_chunks": "established under label resampling",
+    "words_svd_within_whitened - semantic_within_whitened": "established under label resampling"
+  },
+  "systems": {
+    "characters_raw": {
+      "mrr": {
+        "component_weighted": 0.431,
+        "label_macro": 0.3765,
+        "label_macro_ci95_two_stage": [
+          0.3431,
+          0.41
+        ],
+        "query_weighted": 0.4266
+      },
+      "published": {
+        "query_weighted_mrr": 0.4266,
+        "source": "identity_probe.json systems.lexical_character_ngrams"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.3392,
+        "label_macro": 0.2947,
+        "label_macro_ci95_two_stage": [
+          0.2621,
+          0.3285
+        ],
+        "query_weighted": 0.3342
+      },
+      "recall_at_10": {
+        "component_weighted": 0.6068,
+        "label_macro": 0.5303,
+        "label_macro_ci95_two_stage": [
+          0.492,
+          0.5682
+        ],
+        "query_weighted": 0.6057
+      }
+    },
+    "fusion_whitened_words_semantic": {
+      "mrr": {
+        "component_weighted": 0.5846,
+        "label_macro": 0.5608,
+        "label_macro_ci95_two_stage": [
+          0.5314,
+          0.5887
+        ],
+        "query_weighted": 0.5854
+      },
+      "published": {
+        "query_weighted_mrr": 0.5854,
+        "source": "word_space_probe.json systems.fusion_whitened_words_whitened_semantic"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.4809,
+        "label_macro": 0.4581,
+        "label_macro_ci95_two_stage": [
+          0.4256,
+          0.4892
+        ],
+        "query_weighted": 0.4794
+      },
+      "recall_at_10": {
+        "component_weighted": 0.777,
+        "label_macro": 0.7556,
+        "label_macro_ci95_two_stage": [
+          0.728,
+          0.7815
+        ],
+        "query_weighted": 0.7803
+      }
+    },
+    "semantic_raw": {
+      "mrr": {
+        "component_weighted": 0.2979,
+        "label_macro": 0.2831,
+        "label_macro_ci95_two_stage": [
+          0.2582,
+          0.3077
+        ],
+        "query_weighted": 0.2997
+      },
+      "published": {
+        "query_weighted_mrr": 0.2997,
+        "source": "identity_probe.json systems.none; representation_unit.json song_centroid"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.2008,
+        "label_macro": 0.1936,
+        "label_macro_ci95_two_stage": [
+          0.1696,
+          0.2186
+        ],
+        "query_weighted": 0.2019
+      },
+      "recall_at_10": {
+        "component_weighted": 0.4874,
+        "label_macro": 0.4555,
+        "label_macro_ci95_two_stage": [
+          0.4247,
+          0.4842
+        ],
+        "query_weighted": 0.4911
+      }
+    },
+    "semantic_total_whitened": {
+      "mrr": {
+        "component_weighted": 0.3968,
+        "label_macro": 0.3924,
+        "label_macro_ci95_two_stage": [
+          0.3672,
+          0.4169
+        ],
+        "query_weighted": 0.3996
+      },
+      "published": {
+        "query_weighted_mrr": 0.3996,
+        "source": "identity_probe.json systems.total_whitening"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.3042,
+        "label_macro": 0.3006,
+        "label_macro_ci95_two_stage": [
+          0.2739,
+          0.3265
+        ],
+        "query_weighted": 0.3062
+      },
+      "recall_at_10": {
+        "component_weighted": 0.5716,
+        "label_macro": 0.564,
+        "label_macro_ci95_two_stage": [
+          0.5367,
+          0.5904
+        ],
+        "query_weighted": 0.5769
+      }
+    },
+    "semantic_whitened_chunks": {
+      "mrr": {
+        "component_weighted": 0.4247,
+        "label_macro": 0.4174,
+        "label_macro_ci95_two_stage": [
+          0.3907,
+          0.4429
+        ],
+        "query_weighted": 0.4271
+      },
+      "published": {
+        "query_weighted_mrr": 0.4271,
+        "source": "word_space_probe.json systems.semantic_whitened_chunks; representation_unit.json whitened_chunks_then_mean"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.3256,
+        "label_macro": 0.3205,
+        "label_macro_ci95_two_stage": [
+          0.2923,
+          0.3481
+        ],
+        "query_weighted": 0.3266
+      },
+      "recall_at_10": {
+        "component_weighted": 0.6155,
+        "label_macro": 0.6059,
+        "label_macro_ci95_two_stage": [
+          0.5776,
+          0.6324
+        ],
+        "query_weighted": 0.6208
+      }
+    },
+    "semantic_within_whitened": {
+      "mrr": {
+        "component_weighted": 0.4136,
+        "label_macro": 0.4062,
+        "label_macro_ci95_two_stage": [
+          0.3801,
+          0.4313
+        ],
+        "query_weighted": 0.4164
+      },
+      "published": {
+        "query_weighted_mrr": 0.4164,
+        "source": "identity_probe.json systems.within_author_whitening"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.3163,
+        "label_macro": 0.3101,
+        "label_macro_ci95_two_stage": [
+          0.2828,
+          0.3369
+        ],
+        "query_weighted": 0.3179
+      },
+      "recall_at_10": {
+        "component_weighted": 0.5966,
+        "label_macro": 0.5867,
+        "label_macro_ci95_two_stage": [
+          0.5584,
+          0.6138
+        ],
+        "query_weighted": 0.6026
+      }
+    },
+    "semantic_within_whitened_permuted": {
+      "mrr": {
+        "component_weighted": 0.3958,
+        "label_macro": 0.3919,
+        "label_macro_ci95_two_stage": [
+          0.3668,
+          0.4161
+        ],
+        "query_weighted": 0.3983
+      },
+      "published": {
+        "query_weighted_mrr": 0.3983,
+        "source": "identity_probe.json systems.within_author_whitening_permuted_labels"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.3036,
+        "label_macro": 0.3011,
+        "label_macro_ci95_two_stage": [
+          0.2748,
+          0.3267
+        ],
+        "query_weighted": 0.3051
+      },
+      "recall_at_10": {
+        "component_weighted": 0.5674,
+        "label_macro": 0.5608,
+        "label_macro_ci95_two_stage": [
+          0.5337,
+          0.587
+        ],
+        "query_weighted": 0.5729
+      }
+    },
+    "words_raw": {
+      "mrr": {
+        "component_weighted": 0.502,
+        "label_macro": 0.4316,
+        "label_macro_ci95_two_stage": [
+          0.3948,
+          0.468
+        ],
+        "query_weighted": 0.4963
+      },
+      "published": {
+        "query_weighted_mrr": 0.4963,
+        "source": "three_spaces.json systems.lexical_words (read by expected())"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.4077,
+        "label_macro": 0.3481,
+        "label_macro_ci95_two_stage": [
+          0.3117,
+          0.3851
+        ],
+        "query_weighted": 0.4029
+      },
+      "recall_at_10": {
+        "component_weighted": 0.6786,
+        "label_macro": 0.5856,
+        "label_macro_ci95_two_stage": [
+          0.544,
+          0.6249
+        ],
+        "query_weighted": 0.6715
+      }
+    },
+    "words_svd_within_whitened": {
+      "mrr": {
+        "component_weighted": 0.5452,
+        "label_macro": 0.5121,
+        "label_macro_ci95_two_stage": [
+          0.4808,
+          0.5428
+        ],
+        "query_weighted": 0.5426
+      },
+      "published": {
+        "query_weighted_mrr": 0.5426,
+        "source": "word_space_probe.json systems.words_svd_within_author_whitening"
+      },
+      "recall_at_1": {
+        "component_weighted": 0.4374,
+        "label_macro": 0.4039,
+        "label_macro_ci95_two_stage": [
+          0.3699,
+          0.4372
+        ],
+        "query_weighted": 0.4334
+      },
+      "recall_at_10": {
+        "component_weighted": 0.7533,
+        "label_macro": 0.7243,
+        "label_macro_ci95_two_stage": [
+          0.6942,
+          0.7538
+        ],
+        "query_weighted": 0.7526
+      }
+    }
+  }
+}

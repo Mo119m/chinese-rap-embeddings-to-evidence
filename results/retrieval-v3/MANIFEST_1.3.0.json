@@ -339,6 +339,13 @@
       "run": "2026-09-21, CPU; content_rival_test.json reproduced first (levels, top-1, contrasts with intervals, worst gap 0.0000); synthetic test tests/test_content_rivals_labelfree.py",
       "sha256": "2e4e4081ccd7749ea3782458312670717987d2a70cf4c42d9b8a3ab2b8a2327e",
       "written": "2026-09-21T18:00"
+    },
+    "estimand_two_stage.json": {
+      "arm": "estimand_two_stage_v3 (label-macro estimand and the builder's two-stage label-then-component bootstrap, nine systems)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU; every system's published MRR reproduced as it was scored; published group-bootstrap contrasts reproduced; builder's own bootstrap functions; synthetic test tests/test_estimand_two_stage.py",
+      "sha256": "163278bc5bf4b5bdfedbd30873c0ebac4e165ffe611345c6f0fa678e21d0759d",
+      "written": "2026-09-21T18:16"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
