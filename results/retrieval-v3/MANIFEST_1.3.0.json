@@ -318,6 +318,13 @@
       "run": "2026-09-20, CPU; draw 0 reproduces identity_probe.json's held-out and all-query numbers; synthetic test tests/test_heldout_label_redraw.py",
       "sha256": "ff401cd3f73a0c0edc063ea00870a670fa405fd387af8454d449fd4ab9115c53",
       "written": "2026-09-20T17:48"
+    },
+    "within_label_repeats.json": {
+      "arm": "within_label_repeats_v3 (merged leakage groups and stripped recurrent lines)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU; published numbers reproduced first; detector checked against the label-identity audit's rule; synthetic test tests/test_within_label_repeats.py",
+      "sha256": "388b9f974bd7bca26de82a3ffcb0e8d41c26feb442b6cb99aabb971505c3e4ec",
+      "written": "2026-09-21T17:54"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

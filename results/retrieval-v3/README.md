@@ -933,6 +933,39 @@ token starts a new tokenizer piece, so masked texts can be longer in model token
 (masking the common words adds about 14 tokens per chunk). For the 1,091–1,148 chunks per fold
 that reach the 512-token limit, masking changes how much of the end the model reads.
 
+## Robustness of the headline ordering (2026-09-20 and 2026-09-21)
+
+Analyses asked for by a simulated review of the manuscript plan. Each script reproduces the
+published numbers before scoring anything new, fixes its reading rule in its docstring before
+the run, and has a synthetic test under `tests/` that checks its scorers against brute-force
+definitions without the corpus.
+
+### Repeated passages within a label (`within_label_repeats.json`, `src/within_label_repeats_v3.py`)
+
+Leave-group-out removes the query's leakage group, not the label's other songs that share a
+hook with it. A detector joins two same-label songs when their normalised texts share a
+30-character run; it must find every whole-chunk match of the label-identity audit's rule
+(0 of 319 missed). 601 same-label pairs share a passage, 351 of them already
+inside one leakage group. Arm (a) merges the rest into leakage groups (5,875 → 5,691
+groups, largest 27 → 42, no label lost). Arm (b) strips every line that recurs in two or more
+leakage groups of a label from all of that label's songs (14,826 line occurrences, 2.2% of
+characters, 2,254 songs; 20 songs fall below the length rule); the recorded chunk vectors cannot
+be re-embedded on the CPU, so the semantic space is bracketed by dropping only emptied chunks
+(favours the semantic space) or every touched chunk (favours the surface).
+
+| | words | characters | semantic | words − characters | characters − semantic | words − semantic |
+|---|---|---|---|---|---|---|
+| published | 0.4963 | 0.4266 | 0.2997 | +0.071 [+0.064, +0.079] | +0.133 [+0.123, +0.143] | +0.204 [+0.194, +0.214] |
+| (a) merged groups | 0.4780 | 0.4066 | 0.2918 | +0.074 [+0.067, +0.081] | +0.120 [+0.110, +0.130] | +0.193 [+0.183, +0.203] |
+| (b) stripped lines, emptied chunks dropped | 0.4596 | 0.3864 | 0.2940 | +0.074 [+0.067, +0.081] | +0.099 [+0.088, +0.109] | +0.172 [+0.162, +0.183] |
+| (b) stripped lines, touched chunks dropped | | | 0.2699 | | +0.122 [+0.112, +0.132] | +0.196 [+0.186, +0.207] |
+
+Reading, by the rule: not driven by repeated passages. Repeats are worth 0.02 to 0.04 of MRR in the
+surface spaces and under 0.01 in the semantic space, and the ordering does not move. Outside the
+rule: with recurrent lines stripped the whitened semantic space (0.4069) passes the character
+space (0.3864) under the bracket that favours it (-0.014 [-0.024, -0.003]) and not under the other
+(+0.027 [+0.016, +0.038]), so the characters-over-whitened-semantic margin is within what repeated lines carry.
+
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 
 Tokens per chunk median 76, p90 603, 3,669 over 512; all 226 labels have at least two

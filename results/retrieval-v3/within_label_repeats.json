@@ -1,0 +1,694 @@
+{
+  "analysis": "the headline contrasts with within-label repeated passages removed: merged leakage groups (a) and stripped recurrent lines (b)",
+  "arms": {
+    "merged_groups": {
+      "merge": {
+        "groups": 5691,
+        "groups_after": 5691,
+        "groups_before": 5875,
+        "groups_merged_away": 184,
+        "labels": 226,
+        "labels_dropped_single_group": 0,
+        "labels_losing_groups": 91,
+        "largest_group_after": 42,
+        "largest_group_before": 27,
+        "median_groups_in_a_label_after": 32.0,
+        "median_groups_in_a_label_before": 33.0,
+        "minimum_groups_in_a_label_after": 5,
+        "multi_song_groups_after": 852,
+        "multi_song_groups_before": 796,
+        "queries": 7220,
+        "songs_dropped_with_their_label": 0,
+        "songs_in_a_merged_group": 482
+      },
+      "mrr_minus_published": {
+        "chars_raw": -0.02,
+        "semantic_raw": -0.0079,
+        "semantic_whitened": -0.0134,
+        "words_raw": -0.0183
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0666,
+            0.081
+          ],
+          "excludes_zero": true,
+          "minus": "chars_raw",
+          "mrr_difference": 0.0736,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.1098,
+            0.1298
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1198,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1831,
+            0.2035
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1934,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0743,
+            0.0951
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened",
+          "mrr_difference": 0.0845,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0007,
+            0.0208
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened",
+          "mrr_difference": 0.0109,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1006,
+            0.1177
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1089,
+          "system": "semantic_whitened"
+        }
+      ],
+      "systems": {
+        "chars_raw": {
+          "mrr": 0.4066,
+          "mrr_component_weighted": 0.409,
+          "recall_at_1": 0.312,
+          "recall_at_10": 0.5906
+        },
+        "semantic_raw": {
+          "mrr": 0.2918,
+          "mrr_component_weighted": 0.2892,
+          "recall_at_1": 0.1946,
+          "recall_at_10": 0.4834
+        },
+        "semantic_whitened": {
+          "mrr": 0.403,
+          "mrr_component_weighted": 0.3981,
+          "recall_at_1": 0.3042,
+          "recall_at_10": 0.5911
+        },
+        "words_raw": {
+          "mrr": 0.478,
+          "mrr_component_weighted": 0.4826,
+          "recall_at_1": 0.383,
+          "recall_at_10": 0.6547
+        }
+      }
+    },
+    "published": {
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0643,
+            0.0785
+          ],
+          "excludes_zero": true,
+          "minus": "chars_raw",
+          "mrr_difference": 0.0711,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.1229,
+            0.1435
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1331,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1944,
+            0.2142
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.2042,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0789,
+            0.0986
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened",
+          "mrr_difference": 0.0884,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0073,
+            0.0277
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened",
+          "mrr_difference": 0.0173,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1071,
+            0.1244
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1157,
+          "system": "semantic_whitened"
+        }
+      ],
+      "population": {
+        "groups": 5875,
+        "labels": 226,
+        "queries": 7220
+      },
+      "systems": {
+        "chars_raw": {
+          "mrr": 0.4266,
+          "mrr_component_weighted": 0.431,
+          "recall_at_1": 0.3342,
+          "recall_at_10": 0.6057
+        },
+        "semantic_raw": {
+          "mrr": 0.2997,
+          "mrr_component_weighted": 0.2979,
+          "recall_at_1": 0.2019,
+          "recall_at_10": 0.4911
+        },
+        "semantic_whitened": {
+          "mrr": 0.4164,
+          "mrr_component_weighted": 0.4136,
+          "recall_at_1": 0.3179,
+          "recall_at_10": 0.6026
+        },
+        "words_raw": {
+          "mrr": 0.4963,
+          "mrr_component_weighted": 0.502,
+          "recall_at_1": 0.4029,
+          "recall_at_10": 0.6715
+        }
+      }
+    },
+    "stripped_lines": {
+      "mrr_minus_published": {
+        "chars_raw": -0.0402,
+        "semantic_raw": -0.0057,
+        "semantic_raw_touched": -0.0298,
+        "semantic_whitened": -0.0095,
+        "semantic_whitened_touched": -0.0508,
+        "words_raw": -0.0367
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.067,
+            0.0809
+          ],
+          "excludes_zero": true,
+          "minus": "chars_raw",
+          "mrr_difference": 0.0739,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0885,
+            0.1086
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.0986,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1621,
+            0.1829
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1725,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0493,
+            0.0709
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened",
+          "mrr_difference": 0.06,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            -0.0244,
+            -0.0029
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened",
+          "mrr_difference": -0.0139,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1033,
+            0.121
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw",
+          "mrr_difference": 0.1125,
+          "system": "semantic_whitened"
+        },
+        {
+          "ci95": [
+            0.1121,
+            0.1324
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw_touched",
+          "mrr_difference": 0.1224,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.1858,
+            0.2066
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw_touched",
+          "mrr_difference": 0.1963,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0892,
+            0.1115
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened_touched",
+          "mrr_difference": 0.1005,
+          "system": "words_raw"
+        },
+        {
+          "ci95": [
+            0.0159,
+            0.0376
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened_touched",
+          "mrr_difference": 0.0266,
+          "system": "chars_raw"
+        },
+        {
+          "ci95": [
+            0.0873,
+            0.1038
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw_touched",
+          "mrr_difference": 0.0958,
+          "system": "semantic_whitened_touched"
+        }
+      ],
+      "strip": {
+        "chunks_emptied": 339,
+        "chunks_total": 23848,
+        "chunks_touched": 3109,
+        "groups": 5859,
+        "labels": 226,
+        "labels_dropped_few_songs": 0,
+        "labels_dropped_single_group": 0,
+        "labels_with_a_recurrent_line": 203,
+        "line_occurrences_stripped": 14826,
+        "line_occurrences_total": 539108,
+        "normalised_characters_stripped": 156392,
+        "normalised_characters_total": 7091107,
+        "queries": 7200,
+        "recurrent_label_line_types": 4709,
+        "recurrent_types_by_groups_containing_them": {
+          "10-up": 23,
+          "2": 4181,
+          "3-4": 403,
+          "5-9": 102
+        },
+        "semantic_brackets": {
+          "emptied": {
+            "rule": "drop only chunks whose every line was stripped",
+            "share_of_stripped_characters_surviving_in_kept_chunks": 0.9144
+          },
+          "touched": {
+            "rule": "drop every chunk containing a stripped line; a song with no untouched chunk keeps its emptied set",
+            "share_of_stripped_characters_surviving_in_kept_chunks": 0.5308,
+            "songs_falling_back_to_emptied_set": 1104
+          }
+        },
+        "share_of_characters_stripped": 0.0221,
+        "songs_dropped_below_minimum_length": 20,
+        "songs_dropped_with_their_label": 0,
+        "songs_with_a_stripped_line": 2254,
+        "stripped_occurrences_by_normalised_length": {
+          "1-3": 1618,
+          "10-19": 5993,
+          "20-29": 981,
+          "30-up": 264,
+          "4-9": 5970
+        }
+      },
+      "systems": {
+        "chars_raw": {
+          "mrr": 0.3864,
+          "mrr_component_weighted": 0.3916,
+          "recall_at_1": 0.2932,
+          "recall_at_10": 0.5664
+        },
+        "semantic_raw": {
+          "mrr": 0.294,
+          "mrr_component_weighted": 0.293,
+          "recall_at_1": 0.1968,
+          "recall_at_10": 0.4867
+        },
+        "semantic_raw_touched": {
+          "mrr": 0.2699,
+          "mrr_component_weighted": 0.2693,
+          "recall_at_1": 0.1746,
+          "recall_at_10": 0.4578
+        },
+        "semantic_whitened": {
+          "mrr": 0.4069,
+          "mrr_component_weighted": 0.4055,
+          "recall_at_1": 0.3083,
+          "recall_at_10": 0.5914
+        },
+        "semantic_whitened_touched": {
+          "mrr": 0.3656,
+          "mrr_component_weighted": 0.3651,
+          "recall_at_1": 0.2678,
+          "recall_at_10": 0.5513
+        },
+        "words_raw": {
+          "mrr": 0.4596,
+          "mrr_component_weighted": 0.4655,
+          "recall_at_1": 0.3658,
+          "recall_at_10": 0.6331
+        }
+      }
+    }
+  },
+  "checks": {
+    "against_published": {
+      "chars_raw": {
+        "expected": 0.4266,
+        "gap": 1e-05,
+        "passed": true,
+        "recomputed": 0.4266,
+        "tolerance": 0.0005
+      },
+      "semantic_raw": {
+        "expected": 0.2997,
+        "gap": 2e-05,
+        "passed": true,
+        "recomputed": 0.2997,
+        "tolerance": 0.0005
+      },
+      "semantic_whitened": {
+        "expected": 0.4164,
+        "gap": 2e-05,
+        "passed": true,
+        "recomputed": 0.4164,
+        "tolerance": 0.002
+      },
+      "words_raw": {
+        "expected": 0.4963,
+        "gap": 0.0,
+        "passed": true,
+        "recomputed": 0.4963,
+        "tolerance": 0.0005
+      }
+    },
+    "audit_rule_pairs_missed_by_detector": 0,
+    "documents_equal_protocol": true,
+    "population_equals_protocol": true,
+    "rebuilt_centroids_max_gap": 0.0
+  },
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "arm_a_merged_groups": "songs sharing a passage are joined into one leakage group (union of published groups); weights rebuilt; a merged group keeps the published fold of its lowest-numbered member; the corpus's text; the surface spaces refitted only if a label was dropped",
+    "arm_b_stripped_lines": "a line recurring in songs of two or more published leakage groups of a label is removed from every song of that label before the spaces are built; population re-filtered by the protocol's length and label rules; published groups and folds kept over the survivors; the semantic space bracketed at the chunk grain (emptied, touched)",
+    "checks": "published configuration reproduces 0.2997 / 0.4266 / 0.4963 within 0.0005 and 0.4164 within 0.002; rebuilt population, documents and centroids equal the protocol's; every whole-chunk match of the audit's rule is found by the detector",
+    "detector": "two same-label songs share a passage iff their normalised texts (NFKC, whitespace removed, lower-cased) share a 30-character substring; generalises the label-identity audit's whole-chunk rule, which it must subsume",
+    "estimands": "MRR (plain mean, as published) and per-(group, label)-weighted MRR; contrasts are differences of weighted MRR with paired group-bootstrap intervals (2000 replicates, seed 20260825) over the arm's own leakage groups",
+    "not_in_the_rule": "contrasts involving the whitened semantic space; all counts; the movement of each space's MRR",
+    "reading_rule": "not driven by repeated passages if words - characters, characters - semantic and words - semantic keep their published sign with intervals clear of zero in both arms, the semantic contrasts of arm (b) under both brackets; otherwise at least partly carried by repeated passages, failing contrasts named",
+    "semantic_arm_b_caveat": "a line-level semantic arm needs re-embedding of the stripped text (GPU); the two chunk-grain brackets bound it",
+    "spaces": {
+      "*_touched": "arm (b) only: the semantic space under the touched bracket",
+      "chars_raw": "character 2-5-gram TF-IDF, the protocol's sparse leave-group-out scorer",
+      "semantic_raw": "unit chunk-mean song vector of the recorded BGE-M3 run, dense leave-group-out cosine",
+      "semantic_whitened": "within-author whitening fitted per fold on the training folds, scored on the held-out fold",
+      "words_raw": "jieba 1-2-gram TF-IDF, the same scorer"
+    }
+  },
+  "detector": {
+    "audit_rule_pairs_in_one_published_group": 320,
+    "audit_rule_pairs_missed": 0,
+    "audit_rule_pairs_the_detector_must_find": 319,
+    "audit_rule_same_label_pairs_whole_chunk": 321,
+    "labels_with_at_least_one_pair": 116,
+    "pairs_already_in_one_published_group": 351,
+    "pairs_merging_distinct_groups": 250,
+    "partners_per_involved_song_quantiles": {
+      "50": 1,
+      "75": 2,
+      "90": 4,
+      "99": 5
+    },
+    "same_label_song_pairs_sharing_passage": 601,
+    "songs_in_a_pair_across_published_groups": 340,
+    "songs_in_at_least_one_pair": 696
+  },
+  "empty_sparse_rows": {
+    "merged_groups": {
+      "chars_raw": 0,
+      "words_raw": 0
+    },
+    "published": {
+      "chars_raw": 0,
+      "words_raw": 0
+    },
+    "stripped_lines": {
+      "chars_raw": 0,
+      "words_raw": 0
+    }
+  },
+  "minutes": 4.7,
+  "privacy": "aggregate only; no lyric text, line, song identifier or vector",
+  "reading": {
+    "failing_contrasts": [],
+    "primary_contrasts": {
+      "merged_groups: chars_raw - semantic_raw": {
+        "arm_difference": 0.1198,
+        "ci95": [
+          0.1098,
+          0.1298
+        ],
+        "published_difference": 0.1331,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "merged_groups: words_raw - chars_raw": {
+        "arm_difference": 0.0736,
+        "ci95": [
+          0.0666,
+          0.081
+        ],
+        "published_difference": 0.0711,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "merged_groups: words_raw - semantic_raw": {
+        "arm_difference": 0.1934,
+        "ci95": [
+          0.1831,
+          0.2035
+        ],
+        "published_difference": 0.2042,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "stripped_lines: chars_raw - semantic_raw": {
+        "arm_difference": 0.0986,
+        "ci95": [
+          0.0885,
+          0.1086
+        ],
+        "published_difference": 0.1331,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "stripped_lines: chars_raw - semantic_raw_touched": {
+        "arm_difference": 0.1224,
+        "ci95": [
+          0.1121,
+          0.1324
+        ],
+        "published_difference": 0.1331,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "stripped_lines: words_raw - chars_raw": {
+        "arm_difference": 0.0739,
+        "ci95": [
+          0.067,
+          0.0809
+        ],
+        "published_difference": 0.0711,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "stripped_lines: words_raw - semantic_raw": {
+        "arm_difference": 0.1725,
+        "ci95": [
+          0.1621,
+          0.1829
+        ],
+        "published_difference": 0.2042,
+        "sign_kept_and_clear_of_zero": true
+      },
+      "stripped_lines: words_raw - semantic_raw_touched": {
+        "arm_difference": 0.1963,
+        "ci95": [
+          0.1858,
+          0.2066
+        ],
+        "published_difference": 0.2042,
+        "sign_kept_and_clear_of_zero": true
+      }
+    },
+    "verdict": "not driven by repeated passages",
+    "whitened_semantic_contrasts_description": {
+      "merged_groups": {
+        "chars_raw - semantic_whitened": {
+          "ci95": [
+            0.0007,
+            0.0208
+          ],
+          "difference": 0.0109,
+          "excludes_zero": true
+        },
+        "semantic_whitened - semantic_raw": {
+          "ci95": [
+            0.1006,
+            0.1177
+          ],
+          "difference": 0.1089,
+          "excludes_zero": true
+        },
+        "words_raw - semantic_whitened": {
+          "ci95": [
+            0.0743,
+            0.0951
+          ],
+          "difference": 0.0845,
+          "excludes_zero": true
+        }
+      },
+      "published": {
+        "chars_raw - semantic_whitened": {
+          "ci95": [
+            0.0073,
+            0.0277
+          ],
+          "difference": 0.0173,
+          "excludes_zero": true
+        },
+        "semantic_whitened - semantic_raw": {
+          "ci95": [
+            0.1071,
+            0.1244
+          ],
+          "difference": 0.1157,
+          "excludes_zero": true
+        },
+        "words_raw - semantic_whitened": {
+          "ci95": [
+            0.0789,
+            0.0986
+          ],
+          "difference": 0.0884,
+          "excludes_zero": true
+        }
+      },
+      "stripped_lines": {
+        "chars_raw - semantic_whitened": {
+          "ci95": [
+            -0.0244,
+            -0.0029
+          ],
+          "difference": -0.0139,
+          "excludes_zero": true
+        },
+        "chars_raw - semantic_whitened_touched": {
+          "ci95": [
+            0.0159,
+            0.0376
+          ],
+          "difference": 0.0266,
+          "excludes_zero": true
+        },
+        "semantic_whitened - semantic_raw": {
+          "ci95": [
+            0.1033,
+            0.121
+          ],
+          "difference": 0.1125,
+          "excludes_zero": true
+        },
+        "semantic_whitened_touched - semantic_raw_touched": {
+          "ci95": [
+            0.0873,
+            0.1038
+          ],
+          "difference": 0.0958,
+          "excludes_zero": true
+        },
+        "words_raw - semantic_whitened": {
+          "ci95": [
+            0.0493,
+            0.0709
+          ],
+          "difference": 0.06,
+          "excludes_zero": true
+        },
+        "words_raw - semantic_whitened_touched": {
+          "ci95": [
+            0.0892,
+            0.1115
+          ],
+          "difference": 0.1005,
+          "excludes_zero": true
+        }
+      }
+    }
+  }
+}
