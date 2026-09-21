@@ -1,0 +1,616 @@
+{
+  "analysis": "sensitivity of the words > characters > semantic ordering to label masking, collaboration titles, near-identical rival chunks and the leakage threshold",
+  "arms": {
+    "baseline": {
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0643,
+            0.0785
+          ],
+          "excludes_zero": true,
+          "minus": "characters",
+          "mrr_difference": 0.0711,
+          "system": "words"
+        },
+        {
+          "ci95": [
+            0.1229,
+            0.1435
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1331,
+          "system": "characters"
+        },
+        {
+          "ci95": [
+            0.1944,
+            0.2142
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2042,
+          "system": "words"
+        }
+      ],
+      "population": {
+        "groups": 5875,
+        "labels": 226,
+        "labels_removed_from_baseline": 0,
+        "largest_group": 27,
+        "queries": 7220,
+        "queries_removed_from_baseline": 0,
+        "songs_dropped_by_label_rule": 0
+      },
+      "reading": "robust to the arm",
+      "systems": {
+        "characters": {
+          "mrr": 0.4266,
+          "mrr_component_weighted": 0.431,
+          "queries": 7220,
+          "recall_at_1": 0.3342,
+          "recall_at_10": 0.6057,
+          "rows_without_features": 0
+        },
+        "semantic": {
+          "mrr": 0.2997,
+          "mrr_component_weighted": 0.2979,
+          "queries": 7220,
+          "recall_at_1": 0.2019,
+          "recall_at_10": 0.4911,
+          "rows_without_features": 0
+        },
+        "words": {
+          "mrr": 0.4963,
+          "mrr_component_weighted": 0.502,
+          "queries": 7220,
+          "recall_at_1": 0.4029,
+          "recall_at_10": 0.6715,
+          "rows_without_features": 0
+        }
+      }
+    },
+    "drop_near_identical_rival_queries": {
+      "profiles": "unchanged (baseline scores restricted to the kept queries)",
+      "rival_anywhere": {
+        "chunk_nearest_rival_cosine_quantiles": {
+          "10": 0.65,
+          "50": 0.725,
+          "90": 1.0
+        },
+        "chunks_over_threshold": 5730,
+        "paired_contrasts": [
+          {
+            "ci95": [
+              0.0699,
+              0.0866
+            ],
+            "excludes_zero": true,
+            "minus": "characters",
+            "mrr_difference": 0.078,
+            "system": "words"
+          },
+          {
+            "ci95": [
+              0.1285,
+              0.1514
+            ],
+            "excludes_zero": true,
+            "minus": "semantic",
+            "mrr_difference": 0.1397,
+            "system": "characters"
+          },
+          {
+            "ci95": [
+              0.2057,
+              0.2294
+            ],
+            "excludes_zero": true,
+            "minus": "semantic",
+            "mrr_difference": 0.2177,
+            "system": "words"
+          }
+        ],
+        "queries_dropped": 1767,
+        "queries_kept": 5453,
+        "reading": "robust to the arm",
+        "role": "the arm as specified: the audit's definition, any chunk of another label",
+        "share_dropped": 0.2447,
+        "systems": {
+          "characters": {
+            "mrr": 0.4547,
+            "mrr_component_weighted": 0.4564,
+            "queries": 5453,
+            "recall_at_1": 0.3723,
+            "recall_at_10": 0.6151,
+            "rows_without_features": 0
+          },
+          "semantic": {
+            "mrr": 0.3182,
+            "mrr_component_weighted": 0.3167,
+            "queries": 5453,
+            "recall_at_1": 0.2213,
+            "recall_at_10": 0.5094,
+            "rows_without_features": 0
+          },
+          "words": {
+            "mrr": 0.5333,
+            "mrr_component_weighted": 0.5345,
+            "queries": 5453,
+            "recall_at_1": 0.4491,
+            "recall_at_10": 0.6919,
+            "rows_without_features": 0
+          }
+        }
+      },
+      "rival_outside_leakage_group": {
+        "chunk_nearest_rival_cosine_quantiles": {
+          "10": 0.641,
+          "50": 0.71,
+          "90": 0.759
+        },
+        "chunks_over_threshold": 52,
+        "paired_contrasts": [
+          {
+            "ci95": [
+              0.064,
+              0.0783
+            ],
+            "excludes_zero": true,
+            "minus": "characters",
+            "mrr_difference": 0.0711,
+            "system": "words"
+          },
+          {
+            "ci95": [
+              0.1236,
+              0.1429
+            ],
+            "excludes_zero": true,
+            "minus": "semantic",
+            "mrr_difference": 0.1336,
+            "system": "characters"
+          },
+          {
+            "ci95": [
+              0.1942,
+              0.2148
+            ],
+            "excludes_zero": true,
+            "minus": "semantic",
+            "mrr_difference": 0.2046,
+            "system": "words"
+          }
+        ],
+        "queries_dropped": 39,
+        "queries_kept": 7181,
+        "reading": "robust to the arm",
+        "role": "companion, not the arm: the rival chunk must lie outside the query's leakage group",
+        "share_dropped": 0.0054,
+        "systems": {
+          "characters": {
+            "mrr": 0.4272,
+            "mrr_component_weighted": 0.4314,
+            "queries": 7181,
+            "recall_at_1": 0.3349,
+            "recall_at_10": 0.606,
+            "rows_without_features": 0
+          },
+          "semantic": {
+            "mrr": 0.2997,
+            "mrr_component_weighted": 0.2979,
+            "queries": 7181,
+            "recall_at_1": 0.2018,
+            "recall_at_10": 0.4914,
+            "rows_without_features": 0
+          },
+          "words": {
+            "mrr": 0.4968,
+            "mrr_component_weighted": 0.5025,
+            "queries": 7181,
+            "recall_at_1": 0.4033,
+            "recall_at_10": 0.6719,
+            "rows_without_features": 0
+          }
+        }
+      },
+      "threshold": 0.99
+    },
+    "exclude_collaboration_titles": {
+      "collaboration_titles": {
+        "audit": 592,
+        "found": 592,
+        "groups": "rebuilt with leakage_groups_v2.build_groups on the remaining songs",
+        "matches_audit": true,
+        "needs_private_metadata": "yes: the song_title column of the private corpus table, which no public artifact carries; no other metadata is read",
+        "rule": "training_data_audit_v3.FEAT (feat., ft., featuring, &, /, x, ×, or a list separator; case-insensitive) on the song title",
+        "share": 0.082
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0641,
+            0.0791
+          ],
+          "excludes_zero": true,
+          "minus": "characters",
+          "mrr_difference": 0.0714,
+          "system": "words"
+        },
+        {
+          "ci95": [
+            0.1228,
+            0.1438
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1333,
+          "system": "characters"
+        },
+        {
+          "ci95": [
+            0.1942,
+            0.2151
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2047,
+          "system": "words"
+        }
+      ],
+      "population": {
+        "groups": 5428,
+        "labels": 225,
+        "labels_removed_from_baseline": 1,
+        "largest_group": 27,
+        "queries": 6625,
+        "queries_removed_from_baseline": 595,
+        "songs_dropped_by_label_rule": 3
+      },
+      "reading": "robust to the arm",
+      "systems": {
+        "characters": {
+          "mrr": 0.4209,
+          "mrr_component_weighted": 0.4255,
+          "queries": 6625,
+          "recall_at_1": 0.3288,
+          "recall_at_10": 0.6038,
+          "rows_without_features": 0
+        },
+        "semantic": {
+          "mrr": 0.2925,
+          "mrr_component_weighted": 0.2921,
+          "queries": 6625,
+          "recall_at_1": 0.1937,
+          "recall_at_10": 0.4868,
+          "rows_without_features": 0
+        },
+        "words": {
+          "mrr": 0.4914,
+          "mrr_component_weighted": 0.4968,
+          "queries": 6625,
+          "recall_at_1": 0.3985,
+          "recall_at_10": 0.662,
+          "rows_without_features": 0
+        }
+      }
+    },
+    "leakage_threshold_0.70": {
+      "group_audit": {
+        "groups": 5860,
+        "labels": 226,
+        "largest_group_songs": 31,
+        "median_groups_in_a_label": 33,
+        "minimum_groups_in_a_label": 5,
+        "multi_song_groups": 803,
+        "songs": 7220,
+        "text_components_split_across_groups": 0
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0645,
+            0.0789
+          ],
+          "excludes_zero": true,
+          "minus": "characters",
+          "mrr_difference": 0.0714,
+          "system": "words"
+        },
+        {
+          "ci95": [
+            0.1225,
+            0.1416
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1321,
+          "system": "characters"
+        },
+        {
+          "ci95": [
+            0.1937,
+            0.2134
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2035,
+          "system": "words"
+        }
+      ],
+      "population": {
+        "groups": 5860,
+        "labels": 226,
+        "labels_removed_from_baseline": 0,
+        "largest_group": 31,
+        "queries": 7220,
+        "queries_removed_from_baseline": 0,
+        "songs_dropped_by_label_rule": 0
+      },
+      "reading": "robust to the arm",
+      "systems": {
+        "characters": {
+          "mrr": 0.4252,
+          "mrr_component_weighted": 0.4295,
+          "queries": 7220,
+          "recall_at_1": 0.3328,
+          "recall_at_10": 0.604,
+          "rows_without_features": 0
+        },
+        "semantic": {
+          "mrr": 0.2993,
+          "mrr_component_weighted": 0.2974,
+          "queries": 7220,
+          "recall_at_1": 0.2015,
+          "recall_at_10": 0.4898,
+          "rows_without_features": 0
+        },
+        "words": {
+          "mrr": 0.495,
+          "mrr_component_weighted": 0.5009,
+          "queries": 7220,
+          "recall_at_1": 0.4018,
+          "recall_at_10": 0.6697,
+          "rows_without_features": 0
+        }
+      },
+      "threshold": 0.7
+    },
+    "leakage_threshold_0.90": {
+      "group_audit": {
+        "groups": 5887,
+        "labels": 226,
+        "largest_group_songs": 27,
+        "median_groups_in_a_label": 33,
+        "minimum_groups_in_a_label": 5,
+        "multi_song_groups": 792,
+        "songs": 7220,
+        "text_components_split_across_groups": 0
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0645,
+            0.0784
+          ],
+          "excludes_zero": true,
+          "minus": "characters",
+          "mrr_difference": 0.0713,
+          "system": "words"
+        },
+        {
+          "ci95": [
+            0.1249,
+            0.145
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1346,
+          "system": "characters"
+        },
+        {
+          "ci95": [
+            0.1964,
+            0.2164
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2058,
+          "system": "words"
+        }
+      ],
+      "population": {
+        "groups": 5887,
+        "labels": 226,
+        "labels_removed_from_baseline": 0,
+        "largest_group": 27,
+        "queries": 7220,
+        "queries_removed_from_baseline": 0,
+        "songs_dropped_by_label_rule": 0
+      },
+      "reading": "robust to the arm",
+      "systems": {
+        "characters": {
+          "mrr": 0.4281,
+          "mrr_component_weighted": 0.4323,
+          "queries": 7220,
+          "recall_at_1": 0.3357,
+          "recall_at_10": 0.6065,
+          "rows_without_features": 0
+        },
+        "semantic": {
+          "mrr": 0.2995,
+          "mrr_component_weighted": 0.2977,
+          "queries": 7220,
+          "recall_at_1": 0.2011,
+          "recall_at_10": 0.4921,
+          "rows_without_features": 0
+        },
+        "words": {
+          "mrr": 0.498,
+          "mrr_component_weighted": 0.5036,
+          "queries": 7220,
+          "recall_at_1": 0.4048,
+          "recall_at_10": 0.6719,
+          "rows_without_features": 0
+        }
+      },
+      "threshold": 0.9
+    },
+    "mask_all_labels": {
+      "masking": {
+        "audit_style_self_mentions": {
+          "audit": 1610,
+          "chunks_all_rows": 1610,
+          "matches_audit": true
+        },
+        "chunks": 23848,
+        "chunks_naming_another_label": 2088,
+        "chunks_naming_own_label": 1579,
+        "chunks_touched": 3277,
+        "eligible_labels": 226,
+        "labels_in_corpus": 241,
+        "labels_masked": 240,
+        "labels_under_two_characters_skipped": 1,
+        "labels_with_any_occurrence": 193,
+        "occurrences_by_label_length_in_characters": {
+          "2": {
+            "labels": 46,
+            "occurrences": 1740
+          },
+          "3": {
+            "labels": 65,
+            "occurrences": 1728
+          },
+          "4-5": {
+            "labels": 33,
+            "occurrences": 1261
+          },
+          "6+": {
+            "labels": 96,
+            "occurrences": 1163
+          }
+        },
+        "occurrences_per_label_quantiles": {
+          "100": 791,
+          "50": 9,
+          "75": 27,
+          "90": 48,
+          "99": 221
+        },
+        "occurrences_per_label_with_any_quantiles": {
+          "10": 3,
+          "50": 14,
+          "90": 56
+        },
+        "occurrences_total": 5892,
+        "other_label_occurrences": 3521,
+        "own_label_occurrences": 2371,
+        "share_of_chunks_touched": 0.1374
+      },
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0629,
+            0.0773
+          ],
+          "excludes_zero": true,
+          "minus": "characters",
+          "mrr_difference": 0.0698,
+          "system": "words"
+        }
+      ],
+      "population": {
+        "groups": 5874,
+        "labels": 226,
+        "labels_removed_from_baseline": 0,
+        "largest_group": 27,
+        "queries": 7218,
+        "queries_removed_from_baseline": 2,
+        "songs_dropped_by_label_rule": 0
+      },
+      "reading": "partial: words > characters holds; semantic pending",
+      "semantic_column": {
+        "detail": "pending: the masked chunks have not been embedded (run --stage embed on the GPU)",
+        "how": "--stage embed embeds the masked chunks with FlagEmbedding under the recorded chunk run's configuration (fp16, max_length 2048, batch 8) after reproducing the recorded vectors on 256 unmasked chunks (median cosine >= 0.999); the CPU stage then scores the song centroids (plain mean of the masked chunk vectors, normalised, as build_songs does) under the same protocol",
+        "private_inputs": "work/private-label-mask-v3/masked_chunks_v3.csv and masked_table_contract.json",
+        "status": "pending"
+      },
+      "systems": {
+        "characters": {
+          "mrr": 0.4116,
+          "mrr_component_weighted": 0.4165,
+          "queries": 7218,
+          "recall_at_1": 0.3191,
+          "recall_at_10": 0.5937,
+          "rows_without_features": 0
+        },
+        "words": {
+          "mrr": 0.4803,
+          "mrr_component_weighted": 0.4863,
+          "queries": 7218,
+          "recall_at_1": 0.3868,
+          "recall_at_10": 0.6578,
+          "rows_without_features": 0
+        }
+      }
+    }
+  },
+  "checks_against_published": {
+    "characters": {
+      "expected": 0.4266,
+      "gap": 0.0,
+      "recomputed": 0.4266
+    },
+    "semantic": {
+      "expected": 0.2997,
+      "gap": 0.0,
+      "recomputed": 0.2997
+    },
+    "words": {
+      "expected": 0.4963,
+      "gap": 0.0,
+      "recomputed": 0.4963
+    }
+  },
+  "corpus": {
+    "chunks_of_queries": 23848,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220,
+    "vectors": "v3"
+  },
+  "design": {
+    "arms": {
+      "baseline": "the published configuration; reproduction check",
+      "drop_near_identical_rival_queries": "queries with a chunk whose nearest other-label chunk exceeds cosine 0.99 dropped as queries, profiles unchanged; rival_anywhere is the arm as specified (the audit's definition); rival_outside_leakage_group is a companion that excludes the query's own group",
+      "exclude_collaboration_titles": "songs with a collaboration mark in the title (training_data_audit_v3.FEAT on the private song_title column) removed as queries and profile members; groups rebuilt on the remaining songs; spaces refitted; labels re-checked",
+      "leakage_threshold": "groups rebuilt at trigram Jaccard (0.7, 0.9) instead of 0.8; weights, scoring and bootstrap follow",
+      "mask_all_labels": "every label string of the corpus removed from every chunk with train_identity_encoder_v3.mask_label, longest first, before fitting the word and character spaces; length rule re-applied; baseline groups kept; the semantic column needs the masked chunks embedded by --stage embed"
+    },
+    "bootstrap": "identity_spaces_v2.paired_group_bootstrap: 2000 replicates, seed 20260825, the arm's leakage groups resampled with replacement, each (group, label) component weighted one",
+    "checks": "baseline reproduces the published MRR in every space (gap <= 0.002) and the pinned literals equal three_spaces.json; the population rule rebuilds the protocol's query set; dense scores identical across the two scorer calls (gap <= 1e-06); collaboration and self-mention counts compared with the audit; masked semantic column used only under a contract naming the current masked-text digest with median unmasked-chunk cosine >= 0.999",
+    "estimands": "mrr = plain mean over the arm's queries (the published estimand); mrr_component_weighted = the bootstrap's per-(group, label)-weighted estimand; contrasts are on the weighted estimand",
+    "population_rule": "a label needs 5 songs and 2 leakage groups in the arm",
+    "protocol": "one document and one centroid per song; label profile = leave-group-out weighted sum; cosine rank of the true label; build_chinese_rap_downstream_retrieval_v1.score_leave_group_out and rank_system; a sparse row without features takes the worst rank",
+    "reading_rule": "the ordering words > characters > semantic is robust to the arm if every pairwise contrast (words - characters, characters - semantic, words - semantic) keeps its sign (positive, as at baseline) with its interval clear of zero; otherwise not robust and the failing contrast is named; with the semantic column pending the arm reads partial on words - characters alone",
+    "spaces": {
+      "characters": "character 2-5-gram TF-IDF",
+      "semantic": "BGE-M3 song centroids (recorded v3 chunk run)",
+      "words": "jieba word 1-2-gram TF-IDF"
+    }
+  },
+  "minutes": 6.3,
+  "privacy": "aggregate only; the masked chunk table and its vectors are private",
+  "readings": {
+    "baseline": "robust to the arm",
+    "drop_near_identical_rival_queries/rival_anywhere": "robust to the arm",
+    "drop_near_identical_rival_queries/rival_outside_leakage_group": "robust to the arm",
+    "exclude_collaboration_titles": "robust to the arm",
+    "leakage_threshold_0.70": "robust to the arm",
+    "leakage_threshold_0.90": "robust to the arm",
+    "mask_all_labels": "partial: words > characters holds; semantic pending"
+  }
+}

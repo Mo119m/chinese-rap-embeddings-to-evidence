@@ -429,6 +429,12 @@ first more than half the time; the fusion that wins over all labels loses to wor
 when every candidate shares the subject and wins again as candidates diversify: part of
 what the semantic component contributes to identity is content.
 
+**Correction, 2026-09-21.** These rivals are chosen by the semantic space, which handicaps the
+semantic family. Under rivals chosen by word topics or by characters the whitened semantic space
+leads the word space instead; see "Content rivals under other rival definitions" below. The
+table stands as computed; the reading that the word space is the stronger one among content
+rivals does not.
+
 ## Word choice against a language model's expectation (`lexical_choice_surprisal.json`)
 
 A Chinese masked language model trained on standard written Mandarin and never on this
@@ -965,6 +971,79 @@ surface spaces and under 0.01 in the semantic space, and the ordering does not m
 rule: with recurrent lines stripped the whitened semantic space (0.4069) passes the character
 space (0.3864) under the bracket that favours it (-0.014 [-0.024, -0.003]) and not under the other
 (+0.027 [+0.016, +0.038]), so the characters-over-whitened-semantic margin is within what repeated lines carry.
+
+### Label names, collaborations, near-identical rivals and the leakage threshold (`label_mask_sensitivity.json`, `src/label_mask_sensitivity_v3.py`)
+
+The fine-tuning pipeline masks a song's own label string; the headline spaces did not. Arms,
+each rerunning the raw spaces under the unchanged protocol after reproducing 0.2997 / 0.4266 /
+0.4963: every label string of the corpus (240 strings of two characters or more) removed from
+every chunk with the trainer's `mask_label`, longest first (5,892 occurrences of 193 strings
+in 3,277 of 23,848 chunks, 13.7%; 2,371 own-label and 3,521 other-label mentions; the
+audit's 1,610 self-naming chunks reproduced exactly); the 592 songs whose title marks a collaboration
+removed as queries and profile members, groups rebuilt (the audit's count reproduced; the rule
+reads the private title column and nothing else); queries dropped when any of their chunks has
+cosine above 0.99 with a chunk of another label (1,767 queries by the audit's definition, 39 when the
+rival must lie outside the query's own leakage group); leakage groups rebuilt at trigram Jaccard
+0.70 and 0.90 instead of 0.80. Rule, fixed before the run: the ordering is robust to an arm if
+every pairwise contrast stays positive with its interval clear of zero.
+
+| arm | queries | words | characters | semantic | words − characters | characters − semantic | words − semantic |
+|---|---|---|---|---|---|---|---|
+| published | 7,220 | 0.4963 | 0.4266 | 0.2997 | +0.071 [+0.064, +0.079] | +0.133 [+0.123, +0.143] | +0.204 [+0.194, +0.214] |
+| every label string masked | 7,218 | 0.4803 | 0.4116 | pending | +0.070 [+0.063, +0.077] | pending | pending |
+| collaboration-titled songs excluded | 6,625 | 0.4914 | 0.4209 | 0.2925 | +0.071 [+0.064, +0.079] | +0.133 [+0.123, +0.144] | +0.205 [+0.194, +0.215] |
+| queries with a near-identical rival chunk dropped | 5,453 | 0.5333 | 0.4547 | 0.3182 | +0.078 [+0.070, +0.087] | +0.140 [+0.129, +0.151] | +0.218 [+0.206, +0.229] |
+| the same, rival outside the query's leakage group | 7,181 | 0.4968 | 0.4272 | 0.2997 | +0.071 [+0.064, +0.078] | +0.134 [+0.124, +0.143] | +0.205 [+0.194, +0.215] |
+| leakage threshold 0.70 | 7,220 | 0.4950 | 0.4252 | 0.2993 | +0.071 [+0.065, +0.079] | +0.132 [+0.122, +0.142] | +0.203 [+0.194, +0.213] |
+| leakage threshold 0.90 | 7,220 | 0.4980 | 0.4281 | 0.2995 | +0.071 [+0.065, +0.078] | +0.135 [+0.125, +0.145] | +0.206 [+0.196, +0.216] |
+
+Readings: robust to every arm; under label masking the semantic column is pending (the masked
+chunks must be re-embedded on the GPU; the stage is written with a reproduction check on 256
+unmasked chunks and has not been run) and the arm reads "partial" on words − characters alone.
+Masking every artist name costs the word space 0.016 and the character space 0.015: names are a
+small part of the surface signal, which agrees with the name-neutralisation arms above. The
+near-identical-rival arm shows that most such chunks sit inside the query's own leakage group,
+which the protocol already holds out.
+
+### Content rivals under other rival definitions (`content_rivals_labelfree.json`, `src/content_rivals_labelfree_v3.py`)
+
+The published content-rival test takes each query's rivals from the frozen semantic space, so
+the semantic family is judged on the labels it finds hardest. The published file is reproduced
+first (every level, top-1 and contrast with its interval, worst gap 0.0000); rivals are then
+redefined by a fold-wise 50-topic NMF on word counts (vocabulary, idf and topics fitted on the
+training folds, no label in the model) and by the character space (excluded from the contrasts
+it judges). The three definitions pick different rivals (mean Jaccard overlap of the 10-rival
+sets 0.15, 0.16 and 0.17). Rule, fixed before the run: the word space's advantage over
+the whitened semantic space among rivals is "not an artefact of the rival definition" only if
+it is positive with the interval clear of zero under both new definitions at K = 5, 10 and 25.
+
+| rivals defined by | K | words | whitened semantic | characters | frozen semantic | whitened semantic + words | words − whitened semantic |
+|---|---|---|---|---|---|---|---|
+| frozen semantic space (published) | 5 | 0.676 | 0.590 | 0.631 | 0.372 | 0.657 | +0.095 [+0.086, +0.104] |
+| frozen semantic space (published) | 10 | 0.614 | 0.530 | 0.559 | 0.330 | 0.610 | +0.092 [+0.082, +0.102] |
+| frozen semantic space (published) | 25 | 0.553 | 0.475 | 0.490 | 0.307 | 0.568 | +0.086 [+0.076, +0.096] |
+| 50-topic NMF on word counts, fold-wise, label-free | 5 | 0.648 | 0.711 | 0.638 | 0.575 | 0.726 | -0.055 [-0.064, -0.046] |
+| 50-topic NMF on word counts, fold-wise, label-free | 10 | 0.585 | 0.633 | 0.560 | 0.483 | 0.663 | -0.040 [-0.049, -0.030] |
+| 50-topic NMF on word counts, fold-wise, label-free | 25 | 0.532 | 0.545 | 0.491 | 0.392 | 0.599 | -0.005 [-0.015, +0.005] |
+| character space | 5 | 0.581 | 0.678 | 0.483 | 0.545 | 0.663 | -0.091 [-0.099, -0.081] |
+| character space | 10 | 0.539 | 0.611 | 0.450 | 0.464 | 0.616 | -0.064 [-0.073, -0.053] |
+| character space | 25 | 0.512 | 0.537 | 0.432 | 0.384 | 0.576 | -0.017 [-0.027, -0.007] |
+
+Reading, by the rule: definition-dependent; the contrast fails in all six cells of the two new
+definitions, where the whitened semantic space leads the word space by 0.005 to 0.091 (the
+interval reaches zero only among 25 topic rivals). A rival
+test handicaps the family of evidence that chooses its rivals: semantic rivals are the labels
+the semantic spaces confuse, and rivals chosen by topics of words or by characters are the labels
+the surface spaces confuse. No definition available here is neutral, since the topic model is
+itself built from word counts (note added to the script after the run). Read together, the three
+definitions say the two families are complementary: each separates the labels the other
+confuses, and the whitened fusion is the best or second-best system in every cell. The published
+sentence that the word space "still names the label first more than half the time" with subject
+held constant holds only for semantically chosen rivals and is withdrawn as evidence that the
+word space is the stronger one among content rivals. Over all 226 labels nothing changes (words
+0.4963, whitened semantic 0.4164). Text-distortion arm (Stamatatos 2018), as description: keeping only
+the 500 most frequent training-fold words (55% of word tokens) and replacing the rest with one
+placeholder leaves 0.3848 of the word space's 0.4963 over all labels.
 
 ## Training-data audit for the identity encoder (`training_data_audit.json`)
 

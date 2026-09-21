@@ -325,6 +325,20 @@
       "run": "2026-09-21, CPU; published numbers reproduced first; detector checked against the label-identity audit's rule; synthetic test tests/test_within_label_repeats.py",
       "sha256": "388b9f974bd7bca26de82a3ffcb0e8d41c26feb442b6cb99aabb971505c3e4ec",
       "written": "2026-09-21T17:54"
+    },
+    "label_mask_sensitivity.json": {
+      "arm": "label_mask_sensitivity_v3 (label masking, collaboration titles, near-identical rivals, leakage threshold)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU stage; published numbers reproduced first; self-mention and collaboration counts equal training_data_audit.json; semantic column under masking pending the GPU stage; synthetic test tests/test_label_mask_sensitivity.py",
+      "sha256": "2b3702208aa7e1c0b602bf962c191bf2c5eb364b2a7132c1f1b4401de75637fc",
+      "written": "2026-09-21T18:06"
+    },
+    "content_rivals_labelfree.json": {
+      "arm": "content_rivals_labelfree_v3 (content-rival test under NMF-topic and character-space rivals, text-distortion arm)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU; content_rival_test.json reproduced first (levels, top-1, contrasts with intervals, worst gap 0.0000); synthetic test tests/test_content_rivals_labelfree.py",
+      "sha256": "2e4e4081ccd7749ea3782458312670717987d2a70cf4c42d9b8a3ab2b8a2327e",
+      "written": "2026-09-21T18:00"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
