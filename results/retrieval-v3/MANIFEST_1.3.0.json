@@ -308,9 +308,9 @@
     "label_size_calibration.json": {
       "arm": "label_size_calibration_v3 (Z-normalised and noise-corrected scoring, read by songs per label)",
       "completed_in_pipeline": false,
-      "run": "2026-09-18, CPU; generic leave-group-out scorer checked against the protocol's dense and sparse scorers; prototype reproduces the published MRR in every space",
-      "sha256": "144ac472b732a710cb6c87c70f1c8a4cf30b35f46f64894c18966cadae13a735",
-      "written": "2026-09-18T11:04"
+      "run": "2026-09-18, CPU; generic leave-group-out scorer checked against the protocol's dense and sparse scorers; prototype reproduces the published MRR in every space; character space and words-characters contrasts added 2026-09-21, the four earlier spaces unchanged",
+      "sha256": "63bfcc6c5b64664a900afe86832c371254cc2677f7aa60fda229f11eb222f3e3",
+      "written": "2026-09-21T23:28"
     },
     "heldout_label_redraw.json": {
       "arm": "heldout_label_redraw_v3 (whitening transfer under six disjoint held-out label draws)",
@@ -329,9 +329,9 @@
     "label_mask_sensitivity.json": {
       "arm": "label_mask_sensitivity_v3 (label masking, collaboration titles, near-identical rivals, leakage threshold)",
       "completed_in_pipeline": false,
-      "run": "2026-09-21, CPU stage; published numbers reproduced first; self-mention and collaboration counts equal training_data_audit.json; semantic column under masking pending the GPU stage; synthetic test tests/test_label_mask_sensitivity.py",
-      "sha256": "2b3702208aa7e1c0b602bf962c191bf2c5eb364b2a7132c1f1b4401de75637fc",
-      "written": "2026-09-21T18:06"
+      "run": "2026-09-21, CPU stage; published numbers reproduced first; self-mention and collaboration counts equal training_data_audit.json; semantic column under masking pending the GPU stage; synthetic test tests/test_label_mask_sensitivity.py; semantic column scored 2026-09-21 from a GPU re-embedding of the masked chunks (256-chunk reproduction check, minimum cosine 0.999985)",
+      "sha256": "19d7a6fa5d3fd6e8c69d89f4a1749895768699c6ae611251551a7d760d92262b",
+      "written": "2026-09-21T23:25"
     },
     "content_rivals_labelfree.json": {
       "arm": "content_rivals_labelfree_v3 (content-rival test under NMF-topic and character-space rivals, text-distortion arm)",

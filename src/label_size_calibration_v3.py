@@ -36,6 +36,13 @@ Reading, fixed before the run. Under a scorer, the word-over-semantic ordering i
 with at least ten labels and one hundred queries; otherwise "size-dependent", and the
 bands where it fails are named. Each scorer's overall MRR is compared with the prototype's.
 
+Added 2026-09-21, after discriminative_baseline_v3 put characters ahead of words under a
+trained classifier and before this addition was run: the character 2-5-gram TF-IDF space
+(0.4266 under the prototype) joins the four spaces, and two contrasts join the headline ones,
+words_raw - chars_raw and chars_raw - semantic_raw, read by the same size-robust rule. The
+existing spaces and contrasts are computed exactly as before and must reproduce the previous
+file's numbers.
+
 Checks: the prototype must reproduce the published numbers in every space (gap <= 0.002);
 the generic leave-group-out scorer must equal the protocol's dense and sparse scorers.
 
@@ -76,7 +83,9 @@ BANDS = (("5-9", 5, 9), ("10-19", 10, 19), ("20-49", 20, 49), ("50-up", 50, 10**
 MIN_LABELS, MIN_QUERIES = 10, 100
 CHECK_GAP = 0.002
 FLOOR_SHARE = 0.25
-HEADLINE = (("words_raw", "semantic_raw"), ("words_svd_whitened", "semantic_whitened"))
+HEADLINE = (("words_raw", "semantic_raw"), ("words_svd_whitened", "semantic_whitened"),
+            ("words_raw", "chars_raw"), ("chars_raw", "semantic_raw"))
+EXPECTED_ALL = {**EXPECTED, "chars_raw": 0.4266}
 
 
 def lgo_parts(x, label_index, group_ids, weights, label_count, queries):
@@ -181,8 +190,9 @@ def main() -> int:
     dense = d["dense"]
     lexical, _ = fit_words([" ".join(segment(d["documents"][s])) for s in d["songs"]])
     lexical = lexical.astype(np.float64).tocsr()
+    chars = v1.fit_tfidf([d["documents"][s] for s in d["songs"]]).astype(np.float64).tocsr()
     spaces = {"semantic_raw": {k: dense for k in range(FOLDS)}, "words_raw": {k: lexical for k in range(FOLDS)},
-              "semantic_whitened": {}, "words_svd_whitened": {}}
+              "semantic_whitened": {}, "words_svd_whitened": {}, "chars_raw": {k: chars for k in range(FOLDS)}}
     for k in range(FOLDS):
         train = fold != k
         mean, matrix, _ = fit_transform("within_author_whitening", dense[train], li[train], w[train], np.random.default_rng(SEED + k))
@@ -233,9 +243,9 @@ def main() -> int:
             ranks = ranks_of(scores[sp][s], li)
             rr[f"{sp}/{s}"] = 1.0 / ranks
             systems[sp][s] = round(float(np.mean(1.0 / ranks)), 4)
-        checks[sp] = {"expected": EXPECTED[sp], "recomputed": systems[sp]["prototype"],
-                      "gap": round(abs(systems[sp]["prototype"] - EXPECTED[sp]), 4)}
-        print(f"check {sp}: prototype {systems[sp]['prototype']} expected {EXPECTED[sp]}  | " +
+        checks[sp] = {"expected": EXPECTED_ALL[sp], "recomputed": systems[sp]["prototype"],
+                      "gap": round(abs(systems[sp]["prototype"] - EXPECTED_ALL[sp]), 4)}
+        print(f"check {sp}: prototype {systems[sp]['prototype']} expected {EXPECTED_ALL[sp]}  | " +
               "  ".join(f"{s}={v}" for s, v in systems[sp].items()), flush=True)
     if any(c["gap"] > CHECK_GAP for c in checks.values()):
         raise SystemExit(f"the prototype does not reproduce the published numbers: {checks}")

@@ -519,6 +519,26 @@
           "minus": "characters",
           "mrr_difference": 0.0698,
           "system": "words"
+        },
+        {
+          "ci95": [
+            0.1239,
+            0.144
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.1338,
+          "system": "characters"
+        },
+        {
+          "ci95": [
+            0.1937,
+            0.2138
+          ],
+          "excludes_zero": true,
+          "minus": "semantic",
+          "mrr_difference": 0.2036,
+          "system": "words"
         }
       ],
       "population": {
@@ -530,12 +550,36 @@
         "queries_removed_from_baseline": 2,
         "songs_dropped_by_label_rule": 0
       },
-      "reading": "partial: words > characters holds; semantic pending",
+      "reading": "robust to the arm",
       "semantic_column": {
-        "detail": "pending: the masked chunks have not been embedded (run --stage embed on the GPU)",
+        "detail": {
+          "check_unmasked_chunks": {
+            "below_0.999": 0,
+            "compared": 256,
+            "median_cosine": 1.0,
+            "min_cosine": 0.999985
+          },
+          "configuration": {
+            "batch_size": 8,
+            "block_size": 512,
+            "device": "cuda",
+            "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+            "max_length": 2048,
+            "order": "table row order",
+            "torch": "2.11.0+cu128",
+            "use_fp16": true
+          },
+          "embeddings_sha256": "ceb608f3998857387ef845e7697b14105ca1da68ffe1e51597a4d4e8c527a394",
+          "model": {
+            "id": "BAAI/bge-m3",
+            "implementation": "FlagEmbedding.BGEM3FlagModel dense vectors",
+            "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "weights_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38"
+          }
+        },
         "how": "--stage embed embeds the masked chunks with FlagEmbedding under the recorded chunk run's configuration (fp16, max_length 2048, batch 8) after reproducing the recorded vectors on 256 unmasked chunks (median cosine >= 0.999); the CPU stage then scores the song centroids (plain mean of the masked chunk vectors, normalised, as build_songs does) under the same protocol",
         "private_inputs": "work/private-label-mask-v3/masked_chunks_v3.csv and masked_table_contract.json",
-        "status": "pending"
+        "status": "scored"
       },
       "systems": {
         "characters": {
@@ -544,6 +588,14 @@
           "queries": 7218,
           "recall_at_1": 0.3191,
           "recall_at_10": 0.5937,
+          "rows_without_features": 0
+        },
+        "semantic": {
+          "mrr": 0.2842,
+          "mrr_component_weighted": 0.2827,
+          "queries": 7218,
+          "recall_at_1": 0.1876,
+          "recall_at_10": 0.4771,
           "rows_without_features": 0
         },
         "words": {
@@ -602,7 +654,7 @@
       "words": "jieba word 1-2-gram TF-IDF"
     }
   },
-  "minutes": 6.3,
+  "minutes": 7.4,
   "privacy": "aggregate only; the masked chunk table and its vectors are private",
   "readings": {
     "baseline": "robust to the arm",
@@ -611,6 +663,6 @@
     "exclude_collaboration_titles": "robust to the arm",
     "leakage_threshold_0.70": "robust to the arm",
     "leakage_threshold_0.90": "robust to the arm",
-    "mask_all_labels": "partial: words > characters holds; semantic pending"
+    "mask_all_labels": "robust to the arm"
   }
 }

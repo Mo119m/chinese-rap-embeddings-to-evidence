@@ -257,6 +257,23 @@ Both calibrations were added after the exemplar breakdown had been seen, with th
 fixed before they were run; which of the two to headline is not pre-specified, and both are
 reported.
 
+Added 2026-09-21, after the classifier baseline put characters ahead of words, and run before
+it was read: the character space joins the calibration. Character MRR under the prototype,
+Z-normalisation and the noise-corrected prototype: 0.4266, 0.3266 and 0.4591. Words minus
+characters by songs per label:
+
+| songs per label | prototype | Z-normalised | noise-corrected |
+|---|---|---|---|
+| 5–9 | -0.017 [-0.044, +0.009] | +0.204 [+0.139, +0.266] | +0.041 [-0.006, +0.090] |
+| 10–19 | +0.013 [-0.011, +0.037] | +0.128 [+0.099, +0.158] | +0.033 [+0.007, +0.060] |
+| 20–49 | +0.077 [+0.070, +0.085] | +0.161 [+0.153, +0.169] | +0.087 [+0.080, +0.095] |
+| 50 or more (3 labels) | +0.071 [+0.008, +0.138] | +0.201 [+0.138, +0.269] | +0.095 [+0.022, +0.167] |
+
+By the rule, words over characters is size-dependent; fails in bands ['5-9', '10-19'] under the prototype,
+size-robust under Z-normalisation and size-dependent; fails in bands ['5-9'] under the noise-corrected
+prototype. Every profile-based scorer, calibrated or not, puts words ahead where labels have
+twenty songs or more; the trained classifier is the one scorer that puts characters ahead.
+
 ## Chunk-level replication (`chunk_level_replication.json`)
 
 At the chunk level (23,848 chunks, each scored on its own): semantic 0.1876, characters
@@ -1177,17 +1194,17 @@ every pairwise contrast stays positive with its interval clear of zero.
 | arm | queries | words | characters | semantic | words − characters | characters − semantic | words − semantic |
 |---|---|---|---|---|---|---|---|
 | published | 7,220 | 0.4963 | 0.4266 | 0.2997 | +0.071 [+0.064, +0.079] | +0.133 [+0.123, +0.143] | +0.204 [+0.194, +0.214] |
-| every label string masked | 7,218 | 0.4803 | 0.4116 | pending | +0.070 [+0.063, +0.077] | pending | pending |
+| every label string masked | 7,218 | 0.4803 | 0.4116 | 0.2842 | +0.070 [+0.063, +0.077] | +0.134 [+0.124, +0.144] | +0.204 [+0.194, +0.214] |
 | collaboration-titled songs excluded | 6,625 | 0.4914 | 0.4209 | 0.2925 | +0.071 [+0.064, +0.079] | +0.133 [+0.123, +0.144] | +0.205 [+0.194, +0.215] |
 | queries with a near-identical rival chunk dropped | 5,453 | 0.5333 | 0.4547 | 0.3182 | +0.078 [+0.070, +0.087] | +0.140 [+0.129, +0.151] | +0.218 [+0.206, +0.229] |
 | the same, rival outside the query's leakage group | 7,181 | 0.4968 | 0.4272 | 0.2997 | +0.071 [+0.064, +0.078] | +0.134 [+0.124, +0.143] | +0.205 [+0.194, +0.215] |
 | leakage threshold 0.70 | 7,220 | 0.4950 | 0.4252 | 0.2993 | +0.071 [+0.065, +0.079] | +0.132 [+0.122, +0.142] | +0.203 [+0.194, +0.213] |
 | leakage threshold 0.90 | 7,220 | 0.4980 | 0.4281 | 0.2995 | +0.071 [+0.065, +0.078] | +0.135 [+0.125, +0.145] | +0.206 [+0.196, +0.216] |
 
-Readings: robust to every arm; under label masking the semantic column is pending (the masked
-chunks must be re-embedded on the GPU; the stage is written with a reproduction check on 256
-unmasked chunks and has not been run) and the arm reads "partial" on words − characters alone.
-Masking every artist name costs the word space 0.016 and the character space 0.015: names are a
+Readings: robust to every arm. For the semantic column under label masking the masked chunks were
+re-embedded on the GPU with the pinned BGE-M3 (2026-09-21), after the run reproduced the recorded
+vectors on 256 unmasked chunks (minimum cosine 0.999985); masking every name costs the semantic space
+0.016. It costs the word space 0.016 and the character space 0.015: names are a
 small part of the surface signal, which agrees with the name-neutralisation arms above. The
 near-identical-rival arm shows that most such chunks sit inside the query's own leakage group,
 which the protocol already holds out.

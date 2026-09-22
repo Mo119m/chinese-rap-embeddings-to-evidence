@@ -24,6 +24,26 @@
             "minus": "semantic_whitened/noise_corrected",
             "mrr_difference": 0.0608,
             "system": "words_svd_whitened/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.0071,
+              0.0599
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/noise_corrected",
+            "mrr_difference": 0.0334,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.129,
+              0.207
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.1692,
+            "system": "chars_raw/noise_corrected"
           }
         ],
         "prototype": [
@@ -46,6 +66,26 @@
             "minus": "semantic_whitened/prototype",
             "mrr_difference": 0.0378,
             "system": "words_svd_whitened/prototype"
+          },
+          {
+            "ci95": [
+              -0.0105,
+              0.0375
+            ],
+            "excludes_zero": false,
+            "minus": "chars_raw/prototype",
+            "mrr_difference": 0.0128,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              -0.055,
+              0.014
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": -0.0196,
+            "system": "chars_raw/prototype"
           }
         ],
         "znorm": [
@@ -68,11 +108,36 @@
             "minus": "semantic_whitened/znorm",
             "mrr_difference": 0.0322,
             "system": "words_svd_whitened/znorm"
+          },
+          {
+            "ci95": [
+              0.0989,
+              0.1579
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/znorm",
+            "mrr_difference": 0.1275,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              0.0686,
+              0.1349
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.1024,
+            "system": "chars_raw/znorm"
           }
         ]
       },
       "labels": 33,
       "mrr": {
+        "chars_raw": {
+          "noise_corrected": 0.5472,
+          "prototype": 0.261,
+          "znorm": 0.4235
+        },
         "semantic_raw": {
           "noise_corrected": 0.378,
           "prototype": 0.2806,
@@ -119,6 +184,26 @@
             "minus": "semantic_whitened/noise_corrected",
             "mrr_difference": 0.1477,
             "system": "words_svd_whitened/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.0801,
+              0.0945
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/noise_corrected",
+            "mrr_difference": 0.0872,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.188,
+              0.2074
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.1977,
+            "system": "chars_raw/noise_corrected"
           }
         ],
         "prototype": [
@@ -141,6 +226,26 @@
             "minus": "semantic_whitened/prototype",
             "mrr_difference": 0.143,
             "system": "words_svd_whitened/prototype"
+          },
+          {
+            "ci95": [
+              0.0701,
+              0.0848
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/prototype",
+            "mrr_difference": 0.0774,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              0.1399,
+              0.1609
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": 0.1507,
+            "system": "chars_raw/prototype"
           }
         ],
         "znorm": [
@@ -163,11 +268,36 @@
             "minus": "semantic_whitened/znorm",
             "mrr_difference": 0.1517,
             "system": "words_svd_whitened/znorm"
+          },
+          {
+            "ci95": [
+              0.1529,
+              0.1691
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/znorm",
+            "mrr_difference": 0.1611,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              0.1135,
+              0.131
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.1223,
+            "system": "chars_raw/znorm"
           }
         ]
       },
       "labels": 171,
       "mrr": {
+        "chars_raw": {
+          "noise_corrected": 0.4459,
+          "prototype": 0.4517,
+          "znorm": 0.3151
+        },
         "semantic_raw": {
           "noise_corrected": 0.2481,
           "prototype": 0.301,
@@ -214,6 +344,26 @@
             "minus": "semantic_whitened/noise_corrected",
             "mrr_difference": 0.1469,
             "system": "words_svd_whitened/noise_corrected"
+          },
+          {
+            "ci95": [
+              -0.0059,
+              0.0901
+            ],
+            "excludes_zero": false,
+            "minus": "chars_raw/noise_corrected",
+            "mrr_difference": 0.041,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              -0.0843,
+              0.0588
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": -0.0118,
+            "system": "chars_raw/noise_corrected"
           }
         ],
         "prototype": [
@@ -236,6 +386,26 @@
             "minus": "semantic_whitened/prototype",
             "mrr_difference": -0.0154,
             "system": "words_svd_whitened/prototype"
+          },
+          {
+            "ci95": [
+              -0.0437,
+              0.0094
+            ],
+            "excludes_zero": false,
+            "minus": "chars_raw/prototype",
+            "mrr_difference": -0.0165,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              -0.0923,
+              -0.0051
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": -0.0474,
+            "system": "chars_raw/prototype"
           }
         ],
         "znorm": [
@@ -258,11 +428,36 @@
             "minus": "semantic_whitened/znorm",
             "mrr_difference": 0.004,
             "system": "words_svd_whitened/znorm"
+          },
+          {
+            "ci95": [
+              0.1392,
+              0.2659
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/znorm",
+            "mrr_difference": 0.2041,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              -0.0668,
+              0.0676
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.0019,
+            "system": "chars_raw/znorm"
           }
         ]
       },
       "labels": 19,
       "mrr": {
+        "chars_raw": {
+          "noise_corrected": 0.3868,
+          "prototype": 0.1123,
+          "znorm": 0.3344
+        },
         "semantic_raw": {
           "noise_corrected": 0.3987,
           "prototype": 0.1597,
@@ -309,6 +504,26 @@
             "minus": "semantic_whitened/noise_corrected",
             "mrr_difference": 0.1576,
             "system": "words_svd_whitened/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.0224,
+              0.1671
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/noise_corrected",
+            "mrr_difference": 0.0952,
+            "system": "words_raw/noise_corrected"
+          },
+          {
+            "ci95": [
+              0.1549,
+              0.3623
+            ],
+            "excludes_zero": true,
+            "minus": "semantic_raw/noise_corrected",
+            "mrr_difference": 0.26,
+            "system": "chars_raw/noise_corrected"
           }
         ],
         "prototype": [
@@ -331,6 +546,26 @@
             "minus": "semantic_whitened/prototype",
             "mrr_difference": 0.0493,
             "system": "words_svd_whitened/prototype"
+          },
+          {
+            "ci95": [
+              0.0082,
+              0.1376
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/prototype",
+            "mrr_difference": 0.0711,
+            "system": "words_raw/prototype"
+          },
+          {
+            "ci95": [
+              -0.1309,
+              0.0653
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/prototype",
+            "mrr_difference": -0.0331,
+            "system": "chars_raw/prototype"
           }
         ],
         "znorm": [
@@ -353,11 +588,36 @@
             "minus": "semantic_whitened/znorm",
             "mrr_difference": 0.2441,
             "system": "words_svd_whitened/znorm"
+          },
+          {
+            "ci95": [
+              0.1384,
+              0.2686
+            ],
+            "excludes_zero": true,
+            "minus": "chars_raw/znorm",
+            "mrr_difference": 0.2012,
+            "system": "words_raw/znorm"
+          },
+          {
+            "ci95": [
+              -0.0624,
+              0.1435
+            ],
+            "excludes_zero": false,
+            "minus": "semantic_raw/znorm",
+            "mrr_difference": 0.0401,
+            "system": "chars_raw/znorm"
           }
         ]
       },
       "labels": 3,
       "mrr": {
+        "chars_raw": {
+          "noise_corrected": 0.6145,
+          "prototype": 0.3685,
+          "znorm": 0.4047
+        },
         "semantic_raw": {
           "noise_corrected": 0.3545,
           "prototype": 0.4016,
@@ -384,6 +644,11 @@
   },
   "checks": {
     "against_published": {
+      "chars_raw": {
+        "expected": 0.4266,
+        "gap": 0.0,
+        "recomputed": 0.4266
+      },
       "semantic_raw": {
         "expected": 0.2997,
         "gap": 0.0,
@@ -431,6 +696,33 @@
     }
   },
   "fold_info": {
+    "chars_raw": {
+      "0": {
+        "floor_hits_of_query_label_pairs": 130045,
+        "query_label_pairs": 1631720,
+        "s2": 0.9904
+      },
+      "1": {
+        "floor_hits_of_query_label_pairs": 130051,
+        "query_label_pairs": 1631720,
+        "s2": 0.9905
+      },
+      "2": {
+        "floor_hits_of_query_label_pairs": 137262,
+        "query_label_pairs": 1631720,
+        "s2": 0.9907
+      },
+      "3": {
+        "floor_hits_of_query_label_pairs": 130043,
+        "query_label_pairs": 1631720,
+        "s2": 0.9901
+      },
+      "4": {
+        "floor_hits_of_query_label_pairs": 137264,
+        "query_label_pairs": 1631720,
+        "s2": 0.991
+      }
+    },
     "semantic_raw": {
       "0": {
         "floor_hits_of_query_label_pairs": 0,
@@ -540,8 +832,30 @@
       }
     }
   },
-  "minutes": 7.8,
+  "minutes": 12.8,
   "overall_contrasts_against_prototype": {
+    "chars_raw": [
+      {
+        "ci95": [
+          -0.1164,
+          -0.098
+        ],
+        "excludes_zero": true,
+        "minus": "chars_raw/prototype",
+        "mrr_difference": -0.1073,
+        "system": "chars_raw/znorm"
+      },
+      {
+        "ci95": [
+          0.015,
+          0.0291
+        ],
+        "excludes_zero": true,
+        "minus": "chars_raw/prototype",
+        "mrr_difference": 0.0223,
+        "system": "chars_raw/noise_corrected"
+      }
+    ],
     "semantic_raw": [
       {
         "ci95": [
@@ -633,6 +947,12 @@
   },
   "privacy": "aggregate only",
   "readings": {
+    "chars_raw - semantic_raw under noise_corrected": "size-dependent; fails in bands ['5-9']",
+    "chars_raw - semantic_raw under prototype": "size-dependent; fails in bands ['5-9', '10-19']",
+    "chars_raw - semantic_raw under znorm": "size-dependent; fails in bands ['5-9']",
+    "words_raw - chars_raw under noise_corrected": "size-dependent; fails in bands ['5-9']",
+    "words_raw - chars_raw under prototype": "size-dependent; fails in bands ['5-9', '10-19']",
+    "words_raw - chars_raw under znorm": "size-robust",
     "words_raw - semantic_raw under noise_corrected": "size-dependent; fails in bands ['5-9']",
     "words_raw - semantic_raw under prototype": "size-dependent; fails in bands ['5-9', '10-19']",
     "words_raw - semantic_raw under znorm": "size-robust",
@@ -641,6 +961,11 @@
     "words_svd_whitened - semantic_whitened under znorm": "size-dependent; fails in bands ['5-9', '10-19']"
   },
   "systems": {
+    "chars_raw": {
+      "noise_corrected": 0.4591,
+      "prototype": 0.4266,
+      "znorm": 0.3266
+    },
     "semantic_raw": {
       "noise_corrected": 0.2635,
       "prototype": 0.2997,
