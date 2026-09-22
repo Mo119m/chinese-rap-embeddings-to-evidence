@@ -1032,6 +1032,57 @@ is +0.0002 [−0.0021, +0.0025] with the weight fitted, so the redundancy readin
 on an untuned equal weight, under which the rhyme space simply dragged the fusion down (−0.077).
 In every pair the fitted weight favours the word space (0.60 to 0.95).
 
+### Cosine Delta and the TF-IDF configuration (`cosine_delta_and_tfidf_grid.json`, `src/cosine_delta_and_tfidf_grid_v3.py`)
+
+Two questions a stylometry reviewer asks. (A) How does Delta, the field's standard
+most-frequent-word method (Burrows 2002; Evert et al. 2017), compare with the word TF-IDF space
+under the same leave-group-out protocol? MFW lists at six sizes fixed in advance are counted by
+document frequency over the training-fold songs, relative frequencies of the word space's own
+jieba unigrams (punctuation tokens included) are z-scored with means and deviations fitted on
+the training folds, and each query is scored against its label's leave-group-out mean. (B) Does
+the word-over-character ordering depend on the untuned TF-IDF configuration? A grid of
+vocabulary caps, n-gram ranges and sublinear or raw term frequency is searched per test fold on
+its training-fold queries only, and the chosen cell scores the test fold; the published cells
+and an inductive variant (vocabulary and idf fitted on the training folds only) are reported
+beside it. Checks first: the protocol code and the grid's own published cells reproduce 0.4266
+and 0.4963; the count-matrix TF-IDF equals sklearn's within 6e-8; the vectorised scorers equal
+the protocol's and a brute-force Burrows loop. Rules, fixed before the run: Delta matches the
+word space if its best size reaches 0.4963 − 0.02; the ordering is configuration-robust if
+inner-selected words minus inner-selected characters is positive with the interval clear of zero.
+
+| MFW | 100 | 300 | 500 | 1000 | 2000 | 5000 |
+|---|---|---|---|---|---|---|
+| Cosine Delta (z-scored relative frequencies) | 0.2008 | 0.2622 | 0.2868 | 0.3116 | 0.3322 | 0.3543 |
+| Cosine Delta, unit rows | 0.2117 | 0.2785 | 0.3015 | 0.3340 | 0.3519 | 0.3761 |
+| Burrows's Delta | 0.1498 | 0.1271 | 0.0983 | 0.0837 | 0.0619 | 0.0427 |
+| share of a song's tokens covered (fold 0) | 0.36 | 0.50 | 0.56 | 0.63 | 0.71 | 0.80 |
+
+Reading A: Delta does not match the word space: cosine_delta is best at 5000 MFW with 0.3543, below 0.4763. Best size minus words: Cosine Delta
+-0.150 [-0.159, -0.141], with unit rows -0.128 [-0.137, -0.119]. Both cosine
+curves are still rising at 5,000 words, the largest size fixed, so the verdict holds for these
+sizes only; Burrows's Delta falls as the list grows. Songs are a few hundred tokens long and
+Delta was built for texts of thousands of words, where z-scores of rarer words are stable; the
+comparison is for Delta under this protocol, on the word space's own tokens.
+
+| system | characters | words | words − characters |
+|---|---|---|---|
+| published configuration | 0.4266 | 0.4963 | +0.0711 [+0.0643, +0.0785] |
+| selected on training folds | 0.4388 | 0.5112 | +0.0708 [+0.0647, +0.0771] |
+| published configuration, inductive idf | 0.4214 | 0.4928 | +0.0726 [+0.0657, +0.0800] |
+| selected, inductive idf | 0.4356 | 0.5102 | +0.0729 [+0.0668, +0.0793] |
+| best cell with raw term frequency (description) | 0.3244 | 0.3246 | +0.0009 [-0.0069, +0.0090] |
+
+Reading B: configuration-robust (inner-selected words minus inner-selected characters +0.0708 [+0.0647, +0.0771]); the inductive contrast
+agrees. The same cell was chosen in all five folds: `ngram 1-3 | max_features 150000 | sublinear_tf true` for characters and
+`ngram 1 | max_features 150000 | sublinear_tf true` for words. The published configurations are not the best of their grids:
+selection on training folds gains +0.0127 [+0.0084, +0.0170] for words and
++0.0129 [+0.0080, +0.0183] for characters, so the published word and character numbers are
+slightly conservative. Fitting the idf inductively costs 0.001 to 0.005. Outside the rule, added
+after a first run: with raw instead of sublinear term frequency both spaces lose about a third of
+their MRR and the word lead disappears (+0.0009 [-0.0069, +0.0090]). Every sublinear word cell
+scores above every sublinear character cell (0.4940 or more against 0.4388 or less), so the
+ordering needs repeated words damped, which is what sublinear tf does.
+
 ### Repeated passages within a label (`within_label_repeats.json`, `src/within_label_repeats_v3.py`)
 
 Leave-group-out removes the query's leakage group, not the label's other songs that share a

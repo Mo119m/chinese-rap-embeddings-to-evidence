@@ -353,6 +353,13 @@
       "run": "2026-09-21, CPU, 22 min; nine published numbers reproduced first; fused(0.5) bitwise the published fusion; synthetic test tests/test_fusion_weights_nested.py",
       "sha256": "e5de58a9b42564ec87a5cd9f0140c2a9a369fd1312bd97a597e6a497fdaaf337",
       "written": "2026-09-21T18:38"
+    },
+    "cosine_delta_and_tfidf_grid.json": {
+      "arm": "cosine_delta_and_tfidf_grid_v3 (Delta at six fixed MFW sizes; TF-IDF grid selected on training folds, inductive idf)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU, 13 min; published numbers reproduced by the protocol code and by the grid's own cells; synthetic test tests/test_cosine_delta_and_tfidf_grid.py",
+      "sha256": "062b57baa865a26b4d8ac907f80433451227b28a760fc7ebb5ff8304b02d60ac",
+      "written": "2026-09-21T21:18"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
