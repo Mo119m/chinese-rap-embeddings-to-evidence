@@ -374,6 +374,13 @@
       "run": "2026-09-21, CPU, 10 min; beta 0 equals the protocol scorer and reproduces every published MRR; vectorised scorer checked against a brute-force loop; synthetic test tests/test_attention_exemplar.py",
       "sha256": "7637181822d5a36053d0e16fda86791e2c942c9503a3682cd37c1916b8c46dc0",
       "written": "2026-09-21T23:38"
+    },
+    "label_specific_covariance.json": {
+      "arm": "label_specific_covariance_v3 (regularised discriminant analysis in the whitened spaces)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU, 5 min; cosine prototype reproduces the published MRR; Gram-matrix score equals the explicit d x d computation; synthetic test tests/test_label_specific_covariance.py",
+      "sha256": "c18f167fd09e47ba75334056cf22bc0643ac1a7579188af8beac0e25c2acf699",
+      "written": "2026-09-21T23:42"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

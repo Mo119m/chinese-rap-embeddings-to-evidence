@@ -1,0 +1,394 @@
+{
+  "analysis": "label-specific covariance shrunk toward a pooled isotropic one (regularised discriminant analysis) in the whitened spaces",
+  "checks": {
+    "explicit_computation_relative_gap": {
+      "semantic_whitened": 2.3957091404178927e-14,
+      "words_svd_whitened": 3.547100381781719e-14
+    },
+    "semantic_whitened_cosine_prototype": {
+      "expected": 0.4164,
+      "gap": 2e-05,
+      "recomputed": 0.4164
+    },
+    "words_svd_whitened_cosine_prototype": {
+      "expected": 0.5426,
+      "gap": 1e-05,
+      "recomputed": 0.5426
+    }
+  },
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "checks": "cosine prototype reproduces the published MRR; Gram-matrix score equals the explicit d x d computation (relative 1e-8)",
+    "lambdas": [
+      1.0,
+      0.9,
+      0.7,
+      0.5,
+      0.3,
+      0.1
+    ],
+    "model": "Sigma_l = lambda sigma^2 I + (1 - lambda) S_l; score = Gaussian log-likelihood of the query under (mu_l, Sigma_l); mu_l and S_l component-weighted over the label's songs outside the query's leakage group; sigma^2 pooled on the training folds",
+    "reading_rule": "label-specific covariance helps if selected - shared_isotropic (lambda 1) is positive with the interval clear of zero; otherwise a shared covariance is enough; the comparison with the cosine prototype is description",
+    "selection": "lambda for fold k maximises the plain MRR over the other folds' queries; ties to the larger lambda",
+    "spaces": [
+      "semantic_whitened",
+      "words_svd_whitened"
+    ]
+  },
+  "minutes": 4.7,
+  "privacy": "aggregate only",
+  "spaces": {
+    "semantic_whitened": {
+      "lambda_chosen_by_fold": {
+        "0": {
+          "lambda": 0.9,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.396,
+            "0.3": 0.4114,
+            "0.5": 0.4187,
+            "0.7": 0.4233,
+            "0.9": 0.4272,
+            "1": 0.4033
+          }
+        },
+        "1": {
+          "lambda": 0.9,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.3972,
+            "0.3": 0.4104,
+            "0.5": 0.4181,
+            "0.7": 0.4233,
+            "0.9": 0.4267,
+            "1": 0.4026
+          }
+        },
+        "2": {
+          "lambda": 0.9,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.3994,
+            "0.3": 0.4145,
+            "0.5": 0.4223,
+            "0.7": 0.4267,
+            "0.9": 0.4298,
+            "1": 0.4065
+          }
+        },
+        "3": {
+          "lambda": 0.9,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.3965,
+            "0.3": 0.4104,
+            "0.5": 0.4175,
+            "0.7": 0.4221,
+            "0.9": 0.4263,
+            "1": 0.4017
+          }
+        },
+        "4": {
+          "lambda": 0.9,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.3959,
+            "0.3": 0.4113,
+            "0.5": 0.4193,
+            "0.7": 0.4236,
+            "0.9": 0.4261,
+            "1": 0.4
+          }
+        }
+      },
+      "mrr_by_lambda": {
+        "0.1": 0.397,
+        "0.3": 0.4116,
+        "0.5": 0.4192,
+        "0.7": 0.4238,
+        "0.9": 0.4272,
+        "1": 0.4028
+      },
+      "mrr_cosine_prototype": 0.4164,
+      "mrr_selected": 0.4272,
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0194,
+            0.0307
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": 0.0249,
+          "system": "selected"
+        },
+        {
+          "ci95": [
+            0.0088,
+            0.0212
+          ],
+          "excludes_zero": true,
+          "minus": "cosine_prototype",
+          "mrr_difference": 0.0149,
+          "system": "selected"
+        },
+        {
+          "ci95": [
+            -0.0151,
+            -0.0051
+          ],
+          "excludes_zero": true,
+          "minus": "cosine_prototype",
+          "mrr_difference": -0.01,
+          "system": "shared_isotropic"
+        },
+        {
+          "ci95": [
+            0.0194,
+            0.0307
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": 0.0249,
+          "system": "lambda_0.9"
+        },
+        {
+          "ci95": [
+            0.0146,
+            0.0267
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": 0.0207,
+          "system": "lambda_0.7"
+        },
+        {
+          "ci95": [
+            0.0101,
+            0.0222
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": 0.0162,
+          "system": "lambda_0.5"
+        },
+        {
+          "ci95": [
+            0.0027,
+            0.0147
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": 0.0088,
+          "system": "lambda_0.3"
+        },
+        {
+          "ci95": [
+            -0.0114,
+            0.001
+          ],
+          "excludes_zero": false,
+          "minus": "shared_isotropic",
+          "mrr_difference": -0.0051,
+          "system": "lambda_0.1"
+        }
+      ],
+      "reading": "label-specific covariance helps",
+      "sigma2_by_fold": {
+        "0": {
+          "seconds": 8.7,
+          "sigma2": 0.00090735
+        },
+        "1": {
+          "seconds": 2.6,
+          "sigma2": 0.00090727
+        },
+        "2": {
+          "seconds": 3.1,
+          "sigma2": 0.00090659
+        },
+        "3": {
+          "seconds": 3.4,
+          "sigma2": 0.00090709
+        },
+        "4": {
+          "seconds": 2.6,
+          "sigma2": 0.0009079
+        }
+      }
+    },
+    "words_svd_whitened": {
+      "lambda_chosen_by_fold": {
+        "0": {
+          "lambda": 1.0,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.4839,
+            "0.3": 0.4947,
+            "0.5": 0.5017,
+            "0.7": 0.5062,
+            "0.9": 0.5161,
+            "1": 0.5402
+          }
+        },
+        "1": {
+          "lambda": 1.0,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.4888,
+            "0.3": 0.5001,
+            "0.5": 0.5063,
+            "0.7": 0.511,
+            "0.9": 0.5212,
+            "1": 0.5457
+          }
+        },
+        "2": {
+          "lambda": 1.0,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.4863,
+            "0.3": 0.4972,
+            "0.5": 0.5024,
+            "0.7": 0.5078,
+            "0.9": 0.5188,
+            "1": 0.5436
+          }
+        },
+        "3": {
+          "lambda": 1.0,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.4864,
+            "0.3": 0.4979,
+            "0.5": 0.5047,
+            "0.7": 0.5098,
+            "0.9": 0.5203,
+            "1": 0.5433
+          }
+        },
+        "4": {
+          "lambda": 1.0,
+          "other_folds_mrr_by_lambda": {
+            "0.1": 0.4862,
+            "0.3": 0.4964,
+            "0.5": 0.5029,
+            "0.7": 0.5074,
+            "0.9": 0.5173,
+            "1": 0.5416
+          }
+        }
+      },
+      "mrr_by_lambda": {
+        "0.1": 0.4863,
+        "0.3": 0.4973,
+        "0.5": 0.5036,
+        "0.7": 0.5084,
+        "0.9": 0.5187,
+        "1": 0.5429
+      },
+      "mrr_cosine_prototype": 0.5426,
+      "mrr_selected": 0.5429,
+      "paired_contrasts": [
+        {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false,
+          "minus": "shared_isotropic",
+          "mrr_difference": 0.0,
+          "system": "selected"
+        },
+        {
+          "ci95": [
+            -0.0037,
+            0.0038
+          ],
+          "excludes_zero": false,
+          "minus": "cosine_prototype",
+          "mrr_difference": -0.0,
+          "system": "selected"
+        },
+        {
+          "ci95": [
+            -0.0037,
+            0.0038
+          ],
+          "excludes_zero": false,
+          "minus": "cosine_prototype",
+          "mrr_difference": -0.0,
+          "system": "shared_isotropic"
+        },
+        {
+          "ci95": [
+            -0.0297,
+            -0.0194
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": -0.0245,
+          "system": "lambda_0.9"
+        },
+        {
+          "ci95": [
+            -0.0412,
+            -0.0296
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": -0.0354,
+          "system": "lambda_0.7"
+        },
+        {
+          "ci95": [
+            -0.0463,
+            -0.0346
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": -0.0402,
+          "system": "lambda_0.5"
+        },
+        {
+          "ci95": [
+            -0.0522,
+            -0.0405
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": -0.0463,
+          "system": "lambda_0.3"
+        },
+        {
+          "ci95": [
+            -0.0631,
+            -0.0508
+          ],
+          "excludes_zero": true,
+          "minus": "shared_isotropic",
+          "mrr_difference": -0.0568,
+          "system": "lambda_0.1"
+        }
+      ],
+      "reading": "a shared covariance is enough",
+      "sigma2_by_fold": {
+        "0": {
+          "seconds": 8.6,
+          "sigma2": 0.00088981
+        },
+        "1": {
+          "seconds": 2.5,
+          "sigma2": 0.00088995
+        },
+        "2": {
+          "seconds": 3.0,
+          "sigma2": 0.0008903
+        },
+        "3": {
+          "seconds": 3.6,
+          "sigma2": 0.00089049
+        },
+        "4": {
+          "seconds": 2.6,
+          "sigma2": 0.00089129
+        }
+      }
+    }
+  }
+}

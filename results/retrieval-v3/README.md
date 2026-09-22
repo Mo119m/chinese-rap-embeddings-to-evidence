@@ -233,6 +233,32 @@ whitening; after whitening it is +0.034; in the surface spaces +0.017; in the wh
 +0.002. This is the one-parameter, unlearned form of attention pooling over a set; a learned
 aggregator is the natural next step.
 
+### Each label's own scatter: label-specific covariance (`label_specific_covariance.json`, `src/label_specific_covariance_v3.py`)
+
+PLDA and the two-covariance model assume one within-label covariance for every label and lost to
+the cosine prototype; the whitening-directions analysis showed labels scatter along their own
+directions. A hierarchical model lets each label keep its own covariance, shrunk toward the
+pooled one because a label has few songs (regularised discriminant analysis): Σ_l = λσ²I +
+(1 − λ)S_l in the within-label whitened spaces, σ² the pooled within-label variance of the
+training folds, μ_l and S_l the weighted mean and covariance of the label's songs outside the
+query's leakage group, and the label scored by the Gaussian log-likelihood of the query. λ = 1
+is one shared isotropic model (Euclidean distance to the label mean). λ is chosen per fold on
+the other folds' queries. The computation is exact through the n_l × n_l Gram matrix; it equals
+the explicit 1,024 × 1,024 computation (relative gap 4e-14), and the cosine prototype reproduces 0.4164 and
+0.5426. Rule, fixed before the run: label-specific covariance helps if the selected λ minus
+λ = 1 is positive with the interval clear of zero.
+
+| space | cosine prototype | λ 1 (shared) | 0.9 | 0.7 | 0.5 | 0.3 | 0.1 | λ chosen | selected − shared | selected − cosine prototype |
+|---|---|---|---|---|---|---|---|---|---|---|
+| semantic, within-label whitened | 0.4164 | 0.4028 | 0.4272 | 0.4238 | 0.4192 | 0.4116 | 0.3970 | 0.9 | +0.025 [+0.019, +0.031] | +0.015 [+0.009, +0.021] |
+| word SVD-1024, whitened | 0.5426 | 0.5429 | 0.5187 | 0.5084 | 0.5036 | 0.4973 | 0.4863 | 1 | +0.000 [+0.000, +0.000] | -0.000 [-0.004, +0.004] |
+
+Readings: in the whitened semantic space label-specific covariance helps, and with λ = 0.9 in
+every fold it is the first generative model in this study to beat the cosine prototype (PLDA
+lost by 0.021). In the whitened word space a shared covariance is enough: λ = 1 in every fold,
+level with the cosine prototype. In the semantic space each label's own directions of variation
+carry identity beyond its mean; in the word space, after whitening, they do not.
+
 **Label size** (`src/label_size_calibration_v3.py`). The exemplar run's breakdown by label size
 showed that the prototype's word-over-semantic lead is not uniform. Under the protocol's
 scorer, by songs per label (paired group bootstrap within the band):
