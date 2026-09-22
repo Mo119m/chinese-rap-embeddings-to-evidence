@@ -367,6 +367,13 @@
       "run": "2026-09-21, CPU, 98 min at 12 threads; published prototypes reproduced first; restricted prototype and one-vs-rest loop checked against the protocol and sklearn; synthetic test tests/test_discriminative_baseline.py",
       "sha256": "b7c17e0489fa5774c9407449275d0f4fd1a56cf3e9779ff6e2e626dcb7e907d0",
       "written": "2026-09-21T22:59"
+    },
+    "attention_exemplar.json": {
+      "arm": "attention_exemplar_v3 (softmax attention over a label's songs, beta 0 = the prototype, five spaces)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU, 10 min; beta 0 equals the protocol scorer and reproduces every published MRR; vectorised scorer checked against a brute-force loop; synthetic test tests/test_attention_exemplar.py",
+      "sha256": "7637181822d5a36053d0e16fda86791e2c942c9503a3682cd37c1916b8c46dc0",
+      "written": "2026-09-21T23:38"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

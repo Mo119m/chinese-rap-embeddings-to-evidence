@@ -198,10 +198,40 @@ label gets under a maximum. The prototype reproduces its published number in eve
 Nearest song minus prototype: −0.142 [−0.151, −0.133], −0.075 [−0.083, −0.067], −0.143
 [−0.152, −0.134] and −0.207 [−0.216, −0.199]. By the rule (both the nearest song and the
 size-matched nearest song must beat the prototype with intervals clear of zero) the prototype
-stands in all four spaces. A label is one centre with variation around it, not a set of
-separable styles; in the raw semantic space the nearest song is a topic neighbour. After
+stands in all four spaces. A label is closer to one centre than to a set of separable styles (but see the attention family
+below, where a query-weighted mixture beats the centre); in the raw semantic space the nearest song is a topic neighbour. After
 whitening the three best components come within 0.01 of the prototype (−0.010 [−0.017,
 −0.003]): whitening is what makes the centre findable from few instances.
+
+### Between a centre and a cloud: attention over a label's songs (`attention_exemplar.json`, `src/attention_exemplar_v3.py`)
+
+The fixed exemplar rules above lost to the prototype; they are the ends of a family. Here a
+query attends to each remaining song of a label with weight w_s·exp(β·cos(q, x_s)) (w_s the
+protocol's component weight) and the label is scored by cosine with the attended profile. β = 0
+is exactly the published prototype (checked against the protocol's scorer, gap 9e-16 dense,
+4e-7 sparse, and reproducing every published MRR); as β grows the profile collapses onto the
+query's nearest song of the label. β for each test fold is the grid value with the best MRR on
+the other four folds' queries. Rule, fixed before the run: attention improves on the prototype
+in a space if the fold-selected system minus the prototype is positive with the interval clear
+of zero. The vectorised scorer equals a brute-force loop (gap ≤ 6e-16).
+
+| space | β 0 (prototype) | 1 | 2 | 5 | 10 | 20 | 50 | 100 | β chosen | selected | selected − prototype |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| semantic, raw | 0.2997 | 0.3061 | 0.3138 | 0.3351 | 0.3557 | 0.3569 | 0.3095 | 0.2331 | 20 | 0.3569 | +0.058 [+0.051, +0.065] |
+| semantic, within-label whitened | 0.4164 | 0.4289 | 0.4355 | 0.4496 | 0.4484 | 0.4357 | 0.3940 | 0.3709 | 5, 10 | 0.4481 | +0.034 [+0.029, +0.038] |
+| jieba words | 0.4963 | 0.4992 | 0.5011 | 0.5047 | 0.5093 | 0.5139 | 0.4952 | 0.3611 | 20 | 0.5139 | +0.017 [+0.013, +0.021] |
+| character 2–5-grams | 0.4266 | 0.4302 | 0.4333 | 0.4404 | 0.4436 | 0.4391 | 0.3997 | 0.3061 | 10 | 0.4436 | +0.017 [+0.013, +0.020] |
+| word SVD-1024, whitened | 0.5426 | 0.5457 | 0.5456 | 0.5414 | 0.5209 | 0.5004 | 0.4431 | 0.3968 | 1, 2 | 0.5450 | +0.002 [+0.000, +0.004] |
+
+Reading: attention improves on the prototype in all five spaces. In every space MRR rises from
+β = 0 to an interior maximum and falls toward the nearest-song end, and the five folds choose
+nearly the same β, so the optimum is a property of the space, not of a fold. A credited label is
+identified best neither as one average nor as its nearest song, but as a mixture weighted toward
+the songs that resemble the query. The gain is largest in the raw semantic space (+0.058),
+where attention to a label's songs close in content to the query partly substitutes for
+whitening; after whitening it is +0.034; in the surface spaces +0.017; in the whitened word SVD
++0.002. This is the one-parameter, unlearned form of attention pooling over a set; a learned
+aggregator is the natural next step.
 
 **Label size** (`src/label_size_calibration_v3.py`). The exemplar run's breakdown by label size
 showed that the prototype's word-over-semantic lead is not uniform. Under the protocol's
