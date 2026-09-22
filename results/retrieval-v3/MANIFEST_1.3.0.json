@@ -360,6 +360,13 @@
       "run": "2026-09-21, CPU, 13 min; published numbers reproduced by the protocol code and by the grid's own cells; synthetic test tests/test_cosine_delta_and_tfidf_grid.py",
       "sha256": "062b57baa865a26b4d8ac907f80433451227b28a760fc7ebb5ff8304b02d60ac",
       "written": "2026-09-21T21:18"
+    },
+    "discriminative_baseline.json": {
+      "arm": "discriminative_baseline_v3 (one-vs-rest linear SVM and logistic regression against the prototype, four spaces)",
+      "completed_in_pipeline": false,
+      "run": "2026-09-21, CPU, 98 min at 12 threads; published prototypes reproduced first; restricted prototype and one-vs-rest loop checked against the protocol and sklearn; synthetic test tests/test_discriminative_baseline.py",
+      "sha256": "b7c17e0489fa5774c9407449275d0f4fd1a56cf3e9779ff6e2e626dcb7e907d0",
+      "written": "2026-09-21T22:59"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

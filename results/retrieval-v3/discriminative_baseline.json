@@ -1,0 +1,2732 @@
+{
+  "analysis": "one-vs-rest linear classifiers against the nearest-centroid prototype, four spaces, five folds",
+  "checks": {
+    "against_published": {
+      "characters": {
+        "gap": 1e-05,
+        "passed": true,
+        "published_mrr": 0.4266,
+        "published_recall_at_1": 0.3342,
+        "recomputed_mrr": 0.4266,
+        "recomputed_recall_at_1": 0.3342,
+        "tolerance": 0.0005
+      },
+      "semantic_raw": {
+        "gap": 4e-05,
+        "passed": true,
+        "published_mrr": 0.2997,
+        "published_recall_at_1": 0.2019,
+        "recomputed_mrr": 0.2997,
+        "recomputed_recall_at_1": 0.2019,
+        "tolerance": 0.0005
+      },
+      "semantic_whitened": {
+        "gap": 3e-05,
+        "passed": true,
+        "published_mrr": 0.4164,
+        "published_recall_at_1": 0.3179,
+        "recomputed_mrr": 0.4164,
+        "recomputed_recall_at_1": 0.3179,
+        "tolerance": 0.002
+      },
+      "words": {
+        "gap": 1e-05,
+        "passed": true,
+        "published_mrr": 0.4963,
+        "published_recall_at_1": 0.4029,
+        "recomputed_mrr": 0.4963,
+        "recomputed_recall_at_1": 0.4029,
+        "tolerance": 0.0005
+      }
+    },
+    "folds": {
+      "components_whole_within_training_folds": true,
+      "distinct_inner_fitting_halves": 6,
+      "every_label_in_every_outer_training_set": true,
+      "folds_disjoint_by_row_and_group": true,
+      "inner_halves_disjoint_by_row_and_group": true,
+      "labels_absent_from_inner_fitting_half": {
+        "01": 2,
+        "02": 2,
+        "12": 1,
+        "23": 0,
+        "24": 1,
+        "34": 0
+      }
+    },
+    "native_ovr_max_gap": 4.621738547427867e-09,
+    "restricted_scorer_max_gap": {
+      "dense": 8.881784197001252e-16,
+      "sparse": 1.942890293094024e-16
+    }
+  },
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "fold_sizes": [
+      1389,
+      1445,
+      1496,
+      1448,
+      1442
+    ],
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "bootstrap": "paired group bootstrap, 2000 replicates, seed 20260825, leakage groups resampled with replacement, each (group, label) component weighted one (point and interval of a contrast are component-weighted); recall_at_1 through the same function on the top-1 indicator; label_macro_f1 with the identical draws on per-group weighted counts, F1 recomputed per replicate",
+    "c_grid": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "c_selection": "per outer fold and classifier: the four training folds paired into two halves by fold index, each half validated by a classifier fitted on the other half; the C with the highest plain-mean MRR over all validated training-fold songs, ties to the smaller C; a fit on a half is made once and reused by every outer fold whose training folds contain it; a label absent from an inner fitting half scores below every present label there",
+    "checks": "protocol prototype reproduces the published MRR and R@1 in every space (files and pinned literals; gap <= 5e-4 raw, <= 0.002 whitened); folds and inner halves disjoint by row and leakage group, every label in every outer training set, components whole within training folds; restricted prototype equals the protocol's leave-group-out scorer when the training rows are all songs outside the query's group (<= 1e-09, 40 queries, dense and sparse); one-vs-rest loop equals sklearn's native LinearSVC on 30 labels (<= 1e-06); whitening rows disjoint from scored rows; all scores finite; top-1 hits exactly at rank one",
+    "folds": "5 folds of leakage groups, seed 20260825, as in identity_probe_v2; every song is a test query once",
+    "metrics": {
+      "label_macro_f1": "top-1 prediction, F1 per label, mean over labels present in truth or prediction; each query once",
+      "mrr": "plain mean of reciprocal ranks",
+      "recall_at_1": "share of queries ranked first"
+    },
+    "reading_rule": "a classifier beats the prototype in a space if its MRR minus the fold-restricted prototype's is positive with the 95% interval clear of zero (loses if negative and clear of zero; otherwise no clear difference); a space reads by its better classifier; the space ordering by MRR under the best classifier (higher mean MRR over the spaces) is reported beside the orderings under the fold-restricted and the published prototype",
+    "scoring": "a test song is scored by each label's decision value w.x + b (ranking by one-vs-rest probability); ranks by v1.rank_system, ties by label index",
+    "sensitivity": {
+      "logistic_regression_wide": {
+        "c_grid": [
+          10.0,
+          100.0,
+          1000.0
+        ],
+        "estimator": "logistic_regression"
+      }
+    },
+    "spaces": {
+      "characters": "character 2-5-gram TF-IDF, the protocol's fit over all songs (the idf sees every song's text, labels never)",
+      "semantic_raw": "BGE-M3 song centroids, unit rows",
+      "semantic_whitened": "within-author whitening fitted on the training folds of the fold scored (identity_probe_v2); for the selection of C refitted on the inner fitting half",
+      "words": "jieba word 1-2-gram TF-IDF, the protocol's fit over all songs"
+    },
+    "systems": {
+      "fold_prototype": "the same profile built from the training-fold songs only",
+      "linear_svc": "one-vs-rest LinearSVC, L2 penalty, squared hinge, liblinear primal trust-region Newton (dual=False), tol 0.0001, max_iter 1000, regularised intercept, sample weights = the protocol's component weights",
+      "logistic_regression": "one-vs-rest L2 logistic regression, liblinear primal trust-region Newton, tol 0.0001, max_iter 1000, regularised intercept, the same sample weights",
+      "protocol_prototype": "cosine with the leave-group-out weighted-sum profile of all other songs (the published scorer)"
+    }
+  },
+  "minutes": 98.0,
+  "privacy": "aggregate only; no lyric text, song title, song identifier, word or per-song vector",
+  "space_orderings": {
+    "adjacent_contrasts_mrr": {
+      "fold_prototype": [
+        {
+          "ci95": [
+            0.0039,
+            0.0245
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened/fold_prototype",
+          "mrr_difference": 0.014,
+          "system": "characters/fold_prototype"
+        },
+        {
+          "ci95": [
+            -0.0071,
+            0.0151
+          ],
+          "excludes_zero": false,
+          "minus": "words/fold_prototype",
+          "mrr_difference": 0.004,
+          "system": "semantic_whitened/fold_prototype"
+        },
+        {
+          "ci95": [
+            0.0897,
+            0.1095
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw/fold_prototype",
+          "mrr_difference": 0.0998,
+          "system": "words/fold_prototype"
+        }
+      ],
+      "linear_svc": [
+        {
+          "ci95": [
+            0.0496,
+            0.0663
+          ],
+          "excludes_zero": true,
+          "minus": "words/linear_svc",
+          "mrr_difference": 0.0581,
+          "system": "characters/linear_svc"
+        },
+        {
+          "ci95": [
+            0.1042,
+            0.1245
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw/linear_svc",
+          "mrr_difference": 0.1142,
+          "system": "words/linear_svc"
+        },
+        {
+          "ci95": [
+            -0.0049,
+            0.007
+          ],
+          "excludes_zero": false,
+          "minus": "semantic_whitened/linear_svc",
+          "mrr_difference": 0.0011,
+          "system": "semantic_raw/linear_svc"
+        }
+      ],
+      "protocol_prototype": [
+        {
+          "ci95": [
+            0.0643,
+            0.0785
+          ],
+          "excludes_zero": true,
+          "minus": "characters/protocol_prototype",
+          "mrr_difference": 0.0711,
+          "system": "words/protocol_prototype"
+        },
+        {
+          "ci95": [
+            0.0073,
+            0.0277
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_whitened/protocol_prototype",
+          "mrr_difference": 0.0173,
+          "system": "characters/protocol_prototype"
+        },
+        {
+          "ci95": [
+            0.1071,
+            0.1244
+          ],
+          "excludes_zero": true,
+          "minus": "semantic_raw/protocol_prototype",
+          "mrr_difference": 0.1157,
+          "system": "semantic_whitened/protocol_prototype"
+        }
+      ]
+    },
+    "agree": {
+      "best_classifier_vs_fold_prototype": false,
+      "best_classifier_vs_protocol_prototype": false
+    },
+    "best_classifier": "linear_svc",
+    "orderings": {
+      "fold_prototype": [
+        "characters",
+        "semantic_whitened",
+        "words",
+        "semantic_raw"
+      ],
+      "linear_svc": [
+        "characters",
+        "words",
+        "semantic_raw",
+        "semantic_whitened"
+      ],
+      "protocol_prototype": [
+        "words",
+        "characters",
+        "semantic_whitened",
+        "semantic_raw"
+      ]
+    }
+  },
+  "spaces": {
+    "characters": {
+      "contrasts": {
+        "label_macro_f1": [
+          {
+            "ci95": [
+              0.094,
+              0.1138
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.1043,
+            "minus": "fold_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0054,
+              0.0232
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0141,
+            "minus": "fold_prototype",
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0797,
+              0.0996
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0903,
+            "minus": "logistic_regression",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0338,
+              -0.0198
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0269,
+            "minus": "protocol_prototype",
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              0.0674,
+              0.0871
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0775,
+            "minus": "protocol_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0221,
+              -0.0033
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0128,
+            "minus": "protocol_prototype",
+            "system": "logistic_regression"
+          }
+        ],
+        "mrr": [
+          {
+            "ci95": [
+              0.1324,
+              0.1466
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": 0.1394,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0499,
+              0.0623
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": 0.0562,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0772,
+              0.089
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "mrr_difference": 0.0832,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0303,
+              -0.0227
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0265,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              0.1054,
+              0.1203
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": 0.1129,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0229,
+              0.0365
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": 0.0297,
+            "system": "logistic_regression"
+          }
+        ],
+        "recall_at_1": [
+          {
+            "ci95": [
+              0.1171,
+              0.1356
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": 0.1262,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0425,
+              0.0588
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": 0.0507,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0677,
+              0.0833
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "recall_at_1_difference": 0.0755,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0319,
+              -0.0205
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.0262,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              0.0905,
+              0.1097
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": 0.1,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.016,
+              0.0331
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": 0.0246,
+            "system": "logistic_regression"
+          }
+        ]
+      },
+      "distinct_inner_fits": 48,
+      "fits": {
+        "linear_svc": {
+          "0": {
+            "max_n_iter": 21,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 22,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 21,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 22,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 23,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "max_n_iter": 14,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 13,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 13,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 13,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 13,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "max_n_iter": 21,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 21,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 23,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 21,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 24,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        }
+      },
+      "reading": {
+        "better_classifier": "linear_svc",
+        "by_classifier": {
+          "linear_svc": {
+            "ci95": [
+              0.1324,
+              0.1466
+            ],
+            "mrr_difference": 0.1394,
+            "selected_C_on_grid_edge_in_every_fold": false,
+            "verdict": "beats the prototype"
+          },
+          "logistic_regression": {
+            "ci95": [
+              0.0499,
+              0.0623
+            ],
+            "mrr_difference": 0.0562,
+            "selected_C_on_grid_edge_in_every_fold": true,
+            "verdict": "beats the prototype",
+            "verdict_qualified": "beats the prototype (selected C on the grid edge in every fold: a reading of this grid)"
+          }
+        },
+        "reading": "linear_svc beats the prototype"
+      },
+      "selected_C": {
+        "linear_svc": {
+          "0": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3918,
+              "1": 0.4344,
+              "10": 0.4311
+            },
+            "selected_C": 1.0
+          },
+          "1": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.387,
+              "1": 0.4286,
+              "10": 0.4225
+            },
+            "selected_C": 1.0
+          },
+          "2": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3861,
+              "1": 0.4285,
+              "10": 0.4262
+            },
+            "selected_C": 1.0
+          },
+          "3": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3842,
+              "1": 0.428,
+              "10": 0.4271
+            },
+            "selected_C": 1.0
+          },
+          "4": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3811,
+              "1": 0.4253,
+              "10": 0.4227
+            },
+            "selected_C": 1.0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0664,
+              "1": 0.1595,
+              "10": 0.3351
+            },
+            "selected_C": 10.0
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0746,
+              "1": 0.1693,
+              "10": 0.3323
+            },
+            "selected_C": 10.0
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0682,
+              "1": 0.161,
+              "10": 0.3286
+            },
+            "selected_C": 10.0
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0634,
+              "1": 0.1461,
+              "10": 0.3205
+            },
+            "selected_C": 10.0
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0614,
+              "1": 0.1404,
+              "10": 0.3213
+            },
+            "selected_C": 10.0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3351,
+              "100": 0.3748,
+              "1000": 0.3828
+            },
+            "selected_C": 1000.0
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3323,
+              "100": 0.3701,
+              "1000": 0.3768
+            },
+            "selected_C": 1000.0
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3286,
+              "100": 0.3705,
+              "1000": 0.3816
+            },
+            "selected_C": 1000.0
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3205,
+              "100": 0.3644,
+              "1000": 0.3772
+            },
+            "selected_C": 1000.0
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3213,
+              "100": 0.3631,
+              "1000": 0.3771
+            },
+            "selected_C": 1000.0
+          }
+        }
+      },
+      "sensitivity": {
+        "contrasts": {
+          "label_macro_f1": [
+            {
+              "ci95": [
+                0.0493,
+                0.0674
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.0586,
+              "minus": "fold_prototype",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0544,
+                -0.0374
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": -0.0457,
+              "minus": "linear_svc",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.0362,
+                0.0524
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.0446,
+              "minus": "logistic_regression",
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "mrr": [
+            {
+              "ci95": [
+                0.0882,
+                0.1017
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "mrr_difference": 0.0949,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0491,
+                -0.0402
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "mrr_difference": -0.0445,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.034,
+                0.0432
+              ],
+              "excludes_zero": true,
+              "minus": "logistic_regression",
+              "mrr_difference": 0.0387,
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "recall_at_1": [
+            {
+              "ci95": [
+                0.0743,
+                0.0913
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "recall_at_1_difference": 0.0829,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.05,
+                -0.037
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "recall_at_1_difference": -0.0433,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.0257,
+                0.0385
+              ],
+              "excludes_zero": true,
+              "minus": "logistic_regression",
+              "recall_at_1_difference": 0.0322,
+              "system": "logistic_regression_wide"
+            }
+          ]
+        },
+        "grids": {
+          "logistic_regression_wide": [
+            10.0,
+            100.0,
+            1000.0
+          ]
+        },
+        "role": "description only; not in the reading rule or the choice of the best classifier",
+        "systems": {
+          "logistic_regression_wide": {
+            "label_macro_f1": 0.3305,
+            "mrr": 0.4967,
+            "recall_at_1": 0.3938
+          }
+        }
+      },
+      "systems": {
+        "fold_prototype": {
+          "label_macro_f1": 0.2712,
+          "mrr": 0.3993,
+          "recall_at_1": 0.3075
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.3767,
+          "mrr": 0.5414,
+          "recall_at_1": 0.4364
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.2854,
+          "mrr": 0.4558,
+          "recall_at_1": 0.3593
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.2979,
+          "mrr": 0.4266,
+          "recall_at_1": 0.3342
+        }
+      },
+      "systems_component_weighted": {
+        "fold_prototype": {
+          "label_macro_f1": 0.2728,
+          "mrr": 0.4045,
+          "recall_at_1": 0.313
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.3771,
+          "mrr": 0.5439,
+          "recall_at_1": 0.4392
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.2869,
+          "mrr": 0.4606,
+          "recall_at_1": 0.3638
+        },
+        "logistic_regression_wide": {
+          "label_macro_f1": 0.3314,
+          "mrr": 0.4994,
+          "recall_at_1": 0.396
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.2996,
+          "mrr": 0.431,
+          "recall_at_1": 0.3392
+        }
+      },
+      "whitening_by_fold": {}
+    },
+    "semantic_raw": {
+      "contrasts": {
+        "label_macro_f1": [
+          {
+            "ci95": [
+              0.0519,
+              0.0696
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0611,
+            "minus": "fold_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0117,
+              0.0277
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0194,
+            "minus": "fold_prototype",
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0329,
+              0.0494
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0417,
+            "minus": "logistic_regression",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.02,
+              -0.0072
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0138,
+            "minus": "protocol_prototype",
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              0.0376,
+              0.0561
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0472,
+            "minus": "protocol_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0029,
+              0.0149
+            ],
+            "excludes_zero": false,
+            "label_macro_f1_difference": 0.0056,
+            "minus": "protocol_prototype",
+            "system": "logistic_regression"
+          }
+        ],
+        "mrr": [
+          {
+            "ci95": [
+              0.0776,
+              0.0922
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": 0.0848,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0521,
+              0.0643
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": 0.0581,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0221,
+              0.0316
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "mrr_difference": 0.0267,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0147,
+              -0.0072
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0111,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              0.0663,
+              0.0816
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": 0.0737,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0405,
+              0.0539
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": 0.047,
+            "system": "logistic_regression"
+          }
+        ],
+        "recall_at_1": [
+          {
+            "ci95": [
+              0.0738,
+              0.0916
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": 0.0825,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0427,
+              0.0583
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": 0.0507,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0251,
+              0.0387
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "recall_at_1_difference": 0.0317,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.016,
+              -0.0044
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.0103,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              0.0625,
+              0.0817
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": 0.0721,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0321,
+              0.0494
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": 0.0404,
+            "system": "logistic_regression"
+          }
+        ]
+      },
+      "distinct_inner_fits": 48,
+      "fits": {
+        "linear_svc": {
+          "0": {
+            "max_n_iter": 15,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 15,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 15,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 15,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 14,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "max_n_iter": 14,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 13,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 13,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 13,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 14,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "max_n_iter": 19,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 18,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 18,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 19,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 18,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        }
+      },
+      "reading": {
+        "better_classifier": "linear_svc",
+        "by_classifier": {
+          "linear_svc": {
+            "ci95": [
+              0.0776,
+              0.0922
+            ],
+            "mrr_difference": 0.0848,
+            "selected_C_on_grid_edge_in_every_fold": false,
+            "verdict": "beats the prototype"
+          },
+          "logistic_regression": {
+            "ci95": [
+              0.0521,
+              0.0643
+            ],
+            "mrr_difference": 0.0581,
+            "selected_C_on_grid_edge_in_every_fold": true,
+            "verdict": "beats the prototype",
+            "verdict_qualified": "beats the prototype (selected C on the grid edge in every fold: a reading of this grid)"
+          }
+        },
+        "reading": "linear_svc beats the prototype"
+      },
+      "selected_C": {
+        "linear_svc": {
+          "0": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.2589,
+              "1": 0.2906,
+              "10": 0.273
+            },
+            "selected_C": 1.0
+          },
+          "1": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.2688,
+              "1": 0.2968,
+              "10": 0.2787
+            },
+            "selected_C": 1.0
+          },
+          "2": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.2741,
+              "1": 0.303,
+              "10": 0.2841
+            },
+            "selected_C": 1.0
+          },
+          "3": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.2689,
+              "1": 0.2989,
+              "10": 0.2785
+            },
+            "selected_C": 1.0
+          },
+          "4": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.2586,
+              "1": 0.2849,
+              "10": 0.2661
+            },
+            "selected_C": 1.0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0696,
+              "1": 0.1501,
+              "10": 0.2593
+            },
+            "selected_C": 10.0
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0773,
+              "1": 0.1555,
+              "10": 0.2654
+            },
+            "selected_C": 10.0
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0739,
+              "1": 0.1603,
+              "10": 0.2765
+            },
+            "selected_C": 10.0
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0687,
+              "1": 0.1467,
+              "10": 0.2687
+            },
+            "selected_C": 10.0
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.065,
+              "1": 0.1459,
+              "10": 0.2588
+            },
+            "selected_C": 10.0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2593,
+              "100": 0.275,
+              "1000": 0.2709
+            },
+            "selected_C": 100.0
+          },
+          "1": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2654,
+              "100": 0.2798,
+              "1000": 0.2773
+            },
+            "selected_C": 100.0
+          },
+          "2": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2765,
+              "100": 0.2887,
+              "1000": 0.2849
+            },
+            "selected_C": 100.0
+          },
+          "3": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2687,
+              "100": 0.2812,
+              "1000": 0.278
+            },
+            "selected_C": 100.0
+          },
+          "4": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2588,
+              "100": 0.2701,
+              "1000": 0.2671
+            },
+            "selected_C": 100.0
+          }
+        }
+      },
+      "sensitivity": {
+        "contrasts": {
+          "label_macro_f1": [
+            {
+              "ci95": [
+                0.0411,
+                0.0596
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.0514,
+              "minus": "fold_prototype",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0177,
+                -0.0032
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": -0.0097,
+              "minus": "linear_svc",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.0231,
+                0.0391
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.032,
+              "minus": "logistic_regression",
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "mrr": [
+            {
+              "ci95": [
+                0.055,
+                0.0694
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "mrr_difference": 0.0625,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0268,
+                -0.0182
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "mrr_difference": -0.0224,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0002,
+                0.0089
+              ],
+              "excludes_zero": false,
+              "minus": "logistic_regression",
+              "mrr_difference": 0.0044,
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "recall_at_1": [
+            {
+              "ci95": [
+                0.047,
+                0.0652
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "recall_at_1_difference": 0.0565,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0329,
+                -0.0197
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "recall_at_1_difference": -0.026,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0011,
+                0.0123
+              ],
+              "excludes_zero": false,
+              "minus": "logistic_regression",
+              "recall_at_1_difference": 0.0058,
+              "system": "logistic_regression_wide"
+            }
+          ]
+        },
+        "grids": {
+          "logistic_regression_wide": [
+            10.0,
+            100.0,
+            1000.0
+          ]
+        },
+        "role": "description only; not in the reading rule or the choice of the best classifier",
+        "systems": {
+          "logistic_regression_wide": {
+            "label_macro_f1": 0.2249,
+            "mrr": 0.3496,
+            "recall_at_1": 0.2471
+          }
+        }
+      },
+      "systems": {
+        "fold_prototype": {
+          "label_macro_f1": 0.1739,
+          "mrr": 0.2883,
+          "recall_at_1": 0.1914
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.2347,
+          "mrr": 0.3719,
+          "recall_at_1": 0.2727
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.1922,
+          "mrr": 0.3443,
+          "recall_at_1": 0.24
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.1875,
+          "mrr": 0.2997,
+          "recall_at_1": 0.2019
+        }
+      },
+      "systems_component_weighted": {
+        "fold_prototype": {
+          "label_macro_f1": 0.1734,
+          "mrr": 0.2868,
+          "recall_at_1": 0.1904
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.2345,
+          "mrr": 0.3716,
+          "recall_at_1": 0.2729
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.1928,
+          "mrr": 0.3449,
+          "recall_at_1": 0.2411
+        },
+        "logistic_regression_wide": {
+          "label_macro_f1": 0.2248,
+          "mrr": 0.3492,
+          "recall_at_1": 0.2469
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.1873,
+          "mrr": 0.2979,
+          "recall_at_1": 0.2008
+        }
+      },
+      "whitening_by_fold": {}
+    },
+    "semantic_whitened": {
+      "contrasts": {
+        "label_macro_f1": [
+          {
+            "ci95": [
+              -0.0411,
+              -0.0239
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0325,
+            "minus": "fold_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.038,
+              -0.0193
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0281,
+            "minus": "fold_prototype",
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              -0.01,
+              0.002
+            ],
+            "excludes_zero": false,
+            "label_macro_f1_difference": -0.0044,
+            "minus": "logistic_regression",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0267,
+              -0.0143
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0206,
+            "minus": "protocol_prototype",
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              -0.0625,
+              -0.044
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.053,
+            "minus": "protocol_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0594,
+              -0.0396
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0487,
+            "minus": "protocol_prototype",
+            "system": "logistic_regression"
+          }
+        ],
+        "mrr": [
+          {
+            "ci95": [
+              -0.0246,
+              -0.0155
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": -0.0201,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.032,
+              -0.0211
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": -0.0264,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0029,
+              0.0101
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "mrr_difference": 0.0063,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0275,
+              -0.0187
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0231,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              -0.0486,
+              -0.0376
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0432,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0558,
+              -0.0432
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0495,
+            "system": "logistic_regression"
+          }
+        ],
+        "recall_at_1": [
+          {
+            "ci95": [
+              -0.0264,
+              -0.0132
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": -0.0197,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0343,
+              -0.0193
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": -0.0267,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0016,
+              0.0128
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "recall_at_1_difference": 0.007,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0268,
+              -0.0141
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.0203,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              -0.0476,
+              -0.0318
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.0399,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0554,
+              -0.0387
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.047,
+            "system": "logistic_regression"
+          }
+        ]
+      },
+      "distinct_inner_fits": 48,
+      "fits": {
+        "linear_svc": {
+          "0": {
+            "max_n_iter": 8,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 9,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 8,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 9,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 9,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "max_n_iter": 13,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 13,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 14,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 13,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 13,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "max_n_iter": 16,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 16,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 16,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 16,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 16,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        }
+      },
+      "reading": {
+        "better_classifier": "linear_svc",
+        "by_classifier": {
+          "linear_svc": {
+            "ci95": [
+              -0.0246,
+              -0.0155
+            ],
+            "mrr_difference": -0.0201,
+            "selected_C_on_grid_edge_in_every_fold": true,
+            "verdict": "loses to the prototype",
+            "verdict_qualified": "loses to the prototype (selected C on the grid edge in every fold: a reading of this grid)"
+          },
+          "logistic_regression": {
+            "ci95": [
+              -0.032,
+              -0.0211
+            ],
+            "mrr_difference": -0.0264,
+            "selected_C_on_grid_edge_in_every_fold": true,
+            "verdict": "loses to the prototype",
+            "verdict_qualified": "loses to the prototype (selected C on the grid edge in every fold: a reading of this grid)"
+          }
+        },
+        "reading": "linear_svc loses to the prototype (selected C on the grid edge in every fold: a reading of this grid)"
+      },
+      "selected_C": {
+        "linear_svc": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.2788,
+              "1": 0.2739,
+              "10": 0.2588
+            },
+            "selected_C": 0.1
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.2823,
+              "1": 0.2753,
+              "10": 0.2586
+            },
+            "selected_C": 0.1
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.2889,
+              "1": 0.2811,
+              "10": 0.2654
+            },
+            "selected_C": 0.1
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.2786,
+              "1": 0.2716,
+              "10": 0.2561
+            },
+            "selected_C": 0.1
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.2679,
+              "1": 0.2626,
+              "10": 0.2498
+            },
+            "selected_C": 0.1
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.1073,
+              "1": 0.2099,
+              "10": 0.2693
+            },
+            "selected_C": 10.0
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.1193,
+              "1": 0.2162,
+              "10": 0.274
+            },
+            "selected_C": 10.0
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.1163,
+              "1": 0.2218,
+              "10": 0.2825
+            },
+            "selected_C": 10.0
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.1028,
+              "1": 0.2095,
+              "10": 0.2704
+            },
+            "selected_C": 10.0
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0965,
+              "1": 0.2025,
+              "10": 0.2638
+            },
+            "selected_C": 10.0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2693,
+              "100": 0.2717,
+              "1000": 0.2705
+            },
+            "selected_C": 100.0
+          },
+          "1": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.274,
+              "100": 0.2749,
+              "1000": 0.2727
+            },
+            "selected_C": 100.0
+          },
+          "2": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2825,
+              "100": 0.284,
+              "1000": 0.2812
+            },
+            "selected_C": 100.0
+          },
+          "3": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2704,
+              "100": 0.2714,
+              "1000": 0.2691
+            },
+            "selected_C": 100.0
+          },
+          "4": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "10": 0.2638,
+              "100": 0.2654,
+              "1000": 0.2618
+            },
+            "selected_C": 100.0
+          }
+        }
+      },
+      "sensitivity": {
+        "contrasts": {
+          "label_macro_f1": [
+            {
+              "ci95": [
+                -0.0351,
+                -0.0164
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": -0.0249,
+              "minus": "fold_prototype",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.001,
+                0.0139
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.0076,
+              "minus": "linear_svc",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0018,
+                0.0088
+              ],
+              "excludes_zero": false,
+              "label_macro_f1_difference": 0.0032,
+              "minus": "logistic_regression",
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "mrr": [
+            {
+              "ci95": [
+                -0.0394,
+                -0.0286
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "mrr_difference": -0.0339,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0177,
+                -0.0102
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "mrr_difference": -0.0138,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0101,
+                -0.0049
+              ],
+              "excludes_zero": true,
+              "minus": "logistic_regression",
+              "mrr_difference": -0.0075,
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "recall_at_1": [
+            {
+              "ci95": [
+                -0.04,
+                -0.0249
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "recall_at_1_difference": -0.0324,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0186,
+                -0.0071
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "recall_at_1_difference": -0.0127,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0099,
+                -0.0014
+              ],
+              "excludes_zero": true,
+              "minus": "logistic_regression",
+              "recall_at_1_difference": -0.0057,
+              "system": "logistic_regression_wide"
+            }
+          ]
+        },
+        "grids": {
+          "logistic_regression_wide": [
+            10.0,
+            100.0,
+            1000.0
+          ]
+        },
+        "role": "description only; not in the reading rule or the choice of the best classifier",
+        "systems": {
+          "logistic_regression_wide": {
+            "label_macro_f1": 0.2403,
+            "mrr": 0.356,
+            "recall_at_1": 0.2626
+          }
+        }
+      },
+      "systems": {
+        "fold_prototype": {
+          "label_macro_f1": 0.2657,
+          "mrr": 0.3923,
+          "recall_at_1": 0.296
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.2332,
+          "mrr": 0.3699,
+          "recall_at_1": 0.2755
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.2374,
+          "mrr": 0.3632,
+          "recall_at_1": 0.2686
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.2873,
+          "mrr": 0.4164,
+          "recall_at_1": 0.3179
+        }
+      },
+      "systems_component_weighted": {
+        "fold_prototype": {
+          "label_macro_f1": 0.2653,
+          "mrr": 0.3905,
+          "recall_at_1": 0.296
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.2329,
+          "mrr": 0.3705,
+          "recall_at_1": 0.2764
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.2372,
+          "mrr": 0.3641,
+          "recall_at_1": 0.2693
+        },
+        "logistic_regression_wide": {
+          "label_macro_f1": 0.2405,
+          "mrr": 0.3566,
+          "recall_at_1": 0.2636
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.2859,
+          "mrr": 0.4136,
+          "recall_at_1": 0.3163
+        }
+      },
+      "whitening_by_fold": {
+        "0": {
+          "shrinkage": 0.0301,
+          "within_author_share_of_variance": 0.8982
+        },
+        "1": {
+          "shrinkage": 0.0301,
+          "within_author_share_of_variance": 0.8981
+        },
+        "2": {
+          "shrinkage": 0.0305,
+          "within_author_share_of_variance": 0.8983
+        },
+        "3": {
+          "shrinkage": 0.03,
+          "within_author_share_of_variance": 0.8981
+        },
+        "4": {
+          "shrinkage": 0.0302,
+          "within_author_share_of_variance": 0.8985
+        }
+      }
+    },
+    "words": {
+      "contrasts": {
+        "label_macro_f1": [
+          {
+            "ci95": [
+              0.0728,
+              0.0926
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0834,
+            "minus": "fold_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0013,
+              0.0112
+            ],
+            "excludes_zero": false,
+            "label_macro_f1_difference": 0.0047,
+            "minus": "fold_prototype",
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0684,
+              0.0871
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": 0.0787,
+            "minus": "logistic_regression",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.1276,
+              -0.1058
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.1176,
+            "minus": "protocol_prototype",
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              -0.0452,
+              -0.0229
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.0342,
+            "minus": "protocol_prototype",
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.1229,
+              -0.1007
+            ],
+            "excludes_zero": true,
+            "label_macro_f1_difference": -0.1129,
+            "minus": "protocol_prototype",
+            "system": "logistic_regression"
+          }
+        ],
+        "mrr": [
+          {
+            "ci95": [
+              0.0929,
+              0.1057
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": 0.0993,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0278,
+              0.036
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "mrr_difference": 0.0318,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0622,
+              0.0729
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "mrr_difference": 0.0675,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.1237,
+              -0.1072
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.1155,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              -0.0248,
+              -0.0078
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0162,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.0919,
+              -0.0751
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "mrr_difference": -0.0837,
+            "system": "logistic_regression"
+          }
+        ],
+        "recall_at_1": [
+          {
+            "ci95": [
+              0.0824,
+              0.0987
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": 0.0906,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              0.0193,
+              0.0312
+            ],
+            "excludes_zero": true,
+            "minus": "fold_prototype",
+            "recall_at_1_difference": 0.0251,
+            "system": "logistic_regression"
+          },
+          {
+            "ci95": [
+              0.0583,
+              0.0731
+            ],
+            "excludes_zero": true,
+            "minus": "logistic_regression",
+            "recall_at_1_difference": 0.0655,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.1249,
+              -0.1045
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.1144,
+            "system": "fold_prototype"
+          },
+          {
+            "ci95": [
+              -0.0348,
+              -0.0132
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.0238,
+            "system": "linear_svc"
+          },
+          {
+            "ci95": [
+              -0.1005,
+              -0.0785
+            ],
+            "excludes_zero": true,
+            "minus": "protocol_prototype",
+            "recall_at_1_difference": -0.0894,
+            "system": "logistic_regression"
+          }
+        ]
+      },
+      "distinct_inner_fits": 48,
+      "fits": {
+        "linear_svc": {
+          "0": {
+            "max_n_iter": 15,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 15,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 16,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 16,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 17,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "max_n_iter": 14,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 14,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 13,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 13,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 13,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "max_n_iter": 20,
+            "training_rows": 5831,
+            "unconverged_binary_fits": 0
+          },
+          "1": {
+            "max_n_iter": 19,
+            "training_rows": 5775,
+            "unconverged_binary_fits": 0
+          },
+          "2": {
+            "max_n_iter": 20,
+            "training_rows": 5724,
+            "unconverged_binary_fits": 0
+          },
+          "3": {
+            "max_n_iter": 21,
+            "training_rows": 5772,
+            "unconverged_binary_fits": 0
+          },
+          "4": {
+            "max_n_iter": 20,
+            "training_rows": 5778,
+            "unconverged_binary_fits": 0
+          }
+        }
+      },
+      "reading": {
+        "better_classifier": "linear_svc",
+        "by_classifier": {
+          "linear_svc": {
+            "ci95": [
+              0.0929,
+              0.1057
+            ],
+            "mrr_difference": 0.0993,
+            "selected_C_on_grid_edge_in_every_fold": false,
+            "verdict": "beats the prototype"
+          },
+          "logistic_regression": {
+            "ci95": [
+              0.0278,
+              0.036
+            ],
+            "mrr_difference": 0.0318,
+            "selected_C_on_grid_edge_in_every_fold": true,
+            "verdict": "beats the prototype",
+            "verdict_qualified": "beats the prototype (selected C on the grid edge in every fold: a reading of this grid)"
+          }
+        },
+        "reading": "linear_svc beats the prototype"
+      },
+      "selected_C": {
+        "linear_svc": {
+          "0": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3393,
+              "1": 0.3719,
+              "10": 0.3657
+            },
+            "selected_C": 1.0
+          },
+          "1": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3387,
+              "1": 0.3666,
+              "10": 0.3584
+            },
+            "selected_C": 1.0
+          },
+          "2": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.338,
+              "1": 0.3667,
+              "10": 0.3627
+            },
+            "selected_C": 1.0
+          },
+          "3": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.334,
+              "1": 0.3692,
+              "10": 0.363
+            },
+            "selected_C": 1.0
+          },
+          "4": {
+            "at_grid_edge": false,
+            "inner_mrr_by_C": {
+              "0.1": 0.3236,
+              "1": 0.3569,
+              "10": 0.3527
+            },
+            "selected_C": 1.0
+          }
+        },
+        "logistic_regression": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0652,
+              "1": 0.1562,
+              "10": 0.3008
+            },
+            "selected_C": 10.0
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0724,
+              "1": 0.1587,
+              "10": 0.3003
+            },
+            "selected_C": 10.0
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0651,
+              "1": 0.1562,
+              "10": 0.2997
+            },
+            "selected_C": 10.0
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.063,
+              "1": 0.146,
+              "10": 0.2936
+            },
+            "selected_C": 10.0
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "0.1": 0.0553,
+              "1": 0.1423,
+              "10": 0.2889
+            },
+            "selected_C": 10.0
+          }
+        },
+        "logistic_regression_wide": {
+          "0": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3008,
+              "100": 0.3292,
+              "1000": 0.3408
+            },
+            "selected_C": 1000.0
+          },
+          "1": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.3003,
+              "100": 0.329,
+              "1000": 0.3389
+            },
+            "selected_C": 1000.0
+          },
+          "2": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.2997,
+              "100": 0.3295,
+              "1000": 0.3405
+            },
+            "selected_C": 1000.0
+          },
+          "3": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.2936,
+              "100": 0.3275,
+              "1000": 0.3393
+            },
+            "selected_C": 1000.0
+          },
+          "4": {
+            "at_grid_edge": true,
+            "inner_mrr_by_C": {
+              "10": 0.2889,
+              "100": 0.3175,
+              "1000": 0.3299
+            },
+            "selected_C": 1000.0
+          }
+        }
+      },
+      "sensitivity": {
+        "contrasts": {
+          "label_macro_f1": [
+            {
+              "ci95": [
+                0.0442,
+                0.0603
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.0523,
+              "minus": "fold_prototype",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.038,
+                -0.0233
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": -0.0311,
+              "minus": "linear_svc",
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.0399,
+                0.0544
+              ],
+              "excludes_zero": true,
+              "label_macro_f1_difference": 0.0476,
+              "minus": "logistic_regression",
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "mrr": [
+            {
+              "ci95": [
+                0.0656,
+                0.0763
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "mrr_difference": 0.0709,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0321,
+                -0.0244
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "mrr_difference": -0.0283,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.0353,
+                0.043
+              ],
+              "excludes_zero": true,
+              "minus": "logistic_regression",
+              "mrr_difference": 0.0392,
+              "system": "logistic_regression_wide"
+            }
+          ],
+          "recall_at_1": [
+            {
+              "ci95": [
+                0.0548,
+                0.0701
+              ],
+              "excludes_zero": true,
+              "minus": "fold_prototype",
+              "recall_at_1_difference": 0.0626,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                -0.0337,
+                -0.022
+              ],
+              "excludes_zero": true,
+              "minus": "linear_svc",
+              "recall_at_1_difference": -0.028,
+              "system": "logistic_regression_wide"
+            },
+            {
+              "ci95": [
+                0.0315,
+                0.0434
+              ],
+              "excludes_zero": true,
+              "minus": "logistic_regression",
+              "recall_at_1_difference": 0.0376,
+              "system": "logistic_regression_wide"
+            }
+          ]
+        },
+        "grids": {
+          "logistic_regression_wide": [
+            10.0,
+            100.0,
+            1000.0
+          ]
+        },
+        "role": "description only; not in the reading rule or the choice of the best classifier",
+        "systems": {
+          "logistic_regression_wide": {
+            "label_macro_f1": 0.2884,
+            "mrr": 0.4534,
+            "recall_at_1": 0.3518
+          }
+        }
+      },
+      "systems": {
+        "fold_prototype": {
+          "label_macro_f1": 0.2353,
+          "mrr": 0.3791,
+          "recall_at_1": 0.2866
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.3192,
+          "mrr": 0.4823,
+          "recall_at_1": 0.3792
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.2404,
+          "mrr": 0.4129,
+          "recall_at_1": 0.3132
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.3536,
+          "mrr": 0.4963,
+          "recall_at_1": 0.4029
+        }
+      },
+      "systems_component_weighted": {
+        "fold_prototype": {
+          "label_macro_f1": 0.2373,
+          "mrr": 0.3865,
+          "recall_at_1": 0.2933
+        },
+        "linear_svc": {
+          "label_macro_f1": 0.3208,
+          "mrr": 0.4858,
+          "recall_at_1": 0.3839
+        },
+        "logistic_regression": {
+          "label_macro_f1": 0.242,
+          "mrr": 0.4183,
+          "recall_at_1": 0.3184
+        },
+        "logistic_regression_wide": {
+          "label_macro_f1": 0.2896,
+          "mrr": 0.4575,
+          "recall_at_1": 0.3559
+        },
+        "protocol_prototype": {
+          "label_macro_f1": 0.3549,
+          "mrr": 0.502,
+          "recall_at_1": 0.4077
+        }
+      },
+      "whitening_by_fold": {}
+    }
+  },
+  "summary": {
+    "best_classifier": "linear_svc",
+    "folds_with_selected_C_at_grid_edge": {
+      "characters": {
+        "linear_svc": 0,
+        "logistic_regression": 5
+      },
+      "semantic_raw": {
+        "linear_svc": 0,
+        "logistic_regression": 5
+      },
+      "semantic_whitened": {
+        "linear_svc": 5,
+        "logistic_regression": 5
+      },
+      "words": {
+        "linear_svc": 0,
+        "logistic_regression": 5
+      }
+    },
+    "mean_mrr_over_spaces": {
+      "linear_svc": 0.4414,
+      "logistic_regression": 0.3941
+    },
+    "readings": {
+      "characters": "linear_svc beats the prototype",
+      "semantic_raw": "linear_svc beats the prototype",
+      "semantic_whitened": "linear_svc loses to the prototype (selected C on the grid edge in every fold: a reading of this grid)",
+      "words": "linear_svc beats the prototype"
+    },
+    "spaces_where_best_classifier_beats_fold_prototype": [
+      "characters",
+      "words",
+      "semantic_raw"
+    ],
+    "unconverged_binary_fits_in_scored_models": 0
+  }
+}

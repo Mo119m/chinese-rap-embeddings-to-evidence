@@ -38,7 +38,9 @@ dropped − words +0.001 [−0.000, +0.003] (on 1.2.0 this was +0.003 with the i
 clear of zero; on 1.3.0 it is not — the one contrast the build changed); rhyme strict −
 prior +0.077.
 
-Reading. The ordering words > characters > semantic > rhyme form is unchanged. Every
+Reading. The ordering words > characters > semantic > rhyme form is unchanged. (Qualified 2026-09-21: words lead
+characters under this prototype scorer only; under a linear classifier trained on the training folds characters lead,
+0.541 against 0.482. See "A discriminative classifier against the prototype" and the label-size section.) Every
 text-bearing space lost about two points to the cleaning and the rhyme space lost
 nothing: the credit lines were worth about two points of MRR in every space, which is
 exactly the cheap signal the cleaning was meant to remove. The 1,300 lines in Uyghur,
@@ -1082,6 +1084,54 @@ after a first run: with raw instead of sublinear term frequency both spaces lose
 their MRR and the word lead disappears (+0.0009 [-0.0069, +0.0090]). Every sublinear word cell
 scores above every sublinear character cell (0.4940 or more against 0.4388 or less), so the
 ordering needs repeated words damped, which is what sublinear tf does.
+
+### A discriminative classifier against the prototype (`discriminative_baseline.json`, `src/discriminative_baseline_v3.py`)
+
+Every published system scores a query against a label's mean profile. The standard
+authorship-attribution baseline is instead a linear classifier trained on the songs. Per space,
+one-vs-rest linear SVM and logistic regression (liblinear primal solvers, the protocol's
+component weights as sample weights) are trained on the four training folds and score the test
+fold; C is chosen per fold from {0.1, 1, 10} on two halves of the training folds. Because a
+classifier sees only training-fold songs while the published prototype builds profiles from all
+other songs, the rule compares it with the prototype built from the training folds alone (fold
+prototype). Checks first: the published prototype reproduces 0.4266 / 0.4963 / 0.2997 / 0.4164
+with R@1; the fold prototype equals the protocol's scorer when all songs are available; the
+one-vs-rest loop equals sklearn's native one on a 30-label subset. Rule, fixed before the run: a
+space reads by its better classifier, which beats the prototype if its MRR minus the fold
+prototype's is positive with the interval clear of zero. Added after a reviewer's inner-split
+probe (no test fold scored in the TF-IDF spaces), description only: logistic regression on the
+wider grid {10, 100, 1000}, and a qualifier when the selected C sits on a grid edge in every fold.
+
+| space | published prototype (all songs) | fold prototype | linear SVM | logistic regression | logistic regression, wide grid (description) | SVM − fold prototype |
+|---|---|---|---|---|---|---|
+| character 2–5-grams | 0.4266 | 0.3993 | 0.5414 | 0.4558 | 0.4967 | +0.139 [+0.132, +0.147] |
+| jieba words | 0.4963 | 0.3791 | 0.4823 | 0.4129 | 0.4534 | +0.099 [+0.093, +0.106] |
+| semantic, raw | 0.2997 | 0.2883 | 0.3719 | 0.3443 | 0.3496 | +0.085 [+0.078, +0.092] |
+| semantic, within-label whitened | 0.4164 | 0.3923 | 0.3699 | 0.3632 | 0.3560 | -0.020 [-0.025, -0.015] |
+
+Readings: the SVM beats the fold prototype in the character (+0.139), word (+0.099) and raw
+semantic (+0.085) spaces; in the whitened semantic space it loses (−0.020), with its C on the
+lower grid edge in every fold, so that reading is one of the grid. The SVM chose C = 1 in every
+fold of the other three spaces, inside the grid. Logistic regression chose the top of its grid in
+every fold and space, and the top of the wide grid (1,000) in the two TF-IDF spaces, so it is not
+at its optimum anywhere; the SVM is the classifier that carries the reading.
+
+Space orderings (adjacent contrasts, paired group bootstrap):
+- published prototype: words > characters > semantic_whitened > semantic_raw; words − characters +0.071 [+0.064, +0.079]; characters − semantic_whitened +0.017 [+0.007, +0.028]; semantic_whitened − semantic_raw +0.116 [+0.107, +0.124].
+- fold prototype: characters > semantic_whitened > words > semantic_raw; characters − semantic_whitened +0.014 [+0.004, +0.025]; semantic_whitened − words +0.004 [-0.007, +0.015]; words − semantic_raw +0.100 [+0.090, +0.110].
+- linear SVM: characters > words > semantic_raw > semantic_whitened; characters − words +0.058 [+0.050, +0.066]; words − semantic_raw +0.114 [+0.104, +0.124]; semantic_raw − semantic_whitened +0.001 [-0.005, +0.007].
+
+Reading. Two headline statements depend on the scorer. The word space leads the character space
+only under the published prototype; under a classifier trained on the training folds the
+character space leads by 0.058, and under the fold prototype characters score 0.020 above words
+(0.3993 against 0.3791; no interval was computed for that pair, the whitened semantic space
+sitting between them). Building profiles from the training folds instead of all other songs
+costs the word prototype 0.116 and the character prototype 0.027: the sparse word profile needs
+many songs, as the label-size section found. Second, whitening is what lets cosine read identity
+out of the semantic space, but a linear classifier reads it from the raw vectors directly (0.372
+raw against 0.370 whitened, a difference of +0.001 [−0.005, +0.007]). What holds under every
+scorer is that the lexical surface identifies the credited label far better than the semantic
+content, and that the semantic space holds more identity than raw cosine shows.
 
 ### Repeated passages within a label (`within_label_repeats.json`, `src/within_label_repeats_v3.py`)
 
