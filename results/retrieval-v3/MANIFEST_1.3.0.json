@@ -381,6 +381,14 @@
       "run": "2026-09-21, CPU, 5 min; cosine prototype reproduces the published MRR; Gram-matrix score equals the explicit d x d computation; synthetic test tests/test_label_specific_covariance.py",
       "sha256": "c18f167fd09e47ba75334056cf22bc0643ac1a7579188af8beac0e25c2acf699",
       "written": "2026-09-21T23:42"
+    },
+    "temperature_scale.json": {
+      "arm": "temperature_scale_v3 (is the attention temperature a reciprocal cosine scale?)",
+      "completed_in_pipeline": true,
+      "run": "2026-09-22, CPU, 46 min; c = 0 reproduces every published prototype and is bit-for-bit the protocol scorer; the per-pair scorer and sigma(q, l) checked against a brute-force loop; synthetic test tests/test_temperature_scale.py",
+      "reading": "the pre-declared dimensionless rule fails (beta* x sigma spans 20.39 times against 20 for beta alone); one global c is non-inferior in 1 of 5 spaces; the measured effective sample size of the attention weights is 22.7 to 39.4 songs at the median, refuting a draft prediction of 2 to 10",
+      "sha256": "365123d724c2652568b2566a5e7e6e6c6833f6b0cd607a9e701527d3402b9dcd",
+      "written": "2026-09-22T17:47"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

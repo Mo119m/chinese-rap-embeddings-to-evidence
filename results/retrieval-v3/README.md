@@ -1312,6 +1312,91 @@ leakage groups; 592 songs (8.2%) carry a collaboration title; 1,610 chunks (6.6%
 their own label; a chunk's nearest content rival (another label) is closer than its nearest
 same-label chunk in 91.0% of cases (median cosine 0.725 vs 0.663).
 
+## Is the attention temperature a cosine scale? (`temperature_scale.json`, 2026-09-22)
+
+`src/temperature_scale_v3.py`, with `tests/test_temperature_scale.py` for its scorers without the corpus.
+
+The attention arm swept a fixed grid of temperatures in `a_s = w_s exp(beta cos(q, x_s))` and the
+temperature that won differs by a factor of 20 across the five spaces. A temperature is not a free number: beta multiplies
+a cosine, so it carries the units of one over a cosine. If the spread is only a units effect, the
+dimensionless product `beta* sigma` should be far more nearly constant than `beta*`, and a scorer
+that sets `beta(q, l) = c / sigma(q, l)` with one global `c` should do what the per-space tuned grid
+does with no per-space tuning at all. `sigma(q, l)` is the component-weighted sd of the query's
+cosines to label `l`'s songs outside the query's leakage group, so it needs no labels at scoring time.
+
+Rules, fixed in the docstring before the run: the dimensionless reading holds if the spread of
+`beta* * median sigma` across the five spaces is below 2, is *reduced but not constant* below 5, and
+**fails** above 5; the one-constant scorer is non-inferior to the per-space tuned beta in a space if
+the whole 95% interval of the difference lies above -0.005 (a margin declared in advance, so that
+a scorer that simply lacks power cannot pass). `c` is chosen per fold on the other folds' queries
+averaged over the five spaces; the tuned beta is chosen per fold the same way, on the same grid the
+attention arm used. The per-pair rule is primary; a per-query variant that scales by the sd of the
+query's cosines to the whole candidate pool, ignoring the label, is the secondary arm.
+
+Checks: `c = 0` reproduces the published prototype in all five spaces (largest gap 3e-05) and is
+bit-for-bit the prototype scorer (largest gap 0); the vectorised per-pair scorer equals a
+brute-force loop on six query-label pairs per space (largest gap 2.2e-16), and `sigma(q, l)` from the
+block loop equals a direct computation on the same pairs (gap 0).
+
+| space | median sigma(q, l) | median own-label mean cosine | beta* | beta* x sigma |
+|---|---|---|---|---|
+| words, raw | 0.0118 | 0.0331 | 20 | 0.236 |
+| characters, raw | 0.0165 | 0.0342 | 10 | 0.165 |
+| semantic, within-label whitening | 0.0395 | 0.0194 | 5 | 0.198 |
+| word SVD-1024, within-label whitening | 0.0508 | 0.0506 | 1 | 0.051 |
+| semantic, raw | 0.0520 | 0.6507 | 20 | 1.040 |
+
+**The pre-declared reading fails.** The product spans 20.39 times, which is not an improvement on
+the 20 times that beta alone spans, so the temperature is not a pure scale parameter and the
+one-constant law claimed in an earlier plan is withdrawn.
+
+Post-hoc, and marked as post-hoc because the rule above was fixed first: the failure is carried by
+one space. Four of the five have own-label cosines centred near zero (medians 0.0331, 0.0342, 0.0194, 0.0506), and raw BGE-M3 does not
+(0.6507) - the known anisotropy of raw sentence embeddings. Among the four centred
+spaces the product spans 4.6 times against 20 for beta, and beta* falls monotonically as sigma
+rises. That is a reduced-but-not-constant reading on a subset chosen after seeing the numbers; it is
+recorded as a hypothesis for the layer cells, where there are tens of replication units rather than five.
+
+| space | best fixed beta | its MRR | best per-pair c | its MRR | one global c | tuned beta | one constant - tuned | non-inferior |
+|---|---|---|---|---|---|---|---|---|
+| words, raw | 20 | 0.5139 | 0.5 | 0.5112 | 0.5097 | 0.5139 | -0.0044 [-0.0065, -0.0022] | no |
+| characters, raw | 10 | 0.4436 | 0.25 | 0.4422 | 0.4393 | 0.4436 | -0.0042 [-0.0066, -0.0018] | no |
+| semantic, within-label whitening | 5 | 0.4496 | 0.25 | 0.4484 | 0.4475 | 0.4481 | -0.0006 [-0.0029, +0.0017] | yes |
+| word SVD-1024, within-label whitening | 1 | 0.5457 | 0.25 | 0.5498 | 0.5429 | 0.5450 | -0.0031 [-0.0064, +0.0001] | no |
+| semantic, raw | 20 | 0.3569 | 0.75 | 0.3584 | 0.3362 | 0.3569 | -0.0218 [-0.0275, -0.0165] | no |
+
+One global `c` is non-inferior in 1 of five spaces (semantic, within-label whitening). It loses by
+0.0218 in raw semantic and by 0.003 to 0.005 in the other three, so removing per-space tuning
+costs a little everywhere and a lot in the one uncentred space. The dimensionless temperature is
+nonetheless the more stable parameter: the per-space optimal `c` takes only the values 0.25, 0.5, 0.75
+(a spread of 3) against 1 to 20 for beta. In word SVD-1024 the adaptive rule at its own
+optimum reaches 0.5498, above the best fixed temperature's 0.5457 and above the
+prototype's 0.5426 - the one space where the fixed grid had found almost nothing.
+
+The label's own spread is what matters, not the query's. Replacing `sigma(q, l)` with the sd of the
+query's cosines to the whole candidate pool, which ignores the label, costs -0.0062 (words, raw), -0.0054 (characters, raw), -0.0151 (word SVD-1024, within-label whitening),
+is flat in semantic, within-label whitening, and gains +0.0037 in raw semantic, whose pool sd is almost constant across queries
+(0.0483 to 0.0660 between the 5th and 95th percentiles). A repertoire has its own scale.
+
+| space | effective sample size of the attention weights [5th, 50th, 95th] | largest single weight | songs in the profile |
+|---|---|---|---|
+| words, raw | 5.0, 36.7, 46.4 | 0.052 (95th 0.447) | 40 (5th 13, 95th 48) |
+| characters, raw | 8.0, 38.1, 46.9 | 0.044 (95th 0.232) | 40 (5th 13, 95th 48) |
+| semantic, within-label whitening | 10.6, 37.3, 46.4 | 0.050 (95th 0.207) | 40 (5th 13, 95th 48) |
+| word SVD-1024, within-label whitening | 13.0, 39.4, 47.5 | 0.033 (95th 0.107) | 40 (5th 13, 95th 48) |
+| semantic, raw | 6.7, 22.7, 35.1 | 0.141 (95th 0.401) | 40 (5th 13, 95th 48) |
+
+**The recognition window is wide, and an earlier plan predicted the opposite.** At the temperature the
+attention arm selected, the weights spread over 22.7 to 39.4 songs at the median, against a median
+profile of 40 songs; the largest single weight is 0.033 to 0.141 at the median. A draft
+plan of 2026-09-22 pre-registered a median effective sample size between 2 and 10; the measurement
+refutes it, and it was withdrawn before the run on the arithmetic alone. The consequence is
+substantive: attention at the selected temperature is not selecting one near-duplicate song, which is
+the confound the repeated-passage arm was built to catch. Raw semantic concentrates most (median
+22.7) and gains most (+0.0583); word SVD-1024 concentrates least (39.4) and gains least
+(+0.0022). The upper tail is where concentration lives: at the 95th percentile of the largest weight,
+raw words puts 0.447 of the profile on one song.
+
 ## Privacy
 
 Aggregate numbers only. Per-query tables, vectors and text stay under the private root.

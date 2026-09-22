@@ -183,6 +183,30 @@ REGISTRY = [
         "path": "/corpus_geometry/song_records",
         "render": "{:,d}",
     },
+    {
+        "claim": "the dimensionless temperature product's spread",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "The product spans 20.39 times",
+        "artifact": "results/retrieval-v3/temperature_scale.json",
+        "path": "/dimensionless/spread_of_product",
+        "render": "{:g}",
+    },
+    {
+        "claim": "one global c against the tuned temperature in raw semantic",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "| semantic, raw | 20 | 0.3569 | 0.75 | 0.3584 | 0.3362 | 0.3569 | -0.0218 ",
+        "artifact": "results/retrieval-v3/temperature_scale.json",
+        "path": "/spaces/semantic_raw/paired_contrasts[0]/mrr_difference",
+        "render": "{:+.4f}",
+    },
+    {
+        "claim": "the median effective sample size of the attention weights in raw semantic",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "| semantic, raw | 6.7, 22.7, 35.1 |",
+        "artifact": "results/retrieval-v3/temperature_scale.json",
+        "path": "/scale/semantic_raw/window_at_selected_beta/effective_sample_size/q50",
+        "render": "{:.1f}",
+    },
 ]
 
 
