@@ -1,5 +1,37 @@
 # Where Does a Lyrical Identity Live?
 
+> ## Status, 23 September 2026
+>
+> **The corpus these results were computed on has been superseded.** Everything below describes
+> corpus **v2**, which remains in the repository as the account that the manuscript PDF and the
+> five figures were built from. The current corpus is **v3, build 1.3.0** (content digest
+> `cd51bf69…`): **7,379 songs, 24,237 chunks, 7,220 queries, 226 source-credit labels, 5,875
+> leakage groups, 6,889 (group, label) components**. Protocol amendment PD-003 removed metadata
+> lines — production credits, section markers, page headers — that the earlier cleaner had left
+> inside the lyric text; it is documented, with the four builds and what had been seen before each,
+> in [`methods/PROTOCOL_AMENDMENT_PD003_METADATA_LINE_REMOVAL.md`](methods/PROTOCOL_AMENDMENT_PD003_METADATA_LINE_REMOVAL.md).
+>
+> **Read [`results/retrieval-v3/README.md`](results/retrieval-v3/README.md) for the current
+> evidence.** Every headline arm was recomputed there, and two things changed that matter:
+>
+> - **jieba words, not character n-grams, are the lexical headline** under every profile scorer:
+>   query-weighted MRR 0.4963 for words against 0.4266 for characters and 0.2997 for frozen
+>   BGE-M3; whitened word SVD-1024 reaches 0.5426 and its fusion with the whitened semantic space
+>   0.5854.
+> - **that ordering is a fact about the read-out, not only about the language.** Under a linear
+>   classifier trained on the training folds the two lexical spaces swap: characters 0.5414 ahead
+>   of words 0.4833, with the raw semantic space at 0.3719 — well above the 0.2997 a raw cosine
+>   reads from the same vectors. What is stable under every scorer run so far is that the lexical
+>   surface identifies a credited label far better than the semantic content, and that the semantic
+>   space holds more identity than raw cosine shows.
+>
+> The v3 directory also carries the arms that were added afterwards: label-size calibration,
+> exemplar and attention scoring over a label's songs, label-specific covariance, the label-macro
+> estimand under a two-stage bootstrap, discriminative baselines, and a note stating which estimand
+> each published number uses. The manuscript has **not** yet been rewritten on v3; the PDF, the
+> figures, `submission/dsh/`, and `index.html` are the earlier account and are labelled as such
+> here rather than removed.
+
 This repository is the public, copyright-safe research release for a study of Chinese rap lyrics that asks one representational question of one corpus.
 
 The central question is:

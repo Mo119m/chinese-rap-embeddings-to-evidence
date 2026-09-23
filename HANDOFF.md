@@ -1,4 +1,4 @@
-> **Historical (2026-09-08).** This hand-off describes `fix/release-integrity` as it stood before corpus v2, the leakage-group protocol, and the identity experiments. For the current state read `README.md` and `results/retrieval-v2/README.md`.
+> **Historical (2026-09-08).** This hand-off describes `fix/release-integrity` as it stood before corpus v2, the leakage-group protocol, and the identity experiments. For the current state read `README.md` and `results/retrieval-v3/README.md`.
 
 # Handoff: what changed on `fix/release-integrity`, and what to do next
 
