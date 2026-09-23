@@ -1,0 +1,1536 @@
+{
+  "analysis": "hubness_and_centrality_v3",
+  "question": "which labels are answered too often, and what makes a label a hub?",
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "songs": 7220,
+    "labels": 226
+  },
+  "design": {
+    "spaces": [
+      "semantic_raw",
+      "semantic_whitened",
+      "words_raw",
+      "chars_raw",
+      "words_svd_whitened"
+    ],
+    "ks": [
+      1,
+      10
+    ],
+    "csls_k": 10,
+    "replicates": 2000,
+    "margin": 0.01,
+    "k_occurrence": "a count over queries; it has no component-weighted analogue",
+    "bands": "songs per label, as label_size_calibration_v3",
+    "covariates": "whole-label profile mean: its norm, and its cosine with the mean of the label mean directions; in a fold-wise space they are averaged over the five folds' spaces, while the outcome scores each query in its own fold's space",
+    "csls_cohort": "the label side averaged over training-fold queries only",
+    "reading_rules": {
+      "R1": "N_10 skewness positive with the label-bootstrap interval clear of zero",
+      "R2": "in log(1 + N_10) ~ centrality + log components + profile norm, centrality positive and the profile norm NEGATIVE, both intervals clear of zero, in at least four of five spaces; a non-negative norm coefficient refutes the single-scalar account. RUN 2026-09-23 AND REFUTED: the norm coefficient is positive in all five spaces, because at fixed component count the profile norm is the resultant length and measures coherence, not estimation noise",
+      "R2b": "declared after R2 was refuted, so a re-specification and not a confirmatory test: in log(1 + N_10) ~ centrality + r_hat + w_term, the coefficient on r_hat (coherence) is POSITIVE and on w_term = sum_c(1/k_c)/G^2 (estimation noise) is NEGATIVE, both intervals clear of zero, in at least four of five spaces",
+      "R3": "at least one transform lowers query-weighted MRR while lowering both the between-label variance of per-label MRR and the false-hub mass",
+      "R4": "CSLS and mutual proximity reproduce Z-normalisation to within 0.01 in the two raw lexical spaces; an interval reaching outside the margin does not count, and one including zero but wider than the margin is undecided"
+    }
+  },
+  "spaces": {
+    "semantic_raw": {
+      "systems": {
+        "prototype": {
+          "query_weighted": 0.2997,
+          "component_weighted": 0.2979,
+          "label_macro": 0.2831,
+          "between_label_variance_of_label_mrr": 0.02998
+        },
+        "znorm": {
+          "query_weighted": 0.2105,
+          "component_weighted": 0.2069,
+          "label_macro": 0.2283,
+          "between_label_variance_of_label_mrr": 0.04518
+        },
+        "csls": {
+          "query_weighted": 0.2872,
+          "component_weighted": 0.2841,
+          "label_macro": 0.2863,
+          "between_label_variance_of_label_mrr": 0.03796
+        },
+        "mutual_proximity": {
+          "query_weighted": 0.2668,
+          "component_weighted": 0.2636,
+          "label_macro": 0.2695,
+          "between_label_variance_of_label_mrr": 0.03978
+        }
+      },
+      "hubness": {
+        "prototype": {
+          "n1": {
+            "skewness": 2.5272,
+            "ci95_label_bootstrap": [
+              1.185,
+              3.4115
+            ],
+            "false_skewness": 3.0603,
+            "max_over_mean": 7.481,
+            "false_mass": 0.7981
+          },
+          "n10": {
+            "skewness": 0.8357,
+            "ci95_label_bootstrap": [
+              0.5122,
+              1.1107
+            ],
+            "false_skewness": 0.8811,
+            "max_over_mean": 3.381,
+            "false_mass": 0.9509
+          },
+          "top1_entropy_over_labels": 0.9353,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9292,
+            0.9355
+          ]
+        },
+        "znorm": {
+          "n1": {
+            "skewness": 4.3017,
+            "ci95_label_bootstrap": [
+              2.8678,
+              5.4995
+            ],
+            "false_skewness": 4.5194,
+            "max_over_mean": 17.373,
+            "false_mass": 0.8837
+          },
+          "n10": {
+            "skewness": 1.3737,
+            "ci95_label_bootstrap": [
+              1.0798,
+              1.678
+            ],
+            "false_skewness": 1.4017,
+            "max_over_mean": 4.551,
+            "false_mass": 0.9607
+          },
+          "top1_entropy_over_labels": 0.7822,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.7746,
+            0.785
+          ]
+        },
+        "csls": {
+          "n1": {
+            "skewness": 1.9858,
+            "ci95_label_bootstrap": [
+              1.5519,
+              2.3566
+            ],
+            "false_skewness": 2.1714,
+            "max_over_mean": 5.102,
+            "false_mass": 0.81
+          },
+          "n10": {
+            "skewness": 0.9908,
+            "ci95_label_bootstrap": [
+              0.6928,
+              1.2782
+            ],
+            "false_skewness": 1.023,
+            "max_over_mean": 3.071,
+            "false_mass": 0.9519
+          },
+          "top1_entropy_over_labels": 0.9313,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.925,
+            0.9318
+          ]
+        },
+        "mutual_proximity": {
+          "n1": {
+            "skewness": 2.0799,
+            "ci95_label_bootstrap": [
+              1.6813,
+              2.4957
+            ],
+            "false_skewness": 2.1778,
+            "max_over_mean": 5.885,
+            "false_mass": 0.8345
+          },
+          "n10": {
+            "skewness": 1.3327,
+            "ci95_label_bootstrap": [
+              0.8713,
+              1.6885
+            ],
+            "false_skewness": 1.3748,
+            "max_over_mean": 3.816,
+            "false_mass": 0.9529
+          },
+          "top1_entropy_over_labels": 0.9062,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.8995,
+            0.9071
+          ]
+        }
+      },
+      "regression_identified": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "r_hat",
+          "w_term"
+        ],
+        "coefficients": [
+          5.4439,
+          0.0353,
+          0.2775,
+          -0.7208
+        ],
+        "ci95_label_bootstrap": [
+          [
+            5.3728,
+            5.5168
+          ],
+          [
+            -0.0934,
+            0.1431
+          ],
+          [
+            0.1968,
+            0.3594
+          ],
+          [
+            -0.8507,
+            -0.5997
+          ]
+        ],
+        "covariate_correlations": {
+          "centrality_vs_r_hat": 0.225,
+          "centrality_vs_w_term": -0.627,
+          "r_hat_vs_w_term": -0.126
+        },
+        "median_r_hat2": 0.6533,
+        "non_positive_r_hat2_labels": 0,
+        "note": "r_hat is the component-level U-statistic (coherence) and w_term = sum_c(1/k_c)/G^2 is a function of the group structure alone (estimation noise); unlike the profile norm and the component count, these two are not the same variable twice"
+      },
+      "regression": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "log_components",
+          "profile_norm"
+        ],
+        "coefficients": [
+          5.4439,
+          0.0578,
+          0.7936,
+          0.302
+        ],
+        "ci95_label_bootstrap": [
+          [
+            5.3713,
+            5.5186
+          ],
+          [
+            -0.0412,
+            0.1631
+          ],
+          [
+            0.6646,
+            0.9116
+          ],
+          [
+            0.2248,
+            0.3792
+          ]
+        ],
+        "log_components_without_centrality": 0.8319,
+        "covariate_correlations": {
+          "centrality_vs_log_components": 0.621,
+          "centrality_vs_profile_norm": -0.001,
+          "log_components_vs_profile_norm": -0.252
+        },
+        "note": "the three covariates are collinear by construction: averaging more unit vectors raises centrality and lowers the norm, so no coefficient is an isolated effect"
+      },
+      "profile_norm_by_band": {
+        "5-9": {
+          "labels": 19,
+          "median_profile_norm": 0.8268,
+          "median_centrality": 0.9361
+        },
+        "10-19": {
+          "labels": 33,
+          "median_profile_norm": 0.827,
+          "median_centrality": 0.9609
+        },
+        "20-49": {
+          "labels": 171,
+          "median_profile_norm": 0.8138,
+          "median_centrality": 0.9779
+        }
+      },
+      "minutes": 0.1,
+      "paired_contrasts": [
+        {
+          "system": "semantic_raw/znorm",
+          "minus": "semantic_raw/prototype",
+          "mrr_difference": -0.091,
+          "ci95": [
+            -0.097,
+            -0.0852
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_raw/csls",
+          "minus": "semantic_raw/prototype",
+          "mrr_difference": -0.0138,
+          "ci95": [
+            -0.018,
+            -0.0096
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_raw/mutual_proximity",
+          "minus": "semantic_raw/prototype",
+          "mrr_difference": -0.0343,
+          "ci95": [
+            -0.0387,
+            -0.0298
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_raw/csls",
+          "minus": "semantic_raw/znorm",
+          "mrr_difference": 0.0772,
+          "ci95": [
+            0.0723,
+            0.0822
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_raw/mutual_proximity",
+          "minus": "semantic_raw/znorm",
+          "mrr_difference": 0.0567,
+          "ci95": [
+            0.0528,
+            0.0608
+          ],
+          "excludes_zero": true
+        }
+      ]
+    },
+    "semantic_whitened": {
+      "systems": {
+        "prototype": {
+          "query_weighted": 0.4164,
+          "component_weighted": 0.4136,
+          "label_macro": 0.4062,
+          "between_label_variance_of_label_mrr": 0.03272
+        },
+        "znorm": {
+          "query_weighted": 0.4144,
+          "component_weighted": 0.4112,
+          "label_macro": 0.4055,
+          "between_label_variance_of_label_mrr": 0.03272
+        },
+        "csls": {
+          "query_weighted": 0.3741,
+          "component_weighted": 0.3718,
+          "label_macro": 0.3796,
+          "between_label_variance_of_label_mrr": 0.01584
+        },
+        "mutual_proximity": {
+          "query_weighted": 0.4157,
+          "component_weighted": 0.4132,
+          "label_macro": 0.4072,
+          "between_label_variance_of_label_mrr": 0.03159
+        }
+      },
+      "hubness": {
+        "prototype": {
+          "n1": {
+            "skewness": 1.3709,
+            "ci95_label_bootstrap": [
+              0.7649,
+              1.9015
+            ],
+            "false_skewness": 1.8446,
+            "max_over_mean": 3.161,
+            "false_mass": 0.6821
+          },
+          "n10": {
+            "skewness": 0.7394,
+            "ci95_label_bootstrap": [
+              0.3241,
+              1.0869
+            ],
+            "false_skewness": 0.8182,
+            "max_over_mean": 1.484,
+            "false_mass": 0.9397
+          },
+          "top1_entropy_over_labels": 0.9845,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9797,
+            0.9835
+          ]
+        },
+        "znorm": {
+          "n1": {
+            "skewness": 1.5716,
+            "ci95_label_bootstrap": [
+              0.5726,
+              2.3785
+            ],
+            "false_skewness": 2.2426,
+            "max_over_mean": 3.318,
+            "false_mass": 0.6834
+          },
+          "n10": {
+            "skewness": -0.0168,
+            "ci95_label_bootstrap": [
+              -0.7016,
+              0.5988
+            ],
+            "false_skewness": -0.2655,
+            "max_over_mean": 1.296,
+            "false_mass": 0.9398
+          },
+          "top1_entropy_over_labels": 0.9878,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9833,
+            0.9866
+          ]
+        },
+        "csls": {
+          "n1": {
+            "skewness": 1.063,
+            "ci95_label_bootstrap": [
+              0.7727,
+              1.3337
+            ],
+            "false_skewness": 1.0867,
+            "max_over_mean": 3.005,
+            "false_mass": 0.7215
+          },
+          "n10": {
+            "skewness": 0.7936,
+            "ci95_label_bootstrap": [
+              0.5382,
+              1.0384
+            ],
+            "false_skewness": 0.8119,
+            "max_over_mean": 3.44,
+            "false_mass": 0.9446
+          },
+          "top1_entropy_over_labels": 0.9735,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9683,
+            0.973
+          ]
+        },
+        "mutual_proximity": {
+          "n1": {
+            "skewness": 0.7154,
+            "ci95_label_bootstrap": [
+              0.3153,
+              1.082
+            ],
+            "false_skewness": 1.0772,
+            "max_over_mean": 2.316,
+            "false_mass": 0.6824
+          },
+          "n10": {
+            "skewness": 0.4122,
+            "ci95_label_bootstrap": [
+              -0.0252,
+              0.785
+            ],
+            "false_skewness": 0.3114,
+            "max_over_mean": 1.287,
+            "false_mass": 0.9399
+          },
+          "top1_entropy_over_labels": 0.9906,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9863,
+            0.9892
+          ]
+        }
+      },
+      "regression_identified": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "r_hat",
+          "w_term"
+        ],
+        "coefficients": [
+          5.7607,
+          0.0208,
+          0.0215,
+          -0.0706
+        ],
+        "ci95_label_bootstrap": [
+          [
+            5.7454,
+            5.7757
+          ],
+          [
+            0.001,
+            0.0424
+          ],
+          [
+            -0.0052,
+            0.0548
+          ],
+          [
+            -0.0959,
+            -0.0513
+          ]
+        ],
+        "covariate_correlations": {
+          "centrality_vs_r_hat": -0.12,
+          "centrality_vs_w_term": 0.211,
+          "r_hat_vs_w_term": 0.523
+        },
+        "median_r_hat2": 0.0284,
+        "non_positive_r_hat2_labels": 0,
+        "note": "r_hat is the component-level U-statistic (coherence) and w_term = sum_c(1/k_c)/G^2 is a function of the group structure alone (estimation noise); unlike the profile norm and the component count, these two are not the same variable twice"
+      },
+      "regression": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "log_components",
+          "profile_norm"
+        ],
+        "coefficients": [
+          5.7607,
+          0.0331,
+          0.1357,
+          0.0752
+        ],
+        "ci95_label_bootstrap": [
+          [
+            5.7461,
+            5.7759
+          ],
+          [
+            0.0132,
+            0.0536
+          ],
+          [
+            0.0756,
+            0.2062
+          ],
+          [
+            0.0098,
+            0.1546
+          ]
+        ],
+        "log_components_without_centrality": 0.0967,
+        "covariate_correlations": {
+          "centrality_vs_log_components": -0.278,
+          "centrality_vs_profile_norm": 0.106,
+          "log_components_vs_profile_norm": -0.92
+        },
+        "note": "the three covariates are collinear by construction: averaging more unit vectors raises centrality and lowers the norm, so no coefficient is an isolated effect"
+      },
+      "profile_norm_by_band": {
+        "5-9": {
+          "labels": 19,
+          "median_profile_norm": 0.421,
+          "median_centrality": 0.062
+        },
+        "10-19": {
+          "labels": 33,
+          "median_profile_norm": 0.3427,
+          "median_centrality": 0.0681
+        },
+        "20-49": {
+          "labels": 171,
+          "median_profile_norm": 0.231,
+          "median_centrality": 0.0378
+        }
+      },
+      "minutes": 0.1,
+      "paired_contrasts": [
+        {
+          "system": "semantic_whitened/znorm",
+          "minus": "semantic_whitened/prototype",
+          "mrr_difference": -0.0024,
+          "ci95": [
+            -0.0043,
+            -0.0005
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_whitened/csls",
+          "minus": "semantic_whitened/prototype",
+          "mrr_difference": -0.0418,
+          "ci95": [
+            -0.0468,
+            -0.0369
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_whitened/mutual_proximity",
+          "minus": "semantic_whitened/prototype",
+          "mrr_difference": -0.0004,
+          "ci95": [
+            -0.0015,
+            0.0008
+          ],
+          "excludes_zero": false
+        },
+        {
+          "system": "semantic_whitened/csls",
+          "minus": "semantic_whitened/znorm",
+          "mrr_difference": -0.0395,
+          "ci95": [
+            -0.0446,
+            -0.0344
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "semantic_whitened/mutual_proximity",
+          "minus": "semantic_whitened/znorm",
+          "mrr_difference": 0.002,
+          "ci95": [
+            0.0002,
+            0.0037
+          ],
+          "excludes_zero": true
+        }
+      ]
+    },
+    "words_raw": {
+      "systems": {
+        "prototype": {
+          "query_weighted": 0.4963,
+          "component_weighted": 0.502,
+          "label_macro": 0.4316,
+          "between_label_variance_of_label_mrr": 0.07054
+        },
+        "znorm": {
+          "query_weighted": 0.4859,
+          "component_weighted": 0.483,
+          "label_macro": 0.494,
+          "between_label_variance_of_label_mrr": 0.04513
+        },
+        "csls": {
+          "query_weighted": 0.5414,
+          "component_weighted": 0.5381,
+          "label_macro": 0.5062,
+          "between_label_variance_of_label_mrr": 0.03966
+        },
+        "mutual_proximity": {
+          "query_weighted": 0.5375,
+          "component_weighted": 0.5396,
+          "label_macro": 0.4917,
+          "between_label_variance_of_label_mrr": 0.05609
+        }
+      },
+      "hubness": {
+        "prototype": {
+          "n1": {
+            "skewness": 4.4137,
+            "ci95_label_bootstrap": [
+              1.3856,
+              5.4211
+            ],
+            "false_skewness": 5.8117,
+            "max_over_mean": 14.242,
+            "false_mass": 0.5971
+          },
+          "n10": {
+            "skewness": 1.8211,
+            "ci95_label_bootstrap": [
+              1.385,
+              2.2038
+            ],
+            "false_skewness": 1.8789,
+            "max_over_mean": 6.473,
+            "false_mass": 0.9329
+          },
+          "top1_entropy_over_labels": 0.8721,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.8652,
+            0.8739
+          ]
+        },
+        "znorm": {
+          "n1": {
+            "skewness": 4.8212,
+            "ci95_label_bootstrap": [
+              2.0546,
+              6.0387
+            ],
+            "false_skewness": 5.3853,
+            "max_over_mean": 11.363,
+            "false_mass": 0.6274
+          },
+          "n10": {
+            "skewness": 1.3494,
+            "ci95_label_bootstrap": [
+              1.0386,
+              1.6509
+            ],
+            "false_skewness": 1.357,
+            "max_over_mean": 3.6,
+            "false_mass": 0.9304
+          },
+          "top1_entropy_over_labels": 0.932,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9252,
+            0.9328
+          ]
+        },
+        "csls": {
+          "n1": {
+            "skewness": 1.5686,
+            "ci95_label_bootstrap": [
+              0.9907,
+              2.0524
+            ],
+            "false_skewness": 2.4218,
+            "max_over_mean": 4.82,
+            "false_mass": 0.5514
+          },
+          "n10": {
+            "skewness": 0.9948,
+            "ci95_label_bootstrap": [
+              0.6361,
+              1.3355
+            ],
+            "false_skewness": 1.0301,
+            "max_over_mean": 4.198,
+            "false_mass": 0.9289
+          },
+          "top1_entropy_over_labels": 0.9519,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.946,
+            0.952
+          ]
+        },
+        "mutual_proximity": {
+          "n1": {
+            "skewness": 1.7764,
+            "ci95_label_bootstrap": [
+              1.2481,
+              2.2166
+            ],
+            "false_skewness": 2.5708,
+            "max_over_mean": 5.478,
+            "false_mass": 0.5598
+          },
+          "n10": {
+            "skewness": 1.2093,
+            "ci95_label_bootstrap": [
+              0.7473,
+              1.6101
+            ],
+            "false_skewness": 1.2847,
+            "max_over_mean": 4.958,
+            "false_mass": 0.9283
+          },
+          "top1_entropy_over_labels": 0.9332,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9273,
+            0.9335
+          ]
+        }
+      },
+      "regression_identified": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "r_hat",
+          "w_term"
+        ],
+        "coefficients": [
+          4.5067,
+          1.1306,
+          0.6747,
+          -0.8012
+        ],
+        "ci95_label_bootstrap": [
+          [
+            4.3671,
+            4.6402
+          ],
+          [
+            0.8399,
+            1.4539
+          ],
+          [
+            0.4895,
+            0.8714
+          ],
+          [
+            -1.1843,
+            -0.4539
+          ]
+        ],
+        "covariate_correlations": {
+          "centrality_vs_r_hat": -0.364,
+          "centrality_vs_w_term": -0.8,
+          "r_hat_vs_w_term": 0.23
+        },
+        "median_r_hat2": 0.0349,
+        "non_positive_r_hat2_labels": 0,
+        "note": "r_hat is the component-level U-statistic (coherence) and w_term = sum_c(1/k_c)/G^2 is a function of the group structure alone (estimation noise); unlike the profile norm and the component count, these two are not the same variable twice"
+      },
+      "regression": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "log_components",
+          "profile_norm"
+        ],
+        "coefficients": [
+          4.5067,
+          0.5522,
+          2.9936,
+          1.8556
+        ],
+        "ci95_label_bootstrap": [
+          [
+            4.3966,
+            4.6158
+          ],
+          [
+            0.3024,
+            0.8334
+          ],
+          [
+            2.6669,
+            3.3778
+          ],
+          [
+            1.5171,
+            2.2097
+          ]
+        ],
+        "log_components_without_centrality": 3.2465,
+        "covariate_correlations": {
+          "centrality_vs_log_components": 0.852,
+          "centrality_vs_profile_norm": -0.85,
+          "log_components_vs_profile_norm": -0.931
+        },
+        "note": "the three covariates are collinear by construction: averaging more unit vectors raises centrality and lowers the norm, so no coefficient is an isolated effect"
+      },
+      "profile_norm_by_band": {
+        "5-9": {
+          "labels": 19,
+          "median_profile_norm": 0.401,
+          "median_centrality": 0.3875
+        },
+        "10-19": {
+          "labels": 33,
+          "median_profile_norm": 0.333,
+          "median_centrality": 0.468
+        },
+        "20-49": {
+          "labels": 171,
+          "median_profile_norm": 0.247,
+          "median_centrality": 0.6305
+        }
+      },
+      "minutes": 1.5,
+      "paired_contrasts": [
+        {
+          "system": "words_raw/znorm",
+          "minus": "words_raw/prototype",
+          "mrr_difference": -0.019,
+          "ci95": [
+            -0.0266,
+            -0.0118
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_raw/csls",
+          "minus": "words_raw/prototype",
+          "mrr_difference": 0.0361,
+          "ci95": [
+            0.0294,
+            0.0425
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_raw/mutual_proximity",
+          "minus": "words_raw/prototype",
+          "mrr_difference": 0.0375,
+          "ci95": [
+            0.0323,
+            0.0429
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_raw/csls",
+          "minus": "words_raw/znorm",
+          "mrr_difference": 0.0551,
+          "ci95": [
+            0.0486,
+            0.0618
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_raw/mutual_proximity",
+          "minus": "words_raw/znorm",
+          "mrr_difference": 0.0565,
+          "ci95": [
+            0.0508,
+            0.0622
+          ],
+          "excludes_zero": true
+        }
+      ]
+    },
+    "chars_raw": {
+      "systems": {
+        "prototype": {
+          "query_weighted": 0.4266,
+          "component_weighted": 0.431,
+          "label_macro": 0.3765,
+          "between_label_variance_of_label_mrr": 0.05843
+        },
+        "znorm": {
+          "query_weighted": 0.3266,
+          "component_weighted": 0.3238,
+          "label_macro": 0.3339,
+          "between_label_variance_of_label_mrr": 0.05305
+        },
+        "csls": {
+          "query_weighted": 0.4121,
+          "component_weighted": 0.4067,
+          "label_macro": 0.3977,
+          "between_label_variance_of_label_mrr": 0.04782
+        },
+        "mutual_proximity": {
+          "query_weighted": 0.4257,
+          "component_weighted": 0.4227,
+          "label_macro": 0.3962,
+          "between_label_variance_of_label_mrr": 0.05247
+        }
+      },
+      "hubness": {
+        "prototype": {
+          "n1": {
+            "skewness": 2.9653,
+            "ci95_label_bootstrap": [
+              2.171,
+              3.7949
+            ],
+            "false_skewness": 3.4555,
+            "max_over_mean": 9.985,
+            "false_mass": 0.6658
+          },
+          "n10": {
+            "skewness": 2.1451,
+            "ci95_label_bootstrap": [
+              1.6026,
+              2.661
+            ],
+            "false_skewness": 2.2008,
+            "max_over_mean": 7.375,
+            "false_mass": 0.9394
+          },
+          "top1_entropy_over_labels": 0.8716,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.8646,
+            0.8733
+          ]
+        },
+        "znorm": {
+          "n1": {
+            "skewness": 4.0153,
+            "ci95_label_bootstrap": [
+              2.4415,
+              5.1012
+            ],
+            "false_skewness": 4.3422,
+            "max_over_mean": 13.491,
+            "false_mass": 0.7809
+          },
+          "n10": {
+            "skewness": 2.8082,
+            "ci95_label_bootstrap": [
+              2.2523,
+              3.3818
+            ],
+            "false_skewness": 2.8368,
+            "max_over_mean": 6.821,
+            "false_mass": 0.9471
+          },
+          "top1_entropy_over_labels": 0.8595,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.8516,
+            0.8617
+          ]
+        },
+        "csls": {
+          "n1": {
+            "skewness": 4.5602,
+            "ci95_label_bootstrap": [
+              2.4556,
+              5.904
+            ],
+            "false_skewness": 5.6453,
+            "max_over_mean": 12.114,
+            "false_mass": 0.6727
+          },
+          "n10": {
+            "skewness": 2.5051,
+            "ci95_label_bootstrap": [
+              1.9757,
+              3.0288
+            ],
+            "false_skewness": 2.5542,
+            "max_over_mean": 6.667,
+            "false_mass": 0.9433
+          },
+          "top1_entropy_over_labels": 0.9146,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9074,
+            0.9159
+          ]
+        },
+        "mutual_proximity": {
+          "n1": {
+            "skewness": 3.2421,
+            "ci95_label_bootstrap": [
+              2.1456,
+              4.1733
+            ],
+            "false_skewness": 4.0056,
+            "max_over_mean": 9.641,
+            "false_mass": 0.6749
+          },
+          "n10": {
+            "skewness": 2.0916,
+            "ci95_label_bootstrap": [
+              1.6259,
+              2.5753
+            ],
+            "false_skewness": 2.1635,
+            "max_over_mean": 6.558,
+            "false_mass": 0.9377
+          },
+          "top1_entropy_over_labels": 0.9051,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.8981,
+            0.9062
+          ]
+        }
+      },
+      "regression_identified": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "r_hat",
+          "w_term"
+        ],
+        "coefficients": [
+          4.6655,
+          0.2195,
+          0.4241,
+          -1.3027
+        ],
+        "ci95_label_bootstrap": [
+          [
+            4.534,
+            4.788
+          ],
+          [
+            0.0214,
+            0.409
+          ],
+          [
+            0.2952,
+            0.5595
+          ],
+          [
+            -1.5803,
+            -1.0671
+          ]
+        ],
+        "covariate_correlations": {
+          "centrality_vs_r_hat": 0.222,
+          "centrality_vs_w_term": -0.691,
+          "r_hat_vs_w_term": 0.104
+        },
+        "median_r_hat2": 0.0372,
+        "non_positive_r_hat2_labels": 0,
+        "note": "r_hat is the component-level U-statistic (coherence) and w_term = sum_c(1/k_c)/G^2 is a function of the group structure alone (estimation noise); unlike the profile norm and the component count, these two are not the same variable twice"
+      },
+      "regression": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "log_components",
+          "profile_norm"
+        ],
+        "coefficients": [
+          4.6655,
+          -0.1038,
+          2.3639,
+          0.9573
+        ],
+        "ci95_label_bootstrap": [
+          [
+            4.5628,
+            4.7806
+          ],
+          [
+            -0.2677,
+            0.0428
+          ],
+          [
+            2.1423,
+            2.6673
+          ],
+          [
+            0.7812,
+            1.2283
+          ]
+        ],
+        "log_components_without_centrality": 2.2475,
+        "covariate_correlations": {
+          "centrality_vs_log_components": 0.727,
+          "centrality_vs_profile_norm": -0.418,
+          "log_components_vs_profile_norm": -0.808
+        },
+        "note": "the three covariates are collinear by construction: averaging more unit vectors raises centrality and lowers the norm, so no coefficient is an isolated effect"
+      },
+      "profile_norm_by_band": {
+        "5-9": {
+          "labels": 19,
+          "median_profile_norm": 0.4093,
+          "median_centrality": 0.3808
+        },
+        "10-19": {
+          "labels": 33,
+          "median_profile_norm": 0.338,
+          "median_centrality": 0.4654
+        },
+        "20-49": {
+          "labels": 171,
+          "median_profile_norm": 0.2549,
+          "median_centrality": 0.6481
+        }
+      },
+      "minutes": 1.8,
+      "paired_contrasts": [
+        {
+          "system": "chars_raw/znorm",
+          "minus": "chars_raw/prototype",
+          "mrr_difference": -0.1072,
+          "ci95": [
+            -0.1162,
+            -0.0978
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "chars_raw/csls",
+          "minus": "chars_raw/prototype",
+          "mrr_difference": -0.0243,
+          "ci95": [
+            -0.0334,
+            -0.0153
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "chars_raw/mutual_proximity",
+          "minus": "chars_raw/prototype",
+          "mrr_difference": -0.0082,
+          "ci95": [
+            -0.0155,
+            -0.0014
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "chars_raw/csls",
+          "minus": "chars_raw/znorm",
+          "mrr_difference": 0.0829,
+          "ci95": [
+            0.0764,
+            0.0895
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "chars_raw/mutual_proximity",
+          "minus": "chars_raw/znorm",
+          "mrr_difference": 0.0989,
+          "ci95": [
+            0.0922,
+            0.1056
+          ],
+          "excludes_zero": true
+        }
+      ]
+    },
+    "words_svd_whitened": {
+      "systems": {
+        "prototype": {
+          "query_weighted": 0.5426,
+          "component_weighted": 0.5452,
+          "label_macro": 0.5121,
+          "between_label_variance_of_label_mrr": 0.05055
+        },
+        "znorm": {
+          "query_weighted": 0.5577,
+          "component_weighted": 0.553,
+          "label_macro": 0.5222,
+          "between_label_variance_of_label_mrr": 0.04936
+        },
+        "csls": {
+          "query_weighted": 0.5134,
+          "component_weighted": 0.5125,
+          "label_macro": 0.4978,
+          "between_label_variance_of_label_mrr": 0.02759
+        },
+        "mutual_proximity": {
+          "query_weighted": 0.552,
+          "component_weighted": 0.5529,
+          "label_macro": 0.5276,
+          "between_label_variance_of_label_mrr": 0.04418
+        }
+      },
+      "hubness": {
+        "prototype": {
+          "n1": {
+            "skewness": 1.0666,
+            "ci95_label_bootstrap": [
+              0.7948,
+              1.3277
+            ],
+            "false_skewness": 1.681,
+            "max_over_mean": 3.537,
+            "false_mass": 0.5666
+          },
+          "n10": {
+            "skewness": 0.8343,
+            "ci95_label_bootstrap": [
+              0.485,
+              1.1178
+            ],
+            "false_skewness": 0.9,
+            "max_over_mean": 2.855,
+            "false_mass": 0.9247
+          },
+          "top1_entropy_over_labels": 0.9528,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9471,
+            0.9526
+          ]
+        },
+        "znorm": {
+          "n1": {
+            "skewness": 0.7809,
+            "ci95_label_bootstrap": [
+              0.472,
+              1.0577
+            ],
+            "false_skewness": 1.1976,
+            "max_over_mean": 3.412,
+            "false_mass": 0.5499
+          },
+          "n10": {
+            "skewness": 0.2672,
+            "ci95_label_bootstrap": [
+              -0.058,
+              0.5688
+            ],
+            "false_skewness": 0.3569,
+            "max_over_mean": 2.288,
+            "false_mass": 0.9234
+          },
+          "top1_entropy_over_labels": 0.9607,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9551,
+            0.9602
+          ]
+        },
+        "csls": {
+          "n1": {
+            "skewness": 1.4569,
+            "ci95_label_bootstrap": [
+              0.8247,
+              2.0212
+            ],
+            "false_skewness": 1.8327,
+            "max_over_mean": 4.382,
+            "false_mass": 0.5952
+          },
+          "n10": {
+            "skewness": 0.8775,
+            "ci95_label_bootstrap": [
+              0.59,
+              1.16
+            ],
+            "false_skewness": 0.895,
+            "max_over_mean": 3.913,
+            "false_mass": 0.9283
+          },
+          "top1_entropy_over_labels": 0.9647,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9592,
+            0.9641
+          ]
+        },
+        "mutual_proximity": {
+          "n1": {
+            "skewness": 0.3437,
+            "ci95_label_bootstrap": [
+              0.1291,
+              0.5539
+            ],
+            "false_skewness": 0.8697,
+            "max_over_mean": 2.348,
+            "false_mass": 0.558
+          },
+          "n10": {
+            "skewness": -0.1389,
+            "ci95_label_bootstrap": [
+              -0.3583,
+              0.0915
+            ],
+            "false_skewness": -0.1211,
+            "max_over_mean": 1.765,
+            "false_mass": 0.9242
+          },
+          "top1_entropy_over_labels": 0.9768,
+          "top1_entropy_ci95_query_bootstrap": [
+            0.9718,
+            0.9759
+          ]
+        }
+      },
+      "regression_identified": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "r_hat",
+          "w_term"
+        ],
+        "coefficients": [
+          5.6088,
+          0.3161,
+          0.1307,
+          -0.2638
+        ],
+        "ci95_label_bootstrap": [
+          [
+            5.5481,
+            5.6728
+          ],
+          [
+            0.2427,
+            0.3842
+          ],
+          [
+            0.0458,
+            0.2254
+          ],
+          [
+            -0.3444,
+            -0.1916
+          ]
+        ],
+        "covariate_correlations": {
+          "centrality_vs_r_hat": -0.384,
+          "centrality_vs_w_term": -0.131,
+          "r_hat_vs_w_term": 0.304
+        },
+        "median_r_hat2": 0.0476,
+        "non_positive_r_hat2_labels": 0,
+        "note": "r_hat is the component-level U-statistic (coherence) and w_term = sum_c(1/k_c)/G^2 is a function of the group structure alone (estimation noise); unlike the profile norm and the component count, these two are not the same variable twice"
+      },
+      "regression": {
+        "outcome": "log(1 + N_10) over the 226 labels, N_10 query-defined",
+        "terms": [
+          "intercept",
+          "centrality",
+          "log_components",
+          "profile_norm"
+        ],
+        "coefficients": [
+          5.6088,
+          0.3159,
+          0.4163,
+          0.213
+        ],
+        "ci95_label_bootstrap": [
+          [
+            5.5506,
+            5.6649
+          ],
+          [
+            0.2482,
+            0.3835
+          ],
+          [
+            0.3203,
+            0.5079
+          ],
+          [
+            0.1075,
+            0.3253
+          ]
+        ],
+        "log_components_without_centrality": 0.3331,
+        "covariate_correlations": {
+          "centrality_vs_log_components": 0.149,
+          "centrality_vs_profile_norm": -0.365,
+          "log_components_vs_profile_norm": -0.738
+        },
+        "note": "the three covariates are collinear by construction: averaging more unit vectors raises centrality and lowers the norm, so no coefficient is an isolated effect"
+      },
+      "profile_norm_by_band": {
+        "5-9": {
+          "labels": 19,
+          "median_profile_norm": 0.4421,
+          "median_centrality": 0.1105
+        },
+        "10-19": {
+          "labels": 33,
+          "median_profile_norm": 0.3658,
+          "median_centrality": 0.1424
+        },
+        "20-49": {
+          "labels": 171,
+          "median_profile_norm": 0.2686,
+          "median_centrality": 0.1529
+        }
+      },
+      "minutes": 0.1,
+      "paired_contrasts": [
+        {
+          "system": "words_svd_whitened/znorm",
+          "minus": "words_svd_whitened/prototype",
+          "mrr_difference": 0.0078,
+          "ci95": [
+            0.0045,
+            0.0111
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_svd_whitened/csls",
+          "minus": "words_svd_whitened/prototype",
+          "mrr_difference": -0.0327,
+          "ci95": [
+            -0.0384,
+            -0.027
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_svd_whitened/mutual_proximity",
+          "minus": "words_svd_whitened/prototype",
+          "mrr_difference": 0.0077,
+          "ci95": [
+            0.0048,
+            0.0107
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_svd_whitened/csls",
+          "minus": "words_svd_whitened/znorm",
+          "mrr_difference": -0.0405,
+          "ci95": [
+            -0.0465,
+            -0.0345
+          ],
+          "excludes_zero": true
+        },
+        {
+          "system": "words_svd_whitened/mutual_proximity",
+          "minus": "words_svd_whitened/znorm",
+          "mrr_difference": -0.0001,
+          "ci95": [
+            -0.0038,
+            0.0033
+          ],
+          "excludes_zero": false
+        }
+      ]
+    }
+  },
+  "readings": {
+    "semantic_raw: hubness present (R1)": "present",
+    "semantic_raw: the single-scalar prediction (R2)": "refuted: the profile norm has no negative direct association",
+    "semantic_raw: coherence against estimation noise (R2b, a re-specification)": "confirmed: coherence raises hub occurrence and estimation noise lowers it",
+    "semantic_raw: fairness against accuracy (R3)": "no transform splits fairness from accuracy",
+    "semantic_whitened: hubness present (R1)": "present",
+    "semantic_whitened: the single-scalar prediction (R2)": "centrality only",
+    "semantic_whitened: coherence against estimation noise (R2b, a re-specification)": "noise only: the coherence term does not carry a positive association",
+    "semantic_whitened: fairness against accuracy (R3)": "no transform splits fairness from accuracy",
+    "words_raw: hubness present (R1)": "present",
+    "words_raw: the single-scalar prediction (R2)": "centrality only",
+    "words_raw: coherence against estimation noise (R2b, a re-specification)": "confirmed: coherence raises hub occurrence and estimation noise lowers it",
+    "words_raw: fairness against accuracy (R3)": "split under znorm",
+    "words_raw: the standard corrections against Z-norm (R4)": "csls: differs; mutual_proximity: differs",
+    "chars_raw: hubness present (R1)": "present",
+    "chars_raw: the single-scalar prediction (R2)": "refuted: the profile norm has no negative direct association",
+    "chars_raw: coherence against estimation noise (R2b, a re-specification)": "confirmed: coherence raises hub occurrence and estimation noise lowers it",
+    "chars_raw: fairness against accuracy (R3)": "split under mutual_proximity",
+    "chars_raw: the standard corrections against Z-norm (R4)": "csls: differs; mutual_proximity: differs",
+    "words_svd_whitened: hubness present (R1)": "present",
+    "words_svd_whitened: the single-scalar prediction (R2)": "centrality only",
+    "words_svd_whitened: coherence against estimation noise (R2b, a re-specification)": "confirmed: coherence raises hub occurrence and estimation noise lowers it",
+    "words_svd_whitened: fairness against accuracy (R3)": "no transform splits fairness from accuracy"
+  },
+  "checks": {
+    "semantic_raw": {
+      "expected": 0.2997,
+      "recomputed": 0.2997,
+      "gap": 2e-05
+    },
+    "semantic_whitened": {
+      "expected": 0.4164,
+      "recomputed": 0.4164,
+      "gap": 2e-05
+    },
+    "words_raw": {
+      "expected": 0.4963,
+      "recomputed": 0.4963,
+      "gap": 0.0
+    },
+    "chars_raw": {
+      "expected": 0.4266,
+      "recomputed": 0.4266,
+      "gap": 1e-05
+    },
+    "words_svd_whitened": {
+      "expected": 0.5426,
+      "recomputed": 0.5426,
+      "gap": 3e-05
+    }
+  },
+  "minutes": 30.4,
+  "privacy": "aggregate only: skewness, entropies, regression coefficients, band medians and quantiles over labels; no per-label array and no song, label or artist is named"
+}

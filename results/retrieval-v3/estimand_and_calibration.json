@@ -1,0 +1,2311 @@
+{
+  "analysis": "estimand_and_calibration_v3",
+  "checks": {
+    "against_published_mrr": {
+      "chars_raw/noise_corrected": {
+        "gap": 4e-05,
+        "published_query_weighted_mrr": 0.4591,
+        "recomputed_query_weighted_mrr": 0.4591,
+        "source": "label_size_calibration.json systems.chars_raw.noise_corrected",
+        "tolerance": 0.002
+      },
+      "chars_raw/prototype": {
+        "gap": 1e-05,
+        "published_query_weighted_mrr": 0.4266,
+        "recomputed_query_weighted_mrr": 0.4266,
+        "source": "label_size_calibration.json systems.chars_raw.prototype",
+        "tolerance": 0.0005
+      },
+      "chars_raw/znorm": {
+        "gap": 4e-05,
+        "published_query_weighted_mrr": 0.3266,
+        "recomputed_query_weighted_mrr": 0.3266,
+        "source": "label_size_calibration.json systems.chars_raw.znorm",
+        "tolerance": 0.002
+      },
+      "semantic_raw/noise_corrected": {
+        "gap": 0.0,
+        "published_query_weighted_mrr": 0.2635,
+        "recomputed_query_weighted_mrr": 0.2635,
+        "source": "label_size_calibration.json systems.semantic_raw.noise_corrected",
+        "tolerance": 0.002
+      },
+      "semantic_raw/prototype": {
+        "gap": 2e-05,
+        "published_query_weighted_mrr": 0.2997,
+        "recomputed_query_weighted_mrr": 0.2997,
+        "source": "label_size_calibration.json systems.semantic_raw.prototype",
+        "tolerance": 0.0005
+      },
+      "semantic_raw/znorm": {
+        "gap": 1e-05,
+        "published_query_weighted_mrr": 0.21,
+        "recomputed_query_weighted_mrr": 0.21,
+        "source": "label_size_calibration.json systems.semantic_raw.znorm",
+        "tolerance": 0.002
+      },
+      "semantic_whitened/noise_corrected": {
+        "gap": 3e-05,
+        "published_query_weighted_mrr": 0.3902,
+        "recomputed_query_weighted_mrr": 0.3902,
+        "source": "label_size_calibration.json systems.semantic_whitened.noise_corrected",
+        "tolerance": 0.002
+      },
+      "semantic_whitened/prototype": {
+        "gap": 2e-05,
+        "published_query_weighted_mrr": 0.4164,
+        "recomputed_query_weighted_mrr": 0.4164,
+        "source": "label_size_calibration.json systems.semantic_whitened.prototype",
+        "tolerance": 0.002
+      },
+      "semantic_whitened/znorm": {
+        "gap": 1e-05,
+        "published_query_weighted_mrr": 0.4144,
+        "recomputed_query_weighted_mrr": 0.4144,
+        "source": "label_size_calibration.json systems.semantic_whitened.znorm",
+        "tolerance": 0.002
+      },
+      "words_raw/noise_corrected": {
+        "gap": 1e-05,
+        "published_query_weighted_mrr": 0.5394,
+        "recomputed_query_weighted_mrr": 0.5394,
+        "source": "label_size_calibration.json systems.words_raw.noise_corrected",
+        "tolerance": 0.002
+      },
+      "words_raw/prototype": {
+        "gap": 0.0,
+        "published_query_weighted_mrr": 0.4963,
+        "recomputed_query_weighted_mrr": 0.4963,
+        "source": "label_size_calibration.json systems.words_raw.prototype",
+        "tolerance": 0.0005
+      },
+      "words_raw/znorm": {
+        "gap": 0.0,
+        "published_query_weighted_mrr": 0.4868,
+        "recomputed_query_weighted_mrr": 0.4868,
+        "source": "label_size_calibration.json systems.words_raw.znorm",
+        "tolerance": 0.002
+      },
+      "words_svd_whitened/noise_corrected": {
+        "gap": 3e-05,
+        "published_query_weighted_mrr": 0.5291,
+        "recomputed_query_weighted_mrr": 0.5291,
+        "source": "label_size_calibration.json systems.words_svd_whitened.noise_corrected",
+        "tolerance": 0.002
+      },
+      "words_svd_whitened/prototype": {
+        "gap": 3e-05,
+        "published_query_weighted_mrr": 0.5426,
+        "recomputed_query_weighted_mrr": 0.5426,
+        "source": "label_size_calibration.json systems.words_svd_whitened.prototype",
+        "tolerance": 0.002
+      },
+      "words_svd_whitened/znorm": {
+        "gap": 3e-05,
+        "published_query_weighted_mrr": 0.5577,
+        "recomputed_query_weighted_mrr": 0.5577,
+        "source": "label_size_calibration.json systems.words_svd_whitened.znorm",
+        "tolerance": 0.002
+      }
+    },
+    "by_space": {
+      "chars_raw": {
+        "empty_rows": 0,
+        "floor_hits_note": "recorded beside label_size_calibration.json's own fold-0 count, not gated: the count is a float comparison at a boundary and swings by a fifth between folds",
+        "folds": {
+          "0": {
+            "noise_corrected_floor_hits": 130045,
+            "s2": 0.9904
+          },
+          "1": {
+            "noise_corrected_floor_hits": 130051,
+            "s2": 0.9905
+          },
+          "2": {
+            "noise_corrected_floor_hits": 137262,
+            "s2": 0.9907
+          },
+          "3": {
+            "noise_corrected_floor_hits": 130043,
+            "s2": 0.9901
+          },
+          "4": {
+            "noise_corrected_floor_hits": 137264,
+            "s2": 0.991
+          }
+        },
+        "published_floor_hits_fold0": 130045,
+        "tolerance": 4e-05,
+        "unit_row_squared_norm_gap": 5.6988964658444274e-08
+      },
+      "semantic_raw": {
+        "empty_rows": 0,
+        "floor_hits_note": "recorded beside label_size_calibration.json's own fold-0 count, not gated: the count is a float comparison at a boundary and swings by a fifth between folds",
+        "folds": {
+          "0": {
+            "noise_corrected_floor_hits": 0,
+            "s2": 0.3561
+          },
+          "1": {
+            "noise_corrected_floor_hits": 0,
+            "s2": 0.3555
+          },
+          "2": {
+            "noise_corrected_floor_hits": 0,
+            "s2": 0.3567
+          },
+          "3": {
+            "noise_corrected_floor_hits": 0,
+            "s2": 0.3547
+          },
+          "4": {
+            "noise_corrected_floor_hits": 0,
+            "s2": 0.3559
+          }
+        },
+        "published_floor_hits_fold0": 0,
+        "tolerance": 4e-05,
+        "unit_row_squared_norm_gap": 2.2802503996111056e-07
+      },
+      "semantic_whitened": {
+        "empty_rows": 0,
+        "floor_hits_note": "recorded beside label_size_calibration.json's own fold-0 count, not gated: the count is a float comparison at a boundary and swings by a fifth between folds",
+        "folds": {
+          "0": {
+            "noise_corrected_floor_hits": 115634,
+            "s2": 1.0014
+          },
+          "1": {
+            "noise_corrected_floor_hits": 144535,
+            "s2": 1.0015
+          },
+          "2": {
+            "noise_corrected_floor_hits": 101264,
+            "s2": 1.0012
+          },
+          "3": {
+            "noise_corrected_floor_hits": 144479,
+            "s2": 1.0013
+          },
+          "4": {
+            "noise_corrected_floor_hits": 115704,
+            "s2": 1.002
+          }
+        },
+        "published_floor_hits_fold0": 115634,
+        "tolerance": 1e-12,
+        "unit_row_squared_norm_gap": 1.5543122344752192e-15
+      },
+      "words_raw": {
+        "empty_rows": 0,
+        "floor_hits_note": "recorded beside label_size_calibration.json's own fold-0 count, not gated: the count is a float comparison at a boundary and swings by a fifth between folds",
+        "folds": {
+          "0": {
+            "noise_corrected_floor_hits": 144428,
+            "s2": 0.9967
+          },
+          "1": {
+            "noise_corrected_floor_hits": 144428,
+            "s2": 0.9965
+          },
+          "2": {
+            "noise_corrected_floor_hits": 144428,
+            "s2": 0.9966
+          },
+          "3": {
+            "noise_corrected_floor_hits": 144428,
+            "s2": 0.9965
+          },
+          "4": {
+            "noise_corrected_floor_hits": 144429,
+            "s2": 0.9969
+          }
+        },
+        "published_floor_hits_fold0": 144428,
+        "tolerance": 4e-05,
+        "unit_row_squared_norm_gap": 5.231327615540238e-08
+      },
+      "words_svd_whitened": {
+        "empty_rows": 0,
+        "floor_hits_note": "recorded beside label_size_calibration.json's own fold-0 count, not gated: the count is a float comparison at a boundary and swings by a fifth between folds",
+        "folds": {
+          "0": {
+            "noise_corrected_floor_hits": 43379,
+            "s2": 0.983
+          },
+          "1": {
+            "noise_corrected_floor_hits": 36175,
+            "s2": 0.9834
+          },
+          "2": {
+            "noise_corrected_floor_hits": 50592,
+            "s2": 0.9843
+          },
+          "3": {
+            "noise_corrected_floor_hits": 36173,
+            "s2": 0.9842
+          },
+          "4": {
+            "noise_corrected_floor_hits": 28937,
+            "s2": 0.9848
+          }
+        },
+        "published_floor_hits_fold0": 43379,
+        "tolerance": 1e-12,
+        "unit_row_squared_norm_gap": 2.3314683517128287e-15
+      }
+    },
+    "late_gates": {
+      "builder_component_tensors_against_this_table": {
+        "gap": 5.551115123125783e-17,
+        "passes": true,
+        "tolerance": 1e-12
+      },
+      "builder_size_weighted_ratio_is_the_component_weighted_point": {
+        "gap": 4.996003610813204e-16,
+        "passes": true,
+        "tolerance": 1e-09
+      },
+      "builder_two_stage_point_is_the_label_macro": {
+        "gap": 5.551115123125783e-17,
+        "passes": true,
+        "tolerance": 1e-09
+      },
+      "component_count_column_is_system_independent": {
+        "gap": 0.0,
+        "passes": true,
+        "tolerance": 1e-12
+      },
+      "component_table_is_the_component_weighted_estimand": {
+        "gap": 3.774758283725532e-15,
+        "passes": true,
+        "tolerance": 1e-09
+      },
+      "published_two_by_two_cells": {
+        "gap": 0.00010000000000001674,
+        "passes": true,
+        "tolerance": 0.002
+      },
+      "rebuilt_group_bootstrap_against_paired_group_bootstrap": {
+        "gap": 0.0,
+        "passes": true,
+        "tolerance": 0.00015
+      }
+    },
+    "published_two_by_two_cells": {
+      "characters_raw - semantic_raw": {
+        "max_gap": 0.0,
+        "published_component_weighted_group_bootstrap": [
+          0.1331,
+          [
+            0.1229,
+            0.1435
+          ]
+        ],
+        "published_label_macro_two_stage": [
+          0.0935,
+          [
+            0.0698,
+            0.1182
+          ]
+        ],
+        "recomputed_component_weighted_group_bootstrap": [
+          0.1331,
+          [
+            0.1229,
+            0.1435
+          ]
+        ],
+        "recomputed_label_macro_two_stage": [
+          0.0935,
+          [
+            0.0698,
+            0.1182
+          ]
+        ],
+        "source": "results/retrieval-v3/estimand_two_stage.json",
+        "tolerance": 0.002
+      },
+      "words_raw - characters_raw": {
+        "max_gap": 0.0,
+        "published_component_weighted_group_bootstrap": [
+          0.0711,
+          [
+            0.0643,
+            0.0785
+          ]
+        ],
+        "published_label_macro_two_stage": [
+          0.0551,
+          [
+            0.0409,
+            0.0692
+          ]
+        ],
+        "recomputed_component_weighted_group_bootstrap": [
+          0.0711,
+          [
+            0.0643,
+            0.0785
+          ]
+        ],
+        "recomputed_label_macro_two_stage": [
+          0.0551,
+          [
+            0.0409,
+            0.0692
+          ]
+        ],
+        "source": "results/retrieval-v3/estimand_two_stage.json",
+        "tolerance": 0.002
+      },
+      "words_raw - semantic_raw": {
+        "max_gap": 0.0,
+        "published_component_weighted_group_bootstrap": [
+          0.2042,
+          [
+            0.1944,
+            0.2142
+          ]
+        ],
+        "published_label_macro_two_stage": [
+          0.1486,
+          [
+            0.1201,
+            0.1767
+          ]
+        ],
+        "recomputed_component_weighted_group_bootstrap": [
+          0.2042,
+          [
+            0.1944,
+            0.2142
+          ]
+        ],
+        "recomputed_label_macro_two_stage": [
+          0.1486,
+          [
+            0.1201,
+            0.1767
+          ]
+        ],
+        "source": "results/retrieval-v3/estimand_two_stage.json",
+        "tolerance": 0.002
+      },
+      "words_svd_within_whitened - semantic_within_whitened": {
+        "max_gap": 0.0001,
+        "published_component_weighted_group_bootstrap": [
+          0.1316,
+          [
+            0.1217,
+            0.1418
+          ]
+        ],
+        "published_label_macro_two_stage": [
+          0.1059,
+          [
+            0.0835,
+            0.1278
+          ]
+        ],
+        "recomputed_component_weighted_group_bootstrap": [
+          0.1316,
+          [
+            0.1218,
+            0.1418
+          ]
+        ],
+        "recomputed_label_macro_two_stage": [
+          0.1059,
+          [
+            0.0835,
+            0.1279
+          ]
+        ],
+        "source": "results/retrieval-v3/estimand_two_stage.json",
+        "tolerance": 0.002
+      }
+    }
+  },
+  "conventions": {
+    "bounds_are": "cited from that note, measured there over the nine headline systems, not recomputed here",
+    "convention": "a system's mrr field is query-weighted; every paired_group_bootstrap interval and its own point estimate is component-weighted, so two printed levels must not be subtracted to reconstruct a published difference",
+    "query_weighted_minus_component_weighted_bound_on_a_difference": 0.0076,
+    "query_weighted_minus_component_weighted_bound_on_a_level": 0.0057,
+    "source": "results/retrieval-v3/README.md, 'A note on estimands' (2026-09-23)"
+  },
+  "corpus": {
+    "bands_are": "by SONGS per label (label_size_calibration_v3.BANDS), used here only as a corpus-shape gate; the components-per-label banding used elsewhere in this repo is a different banding and no reading in this file is by band",
+    "components": 6889,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220,
+    "query_label_trials": 1631720,
+    "songs_per_label_bands": {
+      "10-19": {
+        "labels": 33,
+        "queries": 477
+      },
+      "20-49": {
+        "labels": 171,
+        "queries": 6356
+      },
+      "5-9": {
+        "labels": 19,
+        "queries": 149
+      },
+      "50-up": {
+        "labels": 3,
+        "queries": 238
+      }
+    }
+  },
+  "design": {
+    "detection_statistics": {
+      "auc": "weighted probability that a target trial outranks a non-target one, ties at one half",
+      "calibration_loss": "cllr - min_cllr, the calibration term",
+      "cllr": "(1/2ln2)[E_tar log(1+e^-s) + E_non log(1+e^s)], reading the score as a natural-log likelihood ratio; these scores were never built to be likelihood ratios, so a raw cllr near 1 reports a wrong scale, not an uninformative system",
+      "min_cllr": "the same cost after the optimal monotone (PAV) calibration: the DISCRIMINATION term, invariant to any global monotone map of the scores",
+      "precision": "both readings are computed from the float32 cast of the scores that ranks_of ranks, so no float32/float64 asymmetry remains; the number of scores shared by trials of both classes is recorded per system",
+      "trials": "every (query, label) pair, scored leave-group-out exactly as the retrieval protocol scores it; target when the label is the query's own",
+      "why": "MRR is invariant to any per-query monotone map and min_cllr is not, so the two can move in opposite directions; that is the reading this arm exists to expose"
+    },
+    "estimands": {
+      "component_weighted": "each (leakage group, label) component weight one (every published paired_group_bootstrap interval)",
+      "how": "a per-query weight u whose weighted mean is the estimand, applied to the rank statistic and to both sides of the trial list alike",
+      "label_macro": "component-weighted mean within a label, then the mean over labels (every published estimand_two_stage interval)",
+      "query_weighted": "each query weight one (the published mrr levels)"
+    },
+    "gate_placement": "the gates that abort fire the moment the number they check exists (the pinned expectations before the corpus is read, the shape and bands after it, unit rows when a space is built, a published MRR when a system is scored); every check that cannot fire until the expensive work is done is recorded in this payload, which is written before a failure exits non-zero",
+    "margin": {
+      "role": "the non-inferiority margin this repository declares for MRR, carried over to min_cllr as a DECLARED band and not an established margin; a change within the band is unchanged, and a direction is established only when the whole 95% interval clears the band",
+      "value": 0.005
+    },
+    "reading_rule": "1. the 2x2 is a measurement, not a test: no verdict beyond the decomposition, no excludes_zero on its cells, no width factor offered as reusable. 2. against the prototype of the same space under the same estimand, MRR up with min_cllr down is an improvement, MRR up with min_cllr up is a ranking gain bought with a calibration loss, MRR down with min_cllr down is a calibration gain bought with a ranking loss, MRR down with min_cllr up is no gain; a change of at most 0.005 in either quantity is unchanged within the declared band; an improvement is established only when the whole 95% interval of both differences clears the band, and otherwise is reported as a point comparison; a disagreement between estimands is named, not resolved. 3. AUC, cllr and calibration_loss are description.",
+    "resamplings": {
+      "both_estimands_off_the_same_draws": "the component-weighted statistic under the two-stage draws is the ratio of the macro of n_l * v to the macro of n_l, two extra metric columns of the builder's own run, so no transcription of its generator is involved",
+      "group_bootstrap": "paired_group_bootstrap's own draws: 2000 replicates, seed 20260825, leakage groups with replacement, the 226 labels held fixed",
+      "min_cllr_interval": "the first 400 rows of the same group draw matrix, so the min_cllr interval is paired with the MRR one and nested in it; 400 rather than 2000 because each replicate re-pools the whole trial list",
+      "note": "an estimand has one point estimate and a resampling only has an interval, so the four cells of the 2x2 carry two points and four intervals",
+      "published_cells": "every published paired_group_bootstrap interval is the (component_weighted, group_bootstrap) cell; every published estimand_two_stage interval is the (label_macro, two_stage) cell; the other two cells have no published counterpart",
+      "two_stage": "the builder's v1.component_metric_values and v1.run_bootstrap through estimand_two_stage_v3's constant redirect: 5000 replicates, seed 20260825, 226 label occurrences with replacement then each occurrence's components with replacement",
+      "two_stage_diagnostics": {
+        "algorithm": "literal_occurrence_wise_two_stage_paired_bootstrap_v1",
+        "independent_inner_resample_occurrences": 1130000,
+        "outer_label_occurrences_per_replicate": 226,
+        "repeated_outer_label_occurrences": 414307,
+        "repeated_outer_occurrences_reuse_inner_draw": false,
+        "replicates": 5000,
+        "same_component_draw_applied_to_all_systems_and_metrics": true,
+        "total_inner_component_draws": 34444822,
+        "total_outer_label_occurrences": 1130000
+      }
+    },
+    "systems": {
+      "noise_corrected": "the hierarchical correction of the profile norm (label_size_calibration_v3.scorers_from_parts)",
+      "prototype": "cosine with the normalised leave-group-out weighted sum (the protocol)",
+      "scorers": [
+        "prototype",
+        "znorm",
+        "noise_corrected"
+      ],
+      "spaces": [
+        "semantic_raw",
+        "words_raw",
+        "chars_raw",
+        "semantic_whitened",
+        "words_svd_whitened"
+      ],
+      "znorm": "the prototype score standardised per label by the impostor scores of training-fold songs of other labels (label_size_calibration_v3.znorm)"
+    }
+  },
+  "gap_1_width_factor": {
+    "by_contrast": {
+      "chars_raw/noise_corrected - chars_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.015,
+              0.0291
+            ],
+            "difference": 0.0223,
+            "width": 0.014047
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.0029,
+              0.0429
+            ],
+            "difference": 0.0223,
+            "width": 0.04
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0728,
+              0.0888
+            ],
+            "difference": 0.081,
+            "width": 0.016057
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0551,
+              0.1075
+            ],
+            "difference": 0.081,
+            "width": 0.052474
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.143,
+          "estimand_factor_at_two_stage": 1.312,
+          "interaction_estimand_factor_two_stage_over_group": 1.148,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.848,
+          "resampling_factor_at_label_macro": 3.268,
+          "share_of_log_total_estimand": 0.154,
+          "share_of_log_total_resampling": 0.846,
+          "total_factor": 3.736
+        }
+      },
+      "chars_raw/prototype - semantic_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.1229,
+              0.1435
+            ],
+            "difference": 0.1331,
+            "width": 0.0206
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.1092,
+              0.1574
+            ],
+            "difference": 0.1331,
+            "width": 0.048202
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0839,
+              0.1035
+            ],
+            "difference": 0.0935,
+            "width": 0.019686
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0698,
+              0.1182
+            ],
+            "difference": 0.0935,
+            "width": 0.048462
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 0.956,
+          "estimand_factor_at_two_stage": 1.005,
+          "interaction_estimand_factor_two_stage_over_group": 1.052,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.34,
+          "resampling_factor_at_label_macro": 2.462,
+          "share_of_log_total_estimand": -0.023,
+          "share_of_log_total_resampling": 1.023,
+          "total_factor": 2.353
+        }
+      },
+      "chars_raw/znorm - chars_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.1164,
+              -0.098
+            ],
+            "difference": -0.1073,
+            "width": 0.018365
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.1306,
+              -0.0838
+            ],
+            "difference": -0.1073,
+            "width": 0.046769
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              -0.051,
+              -0.0333
+            ],
+            "difference": -0.0424,
+            "width": 0.017651
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              -0.0699,
+              -0.0142
+            ],
+            "difference": -0.0424,
+            "width": 0.055737
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 0.961,
+          "estimand_factor_at_two_stage": 1.192,
+          "interaction_estimand_factor_two_stage_over_group": 1.24,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.547,
+          "resampling_factor_at_label_macro": 3.158,
+          "share_of_log_total_estimand": 0.061,
+          "share_of_log_total_resampling": 0.939,
+          "total_factor": 3.035
+        }
+      },
+      "semantic_raw/noise_corrected - semantic_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.041,
+              -0.0326
+            ],
+            "difference": -0.0367,
+            "width": 0.008448
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.0452,
+              -0.0278
+            ],
+            "difference": -0.0367,
+            "width": 0.017421
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              -0.0043,
+              0.0079
+            ],
+            "difference": 0.0018,
+            "width": 0.012141
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              -0.0132,
+              0.0186
+            ],
+            "difference": 0.0018,
+            "width": 0.031804
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.437,
+          "estimand_factor_at_two_stage": 1.826,
+          "interaction_estimand_factor_two_stage_over_group": 1.27,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.062,
+          "resampling_factor_at_label_macro": 2.62,
+          "share_of_log_total_estimand": 0.364,
+          "share_of_log_total_resampling": 0.636,
+          "total_factor": 3.765
+        }
+      },
+      "semantic_raw/znorm - semantic_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.0977,
+              -0.0859
+            ],
+            "difference": -0.0916,
+            "width": 0.011731
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.1042,
+              -0.0784
+            ],
+            "difference": -0.0916,
+            "width": 0.025743
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              -0.0621,
+              -0.0489
+            ],
+            "difference": -0.0554,
+            "width": 0.013168
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              -0.0723,
+              -0.037
+            ],
+            "difference": -0.0554,
+            "width": 0.035271
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.122,
+          "estimand_factor_at_two_stage": 1.37,
+          "interaction_estimand_factor_two_stage_over_group": 1.221,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.194,
+          "resampling_factor_at_label_macro": 2.679,
+          "share_of_log_total_estimand": 0.196,
+          "share_of_log_total_resampling": 0.804,
+          "total_factor": 3.007
+        }
+      },
+      "semantic_whitened/noise_corrected - semantic_whitened/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.0309,
+              -0.0233
+            ],
+            "difference": -0.0272,
+            "width": 0.007591
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.0362,
+              -0.0179
+            ],
+            "difference": -0.0272,
+            "width": 0.018275
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              -0.0131,
+              -0.0042
+            ],
+            "difference": -0.0088,
+            "width": 0.008896
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              -0.0192,
+              0.0016
+            ],
+            "difference": -0.0088,
+            "width": 0.020825
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.172,
+          "estimand_factor_at_two_stage": 1.14,
+          "interaction_estimand_factor_two_stage_over_group": 0.972,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.407,
+          "resampling_factor_at_label_macro": 2.341,
+          "share_of_log_total_estimand": 0.143,
+          "share_of_log_total_resampling": 0.857,
+          "total_factor": 2.743
+        }
+      },
+      "semantic_whitened/znorm - semantic_whitened/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.0043,
+              -0.0005
+            ],
+            "difference": -0.0024,
+            "width": 0.003792
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.0061,
+              0.0011
+            ],
+            "difference": -0.0024,
+            "width": 0.007265
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              -0.0025,
+              0.0013
+            ],
+            "difference": -0.0006,
+            "width": 0.003856
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              -0.0042,
+              0.0028
+            ],
+            "difference": -0.0006,
+            "width": 0.007003
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.017,
+          "estimand_factor_at_two_stage": 0.964,
+          "interaction_estimand_factor_two_stage_over_group": 0.948,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 1.916,
+          "resampling_factor_at_label_macro": 1.816,
+          "share_of_log_total_estimand": -0.016,
+          "share_of_log_total_resampling": 1.016,
+          "total_factor": 1.847
+        }
+      },
+      "words_raw/noise_corrected - words_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.0269,
+              0.0409
+            ],
+            "difference": 0.034,
+            "width": 0.013994
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.012,
+              0.0589
+            ],
+            "difference": 0.034,
+            "width": 0.046848
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0937,
+              0.1095
+            ],
+            "difference": 0.1018,
+            "width": 0.015798
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0724,
+              0.1328
+            ],
+            "difference": 0.1018,
+            "width": 0.060378
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.129,
+          "estimand_factor_at_two_stage": 1.289,
+          "interaction_estimand_factor_two_stage_over_group": 1.142,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 3.348,
+          "resampling_factor_at_label_macro": 3.822,
+          "share_of_log_total_estimand": 0.128,
+          "share_of_log_total_resampling": 0.872,
+          "total_factor": 4.315
+        }
+      },
+      "words_raw/prototype - chars_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.0643,
+              0.0785
+            ],
+            "difference": 0.0711,
+            "width": 0.01428
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.0565,
+              0.0853
+            ],
+            "difference": 0.0711,
+            "width": 0.02885
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0485,
+              0.0618
+            ],
+            "difference": 0.0551,
+            "width": 0.013267
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0409,
+              0.0692
+            ],
+            "difference": 0.0551,
+            "width": 0.028324
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 0.929,
+          "estimand_factor_at_two_stage": 0.982,
+          "interaction_estimand_factor_two_stage_over_group": 1.057,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.02,
+          "resampling_factor_at_label_macro": 2.135,
+          "share_of_log_total_estimand": -0.067,
+          "share_of_log_total_resampling": 1.067,
+          "total_factor": 1.983
+        }
+      },
+      "words_raw/prototype - semantic_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.1944,
+              0.2142
+            ],
+            "difference": 0.2042,
+            "width": 0.019759
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.1763,
+              0.2317
+            ],
+            "difference": 0.2042,
+            "width": 0.055411
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.1391,
+              0.1584
+            ],
+            "difference": 0.1486,
+            "width": 0.019226
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.1201,
+              0.1767
+            ],
+            "difference": 0.1486,
+            "width": 0.0566
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 0.973,
+          "estimand_factor_at_two_stage": 1.021,
+          "interaction_estimand_factor_two_stage_over_group": 1.05,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.804,
+          "resampling_factor_at_label_macro": 2.944,
+          "share_of_log_total_estimand": -0.003,
+          "share_of_log_total_resampling": 1.003,
+          "total_factor": 2.865
+        }
+      },
+      "words_raw/znorm - words_raw/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.0256,
+              -0.0107
+            ],
+            "difference": -0.018,
+            "width": 0.014929
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.0402,
+              0.0058
+            ],
+            "difference": -0.018,
+            "width": 0.045957
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0541,
+              0.0726
+            ],
+            "difference": 0.0634,
+            "width": 0.018492
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0333,
+              0.0944
+            ],
+            "difference": 0.0634,
+            "width": 0.06108
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.239,
+          "estimand_factor_at_two_stage": 1.329,
+          "interaction_estimand_factor_two_stage_over_group": 1.073,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 3.078,
+          "resampling_factor_at_label_macro": 3.303,
+          "share_of_log_total_estimand": 0.177,
+          "share_of_log_total_resampling": 0.823,
+          "total_factor": 4.091
+        }
+      },
+      "words_svd_whitened/noise_corrected - words_svd_whitened/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              -0.021,
+              -0.0123
+            ],
+            "difference": -0.0167,
+            "width": 0.008616
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              -0.0277,
+              -0.0054
+            ],
+            "difference": -0.0167,
+            "width": 0.022351
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.009,
+              0.0202
+            ],
+            "difference": 0.0145,
+            "width": 0.011194
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              -0.001,
+              0.0308
+            ],
+            "difference": 0.0145,
+            "width": 0.031815
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.299,
+          "estimand_factor_at_two_stage": 1.423,
+          "interaction_estimand_factor_two_stage_over_group": 1.096,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.594,
+          "resampling_factor_at_label_macro": 2.842,
+          "share_of_log_total_estimand": 0.235,
+          "share_of_log_total_resampling": 0.765,
+          "total_factor": 3.693
+        }
+      },
+      "words_svd_whitened/prototype - semantic_whitened/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.1218,
+              0.1418
+            ],
+            "difference": 0.1316,
+            "width": 0.01998
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.1089,
+              0.1541
+            ],
+            "difference": 0.1316,
+            "width": 0.045183
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0954,
+              0.1168
+            ],
+            "difference": 0.1059,
+            "width": 0.021386
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0835,
+              0.1279
+            ],
+            "difference": 0.1059,
+            "width": 0.044341
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.07,
+          "estimand_factor_at_two_stage": 0.981,
+          "interaction_estimand_factor_two_stage_over_group": 0.917,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.261,
+          "resampling_factor_at_label_macro": 2.073,
+          "share_of_log_total_estimand": 0.031,
+          "share_of_log_total_resampling": 0.969,
+          "total_factor": 2.219
+        }
+      },
+      "words_svd_whitened/znorm - words_svd_whitened/prototype": {
+        "cells": {
+          "component_weighted/group_bootstrap": {
+            "ci95": [
+              0.0045,
+              0.0111
+            ],
+            "difference": 0.0078,
+            "width": 0.006608
+          },
+          "component_weighted/two_stage": {
+            "ci95": [
+              0.0001,
+              0.0157
+            ],
+            "difference": 0.0078,
+            "width": 0.015581
+          },
+          "label_macro/group_bootstrap": {
+            "ci95": [
+              0.0062,
+              0.0139
+            ],
+            "difference": 0.01,
+            "width": 0.007655
+          },
+          "label_macro/two_stage": {
+            "ci95": [
+              0.0015,
+              0.019
+            ],
+            "difference": 0.01,
+            "width": 0.01752
+          }
+        },
+        "width_factors": {
+          "estimand_factor_at_group_bootstrap": 1.158,
+          "estimand_factor_at_two_stage": 1.124,
+          "interaction_estimand_factor_two_stage_over_group": 0.971,
+          "note": "the total is W(label-macro, two-stage) / W(component-weighted, group) and is the product of the estimand and resampling factors along either path exactly; the shares are the symmetric (Shapley) split of its logarithm",
+          "resampling_factor_at_component_weighted": 2.358,
+          "resampling_factor_at_label_macro": 2.289,
+          "share_of_log_total_estimand": 0.136,
+          "share_of_log_total_resampling": 0.864,
+          "total_factor": 2.651
+        }
+      }
+    },
+    "summary": {
+      "contrasts_filled": 14,
+      "estimand_factor_at_group_bootstrap": {
+        "max": 1.437,
+        "min": 0.929
+      },
+      "labels_left_empty_by_a_group_draw": {
+        "max": 2,
+        "mean": 0.023,
+        "of": 226,
+        "rule": "a label with no drawn component is dropped from that replicate's label-macro"
+      },
+      "reading": "the published 1.6-to-3.0 width factor is a product of an estimand factor and a resampling factor and neither is constant across contrasts; the number is not reusable and another study must fill its own 2x2 rather than borrow this one",
+      "resampling_factor_at_component_weighted": {
+        "max": 3.348,
+        "min": 1.916
+      },
+      "share_of_log_total_attributable_to_the_estimand": {
+        "max": 0.364,
+        "median": 0.132,
+        "min": -0.067
+      },
+      "total_factor": {
+        "max": 4.315,
+        "median": 2.936,
+        "min": 1.847
+      }
+    }
+  },
+  "gap_2_calibration": {
+    "against_the_prototype": {
+      "chars_raw": {
+        "noise_corrected": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.00326,
+              "cllr_difference": -0.00175,
+              "min_cllr_difference": 0.0041,
+              "mrr_difference": 0.02229,
+              "outcome": "a ranking gain with min_cllr unchanged within the declared band"
+            },
+            "label_macro": {
+              "auc_difference": 0.02135,
+              "cllr_difference": -0.00433,
+              "min_cllr_difference": -0.02385,
+              "mrr_difference": 0.08096,
+              "outcome": "improvement: MRR up and min_cllr down"
+            },
+            "query_weighted": {
+              "auc_difference": -0.00069,
+              "cllr_difference": -0.00197,
+              "min_cllr_difference": 0.0008,
+              "mrr_difference": 0.03245,
+              "outcome": "a ranking gain with min_cllr unchanged within the declared band"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0019,
+                0.0062
+              ],
+              "difference": 0.0041,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                0.015,
+                0.0291
+              ],
+              "difference": 0.0223,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "a ranking gain with min_cllr unchanged within the declared band",
+            "improvement: MRR up and min_cllr down"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "a ranking gain with min_cllr unchanged within the declared band"
+        },
+        "znorm": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.00971,
+              "cllr_difference": -0.07987,
+              "min_cllr_difference": 0.00995,
+              "mrr_difference": -0.10726,
+              "outcome": "no gain: MRR down and min_cllr up"
+            },
+            "label_macro": {
+              "auc_difference": 0.02468,
+              "cllr_difference": -0.08652,
+              "min_cllr_difference": -0.03098,
+              "mrr_difference": -0.04242,
+              "outcome": "a calibration gain bought with a ranking loss: MRR down and min_cllr down"
+            },
+            "query_weighted": {
+              "auc_difference": -0.0064,
+              "cllr_difference": -0.08337,
+              "min_cllr_difference": 0.00641,
+              "mrr_difference": -0.10005,
+              "outcome": "no gain: MRR down and min_cllr up"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0061,
+                0.0138
+              ],
+              "difference": 0.0099,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.1164,
+                -0.098
+              ],
+              "difference": -0.1073,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "a calibration gain bought with a ranking loss: MRR down and min_cllr down",
+            "no gain: MRR down and min_cllr up"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "no gain: MRR down and min_cllr up"
+        }
+      },
+      "semantic_raw": {
+        "noise_corrected": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.00919,
+              "cllr_difference": 0.00298,
+              "min_cllr_difference": 0.00665,
+              "mrr_difference": -0.03675,
+              "outcome": "no gain: MRR down and min_cllr up"
+            },
+            "label_macro": {
+              "auc_difference": 0.00418,
+              "cllr_difference": 0.00229,
+              "min_cllr_difference": -0.00479,
+              "mrr_difference": 0.00184,
+              "outcome": "both unchanged within the declared band"
+            },
+            "query_weighted": {
+              "auc_difference": -0.0088,
+              "cllr_difference": 0.00296,
+              "min_cllr_difference": 0.00643,
+              "mrr_difference": -0.03623,
+              "outcome": "no gain: MRR down and min_cllr up"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0058,
+                0.0074
+              ],
+              "difference": 0.0066,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.041,
+                -0.0326
+              ],
+              "difference": -0.0367,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "both unchanged within the declared band",
+            "no gain: MRR down and min_cllr up"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "no gain: MRR down and min_cllr up"
+        },
+        "znorm": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.01583,
+              "cllr_difference": -0.09794,
+              "min_cllr_difference": 0.01358,
+              "mrr_difference": -0.0916,
+              "outcome": "no gain: MRR down and min_cllr up"
+            },
+            "label_macro": {
+              "auc_difference": 0.00063,
+              "cllr_difference": -0.10177,
+              "min_cllr_difference": -0.00046,
+              "mrr_difference": -0.05542,
+              "outcome": "a ranking loss with min_cllr unchanged within the declared band"
+            },
+            "query_weighted": {
+              "auc_difference": -0.01507,
+              "cllr_difference": -0.0984,
+              "min_cllr_difference": 0.01317,
+              "mrr_difference": -0.08973,
+              "outcome": "no gain: MRR down and min_cllr up"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0121,
+                0.0149
+              ],
+              "difference": 0.0136,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0977,
+                -0.0859
+              ],
+              "difference": -0.0916,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "a ranking loss with min_cllr unchanged within the declared band",
+            "no gain: MRR down and min_cllr up"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "no gain: MRR down and min_cllr up"
+        }
+      },
+      "semantic_whitened": {
+        "noise_corrected": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.00187,
+              "cllr_difference": -0.01451,
+              "min_cllr_difference": 0.00755,
+              "mrr_difference": -0.02723,
+              "outcome": "no gain: MRR down and min_cllr up"
+            },
+            "label_macro": {
+              "auc_difference": 0.00057,
+              "cllr_difference": -0.01609,
+              "min_cllr_difference": -0.00042,
+              "mrr_difference": -0.00876,
+              "outcome": "a ranking loss with min_cllr unchanged within the declared band"
+            },
+            "query_weighted": {
+              "auc_difference": -0.00183,
+              "cllr_difference": -0.01469,
+              "min_cllr_difference": 0.00742,
+              "mrr_difference": -0.02615,
+              "outcome": "no gain: MRR down and min_cllr up"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0064,
+                0.0086
+              ],
+              "difference": 0.0075,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0309,
+                -0.0233
+              ],
+              "difference": -0.0272,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "a ranking loss with min_cllr unchanged within the declared band",
+            "no gain: MRR down and min_cllr up"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "no gain: MRR down and min_cllr up"
+        },
+        "znorm": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.00016,
+              "cllr_difference": -0.21704,
+              "min_cllr_difference": 0.00084,
+              "mrr_difference": -0.00239,
+              "outcome": "both unchanged within the declared band"
+            },
+            "label_macro": {
+              "auc_difference": -0.00024,
+              "cllr_difference": -0.21141,
+              "min_cllr_difference": 0.00065,
+              "mrr_difference": -0.00064,
+              "outcome": "both unchanged within the declared band"
+            },
+            "query_weighted": {
+              "auc_difference": -0.00014,
+              "cllr_difference": -0.219,
+              "min_cllr_difference": 0.00078,
+              "mrr_difference": -0.00198,
+              "outcome": "both unchanged within the declared band"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0003,
+                0.0014
+              ],
+              "difference": 0.0008,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0043,
+                -0.0005
+              ],
+              "difference": -0.0024,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "both unchanged within the declared band"
+          ],
+          "estimands_agree": true,
+          "outcome_component_weighted": "both unchanged within the declared band"
+        }
+      },
+      "words_raw": {
+        "noise_corrected": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": 0.00201,
+              "cllr_difference": -0.00243,
+              "min_cllr_difference": -0.00254,
+              "mrr_difference": 0.03405,
+              "outcome": "a ranking gain with min_cllr unchanged within the declared band"
+            },
+            "label_macro": {
+              "auc_difference": 0.03663,
+              "cllr_difference": -0.00508,
+              "min_cllr_difference": -0.05535,
+              "mrr_difference": 0.10178,
+              "outcome": "improvement: MRR up and min_cllr down"
+            },
+            "query_weighted": {
+              "auc_difference": 0.00552,
+              "cllr_difference": -0.00262,
+              "min_cllr_difference": -0.00788,
+              "mrr_difference": 0.0431,
+              "outcome": "improvement: MRR up and min_cllr down"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0059,
+                0.0011
+              ],
+              "difference": -0.0025,
+              "excludes_zero": false,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                0.0269,
+                0.0409
+              ],
+              "difference": 0.034,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "a ranking gain with min_cllr unchanged within the declared band",
+            "improvement: MRR up and min_cllr down"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "a ranking gain with min_cllr unchanged within the declared band"
+        },
+        "znorm": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": -0.01077,
+              "cllr_difference": -0.17661,
+              "min_cllr_difference": 0.01824,
+              "mrr_difference": -0.01803,
+              "outcome": "no gain: MRR down and min_cllr up"
+            },
+            "label_macro": {
+              "auc_difference": 0.03427,
+              "cllr_difference": -0.17882,
+              "min_cllr_difference": -0.05177,
+              "mrr_difference": 0.06337,
+              "outcome": "improvement: MRR up and min_cllr down"
+            },
+            "query_weighted": {
+              "auc_difference": -0.00669,
+              "cllr_difference": -0.17826,
+              "min_cllr_difference": 0.0119,
+              "mrr_difference": -0.00951,
+              "outcome": "no gain: MRR down and min_cllr up"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                0.0137,
+                0.023
+              ],
+              "difference": 0.0182,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0256,
+                -0.0107
+              ],
+              "difference": -0.018,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "improvement: MRR up and min_cllr down",
+            "no gain: MRR down and min_cllr up"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "no gain: MRR down and min_cllr up"
+        }
+      },
+      "words_svd_whitened": {
+        "noise_corrected": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": 0.00051,
+              "cllr_difference": -0.01555,
+              "min_cllr_difference": -0.00107,
+              "mrr_difference": -0.01674,
+              "outcome": "a ranking loss with min_cllr unchanged within the declared band"
+            },
+            "label_macro": {
+              "auc_difference": 0.00473,
+              "cllr_difference": -0.01824,
+              "min_cllr_difference": -0.01596,
+              "mrr_difference": 0.01453,
+              "outcome": "improvement: MRR up and min_cllr down"
+            },
+            "query_weighted": {
+              "auc_difference": 0.00077,
+              "cllr_difference": -0.01587,
+              "min_cllr_difference": -0.00218,
+              "mrr_difference": -0.01351,
+              "outcome": "a ranking loss with min_cllr unchanged within the declared band"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0031,
+                0.0005
+              ],
+              "difference": -0.0011,
+              "excludes_zero": false,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                -0.021,
+                -0.0123
+              ],
+              "difference": -0.0167,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "a ranking loss with min_cllr unchanged within the declared band",
+            "improvement: MRR up and min_cllr down"
+          ],
+          "estimands_agree": false,
+          "outcome_component_weighted": "a ranking loss with min_cllr unchanged within the declared band"
+        },
+        "znorm": {
+          "both_intervals_clear_the_band": false,
+          "by_estimand": {
+            "component_weighted": {
+              "auc_difference": 0.00178,
+              "cllr_difference": 0.06669,
+              "min_cllr_difference": -0.00694,
+              "mrr_difference": 0.00782,
+              "outcome": "improvement: MRR up and min_cllr down"
+            },
+            "label_macro": {
+              "auc_difference": 0.00187,
+              "cllr_difference": 0.07264,
+              "min_cllr_difference": -0.0066,
+              "mrr_difference": 0.01004,
+              "outcome": "improvement: MRR up and min_cllr down"
+            },
+            "query_weighted": {
+              "auc_difference": 0.00231,
+              "cllr_difference": 0.06655,
+              "min_cllr_difference": -0.00931,
+              "mrr_difference": 0.01509,
+              "outcome": "improvement: MRR up and min_cllr down"
+            }
+          },
+          "component_weighted_intervals": {
+            "estimand": "component_weighted, both of them",
+            "min_cllr_difference_group_bootstrap": {
+              "ci95": [
+                -0.0081,
+                -0.0058
+              ],
+              "difference": -0.0069,
+              "excludes_zero": true,
+              "replicates": 400
+            },
+            "mrr_difference_group_bootstrap": {
+              "ci95": [
+                0.0045,
+                0.0111
+              ],
+              "difference": 0.0078,
+              "excludes_zero": true,
+              "replicates": 2000
+            }
+          },
+          "established_improvement": false,
+          "estimand_outcomes": [
+            "improvement: MRR up and min_cllr down"
+          ],
+          "estimands_agree": true,
+          "outcome_component_weighted": "improvement: MRR up and min_cllr down"
+        }
+      }
+    },
+    "summary": {
+      "disagreeing_estimands": [
+        "semantic_raw/znorm",
+        "semantic_raw/noise_corrected",
+        "words_raw/znorm",
+        "words_raw/noise_corrected",
+        "chars_raw/znorm",
+        "chars_raw/noise_corrected",
+        "semantic_whitened/noise_corrected",
+        "words_svd_whitened/noise_corrected"
+      ],
+      "established_improvements": [],
+      "ranking_gains_bought_with_a_calibration_loss": [],
+      "reading": "a calibration counts as an improvement only where it lowers min_cllr as well as raising MRR, with both component-weighted intervals clear of the declared 0.005 band; a calibration that raises MRR while raising min_cllr is a ranking gain bought with a calibration loss, which was named as an outcome before the run"
+    },
+    "systems": {
+      "chars_raw/noise_corrected": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.74115,
+            "calibration_loss": 0.12513,
+            "cllr": 0.9814,
+            "min_cllr": 0.85627
+          },
+          "label_macro": {
+            "auc": 0.73635,
+            "calibration_loss": 0.11937,
+            "cllr": 0.98043,
+            "min_cllr": 0.86105
+          },
+          "query_weighted": {
+            "auc": 0.74284,
+            "calibration_loss": 0.12705,
+            "cllr": 0.98119,
+            "min_cllr": 0.85415
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.45326,
+          "label_macro": 0.45749,
+          "query_weighted": 0.45906
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 13898,
+          "distinct_scores": 1412898,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1440,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "chars_raw/prototype": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.74441,
+            "calibration_loss": 0.13098,
+            "cllr": 0.98315,
+            "min_cllr": 0.85217
+          },
+          "label_macro": {
+            "auc": 0.71499,
+            "calibration_loss": 0.09986,
+            "cllr": 0.98476,
+            "min_cllr": 0.8849
+          },
+          "query_weighted": {
+            "auc": 0.74352,
+            "calibration_loss": 0.12982,
+            "cllr": 0.98316,
+            "min_cllr": 0.85335
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.43097,
+          "label_macro": 0.37653,
+          "query_weighted": 0.42661
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 13936,
+          "distinct_scores": 1416454,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1410,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "chars_raw/znorm": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.7347,
+            "calibration_loss": 0.04116,
+            "cllr": 0.90328,
+            "min_cllr": 0.86212
+          },
+          "label_macro": {
+            "auc": 0.73968,
+            "calibration_loss": 0.04432,
+            "cllr": 0.89824,
+            "min_cllr": 0.85392
+          },
+          "query_weighted": {
+            "auc": 0.73712,
+            "calibration_loss": 0.04004,
+            "cllr": 0.89979,
+            "min_cllr": 0.85975
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.32371,
+          "label_macro": 0.33411,
+          "query_weighted": 0.32656
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 13803,
+          "distinct_scores": 1443776,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1191,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "semantic_raw/noise_corrected": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.64403,
+            "calibration_loss": 0.15926,
+            "cllr": 1.10086,
+            "min_cllr": 0.9416
+          },
+          "label_macro": {
+            "auc": 0.64526,
+            "calibration_loss": 0.15956,
+            "cllr": 1.10023,
+            "min_cllr": 0.94067
+          },
+          "query_weighted": {
+            "auc": 0.64481,
+            "calibration_loss": 0.15995,
+            "cllr": 1.10094,
+            "min_cllr": 0.94099
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.26112,
+          "label_macro": 0.28491,
+          "query_weighted": 0.2635
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 14086,
+          "distinct_scores": 1224915,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 2850,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "semantic_raw/prototype": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.65323,
+            "calibration_loss": 0.16293,
+            "cllr": 1.09788,
+            "min_cllr": 0.93496
+          },
+          "label_macro": {
+            "auc": 0.64108,
+            "calibration_loss": 0.15248,
+            "cllr": 1.09794,
+            "min_cllr": 0.94546
+          },
+          "query_weighted": {
+            "auc": 0.65361,
+            "calibration_loss": 0.16342,
+            "cllr": 1.09798,
+            "min_cllr": 0.93456
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.29787,
+          "label_macro": 0.28307,
+          "query_weighted": 0.29972
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 14081,
+          "distinct_scores": 1225259,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 2839,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "semantic_raw/znorm": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.6374,
+            "calibration_loss": 0.05141,
+            "cllr": 0.99994,
+            "min_cllr": 0.94853
+          },
+          "label_macro": {
+            "auc": 0.64171,
+            "calibration_loss": 0.05117,
+            "cllr": 0.99618,
+            "min_cllr": 0.945
+          },
+          "query_weighted": {
+            "auc": 0.63854,
+            "calibration_loss": 0.05185,
+            "cllr": 0.99958,
+            "min_cllr": 0.94773
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.20627,
+          "label_macro": 0.22765,
+          "query_weighted": 0.20999
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 14113,
+          "distinct_scores": 1480436,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 979,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "semantic_whitened/noise_corrected": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.88244,
+            "calibration_loss": 0.34678,
+            "cllr": 0.95279,
+            "min_cllr": 0.606
+          },
+          "label_macro": {
+            "auc": 0.88046,
+            "calibration_loss": 0.34336,
+            "cllr": 0.95106,
+            "min_cllr": 0.60769
+          },
+          "query_weighted": {
+            "auc": 0.88471,
+            "calibration_loss": 0.35157,
+            "cllr": 0.95235,
+            "min_cllr": 0.60077
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.38639,
+          "label_macro": 0.39741,
+          "query_weighted": 0.39023
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 12242,
+          "distinct_scores": 1481115,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 923,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "semantic_whitened/prototype": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.88431,
+            "calibration_loss": 0.36884,
+            "cllr": 0.9673,
+            "min_cllr": 0.59845
+          },
+          "label_macro": {
+            "auc": 0.87989,
+            "calibration_loss": 0.35903,
+            "cllr": 0.96714,
+            "min_cllr": 0.60811
+          },
+          "query_weighted": {
+            "auc": 0.88654,
+            "calibration_loss": 0.37369,
+            "cllr": 0.96704,
+            "min_cllr": 0.59335
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.41362,
+          "label_macro": 0.40617,
+          "query_weighted": 0.41638
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 11983,
+          "distinct_scores": 1481160,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 918,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "semantic_whitened/znorm": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.88414,
+            "calibration_loss": 0.15097,
+            "cllr": 0.75026,
+            "min_cllr": 0.59929
+          },
+          "label_macro": {
+            "auc": 0.87965,
+            "calibration_loss": 0.14697,
+            "cllr": 0.75573,
+            "min_cllr": 0.60876
+          },
+          "query_weighted": {
+            "auc": 0.8864,
+            "calibration_loss": 0.15391,
+            "cllr": 0.74804,
+            "min_cllr": 0.59413
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.41123,
+          "label_macro": 0.40553,
+          "query_weighted": 0.41441
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 11988,
+          "distinct_scores": 1481140,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 905,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "words_raw/noise_corrected": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.84092,
+            "calibration_loss": 0.27702,
+            "cllr": 0.98185,
+            "min_cllr": 0.70483
+          },
+          "label_macro": {
+            "auc": 0.82998,
+            "calibration_loss": 0.25875,
+            "cllr": 0.98076,
+            "min_cllr": 0.72201
+          },
+          "query_weighted": {
+            "auc": 0.83908,
+            "calibration_loss": 0.27402,
+            "cllr": 0.98181,
+            "min_cllr": 0.70778
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.53607,
+          "label_macro": 0.53342,
+          "query_weighted": 0.53941
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 13388,
+          "distinct_scores": 1371322,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1538,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "words_raw/prototype": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.83891,
+            "calibration_loss": 0.27691,
+            "cllr": 0.98428,
+            "min_cllr": 0.70737
+          },
+          "label_macro": {
+            "auc": 0.79335,
+            "calibration_loss": 0.20849,
+            "cllr": 0.98585,
+            "min_cllr": 0.77736
+          },
+          "query_weighted": {
+            "auc": 0.83356,
+            "calibration_loss": 0.26876,
+            "cllr": 0.98442,
+            "min_cllr": 0.71567
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.50203,
+          "label_macro": 0.43164,
+          "query_weighted": 0.4963
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 13329,
+          "distinct_scores": 1388782,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1485,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "words_raw/znorm": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.82814,
+            "calibration_loss": 0.08206,
+            "cllr": 0.80767,
+            "min_cllr": 0.72562
+          },
+          "label_macro": {
+            "auc": 0.82762,
+            "calibration_loss": 0.08144,
+            "cllr": 0.80703,
+            "min_cllr": 0.72558
+          },
+          "query_weighted": {
+            "auc": 0.82687,
+            "calibration_loss": 0.07859,
+            "cllr": 0.80616,
+            "min_cllr": 0.72757
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.484,
+          "label_macro": 0.49501,
+          "query_weighted": 0.4868
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 13234,
+          "distinct_scores": 1447403,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1184,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "words_svd_whitened/noise_corrected": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.94311,
+            "calibration_loss": 0.48626,
+            "cllr": 0.92204,
+            "min_cllr": 0.43579
+          },
+          "label_macro": {
+            "auc": 0.93978,
+            "calibration_loss": 0.47393,
+            "cllr": 0.92102,
+            "min_cllr": 0.44709
+          },
+          "query_weighted": {
+            "auc": 0.94374,
+            "calibration_loss": 0.48847,
+            "cllr": 0.92186,
+            "min_cllr": 0.4334
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.52848,
+          "label_macro": 0.52665,
+          "query_weighted": 0.52913
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 11783,
+          "distinct_scores": 1446074,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1153,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "words_svd_whitened/prototype": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.9426,
+            "calibration_loss": 0.50073,
+            "cllr": 0.93759,
+            "min_cllr": 0.43686
+          },
+          "label_macro": {
+            "auc": 0.93505,
+            "calibration_loss": 0.47621,
+            "cllr": 0.93926,
+            "min_cllr": 0.46305
+          },
+          "query_weighted": {
+            "auc": 0.94298,
+            "calibration_loss": 0.50216,
+            "cllr": 0.93773,
+            "min_cllr": 0.43557
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.54522,
+          "label_macro": 0.51212,
+          "query_weighted": 0.54263
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 11759,
+          "distinct_scores": 1445845,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1145,
+          "target": 7220,
+          "total": 1631720
+        }
+      },
+      "words_svd_whitened/znorm": {
+        "detection_by_estimand": {
+          "component_weighted": {
+            "auc": 0.94437,
+            "calibration_loss": 0.57436,
+            "cllr": 1.00428,
+            "min_cllr": 0.42992
+          },
+          "label_macro": {
+            "auc": 0.93692,
+            "calibration_loss": 0.55544,
+            "cllr": 1.0119,
+            "min_cllr": 0.45645
+          },
+          "query_weighted": {
+            "auc": 0.94529,
+            "calibration_loss": 0.57802,
+            "cllr": 1.00429,
+            "min_cllr": 0.42627
+          }
+        },
+        "mrr_by_estimand": {
+          "component_weighted": 0.55304,
+          "label_macro": 0.52216,
+          "query_weighted": 0.55773
+        },
+        "trials": {
+          "blocks_before_pooling_violators": 11493,
+          "distinct_scores": 1445699,
+          "nontarget": 1624500,
+          "scores_shared_across_the_two_classes": 1151,
+          "target": 7220,
+          "total": 1631720
+        }
+      }
+    }
+  },
+  "minutes": 31.1,
+  "privacy": "aggregate only: per-system and per-fold scalars over the five spaces and three scorers, and label and query COUNTS per songs-per-label band; no per-label array, no band-level distribution, no song, label, artist, title, lyric text or vector",
+  "question": "how much of the published width factor is the estimand and how much is the resampling, and whether the calibrations that raise MRR also improve the likelihood ratio",
+  "status": "every gate passed"
+}

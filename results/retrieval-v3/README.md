@@ -1468,6 +1468,261 @@ the confound the repeated-passage arm was built to catch. Raw semantic concentra
 (+0.0022). The upper tail is where concentration lives: at the 95th percentile of the largest weight,
 raw words puts 0.447 of the profile on one song.
 
+## Which labels are answered too often (`hubness_and_centrality.json`, 2026-09-23)
+
+`src/hubness_and_centrality_v3.py`, with `tests/test_hubness_and_centrality.py`. In a fixed-corpus
+retrieval task some candidates are returned for far more queries than their share, a geometry
+effect rather than an accuracy one. Nothing here had measured it, and the size argument turns on
+it: if a few labels absorb the top of every ranking, MRR is partly a statement about which labels
+are central and how many songs they carry. k-occurrence N_k(l) counts the queries for which label
+l is in the top k; it is a count over queries and has no component-weighted analogue, which the
+payload says. Rules were fixed in the docstring before the run.
+
+| space | N_10 skewness [label bootstrap] | one label's share of the top 10, over its mean | false-hub mass | top-1 entropy over labels |
+|---|---|---|---|---|
+| words, raw | 1.821 [1.385, 2.204] | 6.47x | 0.9329 | 0.8721 [0.8652, 0.8739] |
+| characters, raw | 2.145 [1.603, 2.661] | 7.38x | 0.9394 | 0.8716 [0.8646, 0.8733] |
+| semantic, raw | 0.836 [0.512, 1.111] | 3.38x | 0.9509 | 0.9353 [0.9292, 0.9355] |
+| semantic, within-label whitening | 0.739 [0.324, 1.087] | 1.48x | 0.9397 | 0.9845 [0.9797, 0.9835] |
+| word SVD-1024, within-label whitening | 0.834 [0.485, 1.118] | 2.85x | 0.9247 | 0.9528 [0.9471, 0.9526] |
+
+**R1 holds, and its predicted ordering does not.** Hubness is present in all five spaces, every
+interval clear of zero, but it is the LEXICAL spaces that are hubby, not raw BGE-M3: characters
+2.15 and words 1.82 against raw semantic 0.84. An earlier plan predicted the
+reverse ordering; it is refuted. Whitening reduces hubness, which is consistent with a large part
+of what whitening buys being a de-hubbing correction - see the transform table below.
+
+**R2, a prediction of ours, is refuted, and the reason is instructive.** The claim was that
+kappa_l = r_l/E||m_l|| multiplies a label's whole score column, so a label with few songs has an
+inflated ||m_l||, a smaller kappa_l and therefore fewer hub occurrences: ||m_l|| should carry a
+NEGATIVE association. It carries a positive one in all five spaces +1.856, +0.957, +0.302, +0.075, +0.213,
+every interval clear of zero. The diagnosis is a mis-specification, not a surprise about the
+corpus: ||m_l||^2 = r_l^2 + s^2 W_l, so at fixed component count the profile norm IS the resultant
+length. It measures how COHERENT a repertoire is, not how noisily its mean is estimated, and a
+coherent label sits near more queries. The noise channel runs through the component count, and the
+two cannot be separated in one linear model: they correlate -0.93, -0.81, -0.25, -0.92, -0.74.
+
+**R2b, declared after R2 failed and therefore a re-specification rather than a confirmatory test,**
+replaces the norm and the count with the two quantities they confound, which are algebraically
+distinct: r_hat_l, the component-level U-statistic (coherence), and W_l = sum_c(1/k_c)/G_l^2, a
+function of the group structure alone (estimation noise).
+
+| space | coefficient on r_hat (coherence) | coefficient on W (noise) | their correlation | reading |
+|---|---|---|---|---|
+| words, raw | +0.6747 [+0.4895, +0.8714] | -0.8012 [-1.1843, -0.4539] | +0.23 | confirmed |
+| characters, raw | +0.4241 [+0.2952, +0.5595] | -1.3027 [-1.5803, -1.0671] | +0.10 | confirmed |
+| semantic, raw | +0.2775 [+0.1968, +0.3594] | -0.7208 [-0.8507, -0.5997] | -0.13 | confirmed |
+| semantic, within-label whitening | +0.0215 [-0.0052, +0.0548] | -0.0706 [-0.0959, -0.0513] | +0.52 | noise only |
+| word SVD-1024, within-label whitening | +0.1307 [+0.0458, +0.2254] | -0.2638 [-0.3444, -0.1916] | +0.30 | confirmed |
+
+The noise term carries a negative association in all five spaces with every interval clear of
+zero, and coherence a positive one in four; the exception is whitened semantic, where coherence
+is flat. So the single scalar does decompose as the theory says - it was the profile norm, not the
+theory, that mixed the two channels. This is a re-specification and is reported as one.
+
+| space | scorer | query-weighted MRR | between-label variance of per-label MRR | false-hub mass | N_10 skewness |
+|---|---|---|---|---|---|
+| words, raw | prototype | 0.4963 | 0.07054 | 0.9329 | 1.821 |
+| words, raw | znorm | 0.4859 | 0.04513 | 0.9304 | 1.349 |
+| words, raw | csls | 0.5414 | 0.03966 | 0.9289 | 0.995 |
+| words, raw | mutual_proximity | 0.5375 | 0.05609 | 0.9283 | 1.209 |
+| characters, raw | prototype | 0.4266 | 0.05843 | 0.9394 | 2.145 |
+| characters, raw | znorm | 0.3266 | 0.05305 | 0.9471 | 2.808 |
+| characters, raw | csls | 0.4121 | 0.04782 | 0.9433 | 2.505 |
+| characters, raw | mutual_proximity | 0.4257 | 0.05247 | 0.9377 | 2.092 |
+| semantic, raw | prototype | 0.2997 | 0.02998 | 0.9509 | 0.836 |
+| semantic, raw | znorm | 0.2105 | 0.04518 | 0.9607 | 1.374 |
+| semantic, raw | csls | 0.2872 | 0.03796 | 0.9519 | 0.991 |
+| semantic, raw | mutual_proximity | 0.2668 | 0.03978 | 0.9529 | 1.333 |
+| semantic, within-label whitening | prototype | 0.4164 | 0.03272 | 0.9397 | 0.739 |
+| semantic, within-label whitening | znorm | 0.4144 | 0.03272 | 0.9398 | -0.017 |
+| semantic, within-label whitening | csls | 0.3741 | 0.01584 | 0.9446 | 0.794 |
+| semantic, within-label whitening | mutual_proximity | 0.4157 | 0.03159 | 0.9399 | 0.412 |
+| word SVD-1024, within-label whitening | prototype | 0.5426 | 0.05055 | 0.9247 | 0.834 |
+| word SVD-1024, within-label whitening | znorm | 0.5577 | 0.04936 | 0.9234 | 0.267 |
+| word SVD-1024, within-label whitening | csls | 0.5134 | 0.02759 | 0.9283 | 0.877 |
+| word SVD-1024, within-label whitening | mutual_proximity | 0.5520 | 0.04418 | 0.9242 | -0.139 |
+
+**A large finding, and not one this arm was built for.** CSLS - a standard de-hubbing correction
+from cross-lingual retrieval - takes the raw word space from 0.4963 to **0.5414**, and mutual
+proximity to 0.5375. That is +0.0451, two and a half times the attention gain, and it
+is level with the whitened word SVD space's 0.5426, reached without fitting any transform on the
+corpus at all. Both corrections also lower the between-label variance of per-label MRR and the
+false-hub mass. So a substantial part of what within-label whitening buys in this corpus is
+de-hubbing, which the repository already suspected from the label-free arm and can now show
+directly. Neither correction reproduces Z-normalisation, which the same plan predicted they would:
+in the raw word space Z-normalisation reaches only 0.4859.
+
+**R3, fairness against accuracy.** A transform lowers query-weighted MRR while lowering both the
+between-label variance and the false-hub mass in two of the five spaces (words under
+Z-normalisation, characters under mutual proximity), so the estimand warning keeps its evidence,
+but the split is small and does not appear in the whitened spaces.
+
+## The profile-norm decomposition is algebra, and what is testable instead (`profile_norm_identity.json`, 2026-09-23)
+
+`src/profile_norm_identity_v3.py`, with `tests/test_profile_norm_identity.py`. Every size claim in
+this directory rests on E||m_l||^2 = r_l^2 + s^2 W_l. A draft analysis proposed to validate that
+decomposition against the data. **It cannot be validated, because it is an identity.** With
+r_hat^2 defined as the component-level U-statistic, the gap between the two sides has the closed
+form
+
+```
+gap_l = [K_l(nu - 1) + sum_c (1 - 1/k_c)(chat_c - C_bar_l)] / (G_l(G_l - 1)), with nu the component-weighted mean squared row norm; a singleton component contributes exactly zero because 1 - 1/k_c = 0
+```
+
+and a singleton component contributes exactly zero, because 1 - 1/k_c = 0. This corpus is almost
+all singletons: only 201 of its 6,889 components hold more than one song (2.92%), the
+largest holds 10, and **142 of the 226 labels have no multi-song component at all**,
+so for a clear majority of labels the gap is exactly zero by construction. Over the labels the
+upper bound on |gap_l| has median 0.0000 and a 95th percentile of 0.0031 in the 20-49 band, against the 0.02 margin a test
+would have declared. So this file reports no verdict on the decomposition and tests the four
+questions that do have empirical content instead.
+
+| space | pooling one s^2 | the published W = 1/G_l | the floor as the mechanism |
+|---|---|---|---|
+| words, raw | DEFENSIBLE | INADEQUATE | not established |
+| characters, raw | DEFENSIBLE | INADEQUATE | not established |
+| semantic, raw | DEFENSIBLE | INADEQUATE | not established |
+| semantic, within-label whitening | DEFENSIBLE | INADEQUATE | not established |
+| word SVD-1024, within-label whitening | DEFENSIBLE | INADEQUATE | not established |
+
+**Pooling is defensible everywhere.** The interquartile ratio of a label's own s^2 to the pooled
+value stays inside the declared [0.9, 1.1] in all five spaces, the widest being raw semantic at
+[0.946, 1.072]. The published practice of estimating one s^2 per (space, fold) survives.
+
+**The published W = 1/G_l is inadequate, and it does not matter much.** The weight-aware
+W = sum_c(1/k_c)/G_l^2 is strictly smaller wherever a component holds several songs, and the third
+quartile of the ratio is 1.0173 against a declared 1.01, so the published term over-subtracts.
+Replacing it moves MRR by +0.0031 [+0.0006, +0.0056] in characters and +0.0011 [-0.0002, +0.0025]
+in whitened word SVD, component-weighted - inside the 0.005 margin, so neither a gain nor a cost
+is claimed. The correction is real and its consequence is not.
+
+**The floor is a small-label boost, and it is not established as the mechanism of the published
+change.** It is tempting to describe the published `noise_corrected` scorer as a cap rather than a
+correction, and the measurement says that is too strong. The floor
+`max(||m||^2 - s^2/n, 0.25||m||^2)` binds on whole label COLUMNS - 19 of them in raw words, 17 in
+characters, 15 in whitened semantic, 5 in whitened word SVD and none at all in raw semantic - and
+those columns carry 83 to 95 per cent of all floored pairs. Where a column is floored the score is
+exactly twice the prototype, a constant per-label boost, and most of those labels are small (13 of
+the 19 labels in the 5-9 band in raw words). Among the queries whose own label is floored the
+scorer gains +0.2651 [+0.2176, +0.3136] in characters and +0.2474 [+0.1884, +0.3116] in whitened
+word SVD, component-weighted - very large. But the overall change is a gain in the raw lexical
+spaces (+0.0223 characters) and a COST in the whitened ones (-0.0167 whitened word SVD), so the
+floor is not by itself the mechanism of the published number, and the pre-registered rule refuses
+to say it is. The honest statement: the floor converts a bias correction into a fixed doubling for
+a handful of small labels, that doubling is worth a quarter of a point of MRR to those labels'
+queries, and whether it helps the corpus as a whole depends on the space.
+
+Reproduction: every published s^2 and every published floor-hit count is reproduced exactly
+(130,051 of 1,631,720 pairs in characters fold 1 against the published 130,051; 43,379 in whitened
+word SVD fold 0 against 43,379), and every prototype and `noise_corrected` MRR, and all four band
+MRRs per space, reproduce with a worst band gap of 0.00000.
+
+## A calibrated profile scorer, and why no correction is uniformly best (`calibrated_profile_scorer.json`, 2026-09-23)
+
+`src/calibrated_profile_scorer_v3.py`, with `tests/test_calibrated_profile_scorer.py`. The
+prototype divides by ||m_l||, whose expectation carries the sampling inflation s^2 W_l; the
+principled fix divides by an estimate of the label's true resultant length instead,
+S_C = q.m_l / sqrt(r_tilde_l^2), with r_hat^2 the component-level U-statistic, empirical-Bayes
+shrunk to a pooled prior and passed through a variance-stabilised positive part. Reading rules
+were fixed before the run, with R4 (the pre-registered null) declared to OVERRIDE R1, and the
+precedence implemented in the code rather than left to whoever writes the section.
+
+| space | \|m\| band gradient, 20-49 minus 5-9, component-weighted | | | | |
+|---|---|---|---|---|---|
+| | prototype | exemplar_mean (= q.m, no norm) | znorm | noise_corrected | S_C |
+| words, raw | +0.4332 | -0.1375 | -0.0623 | +0.1053 | **-0.1122** |
+| characters, raw | +0.3394 | -0.1424 | -0.0193 | +0.0590 | **-0.1063** |
+| semantic, raw | +0.1413 | -0.0620 | -0.1397 | -0.1505 | **-0.1046** |
+| semantic, within-label whitening | +0.0736 | -0.1810 | +0.0640 | -0.0256 | **-0.0757** |
+| word SVD-1024, within-label whitening | +0.2320 | -0.1477 | +0.2116 | -0.0248 | **-0.0098** |
+
+**The size bias is large, and every calibration removes it - two of them by overshooting.** The
+prototype's gradient is positive in every space and reaches +0.4332 in raw words: a label with 20
+to 49 songs is answered far better than one with 5 to 9. S_C flattens it to between -0.11 and
+-0.01, and the un-normalised dot (`exemplar_mean`) to between -0.06 and -0.18, both now favouring
+SMALL labels. The flattest scorer in the lexical spaces is the simplest one in the literature: a
+cohort Z-score, at -0.0193 in characters and -0.0623 in words.
+
+| space | prototype | exemplar_mean | znorm | noise_corrected | S_C | label-macro penalty, prototype -> S_C |
+|---|---|---|---|---|---|---|
+| words, raw | 0.5020 | 0.3482 | 0.4840 | 0.5361 | 0.5097 | +0.0647 -> -0.0107 |
+| characters, raw | 0.4310 | 0.2212 | 0.3237 | 0.4533 | 0.3975 | +0.0501 -> -0.0110 |
+| semantic, raw | 0.2979 | 0.1050 | 0.2063 | 0.2611 | 0.2048 | +0.0166 -> -0.0206 |
+| semantic, within-label whitening | 0.4136 | 0.3183 | 0.4112 | 0.3864 | 0.3803 | +0.0102 -> -0.0109 |
+| word SVD-1024, within-label whitening | 0.5452 | 0.4240 | 0.5530 | 0.5285 | 0.5309 | +0.0305 -> +0.0034 |
+
+All five MRRs are component-weighted, so they may be compared with the paired intervals.
+
+**R1 is not met in any space, and R4 did not fire.** S_C is superior to the prototype only in raw
+words; elsewhere it is not even non-inferior at the 0.005 margin. It does what it was built to do -
+the label-macro penalty goes from +0.0647 to -0.0107 in raw words and from +0.0501 to -0.0110 in
+characters, so the fairness gap between a random song and a random credited name essentially
+closes - but it costs ranking accuracy, and against the published `noise_corrected` it is level in
+whitened word SVD (+0.0024 [-0.0002, +0.0051]) and behind in the raw spaces.
+
+The pre-registered null R4 - that small repertoires are under-determined rather than mis-scored -
+did NOT fire: the share of own-label pairs with r_hat^2 <= 0 is 0.000 in the 5-9 band of every
+space, and the mean empirical-Bayes shrinkage weight there is 0.695 in whitened word SVD. The
+estimator's recovery simulation (in the test) shows r_hat^2 <= 0 in 47.9 per cent of labels at
+n = 5 when r^2 = 0.03 in 1,024 dimensions, and unbiasedness at every n; the corpus's small labels
+are better determined than that, because they hold at least five COMPONENTS and their r^2 is
+larger. So the small band is read as mis-scored, and R1's verdict stands as the headline.
+
+**What this section concludes.** The size bias is real, large, and removable, but no correction is
+uniformly best: the principled estimator flattens the gradient furthest and loses MRR, the
+published floor-capped scorer wins MRR in the raw lexical spaces and loses it in the whitened ones,
+and a cohort Z-score lands closest to zero gradient while costing accuracy in three spaces. The
+choice among them is a fairness choice about which estimand the study is answering, not a
+statistical one, and the paper says so rather than naming a winner.
+
+## The estimand 2x2, and a likelihood-ratio reading (`estimand_and_calibration.json`, 2026-09-23)
+
+`src/estimand_and_calibration_v3.py`, with `tests/test_estimand_and_calibration.py`. Two gaps.
+
+**Gap 1: the width factor is not a reusable number.** An earlier note here said the two-stage
+intervals are 1.6 to 3.0 times as wide as the group-bootstrap ones and offered that as a
+correction other leave-group-out studies could apply. Those two cells differ in BOTH the estimand
+and the resampling, so the ratio conflated them. Filling the 2x2 over
+14 contrasts: the total factor runs from 1.847 to
+4.315 with median 2.936; the estimand factor alone runs
+0.929 to 1.437, and the resampling factor
+1.916 to 3.348. The share of the log total
+attributable to the ESTIMAND has median 0.132 and can be negative
+(-0.067), so roughly seven eighths of the widening is the
+resampling and not the estimand. Neither factor is constant across contrasts. The number is
+withdrawn as a reusable correction: another study must fill its own 2x2, and this one shows how.
+
+**Gap 2: every metric here is a rank statistic, and the thesis is that scorers are estimators.**
+A calibration that improved MRR while degrading the likelihood ratio would have been invisible. So
+each system is also read as a detector: same-label against different-label trials, scored
+leave-group-out exactly as retrieval is, with AUC, the cost of log-likelihood-ratio C_llr, and
+min-C_llr after an optimal monotone (PAV) calibration, which separates discrimination from
+calibration loss. The declared rule: a calibration counts as an improvement only where it lowers
+min-C_llr as well as raising MRR, with both component-weighted intervals clear of the 0.005 band.
+
+| space | calibration | dMRR, component-weighted | d(min-C_llr) | outcome |
+|---|---|---|---|---|
+| words, raw | znorm | -0.0180 | +0.0182 | no gain: MRR down and min_cllr up |
+| words, raw | noise_corrected | +0.0340 | -0.0025 | a ranking gain with min_cllr unchanged within the declared band |
+| characters, raw | znorm | -0.1073 | +0.0100 | no gain: MRR down and min_cllr up |
+| characters, raw | noise_corrected | +0.0223 | +0.0041 | a ranking gain with min_cllr unchanged within the declared band |
+| semantic, raw | znorm | -0.0916 | +0.0136 | no gain: MRR down and min_cllr up |
+| semantic, raw | noise_corrected | -0.0367 | +0.0066 | no gain: MRR down and min_cllr up |
+| semantic, within-label whitening | znorm | -0.0024 | +0.0008 | both unchanged within the declared band |
+| semantic, within-label whitening | noise_corrected | -0.0272 | +0.0076 | no gain: MRR down and min_cllr up |
+| word SVD-1024, within-label whitening | znorm | +0.0078 | -0.0069 | improvement: MRR up and min_cllr down |
+| word SVD-1024, within-label whitening | noise_corrected | -0.0167 | -0.0011 | a ranking loss with min_cllr unchanged within the declared band |
+
+**No calibration is an established improvement, and none is a ranking gain bought with a
+calibration loss.** Z-normalisation raises min-C_llr - it is worse as a detector - in the raw
+spaces where it also loses MRR, and improves both only in whitened word SVD. The published
+`noise_corrected` scorer raises MRR in the two raw lexical spaces with min-C_llr unchanged inside
+the band, and costs MRR in the whitened ones. The three estimands disagree about the verdict for
+8 of the ten system-space pairs, which is the sharpest argument yet for stating the
+estimand beside every number: the same calibration is an improvement under one weighting and not
+under another.
+
 ## Privacy
 
 Aggregate numbers only. Per-query tables, vectors and text stay under the private root.

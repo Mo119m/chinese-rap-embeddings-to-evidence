@@ -1,0 +1,5587 @@
+{
+  "analysis": "profile_norm_identity_v3",
+  "checks": {
+    "component_counts_against_protocol": 3.197442310920451e-14,
+    "parts_against_protocol_dense": 1.2212453270876722e-15,
+    "parts_against_protocol_sparse": 4.4165354919079025e-07,
+    "per_space": {
+      "chars_raw": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.5472,
+            "20-49": 0.4459,
+            "5-9": 0.3868,
+            "50-up": 0.6145
+          },
+          "expected_prototype": {
+            "10-19": 0.261,
+            "20-49": 0.4517,
+            "5-9": 0.1123,
+            "50-up": 0.3685
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.5472,
+            "20-49": 0.4459,
+            "5-9": 0.3868,
+            "50-up": 0.6145
+          },
+          "recomputed_prototype": {
+            "10-19": 0.261,
+            "20-49": 0.4517,
+            "5-9": 0.1123,
+            "50-up": 0.3685
+          },
+          "tolerance": 0.0005,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "counts_against_protocol": 3.197442310920451e-14,
+        "exactness": {
+          "corrected_against_scorers_from_parts": 0.0,
+          "floor_mask_minus_helper_count": 0,
+          "floored_pairs_minus_twice_the_prototype": 0.0,
+          "per_label_s2_pools_to_residual_variance": 0.0
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.4591,
+          "gap": 0.0,
+          "recomputed": 0.4591,
+          "tolerance": 0.0005
+        },
+        "pooled_s2": {
+          "expected": [
+            0.9904,
+            0.9905,
+            0.9907,
+            0.9901,
+            0.991
+          ],
+          "recomputed": [
+            0.9904,
+            0.9905,
+            0.9907,
+            0.9901,
+            0.991
+          ],
+          "tolerance": 0.0005
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.4266,
+          "gap": 0.0,
+          "recomputed": 0.4266,
+          "tolerance": 0.0005
+        }
+      },
+      "semantic_raw": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.378,
+            "20-49": 0.2481,
+            "5-9": 0.3987,
+            "50-up": 0.3545
+          },
+          "expected_prototype": {
+            "10-19": 0.2806,
+            "20-49": 0.301,
+            "5-9": 0.1597,
+            "50-up": 0.4016
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.378,
+            "20-49": 0.2481,
+            "5-9": 0.3987,
+            "50-up": 0.3545
+          },
+          "recomputed_prototype": {
+            "10-19": 0.2806,
+            "20-49": 0.301,
+            "5-9": 0.1597,
+            "50-up": 0.4016
+          },
+          "tolerance": 0.0005,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "counts_against_protocol": 3.197442310920451e-14,
+        "exactness": {
+          "corrected_against_scorers_from_parts": 0.0,
+          "floor_mask_minus_helper_count": 0,
+          "floored_pairs_minus_twice_the_prototype": 0.0,
+          "per_label_s2_pools_to_residual_variance": 0.0
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.2635,
+          "gap": 0.0,
+          "recomputed": 0.2635,
+          "tolerance": 0.0005
+        },
+        "pooled_s2": {
+          "expected": [
+            0.3561,
+            0.3555,
+            0.3567,
+            0.3547,
+            0.3559
+          ],
+          "recomputed": [
+            0.3561,
+            0.3555,
+            0.3567,
+            0.3547,
+            0.3559
+          ],
+          "tolerance": 0.0005
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.2997,
+          "gap": 0.0,
+          "recomputed": 0.2997,
+          "tolerance": 0.0005
+        }
+      },
+      "semantic_whitened": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.4593,
+            "20-49": 0.3795,
+            "5-9": 0.4051,
+            "50-up": 0.4722
+          },
+          "expected_prototype": {
+            "10-19": 0.4152,
+            "20-49": 0.414,
+            "5-9": 0.3404,
+            "50-up": 0.5068
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.4593,
+            "20-49": 0.3795,
+            "5-9": 0.4051,
+            "50-up": 0.4722
+          },
+          "recomputed_prototype": {
+            "10-19": 0.4152,
+            "20-49": 0.414,
+            "5-9": 0.3404,
+            "50-up": 0.5068
+          },
+          "tolerance": 0.002,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "counts_against_protocol": 3.197442310920451e-14,
+        "exactness": {
+          "corrected_against_scorers_from_parts": 0.0,
+          "floor_mask_minus_helper_count": 0,
+          "floored_pairs_minus_twice_the_prototype": 0.0,
+          "per_label_s2_pools_to_residual_variance": 0.0
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.3902,
+          "gap": 0.0,
+          "recomputed": 0.3902,
+          "tolerance": 0.002
+        },
+        "pooled_s2": {
+          "expected": [
+            1.0014,
+            1.0015,
+            1.0012,
+            1.0013,
+            1.002
+          ],
+          "recomputed": [
+            1.0014,
+            1.0015,
+            1.0012,
+            1.0013,
+            1.002
+          ],
+          "tolerance": 0.002
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.4164,
+          "gap": 0.0,
+          "recomputed": 0.4164,
+          "tolerance": 0.002
+        }
+      },
+      "words_raw": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.5806,
+            "20-49": 0.5331,
+            "5-9": 0.4278,
+            "50-up": 0.7097
+          },
+          "expected_prototype": {
+            "10-19": 0.2738,
+            "20-49": 0.529,
+            "5-9": 0.0958,
+            "50-up": 0.4396
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.5806,
+            "20-49": 0.5331,
+            "5-9": 0.4278,
+            "50-up": 0.7097
+          },
+          "recomputed_prototype": {
+            "10-19": 0.2738,
+            "20-49": 0.529,
+            "5-9": 0.0958,
+            "50-up": 0.4396
+          },
+          "tolerance": 0.0005,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "counts_against_protocol": 3.197442310920451e-14,
+        "exactness": {
+          "corrected_against_scorers_from_parts": 0.0,
+          "floor_mask_minus_helper_count": 0,
+          "floored_pairs_minus_twice_the_prototype": 0.0,
+          "per_label_s2_pools_to_residual_variance": 0.0
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.5394,
+          "gap": 0.0,
+          "recomputed": 0.5394,
+          "tolerance": 0.0005
+        },
+        "pooled_s2": {
+          "expected": [
+            0.9967,
+            0.9965,
+            0.9966,
+            0.9965,
+            0.9969
+          ],
+          "recomputed": [
+            0.9967,
+            0.9965,
+            0.9966,
+            0.9965,
+            0.9969
+          ],
+          "tolerance": 0.0005
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.4963,
+          "gap": 0.0,
+          "recomputed": 0.4963,
+          "tolerance": 0.0005
+        }
+      },
+      "words_svd_whitened": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.5201,
+            "20-49": 0.5272,
+            "5-9": 0.552,
+            "50-up": 0.6299
+          },
+          "expected_prototype": {
+            "10-19": 0.453,
+            "20-49": 0.557,
+            "5-9": 0.325,
+            "50-up": 0.5561
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.5201,
+            "20-49": 0.5272,
+            "5-9": 0.552,
+            "50-up": 0.6299
+          },
+          "recomputed_prototype": {
+            "10-19": 0.453,
+            "20-49": 0.557,
+            "5-9": 0.325,
+            "50-up": 0.5561
+          },
+          "tolerance": 0.002,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "counts_against_protocol": 3.197442310920451e-14,
+        "exactness": {
+          "corrected_against_scorers_from_parts": 0.0,
+          "floor_mask_minus_helper_count": 0,
+          "floored_pairs_minus_twice_the_prototype": 0.0,
+          "per_label_s2_pools_to_residual_variance": 0.0
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.5291,
+          "gap": 0.0,
+          "recomputed": 0.5291,
+          "tolerance": 0.002
+        },
+        "pooled_s2": {
+          "expected": [
+            0.983,
+            0.9834,
+            0.9843,
+            0.9842,
+            0.9848
+          ],
+          "recomputed": [
+            0.983,
+            0.9834,
+            0.9843,
+            0.9842,
+            0.9848
+          ],
+          "tolerance": 0.002
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.5426,
+          "gap": 0.0,
+          "recomputed": 0.5426,
+          "tolerance": 0.002
+        }
+      }
+    },
+    "unit_row_gap": {
+      "chars_raw": 5.6988964658444274e-08,
+      "semantic_raw": 2.2802503996111056e-07,
+      "semantic_whitened/fold0": 1.5543122344752192e-15,
+      "semantic_whitened/fold1": 1.5543122344752192e-15,
+      "semantic_whitened/fold2": 1.4432899320127035e-15,
+      "semantic_whitened/fold3": 1.5543122344752192e-15,
+      "semantic_whitened/fold4": 1.5543122344752192e-15,
+      "words_raw": 5.231327615540238e-08,
+      "words_svd_whitened/fold0": 2.3314683517128287e-15,
+      "words_svd_whitened/fold1": 1.7763568394002505e-15,
+      "words_svd_whitened/fold2": 2.4424906541753444e-15,
+      "words_svd_whitened/fold3": 2.220446049250313e-15,
+      "words_svd_whitened/fold4": 2.6645352591003757e-15
+    }
+  },
+  "corpus": {
+    "components": 6889,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220,
+    "query_label_pairs": 1631720,
+    "songs_per_label_bands": {
+      "10-19": 33,
+      "20-49": 171,
+      "5-9": 19,
+      "50-up": 3
+    }
+  },
+  "design": {
+    "banding": "every band table in this file is by SONGS per label; the components-per-label banding is gated and never reported, because the repo calls two different bands '20-49'",
+    "estimands": {
+      "component_weighted": "sum(rr w) / sum(w); the estimand of every paired_group_bootstrap interval here and of the published by_band.*.mrr numbers",
+      "label_macro": "the component-weighted mean within a label, then the plain mean over the labels present in the mask",
+      "query_weighted": "mean of 1/rank over queries; the estimand of the published systems.* MRRs and of this file's gate"
+    },
+    "folds": "identity_probe_v2 folds and transforms; profiles leave-group-out over all songs; the pooled s^2 from the training folds, as published",
+    "not_built": "no scorer is built on r_hat^2 here, only its degeneracy rate recorded; no znorm arm, no floor-removed arm (the floor's effect is read from the exact factor-of-two identity and the floored stratum instead of from a scorer whose divisor would be clamped near zero), and no verdict on the decomposition",
+    "partial_run": false,
+    "reading_rules": {
+      "R1_pooling": "defensible in a space if both quartiles of s2_l / s2_pooled lie inside [0.9, 1.1]; if not, the space's published noise_corrected column is one particular per-label reweighting, not the size effect removed",
+      "R2_weight_term": "the published 1/G_l is adequate if the third quartile of G_l/K_l is below 1.01 and the whole interval of (weight-aware - published) MRR lies inside +/-0.005",
+      "R3_floor": "the floor is the mechanism of the published change if at least 95% of floored pairs lie in columns floored for every query and the floored stratum's interval clears the margin in the same direction as the overall change; a gain is named only where the whole interval lies above +0.005 and a cost only where it lies below -0.005",
+      "R4_degeneracy": "a number recorded for calibrated_profile_scorer_v3, not a test"
+    },
+    "scorers": {
+      "noise_corrected": "the published scorer: (dots/counts) / sqrt(max(m2 - s2/counts, 0.25 m2))",
+      "noise_corrected_weight_aware": "the same with s2 K(q,l)/counts^2 subtracted instead of s2/counts",
+      "prototype": "the protocol: cosine with the normalised leave-group-out profile"
+    },
+    "spaces_run": [
+      "semantic_raw",
+      "semantic_whitened",
+      "words_raw",
+      "chars_raw",
+      "words_svd_whitened"
+    ],
+    "tolerances": {
+      "mrr_and_pooled_s2": {
+        "chars_raw": 0.0005,
+        "semantic_raw": 0.0005,
+        "semantic_whitened": 0.002,
+        "words_raw": 0.0005,
+        "words_svd_whitened": 0.002
+      },
+      "note": "no tolerance is tighter than the guarantee of the code that produced the number; the floor-hit counts are reported, never gated, because nothing guarantees them and question 3 is asked to correct them",
+      "parts_dense": 1e-09,
+      "parts_sparse": 0.0001,
+      "unit_rows": {
+        "chars_raw": 4e-05,
+        "semantic_raw": 4e-05,
+        "semantic_whitened": 1e-09,
+        "words_raw": 4e-05,
+        "words_svd_whitened": 1e-09
+      }
+    }
+  },
+  "identity_is_algebraic": {
+    "gap_closed_form": "gap_l = [K_l(nu - 1) + sum_c (1 - 1/k_c)(chat_c - C_bar_l)] / (G_l(G_l - 1)), with nu the component-weighted mean squared row norm; a singleton component contributes exactly zero because 1 - 1/k_c = 0",
+    "labels_whose_gap_is_zero_by_construction": 142,
+    "margin_a_test_would_have_declared": 0.02,
+    "multi_song_components": {
+      "components_with_several_songs": 201,
+      "excess_songs_over_components": 331,
+      "songs_in_them": 532,
+      "total_within_component_pair_mass_sum_c_one_minus_one_over_k": 113.972
+    },
+    "reading": "the bound is an order of magnitude inside any margin a reader would declare, and it is identically zero for every label whose leakage groups each hold one song, so a test of the decomposition could not have failed; the four questions below are the empirical ones",
+    "statement": "the decomposition E||m_l||^2 = r_l^2 + s^2 W_l is an algebraic identity given the definitions, not a hypothesis, so this file does not test it and reports no verdict on it",
+    "upper_bound_by_band": {
+      "10-19": {
+        "labels": 33,
+        "mean": 0.003,
+        "median": 0.0,
+        "quantiles": {
+          "q05": 0.0,
+          "q25": 0.0,
+          "q50": 0.0,
+          "q75": 0.0042,
+          "q95": 0.0156
+        },
+        "queries": 477
+      },
+      "20-49": {
+        "labels": 171,
+        "mean": 0.0007,
+        "median": 0.0,
+        "quantiles": {
+          "q05": 0.0,
+          "q25": 0.0,
+          "q50": 0.0,
+          "q75": 0.0009,
+          "q95": 0.0031
+        },
+        "queries": 6356
+      },
+      "5-9": {
+        "labels": 19,
+        "mean": 0.0043,
+        "median": 0.0,
+        "quantiles": {
+          "q05": 0.0,
+          "q25": 0.0,
+          "q50": 0.0,
+          "q75": 0.0,
+          "q95": 0.0248
+        },
+        "queries": 149
+      },
+      "50-up": {
+        "labels": 3,
+        "mean": 0.0526,
+        "median": null,
+        "note": "fewer than 5 labels: median and quantiles suppressed",
+        "quantiles": null,
+        "queries": 238
+      }
+    },
+    "upper_bound_definition": "with unit rows, |gap_l| <= 2 (G_l - K_l) / (G_l (G_l - 1)), since the cosines of unit vectors differ by at most 2",
+    "upper_bound_on_abs_gap": {
+      "max": 0.08947,
+      "mean": 0.00202,
+      "quantiles": {
+        "q05": 0.0,
+        "q25": 0.0,
+        "q50": 0.0,
+        "q75": 0.0011,
+        "q95": 0.0088
+      }
+    }
+  },
+  "minutes": 29.9,
+  "privacy": "aggregate only: quantiles, band tables and counts over labels and query-label pairs; no song id, label name, artist, lyric text or vector, no per-label array, and no median or quantiles for a band holding fewer than 5 labels",
+  "question": "the profile-norm decomposition is an algebraic identity, so what is uncertain in the published noise-corrected scorer is elsewhere: is one pooled s^2 per (space, fold) defensible, is W = 1/G_l right, what does the floor do, and how often is the component-level U-statistic degenerate",
+  "readings": {
+    "chars_raw": {
+      "floor": "the floor is NOT established as the mechanism of the published change in chars_raw: 0.9438 of fold 0's floored pairs lie in the 17 columns floored for every query, of which 12 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a gain of +0.0223 [+0.0150, +0.0291], component-weighted; and among queries whose own label was floored is a gain of +0.2651 [+0.2176, +0.3136], component-weighted",
+      "pooling": "pooling one s^2 across labels is DEFENSIBLE in chars_raw: the interquartile ratio of a label's own s^2 to the pooled one is [0.993, 1.025], inside the declared [0.9, 1.1]",
+      "weight_term": "the published W = 1/G_l is INADEQUATE in chars_raw: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (+0.0031 [+0.0006, +0.0056], component-weighted), so neither a gain nor a cost is claimed"
+    },
+    "identity_is_algebraic": "the bound is an order of magnitude inside any margin a reader would declare, and it is identically zero for every label whose leakage groups each hold one song, so a test of the decomposition could not have failed; the four questions below are the empirical ones",
+    "semantic_raw": {
+      "floor": "the floor is NOT established as the mechanism of the published change in semantic_raw: the floor binds on no pair in this space; noise_corrected minus prototype overall is a cost of -0.0367 [-0.0410, -0.0326], component-weighted; no query was floored on its own label",
+      "pooling": "pooling one s^2 across labels is DEFENSIBLE in semantic_raw: the interquartile ratio of a label's own s^2 to the pooled one is [0.946, 1.072], inside the declared [0.9, 1.1]",
+      "weight_term": "the published W = 1/G_l is INADEQUATE in semantic_raw: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (+0.0018 [+0.0007, +0.0029], component-weighted), so neither a gain nor a cost is claimed"
+    },
+    "semantic_whitened": {
+      "floor": "the floor is NOT established as the mechanism of the published change in semantic_whitened: 0.9366 of fold 0's floored pairs lie in the 15 columns floored for every query, of which 9 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a cost of -0.0272 [-0.0309, -0.0233], component-weighted; and among queries whose own label was floored is a gain of +0.1089 [+0.0842, +0.1340], component-weighted",
+      "pooling": "pooling one s^2 across labels is DEFENSIBLE in semantic_whitened: the interquartile ratio of a label's own s^2 to the pooled one is [0.994, 1.014], inside the declared [0.9, 1.1]",
+      "weight_term": "the published W = 1/G_l is INADEQUATE in semantic_whitened: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (-0.0002 [-0.0013, +0.0011], component-weighted), so neither a gain nor a cost is claimed"
+    },
+    "words_raw": {
+      "floor": "the floor is NOT established as the mechanism of the published change in words_raw: 0.9498 of fold 0's floored pairs lie in the 19 columns floored for every query, of which 13 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a gain of +0.0340 [+0.0269, +0.0409], component-weighted; and among queries whose own label was floored is a gain of +0.3052 [+0.2567, +0.3568], component-weighted",
+      "pooling": "pooling one s^2 across labels is DEFENSIBLE in words_raw: the interquartile ratio of a label's own s^2 to the pooled one is [0.992, 1.017], inside the declared [0.9, 1.1]",
+      "weight_term": "the published W = 1/G_l is INADEQUATE in words_raw: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (-0.0004 [-0.0029, +0.0021], component-weighted), so neither a gain nor a cost is claimed"
+    },
+    "words_svd_whitened": {
+      "floor": "the floor is NOT established as the mechanism of the published change in words_svd_whitened: 0.8322 of fold 0's floored pairs lie in the 5 columns floored for every query, of which 2 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a cost of -0.0167 [-0.0210, -0.0123], component-weighted; and among queries whose own label was floored is a gain of +0.2474 [+0.1884, +0.3116], component-weighted",
+      "pooling": "pooling one s^2 across labels is DEFENSIBLE in words_svd_whitened: the interquartile ratio of a label's own s^2 to the pooled one is [0.991, 1.029], inside the declared [0.9, 1.1]",
+      "weight_term": "the published W = 1/G_l is INADEQUATE in words_svd_whitened: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (+0.0011 [-0.0002, +0.0025], component-weighted), so neither a gain nor a cost is claimed"
+    }
+  },
+  "spaces": {
+    "chars_raw": {
+      "degeneracy_rate": {
+        "all_pairs": {
+          "not_positive": 0,
+          "pairs": 1631720,
+          "rate": 0.0
+        },
+        "own_label_pairs": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "rate": 0.0
+            },
+            "20-49": {
+              "queries": 6356,
+              "rate": 0.0
+            },
+            "5-9": {
+              "queries": 149,
+              "rate": 0.0
+            },
+            "50-up": {
+              "queries": 238,
+              "rate": 0.0
+            }
+          },
+          "not_positive": 0,
+          "queries": 7220,
+          "rate": 0.0
+        },
+        "rows": "each query in the space and fold in which it is scored, leave-group-out",
+        "statement": "the rate at which the component-level U-statistic r_hat^2 = (||sum_c y_c||^2 - sum_c ||y_c||^2) / (G^2 - G) is not positive, recorded before calibrated_profile_scorer_v3 is read; no scorer here is built on it"
+      },
+      "floor": {
+        "columns": {
+          "basis": "fold 0's floor mask, by label column",
+          "columns_floored_for_at_least_99_percent": 18,
+          "columns_floored_for_every_query": 17,
+          "columns_never_floored": 198,
+          "fully_floored_columns_outside_the_smallest_band": 5,
+          "labels_in_the_smallest_band": 19,
+          "of_them_floored_for_every_query": 12,
+          "share_of_floored_pairs_inside_fully_floored_columns": 0.9438,
+          "smallest_band": "5-9"
+        },
+        "floored_pairs_are_exactly_twice_the_prototype": 1.1102230246251565e-16,
+        "largest_deviation_points": 0.0,
+        "published_floor_hits_by_fold": [
+          130045,
+          130051,
+          137262,
+          130043,
+          137264
+        ],
+        "published_share_percent": [
+          7.97,
+          7.97,
+          8.412,
+          7.97,
+          8.412
+        ],
+        "queries_floored_on_their_own_label": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "share": 0.1929
+            },
+            "20-49": {
+              "queries": 6356,
+              "share": 0.0031
+            },
+            "5-9": {
+              "queries": 149,
+              "share": 0.7785
+            },
+            "50-up": {
+              "queries": 238,
+              "share": 0.042
+            }
+          },
+          "queries": 238,
+          "share": 0.033
+        },
+        "query_label_pairs": 1631720,
+        "reading": "the floor is NOT established as the mechanism of the published change in chars_raw: 0.9438 of fold 0's floored pairs lie in the 17 columns floored for every query, of which 12 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a gain of +0.0223 [+0.0150, +0.0291], component-weighted; and among queries whose own label was floored is a gain of +0.2651 [+0.2176, +0.3136], component-weighted",
+        "recomputed_floor_hits_by_fold": [
+          130045,
+          130051,
+          137262,
+          130043,
+          137264
+        ],
+        "recomputed_share_percent": [
+          7.97,
+          7.97,
+          8.412,
+          7.97,
+          8.412
+        ],
+        "reported_not_gated": "nothing in the producing code guarantees this count to a tolerance, and question 3 is asked to confirm or CORRECT it; the MRR gate above is what protects the reading",
+        "share_of_pairs_floored_by_band": {
+          "10-19": {
+            "labels": 33,
+            "mean": 0.1517,
+            "median": 0.0,
+            "pairs": 238260,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 1.0
+            }
+          },
+          "20-49": {
+            "labels": 171,
+            "mean": 0.0058,
+            "median": 0.0,
+            "pairs": 1234620,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "5-9": {
+            "labels": 19,
+            "mean": 0.6318,
+            "median": 1.0,
+            "pairs": 137180,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 1.0,
+              "q75": 1.0,
+              "q95": 1.0
+            }
+          },
+          "50-up": {
+            "labels": 3,
+            "mean": 0.0003,
+            "median": null,
+            "note": "fewer than 5 labels: median and quantiles suppressed",
+            "pairs": 21660,
+            "quantiles": null
+          }
+        }
+      },
+      "gate": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.5472,
+            "20-49": 0.4459,
+            "5-9": 0.3868,
+            "50-up": 0.6145
+          },
+          "expected_prototype": {
+            "10-19": 0.261,
+            "20-49": 0.4517,
+            "5-9": 0.1123,
+            "50-up": 0.3685
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.5472,
+            "20-49": 0.4459,
+            "5-9": 0.3868,
+            "50-up": 0.6145
+          },
+          "recomputed_prototype": {
+            "10-19": 0.261,
+            "20-49": 0.4517,
+            "5-9": 0.1123,
+            "50-up": 0.3685
+          },
+          "tolerance": 0.0005,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.4591,
+          "gap": 0.0,
+          "recomputed": 0.4591,
+          "tolerance": 0.0005
+        },
+        "pooled_s2": {
+          "expected": [
+            0.9904,
+            0.9905,
+            0.9907,
+            0.9901,
+            0.991
+          ],
+          "recomputed": [
+            0.9904,
+            0.9905,
+            0.9907,
+            0.9901,
+            0.991
+          ],
+          "tolerance": 0.0005
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.4266,
+          "gap": 0.0,
+          "recomputed": 0.4266,
+          "tolerance": 0.0005
+        }
+      },
+      "minutes": 1.0,
+      "pooling": {
+        "correction_multiplier": {
+          "definition": "corrected = prototype / sqrt(max(1 - subtract/||m||^2, 0.25)), so the correction is a per-pair factor in [1, 2]; fold 0's space, fold 0's pooled s^2",
+          "own_s2_over_published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.0219,
+                "median": 1.0215,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 0.9816,
+                  "q25": 1.0,
+                  "q50": 1.0215,
+                  "q75": 1.0387,
+                  "q95": 1.0702
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.0029,
+                "median": 1.0,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 0.9934,
+                  "q25": 0.9972,
+                  "q50": 1.0,
+                  "q75": 1.0058,
+                  "q95": 1.0263
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.0084,
+                "median": 1.0,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 0.9685,
+                  "q25": 1.0,
+                  "q50": 1.0,
+                  "q75": 1.0029,
+                  "q95": 1.0798
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.0113,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.0062,
+            "quantiles": {
+              "q05": 0.9922,
+              "q25": 0.9979,
+              "q50": 1.0001,
+              "q75": 1.0081,
+              "q95": 1.0387
+            }
+          },
+          "published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.6812,
+                "median": 1.6648,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 1.2646,
+                  "q25": 1.5095,
+                  "q50": 1.6648,
+                  "q75": 1.9241,
+                  "q95": 2.0
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.3594,
+                "median": 1.334,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 1.1576,
+                  "q25": 1.2677,
+                  "q50": 1.334,
+                  "q75": 1.4365,
+                  "q95": 1.6502
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.9115,
+                "median": 2.0,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 1.2421,
+                  "q25": 1.9579,
+                  "q50": 2.0,
+                  "q75": 2.0,
+                  "q95": 2.0
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.5177,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.4549,
+            "quantiles": {
+              "q05": 1.1651,
+              "q25": 1.2805,
+              "q50": 1.3667,
+              "q75": 1.5587,
+              "q95": 2.0
+            },
+            "share_at_the_floor_factor_two": 0.0797
+          }
+        },
+        "estimand": "per label, the component-weighted mean over the label's own songs of ||x_s - mhat_l(c(s))||^2, the same per-song residual residual_variance pools",
+        "floor_status_flips_if_the_label_own_s2_is_used": {
+          "meaning": "the pooling error alone moves this many pairs across the 0.25 floor, where the multiplier jumps to exactly 2",
+          "pairs": 79375,
+          "share": 0.04864
+        },
+        "per_label_s2": {
+          "mean": 1.0025,
+          "quantiles": {
+            "q05": 0.9538,
+            "q25": 0.984,
+            "q50": 0.9952,
+            "q75": 1.0155,
+            "q95": 1.0926
+          },
+          "sd_over_labels": 0.0451
+        },
+        "pooled_over_all_songs_by_fold": [
+          0.9905,
+          0.9905,
+          0.9905,
+          0.9905,
+          0.9905
+        ],
+        "published_pooled_s2_by_fold": [
+          0.9904,
+          0.9905,
+          0.9907,
+          0.9901,
+          0.991
+        ],
+        "question": "the published scorer subtracts ONE pooled s^2 per (space, fold); how far is each label's own s^2 from it",
+        "ratio_to_pooled": {
+          "band_whose_median_departs_furthest_from_one": "5-9",
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 1.0349,
+              "median": 1.0429,
+              "quantiles": {
+                "q05": 0.9543,
+                "q25": 1.0178,
+                "q50": 1.0429,
+                "q75": 1.0583,
+                "q95": 1.0892
+              },
+              "queries": 477
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9973,
+              "median": 1.0,
+              "quantiles": {
+                "q05": 0.9631,
+                "q25": 0.9909,
+                "q50": 1.0,
+                "q75": 1.0107,
+                "q95": 1.0298
+              },
+              "queries": 6356
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 1.1061,
+              "median": 1.1039,
+              "quantiles": {
+                "q05": 1.0196,
+                "q25": 1.0915,
+                "q50": 1.1039,
+                "q75": 1.1311,
+                "q95": 1.1797
+              },
+              "queries": 149
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 1.0098,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "quantiles": null,
+              "queries": 238
+            }
+          },
+          "declared_interval": [
+            0.9,
+            1.1
+          ],
+          "iqr_inside_the_declared_interval": true,
+          "quantiles": {
+            "q05": 0.963,
+            "q25": 0.9935,
+            "q50": 1.0047,
+            "q75": 1.0252,
+            "q95": 1.1031
+          },
+          "quartiles": [
+            0.9935,
+            1.0252
+          ]
+        },
+        "reading": "pooling one s^2 across labels is DEFENSIBLE in chars_raw: the interquartile ratio of a label's own s^2 to the pooled one is [0.993, 1.025], inside the declared [0.9, 1.1]",
+        "rows": "all songs, for the per-label s^2 and for the pooled value it is divided by, so the two are the same estimator on the same rows; the published pooled s^2 is fitted on the training folds and differs from this one by less than 0.3% in every fold, and the ratio is scale-free in any case"
+      },
+      "published_change_decomposed": {
+        "by_band": {
+          "10-19": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.2517,
+                  0.32
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.2863,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0141,
+                  0.0057
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0036,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 33,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5472,
+                "label_macro": 0.5353,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.5532
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5436,
+                "label_macro": 0.5331,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.5483
+              },
+              "prototype": {
+                "component_weighted": 0.261,
+                "label_macro": 0.2527,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.2657
+              }
+            }
+          },
+          "20-49": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0123,
+                  0.0012
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0058,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0073,
+                  0.0115
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0094,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 171,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.4459,
+                "label_macro": 0.4492,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.4462
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.4552,
+                "label_macro": 0.4577,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.4553
+              },
+              "prototype": {
+                "component_weighted": 0.4517,
+                "label_macro": 0.4315,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.4503
+              }
+            }
+          },
+          "5-9": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.2171,
+                  0.3399
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.2746,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0006,
+                  0.0061
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0029,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 19,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3868,
+                "label_macro": 0.3674,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3806
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3898,
+                "label_macro": 0.3701,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3835
+              },
+              "prototype": {
+                "component_weighted": 0.1123,
+                "label_macro": 0.1034,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.1102
+              }
+            }
+          },
+          "50-up": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.1603,
+                  0.3346
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.246,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.5207,
+                  -0.3565
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.4376,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 3,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.6145,
+                "label_macro": 0.6425,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.6633
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.1769,
+                "label_macro": 0.1468,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.1426
+              },
+              "prototype": {
+                "component_weighted": 0.3685,
+                "label_macro": 0.3358,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.3139
+              }
+            }
+          }
+        },
+        "by_floor_stratum": {
+          "floor_bound_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.2176,
+                  0.3136
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.2651,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0249,
+                  0.0016
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.009,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3427,
+                "label_macro": 0.4014,
+                "labels": 28,
+                "queries": 238,
+                "query_weighted": 0.3633
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3337,
+                "label_macro": 0.3665,
+                "labels": 28,
+                "queries": 238,
+                "query_weighted": 0.3217
+              },
+              "prototype": {
+                "component_weighted": 0.0776,
+                "label_macro": 0.083,
+                "labels": 28,
+                "queries": 238,
+                "query_weighted": 0.0776
+              }
+            }
+          },
+          "floor_did_not_bind_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0074,
+                  0.0207
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0141,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.001,
+                  0.0058
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0035,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.457,
+                "label_macro": 0.4678,
+                "labels": 209,
+                "queries": 6982,
+                "query_weighted": 0.4623
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.4605,
+                "label_macro": 0.4671,
+                "labels": 209,
+                "queries": 6982,
+                "query_weighted": 0.454
+              },
+              "prototype": {
+                "component_weighted": 0.4429,
+                "label_macro": 0.4002,
+                "labels": 209,
+                "queries": 6982,
+                "query_weighted": 0.4385
+              }
+            }
+          }
+        },
+        "note": "every level is given under all three estimands and every interval is component-weighted; no point estimate of one estimand stands beside an interval of another. The published README sentence mixes them: +0.034 is component-weighted while 0.539 is query-weighted",
+        "overall": {
+          "contrasts": [
+            {
+              "above_margin": true,
+              "below_negative_margin": false,
+              "ci95": [
+                0.015,
+                0.0291
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": false,
+              "margin": 0.005,
+              "minus": "prototype",
+              "mrr_difference": 0.0223,
+              "system": "noise_corrected"
+            },
+            {
+              "above_margin": false,
+              "below_negative_margin": false,
+              "ci95": [
+                0.0006,
+                0.0056
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": false,
+              "margin": 0.005,
+              "minus": "noise_corrected",
+              "mrr_difference": 0.0031,
+              "system": "noise_corrected_weight_aware"
+            }
+          ],
+          "mrr": {
+            "noise_corrected": {
+              "component_weighted": 0.4533,
+              "label_macro": 0.4575,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.4591
+            },
+            "noise_corrected_weight_aware": {
+              "component_weighted": 0.4563,
+              "label_macro": 0.4572,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.4497
+            },
+            "prototype": {
+              "component_weighted": 0.431,
+              "label_macro": 0.3765,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.4266
+            }
+          }
+        }
+      },
+      "weight_term": {
+        "change_in_the_correction_subtracted": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.0174,
+              "median": 0.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0312,
+                "q95": 0.0889
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.0102,
+              "median": 0.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0161,
+                "q95": 0.0469
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.0119,
+              "median": 0.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0,
+                "q95": 0.0833
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.6055,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "definition": "1 - K_l(q)/G_l(q), the share of the subtracted term the published W adds in excess of the weight-aware one",
+          "mean": 0.01926,
+          "quantiles": {
+            "q05": 0.0,
+            "q25": 0.0,
+            "q50": 0.0,
+            "q75": 0.0171,
+            "q95": 0.0577
+          }
+        },
+        "multiplier_weight_aware_over_published": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.9876,
+              "median": 1.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.9328,
+                "q25": 0.9839,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9955,
+              "median": 1.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.9804,
+                "q25": 0.9935,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.9923,
+              "median": 1.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.9196,
+                "q25": 1.0,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.7572,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "mean": 0.9909,
+          "min": 0.5411,
+          "quantiles": {
+            "q05": 0.9643,
+            "q25": 0.9934,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0
+          }
+        },
+        "question": "the published correction subtracts s^2 (1/G_l); the weight-aware term is s^2 K_l/G_l^2, smaller exactly by the multi-song-component mass",
+        "ratio_published_over_weight_aware": {
+          "note": "structural; reported once in weight_term_structural above, identical in every space",
+          "per_label_q75": 1.0173
+        },
+        "reading": "the published W = 1/G_l is INADEQUATE in chars_raw: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (+0.0031 [+0.0006, +0.0056], component-weighted), so neither a gain nor a cost is claimed"
+      }
+    },
+    "semantic_raw": {
+      "degeneracy_rate": {
+        "all_pairs": {
+          "not_positive": 0,
+          "pairs": 1631720,
+          "rate": 0.0
+        },
+        "own_label_pairs": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "rate": 0.0
+            },
+            "20-49": {
+              "queries": 6356,
+              "rate": 0.0
+            },
+            "5-9": {
+              "queries": 149,
+              "rate": 0.0
+            },
+            "50-up": {
+              "queries": 238,
+              "rate": 0.0
+            }
+          },
+          "not_positive": 0,
+          "queries": 7220,
+          "rate": 0.0
+        },
+        "rows": "each query in the space and fold in which it is scored, leave-group-out",
+        "statement": "the rate at which the component-level U-statistic r_hat^2 = (||sum_c y_c||^2 - sum_c ||y_c||^2) / (G^2 - G) is not positive, recorded before calibrated_profile_scorer_v3 is read; no scorer here is built on it"
+      },
+      "floor": {
+        "columns": {
+          "basis": "fold 0's floor mask, by label column",
+          "columns_floored_for_at_least_99_percent": 0,
+          "columns_floored_for_every_query": 0,
+          "columns_never_floored": 226,
+          "fully_floored_columns_outside_the_smallest_band": 0,
+          "labels_in_the_smallest_band": 19,
+          "of_them_floored_for_every_query": 0,
+          "share_of_floored_pairs_inside_fully_floored_columns": null,
+          "smallest_band": "5-9"
+        },
+        "floored_pairs_are_exactly_twice_the_prototype": 0.0,
+        "largest_deviation_points": 0.0,
+        "published_floor_hits_by_fold": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_share_percent": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "queries_floored_on_their_own_label": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "share": 0.0
+            },
+            "20-49": {
+              "queries": 6356,
+              "share": 0.0
+            },
+            "5-9": {
+              "queries": 149,
+              "share": 0.0
+            },
+            "50-up": {
+              "queries": 238,
+              "share": 0.0
+            }
+          },
+          "queries": 0,
+          "share": 0.0
+        },
+        "query_label_pairs": 1631720,
+        "reading": "the floor is NOT established as the mechanism of the published change in semantic_raw: the floor binds on no pair in this space; noise_corrected minus prototype overall is a cost of -0.0367 [-0.0410, -0.0326], component-weighted; no query was floored on its own label",
+        "recomputed_floor_hits_by_fold": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "recomputed_share_percent": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reported_not_gated": "nothing in the producing code guarantees this count to a tolerance, and question 3 is asked to confirm or CORRECT it; the MRR gate above is what protects the reading",
+        "share_of_pairs_floored_by_band": {
+          "10-19": {
+            "labels": 33,
+            "mean": 0.0,
+            "median": 0.0,
+            "pairs": 238260,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "20-49": {
+            "labels": 171,
+            "mean": 0.0,
+            "median": 0.0,
+            "pairs": 1234620,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "5-9": {
+            "labels": 19,
+            "mean": 0.0,
+            "median": 0.0,
+            "pairs": 137180,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "50-up": {
+            "labels": 3,
+            "mean": 0.0,
+            "median": null,
+            "note": "fewer than 5 labels: median and quantiles suppressed",
+            "pairs": 21660,
+            "quantiles": null
+          }
+        }
+      },
+      "gate": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.378,
+            "20-49": 0.2481,
+            "5-9": 0.3987,
+            "50-up": 0.3545
+          },
+          "expected_prototype": {
+            "10-19": 0.2806,
+            "20-49": 0.301,
+            "5-9": 0.1597,
+            "50-up": 0.4016
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.378,
+            "20-49": 0.2481,
+            "5-9": 0.3987,
+            "50-up": 0.3545
+          },
+          "recomputed_prototype": {
+            "10-19": 0.2806,
+            "20-49": 0.301,
+            "5-9": 0.1597,
+            "50-up": 0.4016
+          },
+          "tolerance": 0.0005,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.2635,
+          "gap": 0.0,
+          "recomputed": 0.2635,
+          "tolerance": 0.0005
+        },
+        "pooled_s2": {
+          "expected": [
+            0.3561,
+            0.3555,
+            0.3567,
+            0.3547,
+            0.3559
+          ],
+          "recomputed": [
+            0.3561,
+            0.3555,
+            0.3567,
+            0.3547,
+            0.3559
+          ],
+          "tolerance": 0.0005
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.2997,
+          "gap": 0.0,
+          "recomputed": 0.2997,
+          "tolerance": 0.0005
+        }
+      },
+      "minutes": 0.0,
+      "pooling": {
+        "correction_multiplier": {
+          "definition": "corrected = prototype / sqrt(max(1 - subtract/||m||^2, 0.25)), so the correction is a per-pair factor in [1, 2]; fold 0's space, fold 0's pooled s^2",
+          "own_s2_over_published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.0008,
+                "median": 1.0006,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 0.9959,
+                  "q25": 0.9997,
+                  "q50": 1.0006,
+                  "q75": 1.0015,
+                  "q95": 1.0072
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.0,
+                "median": 1.0,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 0.9986,
+                  "q25": 0.9996,
+                  "q50": 1.0,
+                  "q75": 1.0004,
+                  "q95": 1.0016
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.008,
+                "median": 1.0075,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 0.9965,
+                  "q25": 1.0014,
+                  "q50": 1.0075,
+                  "q75": 1.0122,
+                  "q95": 1.0352
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.0002,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.0008,
+            "quantiles": {
+              "q05": 0.998,
+              "q25": 0.9996,
+              "q50": 1.0001,
+              "q75": 1.0007,
+              "q95": 1.0072
+            }
+          },
+          "published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.0203,
+                "median": 1.0197,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 1.0151,
+                  "q25": 1.0167,
+                  "q50": 1.0197,
+                  "q75": 1.0233,
+                  "q95": 1.0273
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.008,
+                "median": 1.0071,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 1.0057,
+                  "q25": 1.0063,
+                  "q50": 1.0071,
+                  "q75": 1.0092,
+                  "q95": 1.0134
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.0371,
+                "median": 1.0347,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 1.0273,
+                  "q25": 1.0309,
+                  "q50": 1.0347,
+                  "q75": 1.043,
+                  "q95": 1.0599
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.0107,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.0123,
+            "quantiles": {
+              "q05": 1.0057,
+              "q25": 1.0065,
+              "q50": 1.0081,
+              "q75": 1.0142,
+              "q95": 1.0325
+            },
+            "share_at_the_floor_factor_two": 0.0
+          }
+        },
+        "estimand": "per label, the component-weighted mean over the label's own songs of ||x_s - mhat_l(c(s))||^2, the same per-song residual residual_variance pools",
+        "floor_status_flips_if_the_label_own_s2_is_used": {
+          "meaning": "the pooling error alone moves this many pairs across the 0.25 floor, where the multiplier jumps to exactly 2",
+          "pairs": 0,
+          "share": 0.0
+        },
+        "per_label_s2": {
+          "mean": 0.3614,
+          "quantiles": {
+            "q05": 0.2974,
+            "q25": 0.3365,
+            "q50": 0.3595,
+            "q75": 0.3815,
+            "q95": 0.4368
+          },
+          "sd_over_labels": 0.043
+        },
+        "pooled_over_all_songs_by_fold": [
+          0.3558,
+          0.3558,
+          0.3558,
+          0.3558,
+          0.3558
+        ],
+        "published_pooled_s2_by_fold": [
+          0.3561,
+          0.3555,
+          0.3567,
+          0.3547,
+          0.3559
+        ],
+        "question": "the published scorer subtracts ONE pooled s^2 per (space, fold); how far is each label's own s^2 from it",
+        "ratio_to_pooled": {
+          "band_whose_median_departs_furthest_from_one": "5-9",
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 1.0296,
+              "median": 1.0287,
+              "quantiles": {
+                "q05": 0.8215,
+                "q25": 0.9803,
+                "q50": 1.0287,
+                "q75": 1.0787,
+                "q95": 1.2578
+              },
+              "queries": 477
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9951,
+              "median": 0.9995,
+              "quantiles": {
+                "q05": 0.8321,
+                "q25": 0.9303,
+                "q50": 0.9995,
+                "q75": 1.0537,
+                "q95": 1.1364
+              },
+              "queries": 6356
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 1.1781,
+              "median": 1.1956,
+              "quantiles": {
+                "q05": 0.9,
+                "q25": 1.0647,
+                "q50": 1.1956,
+                "q75": 1.3076,
+                "q95": 1.4264
+              },
+              "queries": 149
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 1.0109,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "quantiles": null,
+              "queries": 238
+            }
+          },
+          "declared_interval": [
+            0.9,
+            1.1
+          ],
+          "iqr_inside_the_declared_interval": true,
+          "quantiles": {
+            "q05": 0.8358,
+            "q25": 0.9458,
+            "q50": 1.0105,
+            "q75": 1.0722,
+            "q95": 1.2278
+          },
+          "quartiles": [
+            0.9458,
+            1.0722
+          ]
+        },
+        "reading": "pooling one s^2 across labels is DEFENSIBLE in semantic_raw: the interquartile ratio of a label's own s^2 to the pooled one is [0.946, 1.072], inside the declared [0.9, 1.1]",
+        "rows": "all songs, for the per-label s^2 and for the pooled value it is divided by, so the two are the same estimator on the same rows; the published pooled s^2 is fitted on the training folds and differs from this one by less than 0.3% in every fold, and the ratio is scale-free in any case"
+      },
+      "published_change_decomposed": {
+        "by_band": {
+          "10-19": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.078,
+                  0.1181
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0975,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0038,
+                  0.0071
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0013,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 33,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.378,
+                "label_macro": 0.38,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.389
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3794,
+                "label_macro": 0.3805,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.3903
+              },
+              "prototype": {
+                "component_weighted": 0.2806,
+                "label_macro": 0.2737,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.289
+              }
+            }
+          },
+          "20-49": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0567,
+                  -0.0491
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0529,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0026,
+                  0.0044
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0035,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 171,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.2481,
+                "label_macro": 0.2536,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.2468
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.2516,
+                "label_macro": 0.2571,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.2503
+              },
+              "prototype": {
+                "component_weighted": 0.301,
+                "label_macro": 0.2978,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.2997
+              }
+            }
+          },
+          "5-9": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.1858,
+                  0.2956
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.239,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0225,
+                  0.0006
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0095,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 19,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3987,
+                "label_macro": 0.3867,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3918
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3891,
+                "label_macro": 0.3754,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3825
+              },
+              "prototype": {
+                "component_weighted": 0.1597,
+                "label_macro": 0.1452,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.1566
+              }
+            }
+          },
+          "50-up": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0858,
+                  -0.0129
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0471,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.1451,
+                  -0.0696
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.1067,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 3,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3545,
+                "label_macro": 0.3806,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.3765
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.2478,
+                "label_macro": 0.2617,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.2492
+              },
+              "prototype": {
+                "component_weighted": 0.4016,
+                "label_macro": 0.4169,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.4122
+              }
+            }
+          }
+        },
+        "by_floor_stratum": {
+          "floor_bound_on_the_query_own_label": {
+            "contrasts": [],
+            "mrr": {
+              "noise_corrected": null,
+              "noise_corrected_weight_aware": null,
+              "prototype": null
+            }
+          },
+          "floor_did_not_bind_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.041,
+                  -0.0326
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0367,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0007,
+                  0.0029
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0018,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.2611,
+                "label_macro": 0.2849,
+                "labels": 226,
+                "queries": 7220,
+                "query_weighted": 0.2635
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.2629,
+                "label_macro": 0.2851,
+                "labels": 226,
+                "queries": 7220,
+                "query_weighted": 0.2622
+              },
+              "prototype": {
+                "component_weighted": 0.2979,
+                "label_macro": 0.2831,
+                "labels": 226,
+                "queries": 7220,
+                "query_weighted": 0.2997
+              }
+            }
+          }
+        },
+        "note": "every level is given under all three estimands and every interval is component-weighted; no point estimate of one estimand stands beside an interval of another. The published README sentence mixes them: +0.034 is component-weighted while 0.539 is query-weighted",
+        "overall": {
+          "contrasts": [
+            {
+              "above_margin": false,
+              "below_negative_margin": true,
+              "ci95": [
+                -0.041,
+                -0.0326
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": false,
+              "margin": 0.005,
+              "minus": "prototype",
+              "mrr_difference": -0.0367,
+              "system": "noise_corrected"
+            },
+            {
+              "above_margin": false,
+              "below_negative_margin": false,
+              "ci95": [
+                0.0007,
+                0.0029
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": true,
+              "margin": 0.005,
+              "minus": "noise_corrected",
+              "mrr_difference": 0.0018,
+              "system": "noise_corrected_weight_aware"
+            }
+          ],
+          "mrr": {
+            "noise_corrected": {
+              "component_weighted": 0.2611,
+              "label_macro": 0.2849,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.2635
+            },
+            "noise_corrected_weight_aware": {
+              "component_weighted": 0.2629,
+              "label_macro": 0.2851,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.2622
+            },
+            "prototype": {
+              "component_weighted": 0.2979,
+              "label_macro": 0.2831,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.2997
+            }
+          }
+        }
+      },
+      "weight_term": {
+        "change_in_the_correction_subtracted": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.0174,
+              "median": 0.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0312,
+                "q95": 0.0889
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.0102,
+              "median": 0.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0161,
+                "q95": 0.0469
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.0119,
+              "median": 0.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0,
+                "q95": 0.0833
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.6055,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "definition": "1 - K_l(q)/G_l(q), the share of the subtracted term the published W adds in excess of the weight-aware one",
+          "mean": 0.01926,
+          "quantiles": {
+            "q05": 0.0,
+            "q25": 0.0,
+            "q50": 0.0,
+            "q75": 0.0171,
+            "q95": 0.0577
+          }
+        },
+        "multiplier_weight_aware_over_published": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.9996,
+              "median": 1.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.9976,
+                "q25": 0.9995,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9999,
+              "median": 1.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.9996,
+                "q25": 0.9999,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.9995,
+              "median": 1.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.9962,
+                "q25": 1.0,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.9932,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "mean": 0.9997,
+          "min": 0.9877,
+          "quantiles": {
+            "q05": 0.9988,
+            "q25": 0.9999,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0
+          }
+        },
+        "question": "the published correction subtracts s^2 (1/G_l); the weight-aware term is s^2 K_l/G_l^2, smaller exactly by the multi-song-component mass",
+        "ratio_published_over_weight_aware": {
+          "note": "structural; reported once in weight_term_structural above, identical in every space",
+          "per_label_q75": 1.0173
+        },
+        "reading": "the published W = 1/G_l is INADEQUATE in semantic_raw: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (+0.0018 [+0.0007, +0.0029], component-weighted), so neither a gain nor a cost is claimed"
+      }
+    },
+    "semantic_whitened": {
+      "degeneracy_rate": {
+        "all_pairs": {
+          "not_positive": 0,
+          "pairs": 1631720,
+          "rate": 0.0
+        },
+        "own_label_pairs": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "rate": 0.0
+            },
+            "20-49": {
+              "queries": 6356,
+              "rate": 0.0
+            },
+            "5-9": {
+              "queries": 149,
+              "rate": 0.0
+            },
+            "50-up": {
+              "queries": 238,
+              "rate": 0.0
+            }
+          },
+          "not_positive": 0,
+          "queries": 7220,
+          "rate": 0.0
+        },
+        "rows": "each query in the space and fold in which it is scored, leave-group-out",
+        "statement": "the rate at which the component-level U-statistic r_hat^2 = (||sum_c y_c||^2 - sum_c ||y_c||^2) / (G^2 - G) is not positive, recorded before calibrated_profile_scorer_v3 is read; no scorer here is built on it"
+      },
+      "floor": {
+        "columns": {
+          "basis": "fold 0's floor mask, by label column",
+          "columns_floored_for_at_least_99_percent": 16,
+          "columns_floored_for_every_query": 15,
+          "columns_never_floored": 193,
+          "fully_floored_columns_outside_the_smallest_band": 6,
+          "labels_in_the_smallest_band": 19,
+          "of_them_floored_for_every_query": 9,
+          "share_of_floored_pairs_inside_fully_floored_columns": 0.9366,
+          "smallest_band": "5-9"
+        },
+        "floored_pairs_are_exactly_twice_the_prototype": 1.1102230246251565e-16,
+        "largest_deviation_points": 0.0,
+        "published_floor_hits_by_fold": [
+          115634,
+          144535,
+          101264,
+          144479,
+          115704
+        ],
+        "published_share_percent": [
+          7.087,
+          8.858,
+          6.206,
+          8.854,
+          7.091
+        ],
+        "queries_floored_on_their_own_label": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "share": 0.2222
+            },
+            "20-49": {
+              "queries": 6356,
+              "share": 0.0093
+            },
+            "5-9": {
+              "queries": 149,
+              "share": 0.6107
+            },
+            "50-up": {
+              "queries": 238,
+              "share": 0.0
+            }
+          },
+          "queries": 256,
+          "share": 0.0355
+        },
+        "query_label_pairs": 1631720,
+        "reading": "the floor is NOT established as the mechanism of the published change in semantic_whitened: 0.9366 of fold 0's floored pairs lie in the 15 columns floored for every query, of which 9 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a cost of -0.0272 [-0.0309, -0.0233], component-weighted; and among queries whose own label was floored is a gain of +0.1089 [+0.0842, +0.1340], component-weighted",
+        "recomputed_floor_hits_by_fold": [
+          115634,
+          144535,
+          101264,
+          144479,
+          115704
+        ],
+        "recomputed_share_percent": [
+          7.087,
+          8.858,
+          6.206,
+          8.854,
+          7.091
+        ],
+        "reported_not_gated": "nothing in the producing code guarantees this count to a tolerance, and question 3 is asked to confirm or CORRECT it; the MRR gate above is what protects the reading",
+        "share_of_pairs_floored_by_band": {
+          "10-19": {
+            "labels": 33,
+            "mean": 0.1517,
+            "median": 0.0,
+            "pairs": 238260,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 1.0
+            }
+          },
+          "20-49": {
+            "labels": 171,
+            "mean": 0.0117,
+            "median": 0.0,
+            "pairs": 1234620,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "5-9": {
+            "labels": 19,
+            "mean": 0.474,
+            "median": 0.0,
+            "pairs": 137180,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 1.0,
+              "q95": 1.0
+            }
+          },
+          "50-up": {
+            "labels": 3,
+            "mean": 0.0,
+            "median": null,
+            "note": "fewer than 5 labels: median and quantiles suppressed",
+            "pairs": 21660,
+            "quantiles": null
+          }
+        }
+      },
+      "gate": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.4593,
+            "20-49": 0.3795,
+            "5-9": 0.4051,
+            "50-up": 0.4722
+          },
+          "expected_prototype": {
+            "10-19": 0.4152,
+            "20-49": 0.414,
+            "5-9": 0.3404,
+            "50-up": 0.5068
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.4593,
+            "20-49": 0.3795,
+            "5-9": 0.4051,
+            "50-up": 0.4722
+          },
+          "recomputed_prototype": {
+            "10-19": 0.4152,
+            "20-49": 0.414,
+            "5-9": 0.3404,
+            "50-up": 0.5068
+          },
+          "tolerance": 0.002,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.3902,
+          "gap": 0.0,
+          "recomputed": 0.3902,
+          "tolerance": 0.002
+        },
+        "pooled_s2": {
+          "expected": [
+            1.0014,
+            1.0015,
+            1.0012,
+            1.0013,
+            1.002
+          ],
+          "recomputed": [
+            1.0014,
+            1.0015,
+            1.0012,
+            1.0013,
+            1.002
+          ],
+          "tolerance": 0.002
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.4164,
+          "gap": 0.0,
+          "recomputed": 0.4164,
+          "tolerance": 0.002
+        }
+      },
+      "minutes": 0.2,
+      "pooling": {
+        "correction_multiplier": {
+          "definition": "corrected = prototype / sqrt(max(1 - subtract/||m||^2, 0.25)), so the correction is a per-pair factor in [1, 2]; fold 0's space, fold 0's pooled s^2",
+          "own_s2_over_published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.0191,
+                "median": 1.0191,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 0.9813,
+                  "q25": 1.0,
+                  "q50": 1.0191,
+                  "q75": 1.0366,
+                  "q95": 1.0566
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.0033,
+                "median": 1.0013,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 0.9934,
+                  "q25": 0.9973,
+                  "q50": 1.0013,
+                  "q75": 1.0067,
+                  "q95": 1.018
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.017,
+                "median": 1.0,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 0.9664,
+                  "q25": 1.0,
+                  "q50": 1.0,
+                  "q75": 1.0462,
+                  "q95": 1.0778
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.0019,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.0067,
+            "quantiles": {
+              "q05": 0.9931,
+              "q25": 0.9984,
+              "q50": 1.0018,
+              "q75": 1.0099,
+              "q95": 1.0462
+            }
+          },
+          "published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.7026,
+                "median": 1.7382,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 1.2959,
+                  "q25": 1.4788,
+                  "q50": 1.7382,
+                  "q75": 1.8935,
+                  "q95": 2.0
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.5043,
+                "median": 1.4869,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 1.2443,
+                  "q25": 1.3843,
+                  "q50": 1.4869,
+                  "q75": 1.6086,
+                  "q95": 1.7929
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.8723,
+                "median": 1.9645,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 1.2517,
+                  "q25": 1.779,
+                  "q50": 1.9645,
+                  "q75": 2.0,
+                  "q95": 2.0
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.4693,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.5637,
+            "quantiles": {
+              "q05": 1.2548,
+              "q25": 1.4082,
+              "q50": 1.5351,
+              "q75": 1.6922,
+              "q95": 2.0
+            },
+            "share_at_the_floor_factor_two": 0.0709
+          }
+        },
+        "estimand": "per label, the component-weighted mean over the label's own songs of ||x_s - mhat_l(c(s))||^2, the same per-song residual residual_variance pools",
+        "floor_status_flips_if_the_label_own_s2_is_used": {
+          "meaning": "the pooling error alone moves this many pairs across the 0.25 floor, where the multiplier jumps to exactly 2",
+          "pairs": 79422,
+          "share": 0.04867
+        },
+        "per_label_s2": {
+          "mean": 1.0126,
+          "quantiles": {
+            "q05": 0.9753,
+            "q25": 0.9981,
+            "q50": 1.006,
+            "q75": 1.0184,
+            "q95": 1.0845
+          },
+          "sd_over_labels": 0.0338
+        },
+        "pooled_over_all_songs_by_fold": [
+          1.004,
+          1.0041,
+          1.0039,
+          1.0041,
+          1.0041
+        ],
+        "published_pooled_s2_by_fold": [
+          1.0014,
+          1.0015,
+          1.0012,
+          1.0013,
+          1.002
+        ],
+        "question": "the published scorer subtracts ONE pooled s^2 per (space, fold); how far is each label's own s^2 from it",
+        "ratio_to_pooled": {
+          "band_whose_median_departs_furthest_from_one": "5-9",
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 1.022,
+              "median": 1.0307,
+              "quantiles": {
+                "q05": 0.9465,
+                "q25": 1.0033,
+                "q50": 1.0307,
+                "q75": 1.0422,
+                "q95": 1.0589
+              },
+              "queries": 477
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9983,
+              "median": 0.9995,
+              "quantiles": {
+                "q05": 0.9728,
+                "q25": 0.9921,
+                "q50": 0.9995,
+                "q75": 1.0055,
+                "q95": 1.0171
+              },
+              "queries": 6356
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 1.0788,
+              "median": 1.0889,
+              "quantiles": {
+                "q05": 0.9903,
+                "q25": 1.0657,
+                "q50": 1.0889,
+                "q75": 1.1093,
+                "q95": 1.1462
+              },
+              "queries": 149
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.9969,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "quantiles": null,
+              "queries": 238
+            }
+          },
+          "declared_interval": [
+            0.9,
+            1.1
+          ],
+          "iqr_inside_the_declared_interval": true,
+          "quantiles": {
+            "q05": 0.9713,
+            "q25": 0.9941,
+            "q50": 1.002,
+            "q75": 1.0143,
+            "q95": 1.0801
+          },
+          "quartiles": [
+            0.9941,
+            1.0143
+          ]
+        },
+        "reading": "pooling one s^2 across labels is DEFENSIBLE in semantic_whitened: the interquartile ratio of a label's own s^2 to the pooled one is [0.994, 1.014], inside the declared [0.9, 1.1]",
+        "rows": "all songs, for the per-label s^2 and for the pooled value it is divided by, so the two are the same estimator on the same rows; the published pooled s^2 is fitted on the training folds and differs from this one by less than 0.3% in every fold, and the ratio is scale-free in any case"
+      },
+      "published_change_decomposed": {
+        "by_band": {
+          "10-19": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0288,
+                  0.0595
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0441,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0081,
+                  0.0008
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0034,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 33,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.4593,
+                "label_macro": 0.4619,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.4716
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.4559,
+                "label_macro": 0.4582,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.4679
+              },
+              "prototype": {
+                "component_weighted": 0.4152,
+                "label_macro": 0.4125,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.426
+              }
+            }
+          },
+          "20-49": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0385,
+                  -0.0305
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0345,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0005,
+                  0.0028
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0017,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 171,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3795,
+                "label_macro": 0.3835,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.3808
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3812,
+                "label_macro": 0.3845,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.3822
+              },
+              "prototype": {
+                "component_weighted": 0.414,
+                "label_macro": 0.4117,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.415
+              }
+            }
+          },
+          "5-9": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0383,
+                  0.0934
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0647,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0008,
+                  0.0055
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0027,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 19,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.4051,
+                "label_macro": 0.4001,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3992
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.4078,
+                "label_macro": 0.4025,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.4019
+              },
+              "prototype": {
+                "component_weighted": 0.3404,
+                "label_macro": 0.3324,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3346
+              }
+            }
+          },
+          "50-up": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0721,
+                  0.0015
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0346,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.1738,
+                  -0.0801
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.1257,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 3,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.4722,
+                "label_macro": 0.465,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.4743
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3465,
+                "label_macro": 0.312,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.2999
+              },
+              "prototype": {
+                "component_weighted": 0.5068,
+                "label_macro": 0.4871,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.4855
+              }
+            }
+          }
+        },
+        "by_floor_stratum": {
+          "floor_bound_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0842,
+                  0.134
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.1089,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0074,
+                  0.0022
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0019,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3987,
+                "label_macro": 0.5462,
+                "labels": 37,
+                "queries": 256,
+                "query_weighted": 0.3976
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3968,
+                "label_macro": 0.5449,
+                "labels": 37,
+                "queries": 256,
+                "query_weighted": 0.3958
+              },
+              "prototype": {
+                "component_weighted": 0.2897,
+                "label_macro": 0.4221,
+                "labels": 37,
+                "queries": 256,
+                "query_weighted": 0.2893
+              }
+            }
+          },
+          "floor_did_not_bind_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0362,
+                  -0.0285
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0322,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0013,
+                  0.0011
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0001,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3859,
+                "label_macro": 0.3795,
+                "labels": 216,
+                "queries": 6964,
+                "query_weighted": 0.39
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3858,
+                "label_macro": 0.378,
+                "labels": 216,
+                "queries": 6964,
+                "query_weighted": 0.3852
+              },
+              "prototype": {
+                "component_weighted": 0.4182,
+                "label_macro": 0.3974,
+                "labels": 216,
+                "queries": 6964,
+                "query_weighted": 0.4211
+              }
+            }
+          }
+        },
+        "note": "every level is given under all three estimands and every interval is component-weighted; no point estimate of one estimand stands beside an interval of another. The published README sentence mixes them: +0.034 is component-weighted while 0.539 is query-weighted",
+        "overall": {
+          "contrasts": [
+            {
+              "above_margin": false,
+              "below_negative_margin": true,
+              "ci95": [
+                -0.0309,
+                -0.0233
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": false,
+              "margin": 0.005,
+              "minus": "prototype",
+              "mrr_difference": -0.0272,
+              "system": "noise_corrected"
+            },
+            {
+              "above_margin": false,
+              "below_negative_margin": false,
+              "ci95": [
+                -0.0013,
+                0.0011
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": false,
+              "inside_margin": true,
+              "margin": 0.005,
+              "minus": "noise_corrected",
+              "mrr_difference": -0.0002,
+              "system": "noise_corrected_weight_aware"
+            }
+          ],
+          "mrr": {
+            "noise_corrected": {
+              "component_weighted": 0.3864,
+              "label_macro": 0.3974,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.3902
+            },
+            "noise_corrected_weight_aware": {
+              "component_weighted": 0.3862,
+              "label_macro": 0.3958,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.3856
+            },
+            "prototype": {
+              "component_weighted": 0.4136,
+              "label_macro": 0.4062,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.4164
+            }
+          }
+        }
+      },
+      "weight_term": {
+        "change_in_the_correction_subtracted": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.0174,
+              "median": 0.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0312,
+                "q95": 0.0889
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.0102,
+              "median": 0.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0161,
+                "q95": 0.0469
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.0119,
+              "median": 0.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0,
+                "q95": 0.0833
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.6055,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "definition": "1 - K_l(q)/G_l(q), the share of the subtracted term the published W adds in excess of the weight-aware one",
+          "mean": 0.01926,
+          "quantiles": {
+            "q05": 0.0,
+            "q25": 0.0,
+            "q50": 0.0,
+            "q75": 0.0171,
+            "q95": 0.0577
+          }
+        },
+        "multiplier_weight_aware_over_published": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.9878,
+              "median": 1.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.9235,
+                "q25": 0.987,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9932,
+              "median": 1.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.9659,
+                "q25": 0.9909,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.9921,
+              "median": 1.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.9189,
+                "q25": 1.0,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.7683,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "mean": 0.9893,
+          "min": 0.6364,
+          "quantiles": {
+            "q05": 0.9568,
+            "q25": 0.9909,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0
+          }
+        },
+        "question": "the published correction subtracts s^2 (1/G_l); the weight-aware term is s^2 K_l/G_l^2, smaller exactly by the multi-song-component mass",
+        "ratio_published_over_weight_aware": {
+          "note": "structural; reported once in weight_term_structural above, identical in every space",
+          "per_label_q75": 1.0173
+        },
+        "reading": "the published W = 1/G_l is INADEQUATE in semantic_whitened: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (-0.0002 [-0.0013, +0.0011], component-weighted), so neither a gain nor a cost is claimed"
+      }
+    },
+    "words_raw": {
+      "degeneracy_rate": {
+        "all_pairs": {
+          "not_positive": 0,
+          "pairs": 1631720,
+          "rate": 0.0
+        },
+        "own_label_pairs": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "rate": 0.0
+            },
+            "20-49": {
+              "queries": 6356,
+              "rate": 0.0
+            },
+            "5-9": {
+              "queries": 149,
+              "rate": 0.0
+            },
+            "50-up": {
+              "queries": 238,
+              "rate": 0.0
+            }
+          },
+          "not_positive": 0,
+          "queries": 7220,
+          "rate": 0.0
+        },
+        "rows": "each query in the space and fold in which it is scored, leave-group-out",
+        "statement": "the rate at which the component-level U-statistic r_hat^2 = (||sum_c y_c||^2 - sum_c ||y_c||^2) / (G^2 - G) is not positive, recorded before calibrated_profile_scorer_v3 is read; no scorer here is built on it"
+      },
+      "floor": {
+        "columns": {
+          "basis": "fold 0's floor mask, by label column",
+          "columns_floored_for_at_least_99_percent": 20,
+          "columns_floored_for_every_query": 19,
+          "columns_never_floored": 199,
+          "fully_floored_columns_outside_the_smallest_band": 6,
+          "labels_in_the_smallest_band": 19,
+          "of_them_floored_for_every_query": 13,
+          "share_of_floored_pairs_inside_fully_floored_columns": 0.9498,
+          "smallest_band": "5-9"
+        },
+        "floored_pairs_are_exactly_twice_the_prototype": 1.1102230246251565e-16,
+        "largest_deviation_points": 0.0,
+        "published_floor_hits_by_fold": [
+          144428,
+          144428,
+          144428,
+          144428,
+          144429
+        ],
+        "published_share_percent": [
+          8.851,
+          8.851,
+          8.851,
+          8.851,
+          8.851
+        ],
+        "queries_floored_on_their_own_label": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "share": 0.1405
+            },
+            "20-49": {
+              "queries": 6356,
+              "share": 0.0031
+            },
+            "5-9": {
+              "queries": 149,
+              "share": 0.7651
+            },
+            "50-up": {
+              "queries": 238,
+              "share": 0.4202
+            }
+          },
+          "queries": 301,
+          "share": 0.0417
+        },
+        "query_label_pairs": 1631720,
+        "reading": "the floor is NOT established as the mechanism of the published change in words_raw: 0.9498 of fold 0's floored pairs lie in the 19 columns floored for every query, of which 13 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a gain of +0.0340 [+0.0269, +0.0409], component-weighted; and among queries whose own label was floored is a gain of +0.3052 [+0.2567, +0.3568], component-weighted",
+        "recomputed_floor_hits_by_fold": [
+          144428,
+          144428,
+          144428,
+          144428,
+          144429
+        ],
+        "recomputed_share_percent": [
+          8.851,
+          8.851,
+          8.851,
+          8.851,
+          8.851
+        ],
+        "reported_not_gated": "nothing in the producing code guarantees this count to a tolerance, and question 3 is asked to confirm or CORRECT it; the MRR gate above is what protects the reading",
+        "share_of_pairs_floored_by_band": {
+          "10-19": {
+            "labels": 33,
+            "mean": 0.1213,
+            "median": 0.0,
+            "pairs": 238260,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 1.0
+            }
+          },
+          "20-49": {
+            "labels": 171,
+            "mean": 0.0058,
+            "median": 0.0,
+            "pairs": 1234620,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "5-9": {
+            "labels": 19,
+            "mean": 0.7369,
+            "median": 1.0,
+            "pairs": 137180,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 1.0,
+              "q75": 1.0,
+              "q95": 1.0
+            }
+          },
+          "50-up": {
+            "labels": 3,
+            "mean": 0.3333,
+            "median": null,
+            "note": "fewer than 5 labels: median and quantiles suppressed",
+            "pairs": 21660,
+            "quantiles": null
+          }
+        }
+      },
+      "gate": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.5806,
+            "20-49": 0.5331,
+            "5-9": 0.4278,
+            "50-up": 0.7097
+          },
+          "expected_prototype": {
+            "10-19": 0.2738,
+            "20-49": 0.529,
+            "5-9": 0.0958,
+            "50-up": 0.4396
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.5806,
+            "20-49": 0.5331,
+            "5-9": 0.4278,
+            "50-up": 0.7097
+          },
+          "recomputed_prototype": {
+            "10-19": 0.2738,
+            "20-49": 0.529,
+            "5-9": 0.0958,
+            "50-up": 0.4396
+          },
+          "tolerance": 0.0005,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.5394,
+          "gap": 0.0,
+          "recomputed": 0.5394,
+          "tolerance": 0.0005
+        },
+        "pooled_s2": {
+          "expected": [
+            0.9967,
+            0.9965,
+            0.9966,
+            0.9965,
+            0.9969
+          ],
+          "recomputed": [
+            0.9967,
+            0.9965,
+            0.9966,
+            0.9965,
+            0.9969
+          ],
+          "tolerance": 0.0005
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.4963,
+          "gap": 0.0,
+          "recomputed": 0.4963,
+          "tolerance": 0.0005
+        }
+      },
+      "minutes": 0.7,
+      "pooling": {
+        "correction_multiplier": {
+          "definition": "corrected = prototype / sqrt(max(1 - subtract/||m||^2, 0.25)), so the correction is a per-pair factor in [1, 2]; fold 0's space, fold 0's pooled s^2",
+          "own_s2_over_published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.0255,
+                "median": 1.0288,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 0.995,
+                  "q25": 1.0,
+                  "q50": 1.0288,
+                  "q75": 1.0457,
+                  "q95": 1.0766
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.0006,
+                "median": 0.9982,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 0.9944,
+                  "q25": 0.997,
+                  "q50": 0.9982,
+                  "q75": 1.002,
+                  "q95": 1.0138
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.015,
+                "median": 1.0,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 1.0,
+                  "q25": 1.0,
+                  "q50": 1.0,
+                  "q75": 1.0187,
+                  "q95": 1.0915
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.0005,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.0054,
+            "quantiles": {
+              "q05": 0.9946,
+              "q25": 0.9973,
+              "q50": 0.9996,
+              "q75": 1.0045,
+              "q95": 1.0457
+            }
+          },
+          "published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.6983,
+                "median": 1.7367,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 1.3708,
+                  "q25": 1.5174,
+                  "q50": 1.7367,
+                  "q75": 1.8615,
+                  "q95": 2.0
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.3755,
+                "median": 1.3389,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 1.2345,
+                  "q25": 1.2989,
+                  "q50": 1.3389,
+                  "q75": 1.4309,
+                  "q95": 1.6121
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.958,
+                "median": 2.0,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 1.6613,
+                  "q25": 1.9633,
+                  "q50": 2.0,
+                  "q75": 2.0,
+                  "q95": 2.0
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.6139,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.4748,
+            "quantiles": {
+              "q05": 1.2436,
+              "q25": 1.3126,
+              "q50": 1.3891,
+              "q75": 1.567,
+              "q95": 2.0
+            },
+            "share_at_the_floor_factor_two": 0.0885
+          }
+        },
+        "estimand": "per label, the component-weighted mean over the label's own songs of ||x_s - mhat_l(c(s))||^2, the same per-song residual residual_variance pools",
+        "floor_status_flips_if_the_label_own_s2_is_used": {
+          "meaning": "the pooling error alone moves this many pairs across the 0.25 floor, where the multiplier jumps to exactly 2",
+          "pairs": 43381,
+          "share": 0.02659
+        },
+        "per_label_s2": {
+          "mean": 1.0088,
+          "quantiles": {
+            "q05": 0.9772,
+            "q25": 0.9889,
+            "q50": 0.9956,
+            "q75": 1.0134,
+            "q95": 1.0987
+          },
+          "sd_over_labels": 0.0376
+        },
+        "pooled_over_all_songs_by_fold": [
+          0.9966,
+          0.9966,
+          0.9966,
+          0.9966,
+          0.9966
+        ],
+        "published_pooled_s2_by_fold": [
+          0.9967,
+          0.9965,
+          0.9966,
+          0.9965,
+          0.9969
+        ],
+        "question": "the published scorer subtracts ONE pooled s^2 per (space, fold); how far is each label's own s^2 from it",
+        "ratio_to_pooled": {
+          "band_whose_median_departs_furthest_from_one": "5-9",
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 1.0332,
+              "median": 1.0337,
+              "quantiles": {
+                "q05": 0.9892,
+                "q25": 1.0148,
+                "q50": 1.0337,
+                "q75": 1.0541,
+                "q95": 1.0704
+              },
+              "queries": 477
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9972,
+              "median": 0.9951,
+              "quantiles": {
+                "q05": 0.9787,
+                "q25": 0.9915,
+                "q50": 0.9951,
+                "q75": 1.0039,
+                "q95": 1.0185
+              },
+              "queries": 6356
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 1.1109,
+              "median": 1.1097,
+              "quantiles": {
+                "q05": 1.0665,
+                "q25": 1.0888,
+                "q50": 1.1097,
+                "q75": 1.12,
+                "q95": 1.1713
+              },
+              "queries": 149
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 1.0141,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "quantiles": null,
+              "queries": 238
+            }
+          },
+          "declared_interval": [
+            0.9,
+            1.1
+          ],
+          "iqr_inside_the_declared_interval": true,
+          "quantiles": {
+            "q05": 0.9805,
+            "q25": 0.9923,
+            "q50": 0.999,
+            "q75": 1.0169,
+            "q95": 1.1025
+          },
+          "quartiles": [
+            0.9923,
+            1.0169
+          ]
+        },
+        "reading": "pooling one s^2 across labels is DEFENSIBLE in words_raw: the interquartile ratio of a label's own s^2 to the pooled one is [0.992, 1.017], inside the declared [0.9, 1.1]",
+        "rows": "all songs, for the per-label s^2 and for the pooled value it is divided by, so the two are the same estimator on the same rows; the published pooled s^2 is fitted on the training folds and differs from this one by less than 0.3% in every fold, and the ratio is scale-free in any case"
+      },
+      "published_change_decomposed": {
+        "by_band": {
+          "10-19": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.2694,
+                  0.3413
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.3068,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0159,
+                  0.0009
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.007,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 33,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5806,
+                "label_macro": 0.5673,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.5851
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5735,
+                "label_macro": 0.5622,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.5783
+              },
+              "prototype": {
+                "component_weighted": 0.2738,
+                "label_macro": 0.2648,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.2792
+              }
+            }
+          },
+          "20-49": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0027,
+                  0.0104
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0041,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0049,
+                  0.0091
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.007,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 171,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5331,
+                "label_macro": 0.5373,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.5329
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5401,
+                "label_macro": 0.5434,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.5398
+              },
+              "prototype": {
+                "component_weighted": 0.529,
+                "label_macro": 0.5026,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.5279
+              }
+            }
+          },
+          "5-9": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.2681,
+                  0.4027
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.332,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0034,
+                  0.0235
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0118,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 19,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.4278,
+                "label_macro": 0.4119,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.4208
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.4397,
+                "label_macro": 0.424,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.4324
+              },
+              "prototype": {
+                "component_weighted": 0.0958,
+                "label_macro": 0.0911,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.0941
+              }
+            }
+          },
+          "50-up": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.1938,
+                  0.352
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.2701,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.6224,
+                  -0.4499
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.5398,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 3,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.7097,
+                "label_macro": 0.7064,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.6955
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.1699,
+                "label_macro": 0.1352,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.1398
+              },
+              "prototype": {
+                "component_weighted": 0.4396,
+                "label_macro": 0.3778,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.3406
+              }
+            }
+          }
+        },
+        "by_floor_stratum": {
+          "floor_bound_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.2567,
+                  0.3568
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.3052,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0812,
+                  -0.0188
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0478,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.3617,
+                "label_macro": 0.4271,
+                "labels": 27,
+                "queries": 301,
+                "query_weighted": 0.439
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.3139,
+                "label_macro": 0.4126,
+                "labels": 27,
+                "queries": 301,
+                "query_weighted": 0.2267
+              },
+              "prototype": {
+                "component_weighted": 0.0565,
+                "label_macro": 0.1319,
+                "labels": 27,
+                "queries": 301,
+                "query_weighted": 0.0431
+              }
+            }
+          },
+          "floor_did_not_bind_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0182,
+                  0.0323
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0254,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0014,
+                  0.0037
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0012,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5416,
+                "label_macro": 0.5504,
+                "labels": 206,
+                "queries": 6919,
+                "query_weighted": 0.5438
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5428,
+                "label_macro": 0.5493,
+                "labels": 206,
+                "queries": 6919,
+                "query_weighted": 0.54
+              },
+              "prototype": {
+                "component_weighted": 0.5162,
+                "label_macro": 0.4673,
+                "labels": 206,
+                "queries": 6919,
+                "query_weighted": 0.516
+              }
+            }
+          }
+        },
+        "note": "every level is given under all three estimands and every interval is component-weighted; no point estimate of one estimand stands beside an interval of another. The published README sentence mixes them: +0.034 is component-weighted while 0.539 is query-weighted",
+        "overall": {
+          "contrasts": [
+            {
+              "above_margin": true,
+              "below_negative_margin": false,
+              "ci95": [
+                0.0269,
+                0.0409
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": false,
+              "margin": 0.005,
+              "minus": "prototype",
+              "mrr_difference": 0.034,
+              "system": "noise_corrected"
+            },
+            {
+              "above_margin": false,
+              "below_negative_margin": false,
+              "ci95": [
+                -0.0029,
+                0.0021
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": false,
+              "inside_margin": true,
+              "margin": 0.005,
+              "minus": "noise_corrected",
+              "mrr_difference": -0.0004,
+              "system": "noise_corrected_weight_aware"
+            }
+          ],
+          "mrr": {
+            "noise_corrected": {
+              "component_weighted": 0.5361,
+              "label_macro": 0.5334,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.5394
+            },
+            "noise_corrected_weight_aware": {
+              "component_weighted": 0.5357,
+              "label_macro": 0.5307,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.527
+            },
+            "prototype": {
+              "component_weighted": 0.502,
+              "label_macro": 0.4316,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.4963
+            }
+          }
+        }
+      },
+      "weight_term": {
+        "change_in_the_correction_subtracted": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.0174,
+              "median": 0.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0312,
+                "q95": 0.0889
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.0102,
+              "median": 0.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0161,
+                "q95": 0.0469
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.0119,
+              "median": 0.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0,
+                "q95": 0.0833
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.6055,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "definition": "1 - K_l(q)/G_l(q), the share of the subtracted term the published W adds in excess of the weight-aware one",
+          "mean": 0.01926,
+          "quantiles": {
+            "q05": 0.0,
+            "q25": 0.0,
+            "q50": 0.0,
+            "q75": 0.0171,
+            "q95": 0.0577
+          }
+        },
+        "multiplier_weight_aware_over_published": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.9883,
+              "median": 1.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.9076,
+                "q25": 0.9793,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.995,
+              "median": 1.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.9722,
+                "q25": 0.9931,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.9919,
+              "median": 1.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.9078,
+                "q25": 1.0,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.7227,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "mean": 0.9902,
+          "min": 0.543,
+          "quantiles": {
+            "q05": 0.9631,
+            "q25": 0.9931,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0
+          }
+        },
+        "question": "the published correction subtracts s^2 (1/G_l); the weight-aware term is s^2 K_l/G_l^2, smaller exactly by the multi-song-component mass",
+        "ratio_published_over_weight_aware": {
+          "note": "structural; reported once in weight_term_structural above, identical in every space",
+          "per_label_q75": 1.0173
+        },
+        "reading": "the published W = 1/G_l is INADEQUATE in words_raw: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (-0.0004 [-0.0029, +0.0021], component-weighted), so neither a gain nor a cost is claimed"
+      }
+    },
+    "words_svd_whitened": {
+      "degeneracy_rate": {
+        "all_pairs": {
+          "not_positive": 0,
+          "pairs": 1631720,
+          "rate": 0.0
+        },
+        "own_label_pairs": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "rate": 0.0
+            },
+            "20-49": {
+              "queries": 6356,
+              "rate": 0.0
+            },
+            "5-9": {
+              "queries": 149,
+              "rate": 0.0
+            },
+            "50-up": {
+              "queries": 238,
+              "rate": 0.0
+            }
+          },
+          "not_positive": 0,
+          "queries": 7220,
+          "rate": 0.0
+        },
+        "rows": "each query in the space and fold in which it is scored, leave-group-out",
+        "statement": "the rate at which the component-level U-statistic r_hat^2 = (||sum_c y_c||^2 - sum_c ||y_c||^2) / (G^2 - G) is not positive, recorded before calibrated_profile_scorer_v3 is read; no scorer here is built on it"
+      },
+      "floor": {
+        "columns": {
+          "basis": "fold 0's floor mask, by label column",
+          "columns_floored_for_at_least_99_percent": 6,
+          "columns_floored_for_every_query": 5,
+          "columns_never_floored": 209,
+          "fully_floored_columns_outside_the_smallest_band": 3,
+          "labels_in_the_smallest_band": 19,
+          "of_them_floored_for_every_query": 2,
+          "share_of_floored_pairs_inside_fully_floored_columns": 0.8322,
+          "smallest_band": "5-9"
+        },
+        "floored_pairs_are_exactly_twice_the_prototype": 1.1102230246251565e-16,
+        "largest_deviation_points": 0.0,
+        "published_floor_hits_by_fold": [
+          43379,
+          36175,
+          50592,
+          36173,
+          28937
+        ],
+        "published_share_percent": [
+          2.658,
+          2.217,
+          3.101,
+          2.217,
+          1.773
+        ],
+        "queries_floored_on_their_own_label": {
+          "by_band": {
+            "10-19": {
+              "queries": 477,
+              "share": 0.0881
+            },
+            "20-49": {
+              "queries": 6356,
+              "share": 0.0009
+            },
+            "5-9": {
+              "queries": 149,
+              "share": 0.2819
+            },
+            "50-up": {
+              "queries": 238,
+              "share": 0.0
+            }
+          },
+          "queries": 90,
+          "share": 0.0125
+        },
+        "query_label_pairs": 1631720,
+        "reading": "the floor is NOT established as the mechanism of the published change in words_svd_whitened: 0.8322 of fold 0's floored pairs lie in the 5 columns floored for every query, of which 2 of the 19 labels in the 5-9 band; noise_corrected minus prototype overall is a cost of -0.0167 [-0.0210, -0.0123], component-weighted; and among queries whose own label was floored is a gain of +0.2474 [+0.1884, +0.3116], component-weighted",
+        "recomputed_floor_hits_by_fold": [
+          43379,
+          36175,
+          50592,
+          36173,
+          28937
+        ],
+        "recomputed_share_percent": [
+          2.658,
+          2.217,
+          3.101,
+          2.217,
+          1.773
+        ],
+        "reported_not_gated": "nothing in the producing code guarantees this count to a tolerance, and question 3 is asked to confirm or CORRECT it; the MRR gate above is what protects the reading",
+        "share_of_pairs_floored_by_band": {
+          "10-19": {
+            "labels": 33,
+            "mean": 0.0909,
+            "median": 0.0,
+            "pairs": 238260,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 1.0
+            }
+          },
+          "20-49": {
+            "labels": 171,
+            "mean": 0.0,
+            "median": 0.0,
+            "pairs": 1234620,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 0.0
+            }
+          },
+          "5-9": {
+            "labels": 19,
+            "mean": 0.1583,
+            "median": 0.0,
+            "pairs": 137180,
+            "quantiles": {
+              "q05": 0.0,
+              "q25": 0.0,
+              "q50": 0.0,
+              "q75": 0.0,
+              "q95": 1.0
+            }
+          },
+          "50-up": {
+            "labels": 3,
+            "mean": 0.0,
+            "median": null,
+            "note": "fewer than 5 labels: median and quantiles suppressed",
+            "pairs": 21660,
+            "quantiles": null
+          }
+        }
+      },
+      "gate": {
+        "bands": {
+          "banding": "songs_per_label",
+          "estimand": "component_weighted",
+          "expected_noise_corrected": {
+            "10-19": 0.5201,
+            "20-49": 0.5272,
+            "5-9": 0.552,
+            "50-up": 0.6299
+          },
+          "expected_prototype": {
+            "10-19": 0.453,
+            "20-49": 0.557,
+            "5-9": 0.325,
+            "50-up": 0.5561
+          },
+          "recomputed_noise_corrected": {
+            "10-19": 0.5201,
+            "20-49": 0.5272,
+            "5-9": 0.552,
+            "50-up": 0.6299
+          },
+          "recomputed_prototype": {
+            "10-19": 0.453,
+            "20-49": 0.557,
+            "5-9": 0.325,
+            "50-up": 0.5561
+          },
+          "tolerance": 0.002,
+          "worst_gap": {
+            "noise_corrected": 0.0,
+            "prototype": 0.0
+          }
+        },
+        "noise_corrected": {
+          "estimand": "query_weighted",
+          "expected": 0.5291,
+          "gap": 0.0,
+          "recomputed": 0.5291,
+          "tolerance": 0.002
+        },
+        "pooled_s2": {
+          "expected": [
+            0.983,
+            0.9834,
+            0.9843,
+            0.9842,
+            0.9848
+          ],
+          "recomputed": [
+            0.983,
+            0.9834,
+            0.9843,
+            0.9842,
+            0.9848
+          ],
+          "tolerance": 0.002
+        },
+        "prototype": {
+          "estimand": "query_weighted",
+          "expected": 0.5426,
+          "gap": 0.0,
+          "recomputed": 0.5426,
+          "tolerance": 0.002
+        }
+      },
+      "minutes": 26.2,
+      "pooling": {
+        "correction_multiplier": {
+          "definition": "corrected = prototype / sqrt(max(1 - subtract/||m||^2, 0.25)), so the correction is a per-pair factor in [1, 2]; fold 0's space, fold 0's pooled s^2",
+          "own_s2_over_published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.0161,
+                "median": 1.0116,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 0.9692,
+                  "q25": 0.9912,
+                  "q50": 1.0116,
+                  "q75": 1.0367,
+                  "q95": 1.0801
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.0035,
+                "median": 1.0013,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 0.9901,
+                  "q25": 0.9968,
+                  "q50": 1.0013,
+                  "q75": 1.0071,
+                  "q95": 1.0243
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.0438,
+                "median": 1.0384,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 0.9654,
+                  "q25": 1.0066,
+                  "q50": 1.0384,
+                  "q75": 1.0858,
+                  "q95": 1.1111
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.0143,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.0089,
+            "quantiles": {
+              "q05": 0.988,
+              "q25": 0.9969,
+              "q50": 1.0021,
+              "q75": 1.0126,
+              "q95": 1.0627
+            }
+          },
+          "published": {
+            "by_band": {
+              "10-19": {
+                "labels": 33,
+                "mean": 1.5221,
+                "median": 1.5013,
+                "pairs": 238260,
+                "quantiles": {
+                  "q05": 1.1383,
+                  "q25": 1.3085,
+                  "q50": 1.5013,
+                  "q75": 1.6947,
+                  "q95": 2.0
+                }
+              },
+              "20-49": {
+                "labels": 171,
+                "mean": 1.3164,
+                "median": 1.2965,
+                "pairs": 1234620,
+                "quantiles": {
+                  "q05": 1.1174,
+                  "q25": 1.2036,
+                  "q50": 1.2965,
+                  "q75": 1.3963,
+                  "q95": 1.5882
+                }
+              },
+              "5-9": {
+                "labels": 19,
+                "mean": 1.7529,
+                "median": 1.8372,
+                "pairs": 137180,
+                "quantiles": {
+                  "q05": 1.2087,
+                  "q25": 1.5638,
+                  "q50": 1.8372,
+                  "q75": 1.926,
+                  "q95": 2.0
+                }
+              },
+              "50-up": {
+                "labels": 3,
+                "mean": 1.4565,
+                "median": null,
+                "note": "fewer than 5 labels: median and quantiles suppressed",
+                "pairs": 21660,
+                "quantiles": null
+              }
+            },
+            "mean": 1.385,
+            "quantiles": {
+              "q05": 1.121,
+              "q25": 1.2175,
+              "q50": 1.3299,
+              "q75": 1.4849,
+              "q95": 1.882
+            },
+            "share_at_the_floor_factor_two": 0.0266
+          }
+        },
+        "estimand": "per label, the component-weighted mean over the label's own songs of ||x_s - mhat_l(c(s))||^2, the same per-song residual residual_variance pools",
+        "floor_status_flips_if_the_label_own_s2_is_used": {
+          "meaning": "the pooling error alone moves this many pairs across the 0.25 floor, where the multiplier jumps to exactly 2",
+          "pairs": 64977,
+          "share": 0.03982
+        },
+        "per_label_s2": {
+          "mean": 0.9856,
+          "quantiles": {
+            "q05": 0.8948,
+            "q25": 0.9695,
+            "q50": 0.9891,
+            "q75": 1.0066,
+            "q95": 1.0713
+          },
+          "sd_over_labels": 0.054
+        },
+        "pooled_over_all_songs_by_fold": [
+          0.9787,
+          0.9782,
+          0.9786,
+          0.9786,
+          0.9787
+        ],
+        "published_pooled_s2_by_fold": [
+          0.983,
+          0.9834,
+          0.9843,
+          0.9842,
+          0.9848
+        ],
+        "question": "the published scorer subtracts ONE pooled s^2 per (space, fold); how far is each label's own s^2 from it",
+        "ratio_to_pooled": {
+          "band_whose_median_departs_furthest_from_one": "5-9",
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 1.0047,
+              "median": 1.0338,
+              "quantiles": {
+                "q05": 0.7962,
+                "q25": 0.9972,
+                "q50": 1.0338,
+                "q75": 1.0575,
+                "q95": 1.0931
+              },
+              "queries": 477
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9988,
+              "median": 1.0081,
+              "quantiles": {
+                "q05": 0.9303,
+                "q25": 0.9881,
+                "q50": 1.0081,
+                "q75": 1.0207,
+                "q95": 1.0358
+              },
+              "queries": 6356
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 1.0837,
+              "median": 1.0956,
+              "quantiles": {
+                "q05": 1.0035,
+                "q25": 1.0713,
+                "q50": 1.0956,
+                "q75": 1.1065,
+                "q95": 1.1565
+              },
+              "queries": 149
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 1.0272,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "quantiles": null,
+              "queries": 238
+            }
+          },
+          "declared_interval": [
+            0.9,
+            1.1
+          ],
+          "iqr_inside_the_declared_interval": true,
+          "quantiles": {
+            "q05": 0.9144,
+            "q25": 0.9907,
+            "q50": 1.0108,
+            "q75": 1.0287,
+            "q95": 1.0947
+          },
+          "quartiles": [
+            0.9907,
+            1.0287
+          ]
+        },
+        "reading": "pooling one s^2 across labels is DEFENSIBLE in words_svd_whitened: the interquartile ratio of a label's own s^2 to the pooled one is [0.991, 1.029], inside the declared [0.9, 1.1]",
+        "rows": "all songs, for the per-label s^2 and for the pooled value it is divided by, so the two are the same estimator on the same rows; the published pooled s^2 is fitted on the training folds and differs from this one by less than 0.3% in every fold, and the ratio is scale-free in any case"
+      },
+      "published_change_decomposed": {
+        "by_band": {
+          "10-19": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0483,
+                  0.0866
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0671,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0048,
+                  0.0037
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.0005,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 33,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5201,
+                "label_macro": 0.5132,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.5286
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5196,
+                "label_macro": 0.5125,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.5287
+              },
+              "prototype": {
+                "component_weighted": 0.453,
+                "label_macro": 0.4455,
+                "labels": 33,
+                "queries": 477,
+                "query_weighted": 0.4593
+              }
+            }
+          },
+          "20-49": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0346,
+                  -0.0253
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0298,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0021,
+                  0.0047
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0034,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 171,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5272,
+                "label_macro": 0.5261,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.5269
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5306,
+                "label_macro": 0.529,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.5302
+              },
+              "prototype": {
+                "component_weighted": 0.557,
+                "label_macro": 0.5478,
+                "labels": 171,
+                "queries": 6356,
+                "query_weighted": 0.5567
+              }
+            }
+          },
+          "5-9": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.18,
+                  0.2749
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.227,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0115,
+                  0.0144
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0016,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 19,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.552,
+                "label_macro": 0.5435,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.548
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5536,
+                "label_macro": 0.5443,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.5495
+              },
+              "prototype": {
+                "component_weighted": 0.325,
+                "label_macro": 0.3079,
+                "labels": 19,
+                "queries": 149,
+                "query_weighted": 0.3206
+              }
+            }
+          },
+          "50-up": {
+            "banding": "songs_per_label",
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0361,
+                  0.1144
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.0737,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.2212,
+                  -0.1096
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": -0.1629,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "labels": 3,
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.6299,
+                "label_macro": 0.5995,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.5776
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.467,
+                "label_macro": 0.4086,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.3722
+              },
+              "prototype": {
+                "component_weighted": 0.5561,
+                "label_macro": 0.505,
+                "labels": 3,
+                "queries": 238,
+                "query_weighted": 0.474
+              }
+            }
+          }
+        },
+        "by_floor_stratum": {
+          "floor_bound_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": true,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.1884,
+                  0.3116
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": 0.2474,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  0.0002,
+                  0.0303
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.0133,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.4437,
+                "label_macro": 0.6128,
+                "labels": 21,
+                "queries": 90,
+                "query_weighted": 0.4413
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.457,
+                "label_macro": 0.6439,
+                "labels": 21,
+                "queries": 90,
+                "query_weighted": 0.4544
+              },
+              "prototype": {
+                "component_weighted": 0.1962,
+                "label_macro": 0.324,
+                "labels": 21,
+                "queries": 90,
+                "query_weighted": 0.1945
+              }
+            }
+          },
+          "floor_did_not_bind_on_the_query_own_label": {
+            "contrasts": [
+              {
+                "above_margin": false,
+                "below_negative_margin": true,
+                "ci95": [
+                  -0.0247,
+                  -0.0155
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": true,
+                "inside_margin": false,
+                "margin": 0.005,
+                "minus": "prototype",
+                "mrr_difference": -0.0202,
+                "system": "noise_corrected"
+              },
+              {
+                "above_margin": false,
+                "below_negative_margin": false,
+                "ci95": [
+                  -0.0004,
+                  0.0023
+                ],
+                "estimand": "component_weighted",
+                "excludes_zero": false,
+                "inside_margin": true,
+                "margin": 0.005,
+                "minus": "noise_corrected",
+                "mrr_difference": 0.001,
+                "system": "noise_corrected_weight_aware"
+              }
+            ],
+            "mrr": {
+              "noise_corrected": {
+                "component_weighted": 0.5296,
+                "label_macro": 0.519,
+                "labels": 223,
+                "queries": 7130,
+                "query_weighted": 0.5302
+              },
+              "noise_corrected_weight_aware": {
+                "component_weighted": 0.5306,
+                "label_macro": 0.5176,
+                "labels": 223,
+                "queries": 7130,
+                "query_weighted": 0.5262
+              },
+              "prototype": {
+                "component_weighted": 0.5498,
+                "label_macro": 0.512,
+                "labels": 223,
+                "queries": 7130,
+                "query_weighted": 0.547
+              }
+            }
+          }
+        },
+        "note": "every level is given under all three estimands and every interval is component-weighted; no point estimate of one estimand stands beside an interval of another. The published README sentence mixes them: +0.034 is component-weighted while 0.539 is query-weighted",
+        "overall": {
+          "contrasts": [
+            {
+              "above_margin": false,
+              "below_negative_margin": true,
+              "ci95": [
+                -0.021,
+                -0.0123
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": true,
+              "inside_margin": false,
+              "margin": 0.005,
+              "minus": "prototype",
+              "mrr_difference": -0.0167,
+              "system": "noise_corrected"
+            },
+            {
+              "above_margin": false,
+              "below_negative_margin": false,
+              "ci95": [
+                -0.0002,
+                0.0025
+              ],
+              "estimand": "component_weighted",
+              "excludes_zero": false,
+              "inside_margin": true,
+              "margin": 0.005,
+              "minus": "noise_corrected",
+              "mrr_difference": 0.0011,
+              "system": "noise_corrected_weight_aware"
+            }
+          ],
+          "mrr": {
+            "noise_corrected": {
+              "component_weighted": 0.5285,
+              "label_macro": 0.5266,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.5291
+            },
+            "noise_corrected_weight_aware": {
+              "component_weighted": 0.5296,
+              "label_macro": 0.5263,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.5253
+            },
+            "prototype": {
+              "component_weighted": 0.5452,
+              "label_macro": 0.5121,
+              "labels": 226,
+              "queries": 7220,
+              "query_weighted": 0.5426
+            }
+          }
+        }
+      },
+      "weight_term": {
+        "change_in_the_correction_subtracted": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.0174,
+              "median": 0.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0312,
+                "q95": 0.0889
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.0102,
+              "median": 0.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0161,
+                "q95": 0.0469
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.0119,
+              "median": 0.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.0,
+                "q25": 0.0,
+                "q50": 0.0,
+                "q75": 0.0,
+                "q95": 0.0833
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.6055,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "definition": "1 - K_l(q)/G_l(q), the share of the subtracted term the published W adds in excess of the weight-aware one",
+          "mean": 0.01926,
+          "quantiles": {
+            "q05": 0.0,
+            "q25": 0.0,
+            "q50": 0.0,
+            "q75": 0.0171,
+            "q95": 0.0577
+          }
+        },
+        "multiplier_weight_aware_over_published": {
+          "by_band": {
+            "10-19": {
+              "labels": 33,
+              "mean": 0.9896,
+              "median": 1.0,
+              "pairs": 238260,
+              "quantiles": {
+                "q05": 0.9322,
+                "q25": 0.982,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "20-49": {
+              "labels": 171,
+              "mean": 0.9958,
+              "median": 1.0,
+              "pairs": 1234620,
+              "quantiles": {
+                "q05": 0.98,
+                "q25": 0.9943,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "5-9": {
+              "labels": 19,
+              "mean": 0.9902,
+              "median": 1.0,
+              "pairs": 137180,
+              "quantiles": {
+                "q05": 0.9137,
+                "q25": 1.0,
+                "q50": 1.0,
+                "q75": 1.0,
+                "q95": 1.0
+              }
+            },
+            "50-up": {
+              "labels": 3,
+              "mean": 0.7735,
+              "median": null,
+              "note": "fewer than 5 labels: median and quantiles suppressed",
+              "pairs": 21660,
+              "quantiles": null
+            }
+          },
+          "mean": 0.9915,
+          "min": 0.6137,
+          "quantiles": {
+            "q05": 0.9666,
+            "q25": 0.9934,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0
+          }
+        },
+        "question": "the published correction subtracts s^2 (1/G_l); the weight-aware term is s^2 K_l/G_l^2, smaller exactly by the multi-song-component mass",
+        "ratio_published_over_weight_aware": {
+          "note": "structural; reported once in weight_term_structural above, identical in every space",
+          "per_label_q75": 1.0173
+        },
+        "reading": "the published W = 1/G_l is INADEQUATE in words_svd_whitened: the third quartile of G_l/K_l is 1.0173 against the declared 1.01, and replacing it with the weight-aware term is inside the 0.005 margin (+0.0011 [-0.0002, +0.0025], component-weighted), so neither a gain nor a cost is claimed"
+      }
+    }
+  },
+  "status": "complete",
+  "structure": {
+    "bands_songs_per_label": {
+      "10-19": 33,
+      "20-49": 171,
+      "5-9": 19,
+      "50-up": 3
+    },
+    "components_with_several_songs": 201,
+    "largest_component": 10,
+    "queries_components_per_label_gated_only": {
+      "10-19": 648,
+      "20-49": 6413,
+      "4-9": 159,
+      "50-up": 0
+    },
+    "queries_songs_per_label": {
+      "10-19": 477,
+      "20-49": 6356,
+      "5-9": 149,
+      "50-up": 238
+    }
+  },
+  "weight_term_structural": {
+    "definition": "G_l / K_l per label and per (query, label): the published W = 1/G_l divided by the weight-aware W = K_l/G_l^2; structural, so identical in every space",
+    "per_label": {
+      "by_band": {
+        "10-19": {
+          "labels": 33,
+          "mean": 1.0186,
+          "median": 1.0,
+          "quantiles": {
+            "q05": 1.0,
+            "q25": 1.0,
+            "q50": 1.0,
+            "q75": 1.0323,
+            "q95": 1.0936
+          },
+          "queries": 477
+        },
+        "20-49": {
+          "labels": 171,
+          "mean": 1.0105,
+          "median": 1.0,
+          "quantiles": {
+            "q05": 1.0,
+            "q25": 1.0,
+            "q50": 1.0,
+            "q75": 1.0164,
+            "q95": 1.048
+          },
+          "queries": 6356
+        },
+        "5-9": {
+          "labels": 19,
+          "mean": 1.0129,
+          "median": 1.0,
+          "quantiles": {
+            "q05": 1.0,
+            "q25": 1.0,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0783
+          },
+          "queries": 149
+        },
+        "50-up": {
+          "labels": 3,
+          "mean": 3.0604,
+          "median": null,
+          "note": "fewer than 5 labels: median and quantiles suppressed",
+          "quantiles": null,
+          "queries": 238
+        }
+      },
+      "max": 5.1351,
+      "q75": 1.0173,
+      "quantiles": {
+        "q05": 1.0,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 1.0173,
+        "q95": 1.0612
+      }
+    },
+    "per_pair": {
+      "by_band": {
+        "10-19": {
+          "labels": 33,
+          "mean": 1.0186,
+          "median": 1.0,
+          "pairs": 238260,
+          "quantiles": {
+            "q05": 1.0,
+            "q25": 1.0,
+            "q50": 1.0,
+            "q75": 1.0323,
+            "q95": 1.0976
+          }
+        },
+        "20-49": {
+          "labels": 171,
+          "mean": 1.0105,
+          "median": 1.0,
+          "pairs": 1234620,
+          "quantiles": {
+            "q05": 1.0,
+            "q25": 1.0,
+            "q50": 1.0,
+            "q75": 1.0164,
+            "q95": 1.0492
+          }
+        },
+        "5-9": {
+          "labels": 19,
+          "mean": 1.0129,
+          "median": 1.0,
+          "pairs": 137180,
+          "quantiles": {
+            "q05": 1.0,
+            "q25": 1.0,
+            "q50": 1.0,
+            "q75": 1.0,
+            "q95": 1.0909
+          }
+        },
+        "50-up": {
+          "labels": 3,
+          "mean": 3.0603,
+          "median": null,
+          "note": "fewer than 5 labels: median and quantiles suppressed",
+          "pairs": 21660,
+          "quantiles": null
+        }
+      },
+      "max": 5.1429,
+      "mean": 1.0391,
+      "quantiles": {
+        "q05": 1.0,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 1.0174,
+        "q95": 1.0612
+      },
+      "share_above_1.001": 0.3715
+    }
+  }
+}

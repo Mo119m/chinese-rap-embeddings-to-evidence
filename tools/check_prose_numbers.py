@@ -207,6 +207,46 @@ REGISTRY = [
         "path": "/scale/semantic_raw/window_at_selected_beta/effective_sample_size/q50",
         "render": "{:.1f}",
     },
+    {
+        "claim": "CSLS on the raw word space",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "from cross-lingual retrieval - takes the raw word space from 0.4963 to **0.5414**",
+        "artifact": "results/retrieval-v3/hubness_and_centrality.json",
+        "path": "/spaces/words_raw/systems/csls/query_weighted",
+        "render": "{:.4f}",
+    },
+    {
+        "claim": "the N_10 skewness ordering puts characters first",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "characters, raw | 2.145",
+        "artifact": "results/retrieval-v3/hubness_and_centrality.json",
+        "path": "/spaces/chars_raw/hubness/prototype/n10/skewness",
+        "render": "{:.3f}",
+    },
+    {
+        "claim": "the prototype's band gradient in raw words",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "prototype's gradient is positive in every space and reaches +0.4332 in raw words",
+        "artifact": "results/retrieval-v3/calibrated_profile_scorer.json",
+        "path": "/spaces/words_raw/band_gradient/value/prototype",
+        "render": "{:.4f}",
+    },
+    {
+        "claim": "labels whose identity gap is zero by construction",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "**142 of the 226 labels have no multi-song component at all**",
+        "artifact": "results/retrieval-v3/profile_norm_identity.json",
+        "path": "/identity_is_algebraic/labels_whose_gap_is_zero_by_construction",
+        "render": "{:d}",
+    },
+    {
+        "claim": "the share of the width factor attributable to the estimand",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "attributable to the ESTIMAND has median 0.132",
+        "artifact": "results/retrieval-v3/estimand_and_calibration.json",
+        "path": "/gap_1_width_factor/summary/share_of_log_total_attributable_to_the_estimand/median",
+        "render": "{:g}",
+    },
 ]
 
 
@@ -215,6 +255,7 @@ REGISTRY = [
 def artifact_values(root: Path) -> set[str]:
     """Every scalar an artifact publishes, as the strings a person would write."""
     seen: set[str] = set()
+    skipped: list[str] = []
 
     def add(value):
         if isinstance(value, bool) or value is None:
@@ -228,9 +269,14 @@ def artifact_values(root: Path) -> set[str]:
                 seen.add(f"{value:.{digits}f}")
                 seen.add(f"{value * 100:.{digits}f}")
         elif isinstance(value, str):
+            # A band label like "5-9" passes an isdigit test after the punctuation is stripped and
+            # then explodes in int(); the outer handler used to swallow that and silently truncate
+            # the whole file's values, so parse defensively instead of guessing from the shape.
             text = value.strip().replace(",", "")
-            if text.replace(".", "", 1).replace("-", "", 1).isdigit():
-                add(float(text) if "." in text else int(text))
+            try:
+                add(float(text) if "." in text or "e" in text.lower() else int(text))
+            except ValueError:
+                return
 
     def walk(node):
         if isinstance(node, dict):
@@ -252,8 +298,14 @@ def artifact_values(root: Path) -> set[str]:
                         for row in csv.reader(handle):
                             for cell in row:
                                 add(cell)
-            except Exception:
+            except Exception as failure:
+                # Never swallow this silently: a skipped artifact truncates the index, and tier 1
+                # then reports its numbers as unsourced while missing prose that really is stale.
+                skipped.append(f"{path.relative_to(root)}: {type(failure).__name__} {failure}")
                 continue
+    if skipped:
+        raise SystemExit("artifacts could not be indexed, so tier 1 would be reading a truncated "
+                         "set of published values:\n  " + "\n  ".join(skipped))
     return seen
 
 

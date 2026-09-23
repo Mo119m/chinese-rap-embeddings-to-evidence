@@ -389,6 +389,38 @@
       "reading": "the pre-declared dimensionless rule fails (beta* x sigma spans 20.39 times against 20 for beta alone); one global c is non-inferior in 1 of 5 spaces; the measured effective sample size of the attention weights is 22.7 to 39.4 songs at the median, refuting a draft prediction of 2 to 10",
       "sha256": "365123d724c2652568b2566a5e7e6e6c6833f6b0cd607a9e701527d3402b9dcd",
       "written": "2026-09-22T17:47"
+    },
+    "hubness_and_centrality.json": {
+      "arm": "hubness_and_centrality_v3 (which labels are answered too often, and what makes a label a hub)",
+      "run": "2026-09-23, CPU, 30 min; the prototype reproduces every published MRR; the k-occupancy, CSLS, mutual-proximity, coherence and regression estimators are checked against independent definitions, and the regression test plants both signs so the rule can fail; synthetic test tests/test_hubness_and_centrality.py",
+      "reading": "hubness is present in all five spaces but the lexical spaces are the hubby ones (N_10 skewness 2.15 characters, 1.82 words against 0.84 raw semantic), refuting a draft's predicted ordering; our own prediction that the profile norm carries a negative association with hub occurrence is REFUTED (positive in all five spaces) because at fixed component count the norm is the resultant length; the identified re-specification R2b, declared after that failure, confirms coherence positive and estimation noise negative in four of five spaces; and CSLS takes the raw word space from 0.4963 to 0.5414, level with the whitened word SVD, so much of what whitening buys is de-hubbing",
+      "completed_in_pipeline": true,
+      "sha256": "2d1c50b66a49d4245ad80cd7fdba7a1d3ac22f0902b56e342073953071c864cf",
+      "written": "2026-09-23T15:30"
+    },
+    "profile_norm_identity.json": {
+      "arm": "profile_norm_identity_v3 (the profile-norm decomposition is algebra; pooling, W, the floor and the degeneracy rate are not)",
+      "run": "2026-09-23, CPU, 30 min; every published s^2 and every published floor-hit count reproduces exactly, and every prototype, noise_corrected and band MRR reproduces with a worst band gap of 0.00000; synthetic test tests/test_profile_norm_identity.py, which shows the gap equals its closed form and is identically zero with singleton components",
+      "reading": "E||m_l||^2 = r_l^2 + s^2 W_l is an algebraic identity once r_hat^2 is the component-level U-statistic, so no verdict on it is reported: 142 of the 226 labels have no multi-song component and their gap is exactly zero by construction. Of the four testable questions: pooling one s^2 is DEFENSIBLE in all five spaces; the published W = 1/G_l is INADEQUATE but replacing it stays inside the 0.005 margin; the floor binds on whole label columns (19 in raw words, none in raw semantic) and gains +0.265 among the queries whose own label is floored, yet is not established as the mechanism of the published change, which is a gain in the raw lexical spaces and a cost in the whitened ones",
+      "completed_in_pipeline": true,
+      "sha256": "cdd966b63c7dd3834e4871aea58cf0dee993acfcd6eb0d86391a7e87edbafa0f",
+      "written": "2026-09-23T15:30"
+    },
+    "calibrated_profile_scorer.json": {
+      "arm": "calibrated_profile_scorer_v3 (S_C = q.m/sqrt(r_tilde^2), the bias-corrected profile scorer)",
+      "run": "2026-09-23, CPU, 29 min; the prototype, znorm, noise_corrected and exemplar_mean MRRs and all four band MRRs reproduce in every space; the scorers and the empirical-Bayes jackknife are checked against literal loops and the estimator against known r^2 at the corpus's n and d; synthetic test tests/test_calibrated_profile_scorer.py",
+      "reading": "the prototype's 20-49-minus-5-9 band gradient is positive in every space and reaches +0.4332 in raw words; S_C flattens it to between -0.11 and -0.01 and the un-normalised dot overshoots further, while a cohort Z-score lands closest to zero in the lexical spaces. S_C closes the label-macro penalty (+0.0647 to -0.0107 in raw words) but is superior to the prototype only there, so R1 is not met in any space. The pre-registered null R4 did not fire: r_hat^2 <= 0 has share 0.000 in the 5-9 band, so the small band is read as mis-scored rather than under-determined. No correction is uniformly best and the choice among them is a fairness choice",
+      "completed_in_pipeline": true,
+      "sha256": "03052fe677f743a58cd4dee0a9a3acd5d5a996374c12754467328f5cb196dcac",
+      "written": "2026-09-23T15:30"
+    },
+    "estimand_and_calibration.json": {
+      "arm": "estimand_and_calibration_v3 (the estimand x resampling 2x2, and a likelihood-ratio reading)",
+      "run": "2026-09-23, CPU, 31 min; the published two-stage intervals and paired_group_bootstrap reproduce exactly, point and interval; AUC, C_llr and min-C_llr are checked against brute force, against an exhaustive monotone-partition search and against sklearn's isotonic regression, with the known limiting cases; synthetic test tests/test_estimand_and_calibration.py",
+      "reading": "the 1.6-to-3.0 width factor is withdrawn as a reusable correction: over 14 contrasts the total factor runs 1.85 to 4.32 and the share of it attributable to the ESTIMAND rather than the resampling has median 0.132 and can be negative, so roughly seven eighths of the widening is the resampling. On the detection reading, no calibration is an established improvement (min-C_llr down as well as MRR up) and none is a ranking gain bought with a calibration loss; the three estimands disagree about the verdict for 8 of the 10 system-space pairs",
+      "completed_in_pipeline": true,
+      "sha256": "f62b4c9ec5feb2213a94a01ef30108e31888aa821f4af165a661236b3b51f61b",
+      "written": "2026-09-23T15:30"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",
