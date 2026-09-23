@@ -1312,6 +1312,77 @@ leakage groups; 592 songs (8.2%) carry a collaboration title; 1,610 chunks (6.6%
 their own label; a chunk's nearest content rival (another label) is closer than its nearest
 same-label chunk in 91.0% of cases (median cosine 0.725 vs 0.663).
 
+## A note on estimands, and what it does and does not change (2026-09-23)
+
+A pre-submission audit of our own scripts found a reporting inconsistency that runs through
+almost every arm in this directory, and it is recorded here rather than silently repaired,
+because the numbers themselves are not wrong - only their juxtaposition is.
+
+Three estimands are in play. **Query-weighted** MRR gives each of the 7,220 queries weight one.
+**Component-weighted** MRR gives each (leakage group, label) component weight one, which is what
+the protocol's per-song weights implement. **Label-macro** MRR takes the component-weighted mean
+within each label and then the plain mean over the 226 labels.
+
+The convention, now stated explicitly: in every JSON in this directory, a system's `mrr` field is
+**query-weighted** unless its name says otherwise, while every interval produced by
+`paired_group_bootstrap` - that is, every `paired_contrasts` entry, and its `mrr_difference`
+point estimate - is **component-weighted**. Both are correct, and each `mrr_difference` is
+consistent with its own interval. What a reader must not do is subtract two printed `mrr` levels
+and expect the published `mrr_difference`: those are two different estimands.
+
+`estimand_two_stage.json` records both for the nine headline systems, so the size of the
+discrepancy is measurable rather than a worry:
+
+| system | query-weighted | component-weighted | gap | label-macro | gap |
+|---|---|---|---|---|---|
+| fusion of the two whitened spaces | 0.5854 | 0.5846 | -0.0008 | 0.5608 | -0.0246 |
+| word SVD-1024, within-label whitening | 0.5426 | 0.5452 | +0.0026 | 0.5121 | -0.0305 |
+| words, raw | 0.4963 | 0.5020 | +0.0057 | 0.4316 | -0.0647 |
+| semantic, chunks whitened then averaged | 0.4271 | 0.4247 | -0.0024 | 0.4174 | -0.0097 |
+| characters, raw | 0.4266 | 0.4310 | +0.0044 | 0.3765 | -0.0501 |
+| semantic, within-label whitening | 0.4164 | 0.4136 | -0.0028 | 0.4062 | -0.0102 |
+| semantic, total whitening | 0.3996 | 0.3968 | -0.0028 | 0.3924 | -0.0072 |
+| semantic, within-label whitening on permuted labels | 0.3983 | 0.3958 | -0.0025 | 0.3919 | -0.0064 |
+| semantic, raw | 0.2997 | 0.2979 | -0.0018 | 0.2831 | -0.0166 |
+
+| contrast | component-weighted difference | query-weighted difference | gap | role |
+|---|---|---|---|---|
+| words, raw - characters, raw | +0.0711 | +0.0697 | +0.0014 | confirmatory |
+| characters, raw - semantic, raw | +0.1331 | +0.1269 | +0.0062 | confirmatory |
+| words, raw - semantic, raw | +0.2042 | +0.1966 | +0.0076 | confirmatory |
+| semantic, within-label whitening - semantic, total whitening | +0.0168 | +0.0168 | +0.0000 | confirmatory |
+| semantic, within-label whitening - semantic, within-label whitening on permuted labels | +0.0179 | +0.0181 | -0.0002 | confirmatory |
+| word SVD-1024, within-label whitening - semantic, within-label whitening | +0.1316 | +0.1262 | +0.0054 | confirmatory |
+| fusion of the two whitened spaces - words, raw | +0.0826 | +0.0891 | -0.0065 | confirmatory |
+| word SVD-1024, within-label whitening - semantic, chunks whitened then averaged | +0.1205 | +0.1155 | +0.0050 | supplementary |
+| fusion of the two whitened spaces - word SVD-1024, within-label whitening | +0.0394 | +0.0427 | -0.0033 | supplementary |
+
+So the two estimands differ by at most **0.0057** on a level and **0.0076** on a
+difference, across the nine headline systems. For the large contrasts this is immaterial: the
+word-minus-semantic gap of 0.0076 sits on an effect of 0.20. For a small effect it is not
+immaterial at all, and three published claims are in that range and are flagged here:
+
+- `label_specific_covariance.json` prints `mrr_selected` 0.4272 and `mrr_cosine_prototype` 0.4164,
+  a query-weighted gap of 0.0108, beside the paired contrast +0.0149 [+0.0088, +0.0212], which is
+  component-weighted. The 0.0041 between them is the estimand, not an error. The claim - that a
+  label-specific covariance model beats cosine - holds under both.
+- `attention_exemplar.json` reports +0.0022 [+0.0003, +0.0042] for the selected temperature in
+  whitened word SVD. That effect is smaller than the estimand gap on the headline contrasts, so
+  it must not be compared across estimands, and the whole beta curve rather than the selected
+  arm is the object to read (see the note on selection below).
+- `temperature_scale.json` declares a non-inferiority margin of 0.005 and applies it to
+  component-weighted differences, which is internally consistent; its per-space `mrr` levels are
+  query-weighted, so they must not be subtracted to reconstruct the margin test.
+
+On selection. The per-fold "selected" hyper-parameter in these arms is chosen on the other four
+folds' queries, but the folds are query folds over the same 226 labels, the same leave-group-out
+profiles and the same candidate set, so the other-folds curve is nearly the full-sample curve:
+in characters, fold 0's other-folds MRR at beta = 10 is 0.4436 against a full-sample 0.4436. A
+selected arm is therefore descriptive, not held out, and the whole parameter curve is the
+primary object. This costs nothing: every interior temperature already carries its own interval
+clear of zero (characters +0.0135 at beta 5, +0.0167 at 10, +0.0121 at 20), so the attention
+result stands at a pre-specified temperature and does not depend on the selection.
+
 ## Is the attention temperature a cosine scale? (`temperature_scale.json`, 2026-09-22)
 
 `src/temperature_scale_v3.py`, with `tests/test_temperature_scale.py` for its scorers without the corpus.
