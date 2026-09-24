@@ -1,0 +1,4352 @@
+{
+  "analysis": "twin_control_v3: a size-matched random-merge control for the within-label repeated-passage arm, and the attention gain on queries with no passage-sharing partner",
+  "arms": {
+    "control": {
+      "draws": [
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 0,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 868
+          },
+          "seed": 20261825
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 25,
+            "component_size_match": 0.9311,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 1,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 852
+          },
+          "seed": 20261826
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 2,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 867
+          },
+          "seed": 20261827
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 3,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 862
+          },
+          "seed": 20261828
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 4,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 852
+          },
+          "seed": 20261829
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 5,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 864
+          },
+          "seed": 20261830
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 6,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 857
+          },
+          "seed": 20261831
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 7,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 855
+          },
+          "seed": 20261832
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 8,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 865
+          },
+          "seed": 20261833
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 9,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 862
+          },
+          "seed": 20261834
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 10,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 854
+          },
+          "seed": 20261835
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 11,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 866
+          },
+          "seed": 20261836
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 12,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 29,
+            "multi_song_groups_after": 862
+          },
+          "seed": 20261837
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 13,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 855
+          },
+          "seed": 20261838
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 14,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 855
+          },
+          "seed": 20261839
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 15,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 857
+          },
+          "seed": 20261840
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 16,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 867
+          },
+          "seed": 20261841
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 23,
+            "component_size_match": 0.9366,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 17,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 874
+          },
+          "seed": 20261842
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 18,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 27,
+            "multi_song_groups_after": 864
+          },
+          "seed": 20261843
+        },
+        {
+          "achieved_match": {
+            "clusters_short_of_available_groups": 1,
+            "component_size_l1_distance": 24,
+            "component_size_match": 0.9339,
+            "component_size_target_mass": 363,
+            "components_lost_per_label_matches_arm_a": false,
+            "components_merged_away": 195,
+            "extra_components_lost_beyond_arm_a": -1,
+            "groups_drawn": 333,
+            "labels_whose_component_loss_differs_from_arm_a": 1,
+            "largest_component_drawn": 3
+          },
+          "draw": 19,
+          "merge": {
+            "components_after": 6694,
+            "groups_after": 5680,
+            "groups_merged_away": 195,
+            "labels_losing_groups": 91,
+            "largest_group_after": 31,
+            "multi_song_groups_after": 862
+          },
+          "seed": 20261844
+        }
+      ],
+      "over_draws": {
+        "arm_a_groups_merged_away": 184,
+        "component_size_match_median": 0.9339,
+        "component_size_match_min": 0.9311,
+        "components_lost_per_label_matches_arm_a_in_every_draw": false,
+        "components_merged_away": [
+          195
+        ],
+        "groups_merged_away_max": 195,
+        "groups_merged_away_min": 195,
+        "largest_group_after_max": 31,
+        "note": "a control merge is confined to one label at a time, so it can merge away more GROUPS than arm (a) for the same number of COMPONENTS; components are the quantity the size theory is about (the protocol's weights are 1/component, so a label's effective profile count is its components) and they are matched per label and checked"
+      }
+    },
+    "merged_groups": {
+      "clusters": {
+        "cluster_cardinalities": {
+          "12": 1,
+          "2": 107,
+          "3": 17,
+          "4": 10,
+          "5": 1,
+          "6": 2
+        },
+        "clusters": 138,
+        "components_merged_away": 196,
+        "cross_group_twin_pairs_reachable_by_the_draw_pool": 0,
+        "labels_with_a_cluster": 91,
+        "merged_groups_forbidden_to_the_control": 301,
+        "merged_groups_touching_more_than_one_label": 40
+      },
+      "merge": {
+        "components_after": 6693,
+        "components_before": 6889,
+        "groups": 5691,
+        "groups_after": 5691,
+        "groups_before": 5875,
+        "groups_merged_away": 184,
+        "labels": 226,
+        "labels_dropped_single_group": 0,
+        "labels_losing_groups": 91,
+        "largest_group_after": 42,
+        "largest_group_before": 27,
+        "median_groups_in_a_label_after": 32.0,
+        "median_groups_in_a_label_before": 33.0,
+        "minimum_groups_in_a_label_after": 5,
+        "multi_song_groups_after": 852,
+        "multi_song_groups_before": 796,
+        "queries": 7220,
+        "songs_dropped_with_their_label": 0,
+        "songs_in_a_merged_group": 482
+      }
+    },
+    "published": {
+      "population": {
+        "components": 6889,
+        "groups": 5875,
+        "labels": 226,
+        "queries": 7220
+      }
+    }
+  },
+  "cell_minutes": {
+    "control_00": {
+      "chars_raw": 0.3,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.17,
+      "words_raw": 0.12
+    },
+    "control_01": {
+      "chars_raw": 0.28,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.14,
+      "words_raw": 0.15
+    },
+    "control_02": {
+      "chars_raw": 0.31,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.18,
+      "words_raw": 0.15
+    },
+    "control_03": {
+      "chars_raw": 0.31,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.24,
+      "words_raw": 0.13
+    },
+    "control_04": {
+      "chars_raw": 0.34,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.2,
+      "words_raw": 0.16
+    },
+    "control_05": {
+      "chars_raw": 0.34,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.23,
+      "words_raw": 0.17
+    },
+    "control_06": {
+      "chars_raw": 0.29,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.23,
+      "words_raw": 0.14
+    },
+    "control_07": {
+      "chars_raw": 0.34,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.24,
+      "words_raw": 0.16
+    },
+    "control_08": {
+      "chars_raw": 0.34,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.24,
+      "words_raw": 0.16
+    },
+    "control_09": {
+      "chars_raw": 0.3,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.27,
+      "words_raw": 0.19
+    },
+    "control_10": {
+      "chars_raw": 0.35,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.28,
+      "words_raw": 0.17
+    },
+    "control_11": {
+      "chars_raw": 0.36,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.25,
+      "words_raw": 0.15
+    },
+    "control_12": {
+      "chars_raw": 0.35,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.17,
+      "words_raw": 0.17
+    },
+    "control_13": {
+      "chars_raw": 0.35,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.25,
+      "words_raw": 0.17
+    },
+    "control_14": {
+      "chars_raw": 0.32,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.26,
+      "words_raw": 0.13
+    },
+    "control_15": {
+      "chars_raw": 0.35,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.21,
+      "words_raw": 0.18
+    },
+    "control_16": {
+      "chars_raw": 0.35,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.23,
+      "words_raw": 0.17
+    },
+    "control_17": {
+      "chars_raw": 0.29,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.29,
+      "words_raw": 0.15
+    },
+    "control_18": {
+      "chars_raw": 0.37,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.26,
+      "words_raw": 0.17
+    },
+    "control_19": {
+      "chars_raw": 0.36,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.22,
+      "words_raw": 0.17
+    },
+    "merged_groups": {
+      "chars_raw": 0.3,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.16,
+      "words_raw": 0.15
+    },
+    "published": {
+      "chars_raw": 0.37,
+      "semantic_raw": 0.01,
+      "semantic_whitened": 0.23,
+      "words_raw": 0.23
+    }
+  },
+  "checks": {
+    "against_published_arm_a": {
+      "chars_raw": {
+        "estimand": "query-weighted",
+        "expected": 0.4066,
+        "gap": 4e-05,
+        "passed": true,
+        "recomputed": 0.4066,
+        "tolerance": 0.0005
+      },
+      "semantic_raw": {
+        "estimand": "query-weighted",
+        "expected": 0.2918,
+        "gap": 2e-05,
+        "passed": true,
+        "recomputed": 0.2918,
+        "tolerance": 0.0005
+      },
+      "semantic_whitened": {
+        "estimand": "query-weighted",
+        "expected": 0.403,
+        "gap": 4e-05,
+        "passed": true,
+        "recomputed": 0.403,
+        "tolerance": 0.002
+      },
+      "words_raw": {
+        "estimand": "query-weighted",
+        "expected": 0.478,
+        "gap": 1e-05,
+        "passed": true,
+        "recomputed": 0.478,
+        "tolerance": 0.0005
+      }
+    },
+    "against_published_beta_curve": {
+      "chars_raw": {
+        "0": {
+          "expected": 0.4266,
+          "gap": 1e-05,
+          "passed": true,
+          "recomputed": 0.4266
+        },
+        "1": {
+          "expected": 0.4302,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.4302
+        },
+        "10": {
+          "expected": 0.4436,
+          "gap": 4e-05,
+          "passed": true,
+          "recomputed": 0.4436
+        },
+        "100": {
+          "expected": 0.3061,
+          "gap": 2e-05,
+          "passed": true,
+          "recomputed": 0.3061
+        },
+        "2": {
+          "expected": 0.4333,
+          "gap": 5e-05,
+          "passed": true,
+          "recomputed": 0.4333
+        },
+        "20": {
+          "expected": 0.4391,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.4391
+        },
+        "5": {
+          "expected": 0.4404,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.4404
+        },
+        "50": {
+          "expected": 0.3997,
+          "gap": 4e-05,
+          "passed": true,
+          "recomputed": 0.3997
+        },
+        "selected": {
+          "beta_by_fold": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0
+          ],
+          "expected": 0.4436,
+          "gap": 4e-05,
+          "passed": true,
+          "recomputed": 0.4436
+        }
+      },
+      "semantic_whitened": {
+        "0": {
+          "expected": 0.4164,
+          "gap": 2e-05,
+          "passed": true,
+          "recomputed": 0.4164
+        },
+        "1": {
+          "expected": 0.4289,
+          "gap": 0.0,
+          "passed": true,
+          "recomputed": 0.4289
+        },
+        "10": {
+          "expected": 0.4484,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.4484
+        },
+        "100": {
+          "expected": 0.3709,
+          "gap": 0.0,
+          "passed": true,
+          "recomputed": 0.3709
+        },
+        "2": {
+          "expected": 0.4355,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.4355
+        },
+        "20": {
+          "expected": 0.4357,
+          "gap": 0.0,
+          "passed": true,
+          "recomputed": 0.4357
+        },
+        "5": {
+          "expected": 0.4496,
+          "gap": 2e-05,
+          "passed": true,
+          "recomputed": 0.4496
+        },
+        "50": {
+          "expected": 0.394,
+          "gap": 4e-05,
+          "passed": true,
+          "recomputed": 0.394
+        },
+        "selected": {
+          "beta_by_fold": [
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            10.0
+          ],
+          "expected": 0.4481,
+          "gap": 2e-05,
+          "passed": true,
+          "recomputed": 0.4481
+        }
+      },
+      "words_raw": {
+        "0": {
+          "expected": 0.4963,
+          "gap": 0.0,
+          "passed": true,
+          "recomputed": 0.4963
+        },
+        "1": {
+          "expected": 0.4992,
+          "gap": 1e-05,
+          "passed": true,
+          "recomputed": 0.4992
+        },
+        "10": {
+          "expected": 0.5093,
+          "gap": 5e-05,
+          "passed": true,
+          "recomputed": 0.5093
+        },
+        "100": {
+          "expected": 0.3611,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.3611
+        },
+        "2": {
+          "expected": 0.5011,
+          "gap": 0.0,
+          "passed": true,
+          "recomputed": 0.5011
+        },
+        "20": {
+          "expected": 0.5139,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.5139
+        },
+        "5": {
+          "expected": 0.5047,
+          "gap": 4e-05,
+          "passed": true,
+          "recomputed": 0.5047
+        },
+        "50": {
+          "expected": 0.4952,
+          "gap": 2e-05,
+          "passed": true,
+          "recomputed": 0.4952
+        },
+        "selected": {
+          "beta_by_fold": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "expected": 0.5139,
+          "gap": 3e-05,
+          "passed": true,
+          "recomputed": 0.5139
+        }
+      }
+    },
+    "against_published_prototype": {
+      "chars_raw": {
+        "estimand": "query-weighted",
+        "expected": 0.4266,
+        "gap": 1e-05,
+        "passed": true,
+        "recomputed": 0.4266,
+        "tolerance": 0.0005
+      },
+      "semantic_raw": {
+        "estimand": "query-weighted",
+        "expected": 0.2997,
+        "gap": 2e-05,
+        "passed": true,
+        "recomputed": 0.2997,
+        "tolerance": 0.0005
+      },
+      "semantic_whitened": {
+        "estimand": "query-weighted",
+        "expected": 0.4164,
+        "gap": 2e-05,
+        "passed": true,
+        "recomputed": 0.4164,
+        "tolerance": 0.002
+      },
+      "words_raw": {
+        "estimand": "query-weighted",
+        "expected": 0.4963,
+        "gap": 0.0,
+        "passed": true,
+        "recomputed": 0.4963,
+        "tolerance": 0.0005
+      }
+    },
+    "against_published_top_weight_share": {
+      "chars_raw": {
+        "expected": {
+          "q50": 0.0438,
+          "q95": 0.2319
+        },
+        "passed": true,
+        "quintile_edges": [
+          0.03289,
+          0.03958,
+          0.04972,
+          0.07319
+        ],
+        "recomputed": {
+          "q50": 0.0438,
+          "q95": 0.2319
+        },
+        "tolerance": 0.001
+      },
+      "semantic_whitened": {
+        "expected": {
+          "q50": 0.0498,
+          "q95": 0.2075
+        },
+        "passed": true,
+        "quintile_edges": [
+          0.03636,
+          0.04451,
+          0.05778,
+          0.0904
+        ],
+        "recomputed": {
+          "q50": 0.0498,
+          "q95": 0.2075
+        },
+        "tolerance": 0.001
+      },
+      "words_raw": {
+        "expected": {
+          "q50": 0.0521,
+          "q95": 0.4471
+        },
+        "passed": true,
+        "quintile_edges": [
+          0.03837,
+          0.04654,
+          0.06022,
+          0.09596
+        ],
+        "recomputed": {
+          "q50": 0.0521,
+          "q95": 0.4471
+        },
+        "tolerance": 0.001
+      }
+    },
+    "beta_zero_against_protocol_scorer": {
+      "dense": 8.881784197001252e-16,
+      "sparse": 4.416535491352791e-07
+    },
+    "brute_force_attention_gap": {
+      "chars_raw": 1.5265566588595902e-16,
+      "semantic_raw": 6.661338147750939e-16,
+      "words_raw": 1.5265566588595902e-16
+    },
+    "probe_queries": 300,
+    "songs_per_label_bands": {
+      "10-19": [
+        33,
+        477
+      ],
+      "20-49": [
+        171,
+        6356
+      ],
+      "5-9": [
+        19,
+        149
+      ],
+      "50-up": [
+        3,
+        238
+      ]
+    },
+    "worst_squared_row_norm_error": {
+      "chars_raw": 5.6988964658444274e-08,
+      "semantic_raw": 2.2802503996111056e-07,
+      "words_raw": 5.231327615540238e-08
+    }
+  },
+  "clause_1_complement_gain": {
+    "chars_raw": {
+      "beta_by_fold": [
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "by_top_attention_weight_quintile": {
+        "edges": [
+          0.03289,
+          0.03958,
+          0.04972,
+          0.07319
+        ],
+        "sets": {
+          "complement": {
+            "0": {
+              "ci95_half_width": 0.0065,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  -0.0274,
+                  -0.0144
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": -0.0206,
+                "system": "attention_selected"
+              },
+              "labels": 96,
+              "queries": 1275,
+              "reading": {
+                "ci95": [
+                  -0.0274,
+                  -0.0144
+                ],
+                "point": -0.0206,
+                "positive_clear_of_zero": false,
+                "verdict": "bounded below the margin of 0.005: no gain worth reading here",
+                "whole_interval_below_margin": true
+              }
+            },
+            "1": {
+              "ci95_half_width": 0.0068,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  -0.0128,
+                  0.0008
+                ],
+                "excludes_zero": false,
+                "minus": "prototype",
+                "mrr_difference": -0.006,
+                "system": "attention_selected"
+              },
+              "labels": 124,
+              "queries": 1389,
+              "reading": {
+                "ci95": [
+                  -0.0128,
+                  0.0008
+                ],
+                "point": -0.006,
+                "positive_clear_of_zero": false,
+                "verdict": "bounded below the margin of 0.005: no gain worth reading here",
+                "whole_interval_below_margin": true
+              }
+            },
+            "2": {
+              "ci95_half_width": 0.00825,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0079,
+                  0.0244
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.016,
+                "system": "attention_selected"
+              },
+              "labels": 148,
+              "queries": 1401,
+              "reading": {
+                "ci95": [
+                  0.0079,
+                  0.0244
+                ],
+                "point": 0.016,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "3": {
+              "ci95_half_width": 0.00865,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0309,
+                  0.0482
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0395,
+                "system": "attention_selected"
+              },
+              "labels": 166,
+              "queries": 1366,
+              "reading": {
+                "ci95": [
+                  0.0309,
+                  0.0482
+                ],
+                "point": 0.0395,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "4": {
+              "ci95_half_width": 0.01105,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.041,
+                  0.0631
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0521,
+                "system": "attention_selected"
+              },
+              "labels": 159,
+              "queries": 1093,
+              "reading": {
+                "ci95": [
+                  0.041,
+                  0.0631
+                ],
+                "point": 0.0521,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            }
+          },
+          "has_a_partner": {
+            "0": {
+              "counts_for_the_rule": false,
+              "labels": 7,
+              "queries": 169,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "1": {
+              "counts_for_the_rule": false,
+              "labels": 10,
+              "queries": 55,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "2": {
+              "counts_for_the_rule": false,
+              "labels": 21,
+              "queries": 43,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "3": {
+              "counts_for_the_rule": false,
+              "labels": 33,
+              "queries": 78,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "4": {
+              "ci95_half_width": 0.02205,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0177,
+                  0.0618
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0387,
+                "system": "attention_selected"
+              },
+              "labels": 98,
+              "queries": 351,
+              "reading": {
+                "ci95": [
+                  0.0177,
+                  0.0618
+                ],
+                "point": 0.0387,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            }
+          }
+        },
+        "stratifier": "the query's own top attention weight at its pre-specified beta, the quantity temperature_scale_v3 publishes as top_weight_share; a function of the query's cosine profile in a fixed space, not of either system's ranks"
+      },
+      "complement_by_songs_per_label_band": {
+        "banding": "songs per label (label_size_calibration_v3's BANDS), NOT components per label",
+        "bands": {
+          "10-19": {
+            "ci95_half_width": 0.01275,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                0.0144,
+                0.0399
+              ],
+              "excludes_zero": true,
+              "minus": "prototype",
+              "mrr_difference": 0.0261,
+              "system": "attention_selected"
+            },
+            "labels": 33,
+            "queries": 428,
+            "reading": {
+              "ci95": [
+                0.0144,
+                0.0399
+              ],
+              "point": 0.0261,
+              "positive_clear_of_zero": true,
+              "verdict": "survives: positive with the interval clear of zero",
+              "whole_interval_below_margin": false
+            }
+          },
+          "20-49": {
+            "ci95_half_width": 0.00405,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                0.0106,
+                0.0187
+              ],
+              "excludes_zero": true,
+              "minus": "prototype",
+              "mrr_difference": 0.0147,
+              "system": "attention_selected"
+            },
+            "labels": 171,
+            "queries": 5951,
+            "reading": {
+              "ci95": [
+                0.0106,
+                0.0187
+              ],
+              "point": 0.0147,
+              "positive_clear_of_zero": true,
+              "verdict": "survives: positive with the interval clear of zero",
+              "whole_interval_below_margin": false
+            }
+          },
+          "5-9": {
+            "ci95_half_width": 0.01295,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                -0.0179,
+                0.008
+              ],
+              "excludes_zero": false,
+              "minus": "prototype",
+              "mrr_difference": -0.0032,
+              "system": "attention_selected"
+            },
+            "labels": 19,
+            "queries": 143,
+            "reading": {
+              "ci95": [
+                -0.0179,
+                0.008
+              ],
+              "point": -0.0032,
+              "positive_clear_of_zero": false,
+              "verdict": "undecided: the interval includes zero and reaches above the margin",
+              "whole_interval_below_margin": false
+            }
+          },
+          "50-up": {
+            "counts_for_the_rule": false,
+            "labels": 1,
+            "queries": 2,
+            "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+          }
+        }
+      },
+      "concentration_reading": {
+        "bottom_quintile": "bounded below the margin of 0.005: no gain worth reading here",
+        "bottom_quintile_ci95_half_width": null,
+        "top_quintile": "survives: positive with the interval clear of zero",
+        "top_quintile_ci95_half_width": null,
+        "verdict": "consistent with a residual duplicate contribution: the gain survives only in the top-weight quintile and is bounded below the margin where attention is spread"
+      },
+      "gain_on_all_queries_against_published": {
+        "estimand": "component-weighted (the published estimand)",
+        "expected": 0.0167,
+        "gap": 0.0,
+        "passed": true,
+        "recomputed": 0.0167,
+        "tolerance": 0.001,
+        "tolerance_note": "twice the level tolerance: a contrast is a difference of two levels"
+      },
+      "sets": {
+        "all": {
+          "ci95_half_width": 0.00355,
+          "counts_for_the_rule": true,
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0131,
+              0.0202
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0167,
+            "system": "attention_selected"
+          },
+          "labels": 226,
+          "prototype_mrr_component_weighted": 0.431,
+          "prototype_mrr_query_weighted": 0.4266,
+          "queries": 7220,
+          "reading": {
+            "ci95": [
+              0.0131,
+              0.0202
+            ],
+            "point": 0.0167,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.4476,
+          "selected_mrr_query_weighted": 0.4436
+        },
+        "complement": {
+          "ci95_half_width": 0.00385,
+          "counts_for_the_rule": true,
+          "curve_shape": "interior maximum at beta 10",
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0113,
+              0.019
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0151,
+            "system": "attention_selected"
+          },
+          "labels": 224,
+          "mrr_by_beta_component_weighted": {
+            "0": 0.4111,
+            "1": 0.4137,
+            "10": 0.4262,
+            "100": 0.2831,
+            "2": 0.4165,
+            "20": 0.4214,
+            "5": 0.4233,
+            "50": 0.3807
+          },
+          "prototype_mrr_component_weighted": 0.4111,
+          "prototype_mrr_label_macro": 0.3507,
+          "prototype_mrr_query_weighted": 0.4097,
+          "queries": 6524,
+          "reading": {
+            "ci95": [
+              0.0113,
+              0.019
+            ],
+            "point": 0.0151,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.4262,
+          "selected_mrr_label_macro": 0.3671,
+          "selected_mrr_query_weighted": 0.425
+        },
+        "has_a_partner": {
+          "ci95_half_width": 0.019,
+          "counts_for_the_rule": true,
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0211,
+              0.0591
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0385,
+            "system": "attention_selected"
+          },
+          "labels": 116,
+          "prototype_mrr_component_weighted": 0.7072,
+          "prototype_mrr_query_weighted": 0.5851,
+          "queries": 696,
+          "reading": {
+            "ci95": [
+              0.0211,
+              0.0591
+            ],
+            "point": 0.0385,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.7457,
+          "selected_mrr_query_weighted": 0.618
+        }
+      }
+    },
+    "semantic_whitened": {
+      "beta_by_fold": [
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        10.0
+      ],
+      "by_top_attention_weight_quintile": {
+        "edges": [
+          0.03636,
+          0.04451,
+          0.05778,
+          0.0904
+        ],
+        "sets": {
+          "complement": {
+            "0": {
+              "ci95_half_width": 0.00655,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  -0.0013,
+                  0.0118
+                ],
+                "excludes_zero": false,
+                "minus": "prototype",
+                "mrr_difference": 0.005,
+                "system": "attention_selected"
+              },
+              "labels": 96,
+              "queries": 1242,
+              "reading": {
+                "ci95": [
+                  -0.0013,
+                  0.0118
+                ],
+                "point": 0.005,
+                "positive_clear_of_zero": false,
+                "verdict": "undecided: the interval includes zero and reaches above the margin",
+                "whole_interval_below_margin": false
+              }
+            },
+            "1": {
+              "ci95_half_width": 0.0083,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0147,
+                  0.0313
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0228,
+                "system": "attention_selected"
+              },
+              "labels": 130,
+              "queries": 1380,
+              "reading": {
+                "ci95": [
+                  0.0147,
+                  0.0313
+                ],
+                "point": 0.0228,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "2": {
+              "ci95_half_width": 0.00995,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0168,
+                  0.0367
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0265,
+                "system": "attention_selected"
+              },
+              "labels": 153,
+              "queries": 1368,
+              "reading": {
+                "ci95": [
+                  0.0168,
+                  0.0367
+                ],
+                "point": 0.0265,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "3": {
+              "ci95_half_width": 0.01145,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0288,
+                  0.0517
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0402,
+                "system": "attention_selected"
+              },
+              "labels": 186,
+              "queries": 1358,
+              "reading": {
+                "ci95": [
+                  0.0288,
+                  0.0517
+                ],
+                "point": 0.0402,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "4": {
+              "ci95_half_width": 0.0144,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0508,
+                  0.0796
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0653,
+                "system": "attention_selected"
+              },
+              "labels": 205,
+              "queries": 1176,
+              "reading": {
+                "ci95": [
+                  0.0508,
+                  0.0796
+                ],
+                "point": 0.0653,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            }
+          },
+          "has_a_partner": {
+            "0": {
+              "ci95_half_width": 0.03905,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  -0.0788,
+                  -0.0007
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": -0.0376,
+                "system": "attention_selected"
+              },
+              "labels": 12,
+              "queries": 202,
+              "reading": {
+                "ci95": [
+                  -0.0788,
+                  -0.0007
+                ],
+                "point": -0.0376,
+                "positive_clear_of_zero": false,
+                "verdict": "bounded below the margin of 0.005: no gain worth reading here",
+                "whole_interval_below_margin": true
+              }
+            },
+            "1": {
+              "counts_for_the_rule": false,
+              "labels": 30,
+              "queries": 64,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "2": {
+              "counts_for_the_rule": false,
+              "labels": 34,
+              "queries": 76,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "3": {
+              "counts_for_the_rule": false,
+              "labels": 46,
+              "queries": 86,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "4": {
+              "ci95_half_width": 0.037,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0887,
+                  0.1627
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.1248,
+                "system": "attention_selected"
+              },
+              "labels": 86,
+              "queries": 268,
+              "reading": {
+                "ci95": [
+                  0.0887,
+                  0.1627
+                ],
+                "point": 0.1248,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            }
+          }
+        },
+        "stratifier": "the query's own top attention weight at its pre-specified beta, the quantity temperature_scale_v3 publishes as top_weight_share; a function of the query's cosine profile in a fixed space, not of either system's ranks"
+      },
+      "complement_by_songs_per_label_band": {
+        "banding": "songs per label (label_size_calibration_v3's BANDS), NOT components per label",
+        "bands": {
+          "10-19": {
+            "ci95_half_width": 0.018,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                -0.0083,
+                0.0277
+              ],
+              "excludes_zero": false,
+              "minus": "prototype",
+              "mrr_difference": 0.0091,
+              "system": "attention_selected"
+            },
+            "labels": 33,
+            "queries": 428,
+            "reading": {
+              "ci95": [
+                -0.0083,
+                0.0277
+              ],
+              "point": 0.0091,
+              "positive_clear_of_zero": false,
+              "verdict": "undecided: the interval includes zero and reaches above the margin",
+              "whole_interval_below_margin": false
+            }
+          },
+          "20-49": {
+            "ci95_half_width": 0.00465,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                0.0298,
+                0.0391
+              ],
+              "excludes_zero": true,
+              "minus": "prototype",
+              "mrr_difference": 0.0345,
+              "system": "attention_selected"
+            },
+            "labels": 171,
+            "queries": 5951,
+            "reading": {
+              "ci95": [
+                0.0298,
+                0.0391
+              ],
+              "point": 0.0345,
+              "positive_clear_of_zero": true,
+              "verdict": "survives: positive with the interval clear of zero",
+              "whole_interval_below_margin": false
+            }
+          },
+          "5-9": {
+            "ci95_half_width": 0.02885,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                -0.0577,
+                0.0
+              ],
+              "excludes_zero": false,
+              "minus": "prototype",
+              "mrr_difference": -0.0292,
+              "system": "attention_selected"
+            },
+            "labels": 19,
+            "queries": 143,
+            "reading": {
+              "ci95": [
+                -0.0577,
+                0.0
+              ],
+              "point": -0.0292,
+              "positive_clear_of_zero": false,
+              "verdict": "bounded below the margin of 0.005: no gain worth reading here",
+              "whole_interval_below_margin": true
+            }
+          },
+          "50-up": {
+            "counts_for_the_rule": false,
+            "labels": 1,
+            "queries": 2,
+            "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+          }
+        }
+      },
+      "concentration_reading": {
+        "bottom_quintile": "undecided: the interval includes zero and reaches above the margin",
+        "bottom_quintile_ci95_half_width": null,
+        "top_quintile": "survives: positive with the interval clear of zero",
+        "top_quintile_ci95_half_width": null,
+        "verdict": "undecided: the quintiles do not separate"
+      },
+      "gain_on_all_queries_against_published": {
+        "estimand": "component-weighted (the published estimand)",
+        "expected": 0.0338,
+        "gap": 0.0,
+        "passed": true,
+        "recomputed": 0.0338,
+        "tolerance": 0.004,
+        "tolerance_note": "twice the level tolerance: a contrast is a difference of two levels"
+      },
+      "sets": {
+        "all": {
+          "ci95_half_width": 0.00465,
+          "counts_for_the_rule": true,
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0291,
+              0.0384
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0338,
+            "system": "attention_selected"
+          },
+          "labels": 226,
+          "prototype_mrr_component_weighted": 0.4136,
+          "prototype_mrr_query_weighted": 0.4164,
+          "queries": 7220,
+          "reading": {
+            "ci95": [
+              0.0291,
+              0.0384
+            ],
+            "point": 0.0338,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.4474,
+          "selected_mrr_query_weighted": 0.4481
+        },
+        "complement": {
+          "ci95_half_width": 0.00465,
+          "counts_for_the_rule": true,
+          "curve_shape": "interior maximum at beta 5",
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.027,
+              0.0363
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0315,
+            "system": "attention_selected"
+          },
+          "labels": 224,
+          "mrr_by_beta_component_weighted": {
+            "0": 0.3968,
+            "1": 0.4073,
+            "10": 0.4287,
+            "100": 0.3485,
+            "2": 0.414,
+            "20": 0.4164,
+            "5": 0.4298,
+            "50": 0.3733
+          },
+          "prototype_mrr_component_weighted": 0.3968,
+          "prototype_mrr_label_macro": 0.3901,
+          "prototype_mrr_query_weighted": 0.3975,
+          "queries": 6524,
+          "reading": {
+            "ci95": [
+              0.027,
+              0.0363
+            ],
+            "point": 0.0315,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.4283,
+          "selected_mrr_label_macro": 0.4142,
+          "selected_mrr_query_weighted": 0.429
+        },
+        "has_a_partner": {
+          "ci95_half_width": 0.0222,
+          "counts_for_the_rule": true,
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0444,
+              0.0888
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.066,
+            "system": "attention_selected"
+          },
+          "labels": 116,
+          "prototype_mrr_component_weighted": 0.647,
+          "prototype_mrr_query_weighted": 0.5931,
+          "queries": 696,
+          "reading": {
+            "ci95": [
+              0.0444,
+              0.0888
+            ],
+            "point": 0.066,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.713,
+          "selected_mrr_query_weighted": 0.6271
+        }
+      }
+    },
+    "words_raw": {
+      "beta_by_fold": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0
+      ],
+      "by_top_attention_weight_quintile": {
+        "edges": [
+          0.03837,
+          0.04654,
+          0.06022,
+          0.09596
+        ],
+        "sets": {
+          "complement": {
+            "0": {
+              "ci95_half_width": 0.0078,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  -0.0231,
+                  -0.0075
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": -0.0151,
+                "system": "attention_selected"
+              },
+              "labels": 102,
+              "queries": 1244,
+              "reading": {
+                "ci95": [
+                  -0.0231,
+                  -0.0075
+                ],
+                "point": -0.0151,
+                "positive_clear_of_zero": false,
+                "verdict": "bounded below the margin of 0.005: no gain worth reading here",
+                "whole_interval_below_margin": true
+              }
+            },
+            "1": {
+              "ci95_half_width": 0.0067,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  -0.0068,
+                  0.0066
+                ],
+                "excludes_zero": false,
+                "minus": "prototype",
+                "mrr_difference": -0.0005,
+                "system": "attention_selected"
+              },
+              "labels": 133,
+              "queries": 1416,
+              "reading": {
+                "ci95": [
+                  -0.0068,
+                  0.0066
+                ],
+                "point": -0.0005,
+                "positive_clear_of_zero": false,
+                "verdict": "undecided: the interval includes zero and reaches above the margin",
+                "whole_interval_below_margin": false
+              }
+            },
+            "2": {
+              "ci95_half_width": 0.0083,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0076,
+                  0.0242
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.016,
+                "system": "attention_selected"
+              },
+              "labels": 155,
+              "queries": 1413,
+              "reading": {
+                "ci95": [
+                  0.0076,
+                  0.0242
+                ],
+                "point": 0.016,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "3": {
+              "ci95_half_width": 0.0091,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0239,
+                  0.0421
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0332,
+                "system": "attention_selected"
+              },
+              "labels": 178,
+              "queries": 1382,
+              "reading": {
+                "ci95": [
+                  0.0239,
+                  0.0421
+                ],
+                "point": 0.0332,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            },
+            "4": {
+              "ci95_half_width": 0.01235,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.043,
+                  0.0677
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0548,
+                "system": "attention_selected"
+              },
+              "labels": 164,
+              "queries": 1069,
+              "reading": {
+                "ci95": [
+                  0.043,
+                  0.0677
+                ],
+                "point": 0.0548,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            }
+          },
+          "has_a_partner": {
+            "0": {
+              "counts_for_the_rule": false,
+              "labels": 8,
+              "queries": 200,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "1": {
+              "counts_for_the_rule": false,
+              "labels": 9,
+              "queries": 28,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "2": {
+              "counts_for_the_rule": false,
+              "labels": 13,
+              "queries": 31,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "3": {
+              "counts_for_the_rule": false,
+              "labels": 28,
+              "queries": 62,
+              "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+            },
+            "4": {
+              "ci95_half_width": 0.01685,
+              "counts_for_the_rule": true,
+              "gain_component_weighted": {
+                "ci95": [
+                  0.0014,
+                  0.0351
+                ],
+                "excludes_zero": true,
+                "minus": "prototype",
+                "mrr_difference": 0.0174,
+                "system": "attention_selected"
+              },
+              "labels": 102,
+              "queries": 375,
+              "reading": {
+                "ci95": [
+                  0.0014,
+                  0.0351
+                ],
+                "point": 0.0174,
+                "positive_clear_of_zero": true,
+                "verdict": "survives: positive with the interval clear of zero",
+                "whole_interval_below_margin": false
+              }
+            }
+          }
+        },
+        "stratifier": "the query's own top attention weight at its pre-specified beta, the quantity temperature_scale_v3 publishes as top_weight_share; a function of the query's cosine profile in a fixed space, not of either system's ranks"
+      },
+      "complement_by_songs_per_label_band": {
+        "banding": "songs per label (label_size_calibration_v3's BANDS), NOT components per label",
+        "bands": {
+          "10-19": {
+            "ci95_half_width": 0.0122,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                0.0036,
+                0.028
+              ],
+              "excludes_zero": true,
+              "minus": "prototype",
+              "mrr_difference": 0.0155,
+              "system": "attention_selected"
+            },
+            "labels": 33,
+            "queries": 428,
+            "reading": {
+              "ci95": [
+                0.0036,
+                0.028
+              ],
+              "point": 0.0155,
+              "positive_clear_of_zero": true,
+              "verdict": "survives: positive with the interval clear of zero",
+              "whole_interval_below_margin": false
+            }
+          },
+          "20-49": {
+            "ci95_half_width": 0.00415,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                0.0123,
+                0.0206
+              ],
+              "excludes_zero": true,
+              "minus": "prototype",
+              "mrr_difference": 0.0164,
+              "system": "attention_selected"
+            },
+            "labels": 171,
+            "queries": 5951,
+            "reading": {
+              "ci95": [
+                0.0123,
+                0.0206
+              ],
+              "point": 0.0164,
+              "positive_clear_of_zero": true,
+              "verdict": "survives: positive with the interval clear of zero",
+              "whole_interval_below_margin": false
+            }
+          },
+          "5-9": {
+            "ci95_half_width": 0.01815,
+            "counts_for_the_rule": true,
+            "gain_component_weighted": {
+              "ci95": [
+                -0.0015,
+                0.0348
+              ],
+              "excludes_zero": false,
+              "minus": "prototype",
+              "mrr_difference": 0.0152,
+              "system": "attention_selected"
+            },
+            "labels": 19,
+            "queries": 143,
+            "reading": {
+              "ci95": [
+                -0.0015,
+                0.0348
+              ],
+              "point": 0.0152,
+              "positive_clear_of_zero": false,
+              "verdict": "undecided: the interval includes zero and reaches above the margin",
+              "whole_interval_below_margin": false
+            }
+          },
+          "50-up": {
+            "counts_for_the_rule": false,
+            "labels": 1,
+            "queries": 2,
+            "withheld": "fewer than 10 labels or 100 queries: counts only, because an interval over so few labels would identify them"
+          }
+        }
+      },
+      "concentration_reading": {
+        "bottom_quintile": "bounded below the margin of 0.005: no gain worth reading here",
+        "bottom_quintile_ci95_half_width": null,
+        "top_quintile": "survives: positive with the interval clear of zero",
+        "top_quintile_ci95_half_width": null,
+        "verdict": "consistent with a residual duplicate contribution: the gain survives only in the top-weight quintile and is bounded below the margin where attention is spread"
+      },
+      "gain_on_all_queries_against_published": {
+        "estimand": "component-weighted (the published estimand)",
+        "expected": 0.017,
+        "gap": 0.0,
+        "passed": true,
+        "recomputed": 0.017,
+        "tolerance": 0.001,
+        "tolerance_note": "twice the level tolerance: a contrast is a difference of two levels"
+      },
+      "sets": {
+        "all": {
+          "ci95_half_width": 0.00385,
+          "counts_for_the_rule": true,
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0131,
+              0.0208
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.017,
+            "system": "attention_selected"
+          },
+          "labels": 226,
+          "prototype_mrr_component_weighted": 0.502,
+          "prototype_mrr_query_weighted": 0.4963,
+          "queries": 7220,
+          "reading": {
+            "ci95": [
+              0.0131,
+              0.0208
+            ],
+            "point": 0.017,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.519,
+          "selected_mrr_query_weighted": 0.5139
+        },
+        "complement": {
+          "ci95_half_width": 0.00385,
+          "counts_for_the_rule": true,
+          "curve_shape": "interior maximum at beta 20",
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0126,
+              0.0203
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0165,
+            "system": "attention_selected"
+          },
+          "labels": 224,
+          "mrr_by_beta_component_weighted": {
+            "0": 0.4826,
+            "1": 0.4852,
+            "10": 0.4948,
+            "100": 0.3427,
+            "2": 0.4869,
+            "20": 0.499,
+            "5": 0.4907,
+            "50": 0.4813
+          },
+          "prototype_mrr_component_weighted": 0.4826,
+          "prototype_mrr_label_macro": 0.4058,
+          "prototype_mrr_query_weighted": 0.4811,
+          "queries": 6524,
+          "reading": {
+            "ci95": [
+              0.0126,
+              0.0203
+            ],
+            "point": 0.0165,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.499,
+          "selected_mrr_label_macro": 0.4251,
+          "selected_mrr_query_weighted": 0.4979
+        },
+        "has_a_partner": {
+          "ci95_half_width": 0.0162,
+          "counts_for_the_rule": true,
+          "estimand": "component-weighted, point and interval (paired group bootstrap over the published leakage groups)",
+          "gain_component_weighted": {
+            "ci95": [
+              0.0087,
+              0.0411
+            ],
+            "excludes_zero": true,
+            "minus": "prototype",
+            "mrr_difference": 0.0241,
+            "system": "attention_selected"
+          },
+          "labels": 116,
+          "prototype_mrr_component_weighted": 0.7727,
+          "prototype_mrr_query_weighted": 0.6384,
+          "queries": 696,
+          "reading": {
+            "ci95": [
+              0.0087,
+              0.0411
+            ],
+            "point": 0.0241,
+            "positive_clear_of_zero": true,
+            "verdict": "survives: positive with the interval clear of zero",
+            "whole_interval_below_margin": false
+          },
+          "selected_mrr_component_weighted": 0.7968,
+          "selected_mrr_query_weighted": 0.6635
+        }
+      }
+    }
+  },
+  "clause_2_attention_gain_decomposition": {
+    "chars_raw": {
+      "difference_in_differences_per_draw": [
+        {
+          "ci95": [
+            -0.003,
+            0.0017
+          ],
+          "draw": 0,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0006,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0049,
+            0.0
+          ],
+          "draw": 1,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0023,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0027,
+            0.0022
+          ],
+          "draw": 2,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0002,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0019,
+            0.0031
+          ],
+          "draw": 3,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": 0.0007,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0029,
+            0.0022
+          ],
+          "draw": 4,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0004,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0019,
+            0.0031
+          ],
+          "draw": 5,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": 0.0006,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0021,
+            0.0028
+          ],
+          "draw": 6,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": 0.0004,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0031,
+            0.0019
+          ],
+          "draw": 7,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0005,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.003,
+            0.0016
+          ],
+          "draw": 8,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0007,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0029,
+            0.0021
+          ],
+          "draw": 9,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0004,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0031,
+            0.0018
+          ],
+          "draw": 10,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0006,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0031,
+            0.0019
+          ],
+          "draw": 11,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0006,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0032,
+            0.0018
+          ],
+          "draw": 12,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0007,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0027,
+            0.0023
+          ],
+          "draw": 13,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0002,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0031,
+            0.0018
+          ],
+          "draw": 14,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0005,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0015,
+            0.0034
+          ],
+          "draw": 15,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": 0.001,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0021,
+            0.0027
+          ],
+          "draw": 16,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": 0.0003,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0023,
+            0.0026
+          ],
+          "draw": 17,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": 0.0002,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0033,
+            0.0017
+          ],
+          "draw": 18,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0007,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0039,
+            0.0011
+          ],
+          "draw": 19,
+          "excludes_zero": false,
+          "minus": "chars_raw/control_selected",
+          "mrr_difference": -0.0014,
+          "resampling_units": 5496,
+          "system": "chars_raw/gain_a_plus_control_prototype"
+        }
+      ],
+      "estimand": "query-weighted difference of differences, point and interval",
+      "gain_query_weighted": {
+        "control_max": 0.0188,
+        "control_mean": 0.0168,
+        "control_min": 0.0155,
+        "merged_groups": 0.0165,
+        "published": 0.017
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 0,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 0,
+        "draws_whole_interval_inside_margin": 20,
+        "margin": 0.005,
+        "max_point": 0.001,
+        "mean_point": -0.00033,
+        "min_point": -0.0023,
+        "quorum": 18,
+        "verdict": "the attention gain is the same within the margin under arm (a) and under the size-matched control"
+      }
+    },
+    "semantic_whitened": {
+      "difference_in_differences_per_draw": [
+        {
+          "ci95": [
+            -0.0054,
+            0.001
+          ],
+          "draw": 0,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0022,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.007,
+            -0.0005
+          ],
+          "draw": 1,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0038,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0069,
+            -0.0004
+          ],
+          "draw": 2,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0035,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0073,
+            -0.0008
+          ],
+          "draw": 3,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0039,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0075,
+            -0.0009
+          ],
+          "draw": 4,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0042,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0068,
+            -0.0002
+          ],
+          "draw": 5,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0035,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0071,
+            -0.0007
+          ],
+          "draw": 6,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0037,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0047,
+            0.002
+          ],
+          "draw": 7,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0014,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0053,
+            0.0008
+          ],
+          "draw": 8,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0022,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0056,
+            0.001
+          ],
+          "draw": 9,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0023,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0059,
+            0.0009
+          ],
+          "draw": 10,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0025,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.006,
+            0.0003
+          ],
+          "draw": 11,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0028,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0065,
+            -0.0002
+          ],
+          "draw": 12,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0034,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0065,
+            0.0001
+          ],
+          "draw": 13,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0032,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0071,
+            -0.0008
+          ],
+          "draw": 14,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.004,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0068,
+            -0.0007
+          ],
+          "draw": 15,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0038,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.006,
+            0.0001
+          ],
+          "draw": 16,
+          "excludes_zero": false,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0029,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0069,
+            -0.0003
+          ],
+          "draw": 17,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0036,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0068,
+            -0.0003
+          ],
+          "draw": 18,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0034,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0075,
+            -0.0014
+          ],
+          "draw": 19,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/control_selected",
+          "mrr_difference": -0.0045,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/gain_a_plus_control_prototype"
+        }
+      ],
+      "estimand": "query-weighted difference of differences, point and interval",
+      "gain_query_weighted": {
+        "control_max": 0.0317,
+        "control_mean": 0.0304,
+        "control_min": 0.0286,
+        "merged_groups": 0.0272,
+        "published": 0.0317
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 12,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 0,
+        "draws_whole_interval_inside_margin": 1,
+        "margin": 0.005,
+        "max_point": -0.0014,
+        "mean_point": -0.00324,
+        "min_point": -0.0045,
+        "quorum": 18,
+        "verdict": "undecided"
+      }
+    },
+    "words_raw": {
+      "difference_in_differences_per_draw": [
+        {
+          "ci95": [
+            -0.0018,
+            0.0034
+          ],
+          "draw": 0,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0007,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0024,
+            0.0024
+          ],
+          "draw": 1,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": -0.0001,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0025,
+            0.0026
+          ],
+          "draw": 2,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0018,
+            0.0035
+          ],
+          "draw": 3,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0009,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0032,
+            0.0016
+          ],
+          "draw": 4,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": -0.0009,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.002,
+            0.0033
+          ],
+          "draw": 5,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0007,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0015,
+            0.0037
+          ],
+          "draw": 6,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.001,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0026,
+            0.0026
+          ],
+          "draw": 7,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0011,
+            0.0038
+          ],
+          "draw": 8,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0014,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0019,
+            0.0034
+          ],
+          "draw": 9,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0007,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0017,
+            0.0033
+          ],
+          "draw": 10,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0008,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.001,
+            0.0042
+          ],
+          "draw": 11,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0017,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0018,
+            0.0031
+          ],
+          "draw": 12,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0007,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0016,
+            0.0033
+          ],
+          "draw": 13,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0009,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0022,
+            0.0033
+          ],
+          "draw": 14,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0006,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0019,
+            0.0029
+          ],
+          "draw": 15,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0006,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0026,
+            0.0022
+          ],
+          "draw": 16,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": -0.0002,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0021,
+            0.0027
+          ],
+          "draw": 17,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0003,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0013,
+            0.0037
+          ],
+          "draw": 18,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": 0.0012,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        },
+        {
+          "ci95": [
+            -0.0029,
+            0.0023
+          ],
+          "draw": 19,
+          "excludes_zero": false,
+          "minus": "words_raw/control_selected",
+          "mrr_difference": -0.0002,
+          "resampling_units": 5496,
+          "system": "words_raw/gain_a_plus_control_prototype"
+        }
+      ],
+      "estimand": "query-weighted difference of differences, point and interval",
+      "gain_query_weighted": {
+        "control_max": 0.0188,
+        "control_mean": 0.0174,
+        "control_min": 0.0162,
+        "merged_groups": 0.0179,
+        "published": 0.0176
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 0,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 0,
+        "draws_whole_interval_inside_margin": 20,
+        "margin": 0.005,
+        "max_point": 0.0017,
+        "mean_point": 0.00054,
+        "min_point": -0.0009,
+        "quorum": 18,
+        "verdict": "the attention gain is the same within the margin under arm (a) and under the size-matched control"
+      }
+    }
+  },
+  "clause_2_prototype_decomposition": {
+    "chars_raw": {
+      "estimand": "query-weighted, point and interval (paired group bootstrap over the union of arm (a)'s and the draw's groupings, unit weights)",
+      "levels": {
+        "control_drop": -0.0029,
+        "control_max": 0.4245,
+        "control_mean": 0.4237,
+        "control_min": 0.4224,
+        "estimand": "query-weighted on the published query set",
+        "merged_groups": 0.4066,
+        "published": 0.4266,
+        "published_raw_drop": -0.02,
+        "raw_drop": -0.02,
+        "raw_drop_reproduces_published": true,
+        "residual": -0.0171,
+        "share_of_the_raw_drop_the_size_control_explains": 0.143
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 20,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 20,
+        "draws_whole_interval_inside_margin": 0,
+        "margin": 0.005,
+        "max_point": -0.0158,
+        "mean_point": -0.01711,
+        "min_point": -0.0178,
+        "quorum": 18,
+        "verdict": "twin-specific beyond the size control"
+      },
+      "residual_per_draw": [
+        {
+          "ci95": [
+            -0.0222,
+            -0.0122
+          ],
+          "draw": 0,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0171,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0209,
+            -0.0111
+          ],
+          "draw": 1,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0158,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.023,
+            -0.0126
+          ],
+          "draw": 2,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0178,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.023,
+            -0.0129
+          ],
+          "draw": 3,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0178,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0222,
+            -0.0123
+          ],
+          "draw": 4,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0172,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0227,
+            -0.0126
+          ],
+          "draw": 5,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0174,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0227,
+            -0.0129
+          ],
+          "draw": 6,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0178,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0215,
+            -0.0117
+          ],
+          "draw": 7,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0163,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0223,
+            -0.0126
+          ],
+          "draw": 8,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0173,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0224,
+            -0.0117
+          ],
+          "draw": 9,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0167,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0225,
+            -0.0122
+          ],
+          "draw": 10,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0172,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0215,
+            -0.0119
+          ],
+          "draw": 11,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0166,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0222,
+            -0.0124
+          ],
+          "draw": 12,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0171,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0212,
+            -0.0113
+          ],
+          "draw": 13,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0161,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0227,
+            -0.0121
+          ],
+          "draw": 14,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0174,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0228,
+            -0.0126
+          ],
+          "draw": 15,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0177,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0228,
+            -0.0131
+          ],
+          "draw": 16,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0178,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0225,
+            -0.0126
+          ],
+          "draw": 17,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0174,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0223,
+            -0.0121
+          ],
+          "draw": 18,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.017,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0218,
+            -0.012
+          ],
+          "draw": 19,
+          "excludes_zero": true,
+          "minus": "chars_raw/c",
+          "mrr_difference": -0.0166,
+          "resampling_units": 5496,
+          "system": "chars_raw/a"
+        }
+      ]
+    },
+    "semantic_raw": {
+      "estimand": "query-weighted, point and interval (paired group bootstrap over the union of arm (a)'s and the draw's groupings, unit weights)",
+      "levels": {
+        "control_drop": -0.0013,
+        "control_max": 0.2996,
+        "control_mean": 0.2984,
+        "control_min": 0.2965,
+        "estimand": "query-weighted on the published query set",
+        "merged_groups": 0.2918,
+        "published": 0.2997,
+        "published_raw_drop": -0.0079,
+        "raw_drop": -0.0079,
+        "raw_drop_reproduces_published": true,
+        "residual": -0.0066,
+        "share_of_the_raw_drop_the_size_control_explains": 0.167
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 20,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 19,
+        "draws_whole_interval_inside_margin": 0,
+        "margin": 0.005,
+        "max_point": -0.0047,
+        "mean_point": -0.00661,
+        "min_point": -0.0078,
+        "quorum": 18,
+        "verdict": "twin-specific beyond the size control"
+      },
+      "residual_per_draw": [
+        {
+          "ci95": [
+            -0.0099,
+            -0.0038
+          ],
+          "draw": 0,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0067,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0095,
+            -0.0036
+          ],
+          "draw": 1,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0065,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0101,
+            -0.0041
+          ],
+          "draw": 2,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0071,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0111,
+            -0.0051
+          ],
+          "draw": 3,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0078,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0102,
+            -0.0041
+          ],
+          "draw": 4,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.007,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0096,
+            -0.0031
+          ],
+          "draw": 5,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0062,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0078,
+            -0.0019
+          ],
+          "draw": 6,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0047,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0091,
+            -0.0035
+          ],
+          "draw": 7,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0062,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0107,
+            -0.0048
+          ],
+          "draw": 8,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0076,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0102,
+            -0.0044
+          ],
+          "draw": 9,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0072,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0097,
+            -0.0037
+          ],
+          "draw": 10,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0065,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0105,
+            -0.0044
+          ],
+          "draw": 11,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0073,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0088,
+            -0.0029
+          ],
+          "draw": 12,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0057,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0092,
+            -0.0033
+          ],
+          "draw": 13,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0062,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0096,
+            -0.0035
+          ],
+          "draw": 14,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0064,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0098,
+            -0.0036
+          ],
+          "draw": 15,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0065,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0099,
+            -0.0041
+          ],
+          "draw": 16,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0069,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0094,
+            -0.0034
+          ],
+          "draw": 17,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0063,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0097,
+            -0.0037
+          ],
+          "draw": 18,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0065,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0101,
+            -0.0042
+          ],
+          "draw": 19,
+          "excludes_zero": true,
+          "minus": "semantic_raw/c",
+          "mrr_difference": -0.0069,
+          "resampling_units": 5496,
+          "system": "semantic_raw/a"
+        }
+      ]
+    },
+    "semantic_whitened": {
+      "estimand": "query-weighted, point and interval (paired group bootstrap over the union of arm (a)'s and the draw's groupings, unit weights)",
+      "levels": {
+        "control_drop": -0.0006,
+        "control_max": 0.4168,
+        "control_mean": 0.4158,
+        "control_min": 0.4139,
+        "estimand": "query-weighted on the published query set",
+        "merged_groups": 0.403,
+        "published": 0.4164,
+        "published_raw_drop": -0.0134,
+        "raw_drop": -0.0134,
+        "raw_drop_reproduces_published": true,
+        "residual": -0.0128,
+        "share_of_the_raw_drop_the_size_control_explains": 0.047
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 20,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 20,
+        "draws_whole_interval_inside_margin": 0,
+        "margin": 0.005,
+        "max_point": -0.0109,
+        "mean_point": -0.01278,
+        "min_point": -0.0139,
+        "quorum": 18,
+        "verdict": "twin-specific beyond the size control"
+      },
+      "residual_per_draw": [
+        {
+          "ci95": [
+            -0.0165,
+            -0.0075
+          ],
+          "draw": 0,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.012,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0179,
+            -0.0092
+          ],
+          "draw": 1,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0134,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0166,
+            -0.0082
+          ],
+          "draw": 2,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0122,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0171,
+            -0.0085
+          ],
+          "draw": 3,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0126,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0169,
+            -0.0082
+          ],
+          "draw": 4,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0124,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0175,
+            -0.0086
+          ],
+          "draw": 5,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0129,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0172,
+            -0.0085
+          ],
+          "draw": 6,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0129,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0179,
+            -0.009
+          ],
+          "draw": 7,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0134,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0178,
+            -0.0093
+          ],
+          "draw": 8,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0135,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.018,
+            -0.0089
+          ],
+          "draw": 9,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0133,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0185,
+            -0.0095
+          ],
+          "draw": 10,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0139,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0174,
+            -0.009
+          ],
+          "draw": 11,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0131,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0162,
+            -0.0081
+          ],
+          "draw": 12,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0121,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0173,
+            -0.0088
+          ],
+          "draw": 13,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.013,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0169,
+            -0.0086
+          ],
+          "draw": 14,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0127,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0166,
+            -0.0081
+          ],
+          "draw": 15,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0123,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0171,
+            -0.0083
+          ],
+          "draw": 16,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0127,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0182,
+            -0.0091
+          ],
+          "draw": 17,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0135,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0174,
+            -0.0084
+          ],
+          "draw": 18,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0129,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        },
+        {
+          "ci95": [
+            -0.0153,
+            -0.0066
+          ],
+          "draw": 19,
+          "excludes_zero": true,
+          "minus": "semantic_whitened/c",
+          "mrr_difference": -0.0109,
+          "resampling_units": 5496,
+          "system": "semantic_whitened/a"
+        }
+      ]
+    },
+    "words_raw": {
+      "estimand": "query-weighted, point and interval (paired group bootstrap over the union of arm (a)'s and the draw's groupings, unit weights)",
+      "levels": {
+        "control_drop": -0.0037,
+        "control_max": 0.4933,
+        "control_mean": 0.4926,
+        "control_min": 0.4918,
+        "estimand": "query-weighted on the published query set",
+        "merged_groups": 0.478,
+        "published": 0.4963,
+        "published_raw_drop": -0.0183,
+        "raw_drop": -0.0183,
+        "raw_drop_reproduces_published": true,
+        "residual": -0.0146,
+        "share_of_the_raw_drop_the_size_control_explains": 0.2
+      },
+      "reading": {
+        "draws": 20,
+        "draws_excluding_zero": 20,
+        "draws_whole_interval_above_zero": 0,
+        "draws_whole_interval_below_zero": 20,
+        "draws_whole_interval_inside_margin": 0,
+        "margin": 0.005,
+        "max_point": -0.0138,
+        "mean_point": -0.01465,
+        "min_point": -0.0153,
+        "quorum": 18,
+        "verdict": "twin-specific beyond the size control"
+      },
+      "residual_per_draw": [
+        {
+          "ci95": [
+            -0.0199,
+            -0.0091
+          ],
+          "draw": 0,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0145,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0203,
+            -0.0101
+          ],
+          "draw": 1,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.015,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0201,
+            -0.0091
+          ],
+          "draw": 2,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0144,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0201,
+            -0.0087
+          ],
+          "draw": 3,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0141,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0191,
+            -0.0085
+          ],
+          "draw": 4,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0138,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0205,
+            -0.0094
+          ],
+          "draw": 5,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0147,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.02,
+            -0.0089
+          ],
+          "draw": 6,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0145,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.02,
+            -0.0094
+          ],
+          "draw": 7,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0144,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.021,
+            -0.0103
+          ],
+          "draw": 8,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0153,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0209,
+            -0.0094
+          ],
+          "draw": 9,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0147,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0209,
+            -0.0098
+          ],
+          "draw": 10,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.015,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0203,
+            -0.01
+          ],
+          "draw": 11,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.015,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0204,
+            -0.0097
+          ],
+          "draw": 12,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0148,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0194,
+            -0.0089
+          ],
+          "draw": 13,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0141,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0209,
+            -0.0099
+          ],
+          "draw": 14,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.015,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0205,
+            -0.01
+          ],
+          "draw": 15,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0151,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0205,
+            -0.0101
+          ],
+          "draw": 16,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0151,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.02,
+            -0.0094
+          ],
+          "draw": 17,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0146,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0207,
+            -0.0098
+          ],
+          "draw": 18,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0151,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        },
+        {
+          "ci95": [
+            -0.0195,
+            -0.0084
+          ],
+          "draw": 19,
+          "excludes_zero": true,
+          "minus": "words_raw/c",
+          "mrr_difference": -0.0138,
+          "resampling_units": 5496,
+          "system": "words_raw/a"
+        }
+      ]
+    }
+  },
+  "complement_set": {
+    "definition": "the query's own label holds no song sharing a 30-character run with it",
+    "queries": 6524,
+    "queries_with_a_partner": 696
+  },
+  "control_shortfall": {
+    "arm_a_components_merged_away": 196,
+    "clusters_short_per_draw": {
+      "max": 1,
+      "min": 1
+    },
+    "components_the_control_loses_fewer_than_arm_a_per_draw": {
+      "max": 1,
+      "mean": 1.0,
+      "min": 1
+    },
+    "consequence": "the control shrinks repertoires slightly less than arm (a), so the residual arm (a) minus control is biased TOWARD 'twin-specific' and the reading 'mostly repertoire shrinkage' is conservative",
+    "draws_with_a_short_cluster": 20,
+    "labels_affected_per_draw": {
+      "max": 1,
+      "min": 1
+    }
+  },
+  "corpus": {
+    "components": 6889,
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "groups": 5875,
+    "labels": 226,
+    "queries": 7220
+  },
+  "design": {
+    "arm_a": "within_label_repeats_v3.merge_groups over the cross-group pairs, population by its own make_population; gated against its recorded merge counts and MRRs",
+    "banding": "songs per label (label_size_calibration_v3's BANDS: 5-9, 10-19, 20-49, 50-up), checked against 19/149, 33/477, 171/6356, 3/238. NOT the components-per-label banding, whose '20-49' is a different query set",
+    "beta_grid_scope": "the whole curve on the published arm; beta 0 and the pre-specified betas on every other arm, which is all clause 2 reads",
+    "betas": [
+      0.0,
+      1.0,
+      2.0,
+      5.0,
+      10.0,
+      20.0,
+      50.0,
+      100.0
+    ],
+    "cache": "one .npz per (arm, space) cell under --cache-dir, keyed by a fingerprint of the corpus digest, the arm's population and the betas; holds per-query reciprocal ranks, so it lives outside results/ and nothing per query reaches this file",
+    "control": "in the labels arm (a) merges, each of its clusters is replicated with groups drawn at random from that label's groups arm (a) did not merge, greedily matched on component size, never two groups sharing another label; every draw's realised component loss is checked per label against arm (a)'s and the run stops if any label differs, so the control shrinks the same repertoires and no others and can remove no cross-group twin",
+    "detector": "within_label_repeats_v3.shared_passage_pairs: two same-label songs share a passage iff their normalised texts share a 30-character substring; imported, not re-implemented, and gated against the counts in within_label_repeats.json",
+    "draw_seeds": "SEED + 1000 + draw index",
+    "draws": 20,
+    "estimands": {
+      "component_weighted": "sum(rr*w)/sum(w) over (group, label) components; what paired_group_bootstrap returns, and the estimand of the complement-set gain",
+      "cross_arm_weighting": "unit weights, so a cross-arm difference is query-weighted and does not mix the merge's reweighting with the rank change",
+      "label_macro": "component-weighted mean within a label, then the plain mean over labels; reported for the complement-set levels over the published numbering",
+      "query_weighted": "np.mean(1/rank); the estimand of every `mrr` level in this directory and of every cross-arm difference here"
+    },
+    "margin": 0.005,
+    "not_in_the_rule": "every count; the merge and match reports; the beta curves; the band and quintile tables beyond the two quintiles clause 1b names",
+    "order_of_work": "every invariant and every comparison against a published number is checked before the control arms are scored; nothing after that point raises",
+    "primary_estimand": "the attention gain on the complement set (queries whose own label holds no passage-sharing partner of theirs), component-weighted with a paired group-bootstrap interval, on the published population",
+    "quorum": 18,
+    "reading_rule": "Clause 1, primary. On the complement set, the gain of attention at the pre-specified beta minus the prototype, component-weighted: 'survives' if the point is positive and the whole interval is above zero in both lexical spaces; 'bounded below the margin' if the interval includes zero and lies wholly below +0.005, a negative result and not an absence of evidence; 'undecided' if the interval includes zero and reaches above the margin, and undecided is tested first so one space's bound cannot mask another's undecided. Clause 1b, secondary. Quintiles of the query's own top attention weight: the residual-duplicate account is contradicted if the gain survives in the bottom quintile, supported if it survives only in the top one, undecided otherwise. Clause 2, equivalence. residual = arm (a) minus the mean over draws of the size-matched control, query-weighted, with a paired group-bootstrap interval per draw over the union grouping: 'mostly repertoire shrinkage' only if the whole interval lies inside +/-0.005 in at least 18 of 20 draws; 'twin-specific beyond the size control' if the point is at most -0.005 with the whole interval below zero in 18 draws; otherwise undecided. The same decomposition is applied to the attention gain as a difference of differences.",
+    "scope_note": "the word SVD-1024 space is not scored and its published 0.5426 is not reproduced here: within_label_repeats_v3 never scored it, its published attention gain is +0.0022, and refitting its SVD for every arm would cost more than the rest together",
+    "selected_beta": {
+      "chars_raw": [
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "semantic_whitened": [
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        10.0
+      ],
+      "words_raw": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0
+      ]
+    },
+    "selection": "none happens here: the betas are the fixed constants attention_exemplar_v3 selected, imported from temperature_scale_v3",
+    "small_strata": "a band or quintile with fewer than 10 labels or 100 queries is reported as counts only, with no interval",
+    "spaces_beta_grid": [
+      "semantic_whitened",
+      "chars_raw",
+      "words_raw"
+    ],
+    "spaces_prototype": [
+      "semantic_raw",
+      "semantic_whitened",
+      "chars_raw",
+      "words_raw"
+    ],
+    "what_this_arm_bounds": "temperature_scale_v3 (2026-09-22) measured the attention weights at the selected temperature: effective sample size 22.7 to 39.4 songs at the median against a median 40-song profile, largest single weight 0.033 to 0.141 at the median and 0.447 at the 95th percentile in raw words. The duplicate account is therefore already weakened, and this arm bounds the residual duplicate contribution rather than deciding whether the effect exists"
+  },
+  "detector": {
+    "audit_rule_pairs_missed": 0,
+    "audit_rule_pairs_the_detector_must_find": 319,
+    "labels_with_at_least_one_pair": 116,
+    "pairs_already_in_one_published_group": 351,
+    "pairs_merging_distinct_groups": 250,
+    "same_label_song_pairs_sharing_passage": 601,
+    "songs_in_a_pair_across_published_groups": 340,
+    "songs_in_at_least_one_pair": 696
+  },
+  "minutes": 19.0,
+  "privacy": "aggregate only: counts, medians, quantiles, bands, MRRs and intervals. No song identifier, label name, artist, lyric text or per-label listing appears here or in any file this script writes to results/; a stratum too small to aggregate is reported as counts alone",
+  "question": "is the repeated-passage penalty a duplicate effect or a repertoire-size effect, and does the attention gain survive on twin-free queries?",
+  "reading": {
+    "clause_1_complement_set_gain": {
+      "bounded_lexical_spaces": [],
+      "by_space": {
+        "chars_raw": "survives: positive with the interval clear of zero",
+        "semantic_whitened": "survives: positive with the interval clear of zero",
+        "words_raw": "survives: positive with the interval clear of zero"
+      },
+      "curve_shape_on_the_complement_set": {
+        "chars_raw": "interior maximum at beta 10",
+        "semantic_whitened": "interior maximum at beta 5",
+        "words_raw": "interior maximum at beta 20"
+      },
+      "lexical_spaces": [
+        "chars_raw",
+        "words_raw"
+      ],
+      "surviving_lexical_spaces": [
+        "chars_raw",
+        "words_raw"
+      ],
+      "undecided_lexical_spaces": [],
+      "verdict": "the attention gain survives the duplicate confound in both lexical spaces"
+    },
+    "clause_1b_where_the_gain_sits": {
+      "chars_raw": "consistent with a residual duplicate contribution: the gain survives only in the top-weight quintile and is bounded below the margin where attention is spread",
+      "semantic_whitened": "undecided: the quintiles do not separate",
+      "words_raw": "consistent with a residual duplicate contribution: the gain survives only in the top-weight quintile and is bounded below the margin where attention is spread"
+    },
+    "clause_2_drop_decomposition": {
+      "by_space": {
+        "chars_raw": "twin-specific beyond the size control",
+        "semantic_raw": "twin-specific beyond the size control",
+        "semantic_whitened": "twin-specific beyond the size control",
+        "words_raw": "twin-specific beyond the size control"
+      },
+      "gain_by_space": {
+        "chars_raw": "the attention gain is the same within the margin under arm (a) and under the size-matched control",
+        "semantic_whitened": "undecided",
+        "words_raw": "the attention gain is the same within the margin under arm (a) and under the size-matched control"
+      },
+      "spaces_where_the_raw_drop_is_mostly_repertoire_shrinkage": []
+    },
+    "margin": 0.005,
+    "quorum": 18
+  }
+}

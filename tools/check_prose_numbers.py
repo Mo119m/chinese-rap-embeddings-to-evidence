@@ -271,6 +271,30 @@ REGISTRY = [
         "path": "/controls/letter_histogram_by_condition/main/A",
         "render": "{:d}",
     },
+    {
+        "claim": "the attention gain on queries with no twin, words",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "| words, raw | +0.0170 [+0.0131, +0.0208] | +0.0165 [+0.0126, +0.0203] |",
+        "artifact": "results/retrieval-v3/twin_control.json",
+        "path": "/clause_1_complement_gain/words_raw/sets/complement/gain_component_weighted/mrr_difference",
+        "render": "{:+.4f}",
+    },
+    {
+        "claim": "arm (a) minus the size-matched control, characters, mean over draws",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "| characters, raw | -0.0171 [-0.0178, -0.0158] | 20 of 20 |",
+        "artifact": "results/retrieval-v3/twin_control.json",
+        "path": "/clause_2_prototype_decomposition/chars_raw/reading/mean_point",
+        "render": "{:+.4f}",
+    },
+    {
+        "claim": "the size of the complement set",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "On the 6,524 queries that have no",
+        "artifact": "results/retrieval-v3/twin_control.json",
+        "path": "/complement_set/queries",
+        "render": "{:,d}",
+    },
 ]
 
 

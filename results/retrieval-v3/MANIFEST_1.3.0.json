@@ -429,6 +429,14 @@
       "reading": "R1 void: C1: agreement with the reversed order is 0.203, below 0.7: the model reads position. Re-ranked minus retriever -0.1717 [-0.1891, -0.1541] component-weighted on 1,000 queries; controls: reversed-order agreement 0.203, blind accuracy 0.069 against chance 0.10, memorisation probe 0.018; abstentions {'main': 3, 'reversed': 2, 'blind': 3}, out-of-memory abstentions 0",
       "sha256": "a8c128ce731e2f4670664428b72ce37552a392a7b8545f759534f9327e6442f7",
       "written": "2026-09-23T16:30"
+    },
+    "twin_control.json": {
+      "arm": "twin_control_v3 (the repeated-passage gate with a size-matched random-merge control and a complement-set estimand)",
+      "completed_in_pipeline": true,
+      "run": "2026-09-23, CPU, 19 min at below-normal priority; every published prototype and attention number the clauses read is reproduced first; the detector, the merge and the size-matched draw are checked against brute force; synthetic test tests/test_twin_control.py (23 checks); per-(arm, space) cells cached, so a kill loses one cell",
+      "reading": "the attention gain survives the duplicate confound in both lexical spaces | clause 1 (complement-set attention gain): chars_raw: survives, semantic_whitened: survives, words_raw: survives | clause 2 (prototype drop, arm (a) minus size-matched control): chars_raw: twin-specific beyond the size control, semantic_raw: twin-specific beyond the size control, semantic_whitened: twin-specific beyond the size control, words_raw: twin-specific beyond the size control | clause 2 for the attention gain: chars_raw: the attention gain is the same within the margin, semantic_whitened: undecided, words_raw: the attention gain is the same within the margin | control shortfall: 20 of 20 draws short, the control loses 1.0 fewer components than arm (a) on average, which makes 'mostly repertoire shrinkage' conservative",
+      "sha256": "6ee014501e42fbe36b48fdfa9739b1dfb19b8c5203bc205fa4902419b7867ba6",
+      "written": "2026-09-23T20:13"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

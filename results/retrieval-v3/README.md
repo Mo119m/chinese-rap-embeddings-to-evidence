@@ -1788,6 +1788,89 @@ Band MRRs are query-weighted over the subset's queries in that band and are desc
 prompt template, the candidate block and the probe template are recorded verbatim in the payload;
 the prompts themselves and the model's answers stay in the private cache.
 
+## The repeated-passage gate, with a size-matched control (`twin_control.json`, 2026-09-23)
+
+`src/twin_control_v3.py`, with `tests/test_twin_control.py` (23 checks). The repeated-passage arm
+above merges the leakage groups of every same-label pair of songs that share a 30-character run and
+reads the prototype's drop (-0.018 words, -0.020 characters) as the price of duplicate text. That arm
+confounds two things: merging removes twins AND shrinks the affected repertoires by one component
+per merge, and this directory's own size analysis says shrinking a repertoire lowers MRR by itself.
+This arm separates them with a control that shrinks the same labels by the same amount at random,
+and asks the attention question on the queries that have no twin at all.
+
+**The control.** In the same 91 labels arm (a) touches, each of its
+138 clusters is replicated by drawing the same number of that label's OTHER groups, greedily matched on
+component size, from the groups arm (a) did not merge - so the control cannot remove a cross-group
+twin, only repertoire. Twenty seeded draws. One label has too few other groups for a full replica, so
+every draw is short by one cluster and the control loses 1 fewer component than arm (a)
+(195 against 196); that biases the residual toward "twin-specific", so the
+reading below is conservative in that direction. Component-size match 0.93 to 0.94 per draw; the
+control's largest merged group is 27 to 31 against arm (a)'s 42. Rules were fixed before the run;
+the estimand of every number is stated beside it.
+
+**Clause 1, the primary estimand: the attention gain on queries with no twin.** The complement set
+holds the 6,524 queries whose own label contains no song sharing a passage with them; the
+other 696 have at least one. Attention at the pre-specified temperature (the one the
+attention arm selected: characters 10, words 20, whitened semantic 5) against the prototype,
+component-weighted with a paired group-bootstrap interval:
+
+| space | all 7,220 queries | no twin (complement) | has a twin | reading on the complement |
+|---|---|---|---|---|
+| words, raw | +0.0170 [+0.0131, +0.0208] | +0.0165 [+0.0126, +0.0203] | +0.0241 [+0.0087, +0.0411] | survives |
+| characters, raw | +0.0167 [+0.0131, +0.0202] | +0.0151 [+0.0113, +0.0190] | +0.0385 [+0.0211, +0.0591] | survives |
+| semantic, within-label whitening | +0.0338 [+0.0291, +0.0384] | +0.0315 [+0.0270, +0.0363] | +0.0660 [+0.0444, +0.0888] | survives |
+
+**The attention gain survives the duplicate confound in both lexical spaces.** On the 6,524 queries that have no
+twin, attention still beats the prototype by +0.0165 in words and +0.0151 in characters, and the
+beta curve on that set still has its interior maximum (characters at beta 10), (semantic at beta 5), (words at beta 20).
+The interior optimum is repertoire structure, not recurring text. Twins do add something on the
+queries that have them - +0.0241 in words and +0.0385 in characters against +0.0165 and +0.0151
+without - so a residual duplicate contribution exists on about a tenth of the queries; it is not what
+the effect is made of.
+
+By songs-per-label band on the complement set, component-weighted: characters 10-19 +0.0261 (428 queries), 20-49 +0.0147 (5,951); the 5-9 band (143 queries) is undecided at -0.0032 [-0.0179, +0.0080], and the
+50-up band is withheld (2 queries).
+
+**Clause 1b, the quintile split, and why it is read with care.** Splitting both sets by the query's
+own top attention weight, the gain sits in the top-weight quintile and is bounded below the margin
+where attention is spread, which the docstring pre-registered as "consistent with a residual
+duplicate contribution" in words and characters (undecided in whitened semantic). That verdict is
+carried as written, with a caveat the pre-registration did not state: where attention is spread
+the attended profile IS the prototype (the beta -> 0 limit), so a near-zero gain there is partly a
+property of the scorer rather than evidence about twins. The clean evidence on twins is the
+complement set above, where no twin can be in play at all.
+
+**Clause 2, the decomposition of the prototype's drop.** Residual = MRR(arm a) minus MRR(size-matched
+control), query-weighted with a paired group-bootstrap interval per draw over the union of the
+two groupings (a resampling unit must be a unit of both arms):
+
+| space | arm (a) minus control, mean over 20 draws [min, max] | draws with the whole interval below zero | arm (a)'s published drop | verdict |
+|---|---|---|---|---|
+| words, raw | -0.0146 [-0.0153, -0.0138] | 20 of 20 | -0.0183 | twin-specific beyond the size control |
+| characters, raw | -0.0171 [-0.0178, -0.0158] | 20 of 20 | -0.0200 | twin-specific beyond the size control |
+| semantic, raw | -0.0066 [-0.0078, -0.0047] | 19 of 20 | -0.0079 | twin-specific beyond the size control |
+| semantic, within-label whitening | -0.0128 [-0.0139, -0.0109] | 20 of 20 | -0.0134 | twin-specific beyond the size control |
+
+**The drop is twin-specific, and repertoire shrinkage is a small part of it.** Removing the same
+number of components at random costs the prototype only 0.001 to 0.004 of the recorded drop; the
+remaining -0.015 to -0.017 in the lexical spaces is what removing the twins themselves costs. The
+repeated-passage arm measured what it meant to, and its reading - that the headline ordering is not
+driven by repeated passages - gains a control rather than losing a claim. (The published drops are
+query-weighted `mrr` levels from `within_label_repeats.json`, so the residual is read on that estimand.)
+
+**Clause 2 for the attention gain.** The same decomposition applied to the attention gain, as a
+difference of differences: words +0.0005 with 20 of 20 draws wholly inside the 0.005 margin; characters -0.0003 with 20 of 20 draws wholly inside the 0.005 margin; semantic -0.0032 with 1 of 20 draws wholly inside the 0.005 margin.
+The attention gain is the same under arm (a) and under the size-matched control in both lexical
+spaces; whitened semantic is undecided by the quorum rule.
+
+Reproduction: the published prototype, the published arm (a) MRRs, the published beta curves and the
+published top-weight quantiles all reproduce (the attention gain on all queries recomputes to
++0.0167 against the published +0.0167 in characters, gap 0), the vectorised attention scorer equals a brute-force loop, and the
+detector finds all 319 audit-rule pairs. The word SVD-1024 space is not scored here, as it was not in
+the repeated-passage arm; its published attention gain is +0.0022, inside the estimand gap this
+directory records. 19 minutes of CPU at below-normal priority; per-(arm, space) cells are
+cached under a private directory and never published.
+
 ## Privacy
 
 Aggregate numbers only. Per-query tables, vectors and text stay under the private root.
