@@ -247,6 +247,30 @@ REGISTRY = [
         "path": "/gap_1_width_factor/summary/share_of_log_total_attributable_to_the_estimand/median",
         "render": "{:g}",
     },
+    {
+        "claim": "the LLM's agreement with itself under reversed candidate order",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "R1 void: C1: agreement with the reversed order is 0.203",
+        "artifact": "results/retrieval-v3/llm_rerank.json",
+        "path": "/controls/C1_reversed_order_agreement",
+        "render": "{:.3f}",
+    },
+    {
+        "claim": "the cost of LLM re-ranking, component-weighted",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "re-ranked minus retriever -0.1717 [-0.1891, -0.1541]",
+        "artifact": "results/retrieval-v3/llm_rerank.json",
+        "path": "/results/paired_contrast_component_weighted/mrr_difference",
+        "render": "{:+.4f}",
+    },
+    {
+        "claim": "how often the LLM chose the first slot",
+        "prose": "results/retrieval-v3/README.md",
+        "text": "| chosen, main | 396 |",
+        "artifact": "results/retrieval-v3/llm_rerank.json",
+        "path": "/controls/letter_histogram_by_condition/main/A",
+        "render": "{:d}",
+    },
 ]
 
 

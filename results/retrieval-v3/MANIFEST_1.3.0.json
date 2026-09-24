@@ -421,6 +421,14 @@
       "completed_in_pipeline": true,
       "sha256": "f62b4c9ec5feb2213a94a01ef30108e31888aa821f4af165a661236b3b51f61b",
       "written": "2026-09-23T15:30"
+    },
+    "llm_rerank.json": {
+      "arm": "llm_rerank_v3 (a pinned local instruction-tuned LLM re-ranking the raw-word prototype's top 10)",
+      "completed_in_pipeline": true,
+      "run": "2026-09-23, GPU, 2 min over three resumable launches (two ended in CUDA out-of-memory under a concurrent GPU job; the per-query cache resumed each time); the retriever reproduces the published 0.4963; Qwen/Qwen2.5-3B-Instruct@aa8e72537993 offline, float16, greedy, fused attention kernels; synthetic test tests/test_llm_rerank.py",
+      "reading": "R1 void: C1: agreement with the reversed order is 0.203, below 0.7: the model reads position. Re-ranked minus retriever -0.1717 [-0.1891, -0.1541] component-weighted on 1,000 queries; controls: reversed-order agreement 0.203, blind accuracy 0.069 against chance 0.10, memorisation probe 0.018; abstentions {'main': 3, 'reversed': 2, 'blind': 3}, out-of-memory abstentions 0",
+      "sha256": "a8c128ce731e2f4670664428b72ce37552a392a7b8545f759534f9327e6442f7",
+      "written": "2026-09-23T16:30"
     }
   },
   "note": "the v2-era scripts do not write the corpus digest into their JSON; this manifest is their provenance",

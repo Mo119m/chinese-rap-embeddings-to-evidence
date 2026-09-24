@@ -1,0 +1,188 @@
+{
+  "analysis": "llm_rerank_v3",
+  "question": "does a local instruction-tuned LLM improve on the protocol's retriever when it chooses among the top candidates?",
+  "corpus": {
+    "content_sha256": "cd51bf699ddbb42b313a334ca4a13534f166feb60ed488c6e3ea81fd7b164ca4",
+    "songs": 7220,
+    "labels": 226
+  },
+  "model": {
+    "id": "Qwen/Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "license": "Qwen Research License (see LICENSE in the snapshot)",
+    "weights_sha256": {
+      "model-00001-of-00002.safetensors": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+      "model-00002-of-00002.safetensors": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d"
+    },
+    "tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "offline": "1",
+    "dtype": "float16",
+    "attention_backends": [
+      "FLASH_ATTENTION",
+      "EFFICIENT_ATTENTION",
+      "CUDNN_ATTENTION"
+    ],
+    "decoding": {
+      "greedy": true,
+      "max_new_tokens": 4
+    },
+    "torch": "2.11.0+cu128",
+    "transformers": "5.14.1",
+    "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "python": "3.13.13"
+  },
+  "design": {
+    "retriever": "raw jieba word TF-IDF prototype, leave-group-out",
+    "k": 10,
+    "exemplars_per_candidate": 2,
+    "truncate_characters": 350,
+    "subset": 1000,
+    "subset_seed": 20260825,
+    "exemplar_seed": 20260832,
+    "candidates_shown_as": "letters, shuffled per query; artist names never appear",
+    "prompt_template": "下面是一首中文说唱歌曲的歌词（可能被截断），以及 {k} 位候选歌手各自的 {n} 首其他歌曲的歌词片段。候选歌手只用字母表示。请仅根据用词、句式、押韵和主题等文本特征判断，这首歌最可能出自哪位候选歌手。只回答一个字母。\n\n【待判断的歌曲】\n{query}\n\n{candidates}答案（只写字母）：",
+    "candidate_block": "【候选歌手 {letter}】\n{songs}\n\n",
+    "probe_template": "下面是一首中文说唱歌曲的歌词（可能被截断）。这首歌的演唱者是谁？只回答歌手名字，不要解释。\n\n{query}\n\n答案：",
+    "placeholder": "（此处没有歌词）",
+    "first_prompt_tokens": 4913,
+    "reading_rule": "C1 and C2 first; then MRR(reranked) - MRR(retriever), component-weighted, paired group bootstrap: improves if the whole interval is above zero, no gain if the whole interval is below +0.005, undecided otherwise",
+    "controls": {
+      "C1_agreement_floor": 0.7,
+      "C2_blind_ceiling": 0.13
+    }
+  },
+  "checks": {
+    "retriever_mrr": {
+      "expected": 0.4963,
+      "recomputed": 0.4963
+    }
+  },
+  "subset": {
+    "queries": 1000,
+    "true_label_in_top_k": 0.668,
+    "abstained": {
+      "main": 3,
+      "reversed": 2,
+      "blind": 3
+    },
+    "abstained_for_out_of_memory": 0,
+    "cuda_failures_recovered_or_abstained": 0
+  },
+  "results": {
+    "retriever_mrr_query_weighted": 0.4955,
+    "reranked_mrr_query_weighted": 0.3251,
+    "retriever_mrr_component_weighted": 0.5008,
+    "reranked_mrr_component_weighted": 0.3291,
+    "paired_contrast_component_weighted": {
+      "system": "llm_reranked",
+      "minus": "retriever",
+      "mrr_difference": -0.1717,
+      "ci95": [
+        -0.1891,
+        -0.1541
+      ],
+      "excludes_zero": true
+    },
+    "recall_at_1": {
+      "retriever": 0.409,
+      "llm": 0.08
+    },
+    "among_queries_with_true_label_in_top_k": {
+      "queries": 668,
+      "retriever_top1_correct": 0.6123,
+      "llm_choice_correct": 0.1198
+    },
+    "by_band_songs_per_label": {
+      "5-9": {
+        "queries": 21,
+        "retriever_mrr_query_weighted": 0.2568,
+        "reranked_mrr_query_weighted": 0.1371,
+        "llm_top1_correct": 0.0,
+        "retriever_top1_correct": 0.2381
+      },
+      "10-19": {
+        "queries": 68,
+        "retriever_mrr_query_weighted": 0.2579,
+        "reranked_mrr_query_weighted": 0.1894,
+        "llm_top1_correct": 0.0588,
+        "retriever_top1_correct": 0.2059
+      },
+      "20-49": {
+        "queries": 873,
+        "retriever_mrr_query_weighted": 0.5238,
+        "reranked_mrr_query_weighted": 0.3429,
+        "llm_top1_correct": 0.0836,
+        "retriever_top1_correct": 0.4318
+      },
+      "50-up": {
+        "queries": 38,
+        "retriever_mrr_query_weighted": 0.404,
+        "reranked_mrr_query_weighted": 0.2623,
+        "llm_top1_correct": 0.0789,
+        "retriever_top1_correct": 0.3421
+      }
+    }
+  },
+  "controls": {
+    "C1_reversed_order_agreement": 0.203,
+    "C2_blind_accuracy": 0.069,
+    "C2_chance": 0.1,
+    "C3_memorisation_probe_exact_match_rate": 0.018,
+    "letter_histogram_by_condition": {
+      "main": {
+        "A": 396,
+        "B": 49,
+        "C": 21,
+        "D": 26,
+        "E": 4,
+        "F": 156,
+        "G": 5,
+        "H": 2,
+        "I": 2,
+        "J": 336,
+        "abstain": 3
+      },
+      "reversed": {
+        "A": 413,
+        "B": 40,
+        "C": 17,
+        "D": 32,
+        "E": 5,
+        "F": 150,
+        "G": 5,
+        "H": 0,
+        "I": 2,
+        "J": 334,
+        "abstain": 2
+      },
+      "blind": {
+        "A": 398,
+        "B": 10,
+        "C": 31,
+        "D": 55,
+        "E": 39,
+        "F": 247,
+        "G": 3,
+        "H": 1,
+        "I": 1,
+        "J": 212,
+        "abstain": 3
+      }
+    },
+    "true_label_slot_histogram_main": {
+      "A": 60,
+      "B": 68,
+      "C": 64,
+      "D": 71,
+      "E": 55,
+      "F": 69,
+      "G": 72,
+      "H": 72,
+      "I": 64,
+      "J": 73
+    }
+  },
+  "reading": "R1 void: C1: agreement with the reversed order is 0.203, below 0.7: the model reads position",
+  "minutes": 1.5,
+  "privacy": "aggregate only: no lyric, song, label or artist name; the prompt template is recorded, the prompts themselves and the model's answers stay in the private cache"
+}

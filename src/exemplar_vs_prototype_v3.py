@@ -89,7 +89,7 @@ def setup(private_root: Path):
     fold = np.random.default_rng(SEED).integers(0, FOLDS, size=len(order))[group_ids]
     dense = v1.l2_normalize_dense(np.stack([centroids_by_song[s] for s in songs])).astype(np.float64)
     return dict(songs=songs, label_index=label_index, group_ids=group_ids, label_count=label_count,
-                weights=weights, fold=fold, dense=dense, documents=documents)
+                weights=weights, fold=fold, dense=dense, documents=documents, labels=eligible)
 
 
 class ExemplarScorer:

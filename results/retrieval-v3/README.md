@@ -1723,6 +1723,71 @@ the band, and costs MRR in the whitened ones. The three estimands disagree about
 estimand beside every number: the same calibration is an improvement under one weighting and not
 under another.
 
+## A local LLM re-ranking the protocol's retriever (`llm_rerank.json`, 2026-09-23)
+
+`src/llm_rerank_v3.py`, with `tests/test_llm_rerank.py`. Zero-shot authorship attribution with an
+instruction-tuned LLM is the current default in the literature, and its stated limitation is that it
+does not scale to many candidate authors; this corpus has 226 credited labels. So the question is
+asked in its scalable form: the protocol's own retriever - the raw jieba word TF-IDF prototype,
+published MRR 0.4963, zero fitted parameters - proposes its top 10 labels, and a local
+model chooses among them from example lyrics. The model is `Qwen/Qwen2.5-3B-Instruct` at revision
+`aa8e72537993`, run offline in float16 on a NVIDIA GeForce RTX 5070 Laptop GPU with greedy decoding; every weight shard's
+sha256 is in the payload. Candidates are shown as letters in an order shuffled per query, and no
+artist name appears in any prompt, so the model cannot answer from what it knows about a rapper.
+Each candidate is represented by 2 of its songs drawn at random from outside the query's leakage
+group, truncated to 350 characters; the first prompt is 4,913 tokens. The subset is
+1,000 queries drawn at random with seed 20260825; the true label is in the top 10 for
+66.8% of them, which is the ceiling on what any re-ranking can reach. Rules were fixed in the
+docstring before the run.
+
+| | retriever | LLM re-ranked |
+|---|---|---|
+| MRR, query-weighted, subset | 0.4955 | 0.3251 |
+| MRR, component-weighted, subset | 0.5008 | 0.3291 |
+| recall@1 | 0.4090 | 0.0800 |
+| top-1 correct among the 668 queries whose true label is offered | 0.6123 | 0.1198 |
+
+Paired contrast, component-weighted: re-ranked minus retriever -0.1717 [-0.1891, -0.1541].
+Abstentions (no candidate letter in the answer): main 3, reversed 2, blind 3.
+
+**Controls, read before the result.**
+C1, the same prompts with the candidates in reversed order, agree with the original choice for
+20.3% of queries (floor 0.7). C2, the query replaced by a placeholder, is
+correct for 6.9% against a chance level of 10% (ceiling 0.13). C3, the
+memorisation probe - the query alone, the model asked to name the performer - matches the credited
+label string for 1.8% of the subset.
+
+**Reading.** R1 void: C1: agreement with the reversed order is 0.203, below 0.7: the model reads position
+
+**The mechanism, in one table.** Which slot the model picks, per condition, against where the
+true label actually sat (the shuffle puts it in every slot about equally, so a position reader
+cannot do better than one in ten):
+
+| slot | A | B | C | D | E | F | G | H | I | J | abstain |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| chosen, main | 396 | 49 | 21 | 26 | 4 | 156 | 5 | 2 | 2 | 336 | 3 |
+| chosen, reversed | 413 | 40 | 17 | 32 | 5 | 150 | 5 | 0 | 2 | 334 | 2 |
+| chosen, blind | 398 | 10 | 31 | 55 | 39 | 247 | 3 | 1 | 1 | 212 | 3 |
+| true label's slot, main | 60 | 68 | 64 | 71 | 55 | 69 | 72 | 72 | 64 | 73 | - |
+
+The model puts 888 of 1,000 choices on three slots (A, J, F: the first, the last and the middle of the list), and the blind
+condition - no query at all - produces nearly the same histogram. That is a model reading the
+shape of the prompt, not the lyrics, and it is why re-ranking with it costs the retriever a third
+of its MRR. It is also the outcome the literature's own scaling caveat predicts for a model of
+this size: the zero-shot results that motivate LLM attribution come from GPT-4-class models,
+and a 3B model that must run locally so that no lyric leaves the machine is not one.
+
+| band, songs per label | queries | retriever MRR | re-ranked MRR | retriever top-1 correct | LLM top-1 correct |
+|---|---|---|---|---|---|
+| 5-9 | 21 | 0.2568 | 0.1371 | 0.2381 | 0.0000 |
+| 10-19 | 68 | 0.2579 | 0.1894 | 0.2059 | 0.0588 |
+| 20-49 | 873 | 0.5238 | 0.3429 | 0.4318 | 0.0836 |
+| 50-up | 38 | 0.4040 | 0.2623 | 0.3421 | 0.0789 |
+
+Band MRRs are query-weighted over the subset's queries in that band and are description. The
+prompt template, the candidate block and the probe template are recorded verbatim in the payload;
+the prompts themselves and the model's answers stay in the private cache.
+
 ## Privacy
 
 Aggregate numbers only. Per-query tables, vectors and text stay under the private root.
